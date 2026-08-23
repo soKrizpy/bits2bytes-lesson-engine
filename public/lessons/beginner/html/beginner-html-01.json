@@ -1,0 +1,202 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-01",
+    "title": "Build Your First Web Page",
+    "description": "Learn what HTML is, how it works, and build your very first web page from scratch.",
+    "level": "beginner",
+    "category": "HTML",
+    "topicNumber": 1,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Welcome to HTML!",
+    "description": "Every web page you have ever visited was built with HTML. In this topic you will discover what HTML is, how it works, and write your first real web page. By the end, you will have unlocked the foundation of the entire web.",
+    "analogy": "Think of HTML as the skeleton of a web page. Just like bones give your body its shape, HTML tags give a web page its structure."
+  },
+  "objectives": [
+    "Understand what HTML is and why it matters",
+    "Recognise HTML elements and tags",
+    "Write a valid HTML document structure",
+    "Use heading and paragraph tags correctly",
+    "Build a simple web page from starter code"
+  ],
+  "learningPath": [
+    {
+      "id": "node-01-welcome",
+      "type": "lesson",
+      "title": "Welcome to HTML",
+      "xp": 5,
+      "explanation": "HTML stands for HyperText Markup Language. It is the language that every web browser understands. When you visit any website, the browser reads HTML and turns it into the page you see on screen.\n\nDo not worry — HTML is not scary. You are not writing programs. You are writing instructions that tell the browser what to show.",
+      "analogy": "Imagine sending a letter with special instructions like 'make this word bold' or 'start a new paragraph here'. HTML is exactly that — a set of readable instructions wrapped around your content.",
+      "tips": [
+        "HTML is not a programming language — it is a markup language. You describe what things are, not what to do.",
+        "Every web page you have ever seen was built starting with HTML."
+      ]
+    },
+    {
+      "id": "node-02-elements",
+      "type": "lesson",
+      "title": "HTML Elements & Tags",
+      "xp": 5,
+      "explanation": "HTML is built from elements. Each element describes a piece of content — a heading, a paragraph, an image.\n\nAn element is made up of tags. Most elements have an opening tag and a closing tag with content in between:\n\n<tagname>your content here</tagname>\n\nThe opening tag is <tagname>. The closing tag adds a forward slash: </tagname>. Together they form one complete element.",
+      "expectedResult": "You can identify an HTML element and its opening and closing tags.",
+      "tips": [
+        "The closing tag always has a forward slash: </tagname>",
+        "Tags are lowercase by convention — <p> not <P>"
+      ]
+    },
+    {
+      "id": "node-03-first-tags",
+      "type": "code",
+      "title": "Your First HTML Tags",
+      "xp": 5,
+      "explanation": "Here are the two most common HTML elements you will use every day. Study each one carefully — you will use these in your first web page.",
+      "code": {
+        "language": "html",
+        "content": "<!-- A heading — displayed large and bold -->\n<h1>Hello, World!</h1>\n\n<!-- A paragraph — displayed as normal text -->\n<p>This is my first web page.</p>"
+      }
+    },
+    {
+      "id": "node-04-structure",
+      "type": "lesson",
+      "title": "The HTML Document Structure",
+      "xp": 5,
+      "explanation": "A real HTML file is not just a heading and a paragraph. It has a required structure that every browser expects.\n\nEvery HTML page starts with <!DOCTYPE html>, which tells the browser this is a modern HTML5 document. Then comes the <html> element, which wraps everything. Inside you will find two sections:\n\n• <head> — contains information about the page, like its title. The browser reads this but does not display it on screen.\n• <body> — contains everything the visitor actually sees.",
+      "analogy": "Think of it like a book. The cover and copyright page are like <head> — important information that is not part of the story. The actual story is in <body>.",
+      "expectedResult": "You know that every HTML page needs <!DOCTYPE html>, <html>, <head>, and <body>.",
+      "tips": [
+        "The <title> tag inside <head> sets the text you see on the browser tab.",
+        "Everything visible on the page lives inside <body>."
+      ]
+    },
+    {
+      "id": "node-05-boilerplate",
+      "type": "code",
+      "title": "Full HTML Boilerplate",
+      "xp": 5,
+      "explanation": "This is the starting template you will use for every HTML page you ever create. Memorise this structure — it is the foundation of the entire web.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>My First Web Page</title>\n  </head>\n  <body>\n    <h1>Hello, World!</h1>\n    <p>Welcome to my web page.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-headings",
+      "type": "lesson",
+      "title": "Headings & Paragraphs",
+      "xp": 5,
+      "explanation": "HTML gives you six levels of headings, from <h1> (the most important, displayed largest) to <h6> (the least important, displayed smallest). A page usually has one <h1> for its main title.\n\nThe <p> tag creates a paragraph of text. Browsers automatically add space between paragraphs, so you never need to add blank lines.",
+      "expectedResult": "You can write headings at different levels and add paragraphs of text to a web page.",
+      "tips": [
+        "Use only one <h1> per page — it is your main title.",
+        "Use <h2> for section titles, <h3> for sub-sections, and so on.",
+        "Never skip heading levels (e.g. jumping from <h1> directly to <h4>) — it confuses screen readers."
+      ]
+    },
+    {
+      "id": "node-07-headings-code",
+      "type": "code",
+      "title": "Headings in Action",
+      "xp": 5,
+      "explanation": "Notice how the heading size decreases from h1 to h3. In a real page, h2 and h3 are used for sections and sub-sections under your main h1 title.",
+      "code": {
+        "language": "html",
+        "content": "<h1>My Web Page</h1>\n<p>Welcome! This is the introduction paragraph.</p>\n\n<h2>About Me</h2>\n<p>I am learning to build web pages with HTML.</p>\n\n<h3>My Goals</h3>\n<p>I want to build cool things on the internet.</p>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Build It Yourself",
+      "xp": 10,
+      "instructions": "Which HTML tag creates the largest heading on a page?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "<h6>",
+        "<h1>",
+        "<heading>",
+        "<title>"
+      ],
+      "correctOption": "<h1>"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Build Your First Page",
+      "xp": 15,
+      "instructions": "Your mission: complete the web page below.\n\nAdd the following to the <body>:\n1. A main heading that says: My First Web Page\n2. A paragraph that says: I built this with HTML!\n3. A second heading (h2) that says: What I Learned\n4. A second paragraph that says: HTML gives structure to web pages.\n\nUse the boilerplate below as your starting point.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>My First Web Page</title>\n  </head>\n  <body>\n    <!-- Write your HTML here -->\n\n  </body>\n</html>"
+      },
+      "expectedResult": "A complete page with an h1, a paragraph, an h2, and a second paragraph — all inside <body>."
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Knowledge Check"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Which HTML tag creates the largest heading on a page?",
+        "options": ["<h6>", "<h1>", "<header>", "<big>"],
+        "correctAnswer": "<h1>",
+        "explanation": "Headings go from <h1> (largest and most important) to <h6> (smallest). Always use <h1> for your main page title.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "What does HTML stand for?",
+        "options": [
+          "Hyper Transfer Markup Language",
+          "HyperText Markup Language",
+          "High-Tech Modern Language",
+          "HyperText Making Language"
+        ],
+        "correctAnswer": "HyperText Markup Language",
+        "explanation": "HTML stands for HyperText Markup Language. It is the standard language used to create web pages.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Which HTML element contains the visible content of a web page?",
+        "options": ["<head>", "<title>", "<body>", "<html>"],
+        "correctAnswer": "<body>",
+        "explanation": "Everything visible on the page — headings, paragraphs, images — lives inside the <body> element. The <head> contains hidden metadata.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Which of the following is the correct tag for a paragraph?",
+        "options": ["<para>", "<text>", "<paragraph>", "<p>"],
+        "correctAnswer": "<p>",
+        "explanation": "The <p> tag defines a paragraph. Browsers automatically add spacing between paragraphs.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "What goes inside the <head> element of an HTML page?",
+        "options": [
+          "The main heading of the page",
+          "All the visible text and images",
+          "Page metadata and the page title",
+          "Navigation links and buttons"
+        ],
+        "correctAnswer": "Page metadata and the page title",
+        "explanation": "The <head> contains information about the page — like the <title> (shown on the browser tab) and <meta> tags — but nothing that appears directly on the page.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topic Complete!",
+    "message": "You just built your first web page. Every website on the internet started exactly where you are right now.",
+    "achievementName": "HTML Explorer",
+    "achievementIcon": "🌐"
+  }
+}

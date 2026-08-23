@@ -1,0 +1,279 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://bits2bytes.io/schemas/lesson.schema.json",
+  "title": "BITS2BYTES Lesson Schema",
+  "description": "Schema for lesson JSON files loaded by the BITS2BYTES Lesson Engine. Version 1.x.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "metadata",
+    "objectives",
+    "learningPath",
+    "quiz",
+    "completion"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "description",
+        "level",
+        "category",
+        "topicNumber",
+        "estimatedTime",
+        "xp"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "level": {
+          "type": "string",
+          "enum": [
+            "beginner",
+            "intermediate",
+            "advanced"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "topicNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "estimatedTime": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "xp": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000
+        }
+      }
+    },
+    "introduction": {
+      "type": "object",
+      "required": [
+        "title",
+        "description"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "analogy": {
+          "type": "string"
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "objectives": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "learningPath": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "title"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "lesson",
+              "code",
+              "practice",
+              "challenge",
+              "quiz"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "xp": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          }
+        },
+        "additionalProperties": true,
+        "if": {
+          "properties": {
+            "type": {
+              "const": "code"
+            }
+          },
+          "required": [
+            "type"
+          ]
+        },
+        "then": {
+          "required": [
+            "code"
+          ],
+          "properties": {
+            "code": {
+              "type": "object",
+              "required": [
+                "language",
+                "content"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "language": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 50
+                },
+                "content": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 50000
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "quiz": {
+      "type": "object",
+      "required": [
+        "questions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "questions": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "question",
+              "options",
+              "correctAnswer",
+              "explanation",
+              "points"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              "question": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              },
+              "options": {
+                "type": "array",
+                "minItems": 4,
+                "maxItems": 4,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+                }
+              },
+              "correctAnswer": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "explanation": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 500
+              },
+              "points": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          }
+        }
+      }
+    },
+    "completion": {
+      "type": "object",
+      "required": [
+        "title",
+        "message",
+        "achievementName"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "achievementName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "achievementIcon": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base: dark background matching the design token */
+html,
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Smooth scrolling — disabled for prefers-reduced-motion */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Code blocks */
+pre,
+code {
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Monaco,
+    Consolas, 'Courier New', monospace;
+}
