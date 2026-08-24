@@ -14,13 +14,19 @@ import type { StudentState } from '@/types/state';
 interface AchievementScreenProps {
   lesson: Lesson;
   studentState: StudentState;
+  onReview: () => void;
   onReturn: () => void;
+  nextTopic?: { topicId: string; title: string };
+  onNextTopic?: () => void;
 }
 
 export function AchievementScreen({
   lesson,
   studentState,
+  onReview,
   onReturn,
+  nextTopic,
+  onNextTopic,
 }: AchievementScreenProps) {
   const [visible, setVisible] = useState(false);
 
@@ -43,6 +49,7 @@ export function AchievementScreen({
   const completedCount = studentState.completedNodes.length;
   const totalNodes = lesson.learningPath.length;
   const achievementIcon = lesson.completion.achievementIcon ?? '🏆';
+  const learned = lesson.review?.learned ?? lesson.objectives;
 
   return (
     <div
@@ -119,15 +126,51 @@ export function AchievementScreen({
           </div>
         </div>
 
-        {/* Return action */}
-        <Button
-          onClick={onReturn}
-          size="lg"
-          className="w-full"
-          aria-label="Return to topic overview"
-        >
-          Return to Overview
-        </Button>
+        <section className="bg-card border border-white/10 rounded-2xl p-5 text-left space-y-3" aria-labelledby="learned-heading">
+          <h2 id="learned-heading" className="text-text-base font-semibold">What you learned</h2>
+          <ul className="space-y-2 text-sm text-text-muted">
+            {learned.slice(0, 4).map((item) => (
+              <li key={item} className="flex gap-2">
+                <span className="text-success" aria-hidden="true">✓</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Actions */}
+        <div className="space-y-3">
+          <Button
+            onClick={onReview}
+            size="lg"
+            className="w-full"
+            aria-label="Review completed topic"
+          >
+            Review Topic
+          </Button>
+          <Button
+            onClick={onReturn}
+            variant="secondary"
+            size="lg"
+            className="w-full"
+            aria-label="Return to topic overview"
+          >
+            Return to Overview
+          </Button>
+          {nextTopic !== undefined && onNextTopic !== undefined ? (
+            <Button
+              onClick={onNextTopic}
+              variant="ghost"
+              size="lg"
+              className="w-full"
+              aria-label={`Start next topic: ${nextTopic.title}`}
+            >
+              Next step: {nextTopic.title} →
+            </Button>
+          ) : (
+            <p className="text-text-muted text-sm pt-1">More lessons coming soon.</p>
+          )}
+        </div>
       </div>
     </div>
   );

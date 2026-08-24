@@ -22,6 +22,28 @@
     "Use heading and paragraph tags correctly",
     "Build a simple web page from starter code"
   ],
+  "review": {
+    "learned": [
+      "HTML adalah bahasa markup yang memberi struktur pada halaman web.",
+      "Elemen HTML biasanya dibuat dari tag pembuka, isi, dan tag penutup.",
+      "Dokumen HTML lengkap memiliki <!DOCTYPE html>, <html>, <head>, dan <body>.",
+      "Heading dan paragraf membantu menyusun informasi agar mudah dibaca.",
+      "Kode starter dapat dikembangkan menjadi halaman web sederhana yang lengkap."
+    ],
+    "keyConcepts": [
+      "Markup language",
+      "HTML elements and tags",
+      "Document structure",
+      "Head and body sections",
+      "Headings and paragraphs"
+    ],
+    "takeaways": [
+      "Gunakan <body> untuk semua konten yang terlihat oleh pengunjung.",
+      "Gunakan satu <h1> sebagai judul utama halaman.",
+      "Letakkan informasi halaman seperti <title> di dalam <head>.",
+      "Mulai setiap halaman HTML dari struktur boilerplate yang valid."
+    ]
+  },
   "learningPath": [
     {
       "id": "node-01-welcome",
@@ -131,7 +153,12 @@
         "language": "html",
         "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>My First Web Page</title>\n  </head>\n  <body>\n    <!-- Write your HTML here -->\n\n  </body>\n</html>"
       },
-      "expectedResult": "A complete page with an h1, a paragraph, an h2, and a second paragraph — all inside <body>."
+      "expectedResult": "A complete page with an h1, a paragraph, an h2, and a second paragraph — all inside <body>.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>My First Web Page</title>\n  </head>\n  <body>\n    <h1>My First Web Page</h1>\n    <p>I built this with HTML!</p>\n\n    <h2>What I Learned</h2>\n    <p>HTML gives structure to web pages.</p>\n  </body>\n</html>",
+        "explanation": "This solution keeps the original HTML boilerplate and adds the required visible content inside <body>: one main heading, two paragraphs, and a second-level heading."
+      }
     },
     {
       "id": "node-10-quiz",

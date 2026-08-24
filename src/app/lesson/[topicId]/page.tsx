@@ -3,6 +3,7 @@
 // Server Component — extracts topicId from params and renders the LessonEngine client component.
 
 import { LessonEngine } from '@/components/LessonEngine';
+import { TOPIC_REGISTRY } from '@/engine/topicRegistry';
 
 interface LessonPageProps {
   params: {
@@ -15,8 +16,5 @@ export default function LessonPage({ params }: LessonPageProps) {
 }
 
 export function generateStaticParams() {
-  // Return known topic IDs for static generation at build time.
-  // Add new topic IDs here as they are added to the registry.
-  // This is the ONLY place that lists topic IDs for routing purposes.
-  return [{ topicId: 'beginner-html-01' }];
+  return TOPIC_REGISTRY.map((entry) => ({ topicId: entry.topicId }));
 }

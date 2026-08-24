@@ -16,9 +16,12 @@ import type { StudentState } from '@/types/state';
 interface LearningPathProps {
   nodes: LearningNode[];
   studentState: StudentState;
+  mode?: 'learning' | 'review';
+  selectedNodeIndex?: number;
+  onSelectNode?: (index: number) => void;
 }
 
-type NodeState = 'completed' | 'current' | 'upcoming';
+type NodeState = 'completed' | 'current' | 'upcoming' | 'selected';
 
 function getNodeState(
   nodeId: string,
@@ -30,9 +33,16 @@ function getNodeState(
   return 'upcoming';
 }
 
-export function LearningPath({ nodes, studentState }: LearningPathProps) {
+export function LearningPath({
+  nodes,
+  studentState,
+  mode = 'learning',
+  selectedNodeIndex,
+  onSelectNode,
+}: LearningPathProps) {
   const currentNodeRef = useRef<HTMLLIElement | null>(null);
   const progress = calculateProgress(studentState, nodes.length);
+  const isReviewMode = mode === 'review';
 
   // Scroll current node into view whenever currentNodeIndex changes
   useEffect(() => {
@@ -43,7 +53,7 @@ export function LearningPath({ nodes, studentState }: LearningPathProps) {
       behavior: prefersReduced ? 'auto' : 'smooth',
       block: 'nearest',
     });
-  }, [studentState.currentNodeIndex]);
+  }, [studentState.currentNodeIndex, selectedNodeIndex]);
 
   if (nodes.length === 0) {
     return (
@@ -55,7 +65,7 @@ export function LearningPath({ nodes, studentState }: LearningPathProps) {
   }
 
   return (
-    <nav aria-label="Learning path" className="flex flex-col h-full">
+    <nav aria-label={isReviewMode ? 'Review learning path' : 'Learning path'} className="flex flex-col h-full">
       {/* Progress bar header */}
       <div className="px-4 pt-4 pb-3 border-b border-white/10">
         <ProgressBar
@@ -68,8 +78,11 @@ export function LearningPath({ nodes, studentState }: LearningPathProps) {
       {/* Node list */}
       <ol className="flex-1 overflow-y-auto px-4 pt-4 pb-6 space-y-0" role="list">
         {nodes.map((node, index) => {
-          const nodeState: NodeState = getNodeState(node.id, index, studentState);
-          const isCurrent = nodeState === 'current';
+          const nodeState: NodeState =
+            isReviewMode && selectedNodeIndex === index
+              ? 'selected'
+              : getNodeState(node.id, index, studentState);
+          const isCurrent = nodeState === 'current' || nodeState === 'selected';
 
           return (
             <li
@@ -82,6 +95,9 @@ export function LearningPath({ nodes, studentState }: LearningPathProps) {
                 state={nodeState}
                 index={index}
                 isLast={index === nodes.length - 1}
+                {...(isReviewMode && onSelectNode !== undefined
+                  ? { onSelect: () => { onSelectNode(index); } }
+                  : {})}
               />
             </li>
           );

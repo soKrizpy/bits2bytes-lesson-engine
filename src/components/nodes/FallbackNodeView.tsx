@@ -6,9 +6,10 @@
 interface FallbackNodeViewProps {
   node: { type: string; title?: string; [key: string]: unknown };
   onAdvance: () => void;
+  mode?: 'learning' | 'review';
 }
 
-export function FallbackNodeView({ node, onAdvance }: FallbackNodeViewProps) {
+export function FallbackNodeView({ node, onAdvance, mode = 'learning' }: FallbackNodeViewProps) {
   return (
     <div className="space-y-4">
       <div className="bg-warning/10 border border-warning/20 rounded-xl p-6 space-y-3">
@@ -29,12 +30,14 @@ export function FallbackNodeView({ node, onAdvance }: FallbackNodeViewProps) {
           </p>
         )}
       </div>
-      <button
-        onClick={onAdvance}
-        className="text-sm text-text-muted hover:text-text-base underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
-      >
-        Skip and continue →
-      </button>
+      {mode === 'learning' && (
+        <button
+          onClick={onAdvance}
+          className="text-sm text-text-muted hover:text-text-base underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
+        >
+          Skip and continue →
+        </button>
+      )}
     </div>
   );
 }

@@ -56,6 +56,33 @@ describe('validateLesson — valid lesson', () => {
     const result = validateLesson(minimalValidLesson());
     expect(result.valid).toBe(true);
   });
+
+  it('validates optional review summary and challenge solution fields when present', () => {
+    const lesson = minimalValidLesson();
+    lesson['review'] = {
+      learned: ['A useful thing'],
+      keyConcepts: ['A key concept'],
+      takeaways: ['A takeaway'],
+    };
+    lesson['learningPath'] = [
+      {
+        id: 'node-challenge',
+        type: 'challenge',
+        title: 'Challenge',
+        instructions: 'Build something.',
+        solution: {
+          language: 'python',
+          code: 'print("done")',
+          explanation: 'A simple complete solution.',
+        },
+      },
+      { id: 'node-quiz', type: 'quiz', title: 'Quiz' },
+    ];
+
+    const result = validateLesson(lesson);
+
+    expect(result.valid).toBe(true);
+  });
 });
 
 describe('validateLesson — schema version checks', () => {

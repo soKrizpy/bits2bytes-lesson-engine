@@ -13,9 +13,10 @@ import type { PracticeNode } from '@/types/lesson';
 interface PracticeNodeViewProps {
   node: PracticeNode;
   onAdvance: () => void;
+  mode?: 'learning' | 'review';
 }
 
-export function PracticeNodeView({ node, onAdvance }: PracticeNodeViewProps) {
+export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: PracticeNodeViewProps) {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [showFeedback, setShowFeedback] = useState(false);
@@ -55,6 +56,47 @@ export function PracticeNodeView({ node, onAdvance }: PracticeNodeViewProps) {
     selectedOption !== null &&
     node.correctOption !== undefined &&
     selectedOption === node.correctOption;
+
+  if (mode === 'review') {
+    return (
+      <div className="space-y-6">
+        <h2 className="text-2xl font-bold text-text-base">{node.title}</h2>
+
+        <p className="text-text-muted leading-relaxed">{node.instructions}</p>
+
+        {isMultipleChoice && node.options !== undefined && (
+          <div className="space-y-3" aria-label={`${node.title} options`}>
+            {node.options.map((option) => (
+              <div
+                key={option}
+                className={[
+                  'w-full text-left px-5 py-4 rounded-xl border text-sm font-medium',
+                  option === node.correctOption
+                    ? 'border-success/30 bg-success/10 text-success'
+                    : 'border-white/10 bg-card text-text-base',
+                ].join(' ')}
+              >
+                {option}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {isStepCompletion && node.steps !== undefined && (
+          <ol className="space-y-3">
+            {node.steps.map((step, index) => (
+              <li
+                key={index}
+                className="px-5 py-4 rounded-xl border border-white/10 bg-card text-sm text-text-base"
+              >
+                {step}
+              </li>
+            ))}
+          </ol>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">

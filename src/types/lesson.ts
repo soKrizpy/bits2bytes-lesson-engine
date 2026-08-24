@@ -99,6 +99,12 @@ export interface ChallengeNode extends BaseNode {
   };
   /** Optional description of the expected output/result. */
   expectedResult?: string;
+  /** Optional full solution shown only in post-completion review mode. */
+  solution?: {
+    language: string;
+    code: string;
+    explanation?: string;
+  };
 }
 
 export interface QuizNode extends BaseNode {
@@ -141,6 +147,15 @@ export interface LessonCompletion {
   achievementIcon?: string;
 }
 
+export interface LessonReviewSummary {
+  /** Optional summary of what the student learned in this topic. */
+  learned?: string[];
+  /** Optional list of key concepts covered by the topic. */
+  keyConcepts?: string[];
+  /** Optional useful takeaways for future reference. */
+  takeaways?: string[];
+}
+
 /** Root type for a complete lesson JSON file. */
 export interface Lesson {
   /** Schema version string in "MAJOR.MINOR" format. Engine validates MAJOR version compatibility. */
@@ -150,6 +165,8 @@ export interface Lesson {
   introduction?: LessonIntroduction;
   /** Learning objectives for this topic. */
   objectives: string[];
+  /** Optional post-completion review summary. */
+  review?: LessonReviewSummary;
   /** Ordered sequence of learning nodes the student navigates through. */
   learningPath: LearningNode[];
   quiz: {

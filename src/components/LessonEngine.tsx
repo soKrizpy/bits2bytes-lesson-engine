@@ -10,15 +10,17 @@
 // This component does NOT know what subject is being taught.
 // It reads everything from the lesson JSON via useEngineState.
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useEngineState } from '@/hooks/useEngineState';
 import { LocalStorageAdapter } from '@/persistence/localStorageAdapter';
 import { LearningPath } from '@/components/LearningPath/LearningPath';
 import { NodeRenderer } from '@/components/NodeRenderer/NodeRenderer';
 import { AchievementScreen } from '@/components/AchievementScreen/AchievementScreen';
+import { TopicReview } from '@/components/TopicReview/TopicReview';
 import { XPBadge } from '@/components/ui/XPBadge';
 import { ErrorScreen } from '@/components/ui/ErrorScreen';
+import { TOPIC_REGISTRY } from '@/engine/topicRegistry';
 
 interface LessonEngineProps {
   topicId: string;
@@ -29,6 +31,8 @@ const adapter = new LocalStorageAdapter();
 
 export function LessonEngine({ topicId }: LessonEngineProps) {
   const router = useRouter();
+  const [viewMode, setViewMode] = useState<'achievement' | 'review'>('achievement');
+  const [selectedReviewNodeIndex, setSelectedReviewNodeIndex] = useState(0);
   const {
     lesson,
     studentState,
@@ -43,6 +47,11 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     () => (lesson !== null ? lesson.quiz.questions : []),
     [lesson]
   );
+
+  const currentTopicPosition = TOPIC_REGISTRY.findIndex((entry) => entry.topicId === topicId);
+  const nextTopicEntry = currentTopicPosition >= 0
+    ? TOPIC_REGISTRY[currentTopicPosition + 1]
+    : undefined;
 
   // ── Load error: hard block ─────────────────────────────────────────────────
   if (loadError !== null) {
@@ -66,11 +75,31 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
 
   // ── Topic completed: Achievement screen replaces full layout ───────────────
   if (studentState.topicCompleted) {
+    if (viewMode === 'review') {
+      return (
+        <TopicReview
+          lesson={lesson}
+          studentState={studentState}
+          selectedNodeIndex={selectedReviewNodeIndex}
+          onSelectNode={setSelectedReviewNodeIndex}
+          onBackToAchievement={() => { setViewMode('achievement'); }}
+          onReturn={() => { router.push('/'); }}
+        />
+      );
+    }
+
     return (
       <AchievementScreen
         lesson={lesson}
         studentState={studentState}
+        onReview={() => { setViewMode('review'); }}
         onReturn={() => { router.push('/'); }}
+        {...(nextTopicEntry !== undefined
+          ? {
+              nextTopic: { topicId: nextTopicEntry.topicId, title: nextTopicEntry.topicId },
+              onNextTopic: () => { router.push(`/lesson/${nextTopicEntry.topicId}`); },
+            }
+          : {})}
       />
     );
   }

@@ -1,17 +1,18 @@
 // src/components/LearningPath/PathNode.tsx
 // A single node card in the visual learning path.
 // Communicates state via icon shape + colour — not colour alone (WCAG).
-// Three states: completed, current, upcoming.
+// States: completed, current, upcoming, selected.
 
 import type { LearningNode } from '@/types/lesson';
 
-type NodeState = 'completed' | 'current' | 'upcoming';
+type NodeState = 'completed' | 'current' | 'upcoming' | 'selected';
 
 interface PathNodeProps {
   node: LearningNode;
   state: NodeState;
   index: number;
   isLast: boolean;
+  onSelect?: () => void;
 }
 
 // Node type → emoji icon
@@ -27,11 +28,14 @@ function getNodeIcon(type: string): string {
   return NODE_ICONS[type] ?? '⬡';
 }
 
-export function PathNode({ node, state, index, isLast }: PathNodeProps) {
+export function PathNode({ node, state, index, isLast, onSelect }: PathNodeProps) {
   const isCompleted = state === 'completed';
   const isCurrent = state === 'current';
-    return (
-    <li className="relative flex items-start gap-3">
+  const isSelected = state === 'selected';
+  const isInteractive = onSelect !== undefined;
+
+  const content = (
+    <>
       {/* Connector line (not shown on last node) */}
       {!isLast && (
         <div
@@ -47,7 +51,9 @@ export function PathNode({ node, state, index, isLast }: PathNodeProps) {
       <div
         className={[
           'relative z-10 flex items-center justify-center rounded-full shrink-0 transition-all duration-300',
-          isCurrent
+          isSelected
+            ? 'w-10 h-10 bg-primary/20 border-2 border-primary ring-4 ring-primary/20'
+            : isCurrent
             ? 'w-10 h-10 bg-primary shadow-lg shadow-primary/30 ring-4 ring-primary/20'
             : isCompleted
             ? 'w-8 h-8 bg-success/20 border-2 border-success'
@@ -57,7 +63,7 @@ export function PathNode({ node, state, index, isLast }: PathNodeProps) {
       >
         {isCompleted ? (
           <span className="text-success text-sm font-bold">✓</span>
-        ) : isCurrent ? (
+        ) : isCurrent || isSelected ? (
           <span className="text-base">{getNodeIcon(node.type)}</span>
         ) : (
           <span className="text-text-muted text-xs">{index + 1}</span>
@@ -74,7 +80,9 @@ export function PathNode({ node, state, index, isLast }: PathNodeProps) {
         <p
           className={[
             'text-sm font-medium leading-snug truncate transition-colors duration-200',
-            isCurrent
+            isSelected
+              ? 'text-primary font-semibold'
+              : isCurrent
               ? 'text-text-base font-semibold'
               : isCompleted
               ? 'text-text-muted'
@@ -87,12 +95,32 @@ export function PathNode({ node, state, index, isLast }: PathNodeProps) {
         <p
           className={[
             'text-xs mt-0.5 capitalize',
-            isCompleted ? 'text-success/70' : isCurrent ? 'text-primary/80' : 'text-text-muted/40',
+            isSelected ? 'text-primary/80' : isCompleted ? 'text-success/70' : isCurrent ? 'text-primary/80' : 'text-text-muted/40',
           ].join(' ')}
         >
-          {isCompleted ? 'completed' : isCurrent ? 'current' : node.type}
+          {isSelected ? 'selected' : isCompleted ? 'completed' : isCurrent ? 'current' : node.type}
         </p>
       </div>
-    </li>
+    </>
+  );
+
+  if (isInteractive) {
+    return (
+      <button
+        type="button"
+        onClick={onSelect}
+        className="relative flex items-start gap-3 w-full text-left rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        aria-label={`Review ${node.title}`}
+        aria-pressed={isSelected}
+      >
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <div className="relative flex items-start gap-3">
+      {content}
+    </div>
   );
 }

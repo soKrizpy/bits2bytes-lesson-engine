@@ -11,9 +11,10 @@ import type { ChallengeNode } from '@/types/lesson';
 interface ChallengeNodeViewProps {
   node: ChallengeNode;
   onAdvance: () => void;
+  mode?: 'learning' | 'review';
 }
 
-export function ChallengeNodeView({ node, onAdvance }: ChallengeNodeViewProps) {
+export function ChallengeNodeView({ node, onAdvance, mode = 'learning' }: ChallengeNodeViewProps) {
   return (
     <div className="space-y-6">
       {/* Title */}
@@ -56,12 +57,13 @@ export function ChallengeNodeView({ node, onAdvance }: ChallengeNodeViewProps) {
         </div>
       )}
 
-      {/* Advance */}
-      <div className="pt-2">
-        <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
-          Challenge Complete! →
-        </Button>
-      </div>
+      {mode === 'learning' && (
+        <div className="pt-2">
+          <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
+            Challenge Complete! →
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

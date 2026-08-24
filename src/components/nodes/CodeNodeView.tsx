@@ -12,9 +12,10 @@ import type { CodeNode } from '@/types/lesson';
 interface CodeNodeViewProps {
   node: CodeNode;
   onAdvance: () => void;
+  mode?: 'learning' | 'review';
 }
 
-export function CodeNodeView({ node, onAdvance }: CodeNodeViewProps) {
+export function CodeNodeView({ node, onAdvance, mode = 'learning' }: CodeNodeViewProps) {
   return (
     <div className="space-y-6">
       {/* Title */}
@@ -42,12 +43,13 @@ export function CodeNodeView({ node, onAdvance }: CodeNodeViewProps) {
         </pre>
       </div>
 
-      {/* Advance */}
-      <div className="pt-2">
-        <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
-          Got it! Continue →
-        </Button>
-      </div>
+      {mode === 'learning' && (
+        <div className="pt-2">
+          <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
+            Got it! Continue →
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
