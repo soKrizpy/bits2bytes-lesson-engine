@@ -17,11 +17,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    'bg-primary text-white hover:bg-primary-hover focus-visible:ring-primary',
+    'bg-primary text-white shadow-sm shadow-primary/20 hover:bg-primary-hover hover:shadow-md hover:shadow-primary/25 focus-visible:ring-focus',
   secondary:
-    'bg-card text-text-base border border-white/10 hover:bg-white/5 focus-visible:ring-white/40',
+    'bg-card text-text-base border border-white/15 hover:border-white/25 hover:bg-elevated focus-visible:ring-focus',
   ghost:
-    'bg-transparent text-text-muted hover:text-text-base hover:bg-white/5 focus-visible:ring-white/20',
+    'bg-transparent text-text-muted hover:text-text-base hover:bg-white/5 focus-visible:ring-focus',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -37,8 +37,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={disabled}
         className={[
-          'inline-flex items-center justify-center gap-2 font-semibold',
-          'transition-all duration-200',
+          'inline-flex min-h-11 items-center justify-center gap-2 font-semibold',
+          'transition-all duration-200 active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
           variantClasses[variant],
           sizeClasses[size],

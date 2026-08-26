@@ -37,7 +37,7 @@ describe('NodeRenderer review mode', () => {
       />
     );
 
-    expect(screen.queryByRole('button', { name: /continue/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /lanjut/i })).not.toBeInTheDocument();
     expect(onAdvance).not.toHaveBeenCalled();
   });
 
@@ -55,7 +55,7 @@ describe('NodeRenderer review mode', () => {
 
     expect(screen.getByText('Which HTML tag creates the largest heading on a page?')).toBeInTheDocument();
     expect(screen.queryByRole('radio')).not.toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: /complete the activity/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /selesaikan aktivitas/i })).not.toBeInTheDocument();
   });
 
   it('renders quiz review without consuming attempts', () => {
@@ -73,8 +73,8 @@ describe('NodeRenderer review mode', () => {
     );
 
     expect(screen.getByText('Knowledge Check Review')).toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: /start quiz/i })).not.toBeInTheDocument();
-    expect(screen.queryByRole('button', { name: /submit answers/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /mulai quiz/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /kirim jawaban/i })).not.toBeInTheDocument();
     expect(onSubmitQuizAttempt).not.toHaveBeenCalled();
   });
 });

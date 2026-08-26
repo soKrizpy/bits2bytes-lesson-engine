@@ -18,20 +18,20 @@ export function LessonNodeView({ node, onAdvance, mode = 'learning' }: LessonNod
   return (
     <div className="space-y-6">
       {/* Title */}
-      <h2 className="text-2xl font-bold text-text-base">{node.title}</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold text-text-base tracking-tight">{node.title}</h2>
 
       {/* Explanation */}
-      <div className="bg-white/5 rounded-xl p-5 border border-white/10">
+      <div className="lesson-panel">
         <p className="text-text-base leading-relaxed whitespace-pre-wrap">
           {node.explanation ?? (
-            <span className="text-text-muted italic">No explanation available for this step.</span>
+            <span className="text-text-muted italic">No explanation is available for this step.</span>
           )}
         </p>
       </div>
 
       {/* Analogy */}
       {node.analogy !== undefined && node.analogy !== '' && (
-        <div className="bg-primary/10 border border-primary/20 rounded-xl p-5">
+        <div className="lesson-callout bg-primary/10 border-primary/20">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-lg" aria-hidden="true">💡</span>
             <span className="text-primary text-sm font-semibold uppercase tracking-wide">Think of it this way</span>
@@ -42,7 +42,7 @@ export function LessonNodeView({ node, onAdvance, mode = 'learning' }: LessonNod
 
       {/* Expected Result */}
       {node.expectedResult !== undefined && node.expectedResult !== '' && (
-        <div className="bg-success/10 border border-success/20 rounded-xl p-5">
+        <div className="lesson-callout bg-success/10 border-success/20">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-lg" aria-hidden="true">🎯</span>
             <span className="text-success text-sm font-semibold uppercase tracking-wide">What you&apos;ll achieve</span>
@@ -53,7 +53,7 @@ export function LessonNodeView({ node, onAdvance, mode = 'learning' }: LessonNod
 
       {/* Tips */}
       {node.tips !== undefined && node.tips.length > 0 && (
-        <div className="bg-warning/10 border border-warning/20 rounded-xl p-5">
+        <div className="lesson-callout bg-warning/10 border-warning/20">
           <div className="flex items-center gap-2 mb-3">
             <span className="text-lg" aria-hidden="true">✨</span>
             <span className="text-warning text-sm font-semibold uppercase tracking-wide">Tips</span>
@@ -72,7 +72,7 @@ export function LessonNodeView({ node, onAdvance, mode = 'learning' }: LessonNod
       {mode === 'learning' && (
         <div className="pt-2">
           <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
-            Got it! Continue →
+            Got it, continue →
           </Button>
         </div>
       )}

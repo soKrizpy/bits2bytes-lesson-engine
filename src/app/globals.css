@@ -8,6 +8,60 @@ body {
   background-color: #0f172a;
   color: #f8fafc;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgb(99 102 241 / 0.35);
+  color: #fff;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer components {
+  .lesson-panel {
+    @apply rounded-2xl border border-white/10 bg-card/80 p-5 shadow-sm shadow-black/10 sm:p-6;
+  }
+
+  .lesson-callout {
+    @apply rounded-2xl border p-5 shadow-sm sm:p-6;
+  }
+
+  .code-shell {
+    @apply overflow-hidden rounded-2xl border border-white/10 bg-slate-950 shadow-sm shadow-black/20;
+  }
+
+  .code-shell pre {
+    @apply overflow-x-auto p-5 sm:p-6;
+  }
+
+  .mobile-checkpoint-safe-area {
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-checkpoint-safe-area {
+      padding-bottom: 0;
+    }
+  }
+
+  /* Rope connector between game-map path nodes (desktop sidebar only) */
+  .rope-connector {
+    @apply w-[3px] rounded-full bg-white/15 transition-[background-color,opacity] duration-500 origin-top;
+  }
+
+  /* Lit (completed segment) state */
+  .rope-connector-lit {
+    @apply bg-success/50 shadow-[0_0_6px_rgb(16_185_129_/_0.4)];
+  }
+
+  /* Newly revealed connector plays the ropeReveal animation */
+  .rope-connector-reveal {
+    animation: ropeReveal 400ms ease-out forwards;
+  }
 }
 
 /* Smooth scrolling — disabled for prefers-reduced-motion */
@@ -33,4 +87,8 @@ pre,
 code {
   font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Monaco,
     Consolas, 'Courier New', monospace;
+}
+
+pre {
+  tab-size: 2;
 }

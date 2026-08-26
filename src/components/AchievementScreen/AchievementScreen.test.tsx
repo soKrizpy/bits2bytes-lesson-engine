@@ -25,6 +25,23 @@ function completedState(): StudentState {
 }
 
 describe('AchievementScreen', () => {
+  it('renders the completion hero, topic context, reward, and learned items', () => {
+    render(
+      <AchievementScreen
+        lesson={lesson}
+        studentState={completedState()}
+        onReview={vi.fn()}
+        onReturn={vi.fn()}
+      />
+    );
+
+    expect(screen.getByRole('heading', { name: 'Stage complete' })).toBeInTheDocument();
+    expect(screen.getByText('Great job!')).toBeInTheDocument();
+    expect(screen.getByText(lesson.metadata.title)).toBeInTheDocument();
+    expect(screen.getByText('⭐ 160')).toBeInTheDocument();
+    expect(screen.getByText('What you learned')).toBeInTheDocument();
+  });
+
   it('calls onReview when Review Topic is selected', () => {
     const onReview = vi.fn();
     const onReturn = vi.fn();
@@ -58,7 +75,23 @@ describe('AchievementScreen', () => {
       />
     );
 
-    fireEvent.click(screen.getByRole('button', { name: /start next topic/i }));
+    fireEvent.click(screen.getByRole('button', { name: /continue to next adventure/i }));
     expect(onNextTopic).toHaveBeenCalledTimes(1);
+  });
+
+  it('uses the overview callback as the primary action when no next topic exists', () => {
+    const onReturn = vi.fn();
+
+    render(
+      <AchievementScreen
+        lesson={lesson}
+        studentState={completedState()}
+        onReview={vi.fn()}
+        onReturn={onReturn}
+      />
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: /return to adventure/i }));
+    expect(onReturn).toHaveBeenCalledTimes(1);
   });
 });

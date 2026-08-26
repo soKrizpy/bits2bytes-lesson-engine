@@ -86,6 +86,12 @@ export interface EngineState {
    * Non-blocking — lesson continues in-memory; a banner is shown to the student.
    */
   saveError: string | null;
+  /**
+   * True when no persisted state was found for this topic on load.
+   * Used to gate the TopicIntro splash screen (shown only on first visit).
+   * Cleared by calling dismissIntro().
+   */
+  isFirstVisit: boolean;
 }
 
 /** Actions exposed by the useEngineState hook. */
@@ -110,4 +116,9 @@ export interface EngineStateActions {
    * Clears persisted state and reinitialises to INITIAL_STUDENT_STATE.
    */
   resetTopic: () => void;
+  /**
+   * Dismiss the first-visit intro splash and begin the learning path.
+   * Sets isFirstVisit to false; no persistence side-effects.
+   */
+  dismissIntro: () => void;
 }

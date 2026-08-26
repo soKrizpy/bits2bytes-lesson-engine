@@ -31,7 +31,7 @@ export function QuizQuestionCard({
       {/* Question number */}
       <div className="flex items-center gap-2">
         <span className="text-xs font-semibold text-text-muted uppercase tracking-wide">
-          Question {questionNumber} of {totalQuestions}
+          Pertanyaan {questionNumber} dari {totalQuestions}
         </span>
       </div>
 

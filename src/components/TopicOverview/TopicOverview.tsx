@@ -66,7 +66,7 @@ export function TopicOverview({ topics }: TopicOverviewProps) {
   }, [topics]);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
       {cards.map(({ entry, lesson, state }) => {
         const status = getStatus(state);
         const copy = STATUS_COPY[status];
@@ -75,7 +75,7 @@ export function TopicOverview({ topics }: TopicOverviewProps) {
           <Link
             key={entry.topicId}
             href={`/lesson/${entry.topicId}`}
-            className="group flex flex-col bg-card border border-white/10 rounded-2xl p-6 space-y-4 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className="group flex min-h-64 flex-col bg-card/90 border border-white/10 rounded-2xl p-5 sm:p-6 space-y-4 shadow-sm shadow-black/10 hover:-translate-y-0.5 hover:border-primary/45 hover:shadow-lg hover:shadow-primary/10 transition-all duration-200 motion-reduce:transform-none motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label={`${copy.action}: ${lesson?.metadata.title ?? entry.topicId}`}
           >
             <div className="flex items-center justify-between gap-2 flex-wrap">
@@ -87,7 +87,7 @@ export function TopicOverview({ topics }: TopicOverviewProps) {
                   {lesson?.metadata.level ?? entry.level}
                 </span>
               </div>
-              <span className={status === 'completed' ? 'text-xs text-success' : status === 'in-progress' ? 'text-xs text-primary' : 'text-xs text-text-muted'}>
+                <span className={['text-xs font-semibold', status === 'completed' ? 'text-success' : status === 'in-progress' ? 'text-primary' : 'text-text-muted'].join(' ')}>
                 {copy.label}
               </span>
             </div>
@@ -97,7 +97,7 @@ export function TopicOverview({ topics }: TopicOverviewProps) {
                 {lesson?.metadata.title ?? entry.topicId}
               </h2>
               <p className="text-text-muted text-sm mt-2 line-clamp-3">
-                {lesson?.metadata.description ?? 'Open this topic to begin learning.'}
+                {lesson?.metadata.description ?? 'Open this topic to start learning.'}
               </p>
             </div>
 
@@ -105,7 +105,7 @@ export function TopicOverview({ topics }: TopicOverviewProps) {
               <span className="text-text-muted">
                 {lesson?.metadata.estimatedTime !== undefined ? `${lesson.metadata.estimatedTime} min` : 'Self-paced'}
               </span>
-              <span className="text-primary font-semibold group-hover:translate-x-1 transition-transform duration-200">
+              <span className="text-primary font-semibold group-hover:translate-x-1 transition-transform duration-200 motion-reduce:transform-none motion-reduce:transition-none">
                 {copy.action} <span aria-hidden="true">→</span>
               </span>
             </div>

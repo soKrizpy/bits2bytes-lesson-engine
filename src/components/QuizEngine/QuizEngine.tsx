@@ -80,7 +80,7 @@ export function QuizEngine({
         <div className="space-y-1">
           <h2 className="text-2xl font-bold text-text-base">Knowledge Check</h2>
           <p className="text-text-muted text-sm">
-            {questions.length} questions · {maxScore} points total
+            {questions.length} pertanyaan · total {maxScore} poin
           </p>
         </div>
 
@@ -144,11 +144,11 @@ export function QuizEngine({
         ) : (
           <div className="space-y-4">
             <div className="bg-card border border-white/10 rounded-xl p-4 text-sm text-text-muted">
-              ✅ You have used all {MAX_ATTEMPTS} attempts for this quiz. Your best score of{' '}
+              ✅ You have used all {MAX_ATTEMPTS} quiz attempts. Your best score of{' '}
               <span className="text-xpGold font-semibold">
                 {studentState.bestQuizScore}
               </span>{' '}
-              has been saved.
+              sudah disimpan.
             </div>
             <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
               Continue →
@@ -187,7 +187,7 @@ export function QuizEngine({
           ))}
         </div>
         <p className="text-xs text-text-muted -mt-6">
-          {answeredCount} of {questions.length} answered
+          {answeredCount} dari {questions.length} terjawab
         </p>
 
         {/* All 5 questions on one screen */}
@@ -219,8 +219,7 @@ export function QuizEngine({
           </Button>
           {!allAnswered && (
             <span className="text-xs text-text-muted">
-              {questions.length - answeredCount} question
-              {questions.length - answeredCount !== 1 ? 's' : ''} remaining
+              {questions.length - answeredCount} questions remaining
             </span>
           )}
         </div>
@@ -266,8 +265,8 @@ export function QuizEngine({
       {!canRetry && (
         <div className="bg-card border border-white/10 rounded-xl p-4 text-sm text-text-muted">
           ✅ You have used all {MAX_ATTEMPTS} quiz attempts. Your best score of{' '}
-          <span className="text-xpGold font-semibold">{studentState.bestQuizScore}</span> has been
-          saved.
+              <span className="text-xpGold font-semibold">{studentState.bestQuizScore}</span>{' '}
+              sudah disimpan.
         </div>
       )}
 

@@ -129,4 +129,36 @@ describe('TopicReview', () => {
     expect(screen.getByText('python')).toBeInTheDocument();
     expect(screen.getByText('print("hello")')).toBeInTheDocument();
   });
+
+  it('keeps the main recap visible and supports accessible collapsible sections', () => {
+    renderReview();
+
+    expect(screen.getByText('What You Learned')).toBeInTheDocument();
+    const conceptsSummary = screen.getByText('Key Concepts');
+    const conceptsSection = conceptsSummary.closest('details');
+    expect(conceptsSection).not.toBeNull();
+    expect(conceptsSection).not.toHaveAttribute('open');
+
+    fireEvent.click(conceptsSummary);
+    expect(conceptsSection).toHaveAttribute('open');
+  });
+
+  it('shows the complete challenge solution from lesson data when selected', () => {
+    const challenge = lesson.learningPath[8];
+    expect(challenge?.type).toBe('challenge');
+
+    renderReview({ selectedNodeIndex: 8 });
+
+    expect(screen.getByText('Example Solution')).toBeInTheDocument();
+    expect(screen.getAllByText('html').length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/<!DOCTYPE html>/).length).toBeGreaterThan(0);
+  });
+
+  it('shows existing quiz explanations in a read-only recap section', () => {
+    renderReview();
+
+    expect(screen.getByText('Quiz Explanation')).toBeInTheDocument();
+    expect(screen.getByText('Pertanyaan 1')).toBeInTheDocument();
+    expect(screen.getByText(lesson.quiz.questions[0]!.explanation)).toBeInTheDocument();
+  });
 });

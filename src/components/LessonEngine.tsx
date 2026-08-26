@@ -10,13 +10,15 @@
 // This component does NOT know what subject is being taught.
 // It reads everything from the lesson JSON via useEngineState.
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useEngineState } from '@/hooks/useEngineState';
 import { LocalStorageAdapter } from '@/persistence/localStorageAdapter';
 import { LearningPath } from '@/components/LearningPath/LearningPath';
 import { NodeRenderer } from '@/components/NodeRenderer/NodeRenderer';
+import { NodeStageHeader } from '@/components/NodeRenderer/NodeStageHeader';
 import { AchievementScreen } from '@/components/AchievementScreen/AchievementScreen';
+import { TopicIntro } from '@/components/TopicIntro/TopicIntro';
 import { TopicReview } from '@/components/TopicReview/TopicReview';
 import { XPBadge } from '@/components/ui/XPBadge';
 import { ErrorScreen } from '@/components/ui/ErrorScreen';
@@ -33,6 +35,7 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
   const router = useRouter();
   const [viewMode, setViewMode] = useState<'achievement' | 'review'>('achievement');
   const [selectedReviewNodeIndex, setSelectedReviewNodeIndex] = useState(0);
+  const [selectedLearningNodeIndex, setSelectedLearningNodeIndex] = useState<number | null>(null);
   const {
     lesson,
     studentState,
@@ -41,6 +44,16 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     advanceNode,
     submitQuizAttempt,
   } = useEngineState(topicId, adapter);
+
+  // Tracks whether the intro has been dismissed this session
+  const [hasSeenIntro, setHasSeenIntro] = useState(false);
+
+  // Show intro only when no persisted state exists for this topic
+  const hasSavedProgress = useMemo(
+    () => adapter.loadState(topicId) !== null,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [topicId] // adapter is stable (module-level const); topicId change reruns
+  );
 
   // Stable quiz questions reference — avoids passing a new array ref on every render
   const quizQuestions = useMemo(
@@ -52,6 +65,11 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
   const nextTopicEntry = currentTopicPosition >= 0
     ? TOPIC_REGISTRY[currentTopicPosition + 1]
     : undefined;
+
+  useEffect(() => {
+    if (studentState.topicCompleted) return;
+    setSelectedLearningNodeIndex(studentState.currentNodeIndex);
+  }, [studentState.currentNodeIndex, studentState.topicCompleted]);
 
   // ── Load error: hard block ─────────────────────────────────────────────────
   if (loadError !== null) {
@@ -70,6 +88,17 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
           <p className="text-text-muted text-sm">Loading lesson…</p>
         </div>
       </div>
+    );
+  }
+
+  // ── Topic intro: shown only on first visit (no persisted state) ───────────
+  if (lesson !== null && !hasSeenIntro && !hasSavedProgress && !studentState.topicCompleted) {
+    return (
+      <TopicIntro
+        lesson={lesson}
+        onStart={() => setHasSeenIntro(true)}
+        onBack={() => router.push('/')}
+      />
     );
   }
 
@@ -105,17 +134,24 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
   }
 
   // ── Current node ───────────────────────────────────────────────────────────
-  const currentNode = lesson.learningPath[studentState.currentNodeIndex];
+  const selectedLearningNode = selectedLearningNodeIndex !== null
+    ? lesson.learningPath[selectedLearningNodeIndex]
+    : undefined;
+  const currentNode = selectedLearningNode ?? lesson.learningPath[studentState.currentNodeIndex];
+  const currentNodeIndex = selectedLearningNodeIndex ?? studentState.currentNodeIndex;
+  const isCompletedSelection = currentNode !== undefined &&
+    currentNodeIndex !== studentState.currentNodeIndex &&
+    studentState.completedNodes.includes(currentNode.id);
 
   // ── Main lesson layout ─────────────────────────────────────────────────────
   return (
     <div className="min-h-screen bg-background flex flex-col">
 
       {/* ── Top header ──────────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+      <header className="sticky top-0 z-40 bg-background/90 backdrop-blur border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="text-primary font-bold text-lg tracking-tight">
+              <span className="text-primary font-bold text-lg tracking-tight drop-shadow-sm">
               BITS2BYTES
             </span>
             <span className="text-text-muted text-sm hidden sm:block">
@@ -151,6 +187,16 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
         </div>
       )}
 
+      {currentNodeIndex === 0 && !isCompletedSelection && (
+        <section className="max-w-7xl mx-auto w-full px-4 sm:px-6 pt-6" aria-labelledby="topic-brief-heading">
+          <div className="rounded-2xl border border-primary/20 bg-primary/10 p-5 sm:p-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Topic Brief</p>
+            <h1 id="topic-brief-heading" className="mt-2 text-xl font-bold text-text-base">{lesson.metadata.title}</h1>
+            <p className="mt-2 text-sm leading-relaxed text-text-muted">{lesson.metadata.description}</p>
+          </div>
+        </section>
+      )}
+
       {/* ── Main content area ───────────────────────────────────────────────── */}
       <div className="flex-1 max-w-7xl mx-auto w-full flex flex-col lg:flex-row">
 
@@ -162,6 +208,8 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
               <LearningPath
                 nodes={lesson.learningPath}
                 studentState={studentState}
+                selectedNodeIndex={selectedLearningNodeIndex ?? studentState.currentNodeIndex}
+                onSelectNode={setSelectedLearningNodeIndex}
               />
             </div>
           </div>
@@ -170,21 +218,32 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
             <LearningPath
               nodes={lesson.learningPath}
               studentState={studentState}
+              selectedNodeIndex={selectedLearningNodeIndex ?? studentState.currentNodeIndex}
+              onSelectNode={setSelectedLearningNodeIndex}
             />
           </div>
         </aside>
 
         {/* ── Node content area ────────────────────────────────────────────── */}
-        <main className="flex-1 overflow-y-auto">
-          <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        <main className="flex-1 overflow-y-auto mobile-checkpoint-safe-area">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
             {currentNode !== undefined ? (
-              <NodeRenderer
-                node={currentNode}
-                studentState={studentState}
-                quizQuestions={quizQuestions}
-                onAdvance={advanceNode}
-                onSubmitQuizAttempt={submitQuizAttempt}
-              />
+              <div className="space-y-6">
+                <NodeStageHeader
+                  node={currentNode}
+                  nodeIndex={currentNodeIndex}
+                  totalNodes={lesson.learningPath.length}
+                  isRevisit={isCompletedSelection}
+                />
+                <NodeRenderer
+                  node={currentNode}
+                  studentState={studentState}
+                  quizQuestions={quizQuestions}
+                  onAdvance={isCompletedSelection ? () => {} : advanceNode}
+                  onSubmitQuizAttempt={isCompletedSelection ? () => {} : submitQuizAttempt}
+                  mode={isCompletedSelection ? 'review' : 'learning'}
+                />
+              </div>
             ) : (
               // All nodes traversed but topicCompleted flag not yet flushed — transient state
               <div className="text-center space-y-4 py-20">

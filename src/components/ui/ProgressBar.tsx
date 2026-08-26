@@ -23,14 +23,14 @@ export function ProgressBar({ value, completed, total, className = '' }: Progres
 
       {/* Track */}
       <div
-        className="h-2 rounded-full bg-white/10 overflow-hidden"
+        className="h-2.5 rounded-full bg-white/10 ring-1 ring-inset ring-white/5 overflow-hidden"
         role="progressbar"
         aria-valuenow={clamped}
         aria-valuemin={0}
         aria-valuemax={100}
       >
         <div
-          className="h-full rounded-full bg-primary transition-[width] duration-300 motion-reduce:transition-none"
+          className="h-full rounded-full bg-primary shadow-sm shadow-primary/40 transition-[width] duration-300 motion-reduce:transition-none"
           style={{ width: `${clamped}%` }}
         />
       </div>

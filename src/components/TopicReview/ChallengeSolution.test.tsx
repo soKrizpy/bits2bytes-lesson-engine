@@ -41,7 +41,7 @@ describe('ChallengeSolution', () => {
     render(<ChallengeSolution solution={undefined} />);
 
     expect(
-      screen.getByText('No full solution is available for this challenge yet.')
+      screen.getByText('An example solution is not available for this challenge.')
     ).toBeInTheDocument();
   });
 });

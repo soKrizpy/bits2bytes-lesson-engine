@@ -107,7 +107,7 @@ function QuizReviewOnly({
       <div className="space-y-1">
         <h2 className="text-2xl font-bold text-text-base">Knowledge Check Review</h2>
         <p className="text-text-muted text-sm">
-          {questions.length} questions · best saved score {studentState.bestQuizScore} / {maxScore}
+          {questions.length} pertanyaan · skor terbaik {studentState.bestQuizScore} / {maxScore}
         </p>
       </div>
 

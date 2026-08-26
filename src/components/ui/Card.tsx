@@ -21,7 +21,7 @@ export function Card({ state = 'available', className = '', children }: CardProp
   return (
     <div
       className={[
-        'rounded-xl p-4 transition-all duration-300',
+        'rounded-2xl p-5 transition-all duration-200 motion-reduce:transition-none',
         stateClasses[state],
         className,
       ]

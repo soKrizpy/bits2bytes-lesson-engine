@@ -25,7 +25,7 @@ export function QuizReview({ questions, answers, score, maxScore }: QuizReviewPr
           </p>
         </div>
         <div className="text-right">
-          <p className="text-text-muted text-sm">Percentage</p>
+          <p className="text-text-muted text-sm">Persentase</p>
           <p
             className={[
               'text-2xl font-bold tabular-nums',
@@ -78,7 +78,7 @@ export function QuizReview({ questions, answers, score, maxScore }: QuizReviewPr
                 <div className="ml-9 space-y-1.5 text-sm">
                   {given !== null && (
                     <p className="text-error/80">
-                      Your answer:{' '}
+              Your answer:{' '}
                       <span className="font-medium line-through">{given}</span>
                     </p>
                   )}

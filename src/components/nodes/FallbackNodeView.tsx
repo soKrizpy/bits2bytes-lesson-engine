@@ -12,13 +12,13 @@ interface FallbackNodeViewProps {
 export function FallbackNodeView({ node, onAdvance, mode = 'learning' }: FallbackNodeViewProps) {
   return (
     <div className="space-y-4">
-      <div className="bg-warning/10 border border-warning/20 rounded-xl p-6 space-y-3">
+      <div className="lesson-callout bg-warning/10 border-warning/20 space-y-3">
         <div className="flex items-center gap-2">
           <span className="text-xl" aria-hidden="true">⚙️</span>
           <span className="text-warning font-semibold">Node type not supported</span>
         </div>
         <p className="text-text-muted text-sm">
-          This node uses the type{' '}
+          Node ini menggunakan jenis{' '}
           <code className="font-mono bg-white/10 px-1.5 py-0.5 rounded text-text-base">
             {node.type}
           </code>{' '}
@@ -26,7 +26,7 @@ export function FallbackNodeView({ node, onAdvance, mode = 'learning' }: Fallbac
         </p>
         {node.title !== undefined && (
           <p className="text-text-muted text-sm">
-            Title: <span className="text-text-base">{node.title}</span>
+            Judul: <span className="text-text-base">{node.title}</span>
           </p>
         )}
       </div>

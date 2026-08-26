@@ -19,7 +19,7 @@ export function CodeNodeView({ node, onAdvance, mode = 'learning' }: CodeNodeVie
   return (
     <div className="space-y-6">
       {/* Title */}
-      <h2 className="text-2xl font-bold text-text-base">{node.title}</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold text-text-base tracking-tight">{node.title}</h2>
 
       {/* Optional explanation */}
       {node.explanation !== undefined && node.explanation !== '' && (
@@ -27,7 +27,7 @@ export function CodeNodeView({ node, onAdvance, mode = 'learning' }: CodeNodeVie
       )}
 
       {/* Code block */}
-      <div className="rounded-xl overflow-hidden border border-white/10">
+      <div className="code-shell">
         {/* Language label */}
         <div className="flex items-center justify-between bg-white/5 px-4 py-2 border-b border-white/10">
           <span className="text-xs font-mono font-semibold text-primary uppercase tracking-wider">
@@ -36,7 +36,7 @@ export function CodeNodeView({ node, onAdvance, mode = 'learning' }: CodeNodeVie
           <span className="text-xs text-text-muted">code example</span>
         </div>
         {/* Code content — preserves whitespace and indentation */}
-        <pre className="bg-slate-900 p-5 overflow-x-auto">
+        <pre>
           <code className="text-sm font-mono text-text-base leading-relaxed whitespace-pre">
             {node.code.content}
           </code>
@@ -46,7 +46,7 @@ export function CodeNodeView({ node, onAdvance, mode = 'learning' }: CodeNodeVie
       {mode === 'learning' && (
         <div className="pt-2">
           <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
-            Got it! Continue →
+            Got it, continue →
           </Button>
         </div>
       )}

@@ -90,6 +90,10 @@ export function useEngineState(
   const [loadError, setLoadError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+  // True when no persisted state was found on load (genuine first visit).
+  // Remains false until the lesson finishes loading so we don't flash the
+  // intro on every render before the adapter has had a chance to check storage.
+  const [isFirstVisit, setIsFirstVisit] = useState(false);
 
   // Keep a stable ref to the adapter so callbacks don't need it as a dep
   const adapterRef = useRef(adapter);
@@ -116,6 +120,8 @@ export function useEngineState(
         setStudentState(saved);
       } else {
         setStudentState(createInitialState(topicId));
+        // No persisted state found — this is a first visit; show intro splash.
+        setIsFirstVisit(true);
       }
     }
 
@@ -247,14 +253,21 @@ export function useEngineState(
     setSaveError(null);
   }, [topicId]);
 
+  // ─── dismissIntro ─────────────────────────────────────────────────────────
+  const dismissIntro = useCallback(() => {
+    setIsFirstVisit(false);
+  }, []);
+
   return {
     lesson,
     studentState,
     loadError,
     isSaving,
     saveError,
+    isFirstVisit,
     advanceNode,
     submitQuizAttempt,
     resetTopic,
+    dismissIntro,
   };
 }

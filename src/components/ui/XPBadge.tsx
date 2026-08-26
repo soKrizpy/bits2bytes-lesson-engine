@@ -27,12 +27,12 @@ export function XPBadge({ xpEarned }: XPBadgeProps) {
 
   return (
     <div
-      className="fixed top-4 right-4 z-50 flex flex-col items-end gap-1 select-none"
+      className="fixed top-4 right-4 z-50 flex flex-col items-end gap-1 select-none sm:top-5 sm:right-5"
       aria-live="polite"
       aria-label={`XP earned: ${xpEarned.toString()}`}
     >
       {/* Main badge */}
-      <div className="flex items-center gap-1.5 bg-card border border-xpGold/40 rounded-full px-3 py-1.5 shadow-lg">
+      <div className="flex items-center gap-1.5 bg-card/95 border border-xpGold/40 rounded-full px-3.5 py-2 shadow-lg shadow-black/20 backdrop-blur">
         <span className="text-xpGold text-sm font-bold">⭐</span>
         <span className="text-xpGold text-sm font-bold tabular-nums">
           {xpEarned} XP

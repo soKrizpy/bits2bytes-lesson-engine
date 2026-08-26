@@ -60,7 +60,7 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
   if (mode === 'review') {
     return (
       <div className="space-y-6">
-        <h2 className="text-2xl font-bold text-text-base">{node.title}</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-text-base tracking-tight">{node.title}</h2>
 
         <p className="text-text-muted leading-relaxed">{node.instructions}</p>
 
@@ -101,7 +101,7 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
   return (
     <div className="space-y-6">
       {/* Title */}
-      <h2 className="text-2xl font-bold text-text-base">{node.title}</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold text-text-base tracking-tight">{node.title}</h2>
 
       {/* Instructions */}
       <p className="text-text-muted leading-relaxed">{node.instructions}</p>
@@ -206,7 +206,7 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
           ].join(' ')}
         >
           {isCorrect
-            ? '🎉 Correct! Well done.'
+            ? '🎉 Benar! Kerja bagus.'
             : "🤔 Not quite — but that's okay! Keep going."}
         </div>
       )}
@@ -219,7 +219,7 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
           disabled={!isComplete}
           className="w-full sm:w-auto"
         >
-          {isComplete ? 'Continue →' : 'Complete the activity to continue'}
+            {isComplete ? 'Continue →' : 'Complete the activity to continue'}
         </Button>
       </div>
     </div>

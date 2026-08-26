@@ -9,9 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'BITS2BYTES Lesson Engine',
-  description:
-    'A gamified coding education engine. Learn to code step by step.',
+  title: 'BITS2BYTES — Mesin Belajar',
+  description: 'A gamified coding education engine with step-by-step adventures.',
 };
 
 export default function RootLayout({
@@ -20,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="id" className={inter.variable}>
       <body className="font-sans antialiased bg-background text-text-base">
         {children}
       </body>
