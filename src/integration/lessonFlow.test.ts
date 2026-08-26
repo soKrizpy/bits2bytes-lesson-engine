@@ -189,7 +189,7 @@ describe('Sequential node progression', () => {
     for (let i = 0; i < lesson.learningPath.length; i++) {
       state = advanceNode(state, lesson);
     }
-    expect(state.achievement).toBe('HTML Explorer');
+    expect(state.achievement).toBe('Web Builder Pertama');
   });
 });
 
@@ -229,20 +229,20 @@ describe('XP idempotency', () => {
 describe('Quiz — attempt rules', () => {
   // All correct answers
   const allCorrectAnswers: Record<string, string> = {
-    q01: '<h1>',
-    q02: 'HyperText Markup Language',
-    q03: '<body>',
-    q04: '<p>',
-    q05: 'Page metadata and the page title',
+    q01: 'Memberikan struktur dan konten pada halaman web',
+    q02: 'Membuat judul utama halaman yang paling besar',
+    q03: 'Membuat blok teks paragraf',
+    q04: 'Menampilkan gambar; src menentukan sumber atau lokasi file gambar',
+    q05: 'Membuat hyperlink; href menentukan alamat tujuan link',
   };
 
   // All wrong answers
   const allWrongAnswers: Record<string, string> = {
-    q01: '<h6>',
-    q02: 'Hyper Transfer Markup Language',
-    q03: '<head>',
-    q04: '<para>',
-    q05: 'The main heading of the page',
+    q01: 'Memberikan tampilan warna dan gaya pada halaman web',
+    q02: 'Membuat teks menjadi tebal',
+    q03: 'Membuat heading atau judul',
+    q04: 'Membuat link yang bisa diklik menuju halaman lain',
+    q05: 'Membuat gambar yang bisa di-zoom saat diklik',
   };
 
   it('first attempt is allowed and records the score', () => {
@@ -327,8 +327,11 @@ describe('Persistence — save and restore', () => {
 
   it('saves and restores quiz attempts and bestQuizScore', () => {
     const allCorrect: Record<string, string> = {
-      q01: '<h1>', q02: 'HyperText Markup Language', q03: '<body>', q04: '<p>',
-      q05: 'Page metadata and the page title',
+      q01: 'Memberikan struktur dan konten pada halaman web',
+      q02: 'Membuat judul utama halaman yang paling besar',
+      q03: 'Membuat blok teks paragraf',
+      q04: 'Menampilkan gambar; src menentukan sumber atau lokasi file gambar',
+      q05: 'Membuat hyperlink; href menentukan alamat tujuan link',
     };
     let state = freshState();
     state = submitQuizAttempt(state, allCorrect, lesson);
@@ -347,7 +350,7 @@ describe('Persistence — save and restore', () => {
     adapter.saveState('beginner-html-01', state);
     const restored = adapter.loadState('beginner-html-01');
     expect(restored?.topicCompleted).toBe(true);
-    expect(restored?.achievement).toBe('HTML Explorer');
+    expect(restored?.achievement).toBe('Web Builder Pertama');
   });
 });
 

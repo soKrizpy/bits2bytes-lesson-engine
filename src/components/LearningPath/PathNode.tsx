@@ -52,7 +52,6 @@ export function PathNode({
   node,
   state,
   index,
-  isLast,
   onSelect,
   compact = false,
   isNewlyUnlocked = false,

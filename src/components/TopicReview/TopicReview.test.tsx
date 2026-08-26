@@ -71,7 +71,7 @@ describe('TopicReview', () => {
     const onSelectNode = vi.fn();
     renderReview({ onSelectNode });
 
-    fireEvent.click(screen.getAllByRole('button', { name: /review full html boilerplate/i })[0]!);
+    fireEvent.click(screen.getAllByRole('button', { name: /review tambahkan paragraf/i })[0]!);
 
     expect(onSelectNode).toHaveBeenCalledWith(4);
   });
@@ -81,7 +81,7 @@ describe('TopicReview', () => {
     const before = JSON.stringify(studentState);
     renderReview({ studentState });
 
-    fireEvent.click(screen.getAllByRole('button', { name: /review build your first page/i })[0]!);
+    fireEvent.click(screen.getAllByRole('button', { name: /review mini challenge/i })[0]!);
 
     expect(JSON.stringify(studentState)).toBe(before);
     expect(studentState.topicCompleted).toBe(true);

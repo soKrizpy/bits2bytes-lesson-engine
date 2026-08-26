@@ -53,7 +53,7 @@ describe('NodeRenderer review mode', () => {
       />
     );
 
-    expect(screen.getByText('Which HTML tag creates the largest heading on a page?')).toBeInTheDocument();
+    expect(screen.getByText('Elemen mana yang digunakan untuk menampilkan gambar di halaman web?')).toBeInTheDocument();
     expect(screen.queryByRole('radio')).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /selesaikan aktivitas/i })).not.toBeInTheDocument();
   });
