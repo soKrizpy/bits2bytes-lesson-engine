@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-05",
+    "title": "Menampilkan Gambar dengan HTML",
+    "description": "Pelajari cara menampilkan gambar di halaman web menggunakan tag img, atribut src dan alt, serta cara menulis teks alternatif yang baik untuk aksesibilitas.",
+    "level": "beginner",
+    "category": "HTML",
+    "topicNumber": 5,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Satu Gambar Bernilai Seribu Kata",
+    "description": "Halaman web tanpa gambar terasa datar. Di topik ini kamu akan belajar cara menambahkan gambar ke halaman HTML menggunakan tag img — tag yang unik karena tidak punya tag penutup. Kamu juga akan belajar mengapa teks alternatif (alt) itu penting.",
+    "analogy": "Menambahkan gambar ke halaman HTML seperti menempelkan foto ke majalah — kamu perlu tahu lokasi foto tersebut (src) dan memberikan keterangan singkat tentang isinya (alt) agar semua orang bisa memahami konteksnya."
+  },
+  "objectives": [
+    "Menampilkan gambar di halaman web menggunakan tag img",
+    "Memahami fungsi atribut src dalam menentukan sumber gambar",
+    "Menulis teks alternatif yang deskriptif dengan atribut alt",
+    "Menggunakan gambar dari URL online maupun file lokal",
+    "Memahami mengapa atribut alt penting untuk aksesibilitas"
+  ],
+  "review": {
+    "learned": [
+      "Tag img digunakan untuk menampilkan gambar dan merupakan self-closing tag — tidak ada tag penutup.",
+      "Atribut src menentukan sumber gambar — bisa berupa URL online atau path file lokal.",
+      "Atribut alt berisi teks alternatif yang ditampilkan jika gambar gagal dimuat.",
+      "Alt text juga dibaca oleh pembaca layar untuk pengguna dengan gangguan penglihatan.",
+      "Gambar dari URL online membutuhkan koneksi internet untuk ditampilkan.",
+      "File gambar lokal harus berada di folder yang sama atau path yang benar agar bisa ditampilkan."
+    ],
+    "keyConcepts": [
+      "Tag img (self-closing)",
+      "Atribut src",
+      "Atribut alt dan teks alternatif",
+      "Gambar online vs gambar lokal",
+      "Aksesibilitas gambar"
+    ],
+    "takeaways": [
+      "Tag img tidak memiliki tag penutup — cukup tulis <img src='...' alt='...'>.",
+      "Atribut alt wajib diisi — jangan biarkan kosong kecuali gambar murni dekoratif.",
+      "Teks alt yang baik mendeskripsikan isi gambar, bukan hanya nama filenya.",
+      "Selalu uji apakah gambar tampil dengan benar di browser sebelum mempublikasikan halaman."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-img-intro",
+      "type": "lesson",
+      "title": "Gambar di Halaman Web",
+      "xp": 5,
+      "explanation": "Gambar membuat halaman web menjadi lebih menarik dan informatif. Di HTML, kita menggunakan tag img untuk menampilkan gambar.\n\nTag img berbeda dari tag HTML lainnya karena:\n• Tidak memiliki konten di dalamnya\n• Tidak memiliki tag penutup\n• Membutuhkan atribut untuk berfungsi\n\nStruktur dasarnya:\n<img src=\"sumber-gambar\" alt=\"deskripsi gambar\">\n\nDua atribut yang paling penting:\n• src — menentukan dari mana gambar diambil\n• alt — teks alternatif jika gambar tidak bisa ditampilkan",
+      "tips": [
+        "Tag img adalah salah satu contoh 'void element' atau 'self-closing tag' di HTML — tidak perlu tag penutup.",
+        "Selalu sertakan atribut alt — ini bukan sekadar saran, tapi praktik terbaik yang diharapkan dari semua web developer."
+      ]
+    },
+    {
+      "id": "node-02-src-alt",
+      "type": "lesson",
+      "title": "Atribut src dan alt",
+      "xp": 5,
+      "explanation": "Dua atribut paling penting pada tag img adalah src dan alt.\n\nAtribut src (source):\nMenentukan lokasi file gambar. Bisa berupa:\n1. URL gambar online: src=\"https://example.com/foto.jpg\"\n2. Path file lokal: src=\"gambar/foto.jpg\"\n\nAtribut alt (alternative text):\nTeks yang ditampilkan jika gambar gagal dimuat. Juga digunakan oleh:\n• Browser teks (tanpa kemampuan menampilkan gambar)\n• Pembaca layar untuk pengguna dengan gangguan penglihatan\n• Mesin pencari untuk memahami isi gambar\n\nAlt text yang baik mendeskripsikan isi gambar dengan singkat dan jelas.",
+      "analogy": "src seperti alamat toko foto — memberitahu browser di mana harus mengambil gambarnya. alt seperti keterangan foto di bawah gambar — menjelaskan apa yang ada di gambar tersebut.",
+      "tips": [
+        "Alt text yang baik: 'Foto profil Budi dengan latar belakang perpustakaan'. Alt text yang kurang baik: 'foto' atau 'img001.jpg'.",
+        "Jika gambar murni dekoratif dan tidak menyampaikan informasi, tulis alt='' (kosong) — ini memberitahu pembaca layar untuk melewati gambar tersebut."
+      ]
+    },
+    {
+      "id": "node-03-online-image",
+      "type": "code",
+      "title": "Gambar dari URL Online",
+      "xp": 5,
+      "explanation": "Cara termudah menambahkan gambar adalah menggunakan URL gambar yang sudah ada di internet. Salin URL gambarnya dan masukkan sebagai nilai src.\n\nContoh di bawah menggunakan gambar placeholder dari via.placeholder.com — layanan gratis untuk membuat gambar kotak berwarna.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Halaman dengan Gambar</title>\n  </head>\n  <body>\n    <h1>Halaman Saya</h1>\n    <p>Ini adalah contoh gambar dari internet:</p>\n    <img src=\"https://via.placeholder.com/300x200\" alt=\"Gambar contoh berukuran 300x200 piksel\">\n    <p>Gambar di atas ditampilkan dari URL online.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-local-image",
+      "type": "code",
+      "title": "Gambar dari File Lokal",
+      "xp": 5,
+      "explanation": "Selain URL online, kamu juga bisa menggunakan file gambar yang tersimpan di komputermu. Letakkan file gambar di folder yang sama dengan file HTML-mu, lalu gunakan nama filenya sebagai nilai src.\n\nJika gambar ada di subfolder, gunakan path relatif seperti gambar/foto.jpg.\n\nCatatan: contoh ini menggunakan nama file foto.jpg — kamu perlu menyimpan file gambar dengan nama tersebut di folder yang sama.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n  </head>\n  <body>\n    <h1>Profil Saya</h1>\n    <p>Hai! Ini adalah halaman profil saya.</p>\n\n    <img src=\"foto-profil.jpg\" alt=\"Foto profil saya di depan sekolah\">\n\n    <p>Nama saya Budi. Saya pelajar SMP yang suka coding.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-alt-text",
+      "type": "code",
+      "title": "Menulis Alt Text yang Baik",
+      "xp": 5,
+      "explanation": "Alt text yang baik mendeskripsikan isi gambar seperti yang kamu jelaskan kepada seseorang yang tidak bisa melihatnya.\n\nPerhatikan perbedaan dalam contoh di bawah:\n• alt='foto' — tidak informatif\n• alt='Diagram alur belajar coding dari HTML ke CSS ke JavaScript' — jelas dan deskriptif\n\nSemakin deskriptif alt text-mu, semakin aksesibel halamanmu bagi semua orang.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Panduan Belajar</title>\n  </head>\n  <body>\n    <h1>Jalur Belajar Web Development</h1>\n\n    <h2>Langkah-langkah Belajar</h2>\n    <img\n      src=\"https://via.placeholder.com/400x150\"\n      alt=\"Diagram jalur belajar: HTML lalu CSS lalu JavaScript\">\n\n    <h2>Contoh Website Sederhana</h2>\n    <img\n      src=\"https://via.placeholder.com/400x250\"\n      alt=\"Contoh tampilan website sederhana dengan header dan tiga paragraf\">\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-image-in-context",
+      "type": "code",
+      "title": "Gambar dalam Konteks Halaman",
+      "xp": 5,
+      "explanation": "Gambar paling efektif ketika ditempatkan dalam konteks yang tepat — dikelilingi oleh teks yang menjelaskan atau melengkapinya. Perhatikan contoh di bawah bagaimana gambar ditempatkan di antara heading dan paragraf untuk membuat halaman yang utuh.\n\nIni juga menunjukkan bahwa kamu bisa punya banyak gambar dalam satu halaman.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Halaman Profil Lengkap</title>\n  </head>\n  <body>\n    <h1>Tentang Saya</h1>\n\n    <img src=\"https://via.placeholder.com/200x200\" alt=\"Foto profil pengguna\">\n\n    <h2>Siapa Saya?</h2>\n    <p>Halo! Nama saya Budi. Saya pelajar SMP yang sedang belajar web development.</p>\n    <p>Saya tertarik dengan teknologi dan ingin bisa membuat website sendiri suatu hari nanti.</p>\n\n    <h2>Hobi Saya</h2>\n    <img src=\"https://via.placeholder.com/300x200\" alt=\"Koleksi buku-buku fiksi ilmiah\">\n    <p>Salah satu hobi saya adalah membaca buku, terutama buku fiksi ilmiah.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-complete-page",
+      "type": "code",
+      "title": "Halaman Profil Lengkap dengan Gambar dan Link",
+      "xp": 5,
+      "explanation": "Sekarang kita kombinasikan apa yang sudah kita pelajari: gambar dengan alt text yang baik, heading, paragraf, dan link. Hasilnya adalah halaman profil yang cukup lengkap.\n\nPerhatikan bagaimana gambar, teks, dan link bekerja bersama untuk menciptakan pengalaman yang lebih kaya bagi pengunjung.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Budi</title>\n  </head>\n  <body>\n    <h1>Profil Budi Santoso</h1>\n\n    <img src=\"https://via.placeholder.com/200x200\" alt=\"Foto profil Budi Santoso\">\n\n    <h2>Tentang Saya</h2>\n    <p>Halo! Saya Budi, pelajar SMP yang sedang belajar membuat website.</p>\n\n    <h2>Sumber Belajar Saya</h2>\n    <p>Saya belajar HTML dari\n    <a href=\"https://developer.mozilla.org\" target=\"_blank\">MDN Web Docs</a>.</p>\n\n    <img src=\"https://via.placeholder.com/300x100\" alt=\"Logo MDN Web Docs\">\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Atribut yang Wajib",
+      "xp": 10,
+      "instructions": "Atribut apa yang harus selalu ada pada tag img untuk mendeskripsikan gambar bagi pengguna yang tidak bisa melihatnya?",
+      "interactionType": "multiple-choice",
+      "options": ["src", "title", "alt", "href"],
+      "correctOption": "alt"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Halaman Profil dengan Gambar",
+      "xp": 15,
+      "instructions": "Kode starter di bawah sudah punya judul dan paragraf.\n\nTugasmu: Tambahkan dua gambar ke halaman ini:\n1. Gambar pertama setelah h1, gunakan URL https://via.placeholder.com/300x200 dengan alt text yang deskriptif\n2. Gambar kedua di bagian 'Hobi Saya', gunakan URL https://via.placeholder.com/250x150 dengan alt text yang berbeda\n\nPastikan kedua gambar punya alt text yang mendeskripsikan gambarnya.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n  </head>\n  <body>\n    <h1>Profil Saya</h1>\n    <!-- Tambahkan gambar pertama di sini -->\n\n    <p>Halo! Saya sedang belajar HTML.</p>\n\n    <h2>Hobi Saya</h2>\n    <p>Saya suka membaca dan bermain olahraga.</p>\n    <!-- Tambahkan gambar kedua di sini -->\n  </body>\n</html>"
+      },
+      "expectedResult": "Halaman profil dengan dua gambar, masing-masing memiliki alt text yang deskriptif.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n  </head>\n  <body>\n    <h1>Profil Saya</h1>\n    <img src=\"https://via.placeholder.com/300x200\" alt=\"Foto profil pengguna menghadap kamera\">\n\n    <p>Halo! Saya sedang belajar HTML.</p>\n\n    <h2>Hobi Saya</h2>\n    <p>Saya suka membaca dan bermain olahraga.</p>\n    <img src=\"https://via.placeholder.com/250x150\" alt=\"Koleksi buku dan peralatan olahraga\">\n  </body>\n</html>",
+        "explanation": "Kita menambahkan dua tag img di lokasi yang sesuai. Gambar pertama ditempatkan setelah h1 sebagai foto profil. Gambar kedua ditempatkan setelah paragraf hobi. Keduanya menggunakan atribut alt dengan teks deskriptif yang menjelaskan isi gambar."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Tag img di HTML adalah contoh dari tag apa?",
+        "options": [
+          "Tag yang selalu harus ada di dalam head",
+          "Tag yang membutuhkan tag penutup seperti </img>",
+          "Self-closing tag yang tidak memerlukan tag penutup",
+          "Tag yang hanya bisa digunakan sekali per halaman"
+        ],
+        "correctAnswer": "Self-closing tag yang tidak memerlukan tag penutup",
+        "explanation": "Tag img adalah self-closing tag (void element) — tidak memiliki konten di dalamnya dan tidak membutuhkan tag penutup. Cukup tulis <img src='...' alt='...'> tanpa </img>.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa fungsi atribut src pada tag img?",
+        "options": [
+          "Menentukan ukuran gambar dalam piksel",
+          "Menentukan lokasi atau sumber file gambar yang akan ditampilkan",
+          "Memberikan judul yang muncul saat kursor diarahkan ke gambar",
+          "Menentukan format file gambar seperti JPG atau PNG"
+        ],
+        "correctAnswer": "Menentukan lokasi atau sumber file gambar yang akan ditampilkan",
+        "explanation": "Atribut src (source) menentukan dari mana gambar harus diambil — bisa berupa URL gambar online atau path file gambar lokal. Tanpa src, browser tidak tahu gambar apa yang harus ditampilkan.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Mengapa atribut alt penting pada tag img?",
+        "options": [
+          "Alt membuat gambar tampil lebih besar di layar",
+          "Alt menentukan warna latar belakang di sekitar gambar",
+          "Alt menyediakan teks pengganti jika gambar tidak bisa ditampilkan dan membantu aksesibilitas",
+          "Alt adalah singkatan dari altitude yang menentukan posisi gambar"
+        ],
+        "correctAnswer": "Alt menyediakan teks pengganti jika gambar tidak bisa ditampilkan dan membantu aksesibilitas",
+        "explanation": "Atribut alt (alternative text) sangat penting karena: (1) ditampilkan jika gambar gagal dimuat, (2) dibaca oleh pembaca layar untuk pengguna dengan gangguan penglihatan, dan (3) digunakan mesin pencari untuk memahami isi gambar.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Bagaimana cara menampilkan gambar dari file lokal di folder yang sama?",
+        "options": [
+          "Gunakan href='namafile.jpg'",
+          "Gunakan src='file://namafile.jpg'",
+          "Gunakan src='namafile.jpg'",
+          "Gunakan img='namafile.jpg'"
+        ],
+        "correctAnswer": "Gunakan src='namafile.jpg'",
+        "explanation": "Untuk gambar lokal di folder yang sama dengan file HTML, cukup gunakan nama file sebagai nilai src: src='namafile.jpg'. Ini disebut path relatif. Browser akan mencari file tersebut di folder yang sama dengan file HTML.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Mana contoh alt text yang paling baik untuk foto seorang pelajar sedang membaca buku?",
+        "options": [
+          "foto",
+          "gambar",
+          "image001",
+          "Pelajar SMP sedang membaca buku di perpustakaan"
+        ],
+        "correctAnswer": "Pelajar SMP sedang membaca buku di perpustakaan",
+        "explanation": "Alt text yang baik mendeskripsikan isi visual gambar secara spesifik dan informatif. 'foto', 'gambar', atau nama file tidak menjelaskan apa yang ada di gambar. Deskripsi yang jelas membantu pengguna dengan gangguan penglihatan memahami konteks gambar.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Keren! Kamu sekarang bisa menambahkan gambar ke halaman web dengan atribut src dan alt yang tepat. Gambar dan alt text yang baik membuat website-mu lebih menarik dan bisa diakses oleh semua orang.",
+    "achievementName": "Fotografer Web",
+    "achievementIcon": "🖼️"
+  }
+}

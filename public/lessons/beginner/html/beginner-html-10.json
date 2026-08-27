@@ -1,0 +1,242 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-10",
+    "title": "Mini Project — Membuat Halaman Profil Sederhana",
+    "description": "Gunakan semua konsep HTML yang sudah dipelajari untuk membangun halaman profil pribadi yang lengkap — dari struktur dokumen hingga formulir kontak.",
+    "level": "beginner",
+    "category": "HTML",
+    "topicNumber": 10,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Saatnya Membangun Sesuatu yang Nyata",
+    "description": "Kamu sudah menguasai semua fondasi HTML — struktur dokumen, teks, link, gambar, daftar, tabel, formulir, dan HTML semantik. Sekarang saatnya menggabungkan semuanya menjadi satu halaman profil pribadi yang lengkap dan bermakna.",
+    "analogy": "Bayangkan kamu sudah belajar cara memasang bata, memasang pintu, memasang jendela, dan mengecat dinding. Mini project ini adalah saat kamu membangun rumahnya — menggunakan semua keterampilan itu bersama-sama untuk pertama kalinya."
+  },
+  "objectives": [
+    "Menggabungkan tag semantik dengan elemen teks, link, gambar, daftar, dan tabel",
+    "Membangun halaman HTML lengkap yang terstruktur dan bermakna",
+    "Menerapkan hierarki heading yang benar di seluruh halaman",
+    "Mengintegrasikan formulir kontak sederhana ke dalam halaman",
+    "Memahami bagaimana semua elemen HTML bekerja bersama dalam satu halaman nyata"
+  ],
+  "review": {
+    "learned": [
+      "Sebuah halaman profil lengkap dapat dibangun hanya dengan HTML — tanpa CSS atau JavaScript.",
+      "Tag semantik header, nav, main, section, dan footer memberi struktur yang bermakna pada halaman.",
+      "Heading, paragraf, strong, dan em digunakan untuk menyusun dan menekankan teks.",
+      "Daftar ul dan ol membantu menyajikan kumpulan item dengan rapi.",
+      "Tabel berguna untuk menyajikan data yang memiliki hubungan baris dan kolom.",
+      "Formulir memungkinkan pengunjung berinteraksi dan mengirimkan data.",
+      "Semua elemen HTML dapat dikombinasikan secara bebas di dalam body."
+    ],
+    "keyConcepts": [
+      "Integrasi semua elemen HTML",
+      "Halaman HTML lengkap tanpa CSS",
+      "Hierarki heading yang konsisten",
+      "Formulir dalam konteks halaman nyata",
+      "HTML semantik sebagai kerangka halaman"
+    ],
+    "takeaways": [
+      "HTML saja sudah cukup untuk membuat halaman yang fungsional dan dapat diakses.",
+      "Struktur yang baik adalah fondasi — CSS dan JavaScript ditambahkan di atasnya nanti.",
+      "Konsistensi hierarki heading (h1 → h2 → h3) membuat halaman lebih mudah dipahami.",
+      "Setiap proyek web dimulai dari HTML yang baik.",
+      "Kamu sudah menguasai semua fondasi HTML yang dibutuhkan untuk melanjutkan ke CSS."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-project-intro",
+      "type": "lesson",
+      "title": "Apa yang Akan Kita Bangun?",
+      "xp": 5,
+      "explanation": "Di mini project ini, kita akan membangun halaman profil pribadi yang lengkap. Halaman ini akan berisi:\n\n• Header dengan nama dan tagline\n• Navigasi antar bagian halaman\n• Bagian 'Tentang Saya' dengan teks dan gambar\n• Daftar hobi dan keterampilan\n• Tabel jadwal atau pencapaian\n• Formulir kontak sederhana\n• Footer dengan informasi penutup\n\nSemua elemen ini akan kita bangun secara bertahap, satu bagian per bagian. Di setiap langkah, kita akan melihat bagaimana bagian baru terintegrasi dengan bagian sebelumnya.\n\nSatu aturan: hanya HTML — tidak ada CSS, tidak ada JavaScript. Tapi hasilnya sudah bisa dibuka di browser dan sepenuhnya fungsional.",
+      "tips": [
+        "Sebelum mengetik kode, bayangkan dulu seperti apa halaman yang ingin kamu buat — ini membantu membuat keputusan struktur yang lebih baik.",
+        "Kode yang rapi dengan indentasi konsisten jauh lebih mudah dibaca dan diperbaiki saat ada masalah."
+      ]
+    },
+    {
+      "id": "node-02-planning",
+      "type": "lesson",
+      "title": "Merencanakan Struktur Halaman",
+      "xp": 5,
+      "explanation": "Sebelum menulis kode, selalu rencanakan struktur halamanmu. Ini disebut wireframe — gambaran kasar tata letak sebelum implementasi.\n\nUntuk halaman profil kita, strukturnya adalah:\n\n1. header — nama dan tagline\n2. nav — tautan ke bagian-bagian halaman\n3. main\n   ├── section: Tentang Saya (gambar + paragraf)\n   ├── section: Keterampilan (daftar ul)\n   ├── section: Jadwal Belajar (tabel)\n   └── section: Hubungi Saya (formulir)\n4. footer — informasi penutup\n\nDengan rencana ini, kita tahu persis tag apa yang perlu ditulis dan di urutan mana. Setiap section akan kita bangun satu per satu di node-node berikutnya.",
+      "analogy": "Merencanakan struktur HTML seperti membuat sketsa denah rumah sebelum mulai membangun. Jauh lebih mudah mengubah rencana di atas kertas daripada membongkar tembok yang sudah terpasang.",
+      "tips": [
+        "Kebiasaan membuat rencana sebelum coding akan membantumu lebih efisien dan mengurangi kesalahan.",
+        "Rencana boleh berubah saat coding — itu normal. Yang penting ada titik mulai yang jelas."
+      ]
+    },
+    {
+      "id": "node-03-header-nav",
+      "type": "code",
+      "title": "Header dan Navigasi",
+      "xp": 5,
+      "explanation": "Kita mulai dari bagian paling atas. Header berisi nama dan tagline. Nav berisi tautan ke setiap section yang akan kita buat.\n\nPerhatikan:\n• Tag a di nav menggunakan href dengan tanda # diikuti id — ini adalah anchor link yang mengarah ke bagian halaman yang sama\n• Setiap section yang akan kita buat nanti perlu id yang sesuai agar link ini berfungsi",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Budi Santoso</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>Budi Santoso</h1>\n      <p>Pelajar SMP yang sedang belajar web development</p>\n    </header>\n\n    <nav>\n      <a href=\"#tentang\">Tentang Saya</a>\n      <a href=\"#keterampilan\">Keterampilan</a>\n      <a href=\"#jadwal\">Jadwal Belajar</a>\n      <a href=\"#kontak\">Kontak</a>\n    </nav>\n\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-about-skills",
+      "type": "code",
+      "title": "Bagian Tentang Saya dan Keterampilan",
+      "xp": 5,
+      "explanation": "Sekarang kita tambahkan tag main dengan dua section pertama:\n\n1. Section 'Tentang Saya' berisi gambar profil dan paragraf perkenalan\n2. Section 'Keterampilan' berisi daftar ul dengan keterampilan\n\nPerhatikan atribut id pada setiap section — id ini yang dituju oleh anchor link di nav. Gambar menggunakan via.placeholder.com sebagai placeholder.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Budi Santoso</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>Budi Santoso</h1>\n      <p>Pelajar SMP yang sedang belajar web development</p>\n    </header>\n\n    <nav>\n      <a href=\"#tentang\">Tentang Saya</a>\n      <a href=\"#keterampilan\">Keterampilan</a>\n    </nav>\n\n    <main>\n\n      <section id=\"tentang\">\n        <h2>Tentang Saya</h2>\n        <img src=\"https://via.placeholder.com/200x200\" alt=\"Foto profil Budi Santoso\">\n        <p>Halo! Nama saya <strong>Budi Santoso</strong>, pelajar kelas 7 yang sangat\n        tertarik dengan dunia teknologi dan web development.</p>\n        <p>Saat ini saya sedang mempelajari HTML sebagai langkah pertama untuk\n        menjadi web developer.</p>\n      </section>\n\n      <section id=\"keterampilan\">\n        <h2>Keterampilan yang Sedang Dipelajari</h2>\n        <ul>\n          <li>HTML — Struktur halaman web</li>\n          <li>CSS — Tampilan dan desain (berikutnya)</li>\n          <li>JavaScript — Interaktivitas (nanti)</li>\n        </ul>\n      </section>\n\n    </main>\n\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-table-form",
+      "type": "code",
+      "title": "Jadwal Belajar dan Formulir Kontak",
+      "xp": 5,
+      "explanation": "Dua section terakhir — tabel jadwal dan formulir kontak. Ini menggabungkan beberapa topik sekaligus dalam satu halaman.\n\nSection jadwal menggunakan tabel untuk menyajikan data terstruktur. Section kontak menggunakan formulir dengan input dan button yang sudah dipelajari.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Budi Santoso</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>Budi Santoso</h1>\n    </header>\n\n    <main>\n\n      <section id=\"jadwal\">\n        <h2>Jadwal Belajar Minggu Ini</h2>\n        <table>\n          <tr>\n            <th>Hari</th>\n            <th>Topik</th>\n            <th>Durasi</th>\n          </tr>\n          <tr>\n            <td>Senin</td>\n            <td>HTML Dasar</td>\n            <td>1 jam</td>\n          </tr>\n          <tr>\n            <td>Rabu</td>\n            <td>HTML Formulir</td>\n            <td>1 jam</td>\n          </tr>\n          <tr>\n            <td>Jumat</td>\n            <td>HTML Semantik</td>\n            <td>1 jam</td>\n          </tr>\n        </table>\n      </section>\n\n      <section id=\"kontak\">\n        <h2>Hubungi Saya</h2>\n        <p>Punya pertanyaan atau ingin berkolaborasi? Kirim pesan di sini.</p>\n        <form>\n          <label for=\"nama-kontak\">Nama</label>\n          <input type=\"text\" id=\"nama-kontak\" placeholder=\"Namamu\" required>\n\n          <label for=\"email-kontak\">Email</label>\n          <input type=\"email\" id=\"email-kontak\" placeholder=\"emailmu@contoh.com\" required>\n\n          <button type=\"submit\">Kirim Pesan</button>\n        </form>\n      </section>\n\n    </main>\n\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-footer-complete",
+      "type": "code",
+      "title": "Footer dan Halaman Lengkap",
+      "xp": 5,
+      "explanation": "Tambahan terakhir: footer di bagian bawah. Setelah ini, semua bagian halaman sudah terhubung menjadi satu profil yang utuh.\n\nPerhatikan bagaimana semua yang sudah dipelajari bekerja bersama:\n• Tag semantik header, nav, main, section, footer\n• Heading h1, h2, h3\n• Paragraf dengan strong dan em\n• Gambar dengan alt\n• Daftar ul\n• Link anchor ke bagian halaman\n• Tabel\n• Formulir dengan label, input, dan button",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Budi Santoso</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>Budi Santoso</h1>\n      <p>Pelajar SMP yang sedang belajar web development</p>\n    </header>\n\n    <nav>\n      <a href=\"#tentang\">Tentang Saya</a>\n      <a href=\"#keterampilan\">Keterampilan</a>\n      <a href=\"#jadwal\">Jadwal</a>\n      <a href=\"#kontak\">Kontak</a>\n    </nav>\n\n    <main>\n\n      <section id=\"tentang\">\n        <h2>Tentang Saya</h2>\n        <img src=\"https://via.placeholder.com/150x150\" alt=\"Foto profil Budi\">\n        <p>Halo! Saya <strong>Budi</strong>, pelajar yang sedang belajar HTML.</p>\n      </section>\n\n      <section id=\"keterampilan\">\n        <h2>Keterampilan</h2>\n        <ul>\n          <li>HTML</li>\n          <li>CSS (berikutnya)</li>\n        </ul>\n      </section>\n\n      <section id=\"jadwal\">\n        <h2>Jadwal Belajar</h2>\n        <table>\n          <tr><th>Hari</th><th>Topik</th></tr>\n          <tr><td>Senin</td><td>HTML</td></tr>\n          <tr><td>Rabu</td><td>CSS</td></tr>\n        </table>\n      </section>\n\n      <section id=\"kontak\">\n        <h2>Kontak</h2>\n        <form>\n          <label for=\"nama\">Nama</label>\n          <input type=\"text\" id=\"nama\" required>\n          <label for=\"email\">Email</label>\n          <input type=\"email\" id=\"email\" required>\n          <button type=\"submit\">Kirim</button>\n        </form>\n      </section>\n\n    </main>\n\n    <footer>\n      <p>Dibuat oleh Budi Santoso &mdash; Belajar HTML dengan semangat</p>\n    </footer>\n\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-full-profile",
+      "type": "code",
+      "title": "Versi Final Halaman Profil",
+      "xp": 5,
+      "explanation": "Inilah versi final halaman profil yang lengkap dan dipoles. Semua elemen yang sudah dipelajari di topik 01–09 digunakan di sini secara alami dan bermakna.\n\nBuka file ini di browser — hasilnya adalah halaman profil sungguhan yang bisa diakses, bisa digunakan, dan sudah mengikuti semua praktik terbaik HTML yang sudah kamu pelajari.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Budi Santoso — Web Developer Pemula</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>Budi Santoso</h1>\n      <p><em>Pelajar SMP &mdash; Calon Web Developer</em></p>\n    </header>\n\n    <nav>\n      <a href=\"#tentang\">Tentang</a>\n      <a href=\"#keterampilan\">Keterampilan</a>\n      <a href=\"#jadwal\">Jadwal Belajar</a>\n      <a href=\"#kontak\">Kontak</a>\n    </nav>\n\n    <main>\n\n      <section id=\"tentang\">\n        <h2>Tentang Saya</h2>\n        <img src=\"https://via.placeholder.com/200x200\" alt=\"Foto profil Budi Santoso\">\n        <p>Halo! Nama saya <strong>Budi Santoso</strong>, pelajar kelas 7A yang\n        bersemangat belajar web development. Saya percaya bahwa siapapun bisa\n        belajar coding jika mau berusaha.</p>\n        <p>Saat ini saya sedang mendalami HTML dan berencana lanjut ke CSS\n        dan JavaScript setelah ini.</p>\n      </section>\n\n      <section id=\"keterampilan\">\n        <h2>Keterampilan yang Sedang Dipelajari</h2>\n        <ul>\n          <li><strong>HTML</strong> — Struktur halaman web (sedang dipelajari)</li>\n          <li>CSS — Tampilan dan desain (berikutnya)</li>\n          <li>JavaScript — Interaktivitas (nanti)</li>\n        </ul>\n      </section>\n\n      <section id=\"jadwal\">\n        <h2>Jadwal Belajar Minggu Ini</h2>\n        <table>\n          <tr>\n            <th>Hari</th>\n            <th>Topik</th>\n            <th>Status</th>\n          </tr>\n          <tr>\n            <td>Senin</td>\n            <td>HTML Formulir</td>\n            <td>Selesai</td>\n          </tr>\n          <tr>\n            <td>Rabu</td>\n            <td>HTML Semantik</td>\n            <td>Selesai</td>\n          </tr>\n          <tr>\n            <td>Jumat</td>\n            <td>Mini Project</td>\n            <td>Sedang berjalan</td>\n          </tr>\n        </table>\n      </section>\n\n      <section id=\"kontak\">\n        <h2>Hubungi Saya</h2>\n        <p>Ingin berkolaborasi atau sekadar menyapa? Isi formulir di bawah ini.</p>\n        <form>\n          <label for=\"nama-tamu\">Nama</label>\n          <input type=\"text\" id=\"nama-tamu\" placeholder=\"Namamu\" required>\n\n          <label for=\"email-tamu\">Email</label>\n          <input type=\"email\" id=\"email-tamu\" placeholder=\"emailmu@contoh.com\" required>\n\n          <button type=\"submit\">Kirim Pesan</button>\n        </form>\n      </section>\n\n    </main>\n\n    <footer>\n      <p>Halaman Profil Budi Santoso &mdash; Dibuat dengan HTML</p>\n      <p>\n        <a href=\"https://developer.mozilla.org\" target=\"_blank\">Belajar lebih lanjut di MDN Web Docs</a>\n      </p>\n    </footer>\n\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Identifikasi Elemen yang Tepat",
+      "xp": 10,
+      "instructions": "Di halaman profil lengkap, kamu ingin menampilkan daftar hobi seperti 'Membaca', 'Coding', 'Futsal'. Hobi-hobi ini tidak perlu ditampilkan dalam urutan tertentu. Elemen HTML mana yang paling tepat?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "<ol> karena daftar selalu perlu urutan",
+        "<table> karena ada lebih dari satu item",
+        "<ul> karena urutan hobi tidak penting",
+        "<p> untuk setiap hobi dengan teks terpisah"
+      ],
+      "correctOption": "<ul> karena urutan hobi tidak penting"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Halaman Profil Pribadimu",
+      "xp": 15,
+      "instructions": "Kode starter di bawah adalah kerangka halaman profil yang sudah punya struktur semantik.\n\nTugasmu: Lengkapi halaman ini dengan:\n1. Isi section 'Tentang Saya' dengan gambar (via.placeholder.com/150x150) dan satu paragraf perkenalan menggunakan strong untuk namamu\n2. Isi section 'Hobi Saya' dengan ul berisi minimal 3 hobi\n3. Isi section 'Kontak' dengan formulir yang punya input nama (required), input email (required), dan tombol submit\n4. Isi footer dengan teks penutup menggunakan namamu\n\nGunakan konsep dari semua topik yang sudah dipelajari.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>[Namamu]</h1>\n      <p>Pelajar yang sedang belajar HTML</p>\n    </header>\n\n    <nav>\n      <a href=\"#tentang\">Tentang</a>\n      <a href=\"#hobi\">Hobi</a>\n      <a href=\"#kontak\">Kontak</a>\n    </nav>\n\n    <main>\n\n      <section id=\"tentang\">\n        <h2>Tentang Saya</h2>\n        <!-- Tambahkan gambar dan paragraf di sini -->\n      </section>\n\n      <section id=\"hobi\">\n        <h2>Hobi Saya</h2>\n        <!-- Tambahkan ul dengan minimal 3 hobi di sini -->\n      </section>\n\n      <section id=\"kontak\">\n        <h2>Kontak</h2>\n        <!-- Tambahkan formulir di sini -->\n      </section>\n\n    </main>\n\n    <footer>\n      <!-- Tambahkan teks penutup di sini -->\n    </footer>\n\n  </body>\n</html>"
+      },
+      "expectedResult": "Halaman profil lengkap dengan gambar, paragraf perkenalan, daftar hobi, formulir kontak, dan footer — semuanya menggunakan tag yang tepat.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>Budi Santoso</h1>\n      <p>Pelajar yang sedang belajar HTML</p>\n    </header>\n\n    <nav>\n      <a href=\"#tentang\">Tentang</a>\n      <a href=\"#hobi\">Hobi</a>\n      <a href=\"#kontak\">Kontak</a>\n    </nav>\n\n    <main>\n\n      <section id=\"tentang\">\n        <h2>Tentang Saya</h2>\n        <img src=\"https://via.placeholder.com/150x150\" alt=\"Foto profil Budi Santoso\">\n        <p>Halo! Nama saya <strong>Budi Santoso</strong>. Saya pelajar SMP yang sedang\n        belajar membuat halaman web menggunakan HTML.</p>\n      </section>\n\n      <section id=\"hobi\">\n        <h2>Hobi Saya</h2>\n        <ul>\n          <li>Membaca buku fiksi ilmiah</li>\n          <li>Bermain futsal</li>\n          <li>Belajar coding</li>\n        </ul>\n      </section>\n\n      <section id=\"kontak\">\n        <h2>Kontak</h2>\n        <form>\n          <label for=\"nama\">Nama</label>\n          <input type=\"text\" id=\"nama\" placeholder=\"Namamu\" required>\n\n          <label for=\"email\">Email</label>\n          <input type=\"email\" id=\"email\" placeholder=\"emailmu@contoh.com\" required>\n\n          <button type=\"submit\">Kirim Pesan</button>\n        </form>\n      </section>\n\n    </main>\n\n    <footer>\n      <p>Halaman Profil Budi Santoso &mdash; Dibuat dengan HTML</p>\n    </footer>\n\n  </body>\n</html>",
+        "explanation": "Kita mengisi setiap section dengan konten yang sesuai. Section tentang mendapat gambar dengan alt text deskriptif dan paragraf yang menggunakan strong untuk nama. Section hobi menggunakan ul karena urutan tidak penting. Section kontak punya formulir lengkap dengan dua input required dan tombol submit. Footer berisi teks penutup sederhana. Semua elemen ini menggunakan tag yang tepat sesuai konteksnya."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Kamu ingin membuat tautan di nav yang langsung mengarahkan pengunjung ke section 'Kontak' di halaman yang sama. Nilai href apa yang digunakan?",
+        "options": [
+          "href=\"kontak.html\"",
+          "href=\"#kontak\"",
+          "href=\"section/kontak\"",
+          "href=\"goto:kontak\""
+        ],
+        "correctAnswer": "href=\"#kontak\"",
+        "explanation": "Untuk membuat anchor link ke bagian di halaman yang sama, gunakan tanda # diikuti nilai id dari elemen tujuan: href='#kontak'. Elemen tujuannya harus memiliki atribut id='kontak'. Ini berbeda dengan href='kontak.html' yang membuka file HTML terpisah.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Di halaman profil lengkap, elemen HTML mana yang paling tepat untuk membungkus seluruh area konten utama (bukan header, nav, atau footer)?",
+        "options": [
+          "<div id=\"konten\">",
+          "<section>",
+          "<main>",
+          "<body>"
+        ],
+        "correctAnswer": "<main>",
+        "explanation": "Tag main digunakan untuk membungkus konten utama halaman — bagian yang menjadi fokus utama pengunjung, tidak termasuk header, nav, dan footer. Hanya boleh ada satu main per halaman. Ini berbeda dengan section yang digunakan untuk mengelompokkan konten bertemakan sama di dalam main.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Kamu ingin menampilkan daftar keterampilan yang tidak perlu urutan. Elemen HTML mana yang paling tepat?",
+        "options": [
+          "<ol> dengan beberapa <li>",
+          "<ul> dengan beberapa <li>",
+          "<table> dengan satu kolom",
+          "<p> untuk setiap keterampilan"
+        ],
+        "correctAnswer": "<ul> dengan beberapa <li>",
+        "explanation": "Unordered list (ul) digunakan untuk daftar item yang tidak memerlukan urutan tertentu. Setiap item dibungkus dengan tag li. Ordered list (ol) digunakan saat urutan penting. Untuk daftar keterampilan yang tidak perlu diurutkan, ul adalah pilihan yang tepat.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Dalam konteks halaman profil, data seperti jadwal belajar mingguan (hari, topik, status) paling baik disajikan menggunakan elemen apa?",
+        "options": [
+          "Serangkaian tag p dengan teks 'Senin: HTML, Selesai'",
+          "Tag ul dengan setiap hari sebagai item",
+          "Tag table dengan tr, th, dan td",
+          "Tag article untuk setiap hari"
+        ],
+        "correctAnswer": "Tag table dengan tr, th, dan td",
+        "explanation": "Data jadwal memiliki hubungan yang jelas antara baris (setiap hari) dan kolom (topik, status) — ini adalah data tabular yang paling tepat disajikan dengan table. Tag table memungkinkan browser menampilkan data ini dalam grid yang rapi dan mudah dibaca.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Manakah pernyataan yang BENAR tentang membangun halaman web dengan HTML saja (tanpa CSS)?",
+        "options": [
+          "Halaman HTML tanpa CSS tidak bisa dibuka di browser",
+          "Halaman HTML tanpa CSS akan error karena CSS wajib ada",
+          "Halaman HTML tanpa CSS bisa dibuka di browser dan sepenuhnya fungsional meski tampilannya polos",
+          "Halaman HTML tanpa CSS hanya bisa digunakan di komputer, tidak di smartphone"
+        ],
+        "correctAnswer": "Halaman HTML tanpa CSS bisa dibuka di browser dan sepenuhnya fungsional meski tampilannya polos",
+        "explanation": "HTML dan CSS adalah dua teknologi terpisah. HTML bertanggung jawab untuk struktur dan konten, CSS untuk tampilan visual. Halaman HTML tanpa CSS tetap bisa dibuka di browser, semua link berfungsi, formulir bisa diisi, dan tabel tampil dengan benar — hanya tampilannya yang polos tanpa warna dan desain.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Selamat — Level HTML Beginner Selesai!",
+    "message": "Luar biasa! Kamu telah menyelesaikan seluruh level HTML Beginner. Dari struktur dokumen dasar hingga mini project halaman profil lengkap — kamu sudah menguasai semua fondasi HTML yang dibutuhkan untuk melanjutkan ke CSS dan JavaScript.",
+    "achievementName": "HTML Pemula Tuntas",
+    "achievementIcon": "🎓"
+  }
+}

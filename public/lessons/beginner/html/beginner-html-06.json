@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-06",
+    "title": "Membuat Daftar dengan HTML",
+    "description": "Pelajari cara membuat daftar tidak berurutan dan daftar berurutan menggunakan tag ul, ol, dan li untuk menyajikan informasi dalam bentuk daftar yang rapi.",
+    "level": "beginner",
+    "category": "HTML",
+    "topicNumber": 6,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Menyusun Informasi dalam Bentuk Daftar",
+    "description": "Daftar adalah salah satu cara paling efektif untuk menyajikan informasi. Mulai dari daftar bahan masakan, langkah-langkah tutorial, sampai menu navigasi — semuanya bisa dibuat dengan HTML. Di topik ini kamu akan belajar dua jenis daftar: daftar tanpa urutan dan daftar berurutan.",
+    "analogy": "Daftar HTML seperti daftar belanja di kertas. Kalau barang tidak perlu dibeli dalam urutan tertentu, kamu tulis biasa saja (ul). Kalau ada urutan yang harus diikuti — seperti resep masakan — kamu pakai angka (ol)."
+  },
+  "objectives": [
+    "Membuat daftar tidak berurutan menggunakan tag ul dan li",
+    "Membuat daftar berurutan menggunakan tag ol dan li",
+    "Memahami kapan menggunakan ul vs ol",
+    "Membuat daftar bersarang sederhana",
+    "Menggunakan daftar untuk menyajikan informasi yang relevan di halaman web"
+  ],
+  "review": {
+    "learned": [
+      "Tag ul membuat unordered list — daftar dengan simbol titik di depan setiap item.",
+      "Tag ol membuat ordered list — daftar dengan angka di depan setiap item.",
+      "Tag li digunakan untuk setiap item dalam daftar, di dalam ul maupun ol.",
+      "Gunakan ul saat urutan item tidak penting, ol saat urutan item penting.",
+      "Daftar bersarang dibuat dengan menempatkan ul atau ol di dalam li.",
+      "Daftar sangat berguna untuk navigasi, langkah-langkah, dan kumpulan item."
+    ],
+    "keyConcepts": [
+      "Tag ul — unordered list",
+      "Tag ol — ordered list",
+      "Tag li — list item",
+      "ul vs ol — kapan menggunakan masing-masing",
+      "Daftar bersarang (nested list)"
+    ],
+    "takeaways": [
+      "Setiap item daftar harus dibungkus dengan tag li di dalam ul atau ol.",
+      "Pilih ul untuk daftar yang tidak perlu urutan, ol untuk langkah-langkah atau peringkat.",
+      "Daftar bersarang dibuat dengan menempatkan ul atau ol baru di dalam li.",
+      "Daftar adalah cara yang bersih dan semantik untuk menyajikan kumpulan item."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-list-intro",
+      "type": "lesson",
+      "title": "Kenapa Perlu Daftar?",
+      "xp": 5,
+      "explanation": "Bayangkan kamu harus menulis 10 bahan masakan dalam satu paragraf panjang. Susah dibaca, bukan?\n\nDaftar membuat informasi lebih mudah dibaca dan dipahami. HTML menyediakan dua jenis daftar:\n\n• Unordered list (ul) — daftar tanpa urutan, menggunakan simbol bulat\n• Ordered list (ol) — daftar berurutan, menggunakan angka\n\nKeduanya menggunakan tag li (list item) untuk setiap item dalam daftar.\n\nKapan pakai ul? Saat urutan tidak penting: daftar bahan, daftar fitur, menu navigasi.\nKapan pakai ol? Saat urutan penting: langkah-langkah, peringkat, prosedur.",
+      "tips": [
+        "Browser secara otomatis menambahkan indentasi dan simbol/angka pada daftar — kamu tidak perlu mengaturnya secara manual.",
+        "Daftar HTML juga digunakan untuk menu navigasi di website profesional — bukan hanya untuk daftar biasa."
+      ]
+    },
+    {
+      "id": "node-02-ul-ol",
+      "type": "lesson",
+      "title": "Unordered List vs Ordered List",
+      "xp": 5,
+      "explanation": "Mari kita pahami perbedaan ul dan ol lebih dalam:\n\nUnordered List (ul):\n• Setiap item ditandai dengan simbol (biasanya titik atau bulatan)\n• Urutan item tidak mempengaruhi maknanya\n• Contoh: daftar bahan, daftar fitur, daftar anggota\n\nOrdered List (ol):\n• Setiap item diberi nomor secara otomatis oleh browser\n• Urutan item sangat penting\n• Contoh: langkah membuat sesuatu, peringkat, prosedur\n\nStruktur keduanya sama — bedanya hanya di tag ul vs ol:\n<ul><li>Item</li></ul> atau <ol><li>Item</li></ol>",
+      "analogy": "ul seperti daftar belanja — tidak masalah membeli sabun sebelum atau sesudah shampoo. ol seperti resep masakan — kamu HARUS campur tepung dulu sebelum dioven, tidak bisa dibalik.",
+      "tips": [
+        "Tag li SELALU harus ada di dalam ul atau ol, tidak pernah berdiri sendiri.",
+        "Kamu tidak perlu mengetik angka 1, 2, 3 secara manual di ol — browser menghitungnya otomatis."
+      ]
+    },
+    {
+      "id": "node-03-ul-example",
+      "type": "code",
+      "title": "Contoh Unordered List",
+      "xp": 5,
+      "explanation": "Ini adalah contoh unordered list. Perhatikan strukturnya:\n• Tag ul membungkus semua item\n• Setiap item ada di dalam tag li\n• Browser otomatis menampilkan simbol bulat di depan setiap item\n\nContoh ini menampilkan daftar bahan masakan dan daftar fitur.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Contoh Daftar</title>\n  </head>\n  <body>\n    <h1>Resep Nasi Goreng</h1>\n\n    <h2>Bahan-bahan</h2>\n    <ul>\n      <li>2 piring nasi putih</li>\n      <li>2 butir telur</li>\n      <li>3 siung bawang putih</li>\n      <li>Kecap manis secukupnya</li>\n      <li>Garam dan merica</li>\n    </ul>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-ol-example",
+      "type": "code",
+      "title": "Contoh Ordered List",
+      "xp": 5,
+      "explanation": "Ini adalah contoh ordered list untuk langkah-langkah yang harus diikuti secara berurutan. Browser otomatis menambahkan angka 1, 2, 3, dst.\n\nPerhatikan bahwa kita menggunakan ol bukan ul — karena urutan langkah-langkah ini penting dan tidak bisa diacak.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Cara Membuat Nasi Goreng</title>\n  </head>\n  <body>\n    <h1>Cara Membuat Nasi Goreng</h1>\n\n    <h2>Bahan-bahan</h2>\n    <ul>\n      <li>2 piring nasi putih</li>\n      <li>2 butir telur</li>\n      <li>3 siung bawang putih</li>\n    </ul>\n\n    <h2>Langkah-langkah</h2>\n    <ol>\n      <li>Panaskan wajan dengan sedikit minyak</li>\n      <li>Tumis bawang putih hingga harum</li>\n      <li>Masukkan telur dan orak-arik</li>\n      <li>Tambahkan nasi putih dan aduk rata</li>\n      <li>Bumbui dengan kecap, garam, dan merica</li>\n      <li>Sajikan selagi panas</li>\n    </ol>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-nested-list",
+      "type": "code",
+      "title": "Daftar Bersarang",
+      "xp": 5,
+      "explanation": "Kamu bisa membuat daftar di dalam daftar — ini disebut nested list atau daftar bersarang. Caranya: tempatkan tag ul atau ol baru di dalam tag li.\n\nDaftar bersarang berguna untuk menampilkan hierarki atau sub-kategori. Perhatikan indentasi di contoh — browser otomatis memberikan indentasi lebih dalam untuk daftar bersarang.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Menu Pelajaran</title>\n  </head>\n  <body>\n    <h1>Kurikulum Web Development</h1>\n\n    <ul>\n      <li>HTML\n        <ul>\n          <li>Struktur dokumen</li>\n          <li>Teks dan heading</li>\n          <li>Link dan gambar</li>\n        </ul>\n      </li>\n      <li>CSS\n        <ul>\n          <li>Warna dan font</li>\n          <li>Layout dan posisi</li>\n        </ul>\n      </li>\n      <li>JavaScript</li>\n    </ul>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-list-in-page",
+      "type": "code",
+      "title": "Daftar dalam Halaman Lengkap",
+      "xp": 5,
+      "explanation": "Sekarang kita lihat bagaimana ul dan ol bekerja bersama dalam sebuah halaman yang lebih lengkap. Contoh ini menggabungkan:\n• Unordered list untuk daftar yang tidak perlu urutan\n• Ordered list untuk langkah-langkah\n• Heading dan paragraf sebagai konteks\n\nIni adalah pola yang sangat umum di halaman web sungguhan — artikel, tutorial, dan dokumentasi sering menggunakan kombinasi ini.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Panduan Belajar HTML</title>\n  </head>\n  <body>\n    <h1>Panduan Belajar HTML untuk Pemula</h1>\n    <p>Berikut ini adalah panduan singkat untuk memulai belajar HTML.</p>\n\n    <h2>Yang Perlu Kamu Siapkan</h2>\n    <ul>\n      <li>Komputer atau laptop</li>\n      <li>Teks editor (VS Code atau Notepad)</li>\n      <li>Browser (Chrome, Firefox, atau Edge)</li>\n    </ul>\n\n    <h2>Langkah Memulai</h2>\n    <ol>\n      <li>Install teks editor pilihanmu</li>\n      <li>Buat file baru dengan nama index.html</li>\n      <li>Tulis struktur dasar HTML</li>\n      <li>Simpan file dan buka di browser</li>\n      <li>Mulai bereksperimen dengan tag-tag HTML</li>\n    </ol>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-complete-lists",
+      "type": "code",
+      "title": "Halaman dengan Berbagai Jenis Daftar",
+      "xp": 5,
+      "explanation": "Ini adalah contoh halaman yang menggunakan berbagai jenis daftar sekaligus, termasuk daftar bersarang. Perhatikan bagaimana setiap jenis daftar dipilih berdasarkan konteksnya:\n\n• Fitur aplikasi → ul (tidak perlu urutan)\n• Langkah instalasi → ol (urutan penting)\n• Sub-fitur → nested ul di dalam li",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Aplikasi Belajar HTML</title>\n  </head>\n  <body>\n    <h1>Aplikasi Belajar HTML</h1>\n    <p>Aplikasi ini membantu kamu belajar HTML dari nol.</p>\n\n    <h2>Fitur Utama</h2>\n    <ul>\n      <li>Pelajaran interaktif\n        <ul>\n          <li>Video penjelasan</li>\n          <li>Latihan langsung</li>\n        </ul>\n      </li>\n      <li>Kuis setiap topik</li>\n      <li>Progress tracking</li>\n    </ul>\n\n    <h2>Cara Memulai</h2>\n    <ol>\n      <li>Buat akun gratis</li>\n      <li>Pilih kursus HTML Pemula</li>\n      <li>Selesaikan pelajaran pertama</li>\n      <li>Kerjakan kuis dan dapatkan XP</li>\n    </ol>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Pilih Jenis Daftar yang Tepat",
+      "xp": 10,
+      "instructions": "Kamu ingin membuat daftar 5 langkah untuk membuat akun di sebuah website. Jenis daftar mana yang paling tepat digunakan?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "ul karena lebih fleksibel",
+        "ol karena langkah-langkah harus berurutan",
+        "li saja tanpa ul atau ol",
+        "p untuk setiap langkah"
+      ],
+      "correctOption": "ol karena langkah-langkah harus berurutan"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Halaman Resep",
+      "xp": 15,
+      "instructions": "Kode starter di bawah sudah punya judul dan beberapa heading.\n\nTugasmu: Lengkapi halaman ini dengan:\n1. Unordered list dengan minimal 4 bahan di bagian 'Bahan-bahan'\n2. Ordered list dengan minimal 4 langkah di bagian 'Cara Membuat'\n\nPastikan setiap item menggunakan tag li di dalam ul atau ol yang tepat.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Resep Favoritku</title>\n  </head>\n  <body>\n    <h1>Resep Favoritku</h1>\n    <p>Ini adalah resep makanan favorit saya.</p>\n\n    <h2>Bahan-bahan</h2>\n    <!-- Tambahkan ul dengan minimal 4 li di sini -->\n\n    <h2>Cara Membuat</h2>\n    <!-- Tambahkan ol dengan minimal 4 li di sini -->\n\n  </body>\n</html>"
+      },
+      "expectedResult": "Halaman resep dengan unordered list untuk bahan-bahan dan ordered list untuk langkah-langkah.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Resep Favoritku</title>\n  </head>\n  <body>\n    <h1>Resep Favoritku</h1>\n    <p>Ini adalah resep mie goreng sederhana.</p>\n\n    <h2>Bahan-bahan</h2>\n    <ul>\n      <li>1 bungkus mie instan</li>\n      <li>1 butir telur</li>\n      <li>2 batang daun bawang</li>\n      <li>Kecap manis secukupnya</li>\n      <li>Minyak goreng</li>\n    </ul>\n\n    <h2>Cara Membuat</h2>\n    <ol>\n      <li>Rebus mie hingga matang, tiriskan</li>\n      <li>Panaskan wajan dengan sedikit minyak</li>\n      <li>Goreng telur orak-arik</li>\n      <li>Masukkan mie dan bumbu, aduk rata</li>\n      <li>Tambahkan kecap dan daun bawang</li>\n      <li>Sajikan selagi hangat</li>\n    </ol>\n  </body>\n</html>",
+        "explanation": "Kita menggunakan ul untuk bahan-bahan karena urutan bahan tidak penting. Kita menggunakan ol untuk langkah-langkah karena urutan dalam memasak sangat penting — tidak bisa dibalik sembarangan. Setiap item dibungkus dengan tag li."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Tag apa yang digunakan untuk membuat setiap item dalam daftar HTML?",
+        "options": [
+          "<item>",
+          "<list>",
+          "<li>",
+          "<dl>"
+        ],
+        "correctAnswer": "<li>",
+        "explanation": "Tag li (list item) digunakan untuk setiap item dalam daftar, baik di dalam ul maupun ol. Tanpa tag li, browser tidak akan menampilkan item daftar dengan benar.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa perbedaan utama antara ul dan ol?",
+        "options": [
+          "ul untuk teks panjang, ol untuk teks pendek",
+          "ul menggunakan simbol tanpa urutan, ol menggunakan angka berurutan",
+          "ul hanya bisa digunakan di dalam body, ol di dalam head",
+          "ul maksimal 5 item, ol bisa lebih dari 5 item"
+        ],
+        "correctAnswer": "ul menggunakan simbol tanpa urutan, ol menggunakan angka berurutan",
+        "explanation": "ul (unordered list) menampilkan item dengan simbol seperti titik atau bulatan — digunakan saat urutan tidak penting. ol (ordered list) menampilkan item dengan angka otomatis — digunakan saat urutan item sangat penting.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Kamu ingin membuat daftar langkah-langkah membuat kue. Tag apa yang paling tepat?",
+        "options": [
+          "ul karena lebih mudah ditulis",
+          "ol karena urutan langkah sangat penting",
+          "li saja tanpa tag pembungkus",
+          "p untuk setiap langkah"
+        ],
+        "correctAnswer": "ol karena urutan langkah sangat penting",
+        "explanation": "Langkah-langkah membuat kue harus dilakukan secara berurutan — mencampur bahan sebelum dipanggang, bukan sebaliknya. Maka ol (ordered list) adalah pilihan yang tepat karena browser akan menambahkan nomor urut secara otomatis.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Bagaimana cara membuat daftar bersarang (nested list)?",
+        "options": [
+          "Tambahkan atribut nested pada tag li",
+          "Tempatkan tag ul atau ol baru di dalam tag li",
+          "Gunakan tag dl untuk daftar bersarang",
+          "Tambahkan koma di antara item-item daftar"
+        ],
+        "correctAnswer": "Tempatkan tag ul atau ol baru di dalam tag li",
+        "explanation": "Daftar bersarang dibuat dengan menempatkan tag ul atau ol baru di dalam tag li. Browser akan otomatis memberikan indentasi dan simbol yang berbeda untuk sub-daftar tersebut.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Di dalam tag apa tag li harus selalu berada?",
+        "options": [
+          "Di dalam tag p",
+          "Di dalam tag div",
+          "Di dalam tag ul atau ol",
+          "Di dalam tag body langsung"
+        ],
+        "correctAnswer": "Di dalam tag ul atau ol",
+        "explanation": "Tag li (list item) harus selalu berada di dalam tag ul (unordered list) atau ol (ordered list). Tag li tidak valid jika digunakan di luar konteks daftar.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Hebat! Kamu sekarang bisa membuat daftar yang rapi menggunakan ul untuk item tanpa urutan dan ol untuk langkah-langkah berurutan. Daftar adalah salah satu alat paling berguna di HTML.",
+    "achievementName": "Penyusun Daftar",
+    "achievementIcon": "📋"
+  }
+}

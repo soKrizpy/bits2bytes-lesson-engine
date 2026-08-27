@@ -1,0 +1,242 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-14",
+    "title": "Flexbox Layout — Menyusun Elemen dengan CSS",
+    "description": "Pelajari cara menggunakan CSS Flexbox untuk membuat layout horizontal dan vertikal, mengatur jarak antar elemen, dan menyusun kartu secara fleksibel.",
+    "level": "beginner",
+    "category": "CSS",
+    "topicNumber": 4,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Flexbox — Cara Modern Mengatur Layout",
+    "description": "Sampai sekarang elemen HTML ditampilkan satu per satu dari atas ke bawah. Tapi website nyata punya layout yang lebih kompleks — navigasi horizontal, kartu yang berjejer, konten di tengah layar. Flexbox adalah fitur CSS yang memungkinkan semua itu tanpa kode yang rumit. Di topik ini kamu akan belajar cara menyusun elemen secara horizontal maupun vertikal dengan kontrol penuh.",
+    "analogy": "Flexbox seperti rak display di toko. Kamu bisa mengatur apakah barang-barang disusun dari kiri ke kanan atau dari atas ke bawah, seberapa jauh jarak antar barang, dan apakah semuanya rata kiri, rata tengah, atau tersebar merata."
+  },
+  "objectives": [
+    "Mengaktifkan Flexbox dengan display: flex pada elemen induk",
+    "Mengubah arah susunan elemen dengan flex-direction",
+    "Mengatur distribusi ruang horizontal dengan justify-content",
+    "Mengatur perataan vertikal dengan align-items",
+    "Mengatur jarak antar elemen dengan gap",
+    "Membangun layout kartu horizontal menggunakan Flexbox"
+  ],
+  "review": {
+    "learned": [
+      "display: flex mengaktifkan Flexbox pada elemen induk — semua anak langsungnya menjadi flex items.",
+      "flex-direction: row menyusun elemen secara horizontal (default); column secara vertikal.",
+      "justify-content mengatur distribusi ruang di sepanjang sumbu utama: flex-start, center, flex-end, space-between, space-around.",
+      "align-items mengatur perataan di sumbu silang: flex-start, center, flex-end, stretch.",
+      "gap menambahkan jarak seragam antara semua flex items.",
+      "Flexbox hanya mempengaruhi anak langsung dari elemen yang menggunakan display: flex."
+    ],
+    "keyConcepts": [
+      "display: flex",
+      "flex-direction",
+      "justify-content",
+      "align-items",
+      "gap",
+      "Flex container dan flex items"
+    ],
+    "takeaways": [
+      "Terapkan display: flex pada elemen induk (container), bukan pada elemen anak.",
+      "justify-content: space-between sangat berguna untuk navigasi dan toolbar.",
+      "gap lebih bersih daripada menggunakan margin pada setiap item.",
+      "Kombinasi justify-content: center dan align-items: center memusatkan konten secara horizontal dan vertikal sekaligus."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-flex-intro",
+      "type": "lesson",
+      "title": "Apa Itu Flexbox?",
+      "xp": 5,
+      "explanation": "Sebelum Flexbox, mengatur layout dengan CSS cukup rumit. Flexbox (Flexible Box Layout) adalah modul CSS yang dirancang khusus untuk menyusun elemen dalam satu dimensi — baik horizontal maupun vertikal — dengan mudah.\n\nKonsep utama Flexbox:\n• Flex container — elemen induk yang menggunakan display: flex\n• Flex items — elemen anak langsung di dalam container\n\nSaat kamu menulis display: flex pada sebuah elemen, semua anak langsungnya otomatis menjadi flex items dan bisa diatur posisinya dengan properti Flexbox.\n\nFlex items secara default disusun dari kiri ke kanan dalam satu baris.\n\nCara mengaktifkan:\n.container {\n  display: flex;\n}",
+      "tips": [
+        "Flexbox bekerja dalam satu dimensi — baris ATAU kolom. Untuk dua dimensi (baris DAN kolom sekaligus), ada CSS Grid yang dipelajari di level berikutnya.",
+        "Properti Flexbox diterapkan pada container, bukan pada item — itulah cara kerjanya yang membedakan dari properti CSS biasa."
+      ]
+    },
+    {
+      "id": "node-02-flex-properties",
+      "type": "lesson",
+      "title": "Properti-properti Utama Flexbox",
+      "xp": 5,
+      "explanation": "Lima properti Flexbox paling penting yang perlu kamu kuasai:\n\n1. flex-direction\nMenentukan arah susunan flex items.\n• row (default) — kiri ke kanan\n• column — atas ke bawah\n\n2. justify-content\nMengatur distribusi ruang di sumbu utama (horizontal untuk row).\n• flex-start — semua ke kiri\n• center — semua ke tengah\n• flex-end — semua ke kanan\n• space-between — item pertama kiri, terakhir kanan, sisanya tersebar\n• space-around — jarak merata di sekeliling setiap item\n\n3. align-items\nMengatur perataan di sumbu silang (vertikal untuk row).\n• flex-start — sejajar atas\n• center — sejajar tengah\n• flex-end — sejajar bawah\n• stretch — memanjang memenuhi tinggi container (default)\n\n4. gap\nJarak seragam antara semua flex items.\ngap: 16px;\n\n5. flex-wrap\nApakah items boleh pindah ke baris baru jika tidak cukup.\nflex-wrap: wrap;",
+      "analogy": "justify-content seperti mengatur posisi penumpang di bus: apakah semua duduk di depan (flex-start), semua di tengah (center), atau tersebar merata (space-between). align-items mengatur apakah mereka duduk di kursi bawah, tengah, atau atas jika kursinya bertingkat.",
+      "tips": [
+        "Ingat: justify-content bekerja di arah flex-direction. Untuk column, justify-content mengatur distribusi vertikal.",
+        "gap lebih direkomendasikan daripada margin karena lebih mudah dipelihara."
+      ]
+    },
+    {
+      "id": "node-03-flex-row",
+      "type": "code",
+      "title": "Flex Row — Elemen Berjejer Horizontal",
+      "xp": 5,
+      "explanation": "Contoh pertama: membuat tiga kotak berjejer horizontal menggunakan Flexbox. Tanpa Flexbox, div akan tampil satu per satu dari atas ke bawah. Dengan display: flex, semua anak langsung berjejer dari kiri ke kanan.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Flex Row</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f0f4f8;\n        padding: 24px;\n      }\n      .flex-container {\n        display: flex;\n        gap: 16px;\n        background-color: #e2e8f0;\n        padding: 16px;\n        border-radius: 8px;\n      }\n      .flex-item {\n        background-color: #3182ce;\n        color: white;\n        padding: 20px;\n        border-radius: 8px;\n        font-weight: bold;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Flex Row — Berjejer Horizontal</h1>\n    <div class=\"flex-container\">\n      <div class=\"flex-item\">Item 1</div>\n      <div class=\"flex-item\">Item 2</div>\n      <div class=\"flex-item\">Item 3</div>\n    </div>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-justify-content",
+      "type": "code",
+      "title": "justify-content — Mengatur Distribusi Ruang",
+      "xp": 5,
+      "explanation": "Properti justify-content mengatur bagaimana flex items didistribusikan di sepanjang sumbu utama. Contoh di bawah menunjukkan nilai space-between yang sangat berguna untuk navigasi — item pertama di kiri, terakhir di kanan, sisanya tersebar merata.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>justify-content</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f7fafc;\n        padding: 24px;\n        color: #2d3748;\n      }\n      h2 { font-size: 18px; color: #2b6cb0; margin: 24px 0 8px; }\n      .nav-bar {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        background-color: #2d3748;\n        padding: 16px 24px;\n        border-radius: 8px;\n      }\n      .nav-brand {\n        color: #ffffff;\n        font-size: 20px;\n        font-weight: bold;\n      }\n      .nav-links {\n        display: flex;\n        gap: 24px;\n      }\n      .nav-links a {\n        color: #a0aec0;\n        text-decoration: none;\n        font-size: 15px;\n      }\n      .center-demo {\n        display: flex;\n        justify-content: center;\n        gap: 16px;\n        padding: 16px;\n        background-color: #ebf8ff;\n        border-radius: 8px;\n      }\n      .item {\n        background-color: #3182ce;\n        color: white;\n        padding: 12px 24px;\n        border-radius: 6px;\n        font-weight: bold;\n      }\n    </style>\n  </head>\n  <body>\n    <h2>space-between — Navigasi</h2>\n    <nav class=\"nav-bar\">\n      <div class=\"nav-brand\">MyWebsite</div>\n      <div class=\"nav-links\">\n        <a href=\"#\">Beranda</a>\n        <a href=\"#\">Tentang</a>\n        <a href=\"#\">Kontak</a>\n      </div>\n    </nav>\n\n    <h2>center — Items di Tengah</h2>\n    <div class=\"center-demo\">\n      <div class=\"item\">Item A</div>\n      <div class=\"item\">Item B</div>\n    </div>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-align-items",
+      "type": "code",
+      "title": "align-items — Perataan Vertikal",
+      "xp": 5,
+      "explanation": "align-items mengatur perataan flex items di sumbu silang (vertikal untuk flex-direction: row). Nilai center sangat berguna untuk membuat item yang berbeda tingginya terlihat sejajar di tengah.\n\nContoh di bawah menunjukkan perbedaan antara align-items: flex-start, center, dan flex-end pada container yang sama.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>align-items</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f7fafc;\n        padding: 24px;\n        color: #2d3748;\n      }\n      h2 { font-size: 16px; color: #2b6cb0; margin: 16px 0 6px; }\n      .container {\n        display: flex;\n        gap: 12px;\n        background-color: #e2e8f0;\n        padding: 12px;\n        border-radius: 8px;\n        height: 120px;\n        margin-bottom: 16px;\n      }\n      .container-top { align-items: flex-start; }\n      .container-center { align-items: center; }\n      .container-end { align-items: flex-end; }\n      .item {\n        background-color: #3182ce;\n        color: white;\n        padding: 12px 20px;\n        border-radius: 6px;\n        font-weight: bold;\n      }\n    </style>\n  </head>\n  <body>\n    <h2>align-items: flex-start</h2>\n    <div class=\"container container-top\">\n      <div class=\"item\">A</div>\n      <div class=\"item\">B</div>\n      <div class=\"item\">C</div>\n    </div>\n\n    <h2>align-items: center</h2>\n    <div class=\"container container-center\">\n      <div class=\"item\">A</div>\n      <div class=\"item\">B</div>\n      <div class=\"item\">C</div>\n    </div>\n\n    <h2>align-items: flex-end</h2>\n    <div class=\"container container-end\">\n      <div class=\"item\">A</div>\n      <div class=\"item\">B</div>\n      <div class=\"item\">C</div>\n    </div>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-flex-column",
+      "type": "code",
+      "title": "flex-direction: column — Susunan Vertikal",
+      "xp": 5,
+      "explanation": "Mengubah flex-direction ke column membuat flex items tersusun dari atas ke bawah. Saat menggunakan column, justify-content mengatur distribusi vertikal dan align-items mengatur perataan horizontal.\n\nContoh di bawah membuat sidebar navigasi vertikal yang umum di website modern.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Flex Column</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f0f4f8;\n        padding: 24px;\n        color: #2d3748;\n      }\n      .page-layout {\n        display: flex;\n        gap: 24px;\n      }\n      .sidebar {\n        display: flex;\n        flex-direction: column;\n        gap: 8px;\n        background-color: #2d3748;\n        padding: 16px;\n        border-radius: 12px;\n        width: 180px;\n      }\n      .sidebar a {\n        color: #a0aec0;\n        text-decoration: none;\n        padding: 10px 16px;\n        border-radius: 6px;\n        font-size: 15px;\n      }\n      .sidebar a:hover {\n        background-color: #4a5568;\n        color: #ffffff;\n      }\n      .sidebar .active {\n        background-color: #3182ce;\n        color: #ffffff;\n        font-weight: bold;\n      }\n      .main-content {\n        background-color: #ffffff;\n        border: 1px solid #e2e8f0;\n        border-radius: 12px;\n        padding: 24px;\n        flex: 1;\n      }\n    </style>\n  </head>\n  <body>\n    <div class=\"page-layout\">\n      <nav class=\"sidebar\">\n        <a href=\"#\" class=\"active\">Beranda</a>\n        <a href=\"#\">Pelajaran</a>\n        <a href=\"#\">Progress</a>\n        <a href=\"#\">Profil</a>\n      </nav>\n      <main class=\"main-content\">\n        <h1>Selamat Datang!</h1>\n        <p>Ini adalah area konten utama. Sidebar di sebelah kiri menggunakan flex-direction: column.</p>\n      </main>\n    </div>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-card-grid-flex",
+      "type": "code",
+      "title": "Layout Kartu dengan Flexbox",
+      "xp": 5,
+      "explanation": "Menggabungkan semua properti Flexbox yang sudah dipelajari untuk membuat layout kartu yang mulai menyerupai website nyata.\n\nInilah pola yang sangat umum di website modern — baris kartu dengan jarak merata menggunakan Flexbox. flex-wrap: wrap memungkinkan kartu pindah ke baris baru jika layar terlalu sempit.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Card Layout Flexbox</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f0f4f8;\n        padding: 32px;\n        color: #2d3748;\n      }\n      h1 {\n        font-size: 32px;\n        text-align: center;\n        color: #1a202c;\n        margin-bottom: 8px;\n      }\n      .subtitle {\n        text-align: center;\n        color: #718096;\n        margin-bottom: 32px;\n      }\n      .card-grid {\n        display: flex;\n        flex-wrap: wrap;\n        gap: 20px;\n        justify-content: center;\n      }\n      .card {\n        background-color: #ffffff;\n        border: 1px solid #e2e8f0;\n        border-radius: 12px;\n        padding: 24px;\n        width: 260px;\n      }\n      .card-icon {\n        font-size: 32px;\n        margin-bottom: 12px;\n      }\n      .card h2 {\n        font-size: 18px;\n        color: #1a202c;\n        margin: 0 0 8px;\n      }\n      .card p {\n        font-size: 14px;\n        color: #718096;\n        line-height: 1.6;\n        margin: 0;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Fitur Unggulan</h1>\n    <p class=\"subtitle\">Semua yang kamu butuhkan untuk belajar coding</p>\n\n    <div class=\"card-grid\">\n      <div class=\"card\">\n        <div class=\"card-icon\">📚</div>\n        <h2>Pelajaran Terstruktur</h2>\n        <p>Kurikulum dari dasar hingga mahir yang disusun oleh para ahli.</p>\n      </div>\n      <div class=\"card\">\n        <div class=\"card-icon\">💻</div>\n        <h2>Latihan Langsung</h2>\n        <p>Tulis dan jalankan kode langsung di browser tanpa instalasi.</p>\n      </div>\n      <div class=\"card\">\n        <div class=\"card-icon\">🏆</div>\n        <h2>Sistem XP & Badge</h2>\n        <p>Dapatkan poin pengalaman dan lencana di setiap topik yang diselesaikan.</p>\n      </div>\n    </div>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Pilih Properti Flexbox yang Tepat",
+      "xp": 10,
+      "instructions": "Kamu punya sebuah div container dengan display: flex. Di dalamnya ada tiga tombol. Kamu ingin tombol-tombol tersebut tersusun horizontal dan berjarak sama rata dengan item pertama di paling kiri dan item terakhir di paling kanan. Properti CSS mana yang harus ditambahkan ke container?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "flex-direction: space-between",
+        "justify-content: space-between",
+        "align-items: space-between",
+        "flex-wrap: space-between"
+      ],
+      "correctOption": "justify-content: space-between"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Navigation Bar dengan Flexbox",
+      "xp": 15,
+      "instructions": "Buat navigation bar horizontal menggunakan Flexbox.\n\nRequirements:\n1. Container nav dengan class 'navbar' menggunakan display: flex, justify-content: space-between, align-items: center, background-color: #1a202c, padding: 16px 32px\n2. Di sebelah kiri: sebuah div dengan class 'brand' berisi nama website (h2, font-size: 20px, color: #ffffff, margin: 0)\n3. Di sebelah kanan: sebuah div dengan class 'nav-links' menggunakan display: flex, gap: 24px, berisi tiga tag a dengan teks 'Beranda', 'Tentang', 'Kontak' (color: #a0aec0, text-decoration: none)\n\nHasil: navigation bar gelap dengan nama website di kiri dan tiga link di kanan.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Navigation Bar</title>\n    <!-- Tambahkan CSS di sini -->\n  </head>\n  <body>\n    <!-- Tambahkan nav, brand, dan nav-links di sini -->\n  </body>\n</html>"
+      },
+      "expectedResult": "Navigation bar gelap dengan nama website di kiri dan tiga link horizontal di kanan.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Navigation Bar</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        margin: 0;\n        background-color: #f7fafc;\n      }\n      .navbar {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        background-color: #1a202c;\n        padding: 16px 32px;\n      }\n      .brand h2 {\n        font-size: 20px;\n        color: #ffffff;\n        margin: 0;\n      }\n      .nav-links {\n        display: flex;\n        gap: 24px;\n      }\n      .nav-links a {\n        color: #a0aec0;\n        text-decoration: none;\n        font-size: 15px;\n      }\n    </style>\n  </head>\n  <body>\n    <nav class=\"navbar\">\n      <div class=\"brand\">\n        <h2>MySite</h2>\n      </div>\n      <div class=\"nav-links\">\n        <a href=\"#\">Beranda</a>\n        <a href=\"#\">Tentang</a>\n        <a href=\"#\">Kontak</a>\n      </div>\n    </nav>\n  </body>\n</html>",
+        "explanation": "Kita membuat nav dengan class navbar yang menggunakan display: flex dan justify-content: space-between — ini menempatkan brand di kiri dan nav-links di kanan secara otomatis. align-items: center memastikan keduanya sejajar secara vertikal di tengah navbar. Nav-links sendiri juga menggunakan display: flex dengan gap untuk menyusun tiga link secara horizontal."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Properti CSS apa yang digunakan untuk mengaktifkan Flexbox pada sebuah elemen?",
+        "options": [
+          "flex: enable",
+          "layout: flexbox",
+          "display: flex",
+          "flex-mode: on"
+        ],
+        "correctAnswer": "display: flex",
+        "explanation": "Untuk mengaktifkan Flexbox, gunakan display: flex pada elemen induk (container). Semua anak langsung dari elemen tersebut otomatis menjadi flex items dan bisa diatur posisinya dengan properti Flexbox.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Nilai flex-direction mana yang menyusun flex items dari atas ke bawah?",
+        "options": [
+          "flex-direction: horizontal",
+          "flex-direction: row",
+          "flex-direction: vertical",
+          "flex-direction: column"
+        ],
+        "correctAnswer": "flex-direction: column",
+        "explanation": "flex-direction: column menyusun flex items secara vertikal dari atas ke bawah. Nilai default adalah row yang menyusun items secara horizontal dari kiri ke kanan.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Nilai justify-content mana yang menempatkan item pertama di paling kiri dan item terakhir di paling kanan, dengan jarak merata di antara items lainnya?",
+        "options": [
+          "justify-content: flex-start",
+          "justify-content: center",
+          "justify-content: space-between",
+          "justify-content: space-evenly"
+        ],
+        "correctAnswer": "justify-content: space-between",
+        "explanation": "justify-content: space-between menempatkan item pertama di ujung kiri, item terakhir di ujung kanan, dan mendistribusikan ruang yang tersisa secara merata di antara items. Ini sangat berguna untuk navigation bar.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Properti Flexbox mana yang mengatur perataan flex items secara vertikal (untuk flex-direction: row)?",
+        "options": [
+          "justify-content",
+          "vertical-align",
+          "text-align",
+          "align-items"
+        ],
+        "correctAnswer": "align-items",
+        "explanation": "align-items mengatur perataan di sumbu silang — untuk flex-direction: row, sumbu silang adalah vertikal. Nilai center akan membuat semua flex items sejajar di tengah container secara vertikal.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Properti CSS mana yang digunakan untuk mengatur jarak seragam antara semua flex items?",
+        "options": [
+          "spacing: 16px",
+          "margin: auto",
+          "gap: 16px",
+          "padding: 16px"
+        ],
+        "correctAnswer": "gap: 16px",
+        "explanation": "Properti gap pada flex container menambahkan jarak seragam antara semua flex items. Ini lebih bersih daripada menggunakan margin pada setiap item karena tidak menambah jarak di tepi luar container.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Luar biasa! Flexbox adalah salah satu skill CSS paling berharga — hampir setiap website modern menggunakannya. Navigation bar, layout kartu, dan centering konten, semuanya jauh lebih mudah dengan Flexbox.",
+    "achievementName": "Master Flexbox",
+    "achievementIcon": "⬛"
+  }
+}

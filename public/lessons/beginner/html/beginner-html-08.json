@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-08",
+    "title": "Formulir HTML — Mengumpulkan Input Pengguna",
+    "description": "Pelajari cara membuat formulir HTML menggunakan tag form, label, input, dan button untuk mengumpulkan data dari pengguna halaman web.",
+    "level": "beginner",
+    "category": "HTML",
+    "topicNumber": 8,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Formulir — Jembatan antara Pengguna dan Website",
+    "description": "Setiap kali kamu mengisi nama, email, atau password di sebuah website, kamu sedang menggunakan formulir HTML. Di topik ini kamu akan belajar cara membuat formulir dari nol — mulai dari kotak input sederhana sampai formulir pendaftaran lengkap.",
+    "analogy": "Formulir HTML seperti blangko isian di kantor pos. Ada kolom-kolom yang harus diisi, ada label yang menjelaskan setiap kolom, dan ada tombol untuk mengirimkan isian tersebut. HTML memberikan alat yang sama untuk halaman web."
+  },
+  "objectives": [
+    "Memahami fungsi elemen form dalam HTML",
+    "Membuat input teks, email, dan password menggunakan tag input",
+    "Menghubungkan label dengan input menggunakan atribut for dan id",
+    "Menambahkan placeholder dan atribut required pada input",
+    "Membuat tombol submit menggunakan tag button"
+  ],
+  "review": {
+    "learned": [
+      "Tag form adalah wadah untuk semua elemen formulir.",
+      "Tag input dengan atribut type menentukan jenis kotak isian — text, email, atau password.",
+      "Tag label menjelaskan tujuan setiap input kepada pengguna.",
+      "Atribut for pada label harus sama dengan atribut id pada input yang dituju.",
+      "Atribut placeholder menampilkan teks petunjuk di dalam kotak input sebelum diisi.",
+      "Atribut required membuat field wajib diisi sebelum formulir bisa dikirim.",
+      "Tag button dengan type='submit' membuat tombol untuk mengirimkan formulir."
+    ],
+    "keyConcepts": [
+      "Tag form",
+      "Tag input dan atribut type",
+      "Tag label dan atribut for",
+      "Atribut placeholder",
+      "Atribut required",
+      "Tag button"
+    ],
+    "takeaways": [
+      "Setiap input sebaiknya punya label agar pengguna tahu harus mengisi apa.",
+      "Atribut id pada input harus unik di seluruh halaman.",
+      "Gunakan type='email' untuk input email — browser akan memvalidasi formatnya secara otomatis.",
+      "Gunakan type='password' agar teks yang diketik disembunyikan dengan simbol titik.",
+      "Atribut required mencegah form dikirim jika field masih kosong."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-form-intro",
+      "type": "lesson",
+      "title": "Apa Itu Formulir HTML?",
+      "xp": 5,
+      "explanation": "Formulir HTML (form) adalah cara untuk mengumpulkan input dari pengguna. Hampir setiap website menggunakannya:\n\n• Formulir login — untuk memasukkan username dan password\n• Formulir pendaftaran — untuk mengisi nama, email, dan data lain\n• Formulir pencarian — untuk memasukkan kata kunci\n• Formulir kontak — untuk mengirim pesan\n\nSebuah formulir HTML terdiri dari beberapa komponen utama:\n• form — tag pembungkus yang menandai awal dan akhir formulir\n• label — teks yang menjelaskan setiap field\n• input — kotak isian yang bisa diketik pengguna\n• button — tombol untuk mengirim formulir\n\nDi topik ini kita akan membangun formulir dari komponen-komponen ini satu per satu.",
+      "tips": [
+        "Formulir HTML hanya mengumpulkan data — untuk memproses datanya, kamu perlu server-side programming yang akan dipelajari nanti.",
+        "Meski belum bisa memproses data, membuat formulir HTML adalah keterampilan dasar yang sangat penting."
+      ]
+    },
+    {
+      "id": "node-02-input-label",
+      "type": "lesson",
+      "title": "Input dan Label — Pasangan Wajib",
+      "xp": 5,
+      "explanation": "Dua elemen paling penting dalam formulir adalah input dan label.\n\nTag input:\nMembuat kotak isian yang bisa diketik pengguna. Ini adalah self-closing tag (tidak punya penutup). Atribut type menentukan jenis input:\n• type='text' — teks biasa\n• type='email' — alamat email\n• type='password' — kata sandi (teks disembunyikan)\n\nTag label:\nMenjelaskan tujuan setiap input. Sangat penting untuk aksesibilitas — pembaca layar membacakan label saat pengguna fokus ke input.\n\nMenghubungkan label dengan input:\nGunakan atribut for pada label yang nilainya sama dengan atribut id pada input:\n<label for='nama'>Nama</label>\n<input type='text' id='nama'>\n\nDengan koneksi ini, mengklik teks label akan langsung memfokuskan kursor ke input yang sesuai.",
+      "analogy": "Label dan input seperti kotak surat dan namanya. Nama di kotak surat (label) memberitahu siapa pemiliknya — tanpa nama, orang tidak tahu surat itu untuk siapa.",
+      "tips": [
+        "Selalu pasangkan setiap input dengan label — ini bukan hanya soal tampilan, tapi juga aksesibilitas.",
+        "Nilai atribut id pada input dan for pada label harus sama persis, termasuk huruf besar/kecil."
+      ]
+    },
+    {
+      "id": "node-03-basic-input",
+      "type": "code",
+      "title": "Input Teks Pertamamu",
+      "xp": 5,
+      "explanation": "Inilah formulir paling sederhana — satu input teks dengan label. Perhatikan:\n• Tag form membungkus semua elemen formulir\n• Label terhubung ke input melalui for='nama' dan id='nama'\n• Input tidak punya tag penutup\n• Atribut placeholder menampilkan teks petunjuk abu-abu di dalam kotak",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Formulir Sederhana</title>\n  </head>\n  <body>\n    <h1>Formulir Pertamaku</h1>\n\n    <form>\n      <label for=\"nama\">Nama Lengkap</label>\n      <input type=\"text\" id=\"nama\" placeholder=\"Ketik namamu di sini\">\n    </form>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-input-types",
+      "type": "code",
+      "title": "Berbagai Jenis Input",
+      "xp": 5,
+      "explanation": "Dengan mengubah nilai type pada input, kamu bisa membuat berbagai jenis kotak isian. Contoh di bawah menampilkan tiga jenis paling umum:\n\n• type='text' — untuk teks biasa seperti nama\n• type='email' — browser memvalidasi format email secara otomatis\n• type='password' — teks yang diketik diganti dengan simbol titik\n\nPerhatikan bahwa setiap input punya label sendiri yang terhubung melalui pasangan for dan id.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Jenis Input</title>\n  </head>\n  <body>\n    <h1>Formulir Login</h1>\n\n    <form>\n      <label for=\"nama\">Nama</label>\n      <input type=\"text\" id=\"nama\" placeholder=\"Nama lengkapmu\">\n\n      <label for=\"email\">Email</label>\n      <input type=\"email\" id=\"email\" placeholder=\"contoh@email.com\">\n\n      <label for=\"sandi\">Password</label>\n      <input type=\"password\" id=\"sandi\" placeholder=\"Minimal 8 karakter\">\n    </form>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-required-button",
+      "type": "code",
+      "title": "Required dan Tombol Submit",
+      "xp": 5,
+      "explanation": "Dua tambahan penting pada formulir:\n\nAtribut required:\nMembuat field wajib diisi. Jika pengguna mencoba mengirim formulir dan field required masih kosong, browser akan menampilkan pesan error secara otomatis — kamu tidak perlu JavaScript untuk ini.\n\nTag button:\nMembuat tombol. Untuk formulir, gunakan type='submit' agar tombol mengirimkan formulir saat diklik. Teks di antara tag button adalah teks yang terlihat di tombol.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Formulir dengan Validasi</title>\n  </head>\n  <body>\n    <h1>Formulir Login</h1>\n\n    <form>\n      <label for=\"email\">Email</label>\n      <input type=\"email\" id=\"email\" placeholder=\"contoh@email.com\" required>\n\n      <label for=\"sandi\">Password</label>\n      <input type=\"password\" id=\"sandi\" placeholder=\"Password kamu\" required>\n\n      <button type=\"submit\">Masuk</button>\n    </form>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-registration-form",
+      "type": "code",
+      "title": "Formulir Pendaftaran",
+      "xp": 5,
+      "explanation": "Sekarang kita gabungkan semua yang sudah dipelajari untuk membuat formulir pendaftaran yang lebih lengkap. Perhatikan:\n• Setiap input punya label yang terhubung\n• Input email dan password menggunakan type yang sesuai\n• Field wajib menggunakan required\n• Ada tombol submit di bagian bawah\n\nSetelah membuka di browser, coba klik tombol 'Daftar' tanpa mengisi — browser akan meminta kamu mengisi field yang required.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Formulir Pendaftaran</title>\n  </head>\n  <body>\n    <h1>Daftar Akun Baru</h1>\n\n    <form>\n      <label for=\"nama\">Nama Lengkap</label>\n      <input type=\"text\" id=\"nama\" placeholder=\"Masukkan nama lengkapmu\" required>\n\n      <label for=\"email\">Alamat Email</label>\n      <input type=\"email\" id=\"email\" placeholder=\"contoh@email.com\" required>\n\n      <label for=\"sandi\">Password</label>\n      <input type=\"password\" id=\"sandi\" placeholder=\"Minimal 8 karakter\" required>\n\n      <button type=\"submit\">Daftar Sekarang</button>\n    </form>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-complete-form",
+      "type": "code",
+      "title": "Formulir Lengkap dalam Halaman",
+      "xp": 5,
+      "explanation": "Inilah formulir kontak lengkap yang diintegrasikan ke dalam halaman dengan heading dan paragraf sebagai konteks. Ini adalah pola yang sangat umum di website nyata.\n\nPerhatikan bahwa formulir ini menggunakan semua konsep yang sudah dipelajari:\n• Beberapa jenis input (text, email)\n• Setiap input punya label terhubung\n• Atribut required untuk field wajib\n• Placeholder sebagai petunjuk\n• Tombol submit",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Hubungi Kami</title>\n  </head>\n  <body>\n    <h1>Hubungi Kami</h1>\n    <p>Isi formulir di bawah ini dan kami akan segera membalas pesanmu.</p>\n\n    <form>\n      <label for=\"nama\">Nama</label>\n      <input type=\"text\" id=\"nama\" placeholder=\"Namamu\" required>\n\n      <label for=\"email\">Email</label>\n      <input type=\"email\" id=\"email\" placeholder=\"emailmu@contoh.com\" required>\n\n      <label for=\"subjek\">Subjek</label>\n      <input type=\"text\" id=\"subjek\" placeholder=\"Topik pesanmu\">\n\n      <button type=\"submit\">Kirim Pesan</button>\n    </form>\n\n    <p>Kami biasanya membalas dalam 1-2 hari kerja.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Pilih Atribut yang Tepat",
+      "xp": 10,
+      "instructions": "Kamu ingin membuat kotak input untuk alamat email yang wajib diisi dan menampilkan teks petunjuk 'Masukkan email kamu'. Atribut mana yang TIDAK perlu ada pada input tersebut?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "type=\"email\"",
+        "required",
+        "placeholder",
+        "src"
+      ],
+      "correctOption": "src"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Buat Formulir Profil",
+      "xp": 15,
+      "instructions": "Kode starter di bawah sudah punya struktur halaman dasar.\n\nTugasmu: Lengkapi formulir dengan menambahkan:\n1. Input teks untuk 'Nama Pengguna' dengan id='username' dan required\n2. Input email untuk 'Email' dengan id='email' dan required\n3. Input password untuk 'Password Baru' dengan id='password'\n4. Tombol submit dengan teks 'Simpan Profil'\n\nPastikan setiap input punya label yang terhubung dengan benar.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Edit Profil</title>\n  </head>\n  <body>\n    <h1>Edit Profil Saya</h1>\n    <p>Perbarui informasi profilmu di sini.</p>\n\n    <form>\n      <!-- Tambahkan label dan input di sini -->\n\n    </form>\n  </body>\n</html>"
+      },
+      "expectedResult": "Formulir dengan tiga input (username, email, password) masing-masing dengan label terhubung, atribut required pada dua field pertama, dan tombol submit.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Edit Profil</title>\n  </head>\n  <body>\n    <h1>Edit Profil Saya</h1>\n    <p>Perbarui informasi profilmu di sini.</p>\n\n    <form>\n      <label for=\"username\">Nama Pengguna</label>\n      <input type=\"text\" id=\"username\" placeholder=\"Nama penggunamu\" required>\n\n      <label for=\"email\">Email</label>\n      <input type=\"email\" id=\"email\" placeholder=\"emailmu@contoh.com\" required>\n\n      <label for=\"password\">Password Baru</label>\n      <input type=\"password\" id=\"password\" placeholder=\"Password baru\">\n\n      <button type=\"submit\">Simpan Profil</button>\n    </form>\n  </body>\n</html>",
+        "explanation": "Kita menambahkan tiga pasang label dan input. Setiap label punya atribut for yang nilainya sama dengan id pada input yang dituju — ini menghubungkan keduanya. Input username dan email menggunakan required karena wajib diisi. Input password tidak required karena pengguna mungkin tidak ingin mengubah password. Tombol submit menggunakan type='submit' dan teks 'Simpan Profil'."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Atribut apa yang digunakan untuk menghubungkan tag label dengan tag input yang sesuai?",
+        "options": [
+          "Atribut id pada label dan for pada input",
+          "Atribut for pada label dan id pada input",
+          "Atribut name pada keduanya dengan nilai yang sama",
+          "Atribut class pada keduanya dengan nilai yang sama"
+        ],
+        "correctAnswer": "Atribut for pada label dan id pada input",
+        "explanation": "Tag label menggunakan atribut for yang nilainya harus sama dengan atribut id pada input yang dituju. Koneksi ini membuat klik pada teks label langsung memfokuskan cursor ke input, dan membantu pembaca layar mengidentifikasi tujuan setiap input.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa fungsi atribut required pada tag input?",
+        "options": [
+          "Membuat teks di dalam input berwarna merah",
+          "Mencegah formulir dikirim jika field masih kosong",
+          "Mengunci input agar tidak bisa diketik",
+          "Menampilkan teks petunjuk di dalam kotak input"
+        ],
+        "correctAnswer": "Mencegah formulir dikirim jika field masih kosong",
+        "explanation": "Atribut required membuat field wajib diisi. Saat pengguna mencoba mengirim formulir dan field required masih kosong, browser secara otomatis menampilkan pesan error dan menolak pengiriman — tanpa perlu JavaScript sama sekali.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Jenis input apa yang sebaiknya digunakan untuk kolom kata sandi agar teks yang diketik disembunyikan?",
+        "options": [
+          "type=\"text\"",
+          "type=\"hidden\"",
+          "type=\"password\"",
+          "type=\"secret\""
+        ],
+        "correctAnswer": "type=\"password\"",
+        "explanation": "Input dengan type='password' secara otomatis menyembunyikan teks yang diketik pengguna — menggantinya dengan simbol titik atau bintang. Ini adalah praktik keamanan standar agar orang di sekitar tidak bisa melihat password yang sedang diketik.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Apa fungsi atribut placeholder pada input?",
+        "options": [
+          "Menentukan nilai default yang dikirim bersama formulir",
+          "Menampilkan teks petunjuk abu-abu di dalam input sebelum diisi pengguna",
+          "Membuat teks di dalam input tidak bisa dihapus",
+          "Menentukan panjang maksimum teks yang bisa diisi"
+        ],
+        "correctAnswer": "Menampilkan teks petunjuk abu-abu di dalam input sebelum diisi pengguna",
+        "explanation": "Atribut placeholder menampilkan teks petunjuk di dalam kotak input saat masih kosong. Teks ini hilang otomatis saat pengguna mulai mengetik. Placeholder membantu pengguna memahami format atau contoh isian yang diharapkan.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Tag apa yang digunakan sebagai wadah/pembungkus untuk semua elemen dalam sebuah formulir HTML?",
+        "options": [
+          "<input>",
+          "<fieldset>",
+          "<form>",
+          "<section>"
+        ],
+        "correctAnswer": "<form>",
+        "explanation": "Tag form adalah tag pembungkus yang menandai awal dan akhir sebuah formulir HTML. Semua elemen formulir — label, input, button, dan lainnya — harus berada di dalam tag form agar bisa bekerja bersama sebagai satu kesatuan formulir.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Luar biasa! Kamu sekarang bisa membuat formulir HTML lengkap dengan input, label, validasi required, dan tombol submit. Formulir adalah jembatan antara pengunjung dan website — keterampilan yang akan terus kamu gunakan.",
+    "achievementName": "Pembuat Formulir",
+    "achievementIcon": "📝"
+  }
+}

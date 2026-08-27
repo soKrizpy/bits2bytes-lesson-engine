@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-07",
+    "title": "Menyusun Data dengan Tabel HTML",
+    "description": "Pelajari cara membuat tabel HTML menggunakan tag table, tr, th, dan td untuk menyajikan data terstruktur dalam baris dan kolom.",
+    "level": "beginner",
+    "category": "HTML",
+    "topicNumber": 7,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Data yang Tersusun Rapi dalam Tabel",
+    "description": "Tabel adalah cara terbaik untuk menyajikan data yang memiliki hubungan antar baris dan kolom — seperti jadwal pelajaran, daftar nilai, atau perbandingan produk. Di topik ini kamu akan belajar membuat tabel HTML dari tag-tag dasarnya.",
+    "analogy": "Tabel HTML seperti spreadsheet di atas kertas — ada baris, ada kolom, dan setiap sel menyimpan satu data. Bedanya, tabel HTML dibangun dari tag-tag yang mendefinisikan setiap bagiannya."
+  },
+  "objectives": [
+    "Membuat tabel HTML menggunakan tag table, tr, th, dan td",
+    "Memahami perbedaan antara th (header) dan td (data)",
+    "Menyusun data dalam baris dan kolom yang terstruktur",
+    "Membuat tabel dengan header baris dan header kolom",
+    "Menggunakan tabel untuk menyajikan data nyata yang relevan"
+  ],
+  "review": {
+    "learned": [
+      "Tag table membungkus seluruh tabel.",
+      "Tag tr (table row) mendefinisikan satu baris dalam tabel.",
+      "Tag th (table header) digunakan untuk sel header — ditampilkan tebal dan rata tengah secara otomatis.",
+      "Tag td (table data) digunakan untuk sel data biasa.",
+      "Setiap baris (tr) berisi satu atau lebih sel (th atau td).",
+      "Jumlah sel di setiap baris harus konsisten agar tabel terlihat rapi."
+    ],
+    "keyConcepts": [
+      "Tag table",
+      "Tag tr — baris tabel",
+      "Tag th — sel header",
+      "Tag td — sel data",
+      "Struktur baris dan kolom tabel"
+    ],
+    "takeaways": [
+      "Tabel dibaca dari atas ke bawah: table lalu tr lalu th/td.",
+      "Baris pertama biasanya berisi th sebagai label kolom.",
+      "Setiap baris harus memiliki jumlah sel yang sama untuk tabel yang rapi.",
+      "Gunakan tabel hanya untuk data tabular — jangan untuk tata letak halaman."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-table-intro",
+      "type": "lesson",
+      "title": "Kapan Menggunakan Tabel?",
+      "xp": 5,
+      "explanation": "Tabel digunakan untuk menyajikan data yang memiliki hubungan antar baris dan kolom. Contoh yang tepat untuk tabel:\n• Jadwal pelajaran\n• Daftar nilai siswa\n• Perbandingan fitur produk\n• Statistik pertandingan\n\nTabel HTML dibangun dari beberapa tag:\n• table — pembungkus seluruh tabel\n• tr (table row) — satu baris\n• th (table header) — sel header/judul\n• td (table data) — sel data biasa\n\nPenting: jangan gunakan tabel untuk mengatur tata letak halaman. Tabel hanya untuk data tabular.",
+      "tips": [
+        "Sebelum membuat tabel, pikirkan dulu berapa kolom dan berapa baris yang kamu butuhkan.",
+        "th secara otomatis ditampilkan dengan teks tebal dan rata tengah — browser membedakannya dari td."
+      ]
+    },
+    {
+      "id": "node-02-table-structure",
+      "type": "lesson",
+      "title": "Struktur Dasar Tabel HTML",
+      "xp": 5,
+      "explanation": "Mari kita pahami setiap tag tabel secara detail:\n\ntable:\nTag pembungkus utama. Semua konten tabel ada di dalam tag ini.\n\ntr (table row):\nMendefinisikan satu baris horizontal. Sebuah tabel bisa punya banyak tr.\n\nth (table header):\nSel header — biasanya di baris pertama atau kolom pertama. Ditampilkan tebal dan rata tengah secara default.\n\ntd (table data):\nSel data biasa. Berisi data yang ingin ditampilkan.\n\nStruktur hierarkinya:\ntable > tr > th/td\n\nArtinya: di dalam table ada tr, di dalam tr ada th atau td.",
+      "analogy": "Pikirkan tabel seperti kotak telur. table adalah kotak keseluruhannya. tr adalah satu baris lubang. th adalah label di tutup kotak. td adalah setiap lubang yang berisi telur.",
+      "tips": [
+        "Setiap tr harus memiliki jumlah sel yang sama — jika kolom pertama punya 3 sel, semua baris harus punya 3 sel.",
+        "Baris header (berisi th) biasanya ada di baris paling atas tabel."
+      ]
+    },
+    {
+      "id": "node-03-simple-table",
+      "type": "code",
+      "title": "Tabel Sederhana Pertamamu",
+      "xp": 5,
+      "explanation": "Ini adalah tabel HTML yang paling sederhana — tiga kolom, dua baris data, dan satu baris header.\n\nPerhatikan strukturnya:\n• Baris pertama berisi th sebagai judul kolom\n• Baris berikutnya berisi td sebagai data\n• Setiap baris punya jumlah sel yang sama (3)",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Tabel Sederhana</title>\n  </head>\n  <body>\n    <h1>Daftar Siswa</h1>\n\n    <table>\n      <tr>\n        <th>Nama</th>\n        <th>Kelas</th>\n        <th>Nilai</th>\n      </tr>\n      <tr>\n        <td>Budi</td>\n        <td>7A</td>\n        <td>90</td>\n      </tr>\n      <tr>\n        <td>Siti</td>\n        <td>7B</td>\n        <td>85</td>\n      </tr>\n    </table>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-table-more-rows",
+      "type": "code",
+      "title": "Tabel dengan Lebih Banyak Data",
+      "xp": 5,
+      "explanation": "Tabel bisa memiliki baris sebanyak yang kamu butuhkan. Cukup tambahkan tag tr baru untuk setiap baris data.\n\nContoh di bawah menampilkan jadwal pelajaran dengan lebih banyak baris. Perhatikan bahwa setiap baris tetap memiliki jumlah sel yang sama dengan baris header.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Jadwal Pelajaran</title>\n  </head>\n  <body>\n    <h1>Jadwal Pelajaran Kelas 7A</h1>\n\n    <table>\n      <tr>\n        <th>Hari</th>\n        <th>Jam 1</th>\n        <th>Jam 2</th>\n        <th>Jam 3</th>\n      </tr>\n      <tr>\n        <td>Senin</td>\n        <td>Matematika</td>\n        <td>Bahasa Indonesia</td>\n        <td>IPA</td>\n      </tr>\n      <tr>\n        <td>Selasa</td>\n        <td>IPS</td>\n        <td>Bahasa Inggris</td>\n        <td>Seni Budaya</td>\n      </tr>\n      <tr>\n        <td>Rabu</td>\n        <td>Matematika</td>\n        <td>Informatika</td>\n        <td>Olahraga</td>\n      </tr>\n    </table>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-table-with-context",
+      "type": "code",
+      "title": "Tabel dengan Heading dan Paragraf",
+      "xp": 5,
+      "explanation": "Tabel biasanya tidak berdiri sendiri — dia dikelilingi oleh heading dan paragraf yang menjelaskan konteksnya. Ini membuat halaman lebih informatif dan mudah dipahami.\n\nContoh di bawah menampilkan tabel perbandingan dalam konteks artikel.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Perbandingan Bahasa Pemrograman</title>\n  </head>\n  <body>\n    <h1>Memilih Bahasa Pemrograman Pertamamu</h1>\n    <p>Berikut adalah perbandingan singkat beberapa bahasa pemrograman populer untuk pemula:</p>\n\n    <table>\n      <tr>\n        <th>Bahasa</th>\n        <th>Kegunaan Utama</th>\n        <th>Tingkat Kesulitan</th>\n      </tr>\n      <tr>\n        <td>HTML</td>\n        <td>Struktur halaman web</td>\n        <td>Mudah</td>\n      </tr>\n      <tr>\n        <td>CSS</td>\n        <td>Tampilan halaman web</td>\n        <td>Mudah</td>\n      </tr>\n      <tr>\n        <td>JavaScript</td>\n        <td>Interaktivitas web</td>\n        <td>Menengah</td>\n      </tr>\n      <tr>\n        <td>Python</td>\n        <td>Data dan otomatisasi</td>\n        <td>Mudah hingga menengah</td>\n      </tr>\n    </table>\n\n    <p>Untuk membuat website, mulailah dengan HTML terlebih dahulu.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-table-row-header",
+      "type": "code",
+      "title": "Tabel dengan Header Baris",
+      "xp": 5,
+      "explanation": "Selain header di baris pertama, kamu juga bisa menggunakan th di kolom pertama setiap baris untuk memberi label pada baris tersebut. Ini membuat tabel lebih mudah dibaca, terutama untuk data yang memiliki kategori.\n\nContoh di bawah menggunakan th di kolom pertama setiap baris sebagai label hari.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Jadwal Kegiatan</title>\n  </head>\n  <body>\n    <h1>Jadwal Kegiatan Mingguan</h1>\n\n    <table>\n      <tr>\n        <th>Hari</th>\n        <th>Pagi</th>\n        <th>Sore</th>\n      </tr>\n      <tr>\n        <th>Senin</th>\n        <td>Sekolah</td>\n        <td>Les Matematika</td>\n      </tr>\n      <tr>\n        <th>Selasa</th>\n        <td>Sekolah</td>\n        <td>Latihan Futsal</td>\n      </tr>\n      <tr>\n        <th>Rabu</th>\n        <td>Sekolah</td>\n        <td>Belajar Coding</td>\n      </tr>\n      <tr>\n        <th>Kamis</th>\n        <td>Sekolah</td>\n        <td>Membaca Buku</td>\n      </tr>\n    </table>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-complete-table-page",
+      "type": "code",
+      "title": "Halaman Lengkap dengan Tabel",
+      "xp": 5,
+      "explanation": "Inilah halaman yang menggabungkan tabel dengan elemen HTML lain yang sudah kamu pelajari: heading, paragraf, dan daftar. Perhatikan bagaimana tabel memberikan informasi yang tidak bisa disajikan dengan baik dalam format paragraf atau daftar biasa.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Laporan Nilai</title>\n  </head>\n  <body>\n    <h1>Laporan Nilai Semester 1</h1>\n    <p>Siswa: Budi Santoso — Kelas 7A</p>\n\n    <h2>Nilai Mata Pelajaran</h2>\n    <table>\n      <tr>\n        <th>Mata Pelajaran</th>\n        <th>Tugas</th>\n        <th>Ulangan</th>\n        <th>Rata-rata</th>\n      </tr>\n      <tr>\n        <td>Matematika</td>\n        <td>85</td>\n        <td>90</td>\n        <td>87.5</td>\n      </tr>\n      <tr>\n        <td>Bahasa Indonesia</td>\n        <td>90</td>\n        <td>88</td>\n        <td>89</td>\n      </tr>\n      <tr>\n        <td>IPA</td>\n        <td>80</td>\n        <td>85</td>\n        <td>82.5</td>\n      </tr>\n      <tr>\n        <td>Informatika</td>\n        <td>95</td>\n        <td>92</td>\n        <td>93.5</td>\n      </tr>\n    </table>\n\n    <h2>Catatan</h2>\n    <ul>\n      <li>Nilai sudah mencakup semua tugas dan ulangan</li>\n      <li>Rata-rata dihitung dari tugas dan ulangan</li>\n    </ul>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Identifikasi Tag Tabel",
+      "xp": 10,
+      "instructions": "Tag mana yang digunakan untuk mendefinisikan satu baris dalam tabel HTML?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "<td>",
+        "<th>",
+        "<tr>",
+        "<row>"
+      ],
+      "correctOption": "<tr>"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Buat Tabel Jadwal",
+      "xp": 15,
+      "instructions": "Kode starter di bawah punya struktur tabel yang belum lengkap.\n\nTugasmu: Lengkapi tabel dengan:\n1. Tambahkan baris header dengan 3 th: 'Hari', 'Pelajaran', 'Guru'\n2. Tambahkan minimal 3 baris data menggunakan td\n\nPastikan setiap baris punya jumlah sel yang sama.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Jadwal Pelajaran</title>\n  </head>\n  <body>\n    <h1>Jadwal Pelajaran Favoritku</h1>\n\n    <table>\n      <!-- Tambahkan baris header di sini -->\n\n      <!-- Tambahkan minimal 3 baris data di sini -->\n\n    </table>\n  </body>\n</html>"
+      },
+      "expectedResult": "Tabel dengan satu baris header (th) dan minimal tiga baris data (td), masing-masing dengan 3 kolom.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Jadwal Pelajaran</title>\n  </head>\n  <body>\n    <h1>Jadwal Pelajaran Favoritku</h1>\n\n    <table>\n      <tr>\n        <th>Hari</th>\n        <th>Pelajaran</th>\n        <th>Guru</th>\n      </tr>\n      <tr>\n        <td>Senin</td>\n        <td>Matematika</td>\n        <td>Bu Ratna</td>\n      </tr>\n      <tr>\n        <td>Selasa</td>\n        <td>Bahasa Indonesia</td>\n        <td>Pak Hendra</td>\n      </tr>\n      <tr>\n        <td>Rabu</td>\n        <td>Informatika</td>\n        <td>Pak Dodi</td>\n      </tr>\n    </table>\n  </body>\n</html>",
+        "explanation": "Kita menambahkan baris header dengan tiga th sebagai judul kolom. Kemudian tiga baris data menggunakan td. Setiap baris punya jumlah sel yang sama (3) agar tabel terlihat rapi dan konsisten."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Tag apa yang membungkus seluruh tabel HTML?",
+        "options": [
+          "<tr>",
+          "<td>",
+          "<table>",
+          "<grid>"
+        ],
+        "correctAnswer": "<table>",
+        "explanation": "Tag table adalah tag pembungkus utama yang mengandung semua konten tabel — semua tr, th, dan td harus berada di dalam tag table.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa perbedaan antara tag th dan td?",
+        "options": [
+          "th untuk tabel horizontal, td untuk tabel vertikal",
+          "th untuk sel header yang ditampilkan tebal dan rata tengah, td untuk sel data biasa",
+          "th hanya bisa di baris pertama, td hanya bisa di baris terakhir",
+          "th dan td tidak ada bedanya, bisa digunakan bergantian"
+        ],
+        "correctAnswer": "th untuk sel header yang ditampilkan tebal dan rata tengah, td untuk sel data biasa",
+        "explanation": "Tag th (table header) digunakan untuk sel judul atau label — browser otomatis membuatnya tebal dan rata tengah. Tag td (table data) digunakan untuk sel yang berisi data biasa.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Berapa jumlah tr yang harus ada dalam sebuah tabel?",
+        "options": [
+          "Tepat 1 tr",
+          "Tepat 2 tr",
+          "Minimal 3 tr",
+          "Sebanyak yang dibutuhkan sesuai jumlah baris data"
+        ],
+        "correctAnswer": "Sebanyak yang dibutuhkan sesuai jumlah baris data",
+        "explanation": "Tidak ada batasan jumlah tr dalam tabel. Kamu bisa menambahkan tr sebanyak yang dibutuhkan — satu tr untuk baris header, dan satu tr untuk setiap baris data.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Apa yang terjadi jika satu baris tabel memiliki jumlah sel yang berbeda dari baris lainnya?",
+        "options": [
+          "Browser akan error dan tidak menampilkan tabel",
+          "Baris tersebut akan dihapus otomatis",
+          "Tabel akan terlihat tidak rapi dan tidak sejajar",
+          "Tidak ada efek sama sekali"
+        ],
+        "correctAnswer": "Tabel akan terlihat tidak rapi dan tidak sejajar",
+        "explanation": "Jika baris-baris dalam tabel memiliki jumlah sel yang berbeda, kolom-kolom tidak akan sejajar dan tabel terlihat berantakan. Pastikan setiap baris memiliki jumlah sel yang sama untuk tabel yang rapi.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Untuk keperluan apa tabel HTML sebaiknya digunakan?",
+        "options": [
+          "Untuk mengatur tata letak seluruh halaman web",
+          "Untuk membuat navigasi di bagian atas halaman",
+          "Untuk menyajikan data yang memiliki hubungan baris dan kolom",
+          "Untuk menampilkan teks yang panjang"
+        ],
+        "correctAnswer": "Untuk menyajikan data yang memiliki hubungan baris dan kolom",
+        "explanation": "Tabel HTML dirancang untuk menyajikan data tabular — data yang memiliki hubungan logis antara baris dan kolom, seperti jadwal, daftar nilai, atau perbandingan. Jangan gunakan tabel untuk mengatur tata letak halaman.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Luar biasa! Kamu sekarang bisa membuat tabel HTML untuk menyajikan data yang terstruktur. Tabel adalah alat yang sangat berguna untuk jadwal, daftar nilai, dan perbandingan data.",
+    "achievementName": "Pembuat Tabel",
+    "achievementIcon": "📊"
+  }
+}

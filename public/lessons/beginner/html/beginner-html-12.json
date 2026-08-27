@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-12",
+    "title": "Warna, Font, dan Teks — Tipografi Dasar dengan CSS",
+    "description": "Pelajari cara mengatur warna, jenis huruf, ukuran teks, dan perataan menggunakan properti CSS dasar untuk menciptakan hierarki visual yang menarik.",
+    "level": "beginner",
+    "category": "CSS",
+    "topicNumber": 2,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Teks yang Berbicara — Tipografi dengan CSS",
+    "description": "Halaman web yang baik bukan hanya tentang konten — tapi juga tentang bagaimana konten itu ditampilkan. Ukuran huruf, jenis font, dan perataan teks membuat perbedaan besar antara halaman yang mudah dibaca dan halaman yang membingungkan. Di topik ini kamu akan belajar properti CSS untuk mengontrol semua aspek tampilan teks.",
+    "analogy": "Tipografi dalam CSS seperti memilih cara menulis di papan tulis. Kamu bisa memilih spidol tebal atau tipis (font-weight), besar atau kecil (font-size), jenis huruf (font-family), dan apakah tulisannya rata kiri, tengah, atau kanan (text-align)."
+  },
+  "objectives": [
+    "Menggunakan font-family untuk mengubah jenis huruf",
+    "Menggunakan font-size untuk mengatur ukuran teks",
+    "Menggunakan font-weight untuk membuat teks tebal atau tipis",
+    "Menggunakan text-align untuk mengatur perataan teks",
+    "Menggabungkan properti tipografi untuk menciptakan hierarki visual yang baik"
+  ],
+  "review": {
+    "learned": [
+      "font-family menentukan jenis huruf yang digunakan — selalu sertakan font fallback seperti sans-serif.",
+      "font-size mengatur ukuran teks — bisa menggunakan px, em, atau rem sebagai satuan.",
+      "font-weight mengatur ketebalan teks — nilainya bisa normal, bold, atau angka seperti 400 dan 700.",
+      "text-align mengatur perataan teks: left, center, right, atau justify.",
+      "color mengatur warna teks, background-color mengatur warna latar belakang.",
+      "Hierarki tipografi yang baik membantu pembaca memahami mana yang penting dan mana yang pendukung."
+    ],
+    "keyConcepts": [
+      "font-family",
+      "font-size dan satuan px",
+      "font-weight",
+      "text-align",
+      "Hierarki tipografi visual"
+    ],
+    "takeaways": [
+      "Gunakan font yang bersih dan mudah dibaca — hindari terlalu banyak jenis font berbeda dalam satu halaman.",
+      "Hierarki visual: judul besar dan tebal, paragraf lebih kecil dan tipis.",
+      "text-align: center cocok untuk judul halaman, text-align: left cocok untuk paragraf panjang.",
+      "Satuan px mudah dipahami dan diprediksi — gunakan px untuk belajar."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-font-family",
+      "type": "lesson",
+      "title": "font-family — Memilih Jenis Huruf",
+      "xp": 5,
+      "explanation": "Properti font-family menentukan jenis huruf (typeface) yang digunakan untuk menampilkan teks.\n\nSintaks:\nfont-family: 'Nama Font', fallback;\n\nPenting: selalu sertakan font fallback generik di akhir:\n• serif — huruf dengan kait (seperti Times New Roman)\n• sans-serif — huruf tanpa kait (seperti Arial, lebih modern)\n• monospace — huruf dengan lebar sama (untuk kode)\n\nMengapa perlu fallback? Karena font tertentu mungkin tidak terpasang di komputer pengguna. Jika font pertama tidak tersedia, browser akan menggunakan font berikutnya.\n\nFont yang aman digunakan (tersedia di hampir semua komputer):\n• Arial, Helvetica — sans-serif modern\n• Georgia — serif elegan\n• Courier New — monospace",
+      "tips": [
+        "Untuk website profesional, gunakan Google Fonts yang gratis dan bisa dimuat dari internet.",
+        "Jangan gunakan lebih dari dua font yang berbeda dalam satu halaman — lebih dari itu terasa ramai."
+      ]
+    },
+    {
+      "id": "node-02-size-weight",
+      "type": "lesson",
+      "title": "font-size dan font-weight",
+      "xp": 5,
+      "explanation": "Dua properti penting untuk mengontrol penampilan teks:\n\nfont-size:\nMengatur ukuran teks. Satuan yang paling umum untuk pemula adalah px (piksel).\n• Teks paragraf: 14px–18px\n• Heading kecil: 18px–24px\n• Heading besar: 24px–48px\n\nfont-weight:\nMengatur ketebalan teks.\n• normal (atau 400) — tebal biasa\n• bold (atau 700) — tebal\n• lighter — lebih tipis dari parent\n\nContoh penggunaan:\nh1 { font-size: 36px; font-weight: bold; }\np { font-size: 16px; font-weight: normal; }\n\nKombinasi font-size yang berbeda menciptakan hierarki visual — pembaca langsung tahu mana yang lebih penting.",
+      "analogy": "font-size dan font-weight seperti ukuran dan tebal spidol di papan tulis. Judul ditulis dengan spidol tebal besar, teks biasa dengan spidol tipis kecil.",
+      "tips": [
+        "Ukuran teks paragraf yang nyaman dibaca di layar adalah 15px–18px.",
+        "Gunakan font-weight: bold hanya untuk kata atau frasa yang benar-benar perlu ditekankan — terlalu banyak bold mengurangi efeknya."
+      ]
+    },
+    {
+      "id": "node-03-font-in-action",
+      "type": "code",
+      "title": "font-family, font-size, font-weight dalam Aksi",
+      "xp": 5,
+      "explanation": "Contoh di bawah menerapkan ketiga properti font sekaligus. Perhatikan bagaimana kombinasi ukuran dan ketebalan yang berbeda menciptakan hierarki yang jelas antara judul dan paragraf.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Tipografi CSS</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #ffffff;\n        color: #333333;\n      }\n      h1 {\n        font-size: 36px;\n        font-weight: bold;\n        color: #1a202c;\n      }\n      h2 {\n        font-size: 24px;\n        font-weight: bold;\n        color: #2d3748;\n      }\n      p {\n        font-size: 16px;\n        font-weight: normal;\n        color: #4a5568;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Judul Utama — 36px Bold</h1>\n    <h2>Sub-judul — 24px Bold</h2>\n    <p>Paragraf ini menggunakan font Arial 16px dengan warna abu-abu. Teks paragraf yang nyaman dibaca biasanya berukuran 14 hingga 18 piksel.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-text-align",
+      "type": "code",
+      "title": "text-align — Mengatur Perataan Teks",
+      "xp": 5,
+      "explanation": "Properti text-align mengatur perataan teks di dalam elemennya.\n\nNilai yang tersedia:\n• left — rata kiri (default)\n• center — rata tengah\n• right — rata kanan\n• justify — rata kiri-kanan (seperti teks di koran)\n\nKapan menggunakannya:\n• center — untuk judul halaman atau section pendek\n• left — untuk paragraf panjang (paling mudah dibaca)\n• right — jarang, biasanya untuk elemen UI tertentu",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Perataan Teks</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        color: #333333;\n      }\n      h1 {\n        text-align: center;\n        font-size: 32px;\n        color: #2b6cb0;\n      }\n      h2 {\n        text-align: left;\n        font-size: 20px;\n        color: #2c7a7b;\n      }\n      p {\n        text-align: left;\n        font-size: 16px;\n        line-height: 1.6;\n      }\n      .note {\n        text-align: right;\n        font-size: 14px;\n        color: #718096;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Judul Halaman — Rata Tengah</h1>\n    <h2>Sub-judul — Rata Kiri</h2>\n    <p>Paragraf ini menggunakan text-align: left, yang paling nyaman dibaca untuk teks panjang. Rata kiri adalah default browser dan pilihan terbaik untuk paragraf.</p>\n    <p class=\"note\">Catatan di pojok kanan — 14 Januari 2025</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-typography-hierarchy",
+      "type": "code",
+      "title": "Hierarki Tipografi — Tampilan yang Profesional",
+      "xp": 5,
+      "explanation": "Hierarki tipografi yang baik membuat pembaca langsung tahu mana yang penting. Judul besar dan tebal menarik perhatian, sub-judul menengah memberikan struktur, dan paragraf kecil menyampaikan detail.\n\nContoh ini menerapkan semua properti tipografi sekaligus untuk membuat halaman artikel yang terlihat rapi dan profesional.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Artikel Web</title>\n    <style>\n      body {\n        font-family: Georgia, serif;\n        background-color: #fffffe;\n        color: #2d3748;\n        font-size: 16px;\n      }\n      h1 {\n        font-size: 40px;\n        font-weight: bold;\n        text-align: center;\n        color: #1a202c;\n      }\n      h2 {\n        font-size: 24px;\n        font-weight: bold;\n        color: #2c5282;\n      }\n      p {\n        font-size: 16px;\n        font-weight: normal;\n        text-align: left;\n        color: #4a5568;\n      }\n      .author {\n        font-size: 14px;\n        text-align: center;\n        color: #718096;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Belajar CSS dari Nol</h1>\n    <p class=\"author\">Ditulis oleh Budi Santoso</p>\n\n    <h2>Mengapa CSS Penting?</h2>\n    <p>CSS mengubah halaman web dari tampilan polos menjadi tampilan yang menarik. Dengan memahami tipografi dasar, kamu sudah bisa membuat halaman yang enak dibaca.</p>\n\n    <h2>Langkah Pertama</h2>\n    <p>Mulailah dengan memahami font-family, font-size, dan color. Ketiga properti ini sudah cukup untuk membuat perbedaan yang signifikan pada tampilan halamanmu.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-line-height",
+      "type": "code",
+      "title": "line-height dan Keterbacaan",
+      "xp": 5,
+      "explanation": "Properti line-height mengatur jarak antar baris teks. Nilai yang baik untuk keterbacaan adalah antara 1.4 hingga 1.8.\n\nTanpa line-height yang cukup, teks terasa sesak dan sulit dibaca. Ini salah satu properti kecil yang membuat perbedaan besar.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Line Height</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f7fafc;\n        color: #2d3748;\n      }\n      h1 {\n        font-size: 32px;\n        font-weight: bold;\n        text-align: center;\n        color: #2b6cb0;\n      }\n      p {\n        font-size: 16px;\n        line-height: 1.7;\n        color: #4a5568;\n      }\n      .author {\n        font-size: 14px;\n        color: #718096;\n        text-align: center;\n        font-weight: bold;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Panduan Belajar HTML dan CSS</h1>\n    <p class=\"author\">oleh Tim BITS2BYTES</p>\n\n    <p>Belajar web development membutuhkan kesabaran dan latihan yang konsisten. Setiap hari menulis sedikit kode jauh lebih efektif daripada belajar sehari penuh lalu berhenti berminggu-minggu.</p>\n\n    <p>Mulailah dengan HTML untuk memahami struktur, lalu tambahkan CSS untuk tampilan. Dengan dua bahasa ini saja, kamu sudah bisa membuat website yang benar-benar berguna.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-styled-article",
+      "type": "code",
+      "title": "Artikel Bergaya — Gabungan Semua Properti Teks",
+      "xp": 5,
+      "explanation": "Ini adalah versi final artikel dengan semua properti tipografi yang sudah dipelajari bekerja bersama. Hasilnya adalah halaman yang terlihat bersih, profesional, dan mudah dibaca.\n\nPerhatikan bagaimana setiap properti berkontribusi:\n• font-family — menentukan karakter visual teks\n• font-size — menciptakan hierarki\n• font-weight — menekankan yang penting\n• text-align — mengatur irama visual\n• line-height — memberikan napas pada teks\n• color — membedakan elemen secara visual",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Artikel Bergaya</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f7fafc;\n        color: #2d3748;\n        font-size: 16px;\n      }\n      h1 {\n        font-size: 42px;\n        font-weight: bold;\n        text-align: center;\n        color: #1a202c;\n        line-height: 1.2;\n      }\n      h2 {\n        font-size: 22px;\n        font-weight: bold;\n        color: #2b6cb0;\n      }\n      p {\n        font-size: 16px;\n        font-weight: normal;\n        line-height: 1.7;\n        color: #4a5568;\n      }\n      .tagline {\n        text-align: center;\n        font-size: 18px;\n        color: #718096;\n        font-weight: normal;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Membangun Website Pertamamu</h1>\n    <p class=\"tagline\">Panduan langkah demi langkah untuk pemula</p>\n\n    <h2>Mulai dari HTML</h2>\n    <p>HTML adalah fondasi dari semua website. Sebelum menambahkan tampilan atau interaktivitas, kamu perlu memahami cara menyusun konten dengan tag-tag HTML yang tepat.</p>\n\n    <h2>Tambahkan CSS</h2>\n    <p>Setelah memahami HTML, CSS memungkinkan kamu mengubah halaman yang polos menjadi tampilan yang menarik. Warna, font, dan jarak yang tepat bisa membuat perbedaan yang sangat besar.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Pilih Properti yang Tepat",
+      "xp": 10,
+      "instructions": "Kamu ingin membuat teks paragraf berukuran 18px, dengan jenis huruf Arial, dan rata tengah. Kombinasi properti CSS mana yang benar?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "size: 18px; type: Arial; position: center;",
+        "font-size: 18px; font-family: Arial; text-align: center;",
+        "text-size: 18px; text-font: Arial, sans-serif; align: center;",
+        "size: 18; font: Arial; align: center;"
+      ],
+      "correctOption": "font-size: 18px; font-family: Arial; text-align: center;"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Halaman Blog dengan Tipografi Bagus",
+      "xp": 15,
+      "instructions": "Kode starter di bawah adalah halaman blog yang belum punya CSS sama sekali.\n\nTugasmu: Tambahkan internal CSS untuk:\n1. body — font-family: Arial, sans-serif; background-color: #f7fafc;\n2. h1 — font-size: 38px; font-weight: bold; text-align: center; color: #1a202c;\n3. h2 — font-size: 22px; color: #2b6cb0;\n4. p — font-size: 16px; line-height: 1.7; color: #4a5568;\n\nHasil akhir harus terlihat seperti artikel blog yang rapi dan mudah dibaca.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Blog Coding</title>\n    <!-- Tambahkan CSS di sini -->\n  </head>\n  <body>\n    <h1>Belajar CSS itu Menyenangkan</h1>\n\n    <h2>Apa yang Bisa Dilakukan CSS?</h2>\n    <p>CSS memungkinkan kita mengubah tampilan setiap elemen HTML — dari warna teks hingga ukuran dan jenis huruf.</p>\n\n    <h2>Mulai dari Mana?</h2>\n    <p>Mulailah dengan properti-properti dasar seperti color, font-size, dan font-family. Dengan tiga properti ini saja, halamanmu sudah jauh lebih menarik.</p>\n  </body>\n</html>"
+      },
+      "expectedResult": "Artikel blog dengan judul besar tebal rata tengah, sub-judul biru, dan paragraf abu-abu dengan line-height yang nyaman.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Blog Coding</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f7fafc;\n      }\n      h1 {\n        font-size: 38px;\n        font-weight: bold;\n        text-align: center;\n        color: #1a202c;\n      }\n      h2 {\n        font-size: 22px;\n        color: #2b6cb0;\n      }\n      p {\n        font-size: 16px;\n        line-height: 1.7;\n        color: #4a5568;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Belajar CSS itu Menyenangkan</h1>\n\n    <h2>Apa yang Bisa Dilakukan CSS?</h2>\n    <p>CSS memungkinkan kita mengubah tampilan setiap elemen HTML — dari warna teks hingga ukuran dan jenis huruf.</p>\n\n    <h2>Mulai dari Mana?</h2>\n    <p>Mulailah dengan properti-properti dasar seperti color, font-size, dan font-family. Dengan tiga properti ini saja, halamanmu sudah jauh lebih menarik.</p>\n  </body>\n</html>",
+        "explanation": "Kita menambahkan CSS untuk body (font dan background), h1 (judul besar, tebal, rata tengah, hitam gelap), h2 (ukuran sedang, biru), dan p (ukuran standar, line-height 1.7 untuk keterbacaan, abu-abu gelap). Kombinasi properti ini menciptakan hierarki visual yang jelas dan halaman yang nyaman dibaca."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Properti CSS mana yang digunakan untuk mengatur jenis huruf (typeface) seperti Arial atau Georgia?",
+        "options": [
+          "font-type",
+          "text-font",
+          "font-family",
+          "typeface"
+        ],
+        "correctAnswer": "font-family",
+        "explanation": "Properti font-family menentukan jenis huruf yang digunakan. Selalu sertakan font fallback di akhir (misalnya sans-serif) agar browser bisa memilih font alternatif jika font utama tidak tersedia di perangkat pengguna.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Nilai font-weight mana yang membuat teks menjadi tebal?",
+        "options": [
+          "thick",
+          "heavy",
+          "bold",
+          "strong"
+        ],
+        "correctAnswer": "bold",
+        "explanation": "Nilai bold pada properti font-weight membuat teks menjadi tebal. Nilai lainnya adalah normal (tebal standar) dan angka seperti 100-900 (100 paling tipis, 900 paling tebal). Nilai bold setara dengan angka 700.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Properti CSS apa yang digunakan untuk membuat judul halaman tampil di tengah?",
+        "options": [
+          "text-position: center",
+          "align: center",
+          "text-align: center",
+          "position: center"
+        ],
+        "correctAnswer": "text-align: center",
+        "explanation": "Properti text-align dengan nilai center akan membuat teks rata tengah di dalam elemennya. Nilai lainnya adalah left (default, rata kiri), right (rata kanan), dan justify (rata kiri-kanan).",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Satuan apa yang paling umum digunakan untuk nilai font-size dalam CSS untuk pemula?",
+        "options": [
+          "cm (sentimeter)",
+          "px (piksel)",
+          "pt (point)",
+          "mm (milimeter)"
+        ],
+        "correctAnswer": "px (piksel)",
+        "explanation": "Satuan px (piksel) adalah yang paling mudah dipahami dan diprediksi untuk pemula. Satu piksel adalah satu titik di layar. Ukuran teks paragraf yang nyaman dibaca biasanya 14-18px.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Mengapa penting menambahkan font fallback generik (seperti sans-serif) saat menggunakan font-family?",
+        "options": [
+          "Karena browser tidak mengenal nama font spesifik",
+          "Karena font tertentu mungkin tidak terpasang di komputer pengguna, sehingga browser perlu alternatif",
+          "Karena sans-serif wajib ditulis di setiap aturan CSS",
+          "Karena font-family hanya bekerja jika ada dua nilai"
+        ],
+        "correctAnswer": "Karena font tertentu mungkin tidak terpasang di komputer pengguna, sehingga browser perlu alternatif",
+        "explanation": "Font yang dipilih mungkin tidak terpasang di perangkat pengguna. Dengan menambahkan font fallback generik seperti sans-serif atau serif, browser bisa memilih font alternatif yang tersedia agar tampilan tetap mendekati yang diinginkan.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Keren! Kamu sekarang bisa mengatur tipografi halaman web dengan percaya diri. Font yang tepat dan hierarki visual yang baik adalah separuh dari desain yang bagus.",
+    "achievementName": "Tipografer Web",
+    "achievementIcon": "✏️"
+  }
+}

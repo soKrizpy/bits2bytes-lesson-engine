@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-15",
+    "title": "Navigasi dan Seksi Halaman — Struktur Website Nyata",
+    "description": "Gabungkan HTML semantik dan CSS Flexbox untuk membangun navigasi horizontal, section berisi konten, dan footer — struktur layout website yang sesungguhnya.",
+    "level": "beginner",
+    "category": "CSS",
+    "topicNumber": 5,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Dari Komponen ke Halaman — Membangun Layout Website",
+    "description": "Kamu sudah belajar HTML semantik, CSS tipografi, Box Model, dan Flexbox secara terpisah. Sekarang saatnya menggabungkan semuanya menjadi layout halaman website yang sesungguhnya. Di topik ini kamu akan membangun halaman dengan navigasi, beberapa section berkonten, dan footer — persis seperti website nyata.",
+    "analogy": "Seperti membangun rumah: kamu sudah punya pondasi (HTML), cat dinding (CSS tipografi), furniture (kartu dan komponen). Sekarang kamu menyusun semuanya menjadi ruangan-ruangan yang terorganisir — ruang tamu, kamar, dapur, teras."
+  },
+  "objectives": [
+    "Membuat navigation bar horizontal yang lengkap dengan CSS",
+    "Menyusun halaman dengan section-section yang terstruktur",
+    "Menggunakan class CSS untuk memberi gaya yang konsisten",
+    "Menggabungkan Flexbox dengan semantic HTML untuk layout nyata",
+    "Membangun halaman multi-section yang menyerupai website profesional"
+  ],
+  "review": {
+    "learned": [
+      "Navigation bar dibuat dengan tag nav yang menggunakan Flexbox untuk menyusun brand dan links.",
+      "Section digunakan untuk mengelompokkan konten bertemakan sama, masing-masing dengan heading dan konten.",
+      "Class CSS memungkinkan kita memberi gaya yang sama ke beberapa elemen berbeda.",
+      "Kombinasi padding pada body dan max-width pada container membuat konten tidak terlalu lebar di layar besar.",
+      "Footer biasanya menggunakan background gelap dengan teks terang untuk membedakannya dari body.",
+      "Website nyata adalah kumpulan komponen yang disusun dengan HTML semantik dan diberi gaya dengan CSS."
+    ],
+    "keyConcepts": [
+      "Navigation bar dengan Flexbox",
+      "Section layout",
+      "Class CSS",
+      "max-width dan centering",
+      "Konsistensi visual dengan CSS"
+    ],
+    "takeaways": [
+      "Setiap halaman website pada dasarnya adalah kumpulan section yang disusun dari atas ke bawah.",
+      "Gunakan class CSS yang deskriptif dan konsisten — misalnya .navbar, .hero, .card-grid, .footer.",
+      "max-width: 1100px pada container mencegah konten terlalu menyebar di layar lebar.",
+      "Warna yang konsisten di seluruh halaman membuat website terlihat profesional."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-page-structure",
+      "type": "lesson",
+      "title": "Anatomi Halaman Website",
+      "xp": 5,
+      "explanation": "Setiap website modern pada dasarnya tersusun dari blok-blok vertikal yang ditumpuk dari atas ke bawah:\n\n1. Navbar (navigasi) — selalu di paling atas, berisi logo dan link menu\n2. Hero section — bagian pembuka yang menarik perhatian\n3. Features / Content sections — konten utama halaman\n4. CTA section — ajakan bertindak (daftar, beli, dll.)\n5. Footer — informasi penutup di bagian bawah\n\nDalam HTML semantik:\n• navbar → tag nav (biasanya di dalam header)\n• section-section → tag section\n• footer → tag footer\n\nSetiap bagian ini diberi gaya dengan CSS untuk menciptakan identitas visual yang konsisten.\n\nDi topik ini kita akan membangun halaman yang memiliki navbar, dua section konten, dan footer.",
+      "tips": [
+        "Mulailah selalu dari struktur HTML terlebih dahulu — baru kemudian tambahkan CSS.",
+        "Beri nama class yang jelas dan deskriptif: .navbar bukan .div1, .hero-section bukan .bagian-atas."
+      ]
+    },
+    {
+      "id": "node-02-class-selector",
+      "type": "lesson",
+      "title": "Class Selector — Memberi Gaya yang Dapat Digunakan Ulang",
+      "xp": 5,
+      "explanation": "Di topik sebelumnya kita menggunakan selector elemen (h1, p, body). Tapi untuk halaman nyata, kita butuh selector yang lebih spesifik: class selector.\n\nCara membuat class di HTML:\n<div class=\"nama-class\">...</div>\n\nCara menargetnya di CSS:\n.nama-class {\n  property: value;\n}\n\nKelebihan class:\n• Bisa digunakan oleh banyak elemen berbeda\n• Satu elemen bisa punya banyak class: class=\"card featured\"\n• Lebih spesifik dari selector elemen\n\nContoh penggunaan:\n<div class=\"card\">Kartu 1</div>\n<div class=\"card\">Kartu 2</div>\n<!-- Keduanya mendapat gaya dari .card -->\n\nClass adalah cara paling umum digunakan untuk styling di CSS — hampir setiap projek nyata bergantung padanya.",
+      "analogy": "Class seperti seragam sekolah. Semua siswa yang memakai seragam kelas 7A mendapat tampilan yang sama tanpa harus mengatur satu per satu.",
+      "tips": [
+        "Nama class ditulis dengan huruf kecil dan tanda hubung: .nav-bar, .hero-section, .card-title.",
+        "Hindari nama class yang terlalu generik seperti .box atau .text — gunakan nama yang menjelaskan fungsinya."
+      ]
+    },
+    {
+      "id": "node-03-navbar-css",
+      "type": "code",
+      "title": "Navigation Bar Lengkap",
+      "xp": 5,
+      "explanation": "Navigation bar adalah komponen pertama yang dilihat pengunjung. Kita gunakan Flexbox untuk menyusun brand di kiri dan links di kanan, dengan background gelap yang kontras.\n\nPerhatikan penggunaan class selector (.navbar, .nav-brand, .nav-links) yang membuat CSS lebih terorganisir.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Navigation Bar</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; }\n\n      .navbar {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        background-color: #1a202c;\n        padding: 16px 32px;\n      }\n      .nav-brand {\n        color: #ffffff;\n        font-size: 22px;\n        font-weight: bold;\n        text-decoration: none;\n      }\n      .nav-links {\n        display: flex;\n        gap: 28px;\n        list-style: none;\n      }\n      .nav-links a {\n        color: #a0aec0;\n        text-decoration: none;\n        font-size: 15px;\n      }\n      .nav-links a:hover {\n        color: #ffffff;\n      }\n      .nav-cta {\n        background-color: #3182ce;\n        color: #ffffff;\n        padding: 8px 20px;\n        border-radius: 6px;\n        text-decoration: none;\n        font-size: 14px;\n        font-weight: bold;\n      }\n    </style>\n  </head>\n  <body>\n    <nav class=\"navbar\">\n      <a href=\"#\" class=\"nav-brand\">BelajarWeb</a>\n      <ul class=\"nav-links\">\n        <li><a href=\"#\">Beranda</a></li>\n        <li><a href=\"#\">Kursus</a></li>\n        <li><a href=\"#\">Tentang</a></li>\n      </ul>\n      <a href=\"#\" class=\"nav-cta\">Mulai Gratis</a>\n    </nav>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-hero-section",
+      "type": "code",
+      "title": "Hero Section",
+      "xp": 5,
+      "explanation": "Hero section adalah bagian pertama yang dilihat pengunjung setelah navbar. Biasanya berisi judul besar, teks pendukung, dan tombol CTA (Call to Action).\n\nKita tambahkan hero section di bawah navbar yang sudah dibuat sebelumnya.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Hero Section</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background-color: #f7fafc; }\n\n      .navbar {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        background-color: #1a202c;\n        padding: 16px 32px;\n      }\n      .nav-brand { color: #ffffff; font-size: 20px; font-weight: bold; text-decoration: none; }\n      .nav-links { display: flex; gap: 24px; list-style: none; }\n      .nav-links a { color: #a0aec0; text-decoration: none; font-size: 15px; }\n\n      .hero {\n        text-align: center;\n        padding: 80px 32px;\n        background-color: #ebf8ff;\n      }\n      .hero h1 {\n        font-size: 48px;\n        color: #1a202c;\n        margin-bottom: 16px;\n        line-height: 1.2;\n      }\n      .hero p {\n        font-size: 18px;\n        color: #4a5568;\n        margin-bottom: 32px;\n        max-width: 560px;\n        margin-left: auto;\n        margin-right: auto;\n      }\n      .btn-primary {\n        display: inline-block;\n        background-color: #3182ce;\n        color: #ffffff;\n        padding: 14px 32px;\n        border-radius: 8px;\n        text-decoration: none;\n        font-size: 16px;\n        font-weight: bold;\n      }\n    </style>\n  </head>\n  <body>\n    <nav class=\"navbar\">\n      <a href=\"#\" class=\"nav-brand\">BelajarWeb</a>\n      <ul class=\"nav-links\">\n        <li><a href=\"#\">Beranda</a></li>\n        <li><a href=\"#\">Kursus</a></li>\n      </ul>\n    </nav>\n\n    <section class=\"hero\">\n      <h1>Belajar Web Development dari Nol</h1>\n      <p>Kurikulum terstruktur yang dirancang khusus untuk pemula. Mulai dari HTML hingga JavaScript.</p>\n      <a href=\"#\" class=\"btn-primary\">Mulai Belajar Gratis</a>\n    </section>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-features-section",
+      "type": "code",
+      "title": "Section Fitur dengan Kartu",
+      "xp": 5,
+      "explanation": "Setelah hero, halaman biasanya punya section yang menjelaskan fitur atau manfaat. Kita gunakan Flexbox untuk menyusun kartu-kartu fitur secara horizontal.\n\nPerhatikan bagaimana class selector .feature-card digunakan untuk memberi gaya yang sama ke semua kartu sekaligus.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Features Section</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background-color: #f7fafc; }\n\n      /* Navbar */\n      .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #1a202c; padding: 16px 32px; }\n      .nav-brand { color: #ffffff; font-size: 20px; font-weight: bold; text-decoration: none; }\n\n      /* Hero */\n      .hero { text-align: center; padding: 64px 32px; background-color: #ebf8ff; }\n      .hero h1 { font-size: 42px; color: #1a202c; margin-bottom: 12px; }\n      .hero p { font-size: 17px; color: #4a5568; max-width: 520px; margin: 0 auto 28px; }\n      .btn-primary { display: inline-block; background-color: #3182ce; color: #ffffff; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: bold; }\n\n      /* Features */\n      .features {\n        padding: 64px 32px;\n        background-color: #ffffff;\n      }\n      .features h2 {\n        text-align: center;\n        font-size: 28px;\n        color: #1a202c;\n        margin-bottom: 8px;\n      }\n      .features-subtitle {\n        text-align: center;\n        color: #718096;\n        margin-bottom: 40px;\n        font-size: 16px;\n      }\n      .feature-grid {\n        display: flex;\n        gap: 24px;\n        justify-content: center;\n        flex-wrap: wrap;\n      }\n      .feature-card {\n        background-color: #f7fafc;\n        border: 1px solid #e2e8f0;\n        border-radius: 12px;\n        padding: 28px;\n        width: 240px;\n      }\n      .feature-card .icon { font-size: 28px; margin-bottom: 12px; }\n      .feature-card h3 { font-size: 17px; color: #1a202c; margin-bottom: 8px; }\n      .feature-card p { font-size: 14px; color: #718096; line-height: 1.6; }\n    </style>\n  </head>\n  <body>\n    <nav class=\"navbar\">\n      <a href=\"#\" class=\"nav-brand\">BelajarWeb</a>\n    </nav>\n\n    <section class=\"hero\">\n      <h1>Belajar Web Development</h1>\n      <p>Dari HTML hingga JavaScript, langkah demi langkah.</p>\n      <a href=\"#\" class=\"btn-primary\">Mulai Gratis</a>\n    </section>\n\n    <section class=\"features\">\n      <h2>Mengapa Memilih Kami?</h2>\n      <p class=\"features-subtitle\">Platform belajar yang dirancang untuk pemula</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <div class=\"icon\">📚</div>\n          <h3>Kurikulum Terstruktur</h3>\n          <p>Materi disusun dari dasar hingga mahir oleh para ahli.</p>\n        </div>\n        <div class=\"feature-card\">\n          <div class=\"icon\">⚡</div>\n          <h3>Belajar Interaktif</h3>\n          <p>Tulis kode langsung di browser, lihat hasilnya seketika.</p>\n        </div>\n        <div class=\"feature-card\">\n          <div class=\"icon\">🎯</div>\n          <h3>Progress Tracking</h3>\n          <p>Pantau kemajuan belajarmu di setiap topik dan level.</p>\n        </div>\n      </div>\n    </section>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-footer",
+      "type": "code",
+      "title": "Footer yang Profesional",
+      "xp": 5,
+      "explanation": "Footer melengkapi halaman dengan informasi penutup. Biasanya menggunakan background gelap untuk membedakannya secara visual dari konten di atasnya.\n\nKita gunakan Flexbox di dalam footer untuk menyusun kolom-kolom informasi secara horizontal.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Footer</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background-color: #f7fafc; }\n\n      .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #1a202c; padding: 16px 32px; }\n      .nav-brand { color: #ffffff; font-size: 20px; font-weight: bold; text-decoration: none; }\n\n      .hero { text-align: center; padding: 48px 32px; background-color: #ebf8ff; }\n      .hero h1 { font-size: 36px; color: #1a202c; margin-bottom: 12px; }\n      .hero p { font-size: 16px; color: #4a5568; }\n\n      .footer {\n        background-color: #1a202c;\n        color: #a0aec0;\n        padding: 48px 32px 24px;\n      }\n      .footer-top {\n        display: flex;\n        gap: 48px;\n        justify-content: space-between;\n        margin-bottom: 32px;\n      }\n      .footer-col h4 {\n        color: #ffffff;\n        font-size: 15px;\n        margin-bottom: 16px;\n      }\n      .footer-col ul {\n        list-style: none;\n        display: flex;\n        flex-direction: column;\n        gap: 8px;\n      }\n      .footer-col a {\n        color: #718096;\n        text-decoration: none;\n        font-size: 14px;\n      }\n      .footer-bottom {\n        border-top: 1px solid #2d3748;\n        padding-top: 16px;\n        font-size: 13px;\n        color: #4a5568;\n        text-align: center;\n      }\n    </style>\n  </head>\n  <body>\n    <nav class=\"navbar\">\n      <a href=\"#\" class=\"nav-brand\">BelajarWeb</a>\n    </nav>\n\n    <section class=\"hero\">\n      <h1>Platform Belajar Coding #1</h1>\n      <p>Mulai perjalanan web development-mu hari ini.</p>\n    </section>\n\n    <footer class=\"footer\">\n      <div class=\"footer-top\">\n        <div class=\"footer-col\">\n          <h4>BelajarWeb</h4>\n          <ul>\n            <li><a href=\"#\">Tentang Kami</a></li>\n            <li><a href=\"#\">Blog</a></li>\n            <li><a href=\"#\">Karir</a></li>\n          </ul>\n        </div>\n        <div class=\"footer-col\">\n          <h4>Kursus</h4>\n          <ul>\n            <li><a href=\"#\">HTML</a></li>\n            <li><a href=\"#\">CSS</a></li>\n            <li><a href=\"#\">JavaScript</a></li>\n          </ul>\n        </div>\n        <div class=\"footer-col\">\n          <h4>Dukungan</h4>\n          <ul>\n            <li><a href=\"#\">Bantuan</a></li>\n            <li><a href=\"#\">Kontak</a></li>\n          </ul>\n        </div>\n      </div>\n      <div class=\"footer-bottom\">\n        <p>© 2025 BelajarWeb. Semua hak dilindungi.</p>\n      </div>\n    </footer>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-full-page-layout",
+      "type": "code",
+      "title": "Halaman Lengkap — Navbar, Sections, Footer",
+      "xp": 5,
+      "explanation": "Inilah halaman yang menggabungkan semua bagian: navbar, hero section, features section, dan footer menjadi satu halaman yang utuh dan terlihat profesional.\n\nBandingkan dengan halaman HTML polos di topik pertama — ini adalah hasil dari menggabungkan HTML semantik dengan CSS yang sudah kamu pelajari.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>BelajarWeb — Platform Coding</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background-color: #f7fafc; color: #2d3748; }\n\n      /* Navbar */\n      .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #1a202c; padding: 16px 40px; }\n      .nav-brand { color: #ffffff; font-size: 20px; font-weight: bold; text-decoration: none; }\n      .nav-links { display: flex; gap: 28px; list-style: none; }\n      .nav-links a { color: #a0aec0; text-decoration: none; font-size: 15px; }\n      .nav-cta { background-color: #3182ce; color: #fff; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: bold; }\n\n      /* Hero */\n      .hero { text-align: center; padding: 80px 40px; background-color: #ebf8ff; }\n      .hero h1 { font-size: 44px; color: #1a202c; margin-bottom: 16px; line-height: 1.2; }\n      .hero p { font-size: 17px; color: #4a5568; max-width: 500px; margin: 0 auto 28px; line-height: 1.6; }\n      .btn-primary { display: inline-block; background-color: #3182ce; color: #fff; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-size: 16px; font-weight: bold; }\n\n      /* Features */\n      .features { padding: 64px 40px; background-color: #ffffff; }\n      .features h2 { text-align: center; font-size: 28px; color: #1a202c; margin-bottom: 8px; }\n      .section-sub { text-align: center; color: #718096; margin-bottom: 40px; }\n      .feature-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }\n      .feature-card { background-color: #f7fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; width: 220px; }\n      .feature-card .icon { font-size: 28px; margin-bottom: 10px; }\n      .feature-card h3 { font-size: 16px; color: #1a202c; margin-bottom: 6px; }\n      .feature-card p { font-size: 14px; color: #718096; line-height: 1.5; }\n\n      /* Footer */\n      .footer { background-color: #1a202c; color: #718096; padding: 32px 40px; text-align: center; font-size: 14px; }\n      .footer a { color: #a0aec0; text-decoration: none; margin: 0 12px; }\n    </style>\n  </head>\n  <body>\n    <nav class=\"navbar\">\n      <a href=\"#\" class=\"nav-brand\">BelajarWeb</a>\n      <ul class=\"nav-links\">\n        <li><a href=\"#\">Beranda</a></li>\n        <li><a href=\"#\">Kursus</a></li>\n        <li><a href=\"#\">Tentang</a></li>\n      </ul>\n      <a href=\"#\" class=\"nav-cta\">Daftar Gratis</a>\n    </nav>\n\n    <section class=\"hero\">\n      <h1>Belajar Web Development dari Nol</h1>\n      <p>Kurikulum terstruktur dari HTML hingga JavaScript. Belajar dengan contoh nyata dan latihan interaktif.</p>\n      <a href=\"#\" class=\"btn-primary\">Mulai Belajar Sekarang</a>\n    </section>\n\n    <section class=\"features\">\n      <h2>Kenapa Pilih BelajarWeb?</h2>\n      <p class=\"section-sub\">Dirancang khusus untuk pemula SMP, SMA, dan siapapun yang ingin belajar coding</p>\n      <div class=\"feature-grid\">\n        <div class=\"feature-card\">\n          <div class=\"icon\">📚</div>\n          <h3>Kurikulum Terstruktur</h3>\n          <p>Materi dari dasar hingga mahir, tersusun dengan baik.</p>\n        </div>\n        <div class=\"feature-card\">\n          <div class=\"icon\">💻</div>\n          <h3>Latihan Interaktif</h3>\n          <p>Tulis dan jalankan kode langsung di browser.</p>\n        </div>\n        <div class=\"feature-card\">\n          <div class=\"icon\">🏆</div>\n          <h3>Sistem XP</h3>\n          <p>Kumpulkan poin dan lencana di setiap pencapaian.</p>\n        </div>\n      </div>\n    </section>\n\n    <footer class=\"footer\">\n      <p>© 2025 BelajarWeb &nbsp;|&nbsp;\n        <a href=\"#\">Tentang</a>\n        <a href=\"#\">Kontak</a>\n        <a href=\"#\">Kebijakan Privasi</a>\n      </p>\n    </footer>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Identifikasi Komponen Halaman",
+      "xp": 10,
+      "instructions": "Sebuah website punya judul besar, teks pendukung, dan tombol 'Daftar Sekarang' di bagian paling atas setelah navbar. Bagian ini biasanya disebut apa dalam dunia web development?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Header section",
+        "Main section",
+        "Hero section",
+        "Banner section"
+      ],
+      "correctOption": "Hero section"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Landing Page dengan Navbar dan Section",
+      "xp": 15,
+      "instructions": "Buat halaman dengan struktur berikut menggunakan HTML semantik dan CSS Flexbox:\n\n1. Navbar dengan class 'navbar':\n   - Flexbox, justify-content: space-between, background #1a202c, padding 16px 32px\n   - Brand di kiri: nama website (warna putih)\n   - Links di kanan: div dengan display flex dan gap 24px, berisi 2-3 link (warna #a0aec0)\n\n2. Hero section dengan class 'hero':\n   - text-align center, padding 64px 32px, background-color #ebf8ff\n   - Judul h1 besar (font-size 40px, warna #1a202c)\n   - Paragraf deskripsi (warna #4a5568)\n   - Tombol/link dengan class 'btn' (background #3182ce, warna putih, padding 12px 28px, border-radius 8px)\n\n3. Section fitur sederhana: heading dan minimal 2 kartu menggunakan Flexbox",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Landing Page Saya</title>\n    <!-- Tambahkan CSS di sini -->\n  </head>\n  <body>\n    <!-- Tambahkan navbar, hero, dan section fitur di sini -->\n  </body>\n</html>"
+      },
+      "expectedResult": "Landing page dengan navbar gelap, hero section biru muda, dan section dengan kartu-kartu fitur.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Landing Page Saya</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background-color: #f7fafc; }\n\n      .navbar {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        background-color: #1a202c;\n        padding: 16px 32px;\n      }\n      .nav-brand { color: #ffffff; font-size: 20px; font-weight: bold; text-decoration: none; }\n      .nav-links { display: flex; gap: 24px; }\n      .nav-links a { color: #a0aec0; text-decoration: none; font-size: 15px; }\n\n      .hero {\n        text-align: center;\n        padding: 64px 32px;\n        background-color: #ebf8ff;\n      }\n      .hero h1 { font-size: 40px; color: #1a202c; margin-bottom: 16px; }\n      .hero p { font-size: 17px; color: #4a5568; margin-bottom: 28px; }\n      .btn {\n        display: inline-block;\n        background-color: #3182ce;\n        color: #ffffff;\n        padding: 12px 28px;\n        border-radius: 8px;\n        text-decoration: none;\n        font-weight: bold;\n      }\n\n      .features { padding: 48px 32px; }\n      .features h2 { text-align: center; font-size: 26px; color: #1a202c; margin-bottom: 32px; }\n      .card-row { display: flex; gap: 20px; justify-content: center; }\n      .card {\n        background-color: #ffffff;\n        border: 1px solid #e2e8f0;\n        border-radius: 12px;\n        padding: 24px;\n        width: 240px;\n      }\n      .card h3 { font-size: 16px; color: #1a202c; margin-bottom: 8px; }\n      .card p { font-size: 14px; color: #718096; line-height: 1.5; }\n    </style>\n  </head>\n  <body>\n    <nav class=\"navbar\">\n      <a href=\"#\" class=\"nav-brand\">WebSaya</a>\n      <div class=\"nav-links\">\n        <a href=\"#\">Beranda</a>\n        <a href=\"#\">Fitur</a>\n        <a href=\"#\">Kontak</a>\n      </div>\n    </nav>\n\n    <section class=\"hero\">\n      <h1>Website Pertamamu Dimulai di Sini</h1>\n      <p>Belajar HTML dan CSS dari nol dengan panduan langkah demi langkah.</p>\n      <a href=\"#\" class=\"btn\">Mulai Sekarang</a>\n    </section>\n\n    <section class=\"features\">\n      <h2>Fitur Unggulan</h2>\n      <div class=\"card-row\">\n        <div class=\"card\">\n          <h3>Pelajaran Interaktif</h3>\n          <p>Tulis dan lihat hasil kode langsung di browser.</p>\n        </div>\n        <div class=\"card\">\n          <h3>Belajar Bertahap</h3>\n          <p>Kurikulum dari dasar hingga mahir yang terstruktur.</p>\n        </div>\n      </div>\n    </section>\n  </body>\n</html>",
+        "explanation": "Kita membangun tiga bagian utama halaman. Navbar menggunakan justify-content: space-between untuk memisahkan brand dan links. Hero section menggunakan text-align: center untuk memusatkan semua konten. Section fitur menggunakan Flexbox dengan justify-content: center untuk memusatkan kartu-kartu. Semua menggunakan class selector yang deskriptif."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa itu class selector dalam CSS dan bagaimana cara menulisnya?",
+        "options": [
+          "Selector untuk tag HTML tertentu, ditulis tanpa tanda khusus: h1 { }",
+          "Selector untuk elemen dengan atribut class tertentu, ditulis dengan titik di depan: .nama-class { }",
+          "Selector untuk elemen dengan ID tertentu, ditulis dengan tanda pagar: #nama-id { }",
+          "Selector untuk semua elemen sekaligus, ditulis dengan tanda bintang: * { }"
+        ],
+        "correctAnswer": "Selector untuk elemen dengan atribut class tertentu, ditulis dengan titik di depan: .nama-class { }",
+        "explanation": "Class selector di CSS ditulis dengan titik (.) diikuti nama class: .nama-class { }. Di HTML, class ditambahkan dengan atribut class='nama-class'. Satu class bisa digunakan oleh banyak elemen, dan satu elemen bisa punya banyak class.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Bagian halaman website yang berisi judul besar, teks pendukung, dan tombol CTA di bagian paling atas (setelah navbar) biasanya disebut apa?",
+        "options": [
+          "Header section",
+          "Banner section",
+          "Hero section",
+          "Welcome section"
+        ],
+        "correctAnswer": "Hero section",
+        "explanation": "Bagian pertama yang dilihat pengunjung setelah navbar — biasanya berisi judul besar, teks pendukung, dan tombol CTA — disebut hero section. Ini adalah bagian paling penting dari landing page karena membuat kesan pertama.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Mengapa penggunaan class selector lebih disarankan daripada hanya menggunakan selector elemen (seperti div, p) untuk styling website nyata?",
+        "options": [
+          "Karena class selector lebih cepat diproses oleh browser",
+          "Karena class selector memungkinkan styling yang dapat digunakan ulang dan lebih spesifik",
+          "Karena selector elemen tidak lagi didukung di CSS3",
+          "Karena class selector secara otomatis menambahkan animasi"
+        ],
+        "correctAnswer": "Karena class selector memungkinkan styling yang dapat digunakan ulang dan lebih spesifik",
+        "explanation": "Class selector memungkinkan kita memberi gaya yang sama ke banyak elemen berbeda (misalnya semua .card mendapat gaya yang sama) tanpa mempengaruhi semua elemen dengan tag yang sama. Ini jauh lebih fleksibel dan dapat digunakan ulang dibanding selector elemen.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Pada navigation bar, kombinasi CSS mana yang paling tepat untuk menempatkan brand di kiri dan menu links di kanan?",
+        "options": [
+          "display: flex; justify-content: space-between",
+          "display: flex; justify-content: center",
+          "display: flex; align-items: space-between",
+          "display: block; float: left"
+        ],
+        "correctAnswer": "display: flex; justify-content: space-between",
+        "explanation": "display: flex mengaktifkan Flexbox pada navbar, dan justify-content: space-between mendorong item pertama (brand) ke kiri dan item terakhir (links) ke kanan secara otomatis. Ini adalah pola yang paling umum untuk navigation bar.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Properti CSS mana yang digunakan untuk membatasi lebar elemen agar tidak terlalu lebar di layar besar?",
+        "options": [
+          "width: limited",
+          "min-width: 1200px",
+          "max-width: 1100px",
+          "fixed-width: 1100px"
+        ],
+        "correctAnswer": "max-width: 1100px",
+        "explanation": "max-width membatasi lebar maksimum elemen — elemen tidak akan lebih lebar dari nilai yang ditentukan, tapi bisa lebih sempit di layar yang lebih kecil. Dikombinasikan dengan margin: 0 auto, ini adalah cara umum untuk membuat konten terlihat terpusat dan tidak terlalu lebar.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Kamu baru saja membangun layout halaman website yang sesungguhnya! Navbar, hero section, feature cards, dan footer — semuanya menggunakan HTML dan CSS yang sudah kamu pelajari. Ini adalah fondasi dari setiap landing page profesional.",
+    "achievementName": "Web Layout Architect",
+    "achievementIcon": "🌐"
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-13",
+    "title": "Box Model dan Spacing — Jarak dan Bingkai dengan CSS",
+    "description": "Pahami CSS Box Model dan gunakan margin, padding, border, dan border-radius untuk mengatur jarak dan tampilan setiap elemen di halamanmu.",
+    "level": "beginner",
+    "category": "CSS",
+    "topicNumber": 3,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Setiap Elemen adalah Sebuah Kotak",
+    "description": "Dalam CSS, setiap elemen HTML — mulai dari paragraf, gambar, hingga heading — dianggap sebagai sebuah kotak persegi. Box Model adalah konsep yang menjelaskan bagaimana kotak-kotak ini tersusun: isi konten di tengah, dikelilingi padding, lalu border, lalu margin di paling luar. Memahami Box Model adalah kunci untuk mengontrol layout dan spacing di halamanmu.",
+    "analogy": "Bayangkan sebuah bingkai foto. Foto itu sendiri adalah konten. Matting putih di sekeliling foto adalah padding. Bingkai kayu yang mengelilinginya adalah border. Dan jarak antara satu bingkai dengan bingkai lainnya di dinding adalah margin."
+  },
+  "objectives": [
+    "Memahami konsep CSS Box Model: content, padding, border, margin",
+    "Menggunakan padding untuk menambah ruang di dalam elemen",
+    "Menggunakan margin untuk menambah jarak antara elemen",
+    "Menggunakan border dan border-radius untuk membuat garis batas dan sudut melengkung",
+    "Membuat card sederhana menggunakan kombinasi box model properties"
+  ],
+  "review": {
+    "learned": [
+      "CSS Box Model terdiri dari empat lapisan dari dalam ke luar: content, padding, border, margin.",
+      "padding menambahkan ruang di dalam elemen, antara konten dan border.",
+      "margin menambahkan ruang di luar elemen, antara elemen dengan elemen lain.",
+      "border menambahkan garis batas di sekeliling elemen.",
+      "border-radius membulatkan sudut elemen — nilai 50% menghasilkan bentuk lingkaran.",
+      "width dan height mengatur ukuran area konten elemen."
+    ],
+    "keyConcepts": [
+      "CSS Box Model",
+      "padding",
+      "margin",
+      "border",
+      "border-radius",
+      "width dan height"
+    ],
+    "takeaways": [
+      "Gunakan padding untuk memberi ruang napas di dalam elemen — konten tidak menempel ke tepi.",
+      "Gunakan margin untuk memberi jarak antara elemen yang berdekatan.",
+      "border-radius: 8px sudah cukup untuk sudut melengkung yang terlihat modern.",
+      "Properti padding dan margin bisa ditulis dengan satu nilai (semua sisi sama) atau empat nilai (atas, kanan, bawah, kiri)."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-box-model",
+      "type": "lesson",
+      "title": "CSS Box Model — Setiap Elemen adalah Kotak",
+      "xp": 5,
+      "explanation": "CSS Box Model adalah konsep fundamental yang menjelaskan bagaimana setiap elemen HTML ditampilkan sebagai kotak persegi.\n\nSetiap kotak terdiri dari empat lapisan (dari dalam ke luar):\n\n1. Content — area tempat teks atau gambar berada\n2. Padding — ruang transparan di dalam elemen, antara konten dan border\n3. Border — garis batas di sekeliling padding\n4. Margin — ruang transparan di luar elemen, antara elemen ini dan elemen lain\n\nMemahami urutan ini sangat penting. Ketika kamu mengatur padding, kamu menambah ruang di DALAM elemen. Ketika kamu mengatur margin, kamu menambah jarak di LUAR elemen.\n\nContoh:\ndiv {\n  padding: 20px;   /* ruang dalam */\n  border: 1px solid gray;\n  margin: 16px;    /* jarak luar */\n}",
+      "tips": [
+        "Padding mempengaruhi area klik dan background-color elemen — background menyebar ke area padding.",
+        "Margin tidak memiliki warna — selalu transparan, menampilkan apa yang ada di belakangnya."
+      ]
+    },
+    {
+      "id": "node-02-padding-margin",
+      "type": "lesson",
+      "title": "Padding dan Margin — Jarak Dalam dan Luar",
+      "xp": 5,
+      "explanation": "Padding dan margin bisa ditulis dalam beberapa cara:\n\nSatu nilai — semua sisi sama:\npadding: 16px;  /* semua sisi 16px */\n\nDua nilai — atas-bawah dan kiri-kanan:\npadding: 8px 16px;  /* atas-bawah 8px, kiri-kanan 16px */\n\nEmpat nilai — atas, kanan, bawah, kiri (searah jarum jam):\npadding: 8px 16px 12px 16px;\n\nSisi individual:\npadding-top: 8px;\npadding-right: 16px;\npadding-bottom: 8px;\npadding-left: 16px;\n\nAturan yang sama berlaku untuk margin.\n\nTips praktis:\n• Untuk kartu atau tombol, padding 12px–24px terasa nyaman\n• Untuk jarak antar section, margin-bottom 24px–48px adalah nilai yang umum",
+      "analogy": "Padding seperti bantalan di dalam kotak hadiah — melindungi isi dan memberi ruang. Margin seperti jarak antara kotak-kotak di rak toko — memisahkan satu produk dari produk lain.",
+      "tips": [
+        "Gunakan margin: 0 auto; pada elemen blok dengan width tertentu untuk membuatnya rata tengah secara horizontal.",
+        "Sering digunakan: padding: 16px 24px; untuk tombol dan kartu."
+      ]
+    },
+    {
+      "id": "node-03-padding-demo",
+      "type": "code",
+      "title": "Padding — Ruang di Dalam Elemen",
+      "xp": 5,
+      "explanation": "Perhatikan perbedaan antara elemen tanpa padding dan dengan padding. Tanpa padding, konten menempel ke tepi elemen. Dengan padding, ada ruang napas di antara konten dan tepi.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Demo Padding</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f7fafc;\n        color: #2d3748;\n      }\n      .tanpa-padding {\n        background-color: #bee3f8;\n        border: 2px solid #3182ce;\n        color: #2c5282;\n      }\n      .dengan-padding {\n        background-color: #c6f6d5;\n        border: 2px solid #38a169;\n        padding: 20px;\n        color: #276749;\n      }\n      .padding-berbeda {\n        background-color: #fefcbf;\n        border: 2px solid #d69e2e;\n        padding: 8px 32px;\n        color: #744210;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Demo Padding</h1>\n\n    <p>Tanpa padding — teks menempel ke tepi:</p>\n    <div class=\"tanpa-padding\">Ini teks tanpa padding sama sekali.</div>\n\n    <p>Dengan padding: 20px — ada ruang napas:</p>\n    <div class=\"dengan-padding\">Ini teks dengan padding 20px di semua sisi.</div>\n\n    <p>Padding: 8px 32px — kecil atas-bawah, besar kiri-kanan:</p>\n    <div class=\"padding-berbeda\">Padding berbeda per sisi.</div>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-margin-demo",
+      "type": "code",
+      "title": "Margin — Jarak antara Elemen",
+      "xp": 5,
+      "explanation": "Margin mengatur jarak di luar elemen. Coba perhatikan bagaimana margin-bottom pada setiap kartu menentukan jarak antar kartu. Tanpa margin, semua kartu akan menempel satu sama lain.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Demo Margin</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f7fafc;\n        color: #2d3748;\n      }\n      .kartu {\n        background-color: #ffffff;\n        border: 1px solid #e2e8f0;\n        padding: 20px;\n        margin-bottom: 24px;\n      }\n      .kartu h2 {\n        font-size: 18px;\n        color: #2b6cb0;\n        margin: 0 0 8px 0;\n      }\n      .kartu p {\n        font-size: 15px;\n        color: #4a5568;\n        margin: 0;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Daftar Artikel</h1>\n\n    <div class=\"kartu\">\n      <h2>Belajar HTML</h2>\n      <p>HTML adalah fondasi dari semua halaman web.</p>\n    </div>\n\n    <div class=\"kartu\">\n      <h2>Belajar CSS</h2>\n      <p>CSS mengubah halaman polos menjadi tampilan yang menarik.</p>\n    </div>\n\n    <div class=\"kartu\">\n      <h2>Belajar JavaScript</h2>\n      <p>JavaScript menambahkan interaktivitas pada halaman web.</p>\n    </div>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-border-radius",
+      "type": "code",
+      "title": "Border dan border-radius",
+      "xp": 5,
+      "explanation": "Properti border menambahkan garis batas di sekeliling elemen. Format penulisannya:\nborder: lebar gaya warna;\nContoh: border: 2px solid #3182ce;\n\nGaya border yang umum: solid (garis solid), dashed (putus-putus), dotted (titik-titik)\n\nborder-radius membulatkan sudut elemen:\n• 4px–8px — sudut sedikit melengkung (modern)\n• 16px–24px — sudut melengkung lebih banyak (pill shape)\n• 50% — bentuk lingkaran penuh",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Border dan border-radius</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f7fafc;\n        color: #2d3748;\n      }\n      .kotak-solid {\n        border: 2px solid #3182ce;\n        padding: 16px;\n        margin-bottom: 16px;\n        color: #2c5282;\n      }\n      .kotak-dashed {\n        border: 2px dashed #e53e3e;\n        padding: 16px;\n        margin-bottom: 16px;\n        color: #742a2a;\n      }\n      .radius-kecil {\n        background-color: #ebf8ff;\n        border: 2px solid #63b3ed;\n        padding: 16px;\n        border-radius: 8px;\n        margin-bottom: 16px;\n        color: #2c5282;\n      }\n      .radius-besar {\n        background-color: #f0fff4;\n        border: 2px solid #68d391;\n        padding: 16px;\n        border-radius: 24px;\n        color: #276749;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Demo Border</h1>\n    <div class=\"kotak-solid\">Border solid 2px biru</div>\n    <div class=\"kotak-dashed\">Border dashed 2px merah</div>\n    <div class=\"radius-kecil\">border-radius: 8px — sudut sedikit melengkung</div>\n    <div class=\"radius-besar\">border-radius: 24px — sudut sangat melengkung</div>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-card-component",
+      "type": "code",
+      "title": "Membuat Kartu (Card) Sederhana",
+      "xp": 5,
+      "explanation": "Kartu (card) adalah komponen UI yang sangat umum di website modern. Kartu dibuat menggunakan kombinasi padding, border, border-radius, dan background-color.\n\nPerhatikan bagaimana box model properties bekerja bersama untuk menciptakan komponen yang terlihat rapi dan profesional.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Card Component</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f0f4f8;\n        color: #2d3748;\n        padding: 24px;\n      }\n      h1 {\n        font-size: 28px;\n        color: #1a202c;\n        margin-bottom: 24px;\n      }\n      .card {\n        background-color: #ffffff;\n        border: 1px solid #e2e8f0;\n        border-radius: 12px;\n        padding: 24px;\n        margin-bottom: 20px;\n        width: 400px;\n      }\n      .card h2 {\n        font-size: 20px;\n        color: #2b6cb0;\n        margin: 0 0 8px 0;\n      }\n      .card p {\n        font-size: 15px;\n        color: #718096;\n        margin: 0 0 16px 0;\n        line-height: 1.6;\n      }\n      .card .tag {\n        background-color: #ebf8ff;\n        color: #2b6cb0;\n        border-radius: 4px;\n        padding: 4px 10px;\n        font-size: 13px;\n        font-weight: bold;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Kursus yang Tersedia</h1>\n\n    <div class=\"card\">\n      <h2>HTML untuk Pemula</h2>\n      <p>Pelajari cara membangun struktur halaman web dari nol menggunakan HTML.</p>\n      <span class=\"tag\">Pemula</span>\n    </div>\n\n    <div class=\"card\">\n      <h2>CSS Dasar</h2>\n      <p>Ubah halaman HTML polos menjadi tampilan yang menarik dengan CSS.</p>\n      <span class=\"tag\">Pemula</span>\n    </div>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-width-height",
+      "type": "code",
+      "title": "width dan height — Ukuran Elemen",
+      "xp": 5,
+      "explanation": "Properti width dan height mengatur ukuran area konten elemen.\n\n• width: 300px — lebar tetap 300 piksel\n• width: 100% — lebar penuh elemen induk\n• max-width: 600px — lebar maksimal 600 piksel, tidak lebih\n\nContoh di bawah menggabungkan semua box model properties untuk membuat halaman yang sudah mulai terasa seperti website nyata.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Layout Kartu Lengkap</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f0f4f8;\n        color: #2d3748;\n        padding: 32px;\n      }\n      h1 {\n        font-size: 32px;\n        color: #1a202c;\n        text-align: center;\n        margin-bottom: 8px;\n      }\n      .subtitle {\n        text-align: center;\n        color: #718096;\n        font-size: 16px;\n        margin-bottom: 32px;\n      }\n      .card {\n        background-color: #ffffff;\n        border: 1px solid #e2e8f0;\n        border-radius: 12px;\n        padding: 24px;\n        margin-bottom: 20px;\n        max-width: 480px;\n      }\n      .card h2 {\n        font-size: 18px;\n        color: #2b6cb0;\n        margin: 0 0 8px 0;\n      }\n      .card p {\n        font-size: 15px;\n        color: #4a5568;\n        line-height: 1.6;\n        margin: 0;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Fitur Website Kami</h1>\n    <p class=\"subtitle\">Semua yang kamu butuhkan untuk belajar web development</p>\n\n    <div class=\"card\">\n      <h2>Pelajaran Interaktif</h2>\n      <p>Belajar dengan contoh kode langsung yang bisa kamu edit dan jalankan sendiri.</p>\n    </div>\n\n    <div class=\"card\">\n      <h2>Kuis di Setiap Topik</h2>\n      <p>Uji pemahamanmu dengan kuis singkat setelah setiap pelajaran selesai.</p>\n    </div>\n\n    <div class=\"card\">\n      <h2>Progress yang Tersimpan</h2>\n      <p>Kemajuan belajarmu disimpan otomatis — lanjutkan kapan saja dan dari mana saja.</p>\n    </div>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Box Model — Mana yang Benar?",
+      "xp": 10,
+      "instructions": "Kamu ingin membuat div yang punya ruang di dalam antara teks dan tepi elemen (sehingga teks tidak menempel ke tepi), tapi tidak ingin ada jarak tambahan di luar elemen tersebut. Properti mana yang perlu kamu gunakan?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "margin, karena margin menambah ruang di dalam elemen",
+        "padding, karena padding menambah ruang di dalam elemen",
+        "border, karena border memberi ruang di sekeliling elemen",
+        "spacing, karena spacing mengatur jarak dalam CSS"
+      ],
+      "correctOption": "padding, karena padding menambah ruang di dalam elemen"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Buat Kartu Profil",
+      "xp": 15,
+      "instructions": "Buat sebuah kartu profil menggunakan div dengan CSS berikut:\n1. background-color: #ffffff\n2. border: 1px solid #e2e8f0\n3. border-radius: 12px\n4. padding: 24px\n5. max-width: 360px\n\nDi dalam kartu, tambahkan:\n- h2 dengan nama pengguna (color: #1a202c)\n- p dengan deskripsi singkat (color: #718096, font-size: 15px)\n\nGunakan internal CSS.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Kartu Profil</title>\n    <!-- Tambahkan CSS di sini -->\n  </head>\n  <body>\n    <!-- Tambahkan div kartu dan isinya di sini -->\n  </body>\n</html>"
+      },
+      "expectedResult": "Kartu putih dengan sudut melengkung, padding 24px, border abu-abu tipis, berisi nama pengguna dan deskripsi.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Kartu Profil</title>\n    <style>\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f0f4f8;\n        padding: 24px;\n      }\n      .kartu-profil {\n        background-color: #ffffff;\n        border: 1px solid #e2e8f0;\n        border-radius: 12px;\n        padding: 24px;\n        max-width: 360px;\n      }\n      .kartu-profil h2 {\n        color: #1a202c;\n        margin: 0 0 8px 0;\n        font-size: 20px;\n      }\n      .kartu-profil p {\n        color: #718096;\n        font-size: 15px;\n        margin: 0;\n        line-height: 1.6;\n      }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu-profil\">\n      <h2>Budi Santoso</h2>\n      <p>Pelajar SMP yang sedang belajar web development. Suka coding dan membaca buku teknologi.</p>\n    </div>\n  </body>\n</html>",
+        "explanation": "Kita membuat sebuah div dengan class kartu-profil yang menggunakan semua properti box model: background-color untuk warna latar, border untuk garis batas tipis, border-radius untuk sudut melengkung, padding untuk ruang di dalam kartu, dan max-width untuk membatasi lebar kartu. Di dalam kartu ada h2 untuk nama dan p untuk deskripsi, masing-masing dengan warna yang berbeda untuk hierarki visual."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Dalam CSS Box Model, urutan lapisan dari dalam ke luar yang benar adalah?",
+        "options": [
+          "margin → border → padding → content",
+          "content → border → padding → margin",
+          "content → padding → border → margin",
+          "padding → content → border → margin"
+        ],
+        "correctAnswer": "content → padding → border → margin",
+        "explanation": "Urutan CSS Box Model dari dalam ke luar adalah: content (isi konten), padding (ruang di dalam), border (garis batas), margin (ruang di luar). Cara mudah mengingatnya: dari yang paling dalam ke paling luar, seperti lapisan bawang.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa perbedaan antara padding dan margin?",
+        "options": [
+          "Padding mengatur warna, margin mengatur ukuran",
+          "Padding menambah ruang di dalam elemen, margin menambah ruang di luar elemen",
+          "Padding untuk elemen blok, margin untuk elemen inline",
+          "Padding dan margin adalah properti yang sama dengan nama berbeda"
+        ],
+        "correctAnswer": "Padding menambah ruang di dalam elemen, margin menambah ruang di luar elemen",
+        "explanation": "Padding adalah ruang di dalam elemen antara konten dan border — background-color menyebar ke area padding. Margin adalah ruang di luar elemen antara elemen ini dan elemen lain — margin selalu transparan.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Nilai border-radius mana yang menghasilkan bentuk lingkaran sempurna?",
+        "options": [
+          "border-radius: 0px",
+          "border-radius: 100px",
+          "border-radius: 50%",
+          "border-radius: circle"
+        ],
+        "correctAnswer": "border-radius: 50%",
+        "explanation": "Nilai 50% pada border-radius membuat semua sudut elemen melengkung hingga 50% dari ukuran elemen, menghasilkan bentuk lingkaran sempurna pada elemen persegi (width = height). Ini sering digunakan untuk foto profil berbentuk bulat.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Kamu menulis padding: 10px 20px; pada sebuah elemen. Apa artinya?",
+        "options": [
+          "Padding atas 10px, padding kanan 20px, sisanya 0",
+          "Padding atas-bawah 10px dan padding kiri-kanan 20px",
+          "Padding atas 10px dan padding bawah 20px",
+          "Padding kiri 10px dan padding kanan 20px"
+        ],
+        "correctAnswer": "Padding atas-bawah 10px dan padding kiri-kanan 20px",
+        "explanation": "Ketika padding ditulis dengan dua nilai, nilai pertama berlaku untuk atas dan bawah, nilai kedua untuk kiri dan kanan. Jadi padding: 10px 20px artinya padding atas=10px, kanan=20px, bawah=10px, kiri=20px.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Properti CSS mana yang digunakan untuk menambahkan garis batas di sekeliling sebuah elemen?",
+        "options": [
+          "outline",
+          "frame",
+          "border",
+          "line"
+        ],
+        "correctAnswer": "border",
+        "explanation": "Properti border digunakan untuk menambahkan garis batas di sekeliling elemen. Format penulisannya: border: lebar gaya warna, misalnya border: 1px solid #cccccc. Gaya yang tersedia antara lain solid, dashed, dan dotted.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Hebat! Kamu sekarang memahami Box Model — fondasi dari semua layout CSS. Dengan padding, margin, border, dan border-radius, kamu sudah bisa membuat kartu dan komponen UI yang terlihat profesional.",
+    "achievementName": "Arsitek Layout",
+    "achievementIcon": "📦"
+  }
+}

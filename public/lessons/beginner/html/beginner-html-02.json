@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-02",
+    "title": "HTML Structure & Basic Tags",
+    "description": "Pahami struktur lengkap dokumen HTML — dari DOCTYPE hingga body — dan pelajari tag-tag dasar yang membentuk setiap halaman web.",
+    "level": "beginner",
+    "category": "HTML",
+    "topicNumber": 2,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Mengenal Struktur Dokumen HTML",
+    "description": "Setiap halaman web yang kamu buka memiliki struktur yang sama di baliknya. Seperti sebuah buku yang punya sampul, daftar isi, dan isi cerita — dokumen HTML juga punya bagian-bagian yang masing-masing punya peran berbeda. Di topik ini kamu akan memahami struktur itu dari awal, lalu mulai mengisinya dengan konten nyata.",
+    "analogy": "Bayangkan dokumen HTML seperti sebuah buku resmi. Ada halaman pertama yang menyatakan 'ini adalah buku cerita HTML', ada sampul yang berisi informasi tentang buku, dan ada isi buku tempat semua cerita ditulis. Struktur HTML bekerja persis seperti itu."
+  },
+  "objectives": [
+    "Memahami mengapa setiap dokumen HTML dimulai dengan <!DOCTYPE html>",
+    "Mengenal peran tag <html>, <head>, <title>, dan <body>",
+    "Membedakan mana konten yang masuk ke <head> dan mana yang masuk ke <body>",
+    "Menambahkan heading <h1> dan paragraf <p> ke dalam <body>",
+    "Menulis dokumen HTML lengkap yang valid dari nol"
+  ],
+  "review": {
+    "learned": [
+      "<!DOCTYPE html> adalah deklarasi yang memberitahu browser bahwa ini dokumen HTML5.",
+      "Tag <html> membungkus seluruh isi dokumen HTML.",
+      "Tag <head> berisi informasi tentang halaman seperti judul, charset, dan metadata — tidak terlihat di layar.",
+      "Tag <title> menentukan judul yang muncul di tab browser.",
+      "Tag <body> berisi semua konten yang terlihat oleh pengunjung halaman.",
+      "Tag <h1> digunakan untuk judul utama, <h2> untuk judul bagian.",
+      "Tag <p> digunakan untuk membuat paragraf teks."
+    ],
+    "keyConcepts": [
+      "DOCTYPE declaration",
+      "Struktur dokumen HTML",
+      "Tag <head> vs <body>",
+      "Tag <title>",
+      "Heading <h1> dan <h2>",
+      "Paragraf <p>"
+    ],
+    "takeaways": [
+      "Setiap dokumen HTML yang valid selalu dimulai dengan <!DOCTYPE html>.",
+      "Pisahkan informasi tentang halaman (di <head>) dari konten yang ditampilkan (di <body>).",
+      "Tag <title> ada di dalam <head>, bukan di dalam <body>.",
+      "Semua yang ingin terlihat oleh pengunjung harus ditulis di dalam <body>.",
+      "Gunakan satu <h1> sebagai judul utama halaman."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-structure-intro",
+      "type": "lesson",
+      "title": "Mengapa HTML Punya Struktur?",
+      "xp": 5,
+      "explanation": "Kamu sudah tahu bahwa HTML adalah bahasa untuk membangun halaman web. Tapi bagaimana browser tahu di mana harus mencari judul halaman? Di mana harus menampilkan konten? Di mana harus membaca pengaturan halaman?\n\nJawabannya: struktur dokumen HTML.\n\nSetiap dokumen HTML mengikuti struktur yang sama — sebuah kerangka standar yang dimengerti oleh semua browser di seluruh dunia. Dengan struktur ini, browser tahu persis apa yang harus dilakukan dengan setiap bagian dari file-mu.\n\nMempelajari struktur ini adalah langkah paling penting dalam memahami HTML. Begitu kamu paham strukturnya, semua hal lain akan terasa lebih masuk akal.",
+      "tips": [
+        "Struktur HTML bersifat hirarkis — tag-tag bersarang di dalam satu sama lain seperti kotak di dalam kotak.",
+        "Browser modern cukup toleran terhadap HTML yang tidak sempurna, tapi menulis struktur yang benar adalah kebiasaan profesional yang baik."
+      ]
+    },
+    {
+      "id": "node-02-doctype",
+      "type": "lesson",
+      "title": "Apa Itu <!DOCTYPE html>?",
+      "xp": 5,
+      "explanation": "Baris pertama dari setiap file HTML adalah:\n\n<!DOCTYPE html>\n\nIni bukan tag HTML biasa — ini adalah deklarasi. Fungsinya adalah memberitahu browser: 'File ini adalah dokumen HTML5. Tolong tampilkan menggunakan standar modern.'\n\nTanpa DOCTYPE, beberapa browser lama akan masuk ke mode kompatibilitas lama (disebut 'quirks mode') dan mungkin menampilkan halamanmu dengan cara yang tidak diharapkan.\n\nAturannya sederhana: selalu tulis <!DOCTYPE html> sebagai baris pertama. Tidak ada argumen, tidak ada variasi. Satu baris ini sudah cukup.",
+      "analogy": "<!DOCTYPE html> seperti halaman pertama di buku resmi yang menyatakan 'Ini adalah buku cerita HTML.' Tanpa halaman itu, pembaca (browser) mungkin bingung harus membacanya dengan cara apa.",
+      "tips": [
+        "DOCTYPE tidak case-sensitive — <!DOCTYPE HTML> dan <!doctype html> juga valid, tapi huruf kecil adalah konvensi modern.",
+        "Kamu hanya perlu satu DOCTYPE per file, selalu di baris paling pertama."
+      ]
+    },
+    {
+      "id": "node-03-skeleton",
+      "type": "code",
+      "title": "Kerangka Lengkap Dokumen HTML",
+      "xp": 5,
+      "explanation": "Ini adalah kerangka standar dokumen HTML yang lengkap. Setiap bagiannya punya peran:\n\n• <!DOCTYPE html> — deklarasi HTML5, selalu di baris pertama\n• <html lang=\"id\"> — membungkus seluruh dokumen; atribut lang memberitahu browser bahwa bahasa halaman ini adalah Indonesia\n• <head> — berisi informasi tentang halaman (tidak terlihat di layar)\n• <meta charset=\"UTF-8\"> — memastikan karakter seperti ä, é, dan huruf Indonesia tampil dengan benar\n• <title> — judul yang muncul di tab browser\n• <body> — tempat semua konten yang terlihat ditulis\n\nHafal kerangka ini. Kamu akan menulisnya ratusan kali dalam karir coding-mu.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Judul Halaman</title>\n  </head>\n  <body>\n    <!-- Konten halaman ada di sini -->\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-head-title",
+      "type": "code",
+      "title": "Tag <head> dan <title>",
+      "xp": 5,
+      "explanation": "Tag <head> adalah tempat kamu meletakkan informasi tentang halaman web-mu — bukan konten yang dilihat pengunjung, tapi data yang dibutuhkan browser untuk memproses halaman dengan benar.\n\nYang paling sering ada di dalam <head>:\n• <meta charset=\"UTF-8\"> — pengaturan karakter (wajib ada)\n• <title> — judul halaman yang muncul di tab browser\n\nTag <title> sangat penting karena:\n1. Muncul di tab browser saat halaman dibuka\n2. Menjadi nama bookmark jika halaman disimpan\n3. Digunakan mesin pencari sebagai judul hasil pencarian\n\nPerhatikan: teks di dalam <title> tidak muncul di halaman itu sendiri — hanya di tab browser.",
+      "analogy": "<head> seperti sampul buku — berisi informasi tentang buku (judul, penulis, penerbit), tapi bukan isi ceritanya. <title> seperti judul di sampul buku.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya - Budi Santoso</title>\n  </head>\n  <body>\n    <!-- Teks \"Profil Saya - Budi Santoso\" hanya muncul di tab browser -->\n    <!-- Bukan di sini! -->\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-body",
+      "type": "code",
+      "title": "Tag <body> — Rumah untuk Semua Konten",
+      "xp": 5,
+      "explanation": "Tag <body> adalah tempat di mana semua konten yang terlihat oleh pengunjung harus ditulis. Teks, gambar, link, tombol, tabel — semuanya masuk ke dalam <body>.\n\nJika konten tidak ada di dalam <body>, pengunjung tidak akan melihatnya di halaman.\n\nAturan sederhana:\n• Ada di <head>? → informasi tentang halaman, tidak terlihat\n• Ada di <body>? → konten halaman, terlihat oleh pengunjung\n\nPada contoh di bawah, body masih kosong — kita akan mengisinya di langkah berikutnya.",
+      "analogy": "<body> seperti isi buku — semua yang dibaca oleh pembaca ada di sini. Jika sesuatu tidak ada di isi buku, pembaca tidak akan menemukannya.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n  </head>\n  <body>\n    <!-- Semua yang ingin dilihat pengunjung ditulis di sini -->\n    <!-- Teks, gambar, link, dan lainnya -->\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-h1-paragraph",
+      "type": "code",
+      "title": "Tambahkan <h1> dan <p> ke dalam <body>",
+      "xp": 5,
+      "explanation": "Sekarang saatnya mengisi <body> dengan konten nyata. Dua tag yang paling sering digunakan di awal adalah:\n\n• <h1> — heading utama halaman. Ini adalah judul terbesar yang pertama dilihat pengunjung. Gunakan hanya satu <h1> per halaman.\n\n• <p> — paragraf teks. Digunakan untuk semua blok teks biasa. Browser otomatis menambahkan jarak antar paragraf, jadi tidak perlu menekan Enter berkali-kali.\n\nBagian penting: kedua tag ini ada di dalam <body>, bukan di dalam <head>. Ingat aturannya — semua konten yang terlihat masuk ke <body>.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n  </head>\n  <body>\n    <h1>Halo! Nama Saya Budi</h1>\n    <p>Saya pelajar SMP yang sedang belajar membuat halaman web dengan HTML.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-complete-document",
+      "type": "code",
+      "title": "Dokumen HTML Lengkap",
+      "xp": 5,
+      "explanation": "Inilah dokumen HTML yang lengkap dan valid — dengan DOCTYPE, head yang berisi meta dan title, serta body yang berisi heading dan dua paragraf.\n\nPerhatikan bagaimana semuanya tersusun:\n1. DOCTYPE di baris pertama\n2. <html> membungkus segalanya\n3. <head> dengan <meta charset> dan <title>\n4. <body> dengan konten yang terlihat\n\nStruktur ini adalah fondasi dari setiap halaman web yang pernah ada. Kamu bisa menambahkan lebih banyak konten ke dalam <body>, tapi kerangkanya selalu sama.\n\nCoba perhatikan indentasi (jarak ke kanan) — ini bukan wajib untuk browser, tapi membuat kode jauh lebih mudah dibaca oleh manusia.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n  </head>\n  <body>\n    <h1>Halo! Nama Saya Budi</h1>\n    <p>Saya pelajar SMP yang sedang belajar membuat halaman web dengan HTML.</p>\n\n    <h2>Sekolah Saya</h2>\n    <p>Saya bersekolah di SMP Negeri 1 Jakarta dan sangat tertarik dengan pelajaran teknologi.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Di Mana Tag Ini Seharusnya?",
+      "xp": 10,
+      "instructions": "Tag <title> yang berisi judul halaman seharusnya diletakkan di dalam tag apa?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "<body>",
+        "<head>",
+        "<html>",
+        "<h1>"
+      ],
+      "correctOption": "<head>"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Lengkapi Halamanmu",
+      "xp": 15,
+      "instructions": "Dokumen di bawah sudah punya struktur dasar dengan satu heading dan satu paragraf.\n\nTugasmu: Tambahkan dua elemen berikut di dalam <body>:\n1. Heading <h2> dengan teks 'Tentang Saya'\n2. Paragraf <p> yang mendeskripsikan dirimu — bisa apa saja (sekolah, hobi, kota asal)\n\nPastikan kedua tag baru diletakkan di dalam <body>, di bawah konten yang sudah ada.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Halaman Pribadiku</title>\n  </head>\n  <body>\n    <h1>Halo! Ini Halaman Pribadiku</h1>\n    <p>Saya sedang belajar HTML dan ini adalah halaman web pertama saya.</p>\n\n    <!-- Tambahkan <h2> dan <p> baru di bawah sini -->\n\n  </body>\n</html>"
+      },
+      "expectedResult": "Dokumen HTML dengan <h1>, dua <p>, dan <h2> bertuliskan 'Tentang Saya' beserta paragraf deskripsi diri.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Halaman Pribadiku</title>\n  </head>\n  <body>\n    <h1>Halo! Ini Halaman Pribadiku</h1>\n    <p>Saya sedang belajar HTML dan ini adalah halaman web pertama saya.</p>\n\n    <h2>Tentang Saya</h2>\n    <p>Nama saya Budi. Saya tinggal di Jakarta dan suka belajar hal-hal baru, terutama teknologi dan coding.</p>\n  </body>\n</html>",
+        "explanation": "Kita menambahkan <h2>Tentang Saya</h2> sebagai judul bagian baru, diikuti tag <p> berisi deskripsi diri. Keduanya diletakkan di dalam <body> agar terlihat di halaman. <h2> dipakai (bukan <h1> lagi) karena ini adalah sub-judul — bukan judul utama halaman."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa fungsi utama dari <!DOCTYPE html> di awal dokumen HTML?",
+        "options": [
+          "Membuat judul yang muncul di tab browser",
+          "Memberitahu browser bahwa dokumen ini menggunakan standar HTML5",
+          "Membungkus seluruh isi konten halaman web",
+          "Menentukan warna latar belakang halaman"
+        ],
+        "correctAnswer": "Memberitahu browser bahwa dokumen ini menggunakan standar HTML5",
+        "explanation": "<!DOCTYPE html> adalah deklarasi — bukan tag HTML biasa — yang memberitahu browser untuk memproses dokumen ini menggunakan standar HTML5. Tanpanya, browser lama mungkin menampilkan halaman dengan cara yang tidak diharapkan.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa fungsi tag <head> dalam dokumen HTML?",
+        "options": [
+          "Menampilkan judul besar di bagian atas halaman yang terlihat pengunjung",
+          "Berisi semua konten teks dan gambar yang dilihat pengunjung",
+          "Berisi informasi tentang halaman seperti judul tab dan pengaturan charset — tidak terlihat di layar",
+          "Membungkus seluruh dokumen HTML dari awal hingga akhir"
+        ],
+        "correctAnswer": "Berisi informasi tentang halaman seperti judul tab dan pengaturan charset — tidak terlihat di layar",
+        "explanation": "Tag <head> berisi metadata dan informasi tentang halaman — seperti <title>, <meta charset>, dan lainnya. Semua isi <head> diproses oleh browser tapi tidak ditampilkan langsung sebagai konten yang terlihat pengunjung.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Di mana teks di dalam tag <title> akan muncul saat halaman dibuka di browser?",
+        "options": [
+          "Sebagai judul besar di bagian paling atas halaman",
+          "Di tab browser, sebagai nama halaman yang sedang dibuka",
+          "Sebagai paragraf pertama di dalam <body>",
+          "Di pojok kanan bawah layar browser"
+        ],
+        "correctAnswer": "Di tab browser, sebagai nama halaman yang sedang dibuka",
+        "explanation": "Tag <title> menentukan judul yang muncul di tab browser — bukan di halaman itu sendiri. Judul ini juga digunakan sebagai nama bookmark dan sebagai judul yang ditampilkan mesin pencari di hasil pencarian.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Apa fungsi tag <body> dalam dokumen HTML?",
+        "options": [
+          "Berisi informasi tentang halaman yang tidak terlihat pengunjung",
+          "Memberitahu browser versi HTML yang digunakan",
+          "Menentukan judul halaman untuk mesin pencari",
+          "Berisi semua konten yang terlihat oleh pengunjung halaman"
+        ],
+        "correctAnswer": "Berisi semua konten yang terlihat oleh pengunjung halaman",
+        "explanation": "Tag <body> adalah tempat semua konten yang ditampilkan ke pengunjung — teks, heading, gambar, link, dan lainnya. Jika konten tidak ada di dalam <body>, pengunjung tidak akan melihatnya di halaman.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Tag mana yang digunakan untuk membuat heading utama (judul terbesar) di sebuah halaman web?",
+        "options": [
+          "<title>",
+          "<header>",
+          "<h1>",
+          "<p>"
+        ],
+        "correctAnswer": "<h1>",
+        "explanation": "Tag <h1> digunakan untuk heading utama halaman dan menampilkan teks paling besar di antara semua level heading (h1–h6). Sebaiknya hanya ada satu <h1> per halaman karena itu adalah judul utama. Jangan keliru dengan <title> — itu untuk tab browser, bukan konten halaman.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Bagus sekali! Kamu sekarang memahami struktur dokumen HTML dan tahu persis di mana setiap bagian harus diletakkan. Fondasi ini yang akan menopang semua yang akan kamu pelajari selanjutnya.",
+    "achievementName": "Arsitek HTML",
+    "achievementIcon": "🏗️"
+  }
+}

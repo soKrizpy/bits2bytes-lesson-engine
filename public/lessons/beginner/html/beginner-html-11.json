@@ -1,0 +1,239 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-11",
+    "title": "Pengantar CSS — Memberi Gaya pada Halaman Web",
+    "description": "Pelajari apa itu CSS, tiga cara menghubungkan CSS ke HTML, dan cara menggunakan selector dasar untuk mulai memberi warna dan gaya pada halamanmu.",
+    "level": "beginner",
+    "category": "CSS",
+    "topicNumber": 1,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Dari Kerangka ke Tampilan — Saatnya Belajar CSS",
+    "description": "Di Level 1 kamu sudah bisa membangun kerangka halaman web dengan HTML. Tapi semua halaman itu masih terlihat polos — teks hitam di atas latar putih, tanpa warna, tanpa gaya. CSS (Cascading Style Sheets) adalah bahasa yang kamu butuhkan untuk mengubah itu semua. Di topik ini kamu akan memahami apa itu CSS, bagaimana cara kerjanya, dan mulai menulis aturan CSS pertamamu.",
+    "analogy": "Jika HTML adalah kerangka rumah — dinding, pintu, jendela — maka CSS adalah cat, wallpaper, dan dekorasi. HTML menentukan apa yang ada di rumah, CSS menentukan bagaimana tampilannya."
+  },
+  "objectives": [
+    "Memahami apa itu CSS dan perannya dalam membangun halaman web",
+    "Membedakan tiga cara menulis CSS: inline, internal, dan external",
+    "Menghubungkan file CSS external ke dokumen HTML",
+    "Menggunakan selector elemen dasar untuk memberi gaya",
+    "Menulis aturan CSS pertama untuk mengubah warna teks dan latar belakang"
+  ],
+  "review": {
+    "learned": [
+      "CSS adalah bahasa untuk mengatur tampilan visual halaman web — warna, ukuran, jarak, dan banyak lagi.",
+      "Inline CSS ditulis langsung di dalam atribut style pada tag HTML.",
+      "Internal CSS ditulis di dalam tag style di bagian head dokumen HTML.",
+      "External CSS ditulis di file terpisah dengan ekstensi .css dan dihubungkan dengan tag link.",
+      "Selector elemen menarget semua tag HTML dengan nama yang sama, misalnya p, h1, body.",
+      "Setiap aturan CSS terdiri dari selector, property, dan value: selector { property: value; }"
+    ],
+    "keyConcepts": [
+      "CSS — Cascading Style Sheets",
+      "Inline, Internal, External CSS",
+      "Tag link untuk menghubungkan file CSS",
+      "Selector elemen",
+      "Aturan CSS: selector { property: value; }"
+    ],
+    "takeaways": [
+      "External CSS adalah cara terbaik untuk proyek nyata — satu file CSS bisa digunakan oleh banyak halaman HTML.",
+      "Inline CSS berguna untuk styling cepat, tapi sulit dipelihara untuk halaman yang besar.",
+      "Urutan dalam CSS penting — aturan yang ditulis belakangan akan menimpa aturan sebelumnya untuk properti yang sama."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-css-intro",
+      "type": "lesson",
+      "title": "Apa Itu CSS?",
+      "xp": 5,
+      "explanation": "CSS singkatan dari Cascading Style Sheets. CSS adalah bahasa yang digunakan untuk mengatur tampilan visual dari halaman web — segala sesuatu yang berhubungan dengan penampilan, bukan konten.\n\nDengan CSS kamu bisa:\n• Mengubah warna teks dan latar belakang\n• Mengatur ukuran dan jenis huruf\n• Menambahkan jarak antara elemen\n• Membuat layout yang rapi\n• Dan masih banyak lagi\n\nHTML dan CSS adalah pasangan yang tidak bisa dipisahkan:\n• HTML = struktur dan konten\n• CSS = tampilan dan gaya\n\nTanpa CSS, semua website akan terlihat sama persis — teks hitam di atas latar putih. CSS yang membuat setiap website punya tampilan uniknya sendiri.",
+      "tips": [
+        "CSS tidak mengubah konten halaman — hanya mengubah cara konten itu ditampilkan.",
+        "'Cascading' dalam CSS berarti aturan-aturan CSS diterapkan secara berurutan dan saling menimpa — aturan yang lebih spesifik atau lebih akhir biasanya menang."
+      ]
+    },
+    {
+      "id": "node-02-css-ways",
+      "type": "lesson",
+      "title": "Tiga Cara Menulis CSS",
+      "xp": 5,
+      "explanation": "Ada tiga cara untuk menambahkan CSS ke halaman HTML:\n\n1. Inline CSS\nDitulis langsung di dalam atribut style pada tag HTML.\n<p style=\"color: red;\">Teks merah</p>\nKelebihan: cepat. Kekurangan: sulit dipelihara, tidak bisa digunakan ulang.\n\n2. Internal CSS\nDitulis di dalam tag <style> di bagian <head> dokumen HTML.\nKelebihan: semua CSS terlihat dalam satu file. Kekurangan: hanya berlaku untuk satu halaman.\n\n3. External CSS\nDitulis di file terpisah dengan ekstensi .css dan dihubungkan ke HTML dengan tag <link>.\nKelebihan: bisa digunakan oleh banyak halaman sekaligus — ini adalah cara TERBAIK untuk proyek nyata.\n\nUntuk belajar, kita akan mulai dengan internal CSS agar mudah dipahami, lalu beralih ke external CSS.",
+      "analogy": "Tiga cara CSS ini seperti tiga cara mewarnai buku. Inline seperti mewarnai satu gambar langsung dengan spidol. Internal seperti punya palet warna untuk satu halaman. External seperti punya kotak cat yang bisa dipakai untuk seluruh buku.",
+      "tips": [
+        "Untuk semua proyek nyata, gunakan external CSS — lebih rapi, lebih mudah dipelihara, dan lebih profesional.",
+        "Urutan prioritas: inline > internal > external. Inline CSS selalu menang jika ada konflik."
+      ]
+    },
+    {
+      "id": "node-03-inline-internal",
+      "type": "code",
+      "title": "Inline dan Internal CSS",
+      "xp": 5,
+      "explanation": "Contoh pertama menunjukkan inline CSS — style ditulis langsung di dalam tag. Contoh kedua menunjukkan internal CSS — semua style dikumpulkan di dalam tag <style> di <head>.\n\nPerhatikan sintaks CSS:\n• Property dan value dipisahkan dengan titik dua (:)\n• Setiap deklarasi diakhiri dengan titik koma (;)\n• Untuk internal CSS, selector diikuti kurung kurawal { }",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Belajar CSS</title>\n\n    <!-- Internal CSS -->\n    <style>\n      body {\n        background-color: #f5f5f5;\n      }\n      h1 {\n        color: #2c3e50;\n      }\n      p {\n        color: #555555;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Judul dengan Internal CSS</h1>\n\n    <!-- Inline CSS -->\n    <p style=\"color: blue;\">Paragraf ini menggunakan inline CSS.</p>\n\n    <p>Paragraf ini menggunakan internal CSS dari tag style di head.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-external-css",
+      "type": "code",
+      "title": "External CSS — Cara yang Benar",
+      "xp": 5,
+      "explanation": "External CSS menggunakan dua file terpisah:\n1. File HTML (index.html)\n2. File CSS (style.css)\n\nKeduanya dihubungkan dengan tag <link> di dalam <head> HTML:\n<link rel=\"stylesheet\" href=\"style.css\">\n\nPerhatikan:\n• rel=\"stylesheet\" memberitahu browser ini adalah file stylesheet CSS\n• href menunjukkan lokasi file CSS (mirip dengan src pada gambar)\n\nKita tampilkan keduanya di sini untuk memperjelas strukturnya.",
+      "code": {
+        "language": "css",
+        "content": "/* File: style.css */\n\nbody {\n  background-color: #ffffff;\n  font-family: Arial, sans-serif;\n}\n\nh1 {\n  color: #2c3e50;\n}\n\np {\n  color: #555555;\n  font-size: 16px;\n}\n\n/* Catatan: file HTML menghubungkan file ini dengan:\n   <link rel=\"stylesheet\" href=\"style.css\"> */"
+      }
+    },
+    {
+      "id": "node-05-selectors",
+      "type": "code",
+      "title": "Selector Elemen — Menarget Tag HTML",
+      "xp": 5,
+      "explanation": "Selector elemen adalah cara paling dasar untuk menentukan elemen mana yang akan diberi gaya. Kamu cukup menuliskan nama tag HTML sebagai selector.\n\nContoh di bawah menggunakan internal CSS untuk memberi gaya pada beberapa elemen berbeda. Setiap selector menarget semua tag dengan nama tersebut di seluruh halaman.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Selector Elemen</title>\n    <style>\n      body {\n        background-color: #fafafa;\n      }\n      h1 {\n        color: #e74c3c;\n      }\n      h2 {\n        color: #3498db;\n      }\n      p {\n        color: #2c3e50;\n        font-size: 16px;\n      }\n      a {\n        color: #27ae60;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Judul Merah</h1>\n    <h2>Sub-judul Biru</h2>\n    <p>Paragraf ini berwarna gelap dan berukuran 16px.</p>\n    <p>Semua paragraf mendapat gaya yang sama dari selector p.</p>\n    <a href=\"#\">Link ini berwarna hijau.</a>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-color-bg",
+      "type": "code",
+      "title": "Warna Teks dan Latar Belakang",
+      "xp": 5,
+      "explanation": "Dua properti CSS yang paling sering digunakan adalah color dan background-color.\n\n• color — mengatur warna teks\n• background-color — mengatur warna latar belakang elemen\n\nNilai warna bisa ditulis dalam beberapa format:\n• Nama warna: red, blue, green, white, black\n• Kode hex: #ff0000 (merah), #0000ff (biru), #ffffff (putih)\n• RGB: rgb(255, 0, 0) (merah)\n\nKode hex adalah yang paling umum digunakan oleh web developer.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Warna CSS</title>\n    <style>\n      body {\n        background-color: #f0f4f8;\n      }\n      h1 {\n        color: #1a202c;\n        background-color: #e2e8f0;\n      }\n      p {\n        color: #4a5568;\n      }\n      a {\n        color: #3182ce;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Selamat Datang di CSS</h1>\n    <p>Dengan CSS, kamu bisa mengontrol warna setiap elemen di halaman.</p>\n    <p>Gunakan kode hex seperti #3182ce untuk warna yang konsisten.</p>\n    <a href=\"#\">Tautan berwarna biru</a>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-first-styled-page",
+      "type": "code",
+      "title": "Halaman Pertama yang Bergaya",
+      "xp": 5,
+      "explanation": "Sekarang kita gabungkan semua yang sudah dipelajari untuk membuat halaman yang sudah jauh lebih menarik dari halaman HTML polos.\n\nHalaman ini menggunakan internal CSS dengan:\n• Warna teks dan latar belakang yang harmonis\n• Selector untuk berbagai elemen\n• Properti color dan background-color\n\nBandingkan dengan halaman HTML tanpa CSS — perbedaannya langsung terlihat saat dibuka di browser.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Halaman Pertama yang Bergaya</title>\n    <style>\n      body {\n        background-color: #f7f9fc;\n        color: #2d3748;\n      }\n      h1 {\n        color: #2b6cb0;\n      }\n      h2 {\n        color: #2c7a7b;\n      }\n      p {\n        color: #4a5568;\n      }\n      a {\n        color: #3182ce;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Blog Belajar Coding</h1>\n    <p>Halo! Selamat datang di blog saya tentang belajar coding dari nol.</p>\n\n    <h2>Artikel Terbaru</h2>\n    <p>Hari ini saya belajar CSS untuk pertama kalinya. Sangat menyenangkan!</p>\n    <p>Kunjungi <a href=\"#\">halaman tentang saya</a> untuk tahu lebih lanjut.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cara Mana yang Tepat?",
+      "xp": 10,
+      "instructions": "Kamu sedang membangun website dengan 5 halaman HTML yang semuanya harus punya tampilan yang sama. Cara menulis CSS mana yang paling tepat dan efisien?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Inline CSS — tulis style langsung di setiap tag HTML",
+        "Internal CSS — tulis style di dalam tag style di setiap file HTML",
+        "External CSS — buat satu file .css dan hubungkan ke semua file HTML",
+        "Tidak perlu CSS — biarkan browser memilih tampilan sendiri"
+      ],
+      "correctOption": "External CSS — buat satu file .css dan hubungkan ke semua file HTML"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Beri Warna pada Halamanmu",
+      "xp": 15,
+      "instructions": "Kode starter di bawah adalah halaman HTML polos tanpa CSS.\n\nTugasmu: Tambahkan internal CSS di dalam tag <style> untuk:\n1. Ubah background-color body menjadi #f0f4f8\n2. Ubah warna h1 menjadi #2b6cb0 (biru)\n3. Ubah warna h2 menjadi #276749 (hijau)\n4. Ubah warna semua p menjadi #4a5568 (abu-abu gelap)\n\nPastikan semua selector dan nilai ditulis dengan benar.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n    <!-- Tambahkan tag style dan aturan CSS di sini -->\n  </head>\n  <body>\n    <h1>Profil Saya</h1>\n    <p>Halo! Saya sedang belajar CSS.</p>\n\n    <h2>Hobi Saya</h2>\n    <p>Saya suka coding dan membaca buku teknologi.</p>\n  </body>\n</html>"
+      },
+      "expectedResult": "Halaman dengan latar belakang biru muda, judul h1 biru, h2 hijau, dan teks paragraf abu-abu.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n    <style>\n      body {\n        background-color: #f0f4f8;\n      }\n      h1 {\n        color: #2b6cb0;\n      }\n      h2 {\n        color: #276749;\n      }\n      p {\n        color: #4a5568;\n      }\n    </style>\n  </head>\n  <body>\n    <h1>Profil Saya</h1>\n    <p>Halo! Saya sedang belajar CSS.</p>\n\n    <h2>Hobi Saya</h2>\n    <p>Saya suka coding dan membaca buku teknologi.</p>\n  </body>\n</html>",
+        "explanation": "Kita menambahkan tag style di dalam head, lalu menulis empat aturan CSS: satu untuk body (background-color), satu untuk h1 (color biru), satu untuk h2 (color hijau), dan satu untuk p (color abu-abu). Setiap aturan menggunakan selector elemen yang menarget semua tag dengan nama tersebut."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa kepanjangan dari CSS dan apa fungsinya?",
+        "options": [
+          "Computer Style Sheets — mengatur logika halaman web",
+          "Cascading Style Sheets — mengatur tampilan visual halaman web",
+          "Creative Styling System — mengatur animasi halaman web",
+          "Coded Style Syntax — mengatur struktur halaman web"
+        ],
+        "correctAnswer": "Cascading Style Sheets — mengatur tampilan visual halaman web",
+        "explanation": "CSS adalah singkatan dari Cascading Style Sheets. CSS bertugas mengatur tampilan visual halaman web — warna, ukuran huruf, jarak, layout, dan lain-lain. CSS bekerja berpasangan dengan HTML: HTML menyediakan struktur dan konten, CSS menyediakan tampilan.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Bagaimana cara menghubungkan file CSS external ke dokumen HTML?",
+        "options": [
+          "Menggunakan tag <css> di dalam <body>",
+          "Menggunakan tag <link rel=\"stylesheet\" href=\"style.css\"> di dalam <head>",
+          "Menggunakan atribut css=\"style.css\" pada tag <html>",
+          "Menggunakan tag <style src=\"style.css\"> di dalam <head>"
+        ],
+        "correctAnswer": "Menggunakan tag <link rel=\"stylesheet\" href=\"style.css\"> di dalam <head>",
+        "explanation": "Untuk menghubungkan file CSS external, gunakan tag <link> dengan atribut rel='stylesheet' dan href yang menunjuk ke lokasi file CSS. Tag ini ditempatkan di dalam <head> dokumen HTML.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa format dasar dari sebuah aturan CSS?",
+        "options": [
+          "selector = property: value",
+          "selector { property: value; }",
+          "selector [ property = value ]",
+          "property: value; (selector)"
+        ],
+        "correctAnswer": "selector { property: value; }",
+        "explanation": "Aturan CSS terdiri dari tiga bagian: selector (menentukan elemen yang ditarget), diikuti kurung kurawal { }, dan di dalamnya deklarasi berformat property: value; — property dan value dipisahkan titik dua, diakhiri titik koma.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Properti CSS mana yang digunakan untuk mengubah warna teks?",
+        "options": [
+          "text-color",
+          "font-color",
+          "color",
+          "foreground-color"
+        ],
+        "correctAnswer": "color",
+        "explanation": "Properti color digunakan untuk mengatur warna teks dalam CSS. Nilainya bisa berupa nama warna (red, blue), kode hex (#ff0000), atau RGB (rgb(255,0,0)). Jangan keliru dengan background-color yang mengatur warna latar belakang.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Mengapa external CSS lebih direkomendasikan daripada inline atau internal CSS untuk proyek nyata?",
+        "options": [
+          "Karena external CSS memuat halaman lebih cepat",
+          "Karena external CSS bisa digunakan ulang oleh banyak halaman HTML sekaligus",
+          "Karena external CSS adalah satu-satunya cara yang valid di HTML5",
+          "Karena external CSS secara otomatis membuat website responsif"
+        ],
+        "correctAnswer": "Karena external CSS bisa digunakan ulang oleh banyak halaman HTML sekaligus",
+        "explanation": "Keunggulan utama external CSS adalah bisa digunakan ulang — satu file CSS bisa dihubungkan ke puluhan atau ratusan halaman HTML. Perubahan satu baris CSS akan langsung diterapkan ke semua halaman tersebut sekaligus.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Selamat! Kamu sudah menulis CSS pertamamu. Setiap website indah yang pernah kamu lihat dimulai dari pengetahuan dasar yang sama seperti yang baru saja kamu pelajari.",
+    "achievementName": "Stylist Pemula",
+    "achievementIcon": "🎨"
+  }
+}

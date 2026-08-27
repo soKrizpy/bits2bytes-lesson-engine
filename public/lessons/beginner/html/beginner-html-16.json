@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-16",
+    "title": "Hero Section, Kartu, dan CTA — Komponen Landing Page",
+    "description": "Pelajari cara membangun hero section yang menarik, kartu fitur dengan hover effect, dan tombol CTA dengan menggabungkan semua skill CSS yang sudah dipelajari.",
+    "level": "beginner",
+    "category": "CSS",
+    "topicNumber": 6,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Komponen Website Nyata — Hero, Cards, dan CTA",
+    "description": "Di topik ini kita semakin dekat ke proyek final. Kamu akan membangun komponen-komponen utama landing page: hero section yang menarik perhatian, kartu fitur yang rapi, dan tombol CTA yang mengundang klik. Ini adalah komponen yang sama dengan yang digunakan oleh website-website profesional.",
+    "analogy": "Sebuah toko yang bagus punya etalase menarik di depan (hero), rak produk yang rapi di tengah (kartu fitur), dan kasir yang mudah ditemukan di belakang (CTA). Di topik ini kamu merancang ketiga zona tersebut untuk website-mu."
+  },
+  "objectives": [
+    "Membangun hero section dengan judul besar, subtitle, dan tombol CTA",
+    "Membuat tombol dengan style yang menarik menggunakan padding, border-radius, dan warna",
+    "Membangun kartu fitur yang rapi menggunakan Flexbox dan Box Model",
+    "Menggabungkan hero section dan feature cards menjadi halaman yang kohesif",
+    "Memahami pola visual yang umum digunakan di landing page profesional"
+  ],
+  "review": {
+    "learned": [
+      "Hero section adalah komponen pembuka halaman — berisi headline, subheadline, dan CTA button.",
+      "Tombol CTA dibuat dari tag a atau button dengan padding, border-radius, background-color, dan warna teks putih.",
+      "Kartu fitur menggunakan kombinasi Box Model (padding, border-radius, border) dan konten (ikon, judul, deskripsi).",
+      "Flexbox digunakan untuk menyusun kartu secara horizontal dengan gap yang konsisten.",
+      "Hierarki visual yang baik menggunakan ukuran huruf dan warna untuk memandu mata pembaca.",
+      "Warna yang konsisten di seluruh halaman (satu primary color) menciptakan identitas visual yang kuat."
+    ],
+    "keyConcepts": [
+      "Hero section",
+      "CTA (Call to Action) button",
+      "Feature card",
+      "Hierarki visual",
+      "Primary color dan konsistensi warna"
+    ],
+    "takeaways": [
+      "Hero section harus punya satu pesan utama yang jelas — jangan membebani dengan terlalu banyak informasi.",
+      "Tombol CTA yang bagus: warna mencolok, teks singkat, padding cukup, border-radius yang modern.",
+      "Kartu fitur yang baik: ikon/gambar, judul pendek, deskripsi 1-2 kalimat, dan lebar yang konsisten.",
+      "Gunakan satu primary color secara konsisten di seluruh halaman untuk membangun brand yang kuat."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-components-intro",
+      "type": "lesson",
+      "title": "Komponen Utama Landing Page",
+      "xp": 5,
+      "explanation": "Landing page profesional tersusun dari komponen-komponen yang berulang di hampir setiap website:\n\n1. Hero Section\nBagian pertama yang dilihat pengunjung. Biasanya punya:\n• Headline — judul besar yang menyampaikan nilai utama\n• Subheadline — kalimat pendukung yang menjelaskan lebih lanjut\n• CTA Button — tombol ajakan bertindak ('Mulai Gratis', 'Coba Sekarang')\n\n2. Feature Cards\nBaris kartu yang menjelaskan fitur atau manfaat. Tiap kartu biasanya punya:\n• Ikon atau gambar kecil\n• Judul pendek\n• Deskripsi 1-2 kalimat\n\n3. CTA Section\nBagian pengingat di akhir halaman — biasanya background warna berbeda dengan tombol CTA.\n\nDi topik ini kita akan membangun ketiga komponen ini secara detail, lalu menggabungkannya menjadi halaman yang utuh.",
+      "tips": [
+        "Batasi warna utama (primary color) menjadi satu warna — digunakan pada tombol, link, dan aksen. Ini membuat halaman terlihat profesional.",
+        "Headline hero yang bagus menjawab pertanyaan: 'Apa yang bisa website ini lakukan untuk pengunjung?'"
+      ]
+    },
+    {
+      "id": "node-02-button-styles",
+      "type": "lesson",
+      "title": "Membuat Tombol yang Menarik",
+      "xp": 5,
+      "explanation": "Tombol adalah elemen UI yang sangat penting. Tombol yang bagus:\n• Terlihat seperti tombol — berbeda dari teks biasa\n• Punya warna yang kontras dengan latar belakang\n• Punya ukuran yang cukup untuk mudah diklik\n• Punya teks yang jelas dan actionable ('Daftar Gratis', bukan 'Klik Di Sini')\n\nResep tombol CSS yang bagus:\n.btn {\n  display: inline-block;\n  background-color: #3182ce;  /* warna primary */\n  color: #ffffff;             /* teks putih */\n  padding: 14px 32px;         /* ruang yang cukup */\n  border-radius: 8px;         /* sudut modern */\n  text-decoration: none;      /* hapus underline jika pakai a */\n  font-size: 16px;\n  font-weight: bold;\n}\n\nVariasi tombol:\n• .btn-primary — warna solid (default)\n• .btn-outline — transparan dengan border (untuk secondary action)",
+      "analogy": "Tombol CTA seperti rambu 'MASUK' di pintu toko — harus jelas terlihat, mudah ditemukan, dan mengundang orang untuk melangkah masuk.",
+      "tips": [
+        "display: inline-block pada tag a penting agar padding bekerja dengan benar.",
+        "Jangan pakai terlalu banyak tombol di satu halaman — terlalu banyak pilihan membingungkan pengunjung."
+      ]
+    },
+    {
+      "id": "node-03-hero-section",
+      "type": "code",
+      "title": "Hero Section Lengkap",
+      "xp": 5,
+      "explanation": "Hero section yang menarik menggunakan:\n• Padding besar atas-bawah untuk ruang napas\n• text-align: center untuk fokus visual\n• Ukuran font yang besar untuk headline\n• Warna yang kontras antara teks dan background\n• Tombol CTA yang mencolok\n\nPerhatikan bagaimana semua elemen bekerja bersama untuk menciptakan pembuka halaman yang kuat.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Landing Page</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; }\n\n      .hero {\n        background-color: #1a202c;\n        color: #ffffff;\n        text-align: center;\n        padding: 96px 40px;\n      }\n      .hero-tag {\n        display: inline-block;\n        background-color: #2d3748;\n        color: #63b3ed;\n        font-size: 13px;\n        font-weight: bold;\n        padding: 6px 14px;\n        border-radius: 20px;\n        margin-bottom: 24px;\n        letter-spacing: 0.5px;\n      }\n      .hero h1 {\n        font-size: 52px;\n        line-height: 1.1;\n        margin-bottom: 20px;\n        color: #ffffff;\n      }\n      .hero h1 span {\n        color: #63b3ed;\n      }\n      .hero p {\n        font-size: 18px;\n        color: #a0aec0;\n        max-width: 520px;\n        margin: 0 auto 36px;\n        line-height: 1.6;\n      }\n      .hero-buttons {\n        display: flex;\n        gap: 16px;\n        justify-content: center;\n      }\n      .btn-primary {\n        display: inline-block;\n        background-color: #3182ce;\n        color: #ffffff;\n        padding: 14px 32px;\n        border-radius: 8px;\n        text-decoration: none;\n        font-size: 16px;\n        font-weight: bold;\n      }\n      .btn-outline {\n        display: inline-block;\n        background-color: transparent;\n        color: #ffffff;\n        border: 2px solid #4a5568;\n        padding: 12px 30px;\n        border-radius: 8px;\n        text-decoration: none;\n        font-size: 16px;\n      }\n    </style>\n  </head>\n  <body>\n    <section class=\"hero\">\n      <div class=\"hero-tag\">BARU — Level 2 Sekarang Tersedia</div>\n      <h1>Belajar <span>Web Development</span><br>dari Nol hingga Mahir</h1>\n      <p>Kurikulum terstruktur dengan latihan interaktif. Dari HTML dasar hingga membangun website lengkap.</p>\n      <div class=\"hero-buttons\">\n        <a href=\"#\" class=\"btn-primary\">Mulai Belajar Gratis</a>\n        <a href=\"#\" class=\"btn-outline\">Lihat Kurikulum</a>\n      </div>\n    </section>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-feature-cards",
+      "type": "code",
+      "title": "Kartu Fitur yang Profesional",
+      "xp": 5,
+      "explanation": "Kartu fitur yang baik menggunakan konsistensi: semua kartu punya lebar yang sama, padding yang sama, dan struktur konten yang sama (ikon → judul → deskripsi).\n\nKombinasi Box Model + Flexbox menghasilkan grid kartu yang rapi. Perhatikan bagaimana .feature-card mendapat shadow tipis untuk kedalaman visual.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Feature Cards</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background-color: #f7fafc; }\n\n      .features {\n        padding: 80px 40px;\n        background-color: #ffffff;\n      }\n      .features-header {\n        text-align: center;\n        margin-bottom: 48px;\n      }\n      .features-header h2 {\n        font-size: 32px;\n        color: #1a202c;\n        margin-bottom: 12px;\n      }\n      .features-header p {\n        font-size: 17px;\n        color: #718096;\n        max-width: 480px;\n        margin: 0 auto;\n      }\n      .card-grid {\n        display: flex;\n        gap: 24px;\n        justify-content: center;\n        flex-wrap: wrap;\n      }\n      .feature-card {\n        background-color: #ffffff;\n        border: 1px solid #e2e8f0;\n        border-radius: 16px;\n        padding: 32px;\n        width: 280px;\n        box-shadow: 0 1px 3px rgba(0,0,0,0.08);\n      }\n      .card-icon {\n        width: 48px;\n        height: 48px;\n        background-color: #ebf8ff;\n        border-radius: 12px;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n        font-size: 24px;\n        margin-bottom: 20px;\n      }\n      .feature-card h3 {\n        font-size: 18px;\n        color: #1a202c;\n        margin-bottom: 10px;\n      }\n      .feature-card p {\n        font-size: 14px;\n        color: #718096;\n        line-height: 1.65;\n      }\n    </style>\n  </head>\n  <body>\n    <section class=\"features\">\n      <div class=\"features-header\">\n        <h2>Semua yang Kamu Butuhkan</h2>\n        <p>Platform belajar yang dirancang untuk memaksimalkan kemajuanmu</p>\n      </div>\n      <div class=\"card-grid\">\n        <div class=\"feature-card\">\n          <div class=\"card-icon\">📚</div>\n          <h3>Kurikulum Terstruktur</h3>\n          <p>Materi disusun dari dasar hingga mahir oleh para ahli web development.</p>\n        </div>\n        <div class=\"feature-card\">\n          <div class=\"card-icon\">⚡</div>\n          <h3>Latihan Interaktif</h3>\n          <p>Tulis dan jalankan kode langsung di browser tanpa instalasi apapun.</p>\n        </div>\n        <div class=\"feature-card\">\n          <div class=\"card-icon\">🏆</div>\n          <h3>Progress Tracking</h3>\n          <p>Pantau kemajuan dan kumpulkan XP di setiap topik yang diselesaikan.</p>\n        </div>\n      </div>\n    </section>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-cta-section",
+      "type": "code",
+      "title": "CTA Section — Ajakan Bertindak",
+      "xp": 5,
+      "explanation": "CTA section biasanya diletakkan di akhir halaman sebagai 'pengingat terakhir' — ajakan kepada pengunjung yang sudah membaca konten untuk mengambil tindakan.\n\nPolanya sederhana: background warna berbeda (sering menggunakan primary color) + heading pendek + tombol. Kontras warna yang kuat membuat bagian ini langsung menarik perhatian.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>CTA Section</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background-color: #f7fafc; }\n\n      /* Features section sebelum CTA */\n      .features {\n        padding: 64px 40px;\n        background-color: #ffffff;\n      }\n      .features h2 { text-align: center; font-size: 28px; color: #1a202c; margin-bottom: 32px; }\n      .card-row { display: flex; gap: 20px; justify-content: center; }\n      .card { background-color: #f7fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; width: 220px; }\n      .card h3 { font-size: 16px; color: #1a202c; margin-bottom: 8px; }\n      .card p { font-size: 14px; color: #718096; line-height: 1.5; }\n\n      /* CTA Section */\n      .cta-section {\n        background-color: #2b6cb0;\n        color: #ffffff;\n        text-align: center;\n        padding: 80px 40px;\n      }\n      .cta-section h2 {\n        font-size: 36px;\n        margin-bottom: 16px;\n        line-height: 1.2;\n      }\n      .cta-section p {\n        font-size: 17px;\n        color: #bee3f8;\n        max-width: 480px;\n        margin: 0 auto 32px;\n      }\n      .btn-white {\n        display: inline-block;\n        background-color: #ffffff;\n        color: #2b6cb0;\n        padding: 14px 36px;\n        border-radius: 8px;\n        text-decoration: none;\n        font-size: 16px;\n        font-weight: bold;\n      }\n    </style>\n  </head>\n  <body>\n    <section class=\"features\">\n      <h2>Fitur Unggulan</h2>\n      <div class=\"card-row\">\n        <div class=\"card\"><h3>HTML</h3><p>Fondasi setiap halaman web di internet.</p></div>\n        <div class=\"card\"><h3>CSS</h3><p>Beri tampilan visual yang menarik pada HTML-mu.</p></div>\n        <div class=\"card\"><h3>JavaScript</h3><p>Tambahkan interaktivitas pada websitemu.</p></div>\n      </div>\n    </section>\n\n    <section class=\"cta-section\">\n      <h2>Siap Mulai Perjalananmu?</h2>\n      <p>Bergabung dengan ribuan pelajar yang sudah membangun website pertama mereka.</p>\n      <a href=\"#\" class=\"btn-white\">Daftar Sekarang — Gratis</a>\n    </section>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-color-scheme",
+      "type": "code",
+      "title": "Skema Warna yang Konsisten",
+      "xp": 5,
+      "explanation": "Salah satu ciri website profesional adalah konsistensi warna. Biasanya sebuah website hanya punya satu atau dua warna utama yang digunakan secara konsisten di seluruh halaman.\n\nContoh skema warna sederhana:\n• Primary: #2b6cb0 (biru) — untuk tombol, link, aksen\n• Dark: #1a202c (hampir hitam) — untuk heading utama\n• Text: #4a5568 (abu-abu gelap) — untuk paragraf\n• Background: #f7fafc (abu-abu sangat terang) — untuk body\n• White: #ffffff — untuk kartu dan surface\n\nCoba ganti warna primary di contoh di bawah dan lihat bagaimana seluruh tampilan berubah.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Skema Warna</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n\n      /* ===== SKEMA WARNA — ubah nilai ini untuk ganti tema ===== */\n      /* Primary color: #2b6cb0 — coba ganti ke #276749 (hijau) atau #744210 (oranye) */\n\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f7fafc;\n        color: #4a5568;\n      }\n      .navbar {\n        background-color: #1a202c;\n        padding: 16px 32px;\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n      }\n      .navbar a { color: #ffffff; text-decoration: none; font-weight: bold; font-size: 18px; }\n      .hero {\n        text-align: center;\n        padding: 72px 32px;\n        background-color: #ebf8ff;\n      }\n      .hero h1 { font-size: 40px; color: #1a202c; margin-bottom: 16px; }\n      .hero p { font-size: 17px; color: #4a5568; margin-bottom: 28px; }\n      .btn-primary {\n        display: inline-block;\n        background-color: #2b6cb0;  /* ← primary color */\n        color: #ffffff;\n        padding: 14px 32px;\n        border-radius: 8px;\n        text-decoration: none;\n        font-weight: bold;\n        font-size: 16px;\n      }\n      .section-title {\n        text-align: center;\n        font-size: 28px;\n        color: #1a202c;\n        margin-bottom: 8px;\n      }\n      .section-sub {\n        text-align: center;\n        color: #718096;\n        margin-bottom: 36px;\n      }\n    </style>\n  </head>\n  <body>\n    <nav class=\"navbar\">\n      <a href=\"#\">BelajarWeb</a>\n    </nav>\n    <section class=\"hero\">\n      <h1>Website yang Indah Dimulai dari Sini</h1>\n      <p>Belajar HTML dan CSS dengan panduan langkah demi langkah.</p>\n      <a href=\"#\" class=\"btn-primary\">Mulai Gratis</a>\n    </section>\n    <div style=\"padding: 48px 32px; background: #fff;\">\n      <p class=\"section-title\">Kenapa Pilih Kami?</p>\n      <p class=\"section-sub\">Dirancang untuk pelajar dari semua level</p>\n    </div>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-hero-cards-combined",
+      "type": "code",
+      "title": "Hero dan Kartu — Halaman yang Mulai Nyata",
+      "xp": 5,
+      "explanation": "Inilah kombinasi hero section gelap + feature cards putih yang menciptakan kontras visual yang kuat. Ini adalah pola yang sangat umum di website startup dan platform belajar.\n\nPerhatikan bagaimana pergantian background (gelap → putih) membantu membagi halaman menjadi zona-zona visual yang jelas tanpa perlu border atau garis pemisah.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>BelajarWeb Landing</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; }\n\n      /* Navbar */\n      .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #1a202c; padding: 16px 48px; }\n      .nav-brand { color: #fff; font-size: 20px; font-weight: bold; text-decoration: none; }\n      .nav-links { display: flex; gap: 28px; list-style: none; }\n      .nav-links a { color: #a0aec0; text-decoration: none; font-size: 15px; }\n      .nav-cta { background-color: #3182ce; color: #fff; padding: 8px 20px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: bold; }\n\n      /* Hero */\n      .hero { background-color: #1a202c; text-align: center; padding: 88px 48px; }\n      .hero h1 { font-size: 48px; color: #fff; margin-bottom: 20px; line-height: 1.15; }\n      .hero h1 em { color: #63b3ed; font-style: normal; }\n      .hero p { font-size: 18px; color: #a0aec0; max-width: 500px; margin: 0 auto 36px; line-height: 1.65; }\n      .btn-primary { display: inline-block; background-color: #3182ce; color: #fff; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-size: 16px; font-weight: bold; }\n\n      /* Features */\n      .features { background-color: #ffffff; padding: 80px 48px; }\n      .section-heading { text-align: center; margin-bottom: 48px; }\n      .section-heading h2 { font-size: 30px; color: #1a202c; margin-bottom: 10px; }\n      .section-heading p { color: #718096; font-size: 16px; }\n      .card-grid { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }\n      .card { background-color: #f7fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px; width: 260px; }\n      .card .icon { font-size: 30px; margin-bottom: 14px; }\n      .card h3 { font-size: 17px; color: #1a202c; margin-bottom: 8px; }\n      .card p { font-size: 14px; color: #718096; line-height: 1.6; }\n\n      /* CTA */\n      .cta { background-color: #2b6cb0; text-align: center; padding: 72px 48px; }\n      .cta h2 { font-size: 34px; color: #fff; margin-bottom: 14px; }\n      .cta p { color: #bee3f8; font-size: 17px; margin-bottom: 28px; }\n      .btn-white { display: inline-block; background-color: #fff; color: #2b6cb0; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-size: 16px; font-weight: bold; }\n\n      /* Footer */\n      .footer { background-color: #1a202c; color: #4a5568; text-align: center; padding: 24px; font-size: 14px; }\n    </style>\n  </head>\n  <body>\n    <nav class=\"navbar\">\n      <a href=\"#\" class=\"nav-brand\">BelajarWeb</a>\n      <ul class=\"nav-links\">\n        <li><a href=\"#\">Kursus</a></li>\n        <li><a href=\"#\">Tentang</a></li>\n      </ul>\n      <a href=\"#\" class=\"nav-cta\">Daftar</a>\n    </nav>\n\n    <section class=\"hero\">\n      <h1>Belajar <em>Web Development</em><br>Langkah demi Langkah</h1>\n      <p>Dari HTML dasar hingga landing page profesional. Kurikulum terstruktur untuk semua level.</p>\n      <a href=\"#\" class=\"btn-primary\">Mulai Belajar — Gratis</a>\n    </section>\n\n    <section class=\"features\">\n      <div class=\"section-heading\">\n        <h2>Kenapa Pilih BelajarWeb?</h2>\n        <p>Semua yang kamu butuhkan dalam satu platform</p>\n      </div>\n      <div class=\"card-grid\">\n        <div class=\"card\"><div class=\"icon\">📚</div><h3>Kurikulum Terstruktur</h3><p>Dari HTML hingga CSS, disusun untuk pemula.</p></div>\n        <div class=\"card\"><div class=\"icon\">⚡</div><h3>Latihan Interaktif</h3><p>Tulis kode dan lihat hasilnya seketika.</p></div>\n        <div class=\"card\"><div class=\"icon\">🎯</div><h3>Progress Jelas</h3><p>Pantau kemajuan di setiap topik.</p></div>\n      </div>\n    </section>\n\n    <section class=\"cta\">\n      <h2>Siap Membangun Websitemu?</h2>\n      <p>Bergabung sekarang dan mulai perjalananmu menjadi web developer.</p>\n      <a href=\"#\" class=\"btn-white\">Daftar Gratis Sekarang</a>\n    </section>\n\n    <footer class=\"footer\">\n      <p>© 2025 BelajarWeb. Semua hak dilindungi.</p>\n    </footer>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Identifikasi Komponen CTA yang Benar",
+      "xp": 10,
+      "instructions": "Kamu ingin membuat tombol CTA yang terlihat menonjol di atas background putih. Kombinasi CSS mana yang menghasilkan tombol paling menarik perhatian?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "background-color: white; color: white; border-radius: 0;",
+        "background-color: #3182ce; color: #ffffff; padding: 14px 32px; border-radius: 8px;",
+        "background-color: transparent; color: #333333; padding: 2px;",
+        "background-color: #f7fafc; color: #718096; border-radius: 2px;"
+      ],
+      "correctOption": "background-color: #3182ce; color: #ffffff; padding: 14px 32px; border-radius: 8px;"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Hero Section dengan Dua Tombol",
+      "xp": 15,
+      "instructions": "Buat hero section lengkap yang berisi:\n1. Background gelap (#1a202c), text-align center, padding 80px 40px\n2. h1 berukuran 44px, warna putih, berisi headline menarik\n3. p berukuran 17px, warna #a0aec0, sebagai subheadline\n4. Dua tombol berdampingan (gunakan Flexbox dengan gap 16px, justify-content center):\n   - Tombol pertama (.btn-primary): background #3182ce, putih, padding 14px 32px, border-radius 8px, bold\n   - Tombol kedua (.btn-outline): background transparan, border 2px solid #4a5568, warna putih, padding 12px 30px, border-radius 8px\n\nBuat di dalam dokumen HTML lengkap.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Hero Section</title>\n    <!-- Tambahkan CSS di sini -->\n  </head>\n  <body>\n    <!-- Tambahkan hero section di sini -->\n  </body>\n</html>"
+      },
+      "expectedResult": "Hero section gelap dengan judul putih besar, subheadline abu-abu, dan dua tombol berdampingan — satu biru solid, satu outline transparan.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Hero Section</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; }\n      .hero {\n        background-color: #1a202c;\n        text-align: center;\n        padding: 80px 40px;\n      }\n      .hero h1 {\n        font-size: 44px;\n        color: #ffffff;\n        margin-bottom: 18px;\n        line-height: 1.2;\n      }\n      .hero p {\n        font-size: 17px;\n        color: #a0aec0;\n        max-width: 500px;\n        margin: 0 auto 32px;\n        line-height: 1.65;\n      }\n      .hero-buttons {\n        display: flex;\n        gap: 16px;\n        justify-content: center;\n      }\n      .btn-primary {\n        display: inline-block;\n        background-color: #3182ce;\n        color: #ffffff;\n        padding: 14px 32px;\n        border-radius: 8px;\n        text-decoration: none;\n        font-weight: bold;\n        font-size: 16px;\n      }\n      .btn-outline {\n        display: inline-block;\n        background-color: transparent;\n        border: 2px solid #4a5568;\n        color: #ffffff;\n        padding: 12px 30px;\n        border-radius: 8px;\n        text-decoration: none;\n        font-size: 16px;\n      }\n    </style>\n  </head>\n  <body>\n    <section class=\"hero\">\n      <h1>Bangun Website Pertamamu Hari Ini</h1>\n      <p>Belajar HTML dan CSS dari nol dengan panduan yang mudah dipahami, bahkan untuk pemula sekalipun.</p>\n      <div class=\"hero-buttons\">\n        <a href=\"#\" class=\"btn-primary\">Mulai Belajar Gratis</a>\n        <a href=\"#\" class=\"btn-outline\">Lihat Kurikulum</a>\n      </div>\n    </section>\n  </body>\n</html>",
+        "explanation": "Hero section dibuat dengan background gelap (#1a202c) dan teks putih untuk kontras maksimal. Heading berukuran 44px dengan warna putih penuh, subheadline dengan warna #a0aec0 yang lebih lembut. Kedua tombol diletakkan dalam div .hero-buttons yang menggunakan Flexbox dengan justify-content: center dan gap: 16px. Tombol primary menggunakan background biru solid, tombol outline menggunakan transparent dengan border."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa fungsi utama hero section dalam sebuah landing page?",
+        "options": [
+          "Menampilkan daftar harga produk di bagian atas",
+          "Menjadi bagian pertama yang dilihat pengunjung — menyampaikan nilai utama dan mendorong tindakan",
+          "Menampilkan footer dengan informasi kontak",
+          "Menjadi tempat untuk form pendaftaran yang panjang"
+        ],
+        "correctAnswer": "Menjadi bagian pertama yang dilihat pengunjung — menyampaikan nilai utama dan mendorong tindakan",
+        "explanation": "Hero section adalah bagian paling penting dari landing page karena dialah yang pertama dilihat pengunjung. Tujuannya adalah menyampaikan nilai utama website secara singkat dan mendorong pengunjung untuk mengambil tindakan (CTA).",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Properti CSS mana yang perlu ditambahkan pada tag a agar padding-nya bekerja dengan benar sebagai tombol?",
+        "options": [
+          "display: block",
+          "display: inline-block",
+          "position: absolute",
+          "float: left"
+        ],
+        "correctAnswer": "display: inline-block",
+        "explanation": "Tag a secara default adalah elemen inline yang tidak merespons padding atas-bawah dengan benar. Dengan menambahkan display: inline-block, tag a berperilaku seperti elemen blok untuk urusan padding dan ukuran, tapi tetap bisa berdampingan dengan elemen lain.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Dalam konteks desain landing page, apa yang dimaksud dengan CTA?",
+        "options": [
+          "Cascading Text Animation — animasi teks yang bergerak",
+          "Call to Action — elemen yang mendorong pengunjung untuk mengambil tindakan tertentu",
+          "CSS Text Alignment — cara mengatur perataan teks",
+          "Content Type Attribute — atribut untuk jenis konten"
+        ],
+        "correctAnswer": "Call to Action — elemen yang mendorong pengunjung untuk mengambil tindakan tertentu",
+        "explanation": "CTA (Call to Action) adalah elemen yang mengundang pengunjung untuk melakukan sesuatu — mendaftar, membeli, mencoba, atau menghubungi. Biasanya berupa tombol dengan teks yang jelas dan actionable seperti 'Daftar Sekarang' atau 'Mulai Gratis'.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Mengapa konsistensi satu primary color penting dalam desain landing page?",
+        "options": [
+          "Karena browser hanya mendukung satu warna per halaman",
+          "Karena satu primary color menciptakan identitas visual yang kuat dan memandu mata ke elemen terpenting",
+          "Karena CSS tidak bisa menangani lebih dari satu warna",
+          "Karena terlalu banyak warna membuat halaman lebih lambat dimuat"
+        ],
+        "correctAnswer": "Karena satu primary color menciptakan identitas visual yang kuat dan memandu mata ke elemen terpenting",
+        "explanation": "Penggunaan satu primary color secara konsisten — untuk tombol, link, aksen, dan highlight — membantu pengunjung mengidentifikasi elemen interaktif dan penting di halaman. Ini juga menciptakan kesan profesional dan brand yang kuat.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Kartu fitur yang baik biasanya terdiri dari komponen apa saja?",
+        "options": [
+          "Hanya teks paragraf panjang tanpa judul",
+          "Ikon atau gambar, judul pendek, dan deskripsi 1-2 kalimat",
+          "Form input, tombol, dan dropdown menu",
+          "Tabel data dengan banyak baris dan kolom"
+        ],
+        "correctAnswer": "Ikon atau gambar, judul pendek, dan deskripsi 1-2 kalimat",
+        "explanation": "Kartu fitur yang efektif punya struktur yang ringkas: ikon/gambar untuk visual yang cepat dipahami, judul pendek yang langsung ke poin, dan deskripsi singkat 1-2 kalimat. Terlalu banyak teks membuat kartu terasa berat dan sulit dibaca.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Kamu sekarang bisa membangun komponen-komponen utama landing page: hero yang menawan, kartu fitur yang rapi, dan CTA yang mengundang klik. Satu langkah lagi menuju proyek final!",
+    "achievementName": "Landing Page Designer",
+    "achievementIcon": "🚀"
+  }
+}

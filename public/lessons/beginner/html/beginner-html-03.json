@@ -1,0 +1,228 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-03",
+    "title": "Elemen Teks HTML — Heading dan Paragraf",
+    "description": "Pelajari cara menggunakan heading h1 sampai h3 dan paragraf untuk menyusun konten teks, serta cara membuat teks menonjol dengan tag strong dan em.",
+    "level": "beginner",
+    "category": "HTML",
+    "topicNumber": 3,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Teks yang Terstruktur, Bukan Sekadar Tulisan",
+    "description": "Di topik sebelumnya kamu sudah bisa membuat halaman HTML dengan heading dan paragraf. Sekarang kita akan mendalami cara menggunakannya dengan benar — memilih level heading yang tepat, menyusun paragraf yang rapi, dan memberi penekanan pada kata-kata penting.",
+    "analogy": "Bayangkan kamu membaca sebuah majalah. Ada judul artikel yang besar, ada sub-judul yang lebih kecil, ada paragraf yang mengalir, dan ada kata-kata yang dicetak tebal untuk menarik perhatian. HTML memberikan alat yang sama untuk halaman web-mu."
+  },
+  "objectives": [
+    "Menggunakan heading h1, h2, dan h3 untuk menyusun hierarki judul",
+    "Membuat paragraf teks dengan tag p",
+    "Memahami kapan menggunakan level heading yang berbeda",
+    "Menggunakan strong untuk teks tebal dan em untuk teks miring",
+    "Menyusun konten teks yang terstruktur dalam satu halaman web"
+  ],
+  "review": {
+    "learned": [
+      "Tag h1 digunakan untuk judul utama halaman — hanya satu per halaman.",
+      "Tag h2 digunakan untuk judul bagian utama di dalam halaman.",
+      "Tag h3 digunakan untuk sub-bagian di dalam sebuah h2.",
+      "Tag p membuat blok paragraf teks dengan jarak otomatis antar paragraf.",
+      "Tag strong membuat teks terlihat tebal dan menandai kepentingan.",
+      "Tag em membuat teks miring untuk memberikan penekanan.",
+      "Heading menciptakan hierarki — h1 paling penting, h6 paling kecil."
+    ],
+    "keyConcepts": [
+      "Hierarki heading h1 sampai h3",
+      "Paragraf dengan tag p",
+      "Tag strong untuk teks tebal",
+      "Tag em untuk teks miring",
+      "Struktur konten teks",
+      "Keterbacaan halaman web"
+    ],
+    "takeaways": [
+      "Gunakan heading secara berurutan — jangan langsung melompat dari h1 ke h3.",
+      "Satu halaman sebaiknya hanya memiliki satu h1.",
+      "Tag strong bukan sekadar untuk tampilan — ia memberi makna penting pada teks.",
+      "Paragraf otomatis mendapat jarak antar satu sama lain, tidak perlu tag br berulang.",
+      "Heading yang baik membantu pembaca memahami struktur konten tanpa harus membaca semuanya."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-text-intro",
+      "type": "lesson",
+      "title": "Mengapa Struktur Teks Penting?",
+      "xp": 5,
+      "explanation": "Kamu sudah bisa menulis h1 dan p di dalam halaman HTML. Tapi ada lebih banyak yang bisa kamu lakukan dengan teks.\n\nBayangkan kamu membuka sebuah halaman web yang isinya hanya satu blok teks panjang tanpa judul, tanpa paragraf terpisah, tanpa penekanan. Susah dibaca, bukan?\n\nHTML menyediakan beberapa tag khusus untuk menyusun teks:\n• Tag heading h1 sampai h6 — untuk judul dan sub-judul\n• Tag paragraf p — untuk blok teks yang mengalir\n• Tag penekanan strong dan em — untuk menonjolkan kata-kata penting\n\nDi topik ini kita akan mempelajari cara menggunakan tag-tag ini dengan benar.",
+      "tips": [
+        "Teks yang terstruktur lebih mudah dibaca dan dipahami oleh manusia maupun mesin pencari.",
+        "Penggunaan heading yang benar juga membantu aksesibilitas — pembaca layar menggunakan heading untuk navigasi."
+      ]
+    },
+    {
+      "id": "node-02-headings",
+      "type": "lesson",
+      "title": "Hierarki Heading: h1, h2, h3",
+      "xp": 5,
+      "explanation": "HTML menyediakan enam level heading: h1 sampai h6. Tapi dalam praktik sehari-hari, tiga yang pertama sudah lebih dari cukup untuk sebagian besar halaman.\n\n• h1 — Judul utama halaman. Hanya satu per halaman. Ini adalah yang pertama dilihat pengunjung.\n• h2 — Judul bagian. Digunakan untuk membagi halaman menjadi bagian-bagian besar.\n• h3 — Sub-judul. Digunakan di dalam sebuah bagian untuk membagi menjadi sub-bagian.\n\nKunci penting: heading harus berurutan. Jangan melompat dari h1 langsung ke h3 tanpa h2 di antaranya. Ini seperti daftar isi buku — bab, sub-bab, sub-sub-bab — urutannya harus logis.",
+      "analogy": "Bayangkan struktur heading seperti daftar isi buku. h1 adalah judul buku, h2 adalah nama bab, h3 adalah judul sub-bab. Pembaca tahu di mana mereka berada karena urutan judulnya jelas.",
+      "tips": [
+        "Browser secara otomatis membuat h1 lebih besar dari h2, dan h2 lebih besar dari h3.",
+        "Nanti dengan CSS, kamu bisa mengubah tampilan heading sesuka hati — tapi urutannya tetap harus logis."
+      ]
+    },
+    {
+      "id": "node-03-headings-code",
+      "type": "code",
+      "title": "Contoh Penggunaan Heading",
+      "xp": 5,
+      "explanation": "Perhatikan bagaimana tiga level heading digunakan di contoh ini. h1 hanya muncul sekali sebagai judul halaman. h2 digunakan untuk dua bagian besar. h3 digunakan di dalam bagian kedua untuk membagi kontennya lebih lanjut.\n\nStruktur ini seperti outline dokumen — membaca heading saja sudah memberi gambaran lengkap tentang isi halaman.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Artikel: Belajar Coding</title>\n  </head>\n  <body>\n    <h1>Panduan Belajar Coding untuk Pemula</h1>\n\n    <h2>Mengapa Belajar Coding?</h2>\n\n    <h2>Mulai dari Mana?</h2>\n    <h3>Pilih Bahasa Pertamamu</h3>\n    <h3>Cari Sumber Belajar yang Tepat</h3>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-paragraphs",
+      "type": "code",
+      "title": "Paragraf dengan Tag p",
+      "xp": 5,
+      "explanation": "Tag p digunakan untuk setiap blok teks yang merupakan satu kesatuan ide. Browser secara otomatis menambahkan jarak di atas dan di bawah setiap paragraf — jadi kamu tidak perlu menekan Enter berkali-kali.\n\nTips penting:\n• Satu p untuk satu ide atau satu topik\n• Jangan meletakkan heading di dalam paragraf\n• Paragraf akan mengisi lebar halaman secara otomatis\n\nContoh di bawah menambahkan paragraf ke dalam struktur heading dari node sebelumnya.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Artikel: Belajar Coding</title>\n  </head>\n  <body>\n    <h1>Panduan Belajar Coding untuk Pemula</h1>\n\n    <h2>Mengapa Belajar Coding?</h2>\n    <p>Coding adalah keterampilan yang semakin dibutuhkan di era digital ini. Dengan belajar coding, kamu bisa membuat aplikasi, website, atau bahkan game sendiri.</p>\n\n    <h2>Mulai dari Mana?</h2>\n    <p>Langkah pertama adalah memilih bahasa pemrograman yang sesuai dengan tujuanmu.</p>\n    <h3>Pilih Bahasa Pertamamu</h3>\n    <p>Untuk pemula yang ingin membuat website, HTML adalah titik awal yang sempurna.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-strong-em",
+      "type": "code",
+      "title": "Penekanan Teks: strong dan em",
+      "xp": 5,
+      "explanation": "Terkadang ada kata atau frasa dalam paragraf yang perlu lebih ditonjolkan. HTML menyediakan dua tag untuk ini:\n\n• strong — membuat teks terlihat tebal. Digunakan untuk kata yang sangat penting.\n• em — membuat teks miring. Digunakan untuk penekanan, istilah asing, atau judul karya.\n\nPerbedaan penting: strong dan em bukan sekadar untuk tampilan — mereka memberi makna pada teks. Kedua tag ini digunakan di dalam p, bukan menggantikannya.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Artikel: Belajar Coding</title>\n  </head>\n  <body>\n    <h1>Panduan Belajar Coding untuk Pemula</h1>\n\n    <h2>Mengapa Belajar Coding?</h2>\n    <p>Coding adalah keterampilan yang <strong>semakin dibutuhkan</strong> di era digital ini.</p>\n\n    <h2>Mulai dari Mana?</h2>\n    <p>Untuk pemula yang ingin membuat website, <em>HTML adalah titik awal yang sempurna</em>.</p>\n    <p><strong>Catatan penting:</strong> Jangan mencoba mempelajari semua bahasa sekaligus.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-multiple-paragraphs",
+      "type": "code",
+      "title": "Beberapa Paragraf dalam Satu Bagian",
+      "xp": 5,
+      "explanation": "Dalam halaman web nyata, setiap bagian biasanya memiliki beberapa paragraf. Setiap paragraf adalah satu p tersendiri — browser akan memisahkannya dengan jarak otomatis.\n\nPerhatikan di contoh ini bagaimana konten sudah mulai terasa seperti halaman web sungguhan:\n• Satu h1 sebagai judul utama\n• Dua h2 untuk dua bagian\n• Beberapa p di masing-masing bagian\n• strong dan em untuk penekanan\n\nIni adalah pola yang akan kamu gunakan lagi dan lagi di setiap halaman yang kamu buat.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Panduan Belajar Coding</title>\n  </head>\n  <body>\n    <h1>Panduan Belajar Coding untuk Pemula</h1>\n\n    <h2>Mengapa Belajar Coding?</h2>\n    <p>Coding adalah keterampilan yang <strong>semakin dibutuhkan</strong> di era digital ini.</p>\n    <p>Dengan belajar coding, kamu bisa membuat aplikasi, website, atau bahkan game sendiri.</p>\n\n    <h2>Mulai dari Mana?</h2>\n    <p>Untuk pemula yang ingin membuat website, <em>HTML adalah titik awal yang sempurna</em>.</p>\n    <p><strong>Catatan penting:</strong> Jangan mencoba mempelajari semua bahasa sekaligus. Fokus pada satu bahasa dulu.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-complete-article",
+      "type": "code",
+      "title": "Halaman Artikel Lengkap",
+      "xp": 5,
+      "explanation": "Inilah versi final dari halaman artikel yang sudah kita bangun secara bertahap. Perhatikan bagaimana semuanya bekerja bersama:\n\n• h1 ke h2 ke h3 membentuk hierarki yang jelas\n• Setiap bagian punya satu atau lebih paragraf\n• strong digunakan untuk fakta penting\n• em digunakan untuk penekanan\n\nSaat kamu membuka file ini di browser, hasilnya sudah terlihat seperti artikel web sungguhan — meskipun tanpa satu baris CSS pun.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Panduan Belajar Coding</title>\n  </head>\n  <body>\n    <h1>Panduan Belajar Coding untuk Pemula</h1>\n\n    <h2>Mengapa Belajar Coding?</h2>\n    <p>Coding adalah keterampilan yang <strong>semakin dibutuhkan</strong> di era digital ini. Hampir semua industri membutuhkan orang yang bisa menulis kode.</p>\n    <p>Dengan belajar coding, kamu bisa membuat aplikasi, website, atau bahkan game sendiri.</p>\n\n    <h2>Mulai dari Mana?</h2>\n    <p>Untuk pemula yang ingin membuat website, <em>HTML adalah titik awal yang sempurna</em>.</p>\n\n    <h3>Pilih Bahasa Pertamamu</h3>\n    <p><strong>Rekomendasi kami:</strong> Mulai dengan HTML dan CSS. Keduanya bekerja bersama untuk membuat tampilan halaman web yang menarik.</p>\n\n    <h3>Cari Sumber Belajar yang Tepat</h3>\n    <p>Pilih satu sumber belajar yang kamu sukai dan ikuti sampai selesai. Konsistensi lebih penting daripada banyaknya sumber.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Identifikasi Tag yang Tepat",
+      "xp": 10,
+      "instructions": "Kamu ingin menulis kata 'sangat penting' di dalam sebuah paragraf agar terlihat tebal. Tag mana yang tepat digunakan?",
+      "interactionType": "multiple-choice",
+      "options": ["<h2>", "<p>", "<strong>", "<em>"],
+      "correctOption": "<strong>"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Buat Artikel Mini",
+      "xp": 15,
+      "instructions": "Kode starter di bawah hanya punya satu heading dan satu paragraf.\n\nTugasmu: Lengkapi halaman ini dengan menambahkan:\n1. Sebuah h2 dengan teks 'Hobi Saya'\n2. Dua tag p yang mendeskripsikan hobimu\n3. Di dalam salah satu paragraf, gunakan strong untuk satu kata atau frasa penting\n\nPastikan semua tag berada di dalam body.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Tentang Saya</title>\n  </head>\n  <body>\n    <h1>Halo! Ini Halaman Saya</h1>\n    <p>Saya sedang belajar HTML dan menikmati setiap langkahnya.</p>\n\n    <!-- Tambahkan h2, dua p, dan strong di bawah sini -->\n\n  </body>\n</html>"
+      },
+      "expectedResult": "Halaman dengan h1, h2 Hobi Saya, dua paragraf tentang hobi, dan setidaknya satu penggunaan tag strong.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Tentang Saya</title>\n  </head>\n  <body>\n    <h1>Halo! Ini Halaman Saya</h1>\n    <p>Saya sedang belajar HTML dan menikmati setiap langkahnya.</p>\n\n    <h2>Hobi Saya</h2>\n    <p>Hobi utama saya adalah <strong>membaca buku</strong>, terutama buku fiksi ilmiah dan teknologi.</p>\n    <p>Selain itu, saya juga suka bermain futsal setiap akhir pekan bersama teman-teman.</p>\n  </body>\n</html>",
+        "explanation": "Kita menambahkan h2 Hobi Saya sebagai judul bagian baru. Dua tag p mendeskripsikan hobi berbeda — masing-masing satu ide per paragraf. Tag strong digunakan di dalam paragraf pertama untuk menonjolkan frasa membaca buku sebagai hobi utama."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Berapa banyak tag h1 yang sebaiknya ada dalam satu halaman web?",
+        "options": [
+          "Tidak ada batasnya, bisa sebanyak mungkin",
+          "Hanya satu",
+          "Minimal dua",
+          "Tepat tiga"
+        ],
+        "correctAnswer": "Hanya satu",
+        "explanation": "Sebaiknya hanya ada satu h1 dalam satu halaman web. Tag h1 mewakili judul utama halaman — jika ada lebih dari satu, pembaca dan mesin pencari akan kebingungan mana yang merupakan topik utama halaman.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Tag heading mana yang digunakan untuk judul sub-bagian di dalam sebuah h2?",
+        "options": ["<h1>", "<h2>", "<h3>", "<p>"],
+        "correctAnswer": "<h3>",
+        "explanation": "Tag h3 digunakan sebagai sub-judul di dalam sebuah bagian yang sudah diberi judul h2. Urutan heading harus logis: h1 lalu h2 lalu h3, jangan melompati level.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa yang terjadi jika kamu menulis dua tag p berturutan di HTML?",
+        "options": [
+          "Keduanya akan muncul dalam satu baris yang sama",
+          "Browser akan menampilkan error",
+          "Browser otomatis memberi jarak antar keduanya",
+          "Tag kedua akan menghapus tag pertama"
+        ],
+        "correctAnswer": "Browser otomatis memberi jarak antar keduanya",
+        "explanation": "Tag p secara otomatis mendapat margin di atas dan di bawahnya. Jadi dua paragraf berurutan akan terlihat terpisah dengan jarak yang rapi — kamu tidak perlu menambahkan spasi atau tag br secara manual.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Tag mana yang digunakan untuk membuat teks terlihat tebal dan menandai bahwa teks itu penting?",
+        "options": ["<em>", "<i>", "<b>", "<strong>"],
+        "correctAnswer": "<strong>",
+        "explanation": "Tag strong membuat teks tebal DAN memberi makna bahwa teks tersebut penting secara semantik. Berbeda dengan b yang hanya mengubah tampilan, strong juga memberitahu browser dan mesin pencari bahwa kontennya signifikan.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Tag em digunakan untuk apa dalam HTML?",
+        "options": [
+          "Membuat teks terlihat tebal",
+          "Membuat teks miring sebagai bentuk penekanan",
+          "Membuat heading level 5",
+          "Membuat teks berwarna merah"
+        ],
+        "correctAnswer": "Membuat teks miring sebagai bentuk penekanan",
+        "explanation": "Tag em (emphasis) digunakan untuk membuat teks miring sekaligus memberi penekanan semantik. Digunakan untuk istilah asing, judul karya, atau bagian kalimat yang perlu penekanan.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Hebat! Kamu sekarang bisa menyusun konten teks yang terstruktur dengan heading yang hirarkis, paragraf yang rapi, dan penekanan yang tepat. Halamanmu sudah mulai terasa seperti konten web sungguhan.",
+    "achievementName": "Penulis Web",
+    "achievementIcon": "✍️"
+  }
+}

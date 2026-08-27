@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-17",
+    "title": "Final Project — Landing Page Profesionalmu",
+    "description": "Gabungkan semua skill HTML dan CSS Level 2 untuk membangun landing page lengkap: navigasi, hero, fitur, CTA, dan footer — dari nol hingga siap dipublikasikan.",
+    "level": "beginner",
+    "category": "CSS",
+    "topicNumber": 7,
+    "estimatedTime": 45,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Semua Skill Terkumpul — Waktunya Membangun",
+    "description": "Ini bukan sekadar pelajaran biasa. Di topik ini kamu membangun landing page nyata yang menggabungkan semua yang sudah dipelajari di Level 1 dan Level 2: HTML semantik, tipografi CSS, Box Model, Flexbox, dan komponen landing page. Hasilnya adalah sebuah website yang benar-benar bisa kamu tunjukkan kepada orang lain.",
+    "analogy": "Selama Level 1 dan Level 2 kamu belajar bermain alat musik satu per satu — gitar, bass, drum. Final project ini adalah penampilan pertamamu di atas panggung, memainkan semua alat bersama-sama menjadi sebuah lagu yang utuh."
+  },
+  "objectives": [
+    "Membangun landing page lengkap dari nol menggunakan HTML dan CSS",
+    "Menerapkan navbar, hero section, features, CTA, dan footer secara terintegrasi",
+    "Menggunakan skema warna dan tipografi yang konsisten di seluruh halaman",
+    "Menyusun kode CSS yang terorganisir dengan komentar yang jelas",
+    "Menghasilkan halaman yang siap dibuka di browser dan layak diperlihatkan"
+  ],
+  "review": {
+    "learned": [
+      "Landing page profesional terdiri dari navbar, hero, features, CTA section, dan footer.",
+      "HTML semantik (header, nav, main, section, footer) memberi makna pada struktur halaman.",
+      "Flexbox mengatur layout komponen-komponen di dalam setiap section.",
+      "Box Model (padding, margin, border-radius) memberi spacing dan visual polish pada elemen.",
+      "Skema warna yang konsisten (satu primary color) menciptakan identitas visual yang kuat.",
+      "Hierarki tipografi yang benar (ukuran, berat, warna berbeda untuk heading dan paragraf) memandu pembaca."
+    ],
+    "keyConcepts": [
+      "Integrasi HTML dan CSS",
+      "Struktur landing page lengkap",
+      "CSS terorganisir dengan komentar",
+      "Konsistensi visual (warna, spacing, tipografi)",
+      "Workflow: HTML dulu, baru CSS"
+    ],
+    "takeaways": [
+      "Selalu mulai dari struktur HTML semantik yang benar, baru tambahkan CSS.",
+      "Organisir CSS dengan komentar seksi — /* Navbar */, /* Hero */, /* Features */ dll.",
+      "Website nyata adalah kumpulan komponen yang bisa dibangun satu per satu, lalu digabung.",
+      "Kamu sudah menyelesaikan Level 2 — kamu bisa membangun website nyata dengan HTML dan CSS."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-project-overview",
+      "type": "lesson",
+      "title": "Gambaran Proyek Final",
+      "xp": 5,
+      "explanation": "Di final project ini kita membangun landing page untuk platform belajar coding bernama 'BelajarWeb'. Landing page ini akan memiliki semua komponen yang sudah dipelajari:\n\nStruktur halaman:\n1. Navbar — logo di kiri, menu di tengah/kanan, tombol CTA\n2. Hero Section — headline, subheadline, dua tombol\n3. Features Section — tiga kartu fitur dengan ikon\n4. CTA Section — ajakan bergabung dengan background warna\n5. Footer — copyright dan link tambahan\n\nSkema warna yang akan digunakan:\n• Primary: #3182ce (biru)\n• Dark: #1a202c (hampir hitam)\n• Text: #4a5568 (abu-abu gelap)\n• Muted: #718096 (abu-abu)\n• Background: #f7fafc (off-white)\n• White: #ffffff\n\nPendekatan: kita bangun bagian per bagian, lalu gabungkan di akhir.",
+      "tips": [
+        "Tulis HTML seluruh halaman dulu sebelum menambahkan CSS satu baris pun.",
+        "Beri nama class yang deskriptif dari awal — lebih mudah daripada mengganti nama di tengah jalan."
+      ]
+    },
+    {
+      "id": "node-02-workflow",
+      "type": "lesson",
+      "title": "Workflow Profesional: HTML Dulu, CSS Kemudian",
+      "xp": 5,
+      "explanation": "Workflow yang baik untuk membangun halaman web:\n\nLangkah 1 — Buat kerangka HTML\nTulis semua tag semantik dan konten tanpa satu baris CSS pun. Cek di browser — halaman akan polos tapi strukturnya sudah benar.\n\nLangkah 2 — Tambahkan CSS per seksi\nMulai dari yang paling atas: style reset, lalu body, lalu navbar, lalu hero, lalu features, dst.\n\nLangkah 3 — Rapikan dan konsistenkan\nCek apakah warna, font-size, dan spacing konsisten di seluruh halaman. Perbaiki yang tidak sesuai.\n\nOrganisasi CSS yang baik:\n/* ===== RESET ===== */\n/* ===== NAVBAR ===== */\n/* ===== HERO ===== */\n/* ===== FEATURES ===== */\n/* ===== CTA ===== */\n/* ===== FOOTER ===== */\n\nKomentar seksi ini membuat CSS mudah dinavigasi meski kodenya panjang.",
+      "analogy": "Workflow ini seperti memasak: siapkan semua bahan dulu (HTML), lalu masak satu per satu sesuai resep (CSS per seksi), lalu cek rasa keseluruhan (konsistensi visual).",
+      "tips": [
+        "* { box-sizing: border-box; margin: 0; padding: 0; } di awal CSS menghilangkan perbedaan default antar browser.",
+        "Simpan file dan refresh browser sesering mungkin saat coding — jangan tunggu selesai semua baru cek."
+      ]
+    },
+    {
+      "id": "node-03-html-skeleton",
+      "type": "code",
+      "title": "Langkah 1 — Kerangka HTML Lengkap",
+      "xp": 5,
+      "explanation": "Ini adalah kerangka HTML seluruh halaman — semua konten sudah ada tapi belum ada CSS sama sekali. Buka di browser sekarang: halamannya polos, tapi semua konten sudah terbaca dengan benar.\n\nPerhatikan penggunaan tag semantik yang konsisten: header, nav, main, section, footer. Ini adalah pondasi yang benar sebelum CSS ditambahkan.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>BelajarWeb — Platform Coding untuk Semua</title>\n  </head>\n  <body>\n\n    <!-- NAVBAR -->\n    <header>\n      <nav class=\"navbar\">\n        <a href=\"#\" class=\"nav-brand\">BelajarWeb</a>\n        <ul class=\"nav-links\">\n          <li><a href=\"#fitur\">Fitur</a></li>\n          <li><a href=\"#tentang\">Tentang</a></li>\n          <li><a href=\"#harga\">Harga</a></li>\n        </ul>\n        <a href=\"#\" class=\"nav-cta\">Daftar Gratis</a>\n      </nav>\n    </header>\n\n    <main>\n\n      <!-- HERO -->\n      <section class=\"hero\">\n        <h1>Belajar Web Development dari Nol hingga Mahir</h1>\n        <p>Kurikulum terstruktur dengan latihan interaktif. Dari HTML dasar hingga membangun website lengkap yang bisa kamu banggakan.</p>\n        <div class=\"hero-buttons\">\n          <a href=\"#\" class=\"btn-primary\">Mulai Belajar Gratis</a>\n          <a href=\"#\" class=\"btn-outline\">Lihat Kurikulum</a>\n        </div>\n      </section>\n\n      <!-- FEATURES -->\n      <section class=\"features\" id=\"fitur\">\n        <div class=\"section-header\">\n          <h2>Kenapa Pilih BelajarWeb?</h2>\n          <p>Semua yang kamu butuhkan untuk menjadi web developer</p>\n        </div>\n        <div class=\"card-grid\">\n          <div class=\"card\">\n            <div class=\"card-icon\">📚</div>\n            <h3>Kurikulum Terstruktur</h3>\n            <p>Materi dari dasar hingga mahir, disusun oleh para ahli web development.</p>\n          </div>\n          <div class=\"card\">\n            <div class=\"card-icon\">⚡</div>\n            <h3>Latihan Interaktif</h3>\n            <p>Tulis dan jalankan kode langsung di browser, tanpa instalasi apapun.</p>\n          </div>\n          <div class=\"card\">\n            <div class=\"card-icon\">🏆</div>\n            <h3>Sistem XP dan Badge</h3>\n            <p>Kumpulkan poin pengalaman dan lencana di setiap topik yang diselesaikan.</p>\n          </div>\n        </div>\n      </section>\n\n      <!-- CTA -->\n      <section class=\"cta-section\">\n        <h2>Siap Memulai Perjalananmu?</h2>\n        <p>Bergabung dengan lebih dari 10.000 pelajar yang sudah membangun website pertama mereka.</p>\n        <a href=\"#\" class=\"btn-white\">Daftar Sekarang — Gratis</a>\n      </section>\n\n    </main>\n\n    <!-- FOOTER -->\n    <footer class=\"footer\">\n      <p>© 2025 BelajarWeb &nbsp;|&nbsp;\n        <a href=\"#\">Tentang Kami</a> &nbsp;|&nbsp;\n        <a href=\"#\">Kebijakan Privasi</a> &nbsp;|&nbsp;\n        <a href=\"#\">Kontak</a>\n      </p>\n    </footer>\n\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-navbar-hero-css",
+      "type": "code",
+      "title": "Langkah 2 — CSS Navbar dan Hero",
+      "xp": 5,
+      "explanation": "Menambahkan CSS untuk dua bagian pertama: navbar dan hero. Perhatikan:\n• CSS reset di awal menghilangkan margin/padding default browser\n• Komentar seksi membantu navigasi kode yang semakin panjang\n• Navbar menggunakan Flexbox dengan space-between\n• Hero menggunakan background gelap untuk kontras dengan body yang terang",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>BelajarWeb</title>\n    <style>\n      /* ===== RESET ===== */\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background-color: #f7fafc; color: #4a5568; }\n\n      /* ===== NAVBAR ===== */\n      .navbar {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        background-color: #1a202c;\n        padding: 16px 48px;\n      }\n      .nav-brand {\n        color: #ffffff;\n        font-size: 20px;\n        font-weight: bold;\n        text-decoration: none;\n      }\n      .nav-links {\n        display: flex;\n        gap: 28px;\n        list-style: none;\n      }\n      .nav-links a { color: #a0aec0; text-decoration: none; font-size: 15px; }\n      .nav-cta {\n        background-color: #3182ce;\n        color: #ffffff;\n        padding: 9px 22px;\n        border-radius: 7px;\n        text-decoration: none;\n        font-size: 14px;\n        font-weight: bold;\n      }\n\n      /* ===== HERO ===== */\n      .hero {\n        background-color: #1a202c;\n        text-align: center;\n        padding: 96px 48px;\n      }\n      .hero h1 {\n        font-size: 50px;\n        color: #ffffff;\n        line-height: 1.15;\n        margin-bottom: 20px;\n      }\n      .hero p {\n        font-size: 18px;\n        color: #a0aec0;\n        max-width: 560px;\n        margin: 0 auto 36px;\n        line-height: 1.65;\n      }\n      .hero-buttons {\n        display: flex;\n        gap: 16px;\n        justify-content: center;\n      }\n      .btn-primary {\n        display: inline-block;\n        background-color: #3182ce;\n        color: #ffffff;\n        padding: 14px 36px;\n        border-radius: 8px;\n        text-decoration: none;\n        font-size: 16px;\n        font-weight: bold;\n      }\n      .btn-outline {\n        display: inline-block;\n        background-color: transparent;\n        border: 2px solid #4a5568;\n        color: #ffffff;\n        padding: 12px 34px;\n        border-radius: 8px;\n        text-decoration: none;\n        font-size: 16px;\n      }\n    </style>\n  </head>\n  <body>\n    <header>\n      <nav class=\"navbar\">\n        <a href=\"#\" class=\"nav-brand\">BelajarWeb</a>\n        <ul class=\"nav-links\">\n          <li><a href=\"#\">Fitur</a></li>\n          <li><a href=\"#\">Tentang</a></li>\n          <li><a href=\"#\">Harga</a></li>\n        </ul>\n        <a href=\"#\" class=\"nav-cta\">Daftar Gratis</a>\n      </nav>\n    </header>\n    <section class=\"hero\">\n      <h1>Belajar Web Development dari Nol hingga Mahir</h1>\n      <p>Kurikulum terstruktur dengan latihan interaktif. Dari HTML dasar hingga membangun website lengkap.</p>\n      <div class=\"hero-buttons\">\n        <a href=\"#\" class=\"btn-primary\">Mulai Belajar Gratis</a>\n        <a href=\"#\" class=\"btn-outline\">Lihat Kurikulum</a>\n      </div>\n    </section>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-features-cta-css",
+      "type": "code",
+      "title": "Langkah 3 — CSS Features dan CTA Section",
+      "xp": 5,
+      "explanation": "Menambahkan CSS untuk features section dan CTA section. Halaman sudah mulai menyerupai website profesional — kontras antara section terang (features, background putih) dan section gelap (hero dan CTA) menciptakan ritme visual yang nyaman.\n\nPerhatikan penggunaan Flexbox pada .card-grid untuk kartu yang berjejer rapi.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>BelajarWeb</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background-color: #f7fafc; }\n\n      /* (Navbar + Hero dari node sebelumnya disingkat) */\n      .navbar { display:flex; justify-content:space-between; align-items:center; background:#1a202c; padding:16px 48px; }\n      .nav-brand { color:#fff; font-size:20px; font-weight:bold; text-decoration:none; }\n      .hero { background:#1a202c; text-align:center; padding:80px 48px; }\n      .hero h1 { font-size:44px; color:#fff; margin-bottom:16px; }\n      .hero p { font-size:17px; color:#a0aec0; margin-bottom:28px; }\n      .btn-primary { display:inline-block; background:#3182ce; color:#fff; padding:14px 32px; border-radius:8px; text-decoration:none; font-weight:bold; }\n\n      /* ===== FEATURES ===== */\n      .features {\n        background-color: #ffffff;\n        padding: 80px 48px;\n      }\n      .section-header {\n        text-align: center;\n        margin-bottom: 52px;\n      }\n      .section-header h2 {\n        font-size: 32px;\n        color: #1a202c;\n        margin-bottom: 12px;\n      }\n      .section-header p {\n        font-size: 16px;\n        color: #718096;\n        max-width: 460px;\n        margin: 0 auto;\n      }\n      .card-grid {\n        display: flex;\n        gap: 24px;\n        justify-content: center;\n        flex-wrap: wrap;\n      }\n      .card {\n        background-color: #f7fafc;\n        border: 1px solid #e2e8f0;\n        border-radius: 16px;\n        padding: 32px;\n        width: 280px;\n      }\n      .card-icon {\n        font-size: 32px;\n        margin-bottom: 16px;\n      }\n      .card h3 {\n        font-size: 18px;\n        color: #1a202c;\n        margin-bottom: 10px;\n      }\n      .card p {\n        font-size: 14px;\n        color: #718096;\n        line-height: 1.65;\n      }\n\n      /* ===== CTA ===== */\n      .cta-section {\n        background-color: #2b6cb0;\n        text-align: center;\n        padding: 80px 48px;\n      }\n      .cta-section h2 {\n        font-size: 36px;\n        color: #ffffff;\n        margin-bottom: 14px;\n      }\n      .cta-section p {\n        font-size: 17px;\n        color: #bee3f8;\n        max-width: 480px;\n        margin: 0 auto 32px;\n      }\n      .btn-white {\n        display: inline-block;\n        background-color: #ffffff;\n        color: #2b6cb0;\n        padding: 14px 36px;\n        border-radius: 8px;\n        text-decoration: none;\n        font-size: 16px;\n        font-weight: bold;\n      }\n    </style>\n  </head>\n  <body>\n    <nav class=\"navbar\"><a href=\"#\" class=\"nav-brand\">BelajarWeb</a></nav>\n    <section class=\"hero\">\n      <h1>Belajar Web Development dari Nol</h1>\n      <p>Kurikulum terstruktur dari HTML hingga website lengkap.</p>\n      <a href=\"#\" class=\"btn-primary\">Mulai Gratis</a>\n    </section>\n    <section class=\"features\">\n      <div class=\"section-header\">\n        <h2>Kenapa Pilih BelajarWeb?</h2>\n        <p>Semua yang kamu butuhkan untuk menjadi web developer</p>\n      </div>\n      <div class=\"card-grid\">\n        <div class=\"card\"><div class=\"card-icon\">📚</div><h3>Kurikulum Terstruktur</h3><p>Materi dari dasar hingga mahir oleh para ahli.</p></div>\n        <div class=\"card\"><div class=\"card-icon\">⚡</div><h3>Latihan Interaktif</h3><p>Tulis kode langsung di browser tanpa instalasi.</p></div>\n        <div class=\"card\"><div class=\"card-icon\">🏆</div><h3>Sistem XP</h3><p>Kumpulkan poin di setiap topik yang diselesaikan.</p></div>\n      </div>\n    </section>\n    <section class=\"cta-section\">\n      <h2>Siap Memulai Perjalananmu?</h2>\n      <p>Bergabung dengan lebih dari 10.000 pelajar yang sudah membangun website pertama mereka.</p>\n      <a href=\"#\" class=\"btn-white\">Daftar Sekarang — Gratis</a>\n    </section>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-footer-complete",
+      "type": "code",
+      "title": "Langkah 4 — Footer dan Sentuhan Akhir",
+      "xp": 5,
+      "explanation": "Footer melengkapi halaman. Setelah footer ditambahkan, kita cek konsistensi seluruh halaman: apakah warna, spacing, dan tipografi sudah seragam dari atas ke bawah?\n\nIni adalah momen di mana halaman berubah dari 'sekumpulan komponen' menjadi 'satu kesatuan yang utuh'.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>BelajarWeb</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background-color: #f7fafc; }\n      /* (navbar, hero, features, cta diringkas) */\n      .navbar { display:flex; justify-content:space-between; align-items:center; background:#1a202c; padding:16px 48px; }\n      .nav-brand { color:#fff; font-size:20px; font-weight:bold; text-decoration:none; }\n      .nav-links { display:flex; gap:24px; list-style:none; }\n      .nav-links a { color:#a0aec0; text-decoration:none; font-size:15px; }\n      .nav-cta { background:#3182ce; color:#fff; padding:8px 20px; border-radius:6px; text-decoration:none; font-size:14px; font-weight:bold; }\n      .hero { background:#1a202c; text-align:center; padding:80px 48px; }\n      .hero h1 { font-size:44px; color:#fff; margin-bottom:16px; line-height:1.2; }\n      .hero p { font-size:17px; color:#a0aec0; margin-bottom:28px; }\n      .hero-buttons { display:flex; gap:16px; justify-content:center; }\n      .btn-primary { display:inline-block; background:#3182ce; color:#fff; padding:14px 32px; border-radius:8px; text-decoration:none; font-weight:bold; }\n      .btn-outline { display:inline-block; border:2px solid #4a5568; color:#fff; padding:12px 30px; border-radius:8px; text-decoration:none; }\n      .features { background:#fff; padding:72px 48px; }\n      .section-header { text-align:center; margin-bottom:48px; }\n      .section-header h2 { font-size:30px; color:#1a202c; margin-bottom:10px; }\n      .section-header p { font-size:16px; color:#718096; }\n      .card-grid { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }\n      .card { background:#f7fafc; border:1px solid #e2e8f0; border-radius:14px; padding:28px; width:260px; }\n      .card-icon { font-size:28px; margin-bottom:14px; }\n      .card h3 { font-size:17px; color:#1a202c; margin-bottom:8px; }\n      .card p { font-size:14px; color:#718096; line-height:1.6; }\n      .cta-section { background:#2b6cb0; text-align:center; padding:72px 48px; }\n      .cta-section h2 { font-size:34px; color:#fff; margin-bottom:14px; }\n      .cta-section p { font-size:17px; color:#bee3f8; margin-bottom:28px; }\n      .btn-white { display:inline-block; background:#fff; color:#2b6cb0; padding:14px 34px; border-radius:8px; text-decoration:none; font-weight:bold; }\n\n      /* ===== FOOTER ===== */\n      .footer {\n        background-color: #1a202c;\n        padding: 32px 48px;\n        text-align: center;\n      }\n      .footer p {\n        color: #4a5568;\n        font-size: 14px;\n        margin-bottom: 8px;\n      }\n      .footer a {\n        color: #718096;\n        text-decoration: none;\n        margin: 0 8px;\n        font-size: 14px;\n      }\n      .footer .footer-brand {\n        color: #a0aec0;\n        font-size: 18px;\n        font-weight: bold;\n        margin-bottom: 16px;\n        display: block;\n      }\n    </style>\n  </head>\n  <body>\n    <nav class=\"navbar\">\n      <a href=\"#\" class=\"nav-brand\">BelajarWeb</a>\n      <ul class=\"nav-links\">\n        <li><a href=\"#\">Fitur</a></li>\n        <li><a href=\"#\">Tentang</a></li>\n      </ul>\n      <a href=\"#\" class=\"nav-cta\">Daftar Gratis</a>\n    </nav>\n    <section class=\"hero\">\n      <h1>Belajar Web Development dari Nol</h1>\n      <p>Dari HTML hingga website lengkap, langkah demi langkah.</p>\n      <div class=\"hero-buttons\">\n        <a href=\"#\" class=\"btn-primary\">Mulai Gratis</a>\n        <a href=\"#\" class=\"btn-outline\">Lihat Kursus</a>\n      </div>\n    </section>\n    <section class=\"features\">\n      <div class=\"section-header\"><h2>Fitur Unggulan</h2><p>Semua yang dibutuhkan untuk belajar coding</p></div>\n      <div class=\"card-grid\">\n        <div class=\"card\"><div class=\"card-icon\">📚</div><h3>Kurikulum Terstruktur</h3><p>Materi dari dasar hingga mahir.</p></div>\n        <div class=\"card\"><div class=\"card-icon\">⚡</div><h3>Latihan Interaktif</h3><p>Kode langsung di browser.</p></div>\n        <div class=\"card\"><div class=\"card-icon\">🏆</div><h3>Sistem XP</h3><p>Poin di setiap topik selesai.</p></div>\n      </div>\n    </section>\n    <section class=\"cta-section\">\n      <h2>Siap Memulai?</h2>\n      <p>Bergabung dengan ribuan pelajar yang sudah membangun website mereka.</p>\n      <a href=\"#\" class=\"btn-white\">Daftar Sekarang — Gratis</a>\n    </section>\n    <footer class=\"footer\">\n      <span class=\"footer-brand\">BelajarWeb</span>\n      <p>© 2025 BelajarWeb. Semua hak dilindungi.</p>\n      <div>\n        <a href=\"#\">Tentang Kami</a>\n        <a href=\"#\">Kursus</a>\n        <a href=\"#\">Kebijakan Privasi</a>\n        <a href=\"#\">Kontak</a>\n      </div>\n    </footer>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-final-landing-page",
+      "type": "code",
+      "title": "Halaman Final yang Lengkap dan Bersih",
+      "xp": 5,
+      "explanation": "Inilah versi final landing page yang lengkap — semua komponen tergabung, CSS terorganisir dengan komentar seksi, dan konsistensi visual terjaga dari atas ke bawah.\n\nBuka file ini di browser. Ini adalah website nyata pertamamu yang dibangun sepenuhnya dari HTML dan CSS — tanpa template, tanpa framework, dari nol.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>BelajarWeb — Platform Coding untuk Semua</title>\n    <style>\n      /* ===== RESET ===== */\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n\n      /* ===== BASE ===== */\n      body {\n        font-family: Arial, sans-serif;\n        background-color: #f7fafc;\n        color: #4a5568;\n      }\n\n      /* ===== NAVBAR ===== */\n      .navbar {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        background-color: #1a202c;\n        padding: 16px 48px;\n      }\n      .nav-brand { color: #fff; font-size: 20px; font-weight: bold; text-decoration: none; }\n      .nav-links { display: flex; gap: 28px; list-style: none; }\n      .nav-links a { color: #a0aec0; text-decoration: none; font-size: 15px; }\n      .nav-cta { background: #3182ce; color: #fff; padding: 9px 22px; border-radius: 7px; text-decoration: none; font-size: 14px; font-weight: bold; }\n\n      /* ===== HERO ===== */\n      .hero { background-color: #1a202c; text-align: center; padding: 96px 48px; }\n      .hero h1 { font-size: 50px; color: #fff; line-height: 1.15; margin-bottom: 20px; }\n      .hero h1 em { color: #63b3ed; font-style: normal; }\n      .hero p { font-size: 18px; color: #a0aec0; max-width: 540px; margin: 0 auto 36px; line-height: 1.65; }\n      .hero-buttons { display: flex; gap: 16px; justify-content: center; }\n      .btn-primary { display: inline-block; background: #3182ce; color: #fff; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-size: 16px; font-weight: bold; }\n      .btn-outline { display: inline-block; border: 2px solid #4a5568; color: #fff; padding: 12px 34px; border-radius: 8px; text-decoration: none; font-size: 16px; }\n\n      /* ===== FEATURES ===== */\n      .features { background-color: #fff; padding: 80px 48px; }\n      .section-header { text-align: center; margin-bottom: 52px; }\n      .section-header h2 { font-size: 32px; color: #1a202c; margin-bottom: 12px; }\n      .section-header p { font-size: 16px; color: #718096; max-width: 440px; margin: 0 auto; }\n      .card-grid { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }\n      .card { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px; width: 280px; }\n      .card-icon { font-size: 32px; margin-bottom: 16px; }\n      .card h3 { font-size: 18px; color: #1a202c; margin-bottom: 10px; }\n      .card p { font-size: 14px; color: #718096; line-height: 1.65; }\n\n      /* ===== CTA ===== */\n      .cta-section { background-color: #2b6cb0; text-align: center; padding: 80px 48px; }\n      .cta-section h2 { font-size: 36px; color: #fff; margin-bottom: 14px; }\n      .cta-section p { font-size: 17px; color: #bee3f8; max-width: 480px; margin: 0 auto 32px; line-height: 1.6; }\n      .btn-white { display: inline-block; background: #fff; color: #2b6cb0; padding: 14px 36px; border-radius: 8px; text-decoration: none; font-size: 16px; font-weight: bold; }\n\n      /* ===== FOOTER ===== */\n      .footer { background-color: #1a202c; padding: 32px 48px 24px; text-align: center; }\n      .footer-brand { color: #a0aec0; font-size: 18px; font-weight: bold; display: block; margin-bottom: 16px; }\n      .footer p { color: #4a5568; font-size: 13px; margin-bottom: 10px; }\n      .footer a { color: #718096; text-decoration: none; margin: 0 10px; font-size: 13px; }\n    </style>\n  </head>\n  <body>\n\n    <header>\n      <nav class=\"navbar\">\n        <a href=\"#\" class=\"nav-brand\">BelajarWeb</a>\n        <ul class=\"nav-links\">\n          <li><a href=\"#fitur\">Fitur</a></li>\n          <li><a href=\"#\">Tentang</a></li>\n          <li><a href=\"#\">Harga</a></li>\n        </ul>\n        <a href=\"#\" class=\"nav-cta\">Daftar Gratis</a>\n      </nav>\n    </header>\n\n    <main>\n\n      <section class=\"hero\">\n        <h1>Belajar <em>Web Development</em><br>dari Nol hingga Mahir</h1>\n        <p>Kurikulum terstruktur dengan latihan interaktif. Dari HTML dasar hingga membangun landing page profesional.</p>\n        <div class=\"hero-buttons\">\n          <a href=\"#\" class=\"btn-primary\">Mulai Belajar Gratis</a>\n          <a href=\"#\" class=\"btn-outline\">Lihat Kurikulum</a>\n        </div>\n      </section>\n\n      <section class=\"features\" id=\"fitur\">\n        <div class=\"section-header\">\n          <h2>Kenapa Pilih BelajarWeb?</h2>\n          <p>Semua yang kamu butuhkan untuk menjadi web developer</p>\n        </div>\n        <div class=\"card-grid\">\n          <div class=\"card\">\n            <div class=\"card-icon\">📚</div>\n            <h3>Kurikulum Terstruktur</h3>\n            <p>Materi dari dasar hingga mahir, disusun oleh para ahli web development.</p>\n          </div>\n          <div class=\"card\">\n            <div class=\"card-icon\">⚡</div>\n            <h3>Latihan Interaktif</h3>\n            <p>Tulis dan jalankan kode langsung di browser, tanpa instalasi apapun.</p>\n          </div>\n          <div class=\"card\">\n            <div class=\"card-icon\">🏆</div>\n            <h3>Sistem XP dan Badge</h3>\n            <p>Kumpulkan poin pengalaman dan lencana di setiap topik yang diselesaikan.</p>\n          </div>\n        </div>\n      </section>\n\n      <section class=\"cta-section\">\n        <h2>Siap Memulai Perjalananmu?</h2>\n        <p>Bergabung dengan lebih dari 10.000 pelajar yang sudah membangun website pertama mereka bersama BelajarWeb.</p>\n        <a href=\"#\" class=\"btn-white\">Daftar Sekarang — Gratis</a>\n      </section>\n\n    </main>\n\n    <footer class=\"footer\">\n      <span class=\"footer-brand\">BelajarWeb</span>\n      <p>© 2025 BelajarWeb. Semua hak dilindungi.</p>\n      <div>\n        <a href=\"#\">Tentang Kami</a>\n        <a href=\"#\">Kursus</a>\n        <a href=\"#\">Blog</a>\n        <a href=\"#\">Kebijakan Privasi</a>\n        <a href=\"#\">Kontak</a>\n      </div>\n    </footer>\n\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Urutan Pembangunan Halaman yang Benar",
+      "xp": 10,
+      "instructions": "Mana urutan workflow yang paling disarankan saat membangun landing page dari nol?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Tulis CSS terlebih dahulu, lalu tambahkan HTML menyesuaikan",
+        "Tulis HTML dan CSS sekaligus, baris per baris bergantian",
+        "Tulis seluruh kerangka HTML semantik dulu, lalu tambahkan CSS per seksi",
+        "Langsung salin template dari internet dan modifikasi"
+      ],
+      "correctOption": "Tulis seluruh kerangka HTML semantik dulu, lalu tambahkan CSS per seksi"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Final Challenge: Landing Page Pribadimu",
+      "xp": 15,
+      "instructions": "Ini adalah final challenge Level 2. Buat landing page untuk topik apapun yang kamu suka — bisa platform belajar, toko online kecil, portofolio pribadi, atau apapun.\n\nRequirements minimum:\n1. Navbar: logo/nama di kiri, minimal 2 link di kanan\n2. Hero section: headline, subheadline, minimal 1 tombol CTA\n3. Features/info section: minimal 2 kartu menggunakan Flexbox\n4. Footer: nama website dan minimal 1 link\n\nCSS requirements:\n- Gunakan background gelap untuk navbar dan/atau hero\n- Gunakan satu primary color yang konsisten untuk tombol dan aksen\n- Gunakan padding dan border-radius yang konsisten\n- Gunakan komentar seksi di CSS\n\nTidak ada 'jawaban yang salah' — yang penting semua requirements terpenuhi dan hasilnya terlihat sebagai halaman yang utuh.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Landing Page Saya</title>\n    <!-- Tambahkan style CSS di sini dengan komentar seksi -->\n  </head>\n  <body>\n    <!-- Tulis HTML semantik lengkap di sini -->\n    <!-- Navbar, Hero, Features, Footer -->\n  </body>\n</html>"
+      },
+      "expectedResult": "Landing page lengkap dengan navbar, hero section, minimal 2 kartu fitur, dan footer — menggunakan HTML semantik dan CSS yang konsisten.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Buku Favoritku</title>\n    <style>\n      /* ===== RESET ===== */\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n\n      /* ===== BASE ===== */\n      body { font-family: Arial, sans-serif; background-color: #f7fafc; color: #4a5568; }\n\n      /* ===== NAVBAR ===== */\n      .navbar { display: flex; justify-content: space-between; align-items: center; background-color: #1a202c; padding: 16px 40px; }\n      .nav-brand { color: #fff; font-size: 20px; font-weight: bold; text-decoration: none; }\n      .nav-links { display: flex; gap: 24px; list-style: none; }\n      .nav-links a { color: #a0aec0; text-decoration: none; font-size: 15px; }\n\n      /* ===== HERO ===== */\n      .hero { background-color: #276749; text-align: center; padding: 80px 40px; }\n      .hero h1 { font-size: 44px; color: #fff; margin-bottom: 16px; line-height: 1.2; }\n      .hero p { font-size: 17px; color: #c6f6d5; max-width: 500px; margin: 0 auto 28px; }\n      .btn-primary { display: inline-block; background: #fff; color: #276749; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; }\n\n      /* ===== FEATURES ===== */\n      .features { background: #fff; padding: 64px 40px; }\n      .features h2 { text-align: center; font-size: 28px; color: #1a202c; margin-bottom: 36px; }\n      .card-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }\n      .card { background: #f0fff4; border: 1px solid #c6f6d5; border-radius: 12px; padding: 24px; width: 250px; }\n      .card .icon { font-size: 28px; margin-bottom: 12px; }\n      .card h3 { font-size: 17px; color: #1a202c; margin-bottom: 8px; }\n      .card p { font-size: 14px; color: #718096; line-height: 1.6; }\n\n      /* ===== FOOTER ===== */\n      .footer { background: #1a202c; text-align: center; padding: 24px; color: #4a5568; font-size: 13px; }\n      .footer a { color: #718096; text-decoration: none; margin: 0 8px; }\n    </style>\n  </head>\n  <body>\n    <nav class=\"navbar\">\n      <a href=\"#\" class=\"nav-brand\">BukuFavorit</a>\n      <ul class=\"nav-links\">\n        <li><a href=\"#\">Rekomendasi</a></li>\n        <li><a href=\"#\">Genre</a></li>\n        <li><a href=\"#\">Tentang</a></li>\n      </ul>\n    </nav>\n    <section class=\"hero\">\n      <h1>Temukan Buku Berikutnya yang Akan Kamu Cintai</h1>\n      <p>Rekomendasi buku pilihan untuk pelajar SMP dan SMA yang suka membaca.</p>\n      <a href=\"#\" class=\"btn-primary\">Lihat Rekomendasi</a>\n    </section>\n    <section class=\"features\">\n      <h2>Kategori Unggulan</h2>\n      <div class=\"card-row\">\n        <div class=\"card\"><div class=\"icon\">🚀</div><h3>Fiksi Ilmiah</h3><p>Petualangan ke masa depan dan teknologi yang menakjubkan.</p></div>\n        <div class=\"card\"><div class=\"icon\">🔬</div><h3>Sains Populer</h3><p>Pengetahuan ilmiah yang disajikan dengan cara yang mudah dipahami.</p></div>\n        <div class=\"card\"><div class=\"icon\">💡</div><h3>Pengembangan Diri</h3><p>Buku-buku yang membantu kamu tumbuh dan berkembang.</p></div>\n      </div>\n    </section>\n    <footer class=\"footer\">\n      <p>© 2025 BukuFavorit &nbsp;<a href=\"#\">Kontak</a><a href=\"#\">Tentang</a></p>\n    </footer>\n  </body>\n</html>",
+        "explanation": "Contoh solusi ini membuat landing page untuk platform rekomendasi buku dengan tema hijau sebagai primary color. Strukturnya memenuhi semua requirements: navbar dengan brand dan links, hero gelap dengan headline dan tombol CTA, section fitur dengan tiga kartu menggunakan Flexbox, dan footer. CSS terorganisir dengan komentar seksi yang jelas."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Mengapa penting menulis reset CSS (* { box-sizing: border-box; margin: 0; padding: 0; }) di awal file CSS?",
+        "options": [
+          "Karena tanpanya CSS tidak akan bekerja sama sekali",
+          "Untuk menghilangkan perbedaan margin dan padding default antar browser agar tampilan konsisten",
+          "Karena box-sizing adalah properti wajib di HTML5",
+          "Untuk membuat semua elemen berukuran 0 piksel"
+        ],
+        "correctAnswer": "Untuk menghilangkan perbedaan margin dan padding default antar browser agar tampilan konsisten",
+        "explanation": "Setiap browser punya styling default yang sedikit berbeda — misalnya margin pada body atau padding pada ul. Reset CSS menghilangkan semua default ini sehingga kamu mulai dari slate yang bersih dan tampilan halamanmu konsisten di semua browser.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Mengapa mengorganisir CSS dengan komentar seksi (/* ===== NAVBAR ===== */) sangat direkomendasikan?",
+        "options": [
+          "Karena browser membutuhkan komentar untuk membaca CSS dengan benar",
+          "Karena komentar mempercepat loading halaman",
+          "Karena komentar memudahkan navigasi dan pemeliharaan kode CSS yang panjang",
+          "Karena komentar adalah pengganti dokumentasi HTML"
+        ],
+        "correctAnswer": "Karena komentar memudahkan navigasi dan pemeliharaan kode CSS yang panjang",
+        "explanation": "File CSS landing page bisa mencapai ratusan baris. Tanpa komentar seksi, menemukan aturan CSS untuk komponen tertentu membutuhkan waktu lama. Komentar seksi seperti /* NAVBAR */ memungkinkan kamu langsung lompat ke bagian yang ingin diedit.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Dalam landing page, urutan seksi yang paling umum dan efektif dari atas ke bawah adalah?",
+        "options": [
+          "Footer → CTA → Features → Hero → Navbar",
+          "Navbar → Hero → Features → CTA → Footer",
+          "Hero → Navbar → CTA → Features → Footer",
+          "Navbar → Features → Hero → Footer → CTA"
+        ],
+        "correctAnswer": "Navbar → Hero → Features → CTA → Footer",
+        "explanation": "Urutan standar landing page adalah: Navbar (navigasi selalu di atas), Hero (kesan pertama dan nilai utama), Features (detail dan manfaat), CTA (pengingat dan dorongan akhir), Footer (informasi penutup). Urutan ini mengikuti alur logis dari perkenalan hingga ajakan bertindak.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Apa perbedaan utama antara tombol .btn-primary dan .btn-outline?",
+        "options": [
+          "btn-primary untuk link, btn-outline untuk tombol form",
+          "btn-primary menggunakan background warna solid, btn-outline menggunakan background transparan dengan border",
+          "btn-primary lebih besar dari btn-outline",
+          "btn-primary dan btn-outline adalah nama yang sama, tidak ada perbedaan"
+        ],
+        "correctAnswer": "btn-primary menggunakan background warna solid, btn-outline menggunakan background transparan dengan border",
+        "explanation": "Tombol primary menggunakan background warna solid (misalnya biru) untuk tindakan utama yang paling penting. Tombol outline menggunakan background transparan dengan border untuk tindakan sekunder. Kombinasi keduanya memberi hierarki pada pilihan tindakan pengunjung.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Kamu sudah menyelesaikan Level 2. Apa kemampuan utama yang sudah kamu miliki sekarang?",
+        "options": [
+          "Bisa membuat aplikasi mobile dengan React Native",
+          "Bisa membangun landing page lengkap menggunakan HTML semantik dan CSS dari nol",
+          "Bisa membuat database dan backend server",
+          "Bisa membuat animasi 3D dengan WebGL"
+        ],
+        "correctAnswer": "Bisa membangun landing page lengkap menggunakan HTML semantik dan CSS dari nol",
+        "explanation": "Setelah menyelesaikan Level 1 (HTML) dan Level 2 (CSS), kamu sudah bisa membangun landing page lengkap dari nol — dengan navbar, hero, features, CTA, dan footer — menggunakan HTML semantik dan CSS. Ini adalah fondasi yang kuat untuk melanjutkan ke JavaScript dan framework modern.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Level 2 Selesai — Kamu Seorang Web Developer!",
+    "message": "Selamat! Kamu baru saja menyelesaikan Beginner Level 2 dan membangun landing page pertamamu dari nol. HTML untuk struktur, CSS untuk tampilan — dua skill ini adalah fondasi dari setiap website di internet. Perjalananmu ke JavaScript dimulai sekarang.",
+    "achievementName": "Web Developer Pemula",
+    "achievementIcon": "🎓"
+  }
+}

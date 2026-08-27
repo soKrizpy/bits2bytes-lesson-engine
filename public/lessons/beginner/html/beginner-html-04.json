@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-04",
+    "title": "Link dan Navigasi dengan HTML",
+    "description": "Pelajari cara membuat hyperlink dengan tag a dan atribut href untuk menghubungkan halaman web satu dengan yang lain dan membuat navigasi sederhana.",
+    "level": "beginner",
+    "category": "HTML",
+    "topicNumber": 4,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Halaman Web yang Terhubung",
+    "description": "Salah satu hal yang membuat web menjadi 'web' adalah kemampuan halaman untuk saling terhubung. Di topik ini kamu akan belajar cara membuat link — jendela yang membawa pengunjung ke halaman lain atau website lain — menggunakan tag a dan atribut href.",
+    "analogy": "Bayangkan sebuah buku yang punya catatan kaki: 'Lihat halaman 42 untuk penjelasan lebih lanjut.' Link HTML bekerja persis seperti itu — ia menunjuk ke tempat lain dan membawa pembaca ke sana hanya dengan satu klik."
+  },
+  "objectives": [
+    "Memahami konsep hyperlink dan cara kerjanya di web",
+    "Membuat link eksternal menggunakan tag a dan atribut href",
+    "Membuat link yang membuka halaman baru di tab browser",
+    "Membuat navigasi sederhana antar halaman menggunakan beberapa link",
+    "Menulis teks link yang deskriptif dan informatif"
+  ],
+  "review": {
+    "learned": [
+      "Tag a digunakan untuk membuat hyperlink di HTML.",
+      "Atribut href menentukan ke mana link akan menuju saat diklik.",
+      "Teks di antara tag a pembuka dan penutup adalah teks yang terlihat dan bisa diklik.",
+      "Nilai href bisa berupa URL website lain atau path ke halaman lain di website yang sama.",
+      "Atribut target dengan nilai _blank membuka link di tab baru.",
+      "Link yang baik menggunakan teks yang deskriptif, bukan hanya 'klik di sini'."
+    ],
+    "keyConcepts": [
+      "Tag a (anchor)",
+      "Atribut href",
+      "Link eksternal",
+      "Atribut target dan nilai _blank",
+      "Teks link yang deskriptif"
+    ],
+    "takeaways": [
+      "Setiap link membutuhkan atribut href — tanpanya link tidak akan berfungsi.",
+      "Gunakan teks link yang menjelaskan tujuan, bukan kata generik seperti 'klik di sini'.",
+      "Tambahkan target='_blank' jika kamu ingin link membuka tab baru.",
+      "Kamu bisa menaruh lebih dari satu link di dalam satu halaman untuk membuat navigasi."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-link-intro",
+      "type": "lesson",
+      "title": "Apa Itu Hyperlink?",
+      "xp": 5,
+      "explanation": "Kamu pasti sudah sering mengklik link — teks berwarna biru bergaris bawah yang membawa kamu ke halaman lain. Tapi bagaimana link itu dibuat?\n\nLink dibuat dengan tag a (singkatan dari anchor). Tag ini membungkus teks yang bisa diklik, dan atribut href di dalamnya menentukan ke mana link tersebut menuju.\n\nStruktur dasarnya:\n<a href=\"URL tujuan\">Teks yang terlihat</a>\n\nLink adalah salah satu fitur paling penting di HTML — tanpa link, halaman-halaman web tidak bisa saling terhubung dan 'web' sebagai jaringan tidak akan ada.",
+      "tips": [
+        "Nama tag a berasal dari kata 'anchor' — jangkar. Link menghubungkan satu halaman ke halaman lain seperti jangkar yang mengikat dua titik.",
+        "Teks link yang baik menjelaskan tujuannya — hindari menulis 'klik di sini'."
+      ]
+    },
+    {
+      "id": "node-02-href",
+      "type": "lesson",
+      "title": "Atribut href — Alamat Tujuan Link",
+      "xp": 5,
+      "explanation": "Atribut href (Hypertext Reference) adalah jantung dari sebuah link. Nilai href menentukan ke mana pengunjung akan dibawa saat mengklik link tersebut.\n\nAda dua jenis nilai href yang paling umum:\n\n1. URL lengkap — untuk link ke website lain:\nhref=\"https://www.google.com\"\n\n2. Path relatif — untuk link ke halaman lain di website yang sama:\nhref=\"halaman-lain.html\"\n\nPeraturan penting: tag a HARUS memiliki atribut href agar bisa berfungsi sebagai link. Tanpa href, tag a tidak bisa diklik.",
+      "analogy": "href adalah seperti alamat di amplop surat. Tanpa alamat, surat tidak tahu harus dikirim ke mana. Tanpa href, link tidak tahu harus membawa pengunjung ke mana.",
+      "tips": [
+        "Selalu mulai URL eksternal dengan https:// atau http:// — jika tidak, browser akan mencarinya sebagai file lokal.",
+        "Gunakan href='#' sebagai placeholder saat kamu belum tahu URL tujuannya."
+      ]
+    },
+    {
+      "id": "node-03-basic-link",
+      "type": "code",
+      "title": "Membuat Link Pertamamu",
+      "xp": 5,
+      "explanation": "Ini adalah contoh link paling dasar. Perhatikan strukturnya:\n• Tag a sebagai pembungkus\n• Atribut href yang berisi URL tujuan\n• Teks di tengah yang terlihat oleh pengunjung\n\nSaat pengunjung mengklik teks 'Kunjungi Google', browser akan membuka https://www.google.com.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Halaman dengan Link</title>\n  </head>\n  <body>\n    <h1>Halaman Pertamaku</h1>\n    <p>Kunjungi mesin pencari favorit saya:</p>\n    <a href=\"https://www.google.com\">Kunjungi Google</a>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-link-in-paragraph",
+      "type": "code",
+      "title": "Link di dalam Paragraf",
+      "xp": 5,
+      "explanation": "Link tidak harus berdiri sendiri — kamu bisa menyematkannya di dalam paragraf teks. Ini adalah cara yang lebih alami untuk menempatkan link dalam konten.\n\nPerhatikan bahwa tag a ada di dalam tag p. Browser akan menampilkan teks link dengan warna berbeda dan garis bawah agar mudah dikenali pengunjung.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Halaman dengan Link</title>\n  </head>\n  <body>\n    <h1>Sumber Belajar HTML</h1>\n    <p>Untuk belajar lebih lanjut tentang HTML, kamu bisa mengunjungi\n    <a href=\"https://developer.mozilla.org\">dokumentasi MDN Web Docs</a>\n    yang sangat lengkap dan gratis.</p>\n    <p>Jika kamu ingin mencari referensi cepat, coba\n    <a href=\"https://www.w3schools.com\">W3Schools</a>.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-new-tab",
+      "type": "code",
+      "title": "Membuka Link di Tab Baru",
+      "xp": 5,
+      "explanation": "Secara default, link membuka halaman tujuan di tab yang sama. Tapi kamu bisa mengubah ini dengan menambahkan atribut target=\"_blank\".\n\nTarget _blank memberitahu browser: buka link ini di tab baru, jangan tinggalkan halaman saat ini.\n\nKapan menggunakannya? Biasanya saat link menuju website lain — agar pengunjung tidak meninggalkan website-mu.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Halaman dengan Link</title>\n  </head>\n  <body>\n    <h1>Sumber Belajar HTML</h1>\n    <p>Kunjungi referensi berikut (akan terbuka di tab baru):</p>\n    <a href=\"https://developer.mozilla.org\" target=\"_blank\">MDN Web Docs</a>\n    <p>Klik link di atas — halaman ini tetap terbuka di tab sebelumnya.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-navigation",
+      "type": "code",
+      "title": "Navigasi Sederhana dengan Beberapa Link",
+      "xp": 5,
+      "explanation": "Biasanya sebuah halaman web punya beberapa link sekaligus untuk membantu pengunjung berpindah antar halaman. Ini disebut navigasi.\n\nContoh di bawah menampilkan beberapa link yang tersusun rapi menggunakan paragraf. Setiap link menuju halaman berbeda di website yang sama — ini disebut link internal (antar halaman dalam satu website).\n\nCatatan: file halaman-lain.html belum kita buat, tapi kita bisa menulisnya dulu sebagai placeholder.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Website Sederhana</title>\n  </head>\n  <body>\n    <h1>Website Belajar HTML</h1>\n\n    <p>Navigasi:</p>\n    <p><a href=\"index.html\">Beranda</a></p>\n    <p><a href=\"tentang.html\">Tentang Saya</a></p>\n    <p><a href=\"kontak.html\">Kontak</a></p>\n\n    <h2>Selamat Datang!</h2>\n    <p>Ini adalah halaman utama website saya.</p>\n    <p>Untuk belajar coding lebih lanjut, kunjungi\n    <a href=\"https://developer.mozilla.org\" target=\"_blank\">MDN Web Docs</a>.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-complete-links",
+      "type": "code",
+      "title": "Halaman Lengkap dengan Berbagai Link",
+      "xp": 5,
+      "explanation": "Inilah contoh halaman yang menggunakan berbagai jenis link sekaligus:\n• Link eksternal (ke website lain) dengan target _blank\n• Link internal (ke halaman lain di website yang sama)\n• Link yang disematkan di dalam paragraf\n\nPerhatikan bahwa semua link menggunakan teks yang deskriptif — pengunjung tahu ke mana mereka akan dibawa sebelum mengklik.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n  </head>\n  <body>\n    <h1>Profil Saya</h1>\n    <p>Halo! Nama saya Budi. Saya sedang belajar membuat website dengan HTML.</p>\n\n    <h2>Navigasi</h2>\n    <p><a href=\"index.html\">Beranda</a></p>\n    <p><a href=\"portofolio.html\">Portofolio</a></p>\n\n    <h2>Sumber Belajar Favorit</h2>\n    <p>Saya belajar HTML dari\n    <a href=\"https://developer.mozilla.org\" target=\"_blank\">MDN Web Docs</a>\n    dan <a href=\"https://www.w3schools.com\" target=\"_blank\">W3Schools</a>.</p>\n\n    <p>Kedua website tersebut gratis dan sangat lengkap untuk pemula.</p>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Pilih Atribut yang Tepat",
+      "xp": 10,
+      "instructions": "Atribut apa yang digunakan pada tag a untuk menentukan ke mana link akan menuju?",
+      "interactionType": "multiple-choice",
+      "options": ["src", "href", "link", "url"],
+      "correctOption": "href"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Buat Halaman Profil dengan Link",
+      "xp": 15,
+      "instructions": "Kode starter di bawah sudah punya struktur dasar.\n\nTugasmu: Tambahkan tiga hal berikut:\n1. Sebuah link ke https://www.google.com dengan teks 'Cari di Google'\n2. Sebuah link ke halaman.html dengan teks 'Halaman Lain'\n3. Sebuah link yang membuka di tab baru (gunakan target='_blank')\n\nPastikan setiap link menggunakan teks yang jelas.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n  </head>\n  <body>\n    <h1>Profil Saya</h1>\n    <p>Saya sedang belajar membuat website.</p>\n\n    <!-- Tambahkan link-link di sini -->\n\n  </body>\n</html>"
+      },
+      "expectedResult": "Halaman dengan tiga link: satu ke Google, satu ke halaman.html, dan satu yang membuka di tab baru.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Profil Saya</title>\n  </head>\n  <body>\n    <h1>Profil Saya</h1>\n    <p>Saya sedang belajar membuat website.</p>\n\n    <p><a href=\"https://www.google.com\">Cari di Google</a></p>\n    <p><a href=\"halaman.html\">Halaman Lain</a></p>\n    <p><a href=\"https://developer.mozilla.org\" target=\"_blank\">MDN Web Docs (tab baru)</a></p>\n  </body>\n</html>",
+        "explanation": "Kita menambahkan tiga link menggunakan tag a dengan atribut href yang berbeda. Link ke Google menggunakan URL lengkap. Link ke halaman.html menggunakan path relatif. Untuk membuka di tab baru, kita menambahkan target='_blank' pada salah satu link."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Atribut apa yang wajib ada di tag a agar link bisa berfungsi?",
+        "options": ["src", "alt", "href", "class"],
+        "correctAnswer": "href",
+        "explanation": "Atribut href (Hypertext Reference) adalah atribut wajib pada tag a. Nilai href menentukan tujuan link — tanpa href, tag a tidak bisa berfungsi sebagai link yang bisa diklik untuk berpindah halaman.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa yang dimaksud dengan nilai target='_blank' pada tag a?",
+        "options": [
+          "Link akan membuka halaman di tab yang sama",
+          "Link akan membuka halaman di tab baru",
+          "Link akan dinonaktifkan",
+          "Link akan menampilkan pesan konfirmasi"
+        ],
+        "correctAnswer": "Link akan membuka halaman di tab baru",
+        "explanation": "Nilai _blank pada atribut target memberitahu browser untuk membuka link di tab atau jendela baru. Ini berguna saat kamu ingin pengunjung bisa mengunjungi website lain tanpa meninggalkan halamanmu.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Bagaimana cara membuat link ke halaman lain di website yang sama?",
+        "options": [
+          "Gunakan URL lengkap dengan https://",
+          "Gunakan nama file HTML sebagai nilai href",
+          "Gunakan atribut src bukan href",
+          "Gunakan tanda # sebagai nilai href"
+        ],
+        "correctAnswer": "Gunakan nama file HTML sebagai nilai href",
+        "explanation": "Untuk link ke halaman lain di website yang sama (link internal), cukup gunakan nama file HTML sebagai nilai href, misalnya href='tentang.html'. Ini disebut path relatif — browser akan mencari file tersebut di folder yang sama.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Di mana sebaiknya teks link ditempatkan?",
+        "options": [
+          "Di dalam atribut href",
+          "Di antara tag a pembuka dan tag a penutup",
+          "Di dalam tag p terpisah setelah tag a",
+          "Di dalam atribut title pada tag a"
+        ],
+        "correctAnswer": "Di antara tag a pembuka dan tag a penutup",
+        "explanation": "Teks yang terlihat dan bisa diklik oleh pengunjung harus diletakkan di antara tag a pembuka dan tag a penutup: <a href='...'>Teks link di sini</a>. Atribut href hanya berisi URL tujuan, bukan teks yang ditampilkan.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Manakah contoh teks link yang paling baik?",
+        "options": [
+          "Klik di sini",
+          "Di sini",
+          "Baca artikel lengkap tentang cara belajar HTML",
+          "Link"
+        ],
+        "correctAnswer": "Baca artikel lengkap tentang cara belajar HTML",
+        "explanation": "Teks link yang baik menjelaskan tujuan atau isi halaman yang dituju. 'Klik di sini' dan 'Di sini' tidak informatif — pengunjung tidak tahu akan dibawa ke mana. Teks yang deskriptif juga membantu aksesibilitas dan mesin pencari.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Bagus! Kamu sekarang bisa membuat link yang menghubungkan halamanmu ke website lain maupun ke halaman lain di website-mu sendiri. Inilah yang membuat web menjadi jaringan — halaman yang saling terhubung.",
+    "achievementName": "Navigator Web",
+    "achievementIcon": "🔗"
+  }
+}

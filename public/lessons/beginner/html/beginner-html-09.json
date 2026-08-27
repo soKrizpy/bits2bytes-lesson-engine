@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-09",
+    "title": "HTML Semantik — Struktur Halaman yang Bermakna",
+    "description": "Pelajari tag-tag HTML semantik seperti header, nav, main, section, article, dan footer untuk memberi makna pada struktur halamanmu.",
+    "level": "beginner",
+    "category": "HTML",
+    "topicNumber": 9,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "HTML yang Bermakna, Bukan Sekadar Struktur",
+    "description": "Sampai sekarang kamu sudah bisa membuat halaman HTML yang berfungsi dengan baik. Tapi ada cara yang lebih baik untuk mengorganisir kontenmu — menggunakan tag-tag semantik yang tidak hanya memberi struktur, tapi juga memberi makna pada setiap bagian halaman.",
+    "analogy": "Bayangkan sebuah surat kabar. Ada bagian header dengan nama koran, ada navigasi rubrik, ada konten utama artikel, ada sidebar, dan ada footer dengan informasi redaksi. HTML semantik membantu browser dan mesin pencari memahami bagian mana yang mana — sama seperti pembaca koran memahami tata letak surat kabar."
+  },
+  "objectives": [
+    "Memahami apa yang dimaksud dengan HTML semantik",
+    "Menggunakan tag header, nav, main, footer untuk struktur halaman",
+    "Menggunakan tag section dan article untuk mengorganisir konten",
+    "Memahami mengapa HTML semantik penting untuk aksesibilitas dan mesin pencari",
+    "Membangun halaman lengkap menggunakan tag-tag semantik"
+  ],
+  "review": {
+    "learned": [
+      "HTML semantik menggunakan tag yang menjelaskan makna konten, bukan hanya tampilannya.",
+      "Tag header berisi bagian kepala halaman seperti judul situs dan navigasi utama.",
+      "Tag nav berisi tautan navigasi utama halaman atau website.",
+      "Tag main berisi konten utama halaman — hanya boleh ada satu per halaman.",
+      "Tag section digunakan untuk mengelompokkan konten yang berkaitan dalam satu tema.",
+      "Tag article digunakan untuk konten yang berdiri sendiri seperti posting blog atau artikel berita.",
+      "Tag footer berisi informasi penutup seperti hak cipta, kontak, atau tautan tambahan."
+    ],
+    "keyConcepts": [
+      "HTML semantik vs non-semantik",
+      "Tag header",
+      "Tag nav",
+      "Tag main",
+      "Tag section dan article",
+      "Tag footer"
+    ],
+    "takeaways": [
+      "Gunakan tag semantik untuk memberi makna pada konten, bukan hanya untuk mengatur tampilan.",
+      "Tag main hanya boleh ada satu dalam satu halaman.",
+      "Tag article cocok untuk konten yang bisa berdiri sendiri di luar konteks halaman.",
+      "HTML semantik membantu mesin pencari memahami konten halamanmu lebih baik.",
+      "Aksesibilitas meningkat karena pembaca layar bisa mengidentifikasi bagian halaman berdasarkan tag semantiknya."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-semantic-intro",
+      "type": "lesson",
+      "title": "Apa Itu HTML Semantik?",
+      "xp": 5,
+      "explanation": "Selama ini kamu mungkin sudah menggunakan tag div untuk membungkus berbagai bagian halaman. Tag div adalah tag yang valid, tapi tidak memberikan informasi tentang isi kontennya.\n\nHTML semantik adalah penggunaan tag yang namanya mencerminkan makna kontennya. Bandingkan:\n\nNon-semantik:\n<div id='header'>...judul...</div>\n<div id='nav'>...menu...</div>\n\nSemantik:\n<header>...judul...</header>\n<nav>...menu...</nav>\n\nKeduanya menghasilkan tampilan yang sama, tapi versi semantik lebih jelas — siapapun yang membaca kode (termasuk browser dan mesin pencari) langsung tahu bagian mana yang merupakan header dan bagian mana yang merupakan navigasi.\n\nKeuntungan HTML semantik:\n• Kode lebih mudah dibaca dan dipahami\n• Mesin pencari memahami konten lebih baik\n• Pembaca layar bisa membantu pengguna bernavigasi antar bagian halaman",
+      "tips": [
+        "HTML semantik tidak mengubah tampilan halaman secara otomatis — itu tetap tugas CSS.",
+        "Menggunakan tag semantik yang tepat adalah tanda kode HTML yang profesional dan berkualitas."
+      ]
+    },
+    {
+      "id": "node-02-page-structure",
+      "type": "lesson",
+      "title": "Tag Semantik untuk Struktur Halaman",
+      "xp": 5,
+      "explanation": "HTML menyediakan beberapa tag semantik khusus untuk bagian-bagian utama halaman:\n\nheader:\nBagian kepala halaman. Biasanya berisi logo, nama website, atau heading utama. Bisa ada lebih dari satu per halaman (misalnya header di dalam article).\n\nnav:\nKumpulan tautan navigasi. Biasanya berisi menu utama website.\n\nmain:\nKonten utama halaman — bagian yang menjadi fokus utama pengunjung. Hanya boleh ada satu per halaman.\n\nsection:\nMengelompokkan konten yang berkaitan dalam satu tema. Biasanya punya heading sendiri.\n\narticle:\nKonten yang bisa berdiri sendiri dan masuk akal jika dibaca di luar konteks halaman — seperti posting blog, artikel berita, atau komentar.\n\nfooter:\nBagian penutup halaman. Biasanya berisi informasi hak cipta, kontak, atau tautan tambahan.",
+      "analogy": "Pikirkan struktur halaman seperti majalah: header adalah sampul depan, nav adalah daftar isi, main adalah halaman-halaman artikel, section adalah setiap rubrik, article adalah setiap artikel di dalam rubrik, dan footer adalah halaman belakang dengan informasi penerbit.",
+      "tips": [
+        "Tag main hanya boleh ada satu per halaman — ini berbeda dengan header dan footer yang boleh lebih dari satu.",
+        "Tag section biasanya punya heading (h2 atau h3) di dalamnya untuk menjelaskan tema seksi tersebut."
+      ]
+    },
+    {
+      "id": "node-03-header-nav",
+      "type": "code",
+      "title": "Tag header dan nav",
+      "xp": 5,
+      "explanation": "Contoh di bawah menunjukkan penggunaan header dan nav. Tag header berisi nama website dan tag nav berisi tautan navigasi utama.\n\nPerhatikan bahwa tag nav biasanya berisi daftar link — di sini menggunakan link langsung dengan tag a, tapi di website nyata sering menggunakan ul dan li.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Website Saya</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>Website Belajar HTML</h1>\n      <p>Tempat belajar web development untuk pemula</p>\n    </header>\n\n    <nav>\n      <a href=\"index.html\">Beranda</a>\n      <a href=\"pelajaran.html\">Pelajaran</a>\n      <a href=\"tentang.html\">Tentang</a>\n      <a href=\"kontak.html\">Kontak</a>\n    </nav>\n\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-main-section",
+      "type": "code",
+      "title": "Tag main dan section",
+      "xp": 5,
+      "explanation": "Tag main membungkus konten utama halaman. Di dalam main, kita bisa menggunakan section untuk mengelompokkan konten berdasarkan tema.\n\nContoh ini menambahkan main dengan dua section ke halaman yang sudah punya header dan nav. Setiap section punya heading sendiri yang menjelaskan temanya.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Website Saya</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>Website Belajar HTML</h1>\n    </header>\n\n    <nav>\n      <a href=\"index.html\">Beranda</a>\n      <a href=\"pelajaran.html\">Pelajaran</a>\n    </nav>\n\n    <main>\n      <section>\n        <h2>Selamat Datang</h2>\n        <p>Di sini kamu akan belajar membuat halaman web dari nol menggunakan HTML.</p>\n      </section>\n\n      <section>\n        <h2>Topik yang Tersedia</h2>\n        <p>Kami menyediakan pelajaran dari level pemula hingga mahir.</p>\n      </section>\n    </main>\n\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-article",
+      "type": "code",
+      "title": "Tag article untuk Konten Mandiri",
+      "xp": 5,
+      "explanation": "Tag article digunakan untuk konten yang bisa berdiri sendiri dan masih bermakna jika diambil di luar konteks halaman — misalnya posting blog atau artikel berita.\n\nPerbedaan article vs section:\n• section — mengelompokkan konten yang berkaitan (tema sama)\n• article — konten yang berdiri sendiri (bisa dibaca mandiri)\n\nContoh di bawah menggunakan dua article di dalam section 'Artikel Terbaru'.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Blog HTML</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>Blog Belajar HTML</h1>\n    </header>\n\n    <main>\n      <section>\n        <h2>Artikel Terbaru</h2>\n\n        <article>\n          <h3>Cara Membuat Link di HTML</h3>\n          <p>Link adalah salah satu elemen paling penting di HTML...</p>\n          <a href=\"artikel-link.html\">Baca selengkapnya</a>\n        </article>\n\n        <article>\n          <h3>Menampilkan Gambar dengan Tag img</h3>\n          <p>Gambar membuat halaman web lebih menarik dan informatif...</p>\n          <a href=\"artikel-img.html\">Baca selengkapnya</a>\n        </article>\n\n      </section>\n    </main>\n\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-footer",
+      "type": "code",
+      "title": "Tag footer",
+      "xp": 5,
+      "explanation": "Tag footer biasanya ditempatkan di bagian paling bawah halaman. Isinya bisa berupa:\n• Informasi hak cipta\n• Link ke halaman penting (kebijakan privasi, syarat layanan)\n• Kontak\n\nContoh ini menampilkan footer sederhana yang ditambahkan ke halaman yang sudah punya header, nav, dan main.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Website Saya</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>Website Belajar HTML</h1>\n    </header>\n\n    <nav>\n      <a href=\"index.html\">Beranda</a>\n      <a href=\"kontak.html\">Kontak</a>\n    </nav>\n\n    <main>\n      <section>\n        <h2>Selamat Datang</h2>\n        <p>Mulai belajar HTML hari ini!</p>\n      </section>\n    </main>\n\n    <footer>\n      <p>Website Belajar HTML — dibuat dengan semangat belajar</p>\n      <p><a href=\"kontak.html\">Hubungi Kami</a></p>\n    </footer>\n\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-complete-semantic-page",
+      "type": "code",
+      "title": "Halaman Lengkap dengan Semua Tag Semantik",
+      "xp": 5,
+      "explanation": "Inilah halaman lengkap yang menggunakan semua tag semantik yang sudah dipelajari: header, nav, main, section, article, dan footer. Setiap tag berada di posisi yang tepat sesuai fungsinya.\n\nPerhatikan hierarki heading:\n• h1 di dalam header — judul utama website\n• h2 di dalam section — judul setiap bagian\n• h3 di dalam article — judul setiap artikel\n\nStruktur ini membuat halaman sangat mudah dibaca oleh browser, mesin pencari, dan pembaca layar.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Blog Coding Pemula</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>Blog Coding Pemula</h1>\n      <p>Belajar web development langkah demi langkah</p>\n    </header>\n\n    <nav>\n      <a href=\"index.html\">Beranda</a>\n      <a href=\"tutorial.html\">Tutorial</a>\n      <a href=\"tentang.html\">Tentang</a>\n    </nav>\n\n    <main>\n\n      <section>\n        <h2>Tutorial Terbaru</h2>\n\n        <article>\n          <h3>Belajar HTML dalam 30 Hari</h3>\n          <p>HTML adalah fondasi dari semua halaman web. Dengan panduan ini,\n          kamu akan menguasai dasar-dasarnya dalam waktu singkat.</p>\n          <a href=\"html-30-hari.html\">Baca Tutorial</a>\n        </article>\n\n        <article>\n          <h3>Memahami CSS untuk Pemula</h3>\n          <p>Setelah HTML, langkah berikutnya adalah mempelajari CSS\n          untuk membuat halamanmu terlihat lebih menarik.</p>\n          <a href=\"css-pemula.html\">Baca Tutorial</a>\n        </article>\n\n      </section>\n\n    </main>\n\n    <footer>\n      <p>Blog Coding Pemula &mdash; Hak Cipta 2025</p>\n      <p><a href=\"kontak.html\">Kontak</a></p>\n    </footer>\n\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Identifikasi Tag yang Tepat",
+      "xp": 10,
+      "instructions": "Kamu ingin membuat bagian di halaman yang berisi tautan navigasi utama website. Tag semantik mana yang paling tepat digunakan?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "<div id=\"navigation\">",
+        "<nav>",
+        "<section>",
+        "<header>"
+      ],
+      "correctOption": "<nav>"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Struktur Halaman Blog Semantik",
+      "xp": 15,
+      "instructions": "Kode starter di bawah menggunakan div untuk semua bagian.\n\nTugasmu: Ubah struktur halaman agar menggunakan tag semantik yang tepat:\n1. Ganti div id='header' menjadi tag header\n2. Ganti div id='nav' menjadi tag nav\n3. Ganti div id='main' menjadi tag main\n4. Ganti div id='footer' menjadi tag footer\n\nIsi konten di dalam setiap tag tidak perlu diubah.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Blog Saya</title>\n  </head>\n  <body>\n\n    <div id=\"header\">\n      <h1>Blog Saya</h1>\n    </div>\n\n    <div id=\"nav\">\n      <a href=\"index.html\">Beranda</a>\n      <a href=\"tentang.html\">Tentang</a>\n    </div>\n\n    <div id=\"main\">\n      <h2>Posting Terbaru</h2>\n      <p>Ini adalah posting pertama saya.</p>\n    </div>\n\n    <div id=\"footer\">\n      <p>Blog Saya &mdash; 2025</p>\n    </div>\n\n  </body>\n</html>"
+      },
+      "expectedResult": "Halaman yang sama secara tampilan tetapi menggunakan tag semantik header, nav, main, dan footer sebagai pengganti div.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Blog Saya</title>\n  </head>\n  <body>\n\n    <header>\n      <h1>Blog Saya</h1>\n    </header>\n\n    <nav>\n      <a href=\"index.html\">Beranda</a>\n      <a href=\"tentang.html\">Tentang</a>\n    </nav>\n\n    <main>\n      <h2>Posting Terbaru</h2>\n      <p>Ini adalah posting pertama saya.</p>\n    </main>\n\n    <footer>\n      <p>Blog Saya &mdash; 2025</p>\n    </footer>\n\n  </body>\n</html>",
+        "explanation": "Kita mengganti setiap div dengan tag semantik yang sesuai: header untuk kepala halaman, nav untuk navigasi, main untuk konten utama, dan footer untuk bagian bawah. Tampilan di browser tidak berubah, tapi kode jauh lebih bermakna dan mudah dipahami oleh browser, mesin pencari, dan developer lain."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa perbedaan utama antara tag div dan tag semantik seperti header atau main?",
+        "options": [
+          "Tag div lebih cepat dimuat oleh browser",
+          "Tag semantik menjelaskan makna kontennya, tag div tidak memberi informasi apapun tentang isinya",
+          "Tag semantik hanya bisa digunakan sekali per halaman",
+          "Tag div tidak lagi didukung di HTML5"
+        ],
+        "correctAnswer": "Tag semantik menjelaskan makna kontennya, tag div tidak memberi informasi apapun tentang isinya",
+        "explanation": "Tag div adalah tag generik yang tidak memberi informasi tentang isi kontennya. Tag semantik seperti header, nav, main, dan footer menjelaskan peran konten tersebut dalam halaman. Ini membantu browser, mesin pencari, dan pembaca layar memahami struktur halaman.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Berapa banyak tag main yang boleh ada dalam satu halaman HTML?",
+        "options": [
+          "Tidak ada batasnya, sebanyak yang diperlukan",
+          "Maksimal dua",
+          "Hanya satu",
+          "Minimal dua"
+        ],
+        "correctAnswer": "Hanya satu",
+        "explanation": "Tag main harus hanya ada satu dalam satu halaman HTML karena ia merepresentasikan konten utama halaman. Berbeda dengan header dan footer yang boleh ada lebih dari satu (misalnya footer di dalam article), main adalah unik per halaman.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Tag semantik mana yang paling tepat untuk membungkus sebuah posting blog yang bisa dibaca secara mandiri?",
+        "options": [
+          "<section>",
+          "<article>",
+          "<main>",
+          "<aside>"
+        ],
+        "correctAnswer": "<article>",
+        "explanation": "Tag article digunakan untuk konten yang bisa berdiri sendiri dan masih bermakna jika diambil di luar konteks halaman — seperti posting blog, artikel berita, atau komentar. Tag section digunakan untuk mengelompokkan konten bertemakan sama, bukan untuk konten mandiri.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Mengapa penggunaan HTML semantik penting untuk aksesibilitas?",
+        "options": [
+          "Karena tag semantik membuat halaman otomatis berwarna-warni",
+          "Karena pembaca layar bisa mengidentifikasi dan mendeskripsikan bagian halaman berdasarkan tag semantiknya",
+          "Karena tag semantik membuat halaman dimuat lebih cepat",
+          "Karena tag semantik tidak kompatibel dengan browser lama sehingga pengguna terpaksa upgrade"
+        ],
+        "correctAnswer": "Karena pembaca layar bisa mengidentifikasi dan mendeskripsikan bagian halaman berdasarkan tag semantiknya",
+        "explanation": "Pembaca layar (screen reader) yang digunakan oleh penyandang tunanetra membaca konten halaman berdasarkan strukturnya. Dengan tag semantik, pembaca layar bisa memberitahu pengguna 'ini adalah bagian navigasi' atau 'ini adalah konten utama', sehingga pengguna bisa bernavigasi dengan lebih mudah.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Konten apa yang paling tepat ditempatkan di dalam tag footer?",
+        "options": [
+          "Judul utama dan logo website",
+          "Tautan navigasi menu utama",
+          "Konten artikel atau blog post",
+          "Informasi hak cipta dan tautan tambahan di bagian bawah halaman"
+        ],
+        "correctAnswer": "Informasi hak cipta dan tautan tambahan di bagian bawah halaman",
+        "explanation": "Tag footer biasanya berisi informasi penutup halaman seperti hak cipta, tautan ke kebijakan privasi, informasi kontak, atau tautan sitemap. Judul dan logo cocok di header, navigasi di nav, dan konten artikel di article.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Bagus sekali! Kamu sekarang memahami HTML semantik dan bisa menggunakan tag header, nav, main, section, article, dan footer dengan tepat. Kodenya tidak hanya berfungsi — tapi juga bermakna.",
+    "achievementName": "Arsitek Semantik",
+    "achievementIcon": "🏛️"
+  }
+}
