@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-21",
+    "title": "DOM — Mengubah Halaman Secara Dinamis",
+    "description": "Pelajari cara menggunakan DOM untuk menemukan elemen HTML dengan getElementById dan querySelector, lalu mengubah teks, konten HTML, dan class elemen secara dinamis.",
+    "level": "beginner",
+    "category": "JavaScript",
+    "topicNumber": 4,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "DOM — Jembatan antara JavaScript dan HTML",
+    "description": "DOM (Document Object Model) adalah representasi halaman web sebagai objek yang bisa dimanipulasi oleh JavaScript. Setiap tag HTML menjadi 'node' dalam pohon DOM. Dengan DOM, JavaScript bisa menemukan, membaca, dan mengubah setiap bagian halaman tanpa perlu reload.",
+    "analogy": "Bayangkan DOM seperti pohon keluarga halaman web-mu. document adalah nenek moyang, html adalah anak pertama, lalu head dan body, lalu semua elemen di dalamnya. JavaScript bisa berjalan ke cabang manapun dan mengubah isi atau tampilannya."
+  },
+  "objectives": [
+    "Memahami konsep DOM dan hubungannya dengan HTML",
+    "Menggunakan document.getElementById() untuk mengambil elemen",
+    "Menggunakan document.querySelector() untuk mengambil elemen dengan selector CSS",
+    "Mengubah textContent dan innerHTML elemen",
+    "Menggunakan classList untuk menambah, menghapus, dan toggle class CSS"
+  ],
+  "review": {
+    "learned": [
+      "DOM (Document Object Model) adalah representasi halaman HTML sebagai objek yang bisa dimanipulasi JavaScript.",
+      "document.getElementById('id') mengambil elemen berdasarkan atribut id-nya.",
+      "document.querySelector('selector') mengambil elemen pertama yang cocok dengan selector CSS.",
+      "element.textContent mengubah teks elemen tanpa memproses HTML.",
+      "element.innerHTML mengubah konten elemen dan memproses tag HTML di dalamnya.",
+      "element.classList.add(), .remove(), dan .toggle() mengelola class CSS pada elemen."
+    ],
+    "keyConcepts": [
+      "DOM",
+      "getElementById()",
+      "querySelector()",
+      "textContent vs innerHTML",
+      "classList"
+    ],
+    "takeaways": [
+      "Gunakan textContent untuk mengubah teks biasa — lebih aman dari innerHTML.",
+      "Gunakan innerHTML hanya jika perlu memasukkan tag HTML ke dalam elemen.",
+      "classList.toggle('class') menambah class jika belum ada, menghapus jika sudah ada — sangat berguna untuk tombol on/off.",
+      "querySelector mendukung semua selector CSS: '#id', '.class', 'tag', 'tag.class' dll."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-dom-intro",
+      "type": "lesson",
+      "title": "Apa Itu DOM?",
+      "xp": 5,
+      "explanation": "DOM (Document Object Model) adalah cara browser merepresentasikan halaman HTML sebagai pohon objek yang bisa diakses dan dimanipulasi oleh JavaScript.\n\nSetiap elemen HTML menjadi sebuah 'node' dalam pohon DOM:\n• document — pintu masuk utama ke seluruh halaman\n• document.body — elemen body\n• Setiap tag HTML (h1, p, div, button) adalah node\n\nDua cara utama mengambil elemen:\n1. document.getElementById('nama-id') — langsung mencari berdasarkan id\n2. document.querySelector('selector') — mencari dengan selector CSS apapun\n\nPerbedaan:\n• getElementById hanya bisa digunakan untuk id\n• querySelector bisa digunakan dengan '#id', '.class', 'tag', dan selector CSS lainnya\n\nSetelah elemen ditemukan, kita bisa membaca atau mengubah propertinya.",
+      "tips": [
+        "document adalah objek global yang selalu tersedia di JavaScript browser.",
+        "querySelector lebih fleksibel dari getElementById karena mendukung semua selector CSS."
+      ]
+    },
+    {
+      "id": "node-02-selecting-elements",
+      "type": "lesson",
+      "title": "Memilih Elemen dengan getElementById dan querySelector",
+      "xp": 5,
+      "explanation": "Ada dua metode utama untuk mengambil elemen HTML:\n\ndocument.getElementById('nama-id'):\n• Cepat dan langsung\n• Hanya bekerja dengan atribut id\n• Contoh: document.getElementById('judul-halaman')\n\ndocument.querySelector('selector'):\n• Lebih fleksibel\n• Mendukung semua selector CSS\n• Mengambil elemen PERTAMA yang cocok\n• Contoh: querySelector('#id'), querySelector('.class'), querySelector('h1'), querySelector('button.aktif')\n\ndocument.querySelectorAll('selector'):\n• Mengambil SEMUA elemen yang cocok\n• Mengembalikan NodeList (mirip array)\n\nContoh perbandingan:\ngetElementById('judul') — cari berdasarkan id 'judul'\nquerySelector('#judul') — hasil sama, tapi lewat selector CSS",
+      "analogy": "getElementById seperti mencari orang berdasarkan nomor KTP — langsung dan spesifik. querySelector seperti mencari berdasarkan deskripsi: 'orang dengan baju merah di baris depan' — lebih fleksibel tapi sedikit lebih lambat.",
+      "tips": [
+        "Selalu cek apakah querySelector mengembalikan null sebelum menggunakannya — jika selectornya salah, hasilnya null.",
+        "querySelectorAll() mengembalikan NodeList (mirip array) dari semua elemen yang cocok."
+      ]
+    },
+    {
+      "id": "node-03-textcontent-code",
+      "type": "code",
+      "title": "Mengubah textContent dan innerHTML",
+      "xp": 5,
+      "explanation": "Dua properti utama untuk mengubah konten elemen:\n\ntextContent — mengubah teks murni, tag HTML diabaikan\ninnerHTML — memproses tag HTML di dalamnya\n\nContoh:\nelemen.textContent = '<b>Teks</b>'; // tampil sebagai teks literal\nelemen.innerHTML = '<b>Teks</b>'; // tampil sebagai teks tebal\n\nGunakan textContent untuk teks biasa — lebih aman.\nGunakan innerHTML hanya saat perlu menyisipkan tag HTML.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>textContent vs innerHTML</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 500px; margin-bottom: 20px; }\n      h2 { color: #1a202c; margin-bottom: 16px; }\n      .kotak { padding: 12px; background: #ebf8ff; border-radius: 8px; margin-bottom: 12px; font-size: 16px; color: #2b6cb0; min-height: 40px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; margin-right: 8px; margin-bottom: 8px; }\n      button:hover { background: #2c5282; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Demo textContent</h2>\n      <div id=\"kotak-text\" class=\"kotak\">Teks awal di sini.</div>\n      <button onclick=\"ubahTextContent()\">Ubah dengan textContent</button>\n      <button onclick=\"cobaHtmlDiText()\">Coba sisipkan HTML Tag</button>\n      <button onclick=\"resetText()\">Reset</button>\n    </div>\n\n    <div class=\"kartu\">\n      <h2>Demo innerHTML</h2>\n      <div id=\"kotak-html\" class=\"kotak\">Konten awal di sini.</div>\n      <button onclick=\"ubahInnerHTML()\">Ubah dengan innerHTML</button>\n      <button onclick=\"resetHtml()\">Reset</button>\n    </div>\n\n    <script>\n      function ubahTextContent() {\n        var elemen = document.getElementById('kotak-text');\n        elemen.textContent = 'Teks baru menggunakan textContent!';\n      }\n\n      function cobaHtmlDiText() {\n        var elemen = document.getElementById('kotak-text');\n        // Tag HTML akan muncul sebagai teks literal — tidak diproses\n        elemen.textContent = '<strong>Ini TIDAK akan tebal</strong> — tag tampil sebagai teks.';\n      }\n\n      function resetText() {\n        document.getElementById('kotak-text').textContent = 'Teks awal di sini.';\n      }\n\n      function ubahInnerHTML() {\n        var elemen = document.getElementById('kotak-html');\n        // Tag HTML AKAN diproses dan dirender\n        elemen.innerHTML = '<strong>Ini TEBAL</strong> karena innerHTML memproses tag HTML!';\n      }\n\n      function resetHtml() {\n        document.getElementById('kotak-html').textContent = 'Konten awal di sini.';\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-classlist-code",
+      "type": "code",
+      "title": "classList — Mengelola Class CSS Secara Dinamis",
+      "xp": 5,
+      "explanation": "classList adalah properti yang memungkinkan mengelola class CSS pada elemen:\n\nelemen.classList.add('nama-class') — tambah class\nelemen.classList.remove('nama-class') — hapus class\nelemen.classList.toggle('nama-class') — tambah jika belum ada, hapus jika sudah\nelemen.classList.contains('nama-class') — cek apakah class ada (true/false)\n\ntoggle sangat berguna untuk dark/light mode, show/hide, tombol aktif/nonaktif.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>classList Demo</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 500px; margin-bottom: 20px; }\n      h2 { color: #1a202c; margin-bottom: 16px; }\n      .tombol-item {\n        padding: 12px 20px;\n        border: 2px solid #e2e8f0;\n        border-radius: 8px;\n        margin-bottom: 10px;\n        font-size: 15px;\n        background: #f7fafc;\n        cursor: pointer;\n        transition: all 0.2s;\n      }\n      .tombol-item.aktif {\n        background: #3182ce;\n        color: #fff;\n        border-color: #2b6cb0;\n        font-weight: bold;\n      }\n      .tombol-item.highlighted {\n        background: #fef3cd;\n        border-color: #d69e2e;\n        color: #744210;\n      }\n      .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 9px 18px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; }\n      button.danger { background: #e53e3e; }\n      #status-class { font-size: 13px; color: #718096; margin-top: 12px; min-height: 20px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Kelola Class CSS Secara Dinamis</h2>\n\n      <div id=\"elemen-demo\" class=\"tombol-item\">Elemen ini bisa berubah class-nya</div>\n      <p id=\"status-class\">Class saat ini: (kosong)</p>\n\n      <div class=\"btn-row\">\n        <button onclick=\"tambahAktif()\">Tambah .aktif</button>\n        <button onclick=\"hapusAktif()\" class=\"danger\">Hapus .aktif</button>\n        <button onclick=\"toggleHighlight()\">Toggle .highlighted</button>\n        <button onclick=\"cekClass()\">Cek Class</button>\n      </div>\n    </div>\n\n    <div class=\"kartu\">\n      <h2>Toggle — Klik untuk Aktif/Nonaktif</h2>\n      <div class=\"tombol-item\" id=\"opsi-1\" onclick=\"toggleOpsi('opsi-1')\">Opsi A — Klik untuk pilih</div>\n      <div class=\"tombol-item\" id=\"opsi-2\" onclick=\"toggleOpsi('opsi-2')\">Opsi B — Klik untuk pilih</div>\n      <div class=\"tombol-item\" id=\"opsi-3\" onclick=\"toggleOpsi('opsi-3')\">Opsi C — Klik untuk pilih</div>\n    </div>\n\n    <script>\n      function tambahAktif() {\n        document.getElementById('elemen-demo').classList.add('aktif');\n        updateStatus();\n      }\n\n      function hapusAktif() {\n        document.getElementById('elemen-demo').classList.remove('aktif');\n        updateStatus();\n      }\n\n      function toggleHighlight() {\n        document.getElementById('elemen-demo').classList.toggle('highlighted');\n        updateStatus();\n      }\n\n      function cekClass() {\n        var el = document.getElementById('elemen-demo');\n        var punyaAktif = el.classList.contains('aktif');\n        alert('Punya class .aktif? ' + punyaAktif);\n      }\n\n      function updateStatus() {\n        var el = document.getElementById('elemen-demo');\n        var classes = el.className || '(kosong)';\n        document.getElementById('status-class').textContent = 'Class saat ini: ' + classes;\n      }\n\n      function toggleOpsi(id) {\n        document.getElementById(id).classList.toggle('aktif');\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-queryselector-code",
+      "type": "code",
+      "title": "querySelector — Selector CSS yang Powerful",
+      "xp": 5,
+      "explanation": "querySelector mendukung semua selector CSS:\n• '#id' — berdasarkan id\n• '.class' — berdasarkan class\n• 'tag' — berdasarkan nama tag\n• '[attribute]' — berdasarkan atribut\n• 'parent child' — elemen bersarang\n\nquerySelectorAll() mengembalikan semua elemen yang cocok sebagai NodeList — mirip array, bisa di-loop.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>querySelector Demo</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 520px; margin-bottom: 20px; }\n      h2 { color: #1a202c; margin-bottom: 16px; }\n      .item-daftar { padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 8px; background: #f7fafc; }\n      .item-daftar.terpilih { background: #ebf8ff; border-color: #3182ce; color: #2b6cb0; font-weight: bold; }\n      .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 16px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 9px 14px; border-radius: 8px; font-size: 13px; font-weight: bold; cursor: pointer; }\n      #hasil-selector { margin-top: 16px; padding: 12px; background: #f0fff4; border-radius: 8px; font-size: 14px; color: #276749; min-height: 40px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Demo Berbagai Selector</h2>\n\n      <div id=\"elemen-utama\" class=\"item-daftar\">Elemen dengan id=\"elemen-utama\"</div>\n      <div class=\"item-daftar\">Item tanpa id — hanya class</div>\n      <div class=\"item-daftar item-khusus\">Item dengan class tambahan \"item-khusus\"</div>\n      <p data-tipe=\"info\">Paragraf dengan atribut data-tipe=\"info\"</p>\n\n      <div class=\"btn-grid\">\n        <button onclick=\"pilihById()\">querySelector('#elemen-utama')</button>\n        <button onclick=\"pilihSemua()\">querySelectorAll('.item-daftar')</button>\n        <button onclick=\"pilihKhusus()\">querySelector('.item-khusus')</button>\n        <button onclick=\"pilihAtribut()\">querySelector('[data-tipe]')</button>\n        <button onclick=\"resetSemua()\">Reset Semua</button>\n      </div>\n\n      <div id=\"hasil-selector\">Klik tombol di atas untuk melihat demo selector.</div>\n    </div>\n\n    <script>\n      function pilihById() {\n        resetSemua();\n        var el = document.querySelector('#elemen-utama');\n        el.classList.add('terpilih');\n        document.getElementById('hasil-selector').textContent =\n          'querySelector(\"#elemen-utama\") menemukan: ' + el.textContent.trim();\n      }\n\n      function pilihSemua() {\n        resetSemua();\n        var semua = document.querySelectorAll('.item-daftar');\n        semua.forEach(function(el) { el.classList.add('terpilih'); });\n        document.getElementById('hasil-selector').textContent =\n          'querySelectorAll(\".item-daftar\") menemukan ' + semua.length + ' elemen.';\n      }\n\n      function pilihKhusus() {\n        resetSemua();\n        var el = document.querySelector('.item-khusus');\n        el.classList.add('terpilih');\n        document.getElementById('hasil-selector').textContent =\n          'querySelector(\".item-khusus\") menemukan: ' + el.textContent.trim();\n      }\n\n      function pilihAtribut() {\n        resetSemua();\n        var el = document.querySelector('[data-tipe]');\n        el.style.color = '#c53030';\n        el.style.fontWeight = 'bold';\n        document.getElementById('hasil-selector').textContent =\n          'querySelector(\"[data-tipe]\") menemukan: ' + el.textContent.trim();\n      }\n\n      function resetSemua() {\n        document.querySelectorAll('.item-daftar').forEach(function(el) {\n          el.classList.remove('terpilih');\n        });\n        var p = document.querySelector('[data-tipe]');\n        p.style.color = '';\n        p.style.fontWeight = '';\n        document.getElementById('hasil-selector').textContent = 'Klik tombol di atas untuk melihat demo selector.';\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-dom-combined",
+      "type": "code",
+      "title": "DOM dalam Aksi — Konten Dinamis",
+      "xp": 5,
+      "explanation": "Menggabungkan getElementById, textContent, dan classList untuk membuat kartu profil yang bisa beralih antara mode tampil dan mode edit. Ini adalah pola yang sangat umum di aplikasi web nyata.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Kartu Profil Dinamis</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f0f4f8; }\n      .kartu { background: #fff; padding: 28px; border-radius: 16px; border: 1px solid #e2e8f0; max-width: 420px; }\n      h2 { color: #1a202c; margin-bottom: 20px; }\n      .info-view .nama { font-size: 22px; font-weight: bold; color: #2d3748; margin-bottom: 4px; }\n      .info-view .bio { font-size: 15px; color: #718096; }\n      .edit-view { display: none; }\n      .edit-view label { display: block; font-size: 13px; color: #4a5568; margin-bottom: 4px; font-weight: bold; }\n      .edit-view input { width: 100%; padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; margin-bottom: 12px; }\n      .kartu.mode-edit .info-view { display: none; }\n      .kartu.mode-edit .edit-view { display: block; }\n      .btn-row { display: flex; gap: 10px; margin-top: 16px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 9px 18px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; }\n      button.simpan { background: #38a169; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\" id=\"kartu-profil\">\n      <h2>Profil Pengguna</h2>\n\n      <div class=\"info-view\">\n        <p class=\"nama\" id=\"tampil-nama\">Budi Santoso</p>\n        <p class=\"bio\" id=\"tampil-bio\">Pemula yang bersemangat belajar web development.</p>\n      </div>\n\n      <div class=\"edit-view\">\n        <label for=\"input-nama\">Nama</label>\n        <input type=\"text\" id=\"input-nama\" value=\"Budi Santoso\">\n        <label for=\"input-bio\">Bio</label>\n        <input type=\"text\" id=\"input-bio\" value=\"Pemula yang bersemangat belajar web development.\">\n      </div>\n\n      <div class=\"btn-row\">\n        <button id=\"btn-edit\" onclick=\"toggleEdit()\">Edit Profil</button>\n        <button class=\"simpan\" id=\"btn-simpan\" onclick=\"simpanProfil()\" style=\"display:none\">Simpan</button>\n      </div>\n    </div>\n\n    <script>\n      function toggleEdit() {\n        var kartu = document.getElementById('kartu-profil');\n        kartu.classList.add('mode-edit');\n        document.getElementById('btn-edit').style.display = 'none';\n        document.getElementById('btn-simpan').style.display = 'inline-block';\n      }\n\n      function simpanProfil() {\n        var namaBaru = document.getElementById('input-nama').value;\n        var bioBaru = document.getElementById('input-bio').value;\n\n        document.getElementById('tampil-nama').textContent = namaBaru;\n        document.getElementById('tampil-bio').textContent = bioBaru;\n\n        var kartu = document.getElementById('kartu-profil');\n        kartu.classList.remove('mode-edit');\n        document.getElementById('btn-edit').style.display = 'inline-block';\n        document.getElementById('btn-simpan').style.display = 'none';\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-dom-full-page",
+      "type": "code",
+      "title": "Halaman Lengkap dengan DOM Manipulation",
+      "xp": 5,
+      "explanation": "Contoh halaman dashboard mini yang menggabungkan semua teknik DOM: mengubah teks, classList.toggle untuk tema, dan update angka secara dinamis. Tampak dan terasa seperti aplikasi web nyata.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Dashboard Mini</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; transition: background 0.3s, color 0.3s; }\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; color: #2d3748; min-height: 100vh; }\n      body.dark { background: #1a202c; color: #e2e8f0; }\n      .dashboard { max-width: 500px; }\n      .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }\n      h1 { font-size: 24px; }\n      .kartu { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 16px; }\n      body.dark .kartu { background: #2d3748; border-color: #4a5568; }\n      .xp-display { font-size: 48px; font-weight: bold; color: #3182ce; text-align: center; margin: 8px 0; }\n      body.dark .xp-display { color: #63b3ed; }\n      .label { font-size: 13px; color: #718096; text-align: center; margin-bottom: 16px; }\n      .btn-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }\n      button { background: #3182ce; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; }\n      button.danger { background: #e53e3e; }\n      button.outline { background: transparent; border: 2px solid #3182ce; color: #3182ce; }\n      body.dark button.outline { border-color: #63b3ed; color: #63b3ed; }\n      #status-tema { font-size: 14px; color: #718096; text-align: center; margin-top: 8px; }\n    </style>\n  </head>\n  <body id=\"body-utama\">\n    <div class=\"dashboard\">\n      <div class=\"header\">\n        <h1>Dashboard Belajar</h1>\n        <button class=\"outline\" onclick=\"gantiTema()\">🌙 Ganti Tema</button>\n      </div>\n\n      <div class=\"kartu\">\n        <div class=\"xp-display\" id=\"xp-display\">0</div>\n        <p class=\"label\">Total XP</p>\n        <div class=\"btn-row\">\n          <button onclick=\"tambahXP(10)\">+10 XP</button>\n          <button onclick=\"tambahXP(25)\">+25 XP</button>\n          <button onclick=\"tambahXP(50)\">+50 XP</button>\n          <button class=\"danger\" onclick=\"resetXP()\">Reset</button>\n        </div>\n      </div>\n\n      <div class=\"kartu\">\n        <p id=\"status-tema\" style=\"text-align:center; color:#718096;\">Mode saat ini: Terang</p>\n      </div>\n    </div>\n\n    <script>\n      var xp = 0;\n\n      function tambahXP(jumlah) {\n        xp = xp + jumlah;\n        document.getElementById('xp-display').textContent = xp;\n      }\n\n      function resetXP() {\n        xp = 0;\n        document.getElementById('xp-display').textContent = xp;\n      }\n\n      function gantiTema() {\n        var body = document.getElementById('body-utama');\n        body.classList.toggle('dark');\n\n        var isDark = body.classList.contains('dark');\n        document.getElementById('status-tema').textContent =\n          'Mode saat ini: ' + (isDark ? 'Gelap' : 'Terang');\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Pilih Method DOM yang Tepat",
+      "xp": 10,
+      "instructions": "Kamu ingin memilih elemen pertama dengan class 'tombol-aktif' di halaman. Method mana yang paling tepat?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "document.getElementById('tombol-aktif')",
+        "document.querySelector('.tombol-aktif')",
+        "document.getClass('tombol-aktif')",
+        "document.find('.tombol-aktif')"
+      ],
+      "correctOption": "document.querySelector('.tombol-aktif')"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Dark Mode Toggle",
+      "xp": 15,
+      "instructions": "Buat halaman dengan tombol 'Ganti Tema'. Saat tombol diklik:\n1. Toggle class 'dark' pada elemen body\n2. Ubah teks tombol menjadi 'Mode Gelap' jika dark aktif, 'Mode Terang' jika tidak\n3. Ubah textContent elemen id='status-tema' sesuai mode aktif\n\nCSS: body.dark harus memberi background #1a202c dan color #e2e8f0\nCSS: body (default) background #f7fafc dan color #2d3748",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Dark Mode Toggle</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 40px; background: #f7fafc; color: #2d3748; transition: all 0.3s; }\n      body.dark { background: #1a202c; color: #e2e8f0; }\n      .kartu { max-width: 400px; background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; }\n      body.dark .kartu { background: #2d3748; border-color: #4a5568; }\n      h1 { margin-bottom: 16px; font-size: 22px; }\n      #status-tema { font-size: 15px; margin-bottom: 20px; }\n      button { padding: 10px 24px; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; background: #3182ce; color: #fff; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h1>Ganti Tema Halaman</h1>\n      <p id=\"status-tema\">Mode saat ini: Terang</p>\n      <button id=\"btn-tema\" onclick=\"gantiTema()\">Mode Gelap</button>\n    </div>\n\n    <script>\n      // Tulis function gantiTema() di sini\n\n    </script>\n  </body>\n</html>"
+      },
+      "expectedResult": "Tombol toggle yang mengubah tampilan halaman antara mode terang dan gelap, dengan teks tombol dan status yang berubah sesuai mode.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Dark Mode Toggle</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 40px; background: #f7fafc; color: #2d3748; transition: all 0.3s; }\n      body.dark { background: #1a202c; color: #e2e8f0; }\n      .kartu { max-width: 400px; background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; }\n      body.dark .kartu { background: #2d3748; border-color: #4a5568; }\n      h1 { margin-bottom: 16px; font-size: 22px; }\n      #status-tema { font-size: 15px; margin-bottom: 20px; }\n      button { padding: 10px 24px; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; background: #3182ce; color: #fff; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h1>Ganti Tema Halaman</h1>\n      <p id=\"status-tema\">Mode saat ini: Terang</p>\n      <button id=\"btn-tema\" onclick=\"gantiTema()\">Mode Gelap</button>\n    </div>\n\n    <script>\n      function gantiTema() {\n        document.body.classList.toggle('dark');\n\n        var isDark = document.body.classList.contains('dark');\n        var tombol = document.getElementById('btn-tema');\n        var status = document.getElementById('status-tema');\n\n        if (isDark) {\n          tombol.textContent = 'Mode Terang';\n          status.textContent = 'Mode saat ini: Gelap';\n        } else {\n          tombol.textContent = 'Mode Gelap';\n          status.textContent = 'Mode saat ini: Terang';\n        }\n      }\n    </script>\n  </body>\n</html>",
+        "explanation": "Kita menggunakan classList.toggle('dark') pada document.body untuk menambah/menghapus class 'dark' setiap kali tombol diklik. Kemudian cek classList.contains('dark') untuk menentukan teks yang tepat bagi tombol dan status."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa yang dimaksud dengan DOM dalam JavaScript?",
+        "options": [
+          "Database Object Model — cara menyimpan data di browser",
+          "Document Object Model — representasi halaman HTML sebagai pohon objek yang bisa dimanipulasi",
+          "Dynamic Output Method — cara menampilkan konten dinamis",
+          "Document Output Manager — sistem untuk mengelola file HTML"
+        ],
+        "correctAnswer": "Document Object Model — representasi halaman HTML sebagai pohon objek yang bisa dimanipulasi",
+        "explanation": "DOM adalah singkatan dari Document Object Model. Browser mengubah HTML menjadi pohon objek yang bisa diakses dan dimanipulasi oleh JavaScript. Setiap elemen HTML menjadi node dalam pohon tersebut, dan JavaScript bisa menavigasi, membaca, serta mengubah setiap node.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa perbedaan antara textContent dan innerHTML?",
+        "options": [
+          "Tidak ada perbedaan, keduanya sama",
+          "textContent mengubah teks biasa tanpa memproses tag HTML, innerHTML memproses tag HTML di dalamnya",
+          "textContent hanya untuk elemen p, innerHTML untuk semua elemen",
+          "innerHTML lebih aman dari textContent"
+        ],
+        "correctAnswer": "textContent mengubah teks biasa tanpa memproses tag HTML, innerHTML memproses tag HTML di dalamnya",
+        "explanation": "textContent memperlakukan isi sebagai teks murni — tag HTML akan tampil sebagai karakter literal, bukan dirender. innerHTML memproses dan merender tag HTML di dalamnya. Gunakan textContent untuk keamanan (mencegah XSS), innerHTML hanya saat memang perlu menyisipkan HTML.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa yang dilakukan classList.toggle('aktif') pada sebuah elemen?",
+        "options": [
+          "Selalu menambahkan class 'aktif' ke elemen",
+          "Selalu menghapus class 'aktif' dari elemen",
+          "Menambah class 'aktif' jika belum ada, menghapus jika sudah ada",
+          "Mengecek apakah elemen memiliki class 'aktif'"
+        ],
+        "correctAnswer": "Menambah class 'aktif' jika belum ada, menghapus jika sudah ada",
+        "explanation": "classList.toggle() bekerja seperti saklar — jika class belum ada, ditambahkan; jika sudah ada, dihapus. Ini sangat berguna untuk dark/light mode, show/hide panel, atau tombol aktif/nonaktif yang perlu beralih state setiap kali diklik.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Metode mana yang digunakan untuk memilih semua elemen dengan class 'kartu' di halaman?",
+        "options": [
+          "document.getElementById('kartu')",
+          "document.querySelector('.kartu')",
+          "document.querySelectorAll('.kartu')",
+          "document.getClass('kartu')"
+        ],
+        "correctAnswer": "document.querySelectorAll('.kartu')",
+        "explanation": "querySelectorAll() mengembalikan NodeList berisi semua elemen yang cocok dengan selector. querySelector() hanya mengembalikan elemen pertama yang cocok. getElementById() hanya bekerja untuk id. getClass() bukan metode yang valid di JavaScript.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Kamu ingin mengubah teks tombol menjadi 'Selesai' menggunakan JavaScript. Properti mana yang tepat?",
+        "options": [
+          "element.value = 'Selesai'",
+          "element.text = 'Selesai'",
+          "element.textContent = 'Selesai'",
+          "element.label = 'Selesai'"
+        ],
+        "correctAnswer": "element.textContent = 'Selesai'",
+        "explanation": "textContent adalah properti yang digunakan untuk membaca atau mengubah isi teks suatu elemen HTML. element.value digunakan untuk elemen form seperti input. element.text dan element.label bukan properti standar untuk elemen tombol.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Kamu sekarang bisa memanipulasi setiap bagian halaman web menggunakan DOM. Ini adalah kekuatan inti JavaScript browser — dari sini kamu bisa membangun antarmuka yang benar-benar interaktif.",
+    "achievementName": "DOM Manipulator",
+    "achievementIcon": "🌳"
+  }
+}

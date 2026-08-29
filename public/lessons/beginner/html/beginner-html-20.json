@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-20",
+    "title": "Events — Tombol yang Bereaksi Terhadap Klik",
+    "description": "Pelajari cara membuat elemen HTML merespons aksi pengguna menggunakan event listener — click, input, dan change — sehingga website-mu bisa bereaksi secara langsung.",
+    "level": "beginner",
+    "category": "JavaScript",
+    "topicNumber": 3,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Events — Saat Website Mendengarkan Pengguna",
+    "description": "Sampai sekarang JavaScript kita hanya berjalan saat halaman dimuat. Tapi website sungguhan merespons pengguna kapan saja: saat tombol diklik, saat teks diketik, saat pilihan diubah. Semua itu dilakukan dengan events. Di topik ini kamu akan membuat tombol yang benar-benar melakukan sesuatu.",
+    "analogy": "Event listener seperti pelayan toko yang selalu siap. Kamu tidak tahu kapan pelanggan datang — tapi saat ada yang masuk, pelayan langsung bereaksi. addEventListener membuat JavaScript 'mendengarkan' dan bereaksi kapan saja aksi terjadi."
+  },
+  "objectives": [
+    "Memahami konsep event dan event listener",
+    "Menggunakan addEventListener dengan event click",
+    "Menggunakan atribut onclick sebagai cara alternatif",
+    "Merespons input pengguna dengan event input dan change",
+    "Membuat tombol yang mengubah konten halaman saat diklik"
+  ],
+  "review": {
+    "learned": [
+      "Event adalah aksi yang terjadi di halaman — klik, ketikan, perubahan nilai.",
+      "addEventListener(event, function) menghubungkan elemen dengan fungsi yang dijalankan saat event terjadi.",
+      "Event 'click' dipicu saat elemen diklik.",
+      "Event 'input' dipicu setiap kali nilai input berubah — saat pengguna mengetik.",
+      "event.target.value mengambil nilai terkini dari elemen input.",
+      "Atribut onclick='fungsi()' adalah cara singkat untuk event click."
+    ],
+    "keyConcepts": [
+      "Event",
+      "addEventListener()",
+      "Event click",
+      "Event input",
+      "event.target.value"
+    ],
+    "takeaways": [
+      "addEventListener lebih fleksibel dari onclick — bisa menambah banyak listener ke satu elemen.",
+      "Pisahkan logika dari HTML: tulis event listener di JavaScript, bukan onclick di HTML.",
+      "event.target mengacu pada elemen yang memicu event.",
+      "Event input cocok untuk real-time feedback, event change untuk aksi setelah pengguna selesai mengubah nilai."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-events-intro",
+      "type": "lesson",
+      "title": "Apa Itu Events?",
+      "xp": 5,
+      "explanation": "Event adalah kejadian yang terjadi di halaman web — saat pengguna melakukan sesuatu atau browser melakukan sesuatu. Contoh event:\n\n• click — pengguna mengklik elemen\n• input — pengguna mengetik di input field\n• change — pengguna mengubah nilai (dropdown, checkbox)\n• submit — pengguna mengirim form\n• keydown — pengguna menekan tombol keyboard\n• mouseover — kursor masuk ke area elemen\n\nCara 'mendengarkan' event:\nElement.addEventListener('nama-event', fungsiYangDijalankan);\n\nContoh:\nconst tombol = document.getElementById('tombol-ku');\ntombol.addEventListener('click', function() {\n  console.log('Tombol diklik!');\n});\n\nSaat tombol diklik, fungsi di dalam addEventListener() dijalankan secara otomatis.",
+      "tips": [
+        "Event listener tidak langsung dijalankan — mereka hanya 'menunggu' sampai event terjadi.",
+        "Kamu bisa menambahkan banyak event listener ke satu elemen yang sama."
+      ]
+    },
+    {
+      "id": "node-02-click-event",
+      "type": "lesson",
+      "title": "Event Click — Tombol yang Bereaksi",
+      "xp": 5,
+      "explanation": "Click adalah event yang paling sering digunakan. Ada dua cara menangani click:\n\n1. addEventListener (cara modern, lebih direkomendasikan):\nconst tombol = document.getElementById('tombol');\ntombol.addEventListener('click', function() {\n  // kode yang dijalankan saat diklik\n});\n\n2. Atribut onclick di HTML (cara lama tapi masih umum):\n<button onclick=\"fungsiSaya()\">Klik Saya</button>\n\nfunction fungsiSaya() {\n  // kode yang dijalankan\n}\n\nPerbedaan utama:\n• addEventListener — JavaScript terpisah dari HTML, lebih bersih, bisa menambah banyak listener\n• onclick — lebih cepat ditulis tapi mencampur HTML dan JavaScript\n\nFokus kita: menggunakan onclick dulu karena lebih mudah dipahami, lalu beralih ke addEventListener.",
+      "analogy": "onclick seperti label instruksi yang ditempel langsung di tombol mesin ('tekan untuk mulai'). addEventListener seperti sistem kontrol terpisah yang memantau semua tombol — lebih rapi dan fleksibel.",
+      "tips": [
+        "Arrow function adalah cara pendek menulis function: () => { kode } — dipelajari setelah dasar dikuasai.",
+        "Selalu test tombol di browser setelah menulis handler — pastikan klik bereaksi sesuai harapan."
+      ]
+    },
+    {
+      "id": "node-03-onclick-basic",
+      "type": "code",
+      "title": "Tombol Pertama yang Bisa Diklik",
+      "xp": 5,
+      "explanation": "Contoh paling sederhana: tombol yang mengubah teks saat diklik. Perhatikan atribut onclick yang memanggil fungsi JavaScript saat diklik.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Tombol Klik</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 400px; }\n      h2 { color: #1a202c; margin-bottom: 16px; }\n      #pesan { font-size: 18px; color: #2b6cb0; margin-bottom: 20px; font-weight: bold; min-height: 28px; }\n      button {\n        background: #3182ce;\n        color: #fff;\n        border: none;\n        padding: 12px 24px;\n        border-radius: 8px;\n        font-size: 15px;\n        font-weight: bold;\n        cursor: pointer;\n        margin-right: 8px;\n      }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Demo Klik Tombol</h2>\n      <p id=\"pesan\">Belum diklik.</p>\n      <button onclick=\"ubahPesan()\">Klik Saya!</button>\n      <button onclick=\"resetPesan()\">Reset</button>\n    </div>\n\n    <script>\n      function ubahPesan() {\n        document.getElementById('pesan').textContent = 'Tombol berhasil diklik!';\n        console.log('Tombol diklik!');\n      }\n\n      function resetPesan() {\n        document.getElementById('pesan').textContent = 'Belum diklik.';\n        console.log('Pesan direset.');\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-addeventlistener",
+      "type": "code",
+      "title": "addEventListener — Cara Modern",
+      "xp": 5,
+      "explanation": "addEventListener adalah cara modern yang lebih fleksibel untuk menangani events. JavaScript dipisahkan sepenuhnya dari HTML — tidak ada onclick di tag HTML.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>addEventListener</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f0f4f8; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 440px; }\n      h2 { color: #1a202c; margin-bottom: 16px; }\n      #counter-display { font-size: 48px; font-weight: bold; color: #2b6cb0; text-align: center; margin: 16px 0; }\n      .btn-row { display: flex; gap: 12px; justify-content: center; }\n      button { background: #3182ce; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; }\n      #btn-kurang { background: #e53e3e; }\n      #btn-reset { background: #718096; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Counter Interaktif</h2>\n      <div id=\"counter-display\">0</div>\n      <div class=\"btn-row\">\n        <button id=\"btn-tambah\">+ Tambah</button>\n        <button id=\"btn-kurang\">- Kurang</button>\n        <button id=\"btn-reset\">Reset</button>\n      </div>\n    </div>\n\n    <script>\n      let counter = 0;\n\n      // Ambil tombol-tombol\n      const btnTambah = document.getElementById('btn-tambah');\n      const btnKurang = document.getElementById('btn-kurang');\n      const btnReset = document.getElementById('btn-reset');\n      const display = document.getElementById('counter-display');\n\n      // Tambah event listener ke masing-masing tombol\n      btnTambah.addEventListener('click', function() {\n        counter = counter + 1;\n        display.textContent = counter;\n        console.log('Counter naik:', counter);\n      });\n\n      btnKurang.addEventListener('click', function() {\n        counter = counter - 1;\n        display.textContent = counter;\n        console.log('Counter turun:', counter);\n      });\n\n      btnReset.addEventListener('click', function() {\n        counter = 0;\n        display.textContent = counter;\n        console.log('Counter direset.');\n      });\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-input-event",
+      "type": "code",
+      "title": "Event input — Real-time Feedback",
+      "xp": 5,
+      "explanation": "Event input dipicu setiap kali pengguna mengetik di input field — memberikan feedback secara real-time. event.target.value mengambil nilai terkini dari input.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Event Input</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 440px; }\n      h2 { color: #1a202c; margin-bottom: 16px; }\n      label { display: block; font-size: 14px; color: #4a5568; margin-bottom: 6px; }\n      input { width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; margin-bottom: 16px; }\n      #preview-sapaan { font-size: 20px; color: #2b6cb0; font-weight: bold; min-height: 32px; padding: 12px; background: #ebf8ff; border-radius: 8px; }\n      #hitung-karakter { font-size: 13px; color: #718096; margin-top: 8px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Sapaan Real-time</h2>\n      <label for=\"input-nama\">Ketik namamu:</label>\n      <input type=\"text\" id=\"input-nama\" placeholder=\"Nama kamu di sini...\">\n      <div id=\"preview-sapaan\">Sapaan akan muncul saat kamu mengetik...</div>\n      <p id=\"hitung-karakter\">0 karakter</p>\n    </div>\n\n    <script>\n      const inputNama = document.getElementById('input-nama');\n\n      inputNama.addEventListener('input', function(event) {\n        const nama = event.target.value;\n        const panjang = nama.length;\n\n        if (nama.trim() === '') {\n          document.getElementById('preview-sapaan').textContent = 'Sapaan akan muncul saat kamu mengetik...';\n        } else {\n          document.getElementById('preview-sapaan').textContent = 'Halo, ' + nama + '! Selamat belajar JavaScript!';\n        }\n\n        document.getElementById('hitung-karakter').textContent = panjang + ' karakter';\n      });\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-change-event",
+      "type": "code",
+      "title": "Event change — Merespons Pilihan",
+      "xp": 5,
+      "explanation": "Event change dipicu saat pengguna mengubah dan meninggalkan sebuah field — berguna untuk select dropdown dan checkbox. Berbeda dari input yang real-time, change baru dipicu setelah pengguna selesai memilih.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Event Change</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 440px; }\n      h2 { color: #1a202c; margin-bottom: 20px; }\n      label { display: block; font-size: 14px; color: #4a5568; margin-bottom: 6px; font-weight: bold; }\n      select { width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; margin-bottom: 20px; background: #fff; }\n      #hasil-pilihan { font-size: 16px; color: #4a5568; padding: 16px; background: #f7fafc; border-radius: 8px; min-height: 60px; }\n      .aksen { color: #2b6cb0; font-weight: bold; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Pilih Topik Belajar</h2>\n      <label for=\"pilih-topik\">Topik yang ingin dipelajari:</label>\n      <select id=\"pilih-topik\">\n        <option value=\"\">-- Pilih topik --</option>\n        <option value=\"html\">HTML</option>\n        <option value=\"css\">CSS</option>\n        <option value=\"javascript\">JavaScript</option>\n      </select>\n      <div id=\"hasil-pilihan\">Pilih topik di atas untuk melihat deskripsinya.</div>\n    </div>\n\n    <script>\n      const pilihTopik = document.getElementById('pilih-topik');\n      const hasilDiv = document.getElementById('hasil-pilihan');\n\n      pilihTopik.addEventListener('change', function(event) {\n        const topik = event.target.value;\n\n        if (topik === 'html') {\n          hasilDiv.innerHTML = 'Kamu memilih <span class=\"aksen\">HTML</span>. HTML adalah fondasi semua halaman web \\u2014 struktur dan konten.';\n        } else if (topik === 'css') {\n          hasilDiv.innerHTML = 'Kamu memilih <span class=\"aksen\">CSS</span>. CSS membuat halaman HTML terlihat menarik dengan warna dan layout.';\n        } else if (topik === 'javascript') {\n          hasilDiv.innerHTML = 'Kamu memilih <span class=\"aksen\">JavaScript</span>. JavaScript membuat website menjadi interaktif dan dinamis.';\n        } else {\n          hasilDiv.textContent = 'Pilih topik di atas untuk melihat deskripsinya.';\n        }\n\n        console.log('Topik dipilih:', topik);\n      });\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-events-full-page",
+      "type": "code",
+      "title": "Halaman Interaktif dengan Beberapa Events",
+      "xp": 5,
+      "explanation": "Menggabungkan event click dan input dalam satu halaman yang realistis — form sederhana yang memberikan feedback langsung. Ini adalah pola yang sangat umum di website nyata: input real-time + tombol submit.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Form Interaktif</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background: #f0f4f8; padding: 32px; }\n      .form-kartu { background: #fff; border-radius: 16px; padding: 32px; max-width: 460px; border: 1px solid #e2e8f0; }\n      h2 { color: #1a202c; margin-bottom: 24px; font-size: 22px; }\n      label { display: block; font-size: 14px; color: #4a5568; margin-bottom: 6px; font-weight: bold; }\n      input { width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; margin-bottom: 8px; }\n      #preview-nama { font-size: 13px; color: #718096; margin-bottom: 16px; min-height: 20px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 8px; }\n      #hasil { margin-top: 20px; padding: 16px; border-radius: 8px; font-size: 16px; min-height: 52px; display: none; }\n    </style>\n  </head>\n  <body>\n    <div class=\"form-kartu\">\n      <h2>Daftar ke Kursus</h2>\n\n      <label for=\"input-nama\">Nama Lengkap</label>\n      <input type=\"text\" id=\"input-nama\" placeholder=\"Masukkan namamu...\">\n      <p id=\"preview-nama\"></p>\n\n      <label for=\"input-email\">Email</label>\n      <input type=\"email\" id=\"input-email\" placeholder=\"emailmu@contoh.com\">\n\n      <button id=\"btn-daftar\">Daftar Sekarang</button>\n\n      <div id=\"hasil\"></div>\n    </div>\n\n    <script>\n      // Event input — preview nama real-time\n      document.getElementById('input-nama').addEventListener('input', function(e) {\n        const nama = e.target.value;\n        const preview = document.getElementById('preview-nama');\n        preview.textContent = nama ? 'Halo, ' + nama + '!' : '';\n      });\n\n      // Event click — proses pendaftaran\n      document.getElementById('btn-daftar').addEventListener('click', function() {\n        const nama = document.getElementById('input-nama').value;\n        const email = document.getElementById('input-email').value;\n        const hasilDiv = document.getElementById('hasil');\n\n        if (nama.trim() === '' || email.trim() === '') {\n          hasilDiv.textContent = 'Mohon isi nama dan email terlebih dahulu.';\n          hasilDiv.style.display = 'block';\n          hasilDiv.style.background = '#fff5f5';\n          hasilDiv.style.color = '#c53030';\n          hasilDiv.style.border = '1px solid #fed7d7';\n        } else {\n          hasilDiv.textContent = 'Berhasil! ' + nama + ' (' + email + ') sudah terdaftar. Selamat belajar!';\n          hasilDiv.style.display = 'block';\n          hasilDiv.style.background = '#f0fff4';\n          hasilDiv.style.color = '#276749';\n          hasilDiv.style.border = '1px solid #c6f6d5';\n        }\n\n        console.log('Tombol daftar diklik. Nama:', nama, 'Email:', email);\n      });\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Event Mana yang Tepat?",
+      "xp": 10,
+      "instructions": "Kamu ingin membuat kotak teks yang langsung menampilkan preview tulisan pengguna setiap kali ada karakter yang diketik atau dihapus. Event mana yang paling tepat digunakan?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "click — karena pengguna mengklik input sebelum mengetik",
+        "change — karena pengguna mengubah isi input",
+        "input — karena dipicu setiap kali nilai input berubah secara real-time",
+        "submit — karena input dikirim ke server"
+      ],
+      "correctOption": "input — karena dipicu setiap kali nilai input berubah secara real-time"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Tombol Hitung Karakter",
+      "xp": 15,
+      "instructions": "Buat halaman dengan input teks dan tombol 'Hitung'. Saat tombol diklik:\n1. Ambil teks dari input dengan id='teks-input'\n2. Hitung panjang teksnya (.length)\n3. Tampilkan hasilnya di elemen id='hasil-hitung' dengan format: 'Jumlah karakter: X'\n\nJuga tambahkan event input pada teks-input yang menampilkan jumlah karakter secara real-time di id='live-hitung'.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Hitung Karakter</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 440px; }\n      h2 { color: #1a202c; margin-bottom: 20px; }\n      textarea { width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; height: 100px; resize: vertical; margin-bottom: 8px; }\n      #live-hitung { font-size: 13px; color: #718096; margin-bottom: 12px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 10px 24px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; }\n      #hasil-hitung { font-size: 18px; color: #2b6cb0; font-weight: bold; margin-top: 16px; min-height: 28px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Hitung Karakter Teks</h2>\n      <textarea id=\"teks-input\" placeholder=\"Ketik teks di sini...\"></textarea>\n      <p id=\"live-hitung\">0 karakter</p>\n      <button id=\"btn-hitung\">Hitung</button>\n      <p id=\"hasil-hitung\"></p>\n    </div>\n\n    <script>\n      // Tambahkan event listeners di sini\n\n    </script>\n  </body>\n</html>"
+      },
+      "expectedResult": "Textarea dengan live counter yang update setiap ketukan, dan tombol yang menampilkan hasil hitungan.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Hitung Karakter</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 440px; }\n      h2 { color: #1a202c; margin-bottom: 20px; }\n      textarea { width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; height: 100px; resize: vertical; margin-bottom: 8px; }\n      #live-hitung { font-size: 13px; color: #718096; margin-bottom: 12px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 10px 24px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; }\n      #hasil-hitung { font-size: 18px; color: #2b6cb0; font-weight: bold; margin-top: 16px; min-height: 28px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Hitung Karakter Teks</h2>\n      <textarea id=\"teks-input\" placeholder=\"Ketik teks di sini...\"></textarea>\n      <p id=\"live-hitung\">0 karakter</p>\n      <button id=\"btn-hitung\">Hitung</button>\n      <p id=\"hasil-hitung\"></p>\n    </div>\n\n    <script>\n      const textarea = document.getElementById('teks-input');\n      const btnHitung = document.getElementById('btn-hitung');\n\n      // Event input — update live counter\n      textarea.addEventListener('input', function(e) {\n        const jumlah = e.target.value.length;\n        document.getElementById('live-hitung').textContent = jumlah + ' karakter';\n      });\n\n      // Event click — tampilkan hasil final\n      btnHitung.addEventListener('click', function() {\n        const teks = textarea.value;\n        const jumlah = teks.length;\n        document.getElementById('hasil-hitung').textContent = 'Jumlah karakter: ' + jumlah;\n        console.log('Tombol hitung diklik. Jumlah karakter:', jumlah);\n      });\n    </script>\n  </body>\n</html>",
+        "explanation": "Kita menambahkan dua event listener. Pertama, event 'input' pada textarea yang mengupdate live-hitung setiap kali ada perubahan menggunakan event.target.value.length. Kedua, event 'click' pada tombol yang mengambil nilai textarea, menghitung panjangnya, dan menampilkan hasilnya di hasil-hitung."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa yang dimaksud dengan 'event' dalam JavaScript?",
+        "options": [
+          "Sebuah fungsi yang dijalankan saat halaman dimuat",
+          "Aksi atau kejadian yang terjadi di halaman — seperti klik, ketikan, atau perubahan nilai",
+          "Cara mendeklarasikan variabel baru",
+          "File JavaScript yang terhubung ke HTML"
+        ],
+        "correctAnswer": "Aksi atau kejadian yang terjadi di halaman — seperti klik, ketikan, atau perubahan nilai",
+        "explanation": "Event adalah aksi atau kejadian yang terjadi di halaman web, baik yang dilakukan pengguna (klik, ketik) maupun browser (halaman dimuat, gambar selesai dimuat). JavaScript bisa 'mendengarkan' dan merespons event menggunakan event listener.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa fungsi dari addEventListener() dalam JavaScript?",
+        "options": [
+          "Membuat elemen HTML baru",
+          "Menghubungkan elemen dengan fungsi yang dijalankan saat event tertentu terjadi",
+          "Mengambil nilai dari input pengguna",
+          "Menyimpan data ke variabel"
+        ],
+        "correctAnswer": "Menghubungkan elemen dengan fungsi yang dijalankan saat event tertentu terjadi",
+        "explanation": "addEventListener(namaEvent, fungsi) menghubungkan sebuah elemen dengan fungsi handler yang akan otomatis dijalankan setiap kali event yang ditentukan terjadi pada elemen tersebut. Misalnya tombol.addEventListener('click', fungsi) — fungsi dijalankan setiap tombol diklik.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Bagaimana cara mengambil nilai terkini dari input text saat event terjadi?",
+        "options": [
+          "input.text",
+          "input.value atau event.target.value",
+          "input.content",
+          "event.data"
+        ],
+        "correctAnswer": "input.value atau event.target.value",
+        "explanation": "Untuk mengambil nilai terkini dari input, gunakan properti .value. Bisa diakses via referensi elemen (inputElement.value) atau via event object (event.target.value, di mana event.target mengacu pada elemen yang memicu event).",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Apa perbedaan antara event 'input' dan event 'change' pada elemen input text?",
+        "options": [
+          "Tidak ada perbedaan, keduanya sama",
+          "input dipicu setiap karakter berubah secara real-time, change dipicu saat pengguna meninggalkan field",
+          "input hanya untuk tombol, change hanya untuk input teks",
+          "change lebih cepat dari input"
+        ],
+        "correctAnswer": "input dipicu setiap karakter berubah secara real-time, change dipicu saat pengguna meninggalkan field",
+        "explanation": "Event 'input' dipicu setiap kali nilai input berubah — cocok untuk feedback real-time seperti preview teks. Event 'change' dipicu setelah pengguna selesai mengubah dan meninggalkan field — cocok untuk select dropdown atau saat kamu tidak perlu update setiap karakter.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Pengguna mengklik tombol di halaman. Dari dalam fungsi event handler, bagaimana cara mengakses elemen tombol yang diklik?",
+        "options": [
+          "button.self",
+          "event.element",
+          "event.target",
+          "this.button"
+        ],
+        "correctAnswer": "event.target",
+        "explanation": "Di dalam fungsi event handler, event.target mengacu pada elemen spesifik yang memicu event — dalam kasus ini, tombol yang diklik. Ini berguna saat satu handler menangani beberapa elemen, atau saat kamu perlu mengakses properti elemen yang diklik seperti nilai atau class-nya.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Luar biasa! Sekarang tombol-tombolmu bisa melakukan sesuatu yang nyata. Events adalah inti dari interaktivitas web — setiap aplikasi web yang pernah kamu gunakan dibangun di atas konsep yang sama persis.",
+    "achievementName": "Event Handler",
+    "achievementIcon": "🖱️"
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-18",
+    "title": "Pengantar JavaScript — Membuat Website Interaktif",
+    "description": "Pelajari apa itu JavaScript, bagaimana menghubungkannya ke HTML, dan tulis script pertamamu untuk membuat halaman web bereaksi terhadap pengguna.",
+    "level": "beginner",
+    "category": "JavaScript",
+    "topicNumber": 1,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Level 3 — Saatnya Website-mu Berbicara Balik",
+    "description": "Selama Level 1 dan Level 2 kamu membangun website yang bisa dilihat tapi tidak bisa merespons. Di Level 3 kamu akan mempelajari JavaScript — bahasa yang membuat website menjadi hidup. Tombol yang bisa diklik, teks yang berubah, form yang memvalidasi input — semua itu JavaScript.",
+    "analogy": "Jika HTML adalah kerangka rumah dan CSS adalah cat serta dekorasi, maka JavaScript adalah listrik dan sistem mekanis — lampu yang menyala saat saklar ditekan, pintu yang otomatis terbuka."
+  },
+  "objectives": [
+    "Memahami peran JavaScript dalam pengembangan website",
+    "Menghubungkan file JavaScript ke dokumen HTML dengan tag script",
+    "Menggunakan console.log untuk menampilkan pesan di browser",
+    "Menulis statement JavaScript pertama di dalam tag script",
+    "Memahami perbedaan peran HTML, CSS, dan JavaScript"
+  ],
+  "review": {
+    "learned": [
+      "JavaScript adalah bahasa pemrograman yang berjalan di browser dan membuat halaman web menjadi interaktif.",
+      "Tag script digunakan untuk menyisipkan JavaScript ke dalam HTML — bisa inline atau menghubungkan file eksternal.",
+      "console.log() menampilkan pesan di console browser — berguna untuk debugging dan belajar.",
+      "File JavaScript eksternal dihubungkan dengan tag script src di akhir body.",
+      "HTML adalah struktur, CSS adalah tampilan, JavaScript adalah perilaku dan interaksi.",
+      "JavaScript dijalankan secara berurutan dari atas ke bawah oleh browser."
+    ],
+    "keyConcepts": [
+      "JavaScript dan perannya",
+      "Tag script — inline dan eksternal",
+      "console.log()",
+      "Tiga pilar web: HTML CSS JavaScript",
+      "Urutan eksekusi JavaScript"
+    ],
+    "takeaways": [
+      "Tempatkan tag script di akhir body agar HTML dan CSS sudah dimuat sebelum JavaScript berjalan.",
+      "console.log() adalah teman terbaik saat belajar JavaScript — gunakan selalu untuk mengecek nilai.",
+      "Satu titik koma di akhir setiap statement JavaScript adalah kebiasaan yang baik.",
+      "Mulai dari hal kecil: satu console.log yang berhasil lebih berharga dari kode panjang yang error."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-js-intro",
+      "type": "lesson",
+      "title": "Apa Itu JavaScript?",
+      "xp": 5,
+      "explanation": "JavaScript adalah bahasa pemrograman yang berjalan langsung di browser. Bersama HTML dan CSS, JavaScript membentuk tiga pilar utama pengembangan website:\n\n• HTML — memberikan struktur dan konten\n• CSS — memberikan tampilan visual\n• JavaScript — memberikan perilaku dan interaksi\n\nApa yang bisa dilakukan JavaScript?\n• Merespons klik tombol\n• Mengubah teks atau tampilan halaman tanpa reload\n• Memvalidasi isian form sebelum dikirim\n• Menampilkan atau menyembunyikan elemen\n\nJavaScript adalah bahasa pemrograman sungguhan — artinya kamu bisa membuat keputusan, mengulang aksi, dan memproses data. Kamu tidak perlu menginstal apapun — browser sudah bisa menjalankan JavaScript langsung.",
+      "tips": [
+        "JavaScript bukan Java — keduanya adalah bahasa yang sama sekali berbeda meski namanya mirip.",
+        "Hampir semua aplikasi web yang kamu gunakan sehari-hari dibangun dengan JavaScript."
+      ]
+    },
+    {
+      "id": "node-02-script-tag",
+      "type": "lesson",
+      "title": "Menghubungkan JavaScript ke HTML",
+      "xp": 5,
+      "explanation": "Ada dua cara menulis JavaScript di HTML:\n\n1. Inline — langsung di dalam tag script:\n<script>\n  // kode JavaScript di sini\n</script>\n\n2. External — dari file terpisah:\n<script src=\"script.js\"></script>\n\nDi mana menempatkan tag script? Sebaiknya di akhir body, tepat sebelum </body>. Mengapa? Browser membaca HTML dari atas ke bawah. Jika script ada di atas, JavaScript berjalan sebelum elemen HTML selesai dimuat — dan script tidak bisa menemukan elemen yang belum ada.\n\nFile eksternal lebih direkomendasikan untuk proyek nyata — sama seperti external CSS.",
+      "analogy": "Menempatkan script di akhir body seperti menghidupkan mesin setelah semua penumpang duduk — lebih aman daripada menghidupkan mesin sebelum pintu tertutup.",
+      "tips": [
+        "Untuk belajar, inline script sudah cukup — lebih mudah karena satu file.",
+        "Komentar satu baris di JavaScript menggunakan // dan beberapa baris menggunakan /* */"
+      ]
+    },
+    {
+      "id": "node-03-first-script",
+      "type": "code",
+      "title": "Script JavaScript Pertamamu",
+      "xp": 5,
+      "explanation": "Mari tulis JavaScript pertama kita. console.log() menampilkan pesan di Console browser. Cara membuka Console: tekan F12 lalu pilih tab Console. Coba buka file ini di browser lalu buka Console — kamu akan melihat semua pesan yang ditulis.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>JavaScript Pertama</title>\n  </head>\n  <body>\n    <h1>Halaman Pertama dengan JavaScript</h1>\n    <p>Buka Console browser (F12) untuk melihat pesan dari JavaScript.</p>\n\n    <script>\n      // Ini adalah komentar — tidak dijalankan oleh browser\n      console.log(\"Halo dari JavaScript!\");\n      console.log(\"Ini pesan kedua.\");\n      console.log(\"JavaScript sudah berjalan!\");\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-alert",
+      "type": "code",
+      "title": "alert() — Dialog Sederhana",
+      "xp": 5,
+      "explanation": "Selain console.log(), ada cara lain berinteraksi: alert(pesan) menampilkan kotak dialog. Ini cara paling sederhana untuk menunjukkan bahwa JavaScript berjalan. Di website profesional kita menggunakan cara lebih elegan, tapi alert() bagus untuk belajar.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Alert JavaScript</title>\n  </head>\n  <body>\n    <h1>Demo Alert</h1>\n    <p>JavaScript akan menampilkan dialog saat halaman dibuka.</p>\n\n    <script>\n      // Tampilkan pesan di console dulu\n      console.log(\"Halaman dimuat, JavaScript berjalan.\");\n\n      // Tampilkan alert kepada pengguna\n      alert(\"Selamat datang! Ini adalah alert dari JavaScript.\");\n\n      // Setelah alert ditutup, kode berikutnya berjalan\n      console.log(\"Alert sudah ditutup oleh pengguna.\");\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-external-js",
+      "type": "code",
+      "title": "File JavaScript Eksternal",
+      "xp": 5,
+      "explanation": "Untuk proyek nyata, kode JavaScript dipisahkan ke file .js tersendiri. Dua file diperlukan: index.html dan script.js di folder yang sama. Tag script src menghubungkan keduanya.",
+      "code": {
+        "language": "html",
+        "content": "<!-- File: index.html -->\n<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>JS Eksternal</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kotak { background: #fff; padding: 24px; border-radius: 8px; border: 1px solid #e2e8f0; max-width: 400px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kotak\">\n      <h1>Website dengan JS Eksternal</h1>\n      <p>Kode JavaScript ada di file script.js terpisah.</p>\n      <p id=\"status\">Memuat...</p>\n    </div>\n\n    <!-- Hubungkan file JS di akhir body -->\n    <script src=\"script.js\"></script>\n  </body>\n</html>\n\n/* ---- File: script.js ---- */\n// Kode ini ada di file terpisah: script.js\nconsole.log(\"File script.js berhasil dimuat!\");\ndocument.getElementById(\"status\").textContent = \"JavaScript eksternal aktif!\";"
+      }
+    },
+    {
+      "id": "node-06-document-getelementbyid",
+      "type": "code",
+      "title": "Mengubah Halaman dengan JavaScript",
+      "xp": 5,
+      "explanation": "JavaScript bisa mengubah konten halaman tanpa reload. Langkah-langkahnya: (1) beri id pada elemen HTML, (2) gunakan document.getElementById('id') untuk mengambil elemennya, (3) ubah .textContent-nya. Ini adalah cara paling dasar untuk membuat halaman dinamis.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Mengubah Halaman</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f0f4f8; }\n      .kartu { background: #fff; padding: 24px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 480px; }\n      h1 { color: #2b6cb0; }\n      #pesan-utama { font-size: 18px; color: #276749; font-weight: bold; }\n      #status-js { font-size: 14px; color: #718096; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h1>Halaman Dinamis</h1>\n      <p id=\"pesan-utama\">Teks asli yang akan diubah JavaScript.</p>\n      <p id=\"status-js\">Status: belum ada JavaScript.</p>\n    </div>\n\n    <script>\n      // Ambil elemen berdasarkan id lalu ubah textContent-nya\n      document.getElementById(\"pesan-utama\").textContent = \"JavaScript berhasil mengubah teks ini!\";\n      document.getElementById(\"status-js\").textContent = \"Status: JavaScript aktif dan berjalan.\";\n\n      console.log(\"Dua elemen berhasil diubah.\");\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-full-page",
+      "type": "code",
+      "title": "Halaman Interaktif Pertama yang Lengkap",
+      "xp": 5,
+      "explanation": "Menggabungkan semua yang sudah dipelajari: HTML semantik, CSS dari Level 2, dan JavaScript yang mengubah konten saat halaman dimuat. Hasilnya adalah halaman yang terasa hidup — berbeda saat pertama dimuat vs setelah JavaScript berjalan.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Halaman Interaktif</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background: #f0f4f8; padding: 32px; }\n      .kartu { background: #fff; border-radius: 12px; padding: 32px; max-width: 500px; border: 1px solid #e2e8f0; }\n      h1 { color: #1a202c; font-size: 26px; margin-bottom: 16px; }\n      #sapaan { font-size: 20px; color: #2b6cb0; font-weight: bold; margin-bottom: 8px; }\n      #info { font-size: 15px; color: #4a5568; margin-bottom: 16px; }\n      #status { font-size: 13px; color: #38a169; background: #f0fff4; padding: 8px 12px; border-radius: 6px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h1>Selamat Datang di Level 3</h1>\n      <p id=\"sapaan\">Memuat sapaan...</p>\n      <p id=\"info\">Menunggu JavaScript...</p>\n      <p id=\"status\">JS belum berjalan</p>\n    </div>\n\n    <script>\n      // Ubah beberapa elemen sekaligus\n      document.getElementById(\"sapaan\").textContent = \"Halo! JavaScript sudah berjalan.\";\n      document.getElementById(\"info\").textContent = \"Di Level 3 kamu akan belajar membuat website yang bisa merespons pengguna.\";\n      document.getElementById(\"status\").textContent = \"\\u2713 JavaScript aktif dan bekerja dengan baik\";\n\n      // Log ke console\n      console.log(\"Halaman berhasil diinisialisasi oleh JavaScript.\");\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Di Mana Menempatkan Tag Script?",
+      "xp": 10,
+      "instructions": "Kamu memiliki file HTML dengan konten dan ingin menambahkan JavaScript. Di mana posisi terbaik untuk menempatkan tag script agar JavaScript bisa mengakses semua elemen HTML?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Di dalam tag head, sebelum tag body",
+        "Di baris pertama file HTML sebelum DOCTYPE",
+        "Di akhir body tepat sebelum tag penutup </body>",
+        "Di dalam tag p atau div manapun di body"
+      ],
+      "correctOption": "Di akhir body tepat sebelum tag penutup </body>"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Halaman Perkenalan dengan JavaScript",
+      "xp": 15,
+      "instructions": "Kode starter sudah punya HTML dan CSS. Tugasmu: tambahkan tag script di akhir body yang melakukan tiga hal:\n1. console.log() dengan pesan 'Script berjalan!'\n2. console.log() kedua dengan pesan 'Mengubah konten...'\n3. Ubah textContent elemen id='sapaan' menjadi 'Halo! Ini JavaScript berbicara!'\n4. Ubah textContent elemen id='info' menjadi 'JavaScript sudah aktif!'",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Perkenalan JS</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kotak { background: #fff; padding: 24px; border-radius: 8px; border: 1px solid #e2e8f0; max-width: 400px; }\n      #sapaan { font-size: 22px; color: #2b6cb0; font-weight: bold; margin-bottom: 12px; }\n      #info { font-size: 15px; color: #718096; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kotak\">\n      <p id=\"sapaan\">Menunggu JavaScript...</p>\n      <p id=\"info\">Status belum diketahui.</p>\n    </div>\n\n    <!-- Tambahkan script di sini -->\n\n  </body>\n</html>"
+      },
+      "expectedResult": "Elemen sapaan berisi 'Halo! Ini JavaScript berbicara!' dan elemen info berisi 'JavaScript sudah aktif!'",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Perkenalan JS</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kotak { background: #fff; padding: 24px; border-radius: 8px; border: 1px solid #e2e8f0; max-width: 400px; }\n      #sapaan { font-size: 22px; color: #2b6cb0; font-weight: bold; margin-bottom: 12px; }\n      #info { font-size: 15px; color: #718096; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kotak\">\n      <p id=\"sapaan\">Menunggu JavaScript...</p>\n      <p id=\"info\">Status belum diketahui.</p>\n    </div>\n\n    <script>\n      console.log('Script berjalan!');\n      console.log('Mengubah konten...');\n      document.getElementById('sapaan').textContent = 'Halo! Ini JavaScript berbicara!';\n      document.getElementById('info').textContent = 'JavaScript sudah aktif!';\n    </script>\n  </body>\n</html>",
+        "explanation": "Kita menambahkan tag script di akhir body. Di dalamnya: dua console.log() untuk pesan di console, lalu document.getElementById() untuk mendapatkan elemen berdasarkan id, dan .textContent untuk mengubah isi teksnya."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa peran JavaScript dalam trio HTML, CSS, dan JavaScript?",
+        "options": [
+          "Memberikan struktur dan konten halaman web",
+          "Mengatur tampilan visual seperti warna dan font",
+          "Memberikan perilaku dan interaktivitas pada halaman web",
+          "Menghubungkan halaman web ke database"
+        ],
+        "correctAnswer": "Memberikan perilaku dan interaktivitas pada halaman web",
+        "explanation": "Dalam trio pilar web: HTML memberikan struktur dan konten, CSS memberikan tampilan visual, dan JavaScript memberikan perilaku serta interaktivitas. JavaScript memungkinkan halaman merespons aksi pengguna dan mengubah konten secara dinamis.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Mengapa tag script sebaiknya diletakkan di akhir body?",
+        "options": [
+          "Karena browser tidak bisa membaca script di dalam head",
+          "Karena tag script di head akan menyebabkan error",
+          "Agar semua elemen HTML sudah dimuat sebelum JavaScript mencoba mengaksesnya",
+          "Karena CSS harus dimuat sebelum JavaScript tanpa pengecualian"
+        ],
+        "correctAnswer": "Agar semua elemen HTML sudah dimuat sebelum JavaScript mencoba mengaksesnya",
+        "explanation": "Browser membaca HTML dari atas ke bawah. Jika script ada di head, JavaScript berjalan sebelum elemen HTML di body selesai dibuat sehingga JavaScript tidak bisa menemukan elemen yang belum ada.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa fungsi dari console.log() dalam JavaScript?",
+        "options": [
+          "Menyimpan data ke database",
+          "Menampilkan pesan di Console browser — berguna untuk debugging",
+          "Membuat elemen HTML baru di halaman",
+          "Menghapus semua konten di halaman"
+        ],
+        "correctAnswer": "Menampilkan pesan di Console browser — berguna untuk debugging",
+        "explanation": "console.log() menampilkan pesan di Console browser (buka dengan F12). Ini sangat berguna untuk debugging — mengecek nilai variabel dan memastikan kode berjalan sesuai harapan.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Bagaimana cara menghubungkan file JavaScript eksternal bernama app.js ke halaman HTML?",
+        "options": [
+          "<javascript src=\"app.js\">",
+          "<link rel=\"javascript\" href=\"app.js\">",
+          "<script src=\"app.js\"></script>",
+          "<js file=\"app.js\">"
+        ],
+        "correctAnswer": "<script src=\"app.js\"></script>",
+        "explanation": "File JavaScript eksternal dihubungkan menggunakan tag script dengan atribut src. Formatnya: <script src=\"nama-file.js\"></script>. Berbeda dengan CSS yang menggunakan tag link, JavaScript menggunakan tag script.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Metode JavaScript mana yang digunakan untuk mengambil elemen HTML berdasarkan atribut id?",
+        "options": [
+          "document.getElement('id')",
+          "document.findById('id')",
+          "document.getElementById('id')",
+          "document.selectId('id')"
+        ],
+        "correctAnswer": "document.getElementById('id')",
+        "explanation": "document.getElementById() adalah metode yang mencari elemen HTML dengan atribut id yang sesuai. Penulisannya harus tepat — perhatikan huruf kapital pada 'By' dan 'Id'.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Selamat! Kamu baru saja menulis JavaScript pertamamu. Dari sini, setiap topik berikutnya akan membuat website-mu semakin interaktif dan hidup.",
+    "achievementName": "JavaScript Pemula",
+    "achievementIcon": "⚡"
+  }
+}

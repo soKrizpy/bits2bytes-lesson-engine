@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-23",
+    "title": "Functions — Kode yang Bisa Dipanggil Berkali-kali",
+    "description": "Pelajari cara membuat function di JavaScript untuk mengorganisir kode, menghindari pengulangan, dan membangun komponen interaktif yang reusable.",
+    "level": "beginner",
+    "category": "JavaScript",
+    "topicNumber": 6,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Functions — Resep yang Bisa Dipakai Berkali-kali",
+    "description": "Bayangkan harus menulis ulang cara membuat nasi goreng setiap kali ingin memasak. Buang-buang waktu, bukan? Function di JavaScript bekerja seperti resep — tulis sekali, gunakan berkali-kali. Di topik ini kamu akan belajar cara membuat function, memberikan parameter, dan mengembalikan nilai.",
+    "analogy": "Function seperti mesin pencetak kue. Kamu siapkan mesinnya sekali (definisi function), lalu setiap kali butuh kue tinggal tekan tombol (panggil function) dengan bahan yang berbeda (parameter). Setiap panggilan menghasilkan kue yang sempurna."
+  },
+  "objectives": [
+    "Membuat function dengan keyword function",
+    "Memahami parameter dan argumen dalam function",
+    "Menggunakan return untuk mengembalikan nilai",
+    "Memanggil function dari event handler",
+    "Menggabungkan function, events, kondisi, dan DOM untuk komponen interaktif"
+  ],
+  "review": {
+    "learned": [
+      "Function adalah blok kode bernama yang bisa dipanggil berkali-kali.",
+      "Parameter adalah variabel yang menerima nilai saat function dipanggil.",
+      "Argumen adalah nilai yang dikirim saat memanggil function.",
+      "return mengembalikan nilai dari function ke pemanggil.",
+      "Function bisa dipanggil dari event handler untuk merespons aksi pengguna.",
+      "Memecah kode menjadi function-function kecil membuat kode lebih mudah dibaca dan dipelihara."
+    ],
+    "keyConcepts": [
+      "Definisi function",
+      "Parameter dan argumen",
+      "Return value",
+      "Function sebagai event handler",
+      "Prinsip DRY — Don't Repeat Yourself"
+    ],
+    "takeaways": [
+      "Satu function sebaiknya melakukan satu hal — tulis function kecil yang fokus.",
+      "Beri nama function yang deskriptif: hitungGrade(), tampilkanPesan(), validasiEmail().",
+      "Function yang mengembalikan nilai (return) lebih reusable dari yang hanya mengubah DOM.",
+      "Pecahkan masalah besar menjadi function-function kecil — lebih mudah di-debug."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-function-intro",
+      "type": "lesson",
+      "title": "Apa Itu Function?",
+      "xp": 5,
+      "explanation": "Function adalah blok kode yang diberi nama dan bisa dipanggil kapan saja.\n\nSintaks dasar:\nfunction namaFunction() {\n  // kode di dalam function\n}\n\n// Cara memanggil:\nnamaFunction();\n\nMengapa function penting?\n• DRY (Don't Repeat Yourself) — tulis sekali, pakai berkali-kali\n• Kode lebih terorganisir dan mudah dibaca\n• Mudah diperbaiki — ubah di satu tempat, efeknya ke semua\n\nContoh sederhana:\nfunction sapa() {\n  console.log('Halo, selamat datang!');\n}\n\nsapa(); // panggil function\nsapa(); // panggil lagi — tulis sekali, pakai berkali-kali\n\nFunction tidak dijalankan saat didefinisikan — hanya saat dipanggil.",
+      "tips": [
+        "Function tidak dijalankan saat didefinisikan — hanya saat dipanggil.",
+        "Nama function sebaiknya berupa kata kerja: hitung, tampilkan, validasi, buat."
+      ]
+    },
+    {
+      "id": "node-02-parameters-return",
+      "type": "lesson",
+      "title": "Parameter dan Return Value",
+      "xp": 5,
+      "explanation": "Parameter memungkinkan function menerima input yang berbeda setiap kali dipanggil:\n\nfunction sapa(nama) {\n  console.log('Halo, ' + nama + '!');\n}\n\nsapa('Budi');  // Halo, Budi!\nsapa('Siti');  // Halo, Siti!\n\nreturn mengembalikan nilai dari function:\n\nfunction tambah(a, b) {\n  return a + b;\n}\n\nlet hasil = tambah(5, 3);  // hasil = 8\nlet lainnya = tambah(10, 20);  // lainnya = 30\n\nFunction dengan return lebih fleksibel — hasilnya bisa disimpan ke variabel atau langsung digunakan.\n\nKapan pakai return vs langsung ubah DOM?\n• return — saat function menghitung sesuatu, hasilnya bisa dipakai di mana saja\n• Langsung ubah DOM — saat function khusus untuk update tampilan",
+      "analogy": "Parameter seperti slot bahan di mesin kue — kamu bisa memasukkan bahan berbeda setiap saat. Return seperti kue yang keluar dari mesin — hasilnya bisa disimpan atau langsung disajikan.",
+      "tips": [
+        "Function bisa punya nol, satu, atau lebih parameter.",
+        "Jika function tidak memiliki return, ia mengembalikan undefined secara otomatis."
+      ]
+    },
+    {
+      "id": "node-03-basic-function-code",
+      "type": "code",
+      "title": "Function Pertamamu",
+      "xp": 5,
+      "explanation": "Contoh function sederhana — tanpa parameter dan dengan parameter. Perhatikan betapa ringkasnya kode saat logika dikumpulkan dalam function.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Function Dasar</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 24px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 460px; }\n      h2 { color: #2b6cb0; margin-bottom: 16px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 9px 18px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: bold; margin: 4px; }\n      #hasil { margin-top: 16px; padding: 12px; background: #f0f4f8; border-radius: 6px; font-size: 14px; color: #2d3748; min-height: 40px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Demo Function</h2>\n      <button onclick=\"sapaTanpaParameter()\">Sapa (tanpa parameter)</button>\n      <button onclick=\"sapaWithName('Budi')\">Sapa Budi</button>\n      <button onclick=\"sapaWithName('Siti')\">Sapa Siti</button>\n      <button onclick=\"tampilkanLuas(5, 3)\">Hitung Luas 5x3</button>\n      <button onclick=\"tampilkanLuas(8, 4)\">Hitung Luas 8x4</button>\n      <div id=\"hasil\">Klik tombol di atas...</div>\n    </div>\n\n    <script>\n      // Function tanpa parameter\n      function sapaTanpaParameter() {\n        document.getElementById('hasil').textContent = 'Halo! Selamat datang di BITS2BYTES!';\n      }\n\n      // Function dengan parameter\n      function sapaWithName(nama) {\n        document.getElementById('hasil').textContent = 'Halo, ' + nama + '! Semangat belajar!';\n      }\n\n      // Function dengan parameter dan return\n      function hitungLuas(panjang, lebar) {\n        return panjang * lebar;\n      }\n\n      function tampilkanLuas(p, l) {\n        const luas = hitungLuas(p, l);\n        document.getElementById('hasil').textContent = 'Luas ' + p + 'x' + l + ' = ' + luas;\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-function-event-code",
+      "type": "code",
+      "title": "Function sebagai Event Handler",
+      "xp": 5,
+      "explanation": "Function sangat berguna sebagai event handler. Definisi function terpisah dari event listener membuat kode lebih bersih dan mudah di-debug.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Function Event Handler</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f0f4f8; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 400px; }\n      h2 { color: #1a202c; margin-bottom: 16px; }\n      #angka-display { font-size: 56px; font-weight: bold; color: #2b6cb0; text-align: center; margin: 12px 0; }\n      .btn-row { display: flex; gap: 10px; justify-content: center; margin-bottom: 12px; }\n      button { border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: bold; }\n      .btn-plus { background: #3182ce; color: #fff; }\n      .btn-minus { background: #e53e3e; color: #fff; }\n      .btn-reset { background: #718096; color: #fff; }\n      #status { text-align: center; font-size: 14px; color: #718096; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Counter dengan Functions</h2>\n      <div id=\"angka-display\">0</div>\n      <div class=\"btn-row\">\n        <button class=\"btn-plus\" id=\"btn-tambah\">+ Tambah</button>\n        <button class=\"btn-minus\" id=\"btn-kurang\">- Kurang</button>\n        <button class=\"btn-reset\" id=\"btn-reset\">Reset</button>\n      </div>\n      <p id=\"status\">Mulai dengan klik tombol</p>\n    </div>\n\n    <script>\n      let angka = 0;\n\n      // Satu function untuk update tampilan — dipanggil oleh semua action\n      function tampilkanAngka() {\n        document.getElementById('angka-display').textContent = angka;\n      }\n\n      function tambah() {\n        angka = angka + 1;\n        tampilkanAngka();\n        document.getElementById('status').textContent = 'Ditambah! Sekarang: ' + angka;\n      }\n\n      function kurang() {\n        angka = angka - 1;\n        tampilkanAngka();\n        document.getElementById('status').textContent = 'Dikurang! Sekarang: ' + angka;\n      }\n\n      function reset() {\n        angka = 0;\n        tampilkanAngka();\n        document.getElementById('status').textContent = 'Direset ke 0.';\n      }\n\n      // Hubungkan event listener ke function\n      document.getElementById('btn-tambah').addEventListener('click', tambah);\n      document.getElementById('btn-kurang').addEventListener('click', kurang);\n      document.getElementById('btn-reset').addEventListener('click', reset);\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-return-value-code",
+      "type": "code",
+      "title": "Function dengan Return Value",
+      "xp": 5,
+      "explanation": "Function yang mengembalikan nilai lebih fleksibel. Pisahkan logika perhitungan dari tampilan — function hitung hanya return angka, function tampil yang mengurus DOM.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Return Value</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 24px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 440px; }\n      h2 { color: #1a202c; margin-bottom: 16px; }\n      .input-row { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; }\n      input { width: 90px; padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: bold; }\n      #hasil-kalkulator { margin-top: 16px; padding: 16px; background: #ebf8ff; border-radius: 8px; font-size: 18px; color: #2b6cb0; font-weight: bold; min-height: 52px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Kalkulator dengan Functions</h2>\n      <div class=\"input-row\">\n        <input type=\"number\" id=\"a\" placeholder=\"Angka 1\" value=\"10\">\n        <input type=\"number\" id=\"b\" placeholder=\"Angka 2\" value=\"5\">\n      </div>\n      <div class=\"input-row\">\n        <button onclick=\"hitung('tambah')\">+</button>\n        <button onclick=\"hitung('kurang')\">-</button>\n        <button onclick=\"hitung('kali')\">×</button>\n        <button onclick=\"hitung('bagi')\">÷</button>\n      </div>\n      <div id=\"hasil-kalkulator\">Pilih operasi di atas...</div>\n    </div>\n\n    <script>\n      // Functions yang HANYA menghitung dan return nilai\n      function tambah(a, b) { return a + b; }\n      function kurang(a, b) { return a - b; }\n      function kali(a, b) { return a * b; }\n      function bagi(a, b) {\n        if (b === 0) return 'Tidak bisa dibagi nol!';\n        return a / b;\n      }\n\n      // Function koordinator\n      function hitung(operasi) {\n        const a = parseFloat(document.getElementById('a').value);\n        const b = parseFloat(document.getElementById('b').value);\n        let hasil;\n        let simbol;\n\n        if (operasi === 'tambah') { hasil = tambah(a, b); simbol = '+'; }\n        else if (operasi === 'kurang') { hasil = kurang(a, b); simbol = '-'; }\n        else if (operasi === 'kali') { hasil = kali(a, b); simbol = '×'; }\n        else if (operasi === 'bagi') { hasil = bagi(a, b); simbol = '÷'; }\n\n        document.getElementById('hasil-kalkulator').textContent = a + ' ' + simbol + ' ' + b + ' = ' + hasil;\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-function-combined",
+      "type": "code",
+      "title": "Functions Terorganisir — Validasi Form",
+      "xp": 5,
+      "explanation": "Contoh form validasi yang menggunakan banyak functions kecil yang saling bekerja sama. Setiap function punya satu tanggung jawab yang jelas.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Form dengan Functions</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f0f4f8; }\n      .form-kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 440px; }\n      h2 { color: #1a202c; margin-bottom: 20px; }\n      label { display: block; font-size: 13px; color: #4a5568; margin-bottom: 4px; font-weight: bold; }\n      input { width: 100%; padding: 9px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px; margin-bottom: 4px; }\n      .field-error { border-color: #fc8181 !important; }\n      .pesan-field { font-size: 12px; height: 18px; margin-bottom: 8px; }\n      .pesan-error { color: #c53030; }\n      .pesan-ok { color: #276749; }\n      button { background: #3182ce; color: #fff; border: none; padding: 11px 24px; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: bold; width: 100%; margin-top: 8px; }\n      #hasil-form { margin-top: 16px; padding: 14px; border-radius: 8px; font-size: 15px; display: none; }\n    </style>\n  </head>\n  <body>\n    <div class=\"form-kartu\">\n      <h2>Formulir Pendaftaran</h2>\n      <label>Nama Lengkap</label>\n      <input type=\"text\" id=\"f-nama\" placeholder=\"Minimal 3 karakter\">\n      <div id=\"msg-nama\" class=\"pesan-field\"></div>\n\n      <label>Email</label>\n      <input type=\"text\" id=\"f-email\" placeholder=\"harus mengandung @\">\n      <div id=\"msg-email\" class=\"pesan-field\"></div>\n\n      <label>Password</label>\n      <input type=\"password\" id=\"f-pass\" placeholder=\"Minimal 6 karakter\">\n      <div id=\"msg-pass\" class=\"pesan-field\"></div>\n\n      <button onclick=\"submitForm()\">Daftar</button>\n      <div id=\"hasil-form\"></div>\n    </div>\n\n    <script>\n      function validasiNama(nama) {\n        if (nama.trim().length < 3) return 'Nama minimal 3 karakter.';\n        return '';\n      }\n\n      function validasiEmail(email) {\n        if (!email.includes('@')) return 'Email harus mengandung @.';\n        return '';\n      }\n\n      function validasiPassword(pass) {\n        if (pass.length < 6) return 'Password minimal 6 karakter.';\n        return '';\n      }\n\n      function tampilkanError(idMsg, idInput, pesan) {\n        const msg = document.getElementById(idMsg);\n        const input = document.getElementById(idInput);\n        if (pesan) {\n          msg.textContent = pesan;\n          msg.className = 'pesan-field pesan-error';\n          input.classList.add('field-error');\n        } else {\n          msg.textContent = '✓ OK';\n          msg.className = 'pesan-field pesan-ok';\n          input.classList.remove('field-error');\n        }\n        return pesan === '';\n      }\n\n      function submitForm() {\n        const nama = document.getElementById('f-nama').value;\n        const email = document.getElementById('f-email').value;\n        const pass = document.getElementById('f-pass').value;\n\n        const namaOk = tampilkanError('msg-nama', 'f-nama', validasiNama(nama));\n        const emailOk = tampilkanError('msg-email', 'f-email', validasiEmail(email));\n        const passOk = tampilkanError('msg-pass', 'f-pass', validasiPassword(pass));\n\n        const hasil = document.getElementById('hasil-form');\n        hasil.style.display = 'block';\n        if (namaOk && emailOk && passOk) {\n          hasil.textContent = 'Berhasil! ' + nama + ' terdaftar.';\n          hasil.style.cssText = 'display:block;background:#f0fff4;color:#276749;padding:14px;border-radius:8px';\n        } else {\n          hasil.textContent = 'Perbaiki field yang bermasalah.';\n          hasil.style.cssText = 'display:block;background:#fff5f5;color:#c53030;padding:14px;border-radius:8px';\n        }\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-reusable-cards",
+      "type": "code",
+      "title": "Function untuk Membuat Konten Dinamis",
+      "xp": 5,
+      "explanation": "Function bisa membuat elemen HTML baru secara dinamis — dipanggil berkali-kali dengan data berbeda untuk menghasilkan kartu yang berbeda. Ini adalah konsep dasar sebelum framework seperti React.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Function Buat Kartu</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background: #f0f4f8; padding: 32px; }\n      h1 { font-size: 22px; color: #1a202c; margin-bottom: 24px; }\n      .kartu-grid { display: flex; gap: 16px; flex-wrap: wrap; }\n      .kartu-siswa { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; width: 200px; }\n      .kartu-nama { font-size: 16px; font-weight: bold; color: #1a202c; margin-bottom: 4px; }\n      .kartu-xp { font-size: 13px; color: #718096; margin-bottom: 10px; }\n      .kartu-badge { display: inline-block; font-size: 12px; padding: 3px 10px; border-radius: 20px; font-weight: bold; }\n      .level-pemula { background: #f7fafc; color: #4a5568; }\n      .level-menengah { background: #ebf8ff; color: #2b6cb0; }\n      .level-ahli { background: #f0fff4; color: #276749; }\n    </style>\n  </head>\n  <body>\n    <h1>Papan Peringkat Siswa</h1>\n    <div class=\"kartu-grid\" id=\"grid-siswa\"></div>\n\n    <script>\n      // Function membuat HTML kartu — return string HTML\n      function buatKartu(nama, xp) {\n        let level, kelasLevel;\n        if (xp >= 500) { level = 'Ahli'; kelasLevel = 'level-ahli'; }\n        else if (xp >= 200) { level = 'Menengah'; kelasLevel = 'level-menengah'; }\n        else { level = 'Pemula'; kelasLevel = 'level-pemula'; }\n\n        return '<div class=\"kartu-siswa\">'\n          + '<div class=\"kartu-nama\">' + nama + '</div>'\n          + '<div class=\"kartu-xp\">' + xp + ' XP</div>'\n          + '<span class=\"kartu-badge ' + kelasLevel + '\">' + level + '</span>'\n          + '</div>';\n      }\n\n      // Data siswa\n      const siswa = [\n        { nama: 'Budi Santoso', xp: 480 },\n        { nama: 'Siti Rahayu', xp: 620 },\n        { nama: 'Andi Wijaya', xp: 150 },\n        { nama: 'Dewi Kartika', xp: 890 }\n      ];\n\n      // Panggil buatKartu untuk setiap siswa\n      const grid = document.getElementById('grid-siswa');\n      siswa.forEach(function(s) {\n        grid.innerHTML += buatKartu(s.nama, s.xp);\n      });\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Apa yang Dikembalikan Function Ini?",
+      "xp": 10,
+      "instructions": "Perhatikan function berikut:\nfunction hitungDiskon(harga, persen) {\n  return harga - (harga * persen / 100);\n}\nApa hasil dari hitungDiskon(200000, 20)?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "200000",
+        "160000",
+        "40000",
+        "20"
+      ],
+      "correctOption": "160000"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Kalkulator dengan Functions",
+      "xp": 15,
+      "instructions": "Buat kalkulator menggunakan functions terpisah.\n\nTugasmu:\n1. Buat function tambah(a, b), kurang(a, b), kali(a, b), bagi(a, b) — masing-masing return hasilnya\n2. Buat function tampilkanHasil(teks) yang menampilkan teks di id='hasil-kalkulator'\n3. Buat function hitungDanTampilkan(operasi) yang:\n   - Ambil nilai dari id='angka1' dan id='angka2' dengan parseFloat()\n   - Panggil function operasi yang sesuai\n   - Panggil tampilkanHasil() dengan hasilnya\n4. Setiap tombol (+, -, ×, ÷) memanggil hitungDanTampilkan('tambah') dll.",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Kalkulator</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 400px; }\n      h2 { color: #1a202c; margin-bottom: 16px; }\n      .input-row { display: flex; gap: 8px; margin-bottom: 12px; }\n      input { flex: 1; padding: 9px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; }\n      .btn-row { display: flex; gap: 8px; }\n      button { flex: 1; background: #3182ce; color: #fff; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; }\n      #hasil-kalkulator { margin-top: 16px; padding: 14px; background: #f0f4f8; border-radius: 8px; font-size: 18px; color: #2b6cb0; font-weight: bold; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Kalkulator</h2>\n      <div class=\"input-row\">\n        <input type=\"number\" id=\"angka1\" value=\"10\">\n        <input type=\"number\" id=\"angka2\" value=\"5\">\n      </div>\n      <div class=\"btn-row\">\n        <button onclick=\"hitungDanTampilkan('tambah')\">+</button>\n        <button onclick=\"hitungDanTampilkan('kurang')\">-</button>\n        <button onclick=\"hitungDanTampilkan('kali')\">×</button>\n        <button onclick=\"hitungDanTampilkan('bagi')\">÷</button>\n      </div>\n      <div id=\"hasil-kalkulator\">Pilih operasi...</div>\n    </div>\n    <script>\n      // Tulis functions di sini\n\n    </script>\n  </body>\n</html>"
+      },
+      "expectedResult": "Kalkulator yang menggunakan function terpisah untuk setiap operasi, dihubungkan oleh function koordinator.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Kalkulator</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 400px; }\n      h2 { color: #1a202c; margin-bottom: 16px; }\n      .input-row { display: flex; gap: 8px; margin-bottom: 12px; }\n      input { flex: 1; padding: 9px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; }\n      .btn-row { display: flex; gap: 8px; }\n      button { flex: 1; background: #3182ce; color: #fff; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; }\n      #hasil-kalkulator { margin-top: 16px; padding: 14px; background: #f0f4f8; border-radius: 8px; font-size: 18px; color: #2b6cb0; font-weight: bold; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Kalkulator</h2>\n      <div class=\"input-row\">\n        <input type=\"number\" id=\"angka1\" value=\"10\">\n        <input type=\"number\" id=\"angka2\" value=\"5\">\n      </div>\n      <div class=\"btn-row\">\n        <button onclick=\"hitungDanTampilkan('tambah')\">+</button>\n        <button onclick=\"hitungDanTampilkan('kurang')\">-</button>\n        <button onclick=\"hitungDanTampilkan('kali')\">×</button>\n        <button onclick=\"hitungDanTampilkan('bagi')\">÷</button>\n      </div>\n      <div id=\"hasil-kalkulator\">Pilih operasi...</div>\n    </div>\n    <script>\n      function tambah(a, b) { return a + b; }\n      function kurang(a, b) { return a - b; }\n      function kali(a, b) { return a * b; }\n      function bagi(a, b) {\n        if (b === 0) return 'Tidak bisa dibagi nol';\n        return a / b;\n      }\n\n      function tampilkanHasil(teks) {\n        document.getElementById('hasil-kalkulator').textContent = teks;\n      }\n\n      function hitungDanTampilkan(operasi) {\n        const a = parseFloat(document.getElementById('angka1').value);\n        const b = parseFloat(document.getElementById('angka2').value);\n        let hasil, simbol;\n        if (operasi === 'tambah') { hasil = tambah(a, b); simbol = '+'; }\n        else if (operasi === 'kurang') { hasil = kurang(a, b); simbol = '-'; }\n        else if (operasi === 'kali') { hasil = kali(a, b); simbol = '×'; }\n        else { hasil = bagi(a, b); simbol = '÷'; }\n        tampilkanHasil(a + ' ' + simbol + ' ' + b + ' = ' + hasil);\n      }\n    </script>\n  </body>\n</html>",
+        "explanation": "Kita membuat function terpisah untuk setiap operasi (tambah, kurang, kali, bagi) — masing-masing hanya return hasil tanpa menyentuh DOM. Function tampilkanHasil() khusus menangani tampilan ke DOM. Function hitungDanTampilkan() mengkoordinasikan keduanya: ambil nilai input, panggil function operasi yang sesuai, lalu panggil tampilkanHasil(). Pemisahan ini membuat setiap function mudah ditest dan diperbaiki secara independen."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Kapan kode di dalam function dijalankan?",
+        "options": [
+          "Saat file JavaScript dimuat oleh browser",
+          "Saat function dipanggil (dieksekusi)",
+          "Saat halaman pertama kali dibuka",
+          "Saat variabel di dalam function dideklarasikan"
+        ],
+        "correctAnswer": "Saat function dipanggil (dieksekusi)",
+        "explanation": "Function hanya mendefinisikan apa yang harus dilakukan — kodenya tidak dijalankan saat didefinisikan. Kode di dalam function baru dijalankan saat function tersebut dipanggil dengan menuliskan namaFunction(). Inilah yang membuat function bisa dipanggil berkali-kali.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa fungsi keyword return dalam function?",
+        "options": [
+          "Menghentikan program sepenuhnya",
+          "Mengembalikan nilai dari function ke tempat yang memanggil function tersebut",
+          "Mendeklarasikan variabel baru di dalam function",
+          "Memanggil function lain dari dalam function"
+        ],
+        "correctAnswer": "Mengembalikan nilai dari function ke tempat yang memanggil function tersebut",
+        "explanation": "return mengembalikan sebuah nilai dari function ke pemanggilnya dan menghentikan eksekusi function tersebut. Nilai yang di-return bisa disimpan ke variabel atau langsung digunakan. Function tanpa return mengembalikan undefined secara otomatis.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa perbedaan antara parameter dan argumen?",
+        "options": [
+          "Tidak ada perbedaan, keduanya merujuk hal yang sama",
+          "Parameter adalah variabel dalam definisi function, argumen adalah nilai yang dikirim saat memanggil function",
+          "Argumen adalah variabel dalam definisi function, parameter adalah nilai yang dikirim",
+          "Parameter hanya untuk tipe data number, argumen untuk tipe data lainnya"
+        ],
+        "correctAnswer": "Parameter adalah variabel dalam definisi function, argumen adalah nilai yang dikirim saat memanggil function",
+        "explanation": "Parameter adalah nama variabel yang ditulis saat mendefinisikan function: function sapa(nama) — 'nama' adalah parameter. Argumen adalah nilai aktual yang dikirim saat memanggil function: sapa('Budi') — 'Budi' adalah argumen.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Mengapa memecah kode menjadi function-function kecil direkomendasikan?",
+        "options": [
+          "Karena function kecil lebih cepat dijalankan oleh browser",
+          "Agar kode lebih mudah dibaca, dipelihara, dan digunakan ulang",
+          "Karena JavaScript tidak bisa menjalankan kode lebih dari 10 baris tanpa function",
+          "Karena browser membutuhkan function untuk membaca JavaScript"
+        ],
+        "correctAnswer": "Agar kode lebih mudah dibaca, dipelihara, dan digunakan ulang",
+        "explanation": "Prinsip DRY (Don't Repeat Yourself) mendorong penggunaan function untuk kode yang dipakai lebih dari sekali. Function kecil yang fokus pada satu tugas lebih mudah dibaca, di-debug, dan diubah tanpa mempengaruhi bagian kode yang lain.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Function hitungKeliling(r) mengembalikan 2 * 3.14 * r. Apa hasil dari hitungKeliling(5)?",
+        "options": [
+          "5",
+          "3.14",
+          "31.4",
+          "10"
+        ],
+        "correctAnswer": "31.4",
+        "explanation": "Saat hitungKeliling(5) dipanggil, parameter r mendapat nilai 5. Perhitungannya: 2 * 3.14 * 5 = 31.4. Function mengembalikan nilai 31.4 ke pemanggilnya.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Functions adalah blok bangunan dari semua program JavaScript yang baik. Dengan functions kodenya jadi lebih rapi, bisa digunakan ulang, dan mudah diperbaiki. Kamu siap membangun komponen interaktif yang sesungguhnya!",
+    "achievementName": "Function Builder",
+    "achievementIcon": "🔧"
+  }
+}

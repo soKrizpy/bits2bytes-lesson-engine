@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-19",
+    "title": "Variabel dan Data — Menyimpan Informasi di JavaScript",
+    "description": "Pelajari cara menyimpan dan menggunakan data dengan variabel let dan const, serta kenali tipe data dasar: string, number, dan boolean.",
+    "level": "beginner",
+    "category": "JavaScript",
+    "topicNumber": 2,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Data — Bahan Bakar Program",
+    "description": "Setiap program komputer bekerja dengan data. Di JavaScript, kita menyimpan data dalam variabel — kotak bernama yang bisa menyimpan informasi. Nama pengguna, angka skor, status login — semuanya disimpan dalam variabel. Di topik ini kamu akan belajar cara membuat dan menggunakan variabel.",
+    "analogy": "Variabel seperti kotak penyimpanan berlabel. Label di kotak adalah nama variabel, isi kotak adalah nilainya. let memungkinkan isi kotak diganti, const membuat kotak yang tidak bisa diisi ulang."
+  },
+  "objectives": [
+    "Membuat variabel menggunakan let dan const",
+    "Memahami tipe data string, number, dan boolean",
+    "Menggabungkan string dengan operator +",
+    "Menampilkan nilai variabel di halaman menggunakan textContent",
+    "Memahami perbedaan antara let dan const"
+  ],
+  "review": {
+    "learned": [
+      "let digunakan untuk variabel yang nilainya bisa berubah.",
+      "const digunakan untuk variabel yang nilainya tetap — tidak bisa diubah setelah dideklarasikan.",
+      "String adalah tipe data teks — ditulis di antara tanda kutip: 'teks' atau \"teks\".",
+      "Number adalah tipe data angka: 42, 3.14, -10.",
+      "Boolean adalah tipe data benar/salah: true atau false.",
+      "Operator + pada string menggabungkan teks (concatenation), pada number melakukan penjumlahan."
+    ],
+    "keyConcepts": [
+      "Variabel let dan const",
+      "String",
+      "Number",
+      "Boolean",
+      "String concatenation dengan +"
+    ],
+    "takeaways": [
+      "Gunakan const secara default — hanya gunakan let jika nilainya perlu diubah.",
+      "Nama variabel ditulis dengan camelCase: namaLengkap, jumlahSkor, isLoggedIn.",
+      "typeof variabel mengembalikan tipe data sebagai string — berguna untuk debugging.",
+      "Menggabungkan string dengan + sangat umum untuk membuat pesan dinamis."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-variables",
+      "type": "lesson",
+      "title": "Apa Itu Variabel?",
+      "xp": 5,
+      "explanation": "Variabel adalah tempat penyimpanan data yang diberi nama. Di JavaScript ada tiga kata kunci untuk membuat variabel:\n\n• let — nilai bisa diubah setelah dideklarasikan\n• const — nilai tidak bisa diubah (constant)\n• var — cara lama, tidak direkomendasikan lagi\n\nCara membuat variabel:\nlet nama = 'Budi';\nconst PI = 3.14;\n\nAturan penamaan variabel:\n• Mulai dengan huruf, underscore _, atau $\n• Tidak boleh ada spasi — gunakan camelCase: namaDepan\n• Tidak boleh menggunakan kata kunci JavaScript: let, const, function, dll.\n• Bersifat case-sensitive: Nama dan nama adalah dua variabel berbeda\n\nKapan pakai let vs const?\n• const — default pilihan, gunakan untuk nilai yang tidak perlu berubah\n• let — gunakan hanya jika nilai perlu diubah (misalnya skor game, counter)",
+      "tips": [
+        "Gunakan nama variabel yang deskriptif: namaLengkap jauh lebih baik dari x.",
+        "Sebagian besar variabel sebenarnya adalah const — hanya beberapa yang perlu diubah nilainya."
+      ]
+    },
+    {
+      "id": "node-02-data-types",
+      "type": "lesson",
+      "title": "Tipe Data: String, Number, Boolean",
+      "xp": 5,
+      "explanation": "JavaScript memiliki beberapa tipe data. Tiga yang paling penting untuk pemula:\n\n1. String — teks\nDitulis di antara tanda kutip (tunggal atau ganda):\nconst nama = 'Budi';\nconst kota = \"Jakarta\";\n\n2. Number — angka\nBulat atau desimal, positif atau negatif:\nconst umur = 15;\nconst nilai = 89.5;\n\n3. Boolean — benar atau salah\nHanya dua kemungkinan nilai:\nconst sudahLogin = true;\nconst isPremium = false;\n\nMengecek tipe data:\nconsole.log(typeof 'hello');  // 'string'\nconsole.log(typeof 42);       // 'number'\nconsole.log(typeof true);     // 'boolean'",
+      "analogy": "Tipe data seperti jenis barang di toko: string adalah barang yang bisa dibaca (buku, label), number adalah barang yang bisa dihitung (uang, berat), boolean adalah saklar on/off.",
+      "tips": [
+        "Jangan letakkan angka dalam tanda kutip jika ingin digunakan untuk perhitungan: '42' adalah string, 42 adalah number.",
+        "Template literal (`Halo ${nama}`) adalah cara modern menggabungkan string — dipelajari setelah konsep dasar dikuasai."
+      ]
+    },
+    {
+      "id": "node-03-let-const-code",
+      "type": "code",
+      "title": "let dan const dalam Aksi",
+      "xp": 5,
+      "explanation": "Contoh ini menunjukkan penggunaan let dan const, serta menampilkan nilai variabel di console dan di halaman.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Variabel JavaScript</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 24px; border-radius: 8px; border: 1px solid #e2e8f0; max-width: 420px; }\n      h2 { color: #2b6cb0; margin-bottom: 12px; }\n      p { color: #4a5568; margin-bottom: 8px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Data Profil</h2>\n      <p id=\"tampil-nama\">Memuat nama...</p>\n      <p id=\"tampil-umur\">Memuat umur...</p>\n      <p id=\"tampil-status\">Memuat status...</p>\n    </div>\n\n    <script>\n      // Deklarasi variabel\n      const nama = 'Budi Santoso';\n      const umur = 15;\n      const sudahLogin = true;\n\n      // Tampilkan di console\n      console.log('Nama:', nama);\n      console.log('Umur:', umur);\n      console.log('Login:', sudahLogin);\n\n      // Tampilkan di halaman\n      document.getElementById('tampil-nama').textContent = 'Nama: ' + nama;\n      document.getElementById('tampil-umur').textContent = 'Umur: ' + umur + ' tahun';\n      document.getElementById('tampil-status').textContent = 'Status login: ' + sudahLogin;\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-string-concat",
+      "type": "code",
+      "title": "Menggabungkan String",
+      "xp": 5,
+      "explanation": "Operator + pada string menggabungkan teks — ini disebut string concatenation. Sangat berguna untuk membuat pesan dinamis dari beberapa variabel.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>String Concatenation</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f0f4f8; }\n      .kotak { background: #fff; padding: 24px; border-radius: 8px; border: 1px solid #e2e8f0; max-width: 480px; }\n      h2 { color: #1a202c; margin-bottom: 16px; }\n      .item { font-size: 15px; color: #4a5568; margin-bottom: 8px; padding: 8px 12px; background: #f7fafc; border-radius: 4px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kotak\">\n      <h2>Profil Pengguna</h2>\n      <div id=\"baris-1\" class=\"item\">Memuat...</div>\n      <div id=\"baris-2\" class=\"item\">Memuat...</div>\n      <div id=\"baris-3\" class=\"item\">Memuat...</div>\n    </div>\n\n    <script>\n      const namaDepan = 'Budi';\n      const namaBelakang = 'Santoso';\n      const kota = 'Jakarta';\n      const umur = 15;\n\n      // Gabungkan string dengan +\n      const namaLengkap = namaDepan + ' ' + namaBelakang;\n      const perkenalan = 'Halo, nama saya ' + namaLengkap + '!';\n      const lokasi = 'Saya tinggal di ' + kota + ' dan berumur ' + umur + ' tahun.';\n\n      console.log(perkenalan);\n      console.log(lokasi);\n\n      document.getElementById('baris-1').textContent = perkenalan;\n      document.getElementById('baris-2').textContent = lokasi;\n      document.getElementById('baris-3').textContent = 'Tipe nama: ' + typeof namaLengkap + ', tipe umur: ' + typeof umur;\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-number-operations",
+      "type": "code",
+      "title": "Operasi dengan Number",
+      "xp": 5,
+      "explanation": "Number mendukung semua operasi matematika dasar: + (tambah), - (kurang), * (kali), / (bagi), % (sisa bagi). Berguna untuk menghitung skor, total harga, dsb.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Operasi Number</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 24px; border-radius: 8px; border: 1px solid #e2e8f0; max-width: 440px; }\n      h2 { color: #2b6cb0; margin-bottom: 16px; }\n      .hasil { font-size: 15px; color: #4a5568; margin-bottom: 8px; }\n      .total { font-size: 18px; color: #276749; font-weight: bold; margin-top: 12px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Kalkulator Nilai</h2>\n      <p id=\"nilai-tugas\" class=\"hasil\">Menghitung...</p>\n      <p id=\"nilai-ulangan\" class=\"hasil\">Menghitung...</p>\n      <p id=\"rata-rata\" class=\"total\">Rata-rata: ...</p>\n    </div>\n\n    <script>\n      const nilaiTugas = 85;\n      const nilaiUlangan = 92;\n      const nilaiPraktik = 88;\n\n      // Operasi matematika\n      const total = nilaiTugas + nilaiUlangan + nilaiPraktik;\n      const rataRata = total / 3;\n\n      console.log('Total nilai:', total);\n      console.log('Rata-rata:', rataRata);\n\n      document.getElementById('nilai-tugas').textContent = 'Tugas: ' + nilaiTugas;\n      document.getElementById('nilai-ulangan').textContent = 'Ulangan: ' + nilaiUlangan + '  |  Praktik: ' + nilaiPraktik;\n      document.getElementById('rata-rata').textContent = 'Rata-rata: ' + rataRata.toFixed(1);\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-boolean-use",
+      "type": "code",
+      "title": "Boolean — Nilai Benar dan Salah",
+      "xp": 5,
+      "explanation": "Boolean (true/false) digunakan untuk menyimpan kondisi. Sangat berguna untuk menyatakan status: apakah pengguna sudah login? apakah form valid? apakah tombol aktif? Nilai boolean juga bisa dihitung dari perbandingan.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Boolean</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 24px; border-radius: 8px; border: 1px solid #e2e8f0; max-width: 440px; }\n      h2 { color: #1a202c; margin-bottom: 16px; }\n      .status { font-size: 15px; margin-bottom: 8px; padding: 8px 12px; border-radius: 4px; }\n      .aktif { background: #f0fff4; color: #276749; }\n      .nonaktif { background: #fff5f5; color: #c53030; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Status Akun</h2>\n      <div id=\"status-login\" class=\"status\">Mengecek...</div>\n      <div id=\"status-premium\" class=\"status\">Mengecek...</div>\n      <div id=\"status-nilai\" class=\"status\">Mengecek...</div>\n    </div>\n\n    <script>\n      // Boolean dari nilai langsung\n      const sudahLogin = true;\n      const isPremium = false;\n\n      // Boolean dari perbandingan\n      const nilaiUjian = 78;\n      const lulusUjian = nilaiUjian >= 75;  // hasilnya true atau false\n\n      console.log('Login:', sudahLogin);\n      console.log('Premium:', isPremium);\n      console.log('Lulus:', lulusUjian);\n\n      // Tampilkan status dengan teks deskriptif\n      document.getElementById('status-login').textContent =\n        'Status Login: ' + (sudahLogin ? 'Sudah login' : 'Belum login');\n      document.getElementById('status-premium').textContent =\n        'Akun Premium: ' + (isPremium ? 'Ya' : 'Tidak');\n      document.getElementById('status-nilai').textContent =\n        'Nilai ' + nilaiUjian + ' \\u2014 ' + (lulusUjian ? 'LULUS' : 'BELUM LULUS');\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-variables-full",
+      "type": "code",
+      "title": "Variabel dalam Halaman Nyata",
+      "xp": 5,
+      "explanation": "Menggabungkan semua tipe data dalam satu halaman profil yang realistis. Ini menunjukkan bagaimana variabel digunakan dalam konteks website yang nyata — menyimpan data pengguna dan menampilkannya secara dinamis.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Kartu Profil Dinamis</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; background: #f0f4f8; padding: 32px; }\n      .profil-kartu { background: #fff; border-radius: 16px; padding: 32px; max-width: 380px; border: 1px solid #e2e8f0; }\n      .nama { font-size: 24px; font-weight: bold; color: #1a202c; margin-bottom: 4px; }\n      .info { font-size: 14px; color: #718096; margin-bottom: 16px; }\n      .stats { display: flex; gap: 16px; margin-bottom: 16px; }\n      .stat { text-align: center; background: #f7fafc; border-radius: 8px; padding: 12px 16px; }\n      .stat-angka { font-size: 20px; font-weight: bold; color: #2b6cb0; }\n      .stat-label { font-size: 12px; color: #718096; }\n      .badge { display: inline-block; background: #f0fff4; color: #276749; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: bold; }\n    </style>\n  </head>\n  <body>\n    <div class=\"profil-kartu\">\n      <p class=\"nama\" id=\"nama-pengguna\">Memuat...</p>\n      <p class=\"info\" id=\"info-pengguna\">Memuat...</p>\n      <div class=\"stats\">\n        <div class=\"stat\">\n          <div class=\"stat-angka\" id=\"angka-xp\">0</div>\n          <div class=\"stat-label\">XP</div>\n        </div>\n        <div class=\"stat\">\n          <div class=\"stat-angka\" id=\"angka-topik\">0</div>\n          <div class=\"stat-label\">Topik</div>\n        </div>\n        <div class=\"stat\">\n          <div class=\"stat-angka\" id=\"angka-hari\">0</div>\n          <div class=\"stat-label\">Hari</div>\n        </div>\n      </div>\n      <span class=\"badge\" id=\"badge-level\">Memuat level...</span>\n    </div>\n\n    <script>\n      // Data pengguna — semua dalam variabel\n      const namaPengguna = 'Budi Santoso';\n      const levelPengguna = 'Pemula';\n      const totalXP = 480;\n      const topikSelesai = 3;\n      const hariStreak = 7;\n      const isPremium = false;\n\n      // Info gabungan\n      const infoTeks = levelPengguna + (isPremium ? ' \\u00b7 Premium' : ' \\u00b7 Gratis');\n\n      // Tampilkan semua ke halaman\n      document.getElementById('nama-pengguna').textContent = namaPengguna;\n      document.getElementById('info-pengguna').textContent = infoTeks;\n      document.getElementById('angka-xp').textContent = totalXP;\n      document.getElementById('angka-topik').textContent = topikSelesai;\n      document.getElementById('angka-hari').textContent = hariStreak;\n      document.getElementById('badge-level').textContent = 'Level: ' + levelPengguna;\n\n      console.log('Profil dimuat untuk:', namaPengguna);\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Pilih Jenis Variabel yang Tepat",
+      "xp": 10,
+      "instructions": "Kamu ingin menyimpan nilai pi (3.14159) yang tidak akan pernah berubah dalam program. Cara penulisan variabel mana yang paling tepat?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "let pi = 3.14159;",
+        "const pi = 3.14159;",
+        "var pi = 3.14159;",
+        "string pi = 3.14159;"
+      ],
+      "correctOption": "const pi = 3.14159;"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Kartu Profil dengan Variabel",
+      "xp": 15,
+      "instructions": "Buat kartu profil yang menampilkan data dari variabel JavaScript.\n\nTugasmu: Lengkapi script di starter code untuk:\n1. Buat variabel const untuk: nama (string), kota (string), topikSelesai (number), xpTotal (number)\n2. Tampilkan nama di id='nama'\n3. Tampilkan kota di id='kota'\n4. Tampilkan topikSelesai + ' topik selesai' di id='progress'\n5. Tampilkan 'Total XP: ' + xpTotal di id='xp'",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Kartu Profil</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f0f4f8; }\n      .kartu { background: #fff; border-radius: 12px; padding: 28px; max-width: 360px; border: 1px solid #e2e8f0; }\n      #nama { font-size: 22px; font-weight: bold; color: #1a202c; margin-bottom: 4px; }\n      #kota { font-size: 14px; color: #718096; margin-bottom: 16px; }\n      #progress { font-size: 15px; color: #2b6cb0; margin-bottom: 6px; }\n      #xp { font-size: 15px; color: #276749; font-weight: bold; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <p id=\"nama\">Memuat...</p>\n      <p id=\"kota\">Memuat...</p>\n      <p id=\"progress\">Memuat...</p>\n      <p id=\"xp\">Memuat...</p>\n    </div>\n\n    <script>\n      // Buat variabel dan tampilkan di halaman di sini\n\n    </script>\n  </body>\n</html>"
+      },
+      "expectedResult": "Kartu profil dengan nama, kota, jumlah topik, dan total XP yang berasal dari variabel JavaScript.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Kartu Profil</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f0f4f8; }\n      .kartu { background: #fff; border-radius: 12px; padding: 28px; max-width: 360px; border: 1px solid #e2e8f0; }\n      #nama { font-size: 22px; font-weight: bold; color: #1a202c; margin-bottom: 4px; }\n      #kota { font-size: 14px; color: #718096; margin-bottom: 16px; }\n      #progress { font-size: 15px; color: #2b6cb0; margin-bottom: 6px; }\n      #xp { font-size: 15px; color: #276749; font-weight: bold; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <p id=\"nama\">Memuat...</p>\n      <p id=\"kota\">Memuat...</p>\n      <p id=\"progress\">Memuat...</p>\n      <p id=\"xp\">Memuat...</p>\n    </div>\n\n    <script>\n      const nama = 'Budi Santoso';\n      const kota = 'Jakarta';\n      const topikSelesai = 5;\n      const xpTotal = 320;\n\n      document.getElementById('nama').textContent = nama;\n      document.getElementById('kota').textContent = kota;\n      document.getElementById('progress').textContent = topikSelesai + ' topik selesai';\n      document.getElementById('xp').textContent = 'Total XP: ' + xpTotal;\n    </script>\n  </body>\n</html>",
+        "explanation": "Kita membuat empat const: nama (string), kota (string), topikSelesai (number), xpTotal (number). Lalu menggunakan document.getElementById() dan .textContent untuk menampilkan setiap variabel di elemen HTML yang sesuai. Operator + menggabungkan string dan number untuk membuat teks lengkap."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa perbedaan antara let dan const dalam JavaScript?",
+        "options": [
+          "let hanya untuk angka, const hanya untuk teks",
+          "let nilainya bisa diubah setelah dideklarasikan, const tidak bisa diubah",
+          "let digunakan di luar function, const di dalam function",
+          "let dan const sama persis, hanya beda nama"
+        ],
+        "correctAnswer": "let nilainya bisa diubah setelah dideklarasikan, const tidak bisa diubah",
+        "explanation": "let adalah variabel yang nilainya bisa diubah kapan saja. const (constant) adalah variabel yang nilainya tetap setelah dideklarasikan — mencoba mengubahnya akan menyebabkan error. Gunakan const secara default, let hanya jika nilai perlu berubah.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa tipe data dari nilai 'Selamat datang!' dalam JavaScript?",
+        "options": [
+          "number",
+          "boolean",
+          "string",
+          "text"
+        ],
+        "correctAnswer": "string",
+        "explanation": "Nilai yang ditulis di antara tanda kutip (tunggal atau ganda) adalah string. String adalah tipe data untuk teks. Nilai 'Selamat datang!' adalah string karena diapit tanda kutip.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa hasil dari ekspresi 'Halo, ' + 'Budi' dalam JavaScript?",
+        "options": [
+          "Error, tidak bisa menjumlahkan string",
+          "'Halo, Budi'",
+          "HaloBudi",
+          "'Halo, ' 'Budi'"
+        ],
+        "correctAnswer": "'Halo, Budi'",
+        "explanation": "Operator + pada string melakukan concatenation — menggabungkan dua string menjadi satu. 'Halo, ' + 'Budi' menghasilkan string baru 'Halo, Budi'. Ini berbeda dari + pada angka yang melakukan penjumlahan matematika.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Nilai apa saja yang mungkin dimiliki oleh tipe data boolean?",
+        "options": [
+          "0 dan 1",
+          "ya dan tidak",
+          "true dan false",
+          "benar dan salah"
+        ],
+        "correctAnswer": "true dan false",
+        "explanation": "Boolean hanya memiliki dua kemungkinan nilai: true (benar) dan false (salah). Ditulis tanpa tanda kutip — true dan false adalah kata kunci JavaScript, bukan string.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Kamu ingin menyimpan nama pengguna yang tidak akan pernah berubah. Cara penulisan mana yang paling tepat?",
+        "options": [
+          "let namaPengguna = 'Budi';",
+          "var namaPengguna = 'Budi';",
+          "const namaPengguna = 'Budi';",
+          "string namaPengguna = 'Budi';"
+        ],
+        "correctAnswer": "const namaPengguna = 'Budi';",
+        "explanation": "Karena nilai tidak akan berubah, gunakan const. const memberitahu programmer lain (dan dirimu sendiri di masa depan) bahwa nilai ini tidak dimaksudkan untuk diubah. var sudah tidak direkomendasikan, dan 'string' bukan kata kunci JavaScript.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Kamu sekarang bisa menyimpan dan menampilkan data menggunakan variabel. String, number, dan boolean adalah blok bangunan dari semua program JavaScript yang akan kamu tulis.",
+    "achievementName": "Pengelola Data",
+    "achievementIcon": "📦"
+  }
+}

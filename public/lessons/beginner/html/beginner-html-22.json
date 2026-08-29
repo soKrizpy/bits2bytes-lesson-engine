@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-html-22",
+    "title": "Kondisi — Website yang Bisa Mengambil Keputusan",
+    "description": "Pelajari cara membuat website yang bisa mengambil keputusan menggunakan if, else if, dan else — sehingga konten dan perilaku halaman berubah berdasarkan kondisi.",
+    "level": "beginner",
+    "category": "JavaScript",
+    "topicNumber": 5,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "if/else — Otak Pengambil Keputusan",
+    "description": "Website yang cerdas bisa merespons berbeda tergantung situasi: menampilkan pesan berbeda untuk pengguna baru vs lama, memvalidasi form sebelum dikirim, atau mengubah warna skor berdasarkan nilainya. Semua itu membutuhkan kondisi — kemampuan JavaScript untuk 'berpikir' dan mengambil keputusan.",
+    "analogy": "if/else seperti lampu lalu lintas. Jika lampu merah — berhenti. Jika lampu kuning — siap-siap. Jika lampu hijau — jalan. Kode yang sama dijalankan setiap hari, tapi hasilnya berbeda tergantung kondisi saat itu."
+  },
+  "objectives": [
+    "Menulis kondisi sederhana dengan if dan else",
+    "Menggunakan else if untuk menangani beberapa kondisi",
+    "Menggunakan operator perbandingan: ===, !==, <, >, <=, >=",
+    "Menggunakan operator logika: && (dan), || (atau)",
+    "Menerapkan kondisi untuk memvalidasi input dan memberikan feedback"
+  ],
+  "review": {
+    "learned": [
+      "if (kondisi) { } menjalankan blok kode hanya jika kondisi bernilai true.",
+      "else { } menjalankan blok kode jika kondisi if bernilai false.",
+      "else if (kondisi) { } menambahkan kondisi tambahan antara if dan else.",
+      "Operator perbandingan: === (sama persis), !== (tidak sama), < > <= >= (lebih kecil/besar).",
+      "Operator logika: && (keduanya true), || (salah satu true), ! (negasi).",
+      "Kondisi sering digunakan untuk validasi form dan memberikan feedback dinamis."
+    ],
+    "keyConcepts": [
+      "if/else",
+      "else if",
+      "Operator perbandingan ===",
+      "Operator logika && dan ||",
+      "Validasi form"
+    ],
+    "takeaways": [
+      "Gunakan === bukan == untuk perbandingan — === memeriksa nilai DAN tipe data.",
+      "else if memungkinkan banyak cabang kondisi — pisahkan kasus-kasus yang berbeda.",
+      "Kondisi bisa menggabungkan beberapa cek dengan && (dan) atau || (atau).",
+      "Validasi input sebelum memproses adalah praktik terbaik — jangan percaya input pengguna."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-if-else-intro",
+      "type": "lesson",
+      "title": "if dan else — Membuat Keputusan",
+      "xp": 5,
+      "explanation": "Kondisi memungkinkan JavaScript menjalankan kode yang berbeda tergantung situasi.\n\nSintaks dasar:\nif (kondisi) {\n  // kode dijalankan jika kondisi true\n} else {\n  // kode dijalankan jika kondisi false\n}\n\nKondisi harus menghasilkan true atau false.\n\nOperator perbandingan:\n• === (sama persis, nilai dan tipe)\n• !== (tidak sama)\n• < (lebih kecil)\n• > (lebih besar)\n• <= (lebih kecil atau sama)\n• >= (lebih besar atau sama)\n\nContoh:\nvar nilai = 80;\nif (nilai >= 75) {\n  console.log('Lulus');\n} else {\n  console.log('Belum Lulus');\n}\n\nPerbedaan === vs ==:\n• 5 === '5' adalah FALSE (beda tipe: number vs string)\n• 5 == '5' adalah TRUE (hanya cek nilai)\nSelalu gunakan === untuk menghindari kejutan.",
+      "tips": [
+        "Gunakan === bukan == — === memeriksa nilai dan tipe data sekaligus.",
+        "Kondisi dalam if() selalu dievaluasi menjadi true atau false."
+      ]
+    },
+    {
+      "id": "node-02-elseif-operators",
+      "type": "lesson",
+      "title": "else if dan Operator Logika",
+      "xp": 5,
+      "explanation": "else if memungkinkan menangani lebih dari dua kondisi:\n\nif (nilai >= 90) {\n  grade = 'A';\n} else if (nilai >= 80) {\n  grade = 'B';\n} else if (nilai >= 70) {\n  grade = 'C';\n} else {\n  grade = 'D';\n}\n\nUrutan penting — kondisi pertama yang true akan dieksekusi, sisanya dilewati.\n\nOperator logika:\n• && (dan) — kedua kondisi harus true\n  contoh: umur >= 17 && punya_sim === true\n• || (atau) — salah satu kondisi harus true\n  contoh: role === 'admin' || role === 'moderator'\n• ! (negasi) — membalik nilai boolean\n  contoh: !sudahLogin (true jika belum login)",
+      "analogy": "Operator && seperti syarat masuk konser: harus punya tiket DAN sudah dewasa — keduanya harus terpenuhi. Operator || seperti akses VIP: punya kartu anggota ATAU punya undangan — salah satu cukup.",
+      "tips": [
+        "Urutan else if penting — kondisi pertama yang true akan dieksekusi, sisanya dilewati.",
+        "!kondisi artinya 'bukan kondisi' — berguna untuk cek apakah sesuatu TIDAK berlaku."
+      ]
+    },
+    {
+      "id": "node-03-basic-condition-code",
+      "type": "code",
+      "title": "if/else dalam Aksi",
+      "xp": 5,
+      "explanation": "Contoh validasi input nilai dan memberikan grade serta pesan motivasi menggunakan else if berantai. Perhatikan urutan kondisi dari nilai tertinggi ke terendah.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Kalkulator Grade</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 420px; }\n      h2 { color: #1a202c; margin-bottom: 20px; }\n      label { display: block; font-size: 14px; color: #4a5568; margin-bottom: 6px; font-weight: bold; }\n      input { width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; margin-bottom: 14px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 11px 28px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; }\n      #hasil { margin-top: 20px; padding: 16px; border-radius: 8px; display: none; }\n      #hasil .grade { font-size: 36px; font-weight: bold; margin-bottom: 4px; }\n      #hasil .pesan { font-size: 15px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Cek Grade Nilai</h2>\n      <label for=\"input-nilai\">Masukkan nilai (0-100):</label>\n      <input type=\"number\" id=\"input-nilai\" min=\"0\" max=\"100\" placeholder=\"Contoh: 85\">\n      <button onclick=\"cekNilai()\">Cek Grade</button>\n      <div id=\"hasil\"></div>\n    </div>\n\n    <script>\n      function cekNilai() {\n        var nilaiStr = document.getElementById('input-nilai').value;\n        var hasilDiv = document.getElementById('hasil');\n\n        if (nilaiStr === '') {\n          hasilDiv.style.display = 'block';\n          hasilDiv.style.background = '#fff5f5';\n          hasilDiv.innerHTML = '<p style=\"color:#c53030\">Masukkan nilai terlebih dahulu.</p>';\n          return;\n        }\n\n        var nilai = parseInt(nilaiStr);\n        var grade, pesan, warnaBg, warnaText;\n\n        if (nilai >= 90) {\n          grade = 'A';\n          pesan = 'Luar biasa! Pertahankan prestasi ini.';\n          warnaBg = '#f0fff4'; warnaText = '#276749';\n        } else if (nilai >= 80) {\n          grade = 'B';\n          pesan = 'Bagus sekali! Sedikit lagi mencapai sempurna.';\n          warnaBg = '#ebf8ff'; warnaText = '#2b6cb0';\n        } else if (nilai >= 70) {\n          grade = 'C';\n          pesan = 'Cukup baik. Tingkatkan terus belajarmu.';\n          warnaBg = '#fef3cd'; warnaText = '#744210';\n        } else if (nilai >= 60) {\n          grade = 'D';\n          pesan = 'Perlu ditingkatkan. Jangan menyerah!';\n          warnaBg = '#fff5f5'; warnaText = '#c53030';\n        } else {\n          grade = 'E';\n          pesan = 'Perlu belajar lebih keras. Kamu pasti bisa!';\n          warnaBg = '#fff5f5'; warnaText = '#e53e3e';\n        }\n\n        hasilDiv.style.display = 'block';\n        hasilDiv.style.background = warnaBg;\n        hasilDiv.innerHTML = '<div class=\"grade\" style=\"color:' + warnaText + '\">Grade: ' + grade + '</div>' +\n          '<div class=\"pesan\" style=\"color:' + warnaText + '\">' + pesan + '</div>';\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-04-form-validation-code",
+      "type": "code",
+      "title": "Validasi Form dengan Kondisi",
+      "xp": 5,
+      "explanation": "Kondisi sangat berguna untuk memvalidasi form sebelum diproses. Cek field tidak kosong, format email benar, dan beri feedback spesifik untuk setiap masalah.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Validasi Form</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 440px; }\n      h2 { color: #1a202c; margin-bottom: 20px; }\n      label { display: block; font-size: 14px; color: #4a5568; margin-bottom: 5px; font-weight: bold; }\n      input { width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; margin-bottom: 14px; }\n      input.error-field { border-color: #e53e3e; background: #fff5f5; }\n      input.valid-field { border-color: #38a169; background: #f0fff4; }\n      button { background: #3182ce; color: #fff; border: none; padding: 11px 28px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; width: 100%; }\n      #pesan-hasil { margin-top: 16px; padding: 14px; border-radius: 8px; font-size: 15px; display: none; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Form Pendaftaran</h2>\n      <label for=\"input-nama\">Nama Lengkap</label>\n      <input type=\"text\" id=\"input-nama\" placeholder=\"Masukkan nama lengkapmu\">\n\n      <label for=\"input-email\">Email</label>\n      <input type=\"text\" id=\"input-email\" placeholder=\"emailmu@contoh.com\">\n\n      <button onclick=\"validasiForm()\">Daftar Sekarang</button>\n      <div id=\"pesan-hasil\"></div>\n    </div>\n\n    <script>\n      function validasiForm() {\n        var nama = document.getElementById('input-nama').value.trim();\n        var email = document.getElementById('input-email').value.trim();\n        var inputNama = document.getElementById('input-nama');\n        var inputEmail = document.getElementById('input-email');\n        var pesanDiv = document.getElementById('pesan-hasil');\n\n        // Reset style\n        inputNama.className = '';\n        inputEmail.className = '';\n\n        if (nama === '') {\n          inputNama.className = 'error-field';\n          tampilPesan(pesanDiv, 'Nama tidak boleh kosong.', false);\n          return;\n        }\n\n        if (email === '') {\n          inputEmail.className = 'error-field';\n          tampilPesan(pesanDiv, 'Email tidak boleh kosong.', false);\n          return;\n        }\n\n        if (email.indexOf('@') === -1) {\n          inputEmail.className = 'error-field';\n          tampilPesan(pesanDiv, 'Format email tidak valid — harus mengandung karakter @.', false);\n          return;\n        }\n\n        // Semua valid\n        inputNama.className = 'valid-field';\n        inputEmail.className = 'valid-field';\n        tampilPesan(pesanDiv, 'Berhasil! ' + nama + ' (' + email + ') sudah terdaftar.', true);\n      }\n\n      function tampilPesan(el, teks, sukses) {\n        el.style.display = 'block';\n        el.textContent = teks;\n        if (sukses) {\n          el.style.background = '#f0fff4';\n          el.style.color = '#276749';\n          el.style.border = '1px solid #c6f6d5';\n        } else {\n          el.style.background = '#fff5f5';\n          el.style.color = '#c53030';\n          el.style.border = '1px solid #fed7d7';\n        }\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-05-logical-operators-code",
+      "type": "code",
+      "title": "Operator Logika — Kondisi Gabungan",
+      "xp": 5,
+      "explanation": "Demo operator && dan || dalam konteks nyata: sistem login sederhana dan kontrol akses berdasarkan role.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Operator Logika</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 440px; margin-bottom: 20px; }\n      h2 { color: #1a202c; margin-bottom: 16px; font-size: 18px; }\n      label { display: block; font-size: 14px; color: #4a5568; margin-bottom: 5px; font-weight: bold; }\n      input, select { width: 100%; padding: 9px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px; margin-bottom: 12px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; }\n      .hasil { margin-top: 12px; padding: 12px; border-radius: 8px; font-size: 14px; min-height: 40px; }\n      .sukses { background: #f0fff4; color: #276749; border: 1px solid #c6f6d5; }\n      .error { background: #fff5f5; color: #c53030; border: 1px solid #fed7d7; }\n      .info { background: #ebf8ff; color: #2b6cb0; border: 1px solid #bee3f8; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Demo operator && (dan)</h2>\n      <label>Username</label>\n      <input type=\"text\" id=\"input-username\" placeholder=\"Coba: admin\">\n      <label>Password</label>\n      <input type=\"password\" id=\"input-password\" placeholder=\"Coba: 12345\">\n      <button onclick=\"cekLogin()\">Masuk</button>\n      <div id=\"hasil-login\" class=\"hasil\" style=\"display:none\"></div>\n    </div>\n\n    <div class=\"kartu\">\n      <h2>Demo operator || (atau)</h2>\n      <label>Pilih role pengguna:</label>\n      <select id=\"pilih-role\">\n        <option value=\"pengguna\">Pengguna Biasa</option>\n        <option value=\"moderator\">Moderator</option>\n        <option value=\"admin\">Admin</option>\n        <option value=\"guest\">Tamu</option>\n      </select>\n      <button onclick=\"cekAkses()\">Cek Akses</button>\n      <div id=\"hasil-akses\" class=\"hasil\" style=\"display:none\"></div>\n    </div>\n\n    <script>\n      function cekLogin() {\n        var username = document.getElementById('input-username').value;\n        var password = document.getElementById('input-password').value;\n        var hasilDiv = document.getElementById('hasil-login');\n        hasilDiv.style.display = 'block';\n\n        // && membutuhkan KEDUANYA true\n        if (username === 'admin' && password === '12345') {\n          hasilDiv.className = 'hasil sukses';\n          hasilDiv.textContent = 'Selamat datang, admin! Login berhasil.';\n        } else {\n          hasilDiv.className = 'hasil error';\n          hasilDiv.textContent = 'Username atau password salah. Coba: admin / 12345';\n        }\n      }\n\n      function cekAkses() {\n        var role = document.getElementById('pilih-role').value;\n        var hasilDiv = document.getElementById('hasil-akses');\n        hasilDiv.style.display = 'block';\n\n        // || membutuhkan SALAH SATU true\n        if (role === 'admin' || role === 'moderator') {\n          hasilDiv.className = 'hasil sukses';\n          hasilDiv.textContent = 'Akses diberikan! Role \"' + role + '\" memiliki hak moderasi.';\n        } else {\n          hasilDiv.className = 'hasil info';\n          hasilDiv.textContent = 'Akses terbatas. Role \"' + role + '\" adalah pengguna biasa.';\n        }\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-06-condition-dynamic",
+      "type": "code",
+      "title": "Kondisi untuk Konten Dinamis",
+      "xp": 5,
+      "explanation": "Kondisi mengubah tampilan kartu berdasarkan nilai XP yang dimasukkan — memperlihatkan bagaimana kondisi bisa mengontrol warna, teks, dan gaya elemen secara dinamis.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Kartu Status XP</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kontrol { max-width: 440px; margin-bottom: 20px; }\n      label { display: block; font-size: 14px; color: #4a5568; margin-bottom: 6px; font-weight: bold; }\n      input[type=number] { padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; width: 140px; margin-right: 10px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; }\n      .kartu-status { max-width: 440px; padding: 24px; border-radius: 14px; border: 2px solid #e2e8f0; transition: all 0.3s; }\n      .kartu-status .level-badge { font-size: 28px; font-weight: bold; margin-bottom: 8px; }\n      .kartu-status .xp-nilai { font-size: 15px; margin-bottom: 4px; }\n      .kartu-status .keterangan { font-size: 14px; }\n      /* Level styles */\n      .level-pemula { background: #f7fafc; border-color: #a0aec0; color: #4a5568; }\n      .level-menengah { background: #ebf8ff; border-color: #63b3ed; color: #2b6cb0; }\n      .level-ahli { background: #fef3cd; border-color: #d69e2e; color: #744210; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kontrol\">\n      <label for=\"input-xp\">Masukkan jumlah XP:</label>\n      <input type=\"number\" id=\"input-xp\" min=\"0\" placeholder=\"0\" value=\"0\">\n      <button onclick=\"updateStatus()\">Perbarui Status</button>\n    </div>\n\n    <div class=\"kartu-status level-pemula\" id=\"kartu-status\">\n      <div class=\"level-badge\" id=\"badge-level\">Pemula</div>\n      <div class=\"xp-nilai\" id=\"teks-xp\">XP: 0</div>\n      <div class=\"keterangan\" id=\"teks-keterangan\">Baru memulai perjalanan belajar.</div>\n    </div>\n\n    <script>\n      function updateStatus() {\n        var xp = parseInt(document.getElementById('input-xp').value) || 0;\n        var kartu = document.getElementById('kartu-status');\n        var badge = document.getElementById('badge-level');\n        var teksXp = document.getElementById('teks-xp');\n        var keterangan = document.getElementById('teks-keterangan');\n\n        teksXp.textContent = 'XP: ' + xp;\n\n        // Hilangkan semua class level dulu\n        kartu.className = 'kartu-status';\n\n        if (xp >= 500) {\n          kartu.classList.add('level-ahli');\n          badge.textContent = '⭐ Ahli';\n          keterangan.textContent = 'Luar biasa! Kamu sudah menguasai banyak materi.';\n        } else if (xp >= 100) {\n          kartu.classList.add('level-menengah');\n          badge.textContent = '🔵 Menengah';\n          keterangan.textContent = 'Bagus! Terus belajar untuk naik ke level Ahli.';\n        } else {\n          kartu.classList.add('level-pemula');\n          badge.textContent = '⬜ Pemula';\n          keterangan.textContent = 'Baru memulai perjalanan belajar.';\n        }\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-07-full-condition-page",
+      "type": "code",
+      "title": "Halaman Interaktif dengan Kondisi Lengkap",
+      "xp": 5,
+      "explanation": "Mini kuis 3 pertanyaan pilihan ganda yang menghitung skor dan menampilkan pesan dengan warna berbeda berdasarkan hasil — menggabungkan kondisi, events, dan DOM.",
+      "code": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Mini Kuis</title>\n    <style>\n      * { box-sizing: border-box; margin: 0; padding: 0; }\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f0f4f8; }\n      .kuis { max-width: 500px; background: #fff; border-radius: 16px; padding: 28px; border: 1px solid #e2e8f0; }\n      h2 { color: #1a202c; margin-bottom: 20px; font-size: 20px; }\n      .soal { margin-bottom: 20px; }\n      .soal p { font-size: 15px; color: #2d3748; margin-bottom: 8px; font-weight: bold; }\n      .soal label { display: block; padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 6px; font-size: 14px; cursor: pointer; }\n      .soal label:hover { background: #ebf8ff; }\n      button { background: #3182ce; color: #fff; border: none; padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 8px; }\n      #hasil-kuis { margin-top: 20px; padding: 20px; border-radius: 10px; display: none; text-align: center; }\n      #hasil-kuis .skor { font-size: 40px; font-weight: bold; margin-bottom: 8px; }\n      #hasil-kuis .pesan { font-size: 16px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kuis\">\n      <h2>Mini Kuis JavaScript</h2>\n\n      <div class=\"soal\">\n        <p>1. Apa kepanjangan DOM?</p>\n        <label><input type=\"radio\" name=\"s1\" value=\"a\"> Data Object Manager</label>\n        <label><input type=\"radio\" name=\"s1\" value=\"b\"> Document Object Model</label>\n        <label><input type=\"radio\" name=\"s1\" value=\"c\"> Dynamic Output Mode</label>\n      </div>\n\n      <div class=\"soal\">\n        <p>2. Operator mana yang lebih aman untuk perbandingan?</p>\n        <label><input type=\"radio\" name=\"s2\" value=\"a\"> ==</label>\n        <label><input type=\"radio\" name=\"s2\" value=\"b\"> ===</label>\n        <label><input type=\"radio\" name=\"s2\" value=\"c\"> =</label>\n      </div>\n\n      <div class=\"soal\">\n        <p>3. Apa yang dilakukan classList.toggle()?</p>\n        <label><input type=\"radio\" name=\"s3\" value=\"a\"> Selalu menambah class</label>\n        <label><input type=\"radio\" name=\"s3\" value=\"b\"> Menambah atau menghapus class bergantian</label>\n        <label><input type=\"radio\" name=\"s3\" value=\"c\"> Menghapus semua class</label>\n      </div>\n\n      <button onclick=\"hitungSkor()\">Lihat Hasil</button>\n      <div id=\"hasil-kuis\"></div>\n    </div>\n\n    <script>\n      function hitungSkor() {\n        var benar = 0;\n        var s1 = document.querySelector('input[name=\"s1\"]:checked');\n        var s2 = document.querySelector('input[name=\"s2\"]:checked');\n        var s3 = document.querySelector('input[name=\"s3\"]:checked');\n\n        if (s1 && s1.value === 'b') benar++;\n        if (s2 && s2.value === 'b') benar++;\n        if (s3 && s3.value === 'b') benar++;\n\n        var hasilDiv = document.getElementById('hasil-kuis');\n        hasilDiv.style.display = 'block';\n\n        var pesan, warnaBg, warnaText;\n        if (benar === 3) {\n          pesan = 'Sempurna! Kamu menguasai semua materi.';\n          warnaBg = '#f0fff4'; warnaText = '#276749';\n        } else if (benar === 2) {\n          pesan = 'Hampir benar! Satu lagi dan kamu sempurna.';\n          warnaBg = '#ebf8ff'; warnaText = '#2b6cb0';\n        } else {\n          pesan = 'Perlu belajar lagi. Baca ulang materinya!';\n          warnaBg = '#fff5f5'; warnaText = '#c53030';\n        }\n\n        hasilDiv.style.background = warnaBg;\n        hasilDiv.innerHTML = '<div class=\"skor\" style=\"color:' + warnaText + '\">' + benar + '/3</div>' +\n          '<div class=\"pesan\" style=\"color:' + warnaText + '\">' + pesan + '</div>';\n      }\n    </script>\n  </body>\n</html>"
+      }
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Pilih Operator yang Tepat",
+      "xp": 10,
+      "instructions": "Kamu ingin mengecek apakah variabel 'umur' lebih besar atau sama dengan 17 DAN variabel 'punya_sim' bernilai true. Kondisi JavaScript mana yang benar?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "umur > 17 || punya_sim === true",
+        "umur >= 17 && punya_sim === true",
+        "umur >= 17 || punya_sim === true",
+        "umur === 17 && punya_sim"
+      ],
+      "correctOption": "umur >= 17 && punya_sim === true"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Mini Challenge: Kalkulator Grade Nilai",
+      "xp": 15,
+      "instructions": "Buat kalkulator grade yang:\n1. Mengambil nilai dari input dengan id='input-nilai' (angka 0-100)\n2. Saat tombol 'Hitung Grade' diklik:\n   - Jika nilai >= 90: grade 'A', pesan 'Luar biasa!'\n   - Jika nilai >= 80: grade 'B', pesan 'Bagus sekali!'\n   - Jika nilai >= 70: grade 'C', pesan 'Cukup baik.'\n   - Jika nilai >= 60: grade 'D', pesan 'Perlu ditingkatkan.'\n   - Jika di bawah 60: grade 'E', pesan 'Perlu belajar lebih keras.'\n3. Tampilkan grade di id='hasil-grade' dan pesan di id='pesan-grade'\n4. Jika input kosong atau bukan angka, tampilkan pesan error",
+      "starterCode": {
+        "language": "html",
+        "content": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Kalkulator Grade</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 400px; }\n      h2 { margin-bottom: 20px; color: #1a202c; }\n      label { display: block; font-size: 14px; color: #4a5568; margin-bottom: 6px; font-weight: bold; }\n      input { width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; margin-bottom: 14px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 11px 28px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; }\n      #hasil-grade { font-size: 36px; font-weight: bold; margin-top: 16px; min-height: 44px; }\n      #pesan-grade { font-size: 15px; color: #4a5568; min-height: 24px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Kalkulator Grade Nilai</h2>\n      <label for=\"input-nilai\">Nilai (0-100):</label>\n      <input type=\"number\" id=\"input-nilai\" min=\"0\" max=\"100\" placeholder=\"Masukkan nilai...\">\n      <button onclick=\"hitungGrade()\">Hitung Grade</button>\n      <p id=\"hasil-grade\"></p>\n      <p id=\"pesan-grade\"></p>\n    </div>\n\n    <script>\n      // Tulis function hitungGrade() di sini\n\n    </script>\n  </body>\n</html>"
+      },
+      "expectedResult": "Kalkulator grade yang menampilkan grade A-E dan pesan motivasi sesuai nilai yang dimasukkan.",
+      "solution": {
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"id\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Kalkulator Grade</title>\n    <style>\n      body { font-family: Arial, sans-serif; padding: 32px; background: #f7fafc; }\n      .kartu { background: #fff; padding: 28px; border-radius: 12px; border: 1px solid #e2e8f0; max-width: 400px; }\n      h2 { margin-bottom: 20px; color: #1a202c; }\n      label { display: block; font-size: 14px; color: #4a5568; margin-bottom: 6px; font-weight: bold; }\n      input { width: 100%; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 15px; margin-bottom: 14px; }\n      button { background: #3182ce; color: #fff; border: none; padding: 11px 28px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; }\n      #hasil-grade { font-size: 36px; font-weight: bold; margin-top: 16px; min-height: 44px; }\n      #pesan-grade { font-size: 15px; color: #4a5568; min-height: 24px; }\n    </style>\n  </head>\n  <body>\n    <div class=\"kartu\">\n      <h2>Kalkulator Grade Nilai</h2>\n      <label for=\"input-nilai\">Nilai (0-100):</label>\n      <input type=\"number\" id=\"input-nilai\" min=\"0\" max=\"100\" placeholder=\"Masukkan nilai...\">\n      <button onclick=\"hitungGrade()\">Hitung Grade</button>\n      <p id=\"hasil-grade\"></p>\n      <p id=\"pesan-grade\"></p>\n    </div>\n\n    <script>\n      function hitungGrade() {\n        var nilaiStr = document.getElementById('input-nilai').value;\n        var hasilGrade = document.getElementById('hasil-grade');\n        var pesanGrade = document.getElementById('pesan-grade');\n\n        if (nilaiStr === '' || isNaN(nilaiStr)) {\n          hasilGrade.textContent = '';\n          pesanGrade.textContent = 'Masukkan angka yang valid (0-100).';\n          pesanGrade.style.color = '#c53030';\n          return;\n        }\n\n        var nilai = parseInt(nilaiStr);\n        var grade, pesan;\n\n        if (nilai >= 90) {\n          grade = 'A'; pesan = 'Luar biasa!';\n        } else if (nilai >= 80) {\n          grade = 'B'; pesan = 'Bagus sekali!';\n        } else if (nilai >= 70) {\n          grade = 'C'; pesan = 'Cukup baik.';\n        } else if (nilai >= 60) {\n          grade = 'D'; pesan = 'Perlu ditingkatkan.';\n        } else {\n          grade = 'E'; pesan = 'Perlu belajar lebih keras.';\n        }\n\n        hasilGrade.textContent = 'Grade: ' + grade;\n        pesanGrade.textContent = pesan;\n        pesanGrade.style.color = '#4a5568';\n      }\n    </script>\n  </body>\n</html>",
+        "explanation": "Kita pertama cek apakah input kosong atau bukan angka menggunakan isNaN(). Lalu gunakan else if berantai dari nilai tertinggi ke terendah — urutan ini penting karena kondisi pertama yang true akan dieksekusi."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa yang terjadi jika kondisi if bernilai false dan tidak ada else?",
+        "options": [
+          "Program berhenti dan menampilkan error",
+          "Blok if dilewati dan eksekusi berlanjut ke baris setelahnya",
+          "Kondisi if dijalankan tetapi dengan nilai default",
+          "Browser memuat ulang halaman"
+        ],
+        "correctAnswer": "Blok if dilewati dan eksekusi berlanjut ke baris setelahnya",
+        "explanation": "Ketika kondisi if bernilai false dan tidak ada blok else, JavaScript cukup melewati blok if dan melanjutkan eksekusi ke baris kode berikutnya. Tidak ada error, tidak ada penghentian program — kode hanya 'melompati' blok if tersebut.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Mengapa sebaiknya menggunakan === bukan == dalam JavaScript?",
+        "options": [
+          "=== lebih cepat dieksekusi oleh browser",
+          "=== memeriksa nilai DAN tipe data, == hanya memeriksa nilai sehingga bisa menghasilkan hasil yang tidak terduga",
+          "== sudah tidak didukung di JavaScript modern",
+          "Tidak ada perbedaan, keduanya menghasilkan hasil yang sama"
+        ],
+        "correctAnswer": "=== memeriksa nilai DAN tipe data, == hanya memeriksa nilai sehingga bisa menghasilkan hasil yang tidak terduga",
+        "explanation": "Contoh: 5 == '5' menghasilkan true karena == hanya membandingkan nilai, mengabaikan perbedaan tipe (number vs string). Sedangkan 5 === '5' menghasilkan false karena tipe datanya berbeda. Menggunakan === mencegah bug yang sulit ditemukan.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Operator logika mana yang menghasilkan true HANYA jika KEDUA kondisi bernilai true?",
+        "options": [
+          "|| (atau)",
+          "! (tidak)",
+          "&& (dan)",
+          "?? (nullish)"
+        ],
+        "correctAnswer": "&& (dan)",
+        "explanation": "Operator && (dan) menghasilkan true hanya jika kedua sisi bernilai true. Tabel kebenaran: true && true = true, true && false = false, false && true = false, false && false = false. Operator || (atau) cukup membutuhkan satu sisi yang true.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Kamu punya if, lalu beberapa else if, lalu else. Apa yang terjadi jika kondisi if pertama bernilai true?",
+        "options": [
+          "Semua blok if, else if, dan else dijalankan",
+          "Hanya blok if yang dijalankan, sisanya dilewati",
+          "Blok if dan else sama-sama dijalankan",
+          "Blok else if dijalankan terlebih dahulu"
+        ],
+        "correctAnswer": "Hanya blok if yang dijalankan, sisanya dilewati",
+        "explanation": "Dalam rantai if/else if/else, hanya satu blok yang dijalankan — blok pertama yang kondisinya bernilai true. Begitu satu kondisi terpenuhi, JavaScript langsung melompati semua blok else if dan else berikutnya.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Nilai variabel x = 5. Apa hasil dari kondisi (x > 3 && x < 10)?",
+        "options": [
+          "false, karena x tidak sama dengan 3 atau 10",
+          "true, karena kedua kondisi (x > 3) dan (x < 10) bernilai true",
+          "Error, tidak bisa menggabungkan dua kondisi",
+          "undefined"
+        ],
+        "correctAnswer": "true, karena kedua kondisi (x > 3) dan (x < 10) bernilai true",
+        "explanation": "Evaluasi: x > 3 adalah 5 > 3 = true. x < 10 adalah 5 < 10 = true. true && true = true. Kedua kondisi terpenuhi sehingga seluruh ekspresi menghasilkan true.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Topik Selesai!",
+    "message": "Sekarang website-mu bisa 'berpikir' dan mengambil keputusan! Kondisi adalah fondasi dari semua logika program — validasi form, filter konten, dan personalisasi pengalaman semuanya bergantung pada if/else.",
+    "achievementName": "Decision Maker",
+    "achievementIcon": "🧠"
+  }
+}
