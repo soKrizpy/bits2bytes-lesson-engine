@@ -2,13 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base: dark background matching the design token */
+/* Dark theme (default) */
+:root,
+[data-theme="dark"] {
+  --bg-page:         #0f172a;
+  --bg-card:         #1e293b;
+  --bg-surface:      #172338;
+  --bg-elevated:     #24324a;
+  --color-border:    #334155;
+  --text-base:       #f8fafc;
+  --text-muted:      #94a3b8;
+  --color-primary:   #6366f1;
+  --color-secondary: #38bdf8;
+  --color-success:   #10b981;
+  --color-warning:   #f59e0b;
+  --color-error:     #f43f5e;
+  --color-xpgold:    #fbbf24;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg-page:         #f8fafc;
+  --bg-card:         #ffffff;
+  --bg-surface:      #f1f5f9;
+  --bg-elevated:     #e2e8f0;
+  --color-border:    #cbd5e1;
+  --text-base:       #0f172a;
+  --text-muted:      #475569;
+  --color-primary:   #4f46e5;
+  --color-secondary: #0284c7;
+  --color-success:   #059669;
+  --color-warning:   #d97706;
+  --color-error:     #e11d48;
+  --color-xpgold:    #f59e0b;
+}
+
 html,
 body {
   background-color: #0f172a;
   color: #f8fafc;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+[data-theme="light"] html,
+[data-theme="light"] body {
+  background-color: #f8fafc;
+  color: #0f172a;
 }
 
 ::selection {
@@ -48,23 +88,19 @@ a {
     }
   }
 
-  /* Rope connector between game-map path nodes (desktop sidebar only) */
   .rope-connector {
     @apply w-[3px] rounded-full bg-white/15 transition-[background-color,opacity] duration-500 origin-top;
   }
 
-  /* Lit (completed segment) state */
   .rope-connector-lit {
     @apply bg-success/50 shadow-[0_0_6px_rgb(16_185_129_/_0.4)];
   }
 
-  /* Newly revealed connector plays the ropeReveal animation */
   .rope-connector-reveal {
     animation: ropeReveal 400ms ease-out forwards;
   }
 }
 
-/* Smooth scrolling — disabled for prefers-reduced-motion */
 html {
   scroll-behavior: smooth;
 }
@@ -82,7 +118,6 @@ html {
   }
 }
 
-/* Code blocks */
 pre,
 code {
   font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Monaco,

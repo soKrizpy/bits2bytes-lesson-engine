@@ -249,8 +249,8 @@
       "properties": {
         "questions": {
           "type": "array",
-          "minItems": 5,
-          "maxItems": 5,
+          "minItems": 3,
+          "maxItems": 20,
           "items": {
             "type": "object",
             "required": [

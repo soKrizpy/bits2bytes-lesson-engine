@@ -170,8 +170,8 @@ export interface Lesson {
   /** Ordered sequence of learning nodes the student navigates through. */
   learningPath: LearningNode[];
   quiz: {
-    /** Exactly 5 questions for V1. */
-    questions: [QuizQuestion, QuizQuestion, QuizQuestion, QuizQuestion, QuizQuestion];
+    /** 3–20 questions. Minimum 3 for a meaningful quiz; maximum 20 to keep sessions reasonable. Driven by lesson JSON — no hardcoded count in the engine. */
+    questions: QuizQuestion[];
   };
   completion: LessonCompletion;
 }

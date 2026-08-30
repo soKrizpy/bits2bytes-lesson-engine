@@ -23,6 +23,8 @@ import { TopicReview } from '@/components/TopicReview/TopicReview';
 import { XPBadge } from '@/components/ui/XPBadge';
 import { ErrorScreen } from '@/components/ui/ErrorScreen';
 import { TOPIC_REGISTRY } from '@/engine/topicRegistry';
+import { useUrlParams } from '@/hooks/useUrlParams';
+import { useLmsPostMessage } from '@/hooks/useLmsPostMessage';
 
 interface LessonEngineProps {
   topicId: string;
@@ -33,6 +35,12 @@ const adapter = new LocalStorageAdapter();
 
 export function LessonEngine({ topicId }: LessonEngineProps) {
   const router = useRouter();
+  const urlParams = useUrlParams();
+  const { sendLessonComplete, sendQuizSubmitted, sendXpUpdate } = useLmsPostMessage(
+    topicId,
+    urlParams.studentId,
+    urlParams.lmsOrigin,
+  );
   const [viewMode, setViewMode] = useState<'achievement' | 'review'>('achievement');
   const [selectedReviewNodeIndex, setSelectedReviewNodeIndex] = useState(0);
   const [selectedLearningNodeIndex, setSelectedLearningNodeIndex] = useState<number | null>(null);
@@ -70,6 +78,28 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     if (studentState.topicCompleted) return;
     setSelectedLearningNodeIndex(studentState.currentNodeIndex);
   }, [studentState.currentNodeIndex, studentState.topicCompleted]);
+
+  // ── postMessage: topic completed ─────────────────────────────────────────
+  useEffect(() => {
+    if (!studentState.topicCompleted) return;
+    sendLessonComplete(studentState.xpEarned, studentState.bestQuizScore);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [studentState.topicCompleted]);
+
+  // ── postMessage: quiz attempt submitted ──────────────────────────────────
+  useEffect(() => {
+    const last = studentState.quizAttempts[studentState.quizAttempts.length - 1];
+    if (last === undefined) return;
+    sendQuizSubmitted(last.score, last.attemptNumber, studentState.bestQuizScore);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [studentState.quizAttempts.length]);
+
+  // ── postMessage: XP earned ───────────────────────────────────────────────
+  useEffect(() => {
+    if (studentState.xpEarned === 0) return;
+    sendXpUpdate(studentState.xpEarned);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [studentState.xpEarned]);
 
   // ── Load error: hard block ─────────────────────────────────────────────────
   if (loadError !== null) {

@@ -1,4 +1,4 @@
-// src/engine/validator.test.ts
+﻿// src/engine/validator.test.ts
 // Tests for SchemaValidator — covers valid lessons, missing fields, bad versions, node types.
 
 import { describe, it, expect } from 'vitest';
@@ -149,18 +149,27 @@ describe('validateLesson — required sections', () => {
 });
 
 describe('validateLesson — quiz constraints', () => {
-  it('rejects a quiz with only 4 questions', () => {
+  it('accepts a quiz with 3 questions (minimum)', () => {
     const lesson = minimalValidLesson();
     const quiz = lesson['quiz'] as { questions: unknown[] };
-    quiz.questions = quiz.questions.slice(0, 4);
+    quiz.questions = quiz.questions.slice(0, 3);
+    const result = validateLesson(lesson);
+    expect(result.valid).toBe(true);
+  });
+
+  it('rejects a quiz with 2 questions (below minimum)', () => {
+    const lesson = minimalValidLesson();
+    const quiz = lesson['quiz'] as { questions: unknown[] };
+    quiz.questions = quiz.questions.slice(0, 2);
     const result = validateLesson(lesson);
     expect(result.valid).toBe(false);
   });
 
-  it('rejects a quiz with 6 questions', () => {
+  it('rejects a quiz with 21 questions (above maximum)', () => {
     const lesson = minimalValidLesson();
     const quiz = lesson['quiz'] as { questions: unknown[] };
-    quiz.questions = [...quiz.questions, quiz.questions[0]];
+    const base = quiz.questions[0] as Record<string, unknown>;
+    quiz.questions = Array.from({ length: 21 }, (_, i) => ({ ...base, id: `q${i + 1}` }));
     const result = validateLesson(lesson);
     expect(result.valid).toBe(false);
   });
