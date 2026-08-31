@@ -35,11 +35,11 @@ describe('AchievementScreen', () => {
       />
     );
 
-    expect(screen.getByRole('heading', { name: 'Stage complete' })).toBeInTheDocument();
-    expect(screen.getByText('Great job!')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Tahap Selesai' })).toBeInTheDocument();
+    expect(screen.getByText('Kerja bagus!')).toBeInTheDocument();
     expect(screen.getByText(lesson.metadata.title)).toBeInTheDocument();
     expect(screen.getByText('⭐ 160')).toBeInTheDocument();
-    expect(screen.getByText('What you learned')).toBeInTheDocument();
+    expect(screen.getByText('Yang Kamu Pelajari')).toBeInTheDocument();
   });
 
   it('calls onReview when Review Topic is selected', () => {
@@ -55,7 +55,7 @@ describe('AchievementScreen', () => {
       />
     );
 
-    fireEvent.click(screen.getByRole('button', { name: /review completed topic/i }));
+    fireEvent.click(screen.getByRole('button', { name: /tinjau topik/i }));
 
     expect(onReview).toHaveBeenCalledTimes(1);
     expect(onReturn).not.toHaveBeenCalled();
@@ -75,7 +75,7 @@ describe('AchievementScreen', () => {
       />
     );
 
-    fireEvent.click(screen.getByRole('button', { name: /continue to next adventure/i }));
+    fireEvent.click(screen.getByRole('button', { name: /lanjut ke petualangan berikutnya/i }));
     expect(onNextTopic).toHaveBeenCalledTimes(1);
   });
 
@@ -91,7 +91,7 @@ describe('AchievementScreen', () => {
       />
     );
 
-    fireEvent.click(screen.getByRole('button', { name: /return to adventure/i }));
+    fireEvent.click(screen.getByRole('button', { name: /kembali ke petualangan/i }));
     expect(onReturn).toHaveBeenCalledTimes(1);
   });
 });

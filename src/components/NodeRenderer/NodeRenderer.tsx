@@ -15,6 +15,7 @@ import { PracticeNodeView } from '@/components/nodes/PracticeNodeView';
 import { ChallengeNodeView } from '@/components/nodes/ChallengeNodeView';
 import { FallbackNodeView } from '@/components/nodes/FallbackNodeView';
 import { QuizEngine } from '@/components/QuizEngine/QuizEngine';
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 import type {
   LessonNode,
   CodeNode,
@@ -100,14 +101,15 @@ function QuizReviewOnly({
   questions: QuizQuestion[];
   studentState: StudentState;
 }) {
+  const t = useEngineTranslations();
   const maxScore = questions.reduce((sum, question) => sum + question.points, 0);
 
   return (
     <div className="space-y-6">
       <div className="space-y-1">
-        <h2 className="text-2xl font-bold text-text-base">Knowledge Check Review</h2>
+        <h2 className="text-2xl font-bold text-text-base">{t('quiz.knowledgeCheck')}</h2>
         <p className="text-text-muted text-sm">
-          {questions.length} pertanyaan · skor terbaik {studentState.bestQuizScore} / {maxScore}
+          {t('quiz.questionsScore', { count: questions.length, best: studentState.bestQuizScore, total: maxScore })}
         </p>
       </div>
 
@@ -121,7 +123,7 @@ function QuizReviewOnly({
               {index + 1}. {question.question}
             </p>
             <p className="text-success text-sm">
-              Correct answer:{' '}
+              {t('quiz.correctAnswer')}{' '}
               <span className="font-semibold">{question.correctAnswer}</span>
             </p>
             <p className="text-text-muted text-sm leading-relaxed">

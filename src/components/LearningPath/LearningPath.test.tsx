@@ -35,11 +35,11 @@ describe('LearningPath active-learning navigation', () => {
       />
     );
 
-    expect(screen.getAllByRole('button', { name: /welcome — completed/i }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole('button', { name: /welcome — selesai/i }).length).toBeGreaterThan(0);
     expect(screen.getAllByRole('button', { name: /first code/i }).length).toBeGreaterThan(0);
-    expect(screen.queryAllByRole('button', { name: /knowledge check — locked/i })).toHaveLength(0);
+    expect(screen.queryAllByRole('button', { name: /knowledge check — terkunci/i })).toHaveLength(0);
 
-    fireEvent.click(screen.getAllByRole('button', { name: /welcome — completed/i })[0]!);
+    fireEvent.click(screen.getAllByRole('button', { name: /welcome — selesai/i })[0]!);
     expect(onSelect).toHaveBeenCalledWith(0);
   });
 

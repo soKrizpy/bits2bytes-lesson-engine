@@ -6,6 +6,7 @@
 // Language label matches code.language exactly — no normalisation.
 // Topic-agnostic: works for html, css, javascript, python, lua, etc.
 
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 import { Button } from '@/components/ui/Button';
 import type { CodeNode } from '@/types/lesson';
 
@@ -16,6 +17,7 @@ interface CodeNodeViewProps {
 }
 
 export function CodeNodeView({ node, onAdvance, mode = 'learning' }: CodeNodeViewProps) {
+  const t = useEngineTranslations();
   return (
     <div className="space-y-6">
       {/* Title */}
@@ -33,7 +35,7 @@ export function CodeNodeView({ node, onAdvance, mode = 'learning' }: CodeNodeVie
           <span className="text-xs font-mono font-semibold text-primary uppercase tracking-wider">
             {node.code.language}
           </span>
-          <span className="text-xs text-text-muted">code example</span>
+          <span className="text-xs text-text-muted">{t('node.codeExample')}</span>
         </div>
         {/* Code content — preserves whitespace and indentation */}
         <pre>
@@ -46,7 +48,7 @@ export function CodeNodeView({ node, onAdvance, mode = 'learning' }: CodeNodeVie
       {mode === 'learning' && (
         <div className="pt-2">
           <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
-            Got it, continue →
+            {t('node.continue')}
           </Button>
         </div>
       )}

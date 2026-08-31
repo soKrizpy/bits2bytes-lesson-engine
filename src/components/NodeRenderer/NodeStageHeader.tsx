@@ -1,3 +1,6 @@
+'use client';
+
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 import type { LearningNode } from '@/types/lesson';
 
 interface NodeStageHeaderProps {
@@ -7,22 +10,24 @@ interface NodeStageHeaderProps {
   isRevisit: boolean;
 }
 
-const NODE_IDENTITY: Record<string, { icon: string; label: string }> = {
-  lesson: { icon: '📖', label: 'Lesson' },
-  code: { icon: '💻', label: 'Coding' },
-  practice: { icon: '✏️', label: 'Practice' },
-  challenge: { icon: '🏆', label: 'Challenge' },
-  quiz: { icon: '❓', label: 'Quiz' },
-};
-
 export function NodeStageHeader({
   node,
   nodeIndex,
   totalNodes,
   isRevisit,
 }: NodeStageHeaderProps) {
+  const t = useEngineTranslations();
+
+  const NODE_IDENTITY: Record<string, { icon: string; label: string }> = {
+    lesson: { icon: '📖', label: t('node.types.lesson') },
+    code: { icon: '💻', label: t('node.types.code') },
+    practice: { icon: '✏️', label: t('node.types.practice') },
+    challenge: { icon: '🏆', label: t('node.types.challenge') },
+    quiz: { icon: '❓', label: t('node.types.quiz') },
+  };
+
   const identity = NODE_IDENTITY[node.type] ?? { icon: '⬡', label: 'Checkpoint' };
-  const contextLabel = isRevisit ? 'Reviewing' : 'Current Stage';
+  const contextLabel = isRevisit ? t('node.reviewing') : t('node.currentStage');
 
   return (
     <section
@@ -53,7 +58,7 @@ export function NodeStageHeader({
               {contextLabel}
             </span>
             <span className="text-text-muted/60" aria-hidden="true">•</span>
-            <span className="text-text-muted">Checkpoint {nodeIndex + 1} of {totalNodes}</span>
+            <span className="text-text-muted">{t('node.checkpoint', { current: nodeIndex + 1, total: totalNodes })}</span>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <h1 className="text-lg font-bold leading-tight text-text-base sm:text-xl">

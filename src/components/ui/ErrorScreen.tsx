@@ -7,7 +7,7 @@ interface ErrorScreenProps {
   message: string;
 }
 
-export function ErrorScreen({ title = 'Terjadi kesalahan', message }: ErrorScreenProps) {
+export function ErrorScreen({ title = 'An error occurred', message }: ErrorScreenProps) {
   const lines = message.split('\n').filter((l) => l.trim().length > 0);
 
   return (

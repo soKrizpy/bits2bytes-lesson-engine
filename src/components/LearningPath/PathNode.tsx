@@ -1,3 +1,5 @@
+'use client';
+
 // src/components/LearningPath/PathNode.tsx
 // A single node card in the visual game-map learning path.
 // Communicates state via icon shape + colour — not colour alone (WCAG).
@@ -14,6 +16,7 @@
 // Mobile compact strip is unchanged — simple dots row at the bottom of the screen.
 
 import { useEffect, useRef } from 'react';
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 import type { LearningNode } from '@/types/lesson';
 
 type NodeState = 'completed' | 'current' | 'upcoming' | 'selected';
@@ -59,6 +62,8 @@ export function PathNode({
   connectorLit = false,
   connectorReveal = false,
 }: PathNodeProps) {
+  const t = useEngineTranslations();
+
   const isCompleted = state === 'completed';
   const isCurrent = state === 'current';
   const isSelected = state === 'selected';
@@ -104,7 +109,15 @@ export function PathNode({
           type="button"
           onClick={onSelect}
           className="group flex shrink-0 flex-col items-center gap-1 rounded-xl p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-          aria-label={isSelected ? `Review ${node.title}` : `${node.title} — ${isCompleted ? 'completed' : isCurrent ? 'current stage' : 'locked'}`}
+          aria-label={
+            isSelected
+              ? `Review ${node.title}`
+              : isCompleted
+              ? t('learningPath.aria.completed', { title: node.title })
+              : isCurrent
+              ? t('learningPath.aria.current', { title: node.title })
+              : t('learningPath.aria.locked', { title: node.title })
+          }
           aria-current={isCurrent ? 'step' : undefined}
           aria-pressed={isSelected}
         >
@@ -117,7 +130,7 @@ export function PathNode({
     }
 
     return (
-      <span className="flex shrink-0 flex-col items-center gap-1 p-1" aria-label={`${node.title} — locked`}>
+      <span className="flex shrink-0 flex-col items-center gap-1 p-1" aria-label={t('learningPath.aria.locked', { title: node.title })}>
         {compactButton}
         <span className="max-w-16 truncate text-[10px] text-text-muted/50" title={node.title}>
           {node.title}
@@ -267,7 +280,7 @@ export function PathNode({
         className={wrapperBase}
         aria-label={
           isUpcoming
-            ? `${node.title} — locked. Complete the previous checkpoint to unlock.`
+            ? `${t('learningPath.aria.locked', { title: node.title })}. Complete the previous checkpoint to unlock.`
             : isSelected
             ? `Reviewing ${node.title}`
             : `Review ${node.title}`
@@ -285,7 +298,7 @@ export function PathNode({
     <div
       className={wrapperBase}
       title={lockedTitle}
-      aria-label={`${node.title} — locked`}
+      aria-label={t('learningPath.aria.locked', { title: node.title })}
     >
       {innerContent}
     </div>

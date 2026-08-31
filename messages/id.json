@@ -1,0 +1,120 @@
+{
+  "lesson": {
+    "loading": "Memuat lesson…",
+    "topicBrief": "Ringkasan Topik",
+    "completing": "Menyelesaikan topik…",
+    "couldNotLoad": "Gagal memuat lesson"
+  },
+  "node": {
+    "types": {
+      "lesson": "Materi",
+      "code": "Kode",
+      "practice": "Latihan",
+      "challenge": "Tantangan",
+      "quiz": "Kuis"
+    },
+    "checkpoint": "Checkpoint {current} dari {total}",
+    "currentStage": "Tahap Saat Ini",
+    "reviewing": "Meninjau",
+    "noExplanation": "Tidak ada penjelasan untuk langkah ini.",
+    "thinkOfIt": "Bayangkan seperti ini",
+    "whatYoullAchieve": "Yang akan kamu capai",
+    "tips": "Tips",
+    "continue": "Lanjut →",
+    "codeExample": "contoh kode",
+    "yourChallenge": "Tantanganmu",
+    "starterCode": "kode awal",
+    "expectedResult": "Hasil yang diharapkan",
+    "challengeComplete": "Tantangan Selesai →",
+    "completeToContinue": "Selesaikan aktivitas untuk melanjutkan",
+    "correct": "🎉 Benar! Kerja bagus.",
+    "incorrect": "🤔 Hampir benar — tidak apa-apa! Terus semangat.",
+    "unsupported": "Node ini menggunakan jenis \"{type}\" yang belum didukung versi ini.",
+    "unsupportedTitle": "Judul:",
+    "skipAndContinue": "Lewati dan lanjut →"
+  },
+  "quiz": {
+    "title": "Uji Pengetahuan",
+    "questions": "{count} pertanyaan · total {points} poin",
+    "attemptsUsed": "Percobaan terpakai",
+    "lastScore": "Skor terakhir",
+    "bestScore": "Skor terbaik",
+    "startQuiz": "Mulai Kuis →",
+    "retryQuiz": "Ulang Kuis (Percobaan {n} dari {max}) →",
+    "skipAndContinue": "Lewati dan lanjut",
+    "allAttemptsUsed": "✅ Kamu sudah menggunakan semua {max} percobaan. Skor terbaikmu {score} sudah disimpan.",
+    "attempt": "Percobaan {n} dari {max}",
+    "answered": "{answered} dari {total} terjawab",
+    "submitAnswers": "Kirim Jawaban →",
+    "questionsRemaining": "{n} pertanyaan tersisa",
+    "percentLabel": "Persentase",
+    "knowledgeCheck": "Uji Pengetahuan",
+    "questionsScore": "{count} pertanyaan · skor terbaik {best} / {total}",
+    "correctAnswer": "Jawaban benar:",
+    "yourAnswer": "Jawabanmu:",
+    "yourScore": "Skormu",
+    "continue": "Lanjut →",
+    "tryAgain": "Coba Lagi (Percobaan {n} dari {max})"
+  },
+  "achievement": {
+    "subheading": "Kerja bagus!",
+    "heading": "Tahap Selesai",
+    "body": "Kamu berhasil menyelesaikan tahap ini.",
+    "unlocked": "Achievement terbuka",
+    "xpEarned": "XP Diperoleh",
+    "quizScore": "Skor Kuis",
+    "checkpoints": "Checkpoint Selesai",
+    "whatYouLearned": "Yang Kamu Pelajari",
+    "continueNext": "Lanjut ke Petualangan Berikutnya →",
+    "returnToAdventure": "Kembali ke Petualangan",
+    "reviewTopic": "Tinjau Topik"
+  },
+  "intro": {
+    "topic": "Topik {n}",
+    "analogy": "Bayangkan Seperti Ini",
+    "estTime": "Est. waktu",
+    "xpAvailable": "XP tersedia",
+    "level": "Level",
+    "whatYoullLearn": "Yang Akan Kamu Pelajari",
+    "startLearning": "Mulai Belajar →",
+    "maybeLater": "Nanti Saja",
+    "levels": {
+      "beginner": "Pemula",
+      "intermediate": "Menengah",
+      "advanced": "Lanjutan"
+    }
+  },
+  "review": {
+    "title": "Tinjauan Topik",
+    "achievement": "Pencapaian",
+    "back": "Kembali",
+    "summary": "Ringkasan",
+    "checkpoints": "Checkpoint",
+    "selectHint": "Pilih checkpoint di sidebar untuk meninjau isinya.",
+    "topicSummary": "Ringkasan topik",
+    "topicComplete": "Topik selesai! Kamu bisa mengulang materi ini kapan saja.",
+    "whatYouLearned": "Yang Kamu Pelajari",
+    "keyConcepts": "Konsep Kunci",
+    "takeaways": "Poin Penting",
+    "challenge": "Tantangan",
+    "quizExplanation": "Penjelasan Kuis",
+    "question": "Pertanyaan {n}",
+    "correctAnswer": "Jawaban benar",
+    "explanation": "Penjelasan",
+    "noSummary": "Tidak ada ringkasan tambahan untuk bagian ini.",
+    "nodeUnsupported": "Jenis node tidak didukung"
+  },
+  "learningPath": {
+    "empty": "Belum ada checkpoint dalam topik ini.",
+    "aria": {
+      "path": "Jalur belajar",
+      "review": "Tinjau jalur belajar",
+      "completed": "{title} — selesai",
+      "current": "{title} — tahap saat ini",
+      "locked": "{title} — terkunci"
+    }
+  },
+  "error": {
+    "defaultTitle": "Terjadi kesalahan"
+  }
+}

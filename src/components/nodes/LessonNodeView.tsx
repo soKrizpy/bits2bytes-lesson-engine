@@ -5,6 +5,7 @@
 // Shows: title, explanation (or placeholder), optional analogy, expectedResult, tips.
 // Topic-agnostic — works for any lesson content.
 
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 import { Button } from '@/components/ui/Button';
 import type { LessonNode } from '@/types/lesson';
 
@@ -15,6 +16,7 @@ interface LessonNodeViewProps {
 }
 
 export function LessonNodeView({ node, onAdvance, mode = 'learning' }: LessonNodeViewProps) {
+  const t = useEngineTranslations();
   return (
     <div className="space-y-6">
       {/* Title */}
@@ -24,7 +26,7 @@ export function LessonNodeView({ node, onAdvance, mode = 'learning' }: LessonNod
       <div className="lesson-panel">
         <p className="text-text-base leading-relaxed whitespace-pre-wrap">
           {node.explanation ?? (
-            <span className="text-text-muted italic">No explanation is available for this step.</span>
+            <span className="text-text-muted italic">{t('node.noExplanation')}</span>
           )}
         </p>
       </div>
@@ -34,7 +36,7 @@ export function LessonNodeView({ node, onAdvance, mode = 'learning' }: LessonNod
         <div className="lesson-callout bg-primary/10 border-primary/20">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-lg" aria-hidden="true">💡</span>
-            <span className="text-primary text-sm font-semibold uppercase tracking-wide">Think of it this way</span>
+            <span className="text-primary text-sm font-semibold uppercase tracking-wide">{t('node.thinkOfIt')}</span>
           </div>
           <p className="text-text-base leading-relaxed">{node.analogy}</p>
         </div>
@@ -45,7 +47,7 @@ export function LessonNodeView({ node, onAdvance, mode = 'learning' }: LessonNod
         <div className="lesson-callout bg-success/10 border-success/20">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-lg" aria-hidden="true">🎯</span>
-            <span className="text-success text-sm font-semibold uppercase tracking-wide">What you&apos;ll achieve</span>
+            <span className="text-success text-sm font-semibold uppercase tracking-wide">{t('node.whatYoullAchieve')}</span>
           </div>
           <p className="text-text-base leading-relaxed">{node.expectedResult}</p>
         </div>
@@ -56,7 +58,7 @@ export function LessonNodeView({ node, onAdvance, mode = 'learning' }: LessonNod
         <div className="lesson-callout bg-warning/10 border-warning/20">
           <div className="flex items-center gap-2 mb-3">
             <span className="text-lg" aria-hidden="true">✨</span>
-            <span className="text-warning text-sm font-semibold uppercase tracking-wide">Tips</span>
+            <span className="text-warning text-sm font-semibold uppercase tracking-wide">{t('node.tips')}</span>
           </div>
           <ul className="space-y-2">
             {node.tips.map((tip, i) => (
@@ -72,7 +74,7 @@ export function LessonNodeView({ node, onAdvance, mode = 'learning' }: LessonNod
       {mode === 'learning' && (
         <div className="pt-2">
           <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
-            Got it, continue →
+            {t('node.continue')}
           </Button>
         </div>
       )}

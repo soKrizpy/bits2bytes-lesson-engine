@@ -1,0 +1,120 @@
+{
+  "lesson": {
+    "loading": "Loading lesson…",
+    "topicBrief": "Topic Brief",
+    "completing": "Completing topic…",
+    "couldNotLoad": "Could not load lesson"
+  },
+  "node": {
+    "types": {
+      "lesson": "Lesson",
+      "code": "Coding",
+      "practice": "Practice",
+      "challenge": "Challenge",
+      "quiz": "Quiz"
+    },
+    "checkpoint": "Checkpoint {current} of {total}",
+    "currentStage": "Current Stage",
+    "reviewing": "Reviewing",
+    "noExplanation": "No explanation is available for this step.",
+    "thinkOfIt": "Think of it this way",
+    "whatYoullAchieve": "What you'll achieve",
+    "tips": "Tips",
+    "continue": "Got it, continue →",
+    "codeExample": "code example",
+    "yourChallenge": "Your Challenge",
+    "starterCode": "starter code",
+    "expectedResult": "Expected result",
+    "challengeComplete": "Challenge Complete →",
+    "completeToContinue": "Complete the activity to continue",
+    "correct": "🎉 Correct! Great work.",
+    "incorrect": "🤔 Not quite — but that's okay! Keep going.",
+    "unsupported": "Node type \"{type}\" is not supported by this version of the Lesson Engine.",
+    "unsupportedTitle": "Title:",
+    "skipAndContinue": "Skip and continue →"
+  },
+  "quiz": {
+    "title": "Knowledge Check",
+    "questions": "{count} questions · {points} pts total",
+    "attemptsUsed": "Attempts used",
+    "lastScore": "Last score",
+    "bestScore": "Best score",
+    "startQuiz": "Start Quiz →",
+    "retryQuiz": "Retry Quiz (Attempt {n} of {max}) →",
+    "skipAndContinue": "Skip and continue",
+    "allAttemptsUsed": "✅ You have used all {max} quiz attempts. Your best score of {score} has been saved.",
+    "attempt": "Attempt {n} of {max}",
+    "answered": "{answered} of {total} answered",
+    "submitAnswers": "Submit Answers →",
+    "questionsRemaining": "{n} questions remaining",
+    "percentLabel": "Percentage",
+    "knowledgeCheck": "Knowledge Check",
+    "questionsScore": "{count} questions · best score {best} / {total}",
+    "correctAnswer": "Correct answer:",
+    "yourAnswer": "Your answer:",
+    "yourScore": "Your score",
+    "continue": "Continue →",
+    "tryAgain": "Try Again (Attempt {n} of {max})"
+  },
+  "achievement": {
+    "subheading": "Great job!",
+    "heading": "Stage complete",
+    "body": "You successfully completed this stage.",
+    "unlocked": "Achievement unlocked",
+    "xpEarned": "XP earned",
+    "quizScore": "Quiz score",
+    "checkpoints": "Checkpoints completed",
+    "whatYouLearned": "What you learned",
+    "continueNext": "Continue to Next Adventure →",
+    "returnToAdventure": "Return to Adventure",
+    "reviewTopic": "Review Topic"
+  },
+  "intro": {
+    "topic": "Topic {n}",
+    "analogy": "How to Think About It",
+    "estTime": "Est. time",
+    "xpAvailable": "XP available",
+    "level": "Level",
+    "whatYoullLearn": "What You'll Learn",
+    "startLearning": "Start Learning →",
+    "maybeLater": "Maybe Later",
+    "levels": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    }
+  },
+  "review": {
+    "title": "Topic Review",
+    "achievement": "Achievement",
+    "back": "Back",
+    "summary": "Summary",
+    "checkpoints": "Checkpoints",
+    "selectHint": "Select any checkpoint in the sidebar to review its content.",
+    "topicSummary": "Topic summary",
+    "topicComplete": "Topic complete! You can revisit this material anytime.",
+    "whatYouLearned": "What You Learned",
+    "keyConcepts": "Key Concepts",
+    "takeaways": "Useful Takeaways",
+    "challenge": "Challenge",
+    "quizExplanation": "Quiz Explanation",
+    "question": "Question {n}",
+    "correctAnswer": "Correct answer",
+    "explanation": "Explanation",
+    "noSummary": "No additional summary is available for this section.",
+    "nodeUnsupported": "Node type not supported"
+  },
+  "learningPath": {
+    "empty": "No checkpoints in this topic yet.",
+    "aria": {
+      "path": "Learning path",
+      "review": "Review learning path",
+      "completed": "{title} — completed",
+      "current": "{title} — current stage",
+      "locked": "{title} — locked"
+    }
+  },
+  "error": {
+    "defaultTitle": "An error occurred"
+  }
+}

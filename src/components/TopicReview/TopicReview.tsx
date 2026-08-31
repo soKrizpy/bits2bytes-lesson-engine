@@ -13,6 +13,7 @@
 // Uses lesson JSON + current StudentState without mutating progress.
 
 import { useState } from 'react';
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 import { LearningPath } from '@/components/LearningPath/LearningPath';
 import { NodeRenderer } from '@/components/NodeRenderer/NodeRenderer';
 import { ChallengeSolution } from '@/components/TopicReview/ChallengeSolution';
@@ -41,6 +42,7 @@ export function TopicReview({
   onBackToAchievement,
   onReturn,
 }: TopicReviewProps) {
+  const t = useEngineTranslations();
   const [activeTab, setActiveTab] = useState<ActiveTab>('summary');
 
   const selectedNode = lesson.learningPath[selectedNodeIndex] ?? lesson.learningPath[0];
@@ -67,15 +69,15 @@ export function TopicReview({
               BITS2BYTES
             </span>
             <span className="ml-3 text-text-muted text-sm hidden sm:inline">
-              Topic Review
+              {t('review.title')}
             </span>
           </div>
           <div className="flex items-center gap-2 shrink-0">
             <Button onClick={onBackToAchievement} variant="ghost" size="sm">
-              Achievement
+              {t('review.achievement')}
             </Button>
             <Button onClick={onReturn} variant="secondary" size="sm">
-              Back
+              {t('review.back')}
             </Button>
           </div>
         </div>
@@ -126,7 +128,7 @@ export function TopicReview({
                 active={activeTab === 'summary'}
                 onClick={() => setActiveTab('summary')}
               >
-                Summary
+                {t('review.summary')}
               </TabButton>
               <TabButton
                 id="tab-checkpoints"
@@ -134,7 +136,7 @@ export function TopicReview({
                 active={activeTab === 'checkpoints'}
                 onClick={() => setActiveTab('checkpoints')}
               >
-                Checkpoints
+                {t('review.checkpoints')}
               </TabButton>
             </div>
 
@@ -165,7 +167,7 @@ export function TopicReview({
                 <div className="space-y-6">
                   {/* Hint when no node has been explicitly selected yet */}
                   <p className="text-xs text-text-muted">
-                    Select any checkpoint in the sidebar to review its content.
+                    {t('review.selectHint')}
                   </p>
 
                   <NodeRenderer
@@ -240,36 +242,37 @@ function TopicSummary({
   challengeNodes: ChallengeNode[];
   quizQuestions: Lesson['quiz']['questions'];
 }) {
+  const t = useEngineTranslations();
   const review = lesson.review;
 
   return (
     <section className="space-y-5" aria-label="Topic summary">
       <div className="space-y-2">
         <p className="text-primary text-sm font-semibold uppercase tracking-[0.18em]">
-          Topic summary
+          {t('review.topicSummary')}
         </p>
         <h1 className="text-3xl font-bold text-text-base leading-tight tracking-tight">
           {lesson.metadata.title}
         </h1>
         <p className="text-text-muted leading-relaxed">
-          Topic complete! You can revisit this material anytime to strengthen your understanding.
+          {t('review.topicComplete')}
         </p>
       </div>
 
-      <ReviewSection title="What You Learned" defaultOpen>
+      <ReviewSection title={t('review.whatYouLearned')} defaultOpen>
         <SummaryList items={review?.learned ?? lesson.objectives} tone="success" />
       </ReviewSection>
 
-      <ReviewSection title="Key Concepts" defaultOpen={false}>
+      <ReviewSection title={t('review.keyConcepts')} defaultOpen={false}>
         <SummaryList items={review?.keyConcepts ?? []} tone="warning" />
       </ReviewSection>
 
-      <ReviewSection title="Useful Takeaways" defaultOpen={false}>
+      <ReviewSection title={t('review.takeaways')} defaultOpen={false}>
         <SummaryList items={review?.takeaways ?? []} tone="primary" />
       </ReviewSection>
 
       {challengeNodes.length > 0 && (
-        <ReviewSection title="Challenge" defaultOpen={false}>
+        <ReviewSection title={t('review.challenge')} defaultOpen={false}>
           <div className="space-y-4">
             {challengeNodes.map((challenge) => (
               <div key={challenge.id} className="space-y-2">
@@ -283,7 +286,7 @@ function TopicSummary({
         </ReviewSection>
       )}
 
-      <ReviewSection title="Quiz Explanation" defaultOpen={false}>
+      <ReviewSection title={t('review.quizExplanation')} defaultOpen={false}>
         <div className="space-y-4">
           {quizQuestions.map((question, index) => (
             <article
@@ -291,15 +294,15 @@ function TopicSummary({
               className="rounded-xl border border-white/10 bg-background/40 p-4 space-y-3"
             >
               <h2 className="text-sm font-semibold text-text-base">
-                Question {index + 1}
+                {t('review.question', { n: index + 1 })}
               </h2>
               <p className="text-sm leading-relaxed text-text-base">{question.question}</p>
               <div className="space-y-1">
-                <p className="text-xs font-semibold uppercase tracking-wide text-success">Correct answer</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-success">{t('review.correctAnswer')}</p>
                 <p className="text-sm leading-relaxed text-text-base">{question.correctAnswer}</p>
               </div>
               <div className="space-y-1">
-                <p className="text-xs font-semibold uppercase tracking-wide text-primary">Explanation</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-primary">{t('review.explanation')}</p>
                 <p className="text-sm leading-relaxed text-text-muted">{question.explanation}</p>
               </div>
             </article>
@@ -351,6 +354,8 @@ function SummaryList({
   items: string[];
   tone: 'primary' | 'success' | 'warning';
 }) {
+  const t = useEngineTranslations();
+
   const markerClasses = {
     primary: 'text-primary',
     success: 'text-success',
@@ -369,6 +374,6 @@ function SummaryList({
       ))}
     </ul>
   ) : (
-    <p className="text-sm text-text-muted">No additional summary is available for this section.</p>
+    <p className="text-sm text-text-muted">{t('review.noSummary')}</p>
   );
 }

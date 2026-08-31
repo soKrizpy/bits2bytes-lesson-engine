@@ -15,6 +15,7 @@
 // Respects prefers-reduced-motion for scroll behaviour.
 
 import { useEffect, useRef, useState } from 'react';
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 import { PathNode } from './PathNode';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { calculateProgress } from '@/engine/progress';
@@ -52,6 +53,7 @@ export function LearningPath({
   selectedNodeIndex,
   onSelectNode,
 }: LearningPathProps) {
+  const t = useEngineTranslations();
   const currentNodeRef = useRef<HTMLLIElement | null>(null);
   const progress = calculateProgress(studentState, nodes.length);
   const isReviewMode = mode === 'review';
@@ -103,13 +105,13 @@ export function LearningPath({
     return (
       <div className="p-4 space-y-4">
         <ProgressBar value={0} completed={0} total={0} />
-        <p className="text-text-muted text-sm text-center">No checkpoints in this topic yet.</p>
+        <p className="text-text-muted text-sm text-center">{t('learningPath.empty')}</p>
       </div>
     );
   }
 
   return (
-    <nav aria-label={isReviewMode ? 'Review learning path' : 'Learning path'} className="flex flex-col h-full">
+    <nav aria-label={isReviewMode ? t('learningPath.aria.review') : t('learningPath.aria.path')} className="flex flex-col h-full">
       {/* Progress bar header — desktop only */}
       <div className="hidden px-4 pt-4 pb-3 border-b border-white/10 lg:block">
         <ProgressBar

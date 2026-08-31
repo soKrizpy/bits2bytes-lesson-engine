@@ -15,6 +15,7 @@ import { QuizReview } from './QuizReview';
 import { Button } from '@/components/ui/Button';
 import type { QuizQuestion } from '@/types/lesson';
 import type { StudentState } from '@/types/state';
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 
 const MAX_ATTEMPTS = 2;
 
@@ -33,6 +34,7 @@ export function QuizEngine({
   onSubmitAttempt,
   onAdvance,
 }: QuizEngineProps) {
+  const t = useEngineTranslations();
   const [phase, setPhase] = useState<QuizPhase>('idle');
   const [currentAnswers, setCurrentAnswers] = useState<Record<string, string>>({});
   const [reviewAnswers, setReviewAnswers] = useState<Record<string, string>>({});
@@ -78,9 +80,9 @@ export function QuizEngine({
       <div className="space-y-6">
         {/* Header */}
         <div className="space-y-1">
-          <h2 className="text-2xl font-bold text-text-base">Knowledge Check</h2>
+          <h2 className="text-2xl font-bold text-text-base">{t('quiz.title')}</h2>
           <p className="text-text-muted text-sm">
-            {questions.length} pertanyaan · total {maxScore} poin
+            {t('quiz.questions', { count: questions.length, points: maxScore })}
           </p>
         </div>
 
@@ -88,7 +90,7 @@ export function QuizEngine({
         <div className="bg-card border border-white/10 rounded-xl p-5 space-y-4">
           {/* Attempt counter row */}
           <div className="flex items-center justify-between">
-            <span className="text-sm text-text-muted">Attempts used</span>
+            <span className="text-sm text-text-muted">{t('quiz.attemptsUsed')}</span>
             <span className="text-sm font-semibold text-text-base tabular-nums">
               {attemptsUsed} / {MAX_ATTEMPTS}
             </span>
@@ -111,13 +113,13 @@ export function QuizEngine({
           {/* Score info */}
           <div className="grid grid-cols-2 gap-4 pt-1 border-t border-white/10">
             <div>
-              <p className="text-xs text-text-muted">Last score</p>
+              <p className="text-xs text-text-muted">{t('quiz.lastScore')}</p>
               <p className="text-lg font-bold text-text-base tabular-nums">
                 {lastAttempt !== null ? lastAttempt.score.toString() : '—'}
               </p>
             </div>
             <div>
-              <p className="text-xs text-text-muted">Best score</p>
+              <p className="text-xs text-text-muted">{t('quiz.bestScore')}</p>
               <p className="text-lg font-bold text-xpGold tabular-nums">
                 {studentState.bestQuizScore > 0
                   ? studentState.bestQuizScore.toString()
@@ -132,26 +134,22 @@ export function QuizEngine({
           <div className="space-y-3">
             <Button onClick={handleStartQuiz} size="lg" className="w-full sm:w-auto">
               {attemptsUsed === 0
-                ? 'Start Quiz →'
-                : `Retry Quiz (Attempt ${attemptsUsed + 1} of ${MAX_ATTEMPTS}) →`}
+                ? t('quiz.startQuiz')
+                : t('quiz.retryQuiz', { n: attemptsUsed + 1, max: MAX_ATTEMPTS })}
             </Button>
             {attemptsUsed > 0 && (
               <Button onClick={onAdvance} variant="ghost" size="md">
-                Skip and continue
+                {t('quiz.skipAndContinue')}
               </Button>
             )}
           </div>
         ) : (
           <div className="space-y-4">
             <div className="bg-card border border-white/10 rounded-xl p-4 text-sm text-text-muted">
-              ✅ You have used all {MAX_ATTEMPTS} quiz attempts. Your best score of{' '}
-              <span className="text-xpGold font-semibold">
-                {studentState.bestQuizScore}
-              </span>{' '}
-              sudah disimpan.
+              {t('quiz.allAttemptsUsed', { max: MAX_ATTEMPTS, score: studentState.bestQuizScore })}
             </div>
             <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
-              Continue →
+              {t('quiz.continue')}
             </Button>
           </div>
         )}
@@ -167,9 +165,9 @@ export function QuizEngine({
       <div className="space-y-8">
         {/* Header with attempt info */}
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-text-base">Knowledge Check</h2>
+          <h2 className="text-xl font-bold text-text-base">{t('quiz.title')}</h2>
           <span className="text-xs font-semibold bg-primary/15 text-primary border border-primary/20 px-3 py-1 rounded-full">
-            Attempt {attemptsUsed + 1} of {MAX_ATTEMPTS}
+            {t('quiz.attempt', { n: attemptsUsed + 1, max: MAX_ATTEMPTS })}
           </span>
         </div>
 
@@ -187,7 +185,7 @@ export function QuizEngine({
           ))}
         </div>
         <p className="text-xs text-text-muted -mt-6">
-          {answeredCount} dari {questions.length} terjawab
+          {t('quiz.answered', { answered: answeredCount, total: questions.length })}
         </p>
 
         {/* All 5 questions on one screen */}
@@ -214,12 +212,12 @@ export function QuizEngine({
         <div className="flex items-center gap-4 flex-wrap">
           <Button onClick={handleSubmit} size="lg" disabled={!allAnswered}>
             {allAnswered
-              ? 'Submit Answers →'
-              : `Answer all ${questions.length} questions to submit`}
+              ? t('quiz.submitAnswers')
+              : t('quiz.questionsRemaining', { n: questions.length - answeredCount })}
           </Button>
           {!allAnswered && (
             <span className="text-xs text-text-muted">
-              {questions.length - answeredCount} questions remaining
+              {t('quiz.questionsRemaining', { n: questions.length - answeredCount })}
             </span>
           )}
         </div>
@@ -245,7 +243,7 @@ export function QuizEngine({
         <h2 className="text-xl font-bold text-text-base">Quiz Review</h2>
         <div className="flex items-center gap-3 text-sm">
           <span className="text-text-muted">
-            Attempt {updatedAttemptsUsed} of {MAX_ATTEMPTS}
+            {t('quiz.attempt', { n: updatedAttemptsUsed, max: MAX_ATTEMPTS })}
           </span>
           <span className="text-xpGold font-semibold">
             Best: {studentState.bestQuizScore} pts
@@ -264,20 +262,18 @@ export function QuizEngine({
       {/* Attempt exhausted warning */}
       {!canRetry && (
         <div className="bg-card border border-white/10 rounded-xl p-4 text-sm text-text-muted">
-          ✅ You have used all {MAX_ATTEMPTS} quiz attempts. Your best score of{' '}
-              <span className="text-xpGold font-semibold">{studentState.bestQuizScore}</span>{' '}
-              sudah disimpan.
+          {t('quiz.allAttemptsUsed', { max: MAX_ATTEMPTS, score: studentState.bestQuizScore })}
         </div>
       )}
 
       {/* Actions */}
       <div className="flex items-center gap-3 flex-wrap">
         <Button onClick={onAdvance} size="lg">
-          Continue →
+          {t('quiz.continue')}
         </Button>
         {canRetry && (
           <Button onClick={handleRetry} variant="secondary" size="md">
-            Try Again (Attempt {updatedAttemptsUsed + 1} of {MAX_ATTEMPTS})
+            {t('quiz.tryAgain', { n: updatedAttemptsUsed + 1, max: MAX_ATTEMPTS })}
           </Button>
         )}
       </div>

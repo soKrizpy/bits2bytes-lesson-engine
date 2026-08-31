@@ -1,8 +1,11 @@
+'use client';
+
 // src/components/QuizEngine/QuizReview.tsx
 // Post-submission review: shows correct/incorrect per question with explanations.
 // Only reveals answers AFTER submission.
 
 import type { QuizQuestion } from '@/types/lesson';
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 
 interface QuizReviewProps {
   questions: QuizQuestion[];
@@ -12,6 +15,7 @@ interface QuizReviewProps {
 }
 
 export function QuizReview({ questions, answers, score, maxScore }: QuizReviewProps) {
+  const t = useEngineTranslations();
   const percentage = maxScore > 0 ? Math.round((score / maxScore) * 100) : 0;
 
   return (
@@ -19,13 +23,13 @@ export function QuizReview({ questions, answers, score, maxScore }: QuizReviewPr
       {/* Score summary */}
       <div className="bg-card border border-white/10 rounded-xl p-5 flex items-center justify-between">
         <div>
-          <p className="text-text-muted text-sm">Your score</p>
+          <p className="text-text-muted text-sm">{t('quiz.yourScore')}</p>
           <p className="text-text-base text-2xl font-bold tabular-nums">
             {score} <span className="text-text-muted text-base font-normal">/ {maxScore}</span>
           </p>
         </div>
         <div className="text-right">
-          <p className="text-text-muted text-sm">Persentase</p>
+          <p className="text-text-muted text-sm">{t('quiz.percentLabel')}</p>
           <p
             className={[
               'text-2xl font-bold tabular-nums',
@@ -78,12 +82,12 @@ export function QuizReview({ questions, answers, score, maxScore }: QuizReviewPr
                 <div className="ml-9 space-y-1.5 text-sm">
                   {given !== null && (
                     <p className="text-error/80">
-              Your answer:{' '}
+              {t('quiz.yourAnswer')}{' '}
                       <span className="font-medium line-through">{given}</span>
                     </p>
                   )}
                   <p className="text-success">
-                    Correct answer:{' '}
+                    {t('quiz.correctAnswer')}{' '}
                     <span className="font-semibold">{question.correctAnswer}</span>
                   </p>
                 </div>

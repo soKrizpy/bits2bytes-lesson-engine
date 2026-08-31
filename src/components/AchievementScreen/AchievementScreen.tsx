@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import type { Lesson } from '@/types/lesson';
 import type { StudentState } from '@/types/state';
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 
 interface AchievementScreenProps {
   lesson: Lesson;
@@ -29,6 +30,7 @@ export function AchievementScreen({
   onNextTopic,
 }: AchievementScreenProps) {
   const [visible, setVisible] = useState(false);
+  const t = useEngineTranslations();
 
   useEffect(() => {
     // Small delay before entering to allow the animation to fire
@@ -81,14 +83,14 @@ export function AchievementScreen({
 
           <div className="space-y-3">
             <p className="text-primary text-sm font-semibold uppercase tracking-[0.2em]">
-              Great job!
+              {t('achievement.subheading')}
             </p>
             <h1 className="text-3xl sm:text-4xl font-bold text-text-base leading-tight tracking-tight">
-              Stage complete
+              {t('achievement.heading')}
             </h1>
             <p className="text-lg font-semibold text-text-base">{lesson.metadata.title}</p>
             <p className="max-w-md mx-auto text-text-muted leading-relaxed">
-              You successfully completed this stage. {lesson.completion.message}
+              {t('achievement.body')} {lesson.completion.message}
             </p>
           </div>
         </div>
@@ -96,7 +98,7 @@ export function AchievementScreen({
         {/* Achievement badge */}
           <div className="bg-primary/10 border border-primary/20 rounded-2xl px-6 py-4 inline-block mx-auto shadow-sm shadow-primary/10">
           <p className="text-xs font-semibold text-primary uppercase tracking-wide mb-1">
-            Achievement unlocked
+            {t('achievement.unlocked')}
           </p>
           <p className="text-text-base font-bold text-lg">
             {lesson.completion.achievementName}
@@ -110,7 +112,7 @@ export function AchievementScreen({
             <p className="text-xl sm:text-2xl font-bold text-xpGold tabular-nums">
               ⭐ {studentState.xpEarned}
             </p>
-            <p className="text-xs text-text-muted">XP earned</p>
+            <p className="text-xs text-text-muted">{t('achievement.xpEarned')}</p>
           </div>
 
           {/* Quiz score */}
@@ -118,7 +120,7 @@ export function AchievementScreen({
             <p className="text-xl sm:text-2xl font-bold text-text-base/80 tabular-nums">
               {quizPercentage}%
             </p>
-            <p className="text-xs text-text-muted">Quiz score</p>
+            <p className="text-xs text-text-muted">{t('achievement.quizScore')}</p>
           </div>
 
           {/* Nodes */}
@@ -126,12 +128,12 @@ export function AchievementScreen({
             <p className="text-xl sm:text-2xl font-bold text-success/90 tabular-nums">
               {completedCount}/{totalNodes}
             </p>
-            <p className="text-xs text-text-muted">Checkpoints completed</p>
+            <p className="text-xs text-text-muted">{t('achievement.checkpoints')}</p>
           </div>
         </div>
 
         <section className="bg-card border border-white/10 rounded-2xl p-5 sm:p-6 text-left space-y-3" aria-labelledby="learned-heading">
-          <h2 id="learned-heading" className="text-text-base font-semibold">What you learned</h2>
+          <h2 id="learned-heading" className="text-text-base font-semibold">{t('achievement.whatYouLearned')}</h2>
           <ul className="space-y-2 text-sm text-text-muted">
             {learned.slice(0, 4).map((item) => (
               <li key={item} className="flex gap-2">
@@ -149,18 +151,18 @@ export function AchievementScreen({
               onClick={onNextTopic}
               size="lg"
               className="w-full"
-              aria-label={`Continue to next adventure: ${nextTopic.title}`}
+              aria-label={`${t('achievement.continueNext')}: ${nextTopic.title}`}
             >
-              Continue to Next Adventure →
+              {t('achievement.continueNext')}
             </Button>
           ) : (
             <Button
               onClick={onReturn}
               size="lg"
               className="w-full"
-              aria-label="Return to adventure"
+              aria-label={t('achievement.returnToAdventure')}
             >
-              Return to Adventure
+              {t('achievement.returnToAdventure')}
             </Button>
           )}
           <Button
@@ -168,9 +170,9 @@ export function AchievementScreen({
             variant="secondary"
             size="lg"
             className="w-full"
-            aria-label="Review completed topic"
+            aria-label={t('achievement.reviewTopic')}
           >
-            Review Topic
+            {t('achievement.reviewTopic')}
           </Button>
           {hasNextTopic && (
             <Button
@@ -178,9 +180,9 @@ export function AchievementScreen({
               variant="ghost"
               size="md"
               className="w-full"
-              aria-label="Return to adventure"
+              aria-label={t('achievement.returnToAdventure')}
             >
-              Return to Adventure
+              {t('achievement.returnToAdventure')}
             </Button>
           )}
         </div>

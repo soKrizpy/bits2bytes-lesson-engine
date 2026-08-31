@@ -7,6 +7,7 @@
 // Advance button is enabled only after the interaction is complete.
 
 import { useState } from 'react';
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 import { Button } from '@/components/ui/Button';
 import type { PracticeNode } from '@/types/lesson';
 
@@ -17,6 +18,7 @@ interface PracticeNodeViewProps {
 }
 
 export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: PracticeNodeViewProps) {
+  const t = useEngineTranslations();
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [showFeedback, setShowFeedback] = useState(false);
@@ -206,8 +208,8 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
           ].join(' ')}
         >
           {isCorrect
-            ? '🎉 Benar! Kerja bagus.'
-            : "🤔 Not quite — but that's okay! Keep going."}
+            ? t('node.correct')
+            : t('node.incorrect')}
         </div>
       )}
 
@@ -219,7 +221,7 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
           disabled={!isComplete}
           className="w-full sm:w-auto"
         >
-            {isComplete ? 'Continue →' : 'Complete the activity to continue'}
+            {isComplete ? t('node.continue') : t('node.completeToContinue')}
         </Button>
       </div>
     </div>

@@ -9,6 +9,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import type { Lesson } from '@/types/lesson';
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 
 interface TopicIntroProps {
   lesson: Lesson;
@@ -16,16 +17,10 @@ interface TopicIntroProps {
   onBack: () => void;
 }
 
-const LEVEL_LABELS: Record<string, string> = {
-  beginner: 'Beginner',
-  intermediate: 'Intermediate',
-  advanced: 'Advanced',
-};
-
-
 
 export function TopicIntro({ lesson, onStart, onBack }: TopicIntroProps) {
   const [visible, setVisible] = useState(false);
+  const t = useEngineTranslations();
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 50);
@@ -36,7 +31,7 @@ export function TopicIntro({ lesson, onStart, onBack }: TopicIntroProps) {
   const analogy = introduction?.analogy;
   // Show at most 4 objectives to keep the splash focused
   const displayObjectives = objectives.slice(0, 4);
-  const levelLabel = LEVEL_LABELS[metadata.level] ?? metadata.level;
+  const levelLabel = t(`intro.levels.${metadata.level}`);
 
   return (
     <div
@@ -83,7 +78,7 @@ export function TopicIntro({ lesson, onStart, onBack }: TopicIntroProps) {
         {/* ── Title + description ──────────────────────────────────────── */}
         <div className="text-center space-y-3">
           <p className="text-primary text-sm font-semibold uppercase tracking-[0.2em]">
-            Topic {metadata.topicNumber}
+            {t('intro.topic', { n: metadata.topicNumber })}
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-text-base leading-tight tracking-tight">
             {metadata.title}
@@ -98,7 +93,7 @@ export function TopicIntro({ lesson, onStart, onBack }: TopicIntroProps) {
             aria-labelledby="analogy-heading"
           >
             <h2 id="analogy-heading" className="text-xs font-semibold text-primary uppercase tracking-wide">
-              How to Think About It
+              {t('intro.analogy')}
             </h2>
             <p className="text-text-base text-sm leading-relaxed">{analogy}</p>
           </section>
@@ -112,7 +107,7 @@ export function TopicIntro({ lesson, onStart, onBack }: TopicIntroProps) {
               <span aria-hidden="true" className="block">⏱</span>
               {metadata.estimatedTime}m
             </p>
-            <p className="text-xs text-text-muted">Est. time</p>
+            <p className="text-xs text-text-muted">{t('intro.estTime')}</p>
           </div>
 
           {/* XP */}
@@ -121,7 +116,7 @@ export function TopicIntro({ lesson, onStart, onBack }: TopicIntroProps) {
               <span aria-hidden="true" className="block">⭐</span>
               {metadata.xp}
             </p>
-            <p className="text-xs text-text-muted">XP available</p>
+            <p className="text-xs text-text-muted">{t('intro.xpAvailable')}</p>
           </div>
 
           {/* Level */}
@@ -130,7 +125,7 @@ export function TopicIntro({ lesson, onStart, onBack }: TopicIntroProps) {
               <span aria-hidden="true" className="block text-lg sm:text-2xl">📊</span>
               {levelLabel}
             </p>
-            <p className="text-xs text-text-muted">Level</p>
+            <p className="text-xs text-text-muted">{t('intro.level')}</p>
           </div>
         </div>
 
@@ -143,7 +138,7 @@ export function TopicIntro({ lesson, onStart, onBack }: TopicIntroProps) {
             id="objectives-heading"
             className="text-text-base font-semibold"
           >
-            What You&apos;ll Learn
+            {t('intro.whatYoullLearn')}
           </h2>
           <ul className="space-y-2 text-sm text-text-muted">
             {displayObjectives.map((objective) => (
@@ -163,9 +158,9 @@ export function TopicIntro({ lesson, onStart, onBack }: TopicIntroProps) {
             onClick={onStart}
             size="lg"
             className="w-full"
-            aria-label={`Start learning: ${metadata.title}`}
+            aria-label={`${t('intro.startLearning')}: ${metadata.title}`}
           >
-            Start Learning →
+            {t('intro.startLearning')}
           </Button>
           <Button
             variant="ghost"
@@ -173,7 +168,7 @@ export function TopicIntro({ lesson, onStart, onBack }: TopicIntroProps) {
             className="w-full"
             onClick={onBack}
           >
-            Maybe Later
+            {t('intro.maybeLater')}
           </Button>
         </div>
       </div>

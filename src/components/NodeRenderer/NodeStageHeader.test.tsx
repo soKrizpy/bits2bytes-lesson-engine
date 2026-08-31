@@ -21,9 +21,9 @@ describe('NodeStageHeader', () => {
     );
 
     expect(screen.getByRole('heading', { name: 'Membuat Kode Pertama' })).toBeInTheDocument();
-    expect(screen.getByText('Current Stage')).toBeInTheDocument();
-    expect(screen.getByText('Checkpoint 2 of 5')).toBeInTheDocument();
-    expect(screen.getByText('Coding')).toBeInTheDocument();
+    expect(screen.getByText('Tahap Saat Ini')).toBeInTheDocument();
+    expect(screen.getByText('Checkpoint 2 dari 5')).toBeInTheDocument();
+    expect(screen.getByText('Kode')).toBeInTheDocument();
   });
 
   it('communicates a read-only revisit state', () => {
@@ -36,6 +36,6 @@ describe('NodeStageHeader', () => {
       />
     );
 
-    expect(screen.getByText('Reviewing')).toBeInTheDocument();
+    expect(screen.getByText('Meninjau')).toBeInTheDocument();
   });
 });

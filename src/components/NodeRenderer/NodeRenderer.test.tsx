@@ -72,7 +72,7 @@ describe('NodeRenderer review mode', () => {
       />
     );
 
-    expect(screen.getByText('Knowledge Check Review')).toBeInTheDocument();
+    expect(screen.getByText('Uji Pengetahuan')).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /mulai quiz/i })).not.toBeInTheDocument();
     expect(screen.queryByRole('button', { name: /kirim jawaban/i })).not.toBeInTheDocument();
     expect(onSubmitQuizAttempt).not.toHaveBeenCalled();

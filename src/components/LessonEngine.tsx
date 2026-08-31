@@ -25,6 +25,7 @@ import { ErrorScreen } from '@/components/ui/ErrorScreen';
 import { TOPIC_REGISTRY } from '@/engine/topicRegistry';
 import { useUrlParams } from '@/hooks/useUrlParams';
 import { useLmsPostMessage } from '@/hooks/useLmsPostMessage';
+import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 
 interface LessonEngineProps {
   topicId: string;
@@ -35,6 +36,7 @@ const adapter = new LocalStorageAdapter();
 
 export function LessonEngine({ topicId }: LessonEngineProps) {
   const router = useRouter();
+  const t = useEngineTranslations();
   const urlParams = useUrlParams();
   const { sendLessonComplete, sendQuizSubmitted, sendXpUpdate } = useLmsPostMessage(
     topicId,
@@ -103,7 +105,7 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
 
   // ── Load error: hard block ─────────────────────────────────────────────────
   if (loadError !== null) {
-    return <ErrorScreen title="Could not load lesson" message={loadError} />;
+    return <ErrorScreen title={t('lesson.couldNotLoad')} message={loadError} />;
   }
 
   // ── Loading: lesson JSON not yet available ─────────────────────────────────
@@ -115,7 +117,7 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
             className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin mx-auto"
             aria-hidden="true"
           />
-          <p className="text-text-muted text-sm">Loading lesson…</p>
+          <p className="text-text-muted text-sm">{t('lesson.loading')}</p>
         </div>
       </div>
     );
@@ -220,7 +222,7 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
       {currentNodeIndex === 0 && !isCompletedSelection && (
         <section className="max-w-7xl mx-auto w-full px-4 sm:px-6 pt-6" aria-labelledby="topic-brief-heading">
           <div className="rounded-2xl border border-primary/20 bg-primary/10 p-5 sm:p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Topic Brief</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{t('lesson.topicBrief')}</p>
             <h1 id="topic-brief-heading" className="mt-2 text-xl font-bold text-text-base">{lesson.metadata.title}</h1>
             <p className="mt-2 text-sm leading-relaxed text-text-muted">{lesson.metadata.description}</p>
           </div>
@@ -277,7 +279,7 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
             ) : (
               // All nodes traversed but topicCompleted flag not yet flushed — transient state
               <div className="text-center space-y-4 py-20">
-                <p className="text-text-muted text-sm">Completing topic…</p>
+                <p className="text-text-muted text-sm">{t('lesson.completing')}</p>
               </div>
             )}
           </div>
