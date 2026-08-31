@@ -104,7 +104,12 @@ export function useEngineState(
     let cancelled = false;
 
     async function init() {
-      const result = await loadLesson(topicId);
+      // Pass lmsOrigin from URL params so Phase C content resolution is active
+      // when the engine is opened from LMS. Falls back to filesystem if absent.
+      const lmsOriginParam = typeof window !== 'undefined'
+        ? new URLSearchParams(window.location.search).get('lmsOrigin')
+        : null;
+      const result = await loadLesson(topicId, { lmsOrigin: lmsOriginParam });
       if (cancelled) return;
 
       if (!result.success) {

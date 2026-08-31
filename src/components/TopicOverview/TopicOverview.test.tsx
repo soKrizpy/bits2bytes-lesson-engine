@@ -23,7 +23,7 @@ const topics: TopicRegistryEntry[] = [
 
 beforeEach(() => {
   localStorage.clear();
-  mockedLoadLesson.mockResolvedValue({ success: true, lesson });
+  mockedLoadLesson.mockResolvedValue({ success: true, lesson, source: 'filesystem' as const });
 });
 
 describe('TopicOverview', () => {
