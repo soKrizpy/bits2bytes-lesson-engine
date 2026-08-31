@@ -199,7 +199,7 @@ Implementation proceeds in 15 groups ordered by dependency: project scaffold →
     - _Requirements: 4.5, 4.6_
     - _Design: NodeRenderer — Registry Pattern_
 
-- [ ] 9. Implement learning path components
+- [x] 9. Implement learning path components
   - [x] 9.1 Create `src/components/LearningPath/PathNode.tsx`
     - Props: `node: LearningNode`, `state: 'completed' | 'current' | 'upcoming'`, `index: number`.
     - Three visually distinct states: `completed` (filled icon, tick, muted colour), `current` (highlighted border, bright colour, enlarged icon), `upcoming` (greyed out, hollow icon).
@@ -220,21 +220,21 @@ Implementation proceeds in 15 groups ordered by dependency: project scaffold →
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9_
     - _Design: Property P3, P4_
 
-- [ ] 10. Implement quiz engine components
-  - [~] 10.1 Create `src/components/QuizEngine/QuizQuestion.tsx`
+- [x] 10. Implement quiz engine components
+  - [x] 10.1 Create `src/components/QuizEngine/QuizQuestion.tsx`
     - Props: `question: QuizQuestion`, `selectedAnswer: string | null`, `onSelect: (answer: string) => void`, `disabled: boolean`.
     - Renders question text and all 4 option strings as selectable items (radio-style).
     - Each option selectable exactly once per attempt (re-selection replaces previous selection; `disabled` prevents all interaction).
     - Accessible: `role="radiogroup"`, `aria-checked` on selected option.
     - _Requirements: 6.1_
 
-  - [~] 10.2 Create `src/components/QuizEngine/QuizReview.tsx`
+  - [x] 10.2 Create `src/components/QuizEngine/QuizReview.tsx`
     - Props: `questions: QuizQuestion[]`, `answers: Record<string, string>`.
     - For each incorrectly answered question: display correct answer and `explanation` text.
     - Correctly answered questions may be shown with a success indicator.
     - _Requirements: 6.4_
 
-  - [~] 10.3 Create `src/components/QuizEngine/QuizEngine.tsx`
+  - [x] 10.3 Create `src/components/QuizEngine/QuizEngine.tsx`
     - Props: `questions: QuizQuestion[]`, `studentState: StudentState`, `quizNodeId: string`, `onSubmitAttempt: (answers: Record<string, string>) => void`, `onAdvance: () => void`.
     - Implements the full quiz state machine: `idle → active → submitted → reviewing → complete` (or back to `idle` if attempts < 2).
     - Entry to `active` blocked if `quizAttempts.length >= 2`.
@@ -248,8 +248,8 @@ Implementation proceeds in 15 groups ordered by dependency: project scaffold →
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9_
     - _Design: Quiz State Machine_
 
-- [ ] 11. Implement achievement screen
-  - [~] 11.1 Create `src/components/AchievementScreen/AchievementScreen.tsx`
+- [x] 11. Implement achievement screen
+  - [x] 11.1 Create `src/components/AchievementScreen/AchievementScreen.tsx`
     - Props: `lesson: Lesson`, `studentState: StudentState`, `onReturn: () => void`.
     - Celebration animation lasting 2–5 seconds on mount.
     - Renders: topic title, total XP earned (`xpEarned`), best quiz score as a percentage `Math.round((bestQuizScore / maxPossibleScore) * 100)` in range [0, 100], count of completed nodes, achievement name from `lesson.completion.achievementName`.
@@ -259,8 +259,8 @@ Implementation proceeds in 15 groups ordered by dependency: project scaffold →
     - _Requirements: 7.2, 7.4, 7.5, 12.3, 12.7_
     - _Design: Property P16_
 
-- [ ] 12. Implement lesson engine orchestrator
-  - [~] 12.1 Create `src/components/LessonEngine.tsx`
+- [x] 12. Implement lesson engine orchestrator
+  - [x] 12.1 Create `src/components/LessonEngine.tsx`
     - Single entry-point component accepting `topicId: string` (1–128 chars).
     - On mount: calls `useEngineState(topicId, new LocalStorageAdapter())`.
     - If `loadError` is non-null: renders `<ErrorScreen message={loadError} />` and returns early — no lesson UI mounts.
@@ -273,34 +273,34 @@ Implementation proceeds in 15 groups ordered by dependency: project scaffold →
     - _Requirements: 5.5, 5.7, 7.1, 7.6, 9.2, 11.2, 11.4, 11.5, 11.6, 12.4_
     - _Design: LessonEngine component, Component Hierarchy, Error State_
 
-- [ ] 13. Create Next.js pages and routing
-  - [~] 13.1 Create `src/app/globals.css`
+- [x] 13. Create Next.js pages and routing
+  - [x] 13.1 Create `src/app/globals.css`
     - `@tailwind base; @tailwind components; @tailwind utilities;`
     - Set `html, body` background to `#0f172a` (slate-950).
     - _Requirements: 12.1_
 
-  - [~] 13.2 Create `src/app/layout.tsx`
+  - [x] 13.2 Create `src/app/layout.tsx`
     - Root layout with `Inter` loaded via `next/font/google` (zero layout shift).
     - Sets `<html>` `lang="en"`, applies dark background, Inter font class.
     - Imports `globals.css`.
     - _Requirements: 12.1_
     - _Design: Design Tokens, Routing Design_
 
-  - [~] 13.3 Create `src/app/page.tsx` (home page)
+  - [x] 13.3 Create `src/app/page.tsx` (home page)
     - Lists available topics — V1: `beginner-html-01` only.
     - Displays: topic title, description, XP value, level, estimated time, and a "Start Learning" `<Link href="/lesson/beginner-html-01">` button.
     - Responsive layout; accessible heading structure.
     - _Requirements: 11.2, 12.1_
     - _Design: Routing Design_
 
-  - [~] 13.4 Create `src/app/lesson/[topicId]/page.tsx`
+  - [x] 13.4 Create `src/app/lesson/[topicId]/page.tsx`
     - Server component: extracts `topicId` from `params`.
     - Renders `<LessonEngine topicId={topicId} />` (client component).
     - _Requirements: 11.2, 11.3_
     - _Design: Routing Design_
 
-- [ ] 14. Create topic-01 lesson content
-  - [~] 14.1 Create `lessons/beginner/html/topic-01.json`
+- [x] 14. Create topic-01 lesson content
+  - [x] 14.1 Create `lessons/beginner/html/topic-01.json`
     - A fully authored, schema-valid JSON file for `beginner-html-01`.
     - `metadata`: `id = "beginner-html-01"`, `title = "Build Your First Web Page"`, `level = "beginner"`, `category = "HTML"`, `topicNumber = 1`, `estimatedTime` (positive integer), `xp = 100`.
     - `learningPath`: exactly 10 nodes in the order: (1) `lesson` — Welcome to HTML; (2) `lesson` — HTML Elements & Tags; (3) `code` — Your First HTML Tags; (4) `lesson` — The HTML Document Structure; (5) `code` — Full HTML Boilerplate; (6) `lesson` — Headings & Paragraphs; (7) `code` — Headings in Action; (8) `practice` — Build It Yourself (multiple-choice, correct tag for main heading); (9) `challenge` — Build Your First Page (starterCode = empty HTML boilerplate); (10) `quiz` — Knowledge Check.
@@ -311,18 +311,18 @@ Implementation proceeds in 15 groups ordered by dependency: project scaffold →
     - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5_
     - _Design: Topic 01 Content Overview_
 
-- [~] 15. Checkpoint — wire up and smoke test
+- [x] 15. Checkpoint — wire up and smoke test
   - Ensure `src/app/lesson/[topicId]/page.tsx` renders `LessonEngine`, which loads `topic-01.json` via `LessonLoader`, validates via `SchemaValidator`, and renders `LearningPath` + `NodeRenderer`.
   - Ensure `XPBadge` is visible at all times.
   - Confirm no TypeScript compilation errors (`tsc --noEmit`).
   - Ask the user if questions arise before proceeding to tests.
 
-- [ ] 16. Write engine core tests
-  - [~] 16.1 Create `src/engine/validator.test.ts`
+- [x] 16. Write engine core tests
+  - [x] 16.1 Create `src/engine/validator.test.ts`
     - Unit tests: missing `metadata` section; missing `quiz` section; exactly 5 quiz questions passes; 4 questions fails with descriptive error; `schemaVersion "2.0"` rejected; `schemaVersion "1.5"` accepted; valid complete lesson object passes; missing `schemaVersion` rejected; node with unknown `type` fails with index + type in error message; multiple violations produce multiple errors (not just first).
     - _Requirements: 1.3, 1.4, 2.7, 2.8_
 
-  - [ ]* 16.2 Write property test for SchemaValidator (P1)
+  - [x] 16.2 Write property test for SchemaValidator (P1)
     - **Property 1: Schema Validation Reports All Violations**
     - Use `fc.subarray` of required field names to remove them from a valid lesson; assert `valid: false` with `errors.length >= 1` and each error identifies a field path and violated rule.
     - Use `fc.string` for invalid enum values (e.g., `metadata.level = "expert"`); assert rejected.
@@ -330,138 +330,138 @@ Implementation proceeds in 15 groups ordered by dependency: project scaffold →
     - **Validates: Requirements 1.3, 1.4, 1.5, 2.2, 2.3, 2.4, 2.6, 2.7, 2.8**
     - _Design: Property P1, Testing Strategy_
 
-  - [~] 16.3 Create `src/engine/loader.test.ts`
+  - [x] 16.3 Create `src/engine/loader.test.ts`
     - Unit tests: file not found returns `{ error: "... not found at ..." }`; malformed JSON returns `{ error: "... could not be read ..." }`; valid file returns `{ lesson: Lesson }`.
 
-  - [ ]* 16.4 Write property test for LessonLoader path construction (P2)
+  - [x] 16.4 Write property test for LessonLoader path construction (P2)
     - **Property 2: Lesson Loader Path Construction**
     - Use `fc.string` for `topicId`, `level`, `category`; assert constructed path equals `lessons/{level}/{category}/{topicId}.json` with no extra segments or slashes.
     - **Validates: Requirements 1.1**
     - _Design: Property P2, Testing Strategy_
 
-  - [~] 16.5 Create `src/engine/progress.test.ts`
+  - [x] 16.5 Create `src/engine/progress.test.ts`
     - Unit tests: `totalNodes = 0` → 0%; `3 / 10` → 30%; `10 / 10` → 100%; rounding (e.g., 1/3 → 33%); completedCount > totalNodes clamped to 100%.
 
-  - [ ]* 16.6 Write property test for ProgressTracker (P4)
+  - [x] 16.6 Write property test for ProgressTracker (P4)
     - **Property 4: Progress Calculation Correctness**
     - Use `fc.nat` for `completedCount` (0–T) and `totalCount` (T ≥ 1); assert `percentage = Math.round((C/T)*100)` clamped to `[0,100]` and `completedCount`/`totalCount` returned correctly.
     - **Validates: Requirements 3.5, 3.6, 3.8**
     - _Design: Property P4, Testing Strategy_
 
-  - [~] 16.7 Create `src/engine/xp.test.ts`
+  - [x] 16.7 Create `src/engine/xp.test.ts`
     - Unit tests: `awardNodeXP` on already-completed node → `xpEarned` unchanged; `awardNodeXP` on new node → `xpEarned` increases; node with no XP → `xpEarned` unchanged; `awardCompletionXP` once → increases by `topicXP`; `awardCompletionXP` twice → second call is no-op.
 
-  - [ ]* 16.8 Write property test for XP idempotency (P14)
+  - [x] 16.8 Write property test for XP idempotency (P14)
     - **Property 14: XP Idempotency — Node and Completion Awards**
     - (a) `fc.string` (nodeId) + `fc.nat` (xpAmount): call `awardNodeXP` on state where node is already in `completedNodes`; assert `xpEarned` unchanged.
     - (b) `fc.nat` (topicXP): call `awardCompletionXP` N > 1 times; assert `xpEarned` increases by exactly `topicXP` once.
     - **Validates: Requirements 5.4, 8.3, 8.4, 8.5**
     - _Design: Property P14, Testing Strategy_
 
-- [ ] 17. Write persistence layer tests
-  - [~] 17.1 Create `src/persistence/localStorageAdapter.test.ts`
+- [x] 17. Write persistence layer tests
+  - [x] 17.1 Create `src/persistence/localStorageAdapter.test.ts`
     - Unit tests: `saveState` then `loadState` same topicId returns equal state; `loadState` with no prior save returns null; `loadState` with unparseable stored data returns null; `clearState` causes subsequent `loadState` to return null; `saveState` with simulated quota error does not throw.
 
-  - [ ]* 17.2 Write property test for persistence round-trip (P15)
+  - [x] 17.2 Write property test for persistence round-trip (P15)
     - **Property 15: Persistence Round-Trip Preserves Student State**
     - Use `fc.record` matching `StudentState` shape (including nested `quizAttempts` array, `completedNodes` array); call `saveState` then `loadState`; assert deep equality.
     - Consecutive save-load cycles must be idempotent.
     - **Validates: Requirements 9.4**
     - _Design: Property P15, Testing Strategy_
 
-- [ ] 18. Write component tests
-  - [~] 18.1 Create `src/components/LearningPath/LearningPath.test.tsx`
+- [x] 18. Write component tests
+  - [x] 18.1 Create `src/components/LearningPath/LearningPath.test.tsx`
     - Unit tests: empty path shows 0% and "0 / 0"; 3/10 nodes completed shows 30% and "3 / 10"; current node has `aria` or class indicating current; completed nodes have distinct class from upcoming.
 
-  - [ ]* 18.2 Write property test for node state rendering (P3)
+  - [x] 18.2 Write property test for node state rendering (P3)
     - **Property 3: Node State Rendering Invariant**
     - Use `fc.array` of node IDs + `fc.nat` for `currentNodeIndex`; render `LearningPath`; assert each node has exactly one of `completed|current|upcoming`; assert at most one node is `current`.
     - **Validates: Requirements 3.2, 3.3, 3.4**
     - _Design: Property P3, Testing Strategy_
 
-  - [~] 18.3 Create `src/components/nodes/LessonNodeView.test.tsx`
+  - [x] 18.3 Create `src/components/nodes/LessonNodeView.test.tsx`
     - Unit tests: renders `title` and `explanation`; when `explanation` absent renders placeholder; renders `analogy` when present; does not render `analogy` element when absent; renders `tips` list when present; does not crash when all optional fields absent.
 
-  - [ ]* 18.4 Write property test for LessonNodeView (P5)
+  - [x] 18.4 Write property test for LessonNodeView (P5)
     - **Property 5: Lesson Node Renders All Present Fields**
     - Use `fc.record` with optional fields (`analogy`, `expectedResult`, `tips`) randomly present/omitted; assert present fields appear in render output; absent fields produce no error/crash.
     - **Validates: Requirements 4.1**
     - _Design: Property P5, Testing Strategy_
 
-  - [~] 18.5 Create `src/components/nodes/CodeNodeView.test.tsx`
+  - [x] 18.5 Create `src/components/nodes/CodeNodeView.test.tsx`
     - Unit tests: renders `code.content` in a code block; preserves whitespace (content appears inside `<pre>` or equivalent); language label exactly matches `code.language`; no normalisation or truncation of language value.
 
-  - [ ]* 18.6 Write property test for CodeNodeView (P6)
+  - [x] 18.6 Write property test for CodeNodeView (P6)
     - **Property 6: Code Node Renders Content and Language Label**
     - Use `fc.record` with arbitrary `code.language` and `code.content` strings; assert language label equals the input value exactly and content is present in rendered output.
     - **Validates: Requirements 4.2**
     - _Design: Property P6, Testing Strategy_
 
-  - [~] 18.7 Create `src/components/nodes/ChallengeNodeView.test.tsx`
+  - [x] 18.7 Create `src/components/nodes/ChallengeNodeView.test.tsx`
     - Unit tests: renders `title` and `instructions`; renders `starterCode` in code block when present; renders `expectedResult` when present; no crash when optional fields absent.
 
-  - [ ]* 18.8 Write property test for ChallengeNodeView (P7)
+  - [x] 18.8 Write property test for ChallengeNodeView (P7)
     - **Property 7: Challenge Node Renders All Present Fields**
     - Use `fc.record` with optional `starterCode` and `expectedResult` randomly present/absent; assert correct render behaviour in all combinations.
     - **Validates: Requirements 4.4**
     - _Design: Property P7, Testing Strategy_
 
-  - [~] 18.9 Create `src/components/NodeRenderer/NodeRenderer.test.tsx`
+  - [x] 18.9 Create `src/components/NodeRenderer/NodeRenderer.test.tsx`
     - Unit tests: renders `LessonNodeView` for `type = 'lesson'`; renders `FallbackNodeView` for unknown type; `FallbackNodeView` output contains the unknown type string and "not supported" text; does not throw for any unknown type.
 
-  - [ ]* 18.10 Write property test for FallbackNodeView (P8)
+  - [x] 18.10 Write property test for FallbackNodeView (P8)
     - **Property 8: Fallback Renderer Shows Unknown Type**
     - Use `fc.string` filtered to exclude the five V1 type values; render `NodeRenderer` with that type; assert `FallbackNodeView` is rendered, output contains the type string, output contains "not supported", no throw.
     - **Validates: Requirements 4.6**
     - _Design: Property P8, Testing Strategy_
 
-  - [~] 18.11 Create `src/components/QuizEngine/QuizEngine.test.tsx`
+  - [x] 18.11 Create `src/components/QuizEngine/QuizEngine.test.tsx`
     - Unit tests: idle state shows attempt 0 / max 2 / "no attempt recorded"; submit transitions to reviewing; review shows wrong answers with explanations; after 2 attempts retry button hidden and "no further attempts remain" shown; third submit blocked.
 
-  - [ ]* 18.12 Write property test for quiz score calculation (P10)
+  - [x] 18.12 Write property test for quiz score calculation (P10)
     - **Property 10: Quiz Score Calculation**
     - Use `fc.array` of `QuizQuestion` + random answer selection per question; assert score equals sum of `points` for matching answers, 0 contribution for non-matching or absent answers.
     - **Validates: Requirements 6.2**
     - _Design: Property P10, Testing Strategy_
 
-  - [~] 18.13 Create `src/components/AchievementScreen/AchievementScreen.test.tsx`
+  - [x] 18.13 Create `src/components/AchievementScreen/AchievementScreen.test.tsx`
     - Unit tests: renders topic title; renders `xpEarned`; renders best score as percentage; renders completed node count; renders `achievementName`; "Return to Overview" button is present; no field is undefined or raw object.
 
-  - [ ]* 18.14 Write property test for AchievementScreen (P16)
+  - [x] 18.14 Write property test for AchievementScreen (P16)
     - **Property 16: Achievement Screen Renders All Required Fields**
     - Use `fc.record` for `StudentState` with `topicCompleted = true` + `fc.record` for `Lesson`; assert all six required fields are present in render output with non-undefined, non-object-string values.
     - **Validates: Requirements 7.2**
     - _Design: Property P16, Testing Strategy_
 
-- [ ] 19. Write hook and integration tests
-  - [~] 19.1 Create `src/hooks/useEngineState.test.ts`
+- [x] 19. Write hook and integration tests
+  - [x] 19.1 Create `src/hooks/useEngineState.test.ts`
     - Unit tests: `loadState(null)` initialises with `INITIAL_STUDENT_STATE`; `advanceNode()` on last node sets `topicCompleted = true`; `saveError` set when persistence throws; `submitQuizAttempt` blocked when `quizAttempts.length >= 2`.
 
-  - [ ]* 19.2 Write property test for completed nodes accumulation (P9)
+  - [x] 19.2 Write property test for completed nodes accumulation (P9)
     - **Property 9: Advancing Nodes Accumulates Completed Set**
     - Use `fc.array` of node sequences; simulate repeated `advanceNode()` calls; assert each node ID appended to `completedNodes` exactly once with no duplicates.
     - **Validates: Requirements 5.2**
     - _Design: Property P9, Testing Strategy_
 
-  - [ ]* 19.3 Write property test for best score MAX invariant (P11)
+  - [x] 19.3 Write property test for best score MAX invariant (P11)
     - **Property 11: Best Quiz Score is Always the Maximum**
     - Use `fc.tuple(fc.nat({ max: 100 }), fc.nat({ max: 100 }))` for scores S1, S2; simulate two submissions; assert `bestQuizScore === Math.max(S1, S2)` and value never decreases.
     - **Validates: Requirements 6.3**
     - _Design: Property P11, Testing Strategy_
 
-  - [ ]* 19.4 Write property test for quiz attempt count bounded at 2 (P12)
+  - [x] 19.4 Write property test for quiz attempt count bounded at 2 (P12)
     - **Property 12: Quiz Attempt Count is Bounded at 2**
     - Use `fc.nat({ min: 3, max: 20 })` for submission count; simulate N submissions; assert `quizAttempts.length` always in `[0, 2]` and submissions beyond 2 are blocked.
     - **Validates: Requirements 6.5, 6.7**
     - _Design: Property P12, Testing Strategy_
 
-  - [ ]* 19.5 Write property test for any quiz submission marks node complete (P13)
+  - [x] 19.5 Write property test for any quiz submission marks node complete (P13)
     - **Property 13: Any Quiz Submission Marks Quiz Node Complete**
     - Use `fc.record` for random quiz answers + random quiz node ID; simulate submission; assert quiz node ID appears in `completedNodes` after any attempt (including score-0 submissions).
     - **Validates: Requirements 6.9**
     - _Design: Property P13, Testing Strategy_
 
-  - [~] 19.6 Create `src/integration/lessonFlow.test.ts`
+  - [x] 19.6 Create `src/integration/lessonFlow.test.ts`
     - Integration tests:
       - Load `topic-01.json` end-to-end: `SchemaValidator` reports zero errors; all 10 nodes render.
       - Invalid lesson blocks render: `ErrorScreen` mounts; no `LearningPath` or `NodeRenderer` in DOM.
@@ -471,7 +471,7 @@ Implementation proceeds in 15 groups ordered by dependency: project scaffold →
       - Persistence failure degrades gracefully: mock `setItem` to throw; assert non-blocking banner rendered and lesson continues.
     - _Requirements: 1.7, 5.2, 6.3, 7.1, 9.6, 10.5, 11.3_
 
-- [~] 20. Final checkpoint — build verification and smoke test
+- [x] 20. Final checkpoint — build verification and smoke test
   - Run `tsc --noEmit` and fix all TypeScript errors.
   - Run `vitest --run` and fix any failing tests.
   - Programmatically validate `topic-01.json` against `lesson.schema.json` (write a one-off Node.js script or use the smoke test in `lessonFlow.test.ts`) and confirm zero errors.
