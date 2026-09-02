@@ -116,5 +116,12 @@
   },
   "error": {
     "defaultTitle": "An error occurred"
+  },
+  "module": {
+    "paused": "Paused",
+    "active": "Active",
+    "switcher": {
+      "aria": "Learning Path List"
+    }
   }
 }

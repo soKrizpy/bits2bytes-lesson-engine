@@ -116,5 +116,12 @@
   },
   "error": {
     "defaultTitle": "Terjadi kesalahan"
+  },
+  "module": {
+    "paused": "Sedang Dijeda",
+    "active": "Aktif",
+    "switcher": {
+      "aria": "Daftar Learning Path"
+    }
   }
 }
