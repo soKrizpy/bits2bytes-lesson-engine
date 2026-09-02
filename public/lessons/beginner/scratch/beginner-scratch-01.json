@@ -1,0 +1,242 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-01",
+    "title": "Kucing yang Bisa Jalan-Jalan",
+    "description": "Buat animasi pertamamu di Scratch — kucing yang berjalan bolak-balik di layar dengan gerakan kaki yang realistis!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 1,
+    "estimatedTime": 25,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Selamat Datang di Scratch — Mari Bikin Kucing Bergerak!",
+    "description": "Scratch adalah tempat di mana kamu bisa membuat animasi, game, dan cerita hanya dengan menyusun blok-blok warna-warni. Tidak perlu mengetik kode yang rumit! Di lesson pertama ini, kita akan langsung bikin proyek nyata: seekor kucing yang berjalan bolak-balik di layar, lengkap dengan animasi kakinya. Kamu bisa tunjukkan hasilnya ke teman-teman dan keluarga hari ini juga!",
+    "analogy": "Bayangkan Scratch seperti mainan LEGO ajaib — setiap blok adalah satu instruksi untuk karaktermu. Kamu tinggal pasang blok satu per satu, dan karaktermu langsung bergerak sesuai perintahmu!"
+  },
+  "objectives": [
+    "Mengenal tampilan Scratch: Stage, Sprite, dan area blok",
+    "Menggunakan blok 'ketika bendera hijau diklik' sebagai tombol start",
+    "Menggerakkan sprite dengan blok 'gerak 10 langkah'",
+    "Membuat sprite memantul di tepi layar dengan blok 'jika di tepi, pantul'",
+    "Membuat animasi berjalan dengan mengganti kostum",
+    "Merakit semua blok menjadi kucing yang berjalan bolak-balik"
+  ],
+  "review": {
+    "learned": [
+      "Stage adalah layar/panggung tempat semua karakter tampil di Scratch.",
+      "Sprite adalah karakter atau objek yang bisa bergerak dan berinteraksi.",
+      "Blok 'ketika bendera hijau diklik' adalah tombol start program Scratch.",
+      "Blok 'ulangi terus' membuat instruksi di dalamnya berjalan selamanya.",
+      "Blok 'jika di tepi, pantul' membuat sprite otomatis balik arah di tepi layar.",
+      "Blok 'kostum berikutnya' mengganti pose sprite untuk menciptakan animasi."
+    ],
+    "keyConcepts": [
+      "Stage dan Sprite",
+      "Blok Kejadian: ketika bendera hijau diklik",
+      "Blok Gerak: gerak, jika di tepi pantul",
+      "Blok Kontrol: ulangi terus",
+      "Blok Tampilan: kostum berikutnya",
+      "Animasi dengan pergantian kostum"
+    ],
+    "takeaways": [
+      "Scratch menggunakan blok visual — tidak ada kode teks yang perlu diketik.",
+      "Kucing Scratch sudah punya 2 kostum bawaan yang bisa langsung dipakai untuk animasi.",
+      "Blok 'atur gaya rotasi ke kiri-kanan' mencegah sprite terbalik saat memantul.",
+      "Semakin besar angka di 'gerak X langkah', semakin cepat sprite bergerak."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya proyek Scratch yang menampilkan seekor kucing berjalan bolak-balik di layar dengan animasi kaki yang bergerak. Saat kucing sampai di tepi kanan layar, ia otomatis balik arah ke kiri — dan seterusnya tanpa berhenti!\n\nProyek ini terlihat sederhana, tapi di dalamnya kamu sudah memakai beberapa blok penting:\n• Blok untuk memulai program\n• Blok untuk menggerakkan sprite\n• Blok untuk memantulkan sprite di tepi\n• Blok untuk animasi gerakan kaki\n\nSiap? Kita mulai dari mengenal area kerja Scratch dulu!",
+      "tips": [
+        "Sprite kucing sudah tersedia di Scratch secara bawaan — kamu tidak perlu menggambar sendiri.",
+        "Kamu bisa klik bendera hijau di pojok kanan atas Stage kapan saja untuk mencoba proyekmu."
+      ]
+    },
+    {
+      "id": "node-02-stage-sprite",
+      "type": "lesson",
+      "title": "Mengenal Stage dan Sprite",
+      "xp": 5,
+      "explanation": "Sebelum mulai coding, kenalan dulu dengan area kerja Scratch:\n\nSTAGE (Panggung)\nIni adalah layar besar di sebelah kiri tempat semua karakter dan animasimu tampil. Ukurannya 480 x 360 piksel. Semua yang kamu buat akan terlihat di sini.\n\nSPRITE (Karakter)\nSprite adalah karakter atau objek yang bisa bergerak dan berinteraksi di Stage. Kucing Scratch adalah sprite bawaan — sudah punya 2 kostum berbeda yang menunjukkan pose kaki berbeda.\n\nAREA BLOK\nDi sebelah kanan ada area tempat kamu menyusun blok-blok instruksi. Blok dikelompokkan berdasarkan warna dan jenis.",
+      "analogy": "Stage seperti panggung teater — tempat pertunjukan berlangsung. Sprite seperti aktor di atas panggung — mereka yang bergerak dan berakting. Kamu adalah sutradara yang mengatur semua gerakan mereka dengan blok-blok instruksi!",
+      "tips": [
+        "Klik sprite kucing di bawah Stage untuk memilihnya sebelum menambahkan blok.",
+        "Setiap sprite punya blok instruksinya sendiri — jadi pastikan sprite yang benar sedang dipilih."
+      ]
+    },
+    {
+      "id": "node-03-move-block",
+      "type": "code",
+      "title": "Blok Gerak — Mulai Bergerak!",
+      "xp": 5,
+      "explanation": "Coba blok paling dasar dulu: membuat sprite bergerak saat bendera hijau diklik.\n\nBlok 'ketika bendera hijau diklik' adalah tombol START programmu — setiap kali bendera hijau di atas Stage diklik, semua blok di bawahnya akan dijalankan.\n\nBlok 'gerak 10 langkah' membuat sprite maju 10 langkah ke arah yang sedang ia hadapi. Coba klik bendera hijau beberapa kali — kucing bergerak sedikit setiap kali diklik!",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[gerak 10 langkah]"
+      }
+    },
+    {
+      "id": "node-04-bounce",
+      "type": "code",
+      "title": "Blok Pantul — Balik Arah Otomatis!",
+      "xp": 5,
+      "explanation": "Masalahnya: kucing akan keluar dari layar kalau terus jalan ke satu arah. Kita perlu dua hal:\n1. Blok 'ulangi terus' — agar kucing terus jalan tanpa perlu klik bendera berkali-kali\n2. Blok 'jika di tepi, pantul' — agar kucing balik arah sendiri saat sampai di tepi\n\nBlok 'ulangi terus' adalah seperti loop tak terbatas — semua yang ada di dalamnya akan terus diulang sampai kamu tekan tombol stop (tanda merah).",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[ulangi terus]\n  [gerak 10 langkah]\n  [jika di tepi, pantul]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-05-costume",
+      "type": "code",
+      "title": "Animasi Kaki — Ganti Kostum!",
+      "xp": 5,
+      "explanation": "Sekarang kucing bergerak tapi kakinya kaku. Kita tambahkan animasi kaki dengan mengganti kostum!\n\nKucing Scratch punya 2 kostum bawaan:\n• costume1 — kaki posisi A\n• costume2 — kaki posisi B\n\nDengan cepat berganti antara dua kostum ini, otak kita akan melihatnya sebagai gerakan berjalan yang mulus!\n\nBlok 'tunggu 0.1 detik' penting agar pergantian kostum tidak terlalu cepat sehingga terlihat seperti kedipan.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[ulangi terus]\n  [gerak 10 langkah]\n  [jika di tepi, pantul]\n  [kostum berikutnya]\n  [tunggu 0.1 detik]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Proyek Lengkap — Kucing Jalan-Jalan!",
+      "xp": 5,
+      "explanation": "Ada satu masalah lagi: saat kucing memantul dan berbalik arah, tubuhnya terbalik (berdiri di atas kepala)! Kita perlu tambahkan satu blok lagi di awal: 'atur gaya rotasi ke kiri-kanan'.\n\nBlok ini harus diletakkan SEBELUM loop agar dijalankan satu kali saja saat program dimulai. Setelah itu, kucing hanya bisa miring ke kiri atau ke kanan — tidak bisa terbalik!\n\nIni adalah proyek lengkap kucing jalan-jalan yang siap ditampilkan!",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[atur gaya rotasi ke [kiri-kanan ▼]]\n[ulangi terus]\n  [gerak 10 langkah]\n  [jika di tepi, pantul]\n  [kostum berikutnya]\n  [tunggu 0.1 detik]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Buat Lebih Seru!",
+      "xp": 5,
+      "explanation": "Proyekmu sudah jalan! Sekarang coba variasi-variasi ini untuk membuatnya lebih menarik:\n\nUBAH KECEPATAN\nGanti angka di 'gerak 10 langkah':\n• Ganti jadi 5 → kucing berjalan lebih lambat\n• Ganti jadi 20 → kucing berlari super cepat!\n\nGANTI LATAR BELAKANG\nKlik area 'Stage' di bawah kanan → klik ikon gambar → pilih backdrop dari library (pantai, kota, luar angkasa, hutan)\n\nTAMBAH SPRITE LAIN\nKlik ikon kucing di pojok kanan bawah → pilih sprite baru dari library → kasih blok yang sama → sekarang ada 2 karakter berjalan!\n\nUBAH UKURAN SPRITE\nKlik sprite → ubah angka 'Ukuran' di bawah Stage jadi 50 untuk sprite kecil atau 150 untuk sprite besar.",
+      "tips": [
+        "Coba ganti backdrop jadi 'Blue Sky' agar kucing terlihat sedang berjalan di luar ruangan.",
+        "Tambahkan blok 'ubah efek warna sebesar 5' di dalam loop untuk membuat kucing berubah warna saat berjalan!"
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Blok apa yang membuat sprite otomatis balik arah saat sampai di tepi layar?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "gerak 10 langkah",
+        "jika di tepi, pantul",
+        "kostum berikutnya",
+        "tunggu 1 detik"
+      ],
+      "correctOption": "jika di tepi, pantul"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Kucing Warna-Warni!",
+      "xp": 15,
+      "instructions": "Saatnya kamu buat sendiri! Buka Scratch di scratch.mit.edu dan buat proyek berikut:\n\n1. Pilih sprite Kucing (sudah ada secara bawaan)\n2. Tambahkan blok 'atur gaya rotasi ke kiri-kanan' di awal\n3. Buat loop 'ulangi terus' dengan blok:\n   • gerak 10 langkah\n   • jika di tepi, pantul\n   • kostum berikutnya\n   • tunggu 0.1 detik\n4. BONUS: Tambahkan blok 'ubah efek [warna] sebesar 5' di dalam loop agar kucing berubah warna saat berjalan!\n\nKlik bendera hijau untuk mencoba. Kalau berhasil, kucingmu akan berjalan bolak-balik sambil berubah warna pelan-pelan!",
+      "starterCode": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[atur gaya rotasi ke [kiri-kanan ▼]]\n[ulangi terus]\n  [gerak 10 langkah]\n  [jika di tepi, pantul]\n  [kostum berikutnya]\n  [tunggu 0.1 detik]\n  // Tambahkan blok efek warna di sini!\n[akhir ulangi]"
+      },
+      "expectedResult": "Kucing berjalan bolak-balik dengan animasi kaki dan warna yang berubah pelan-pelan. Lihat contoh: https://scratch.mit.edu/projects/104/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "[ketika bendera hijau diklik]\n[atur gaya rotasi ke [kiri-kanan ▼]]\n[ulangi terus]\n  [gerak 10 langkah]\n  [jika di tepi, pantul]\n  [kostum berikutnya]\n  [ubah efek [warna ▼] sebesar 5]\n  [tunggu 0.1 detik]\n[akhir ulangi]",
+        "explanation": "Kita menambahkan blok 'ubah efek warna sebesar 5' di dalam loop, tepat setelah 'kostum berikutnya'. Setiap kali loop berulang, efek warna bertambah 5 — membuat kucing pelan-pelan berubah warna melewati semua warna pelangi!"
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa itu Sprite di Scratch?",
+        "options": [
+          "Layar tempat animasi ditampilkan",
+          "Karakter atau objek yang bisa bergerak di Stage",
+          "Blok instruksi berwarna hijau",
+          "Tombol untuk memulai program"
+        ],
+        "correctAnswer": "Karakter atau objek yang bisa bergerak di Stage",
+        "explanation": "Sprite adalah karakter atau objek di Scratch yang bisa bergerak, berinteraksi, dan bereaksi terhadap instruksi. Stage adalah layar/panggung tempat sprite tampil dan bergerak.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Blok apa yang dipakai sebagai tombol START program di Scratch?",
+        "options": [
+          "ulangi terus",
+          "gerak 10 langkah",
+          "ketika bendera hijau diklik",
+          "jika di tepi, pantul"
+        ],
+        "correctAnswer": "ketika bendera hijau diklik",
+        "explanation": "Blok 'ketika bendera hijau diklik' adalah titik awal program Scratch. Semua blok di bawahnya akan dijalankan ketika pemain mengklik bendera hijau di atas Stage.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa fungsi blok 'ulangi terus' di Scratch?",
+        "options": [
+          "Menjalankan blok di dalamnya hanya sekali",
+          "Menghentikan semua sprite",
+          "Menjalankan blok di dalamnya terus-menerus tanpa berhenti",
+          "Mengulang program dari awal sebanyak 10 kali"
+        ],
+        "correctAnswer": "Menjalankan blok di dalamnya terus-menerus tanpa berhenti",
+        "explanation": "Blok 'ulangi terus' membuat semua blok di dalamnya terus diulang tanpa henti sampai kamu menekan tombol stop (tanda merah). Ini yang membuat kucing terus berjalan tanpa perlu klik berulang-ulang.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Mengapa kita menggunakan blok 'kostum berikutnya' di dalam loop?",
+        "options": [
+          "Untuk mengubah warna sprite",
+          "Untuk membuat animasi gerakan dengan mengganti pose",
+          "Untuk menambah kecepatan gerak",
+          "Untuk mengubah ukuran sprite"
+        ],
+        "correctAnswer": "Untuk membuat animasi gerakan dengan mengganti pose",
+        "explanation": "Dengan cepat berganti antara beberapa kostum, otak kita melihatnya sebagai gerakan yang mulus. Kucing Scratch punya 2 kostum dengan pose kaki berbeda — berganti cepat di antara keduanya menciptakan ilusi kucing sedang berjalan.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Apa yang terjadi jika kita TIDAK menambahkan blok 'atur gaya rotasi ke kiri-kanan'?",
+        "options": [
+          "Kucing tidak bisa bergerak sama sekali",
+          "Kucing bergerak terlalu cepat",
+          "Kucing akan terbalik (berdiri di atas kepala) saat memantul",
+          "Kucing tidak bisa mengganti kostum"
+        ],
+        "correctAnswer": "Kucing akan terbalik (berdiri di atas kepala) saat memantul",
+        "explanation": "Tanpa blok 'atur gaya rotasi ke kiri-kanan', saat sprite memantul di tepi, ia akan berputar penuh dan terlihat terbalik atau berdiri di kepala. Blok ini membatasi rotasi hanya ke kiri atau kanan saja.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Keren Banget! Proyekmu Berhasil!",
+    "message": "Selamat! Kamu baru saja membuat animasi pertamamu di Scratch! Kucing itu berjalan bolak-balik karena blok-blok yang kamu susun. Di lesson berikutnya, kita akan buat proyek yang lebih seru lagi — kartu ucapan digital yang bisa bergerak dan berbunyi!",
+    "achievementName": "Animator Pertama",
+    "achievementIcon": "🐱"
+  }
+}

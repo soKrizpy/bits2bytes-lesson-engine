@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-07",
+    "title": "Animasi Intro Namaku",
+    "description": "Buat animasi intro keren dengan namamu sendiri — huruf-huruf muncul satu per satu dengan efek, seperti opening credits film!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 7,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Buat Intro Keren dengan Namamu Sendiri!",
+    "description": "Di mini project Level 1 ini, kita gabungkan SEMUA yang sudah dipelajari untuk membuat animasi intro yang personal. Namamu muncul dengan efek keren, ada musik latar, background yang indah, dan di akhir karakter utamamu tampil memberi salam. Hasilnya bisa kamu jadikan pembuka untuk semua proyek Scratch berikutnya — seperti opening credits film milikmu sendiri!",
+    "analogy": "Kamu pernah lihat opening credits di film atau video game? Nama-nama muncul satu per satu dengan efek keren, ada musik, ada animasi latar. Sekarang kamu yang bikin opening-mu sendiri — di Scratch, dengan namamu sendiri sebagai bintang utamanya!"
+  },
+  "objectives": [
+    "Menggabungkan semua blok Level 1: gerak, tampilan, suara, broadcast, dan clone",
+    "Menggunakan beberapa sprite teks untuk animasi huruf per huruf",
+    "Mengatur timing animasi dengan blok 'tunggu' untuk efek sinematik",
+    "Menggunakan efek masuk (hantu, ukuran) untuk transisi yang halus",
+    "Merakit proyek capstone yang menampilkan kreativitas sendiri"
+  ],
+  "review": {
+    "learned": [
+      "Animasi teks bisa dibuat dengan sprite-sprite teks yang muncul bergantian dengan timing.",
+      "Efek 'hantu' (transparency) menciptakan kesan teks muncul dan menghilang dengan halus.",
+      "Broadcast bisa dipakai untuk mengkoordinasikan banyak sprite agar muncul berurutan.",
+      "Blok 'atur efek hantu ke 100' membuat sprite tidak terlihat, lalu dikurangi perlahan untuk efek fade-in.",
+      "Semua skill Level 1 bisa digabungkan dalam satu proyek yang kohesif dan kreatif."
+    ],
+    "keyConcepts": [
+      "Animasi teks sequential dengan timing",
+      "Efek fade-in dan fade-out",
+      "Koordinasi multi-sprite dengan broadcast",
+      "Desain sinematik dengan musik dan backdrop",
+      "Capstone project: gabungan semua skill Level 1"
+    ],
+    "takeaways": [
+      "Timing adalah kunci animasi yang terasa 'profesional' — jeda yang tepat membuat perbedaan besar.",
+      "Efek visual sederhana seperti fade-in membuat animasi terasa jauh lebih polished.",
+      "Animasi intro yang personal adalah cara terbaik untuk memberi 'tanda tangan' pada semua proyekmu."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya animasi intro dengan urutan seperti ini:\n\n1. Layar gelap, musik mulai\n2. Teks 'PRESENTS' muncul perlahan (fade-in) di tengah layar\n3. Teks 'PRESENTS' menghilang (fade-out)\n4. Namamu muncul huruf demi huruf dengan efek dan suara\n5. Karakter utamamu muncul dari bawah dengan efek\n6. Karakter berkata 'Halo! Selamat datang di proyekku!'\n7. Judul proyek muncul di bawah\n\nIni adalah proyek 'showcase' — menunjukkan semua yang sudah kamu pelajari di Level 1!",
+      "tips": [
+        "Buat sprite teks menggunakan fitur 'Paint' di Scratch — pilih tool teks dan ketik huruf atau kata.",
+        "Untuk nama yang panjang, bisa dibuat sebagai satu sprite teks utuh, tidak perlu huruf per huruf."
+      ]
+    },
+    {
+      "id": "node-02-fade-effect",
+      "type": "lesson",
+      "title": "Efek Fade-In — Muncul Perlahan",
+      "xp": 5,
+      "explanation": "Efek 'fade-in' adalah animasi di mana sesuatu muncul perlahan dari tidak terlihat menjadi terlihat penuh. Di Scratch, kita pakai efek 'Hantu' (Ghost) — nilai 100 = tidak terlihat sama sekali, nilai 0 = terlihat penuh.\n\nCara membuat fade-in:\n1. Atur efek hantu ke 100 (tidak terlihat)\n2. Di dalam loop, kurangi efek hantu sebesar 5 per frame\n3. Saat efek hantu mencapai 0, sprite terlihat penuh\n\nEfek sederhana ini membuat animasi terlihat sangat profesional!",
+      "analogy": "Bayangkan lampu yang perlahan dinyalakan dari gelap total ke terang penuh. Efek hantu di Scratch persis seperti dimmer lampu — kamu kendalikan seberapa 'terlihat' sprite itu dari 0% sampai 100%.",
+      "tips": [
+        "Semakin kecil angka yang dikurangi per frame (misal 2 vs 10), semakin lambat dan dramatis fade-in-nya.",
+        "Untuk fade-out (menghilang perlahan), tambahkan efek hantu sampai 100."
+      ]
+    },
+    {
+      "id": "node-03-text-sprites",
+      "type": "code",
+      "title": "Setup Sprite Teks",
+      "xp": 5,
+      "explanation": "Buat beberapa sprite teks:\n1. Sprite 'PRESENTS' — teks kecil putih\n2. Sprite nama kamu — teks besar dan berwarna\n3. Sprite judul proyek — teks sedang\n\nSetiap sprite teks diatur dengan efek hantu 100 (tidak terlihat) di awal, lalu muncul perlahan saat waktunya tiba.\n\nKita mulai dengan mengatur semua sprite ke kondisi awal saat bendera diklik.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Semua sprite teks: setup awal ---\n[ketika bendera hijau diklik]\n[sembunyikan]\n[atur efek [hantu ▼] ke [100]]\n[atur ukuran ke [100] %]\n\n// --- Sprite karakter: juga sembunyi di awal ---\n[ketika bendera hijau diklik]\n[sembunyikan]\n[pergi ke x: [0] y: [-150]]"
+      }
+    },
+    {
+      "id": "node-04-presents-animation",
+      "type": "code",
+      "title": "Animasi 'PRESENTS' Fade-In",
+      "xp": 5,
+      "explanation": "Sprite 'PRESENTS' akan fade-in ke tengah layar, diam sebentar, lalu fade-out. Setelah menghilang, ia kirim broadcast 'tampilkan-nama' agar sprite nama mulai animasinya.\n\nBlok ini ada di SPRITE 'PRESENTS'. Kita gunakan loop dengan hitungan (ulangi 20 kali) bukan 'ulangi terus' agar fade berhenti di angka yang tepat.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite 'PRESENTS' ---\n[ketika bendera hijau diklik]\n[sembunyikan]\n[atur efek [hantu ▼] ke [100]]\n[tunggu [1] detik]\n[tampilkan]\n[pergi ke x: [0] y: [20]]\n[putar suara [Chime ▼]]\n// Fade in\n[ulangi [20] kali]\n  [ubah efek [hantu ▼] sebesar [-5]]\n  [tunggu [0.05] detik]\n[akhir ulangi]\n[tunggu [1.5] detik]\n// Fade out\n[ulangi [20] kali]\n  [ubah efek [hantu ▼] sebesar [5]]\n  [tunggu [0.05] detik]\n[akhir ulangi]\n[sembunyikan]\n[kirim pesan [tampilkan-nama ▼]]"
+      }
+    },
+    {
+      "id": "node-05-name-animation",
+      "type": "code",
+      "title": "Animasi Nama — Muncul Dramatis!",
+      "xp": 5,
+      "explanation": "Saat menerima broadcast 'tampilkan-nama', sprite nama muncul dengan efek:\n1. Muncul dari kecil (ukuran 10%) ke ukuran normal (100%) — efek 'zoom in'\n2. Sambil membesar, warna berputar indah\n3. Suara gemuruh kecil saat nama muncul penuh\n\nSetelah nama tampil, kirim broadcast berikutnya untuk memunculkan karakter.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite NAMA ---\n[ketika menerima [tampilkan-nama ▼]]\n[tampilkan]\n[pergi ke x: [0] y: [30]]\n[atur ukuran ke [10] %]\n[atur efek [hantu ▼] ke [0]]\n// Zoom in sambil putar warna\n[ulangi [18] kali]\n  [ubah ukuran sebesar [5]]\n  [ubah efek [warna ▼] sebesar [10]]\n  [tunggu [0.04] detik]\n[akhir ulangi]\n[putar suara [Tada ▼]]\n[tunggu [2] detik]\n[kirim pesan [tampilkan-karakter ▼]]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Karakter Muncul — Animasi Lengkap!",
+      "xp": 5,
+      "explanation": "Tahap terakhir: karakter utama muncul dari bawah layar ke posisi tengah, lalu mengucapkan selamat datang. Gunakan blok 'meluncur ke' untuk efek muncul dari bawah yang halus.\n\nIni adalah animasi intro yang lengkap! Semua skill Level 1 digunakan: timing, efek, broadcast, suara, gerak sprite.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite KARAKTER ---\n[ketika menerima [tampilkan-karakter ▼]]\n[tampilkan]\n[pergi ke x: [0] y: [-200]]\n[atur ukuran ke [50] %]\n// Naik dari bawah ke tengah\n[meluncur ke x: [0] y: [-30] dalam [0.8] detik]\n// Membesar saat sampai\n[ulangi [10] kali]\n  [ubah ukuran sebesar [5]]\n  [tunggu [0.03] detik]\n[akhir ulangi]\n[tunggu [0.3] detik]\n[katakan [Halo! Selamat datang di proyekku! 👋] selama [3] detik]\n[katakan [Dibuat dengan ❤️ di Scratch!] selama [2] detik]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Buat Intro yang Unik!",
+      "xp": 5,
+      "explanation": "Intro dasarmu sudah jadi! Berikut cara membuatnya lebih unik:\n\nGANTI FONT DAN WARNA\nSaat menggambar sprite teks, pilih font dan warna yang menggambarkan kepribadianmu. Warna-warni = ceria, hitam-putih = elegan, merah = berani!\n\nTAMBAH EFEK PARTIKEL\nGunakan klon dari lesson 6 untuk membuat hujan bintang atau konfeti di latar saat namamu muncul.\n\nMUSIK BERBEDA\nCoba suara 'Orchestra' atau 'Movie 1' dari library untuk nuansa yang lebih sinematik.\n\nPAKAI DI PROYEK LAIN\nSimpan proyek ini sebagai 'Intro Template'. Untuk proyek baru, duplikasi proyek ini dan tambahkan konten di belakang intro.\n\nBAGIKAN!\nKlik 'Bagikan' di Scratch dan kirim link ke teman untuk pamer intro kerenmu!",
+      "tips": [
+        "Simpan proyek dengan nama 'Intro - [Namamu]' agar mudah ditemukan kembali.",
+        "Kamu bisa pakai proyek ini sebagai template pembuka semua proyek Scratch berikutnya."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Untuk membuat efek 'fade-in' (muncul perlahan dari tidak terlihat), efek Hantu harus diatur dari...",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Dari 0 naik ke 100",
+        "Dari 100 turun ke 0",
+        "Dari 50 ke 100",
+        "Dari 100 ke 50"
+      ],
+      "correctOption": "Dari 100 turun ke 0"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Intro Level Pro!",
+      "xp": 15,
+      "instructions": "Buat animasi intro personalmu yang menggabungkan semua skill Level 1!\n\nProyek harus punya minimal:\n1. Backdrop gelap yang berubah jadi lebih cerah\n2. Teks intro (boleh 'PRESENTS' atau frase lain pilihanmu)\n3. Namamu muncul dengan efek keren\n4. Sprite karaktermu muncul dengan animasi\n5. Dialog 'selamat datang' dari karakter\n6. Musik atau suara yang mendukung suasana\n\nTidak ada aturan khusus untuk gaya — ekspresikan dirimu sepenuhnya. Ini adalah karya senimu sendiri!",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// Template timing intro:\n// 0.0s - Bendera diklik, semua sprite sembunyi\n// 1.0s - Teks pembuka mulai fade-in\n// 3.0s - Teks pembuka fade-out, broadcast ke nama\n// 3.5s - Namamu mulai muncul dengan efek\n// 5.5s - Broadcast ke karakter\n// 6.0s - Karakter muncul dari bawah\n// 7.0s - Karakter mengucapkan selamat datang\n\n// Kode untuk setiap sprite mengikuti pola:\n[ketika bendera hijau diklik]\n[sembunyikan]\n[atur efek [hantu ▼] ke [100]]\n\n// Setiap sprite 'terbangun' saat menerima broadcast-nya"
+      },
+      "expectedResult": "Animasi intro sinematik yang menampilkan teks presenter, nama diri sendiri dengan efek, dan karakter utama yang memberi salam. Lihat contoh: https://scratch.mit.edu/projects/110/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// KOORDINATOR (sprite tak terlihat atau backdrop)\n[ketika bendera hijau diklik]\n[ganti latar belakang ke [Black ▼]]\n[putar suara [Movie 1 ▼]]\n[tunggu [1] detik]\n[kirim pesan [mulai-presents ▼]]\n\n// SPRITE 'PRESENTS'\n[ketika menerima [mulai-presents ▼]]\n[tampilkan]\n[pergi ke x: [0] y: [50]]\n[atur efek [hantu ▼] ke [100]]\n[ulangi [20] kali]\n  [ubah efek [hantu ▼] sebesar [-5]]\n  [tunggu [0.05] detik]\n[akhir ulangi]\n[tunggu [1.5] detik]\n[ulangi [20] kali]\n  [ubah efek [hantu ▼] sebesar [5]]\n  [tunggu [0.05] detik]\n[akhir ulangi]\n[sembunyikan]\n[kirim pesan [tampilkan-nama ▼]]\n\n// SPRITE NAMA\n[ketika menerima [tampilkan-nama ▼]]\n[tampilkan]\n[pergi ke x: [0] y: [20]]\n[atur ukuran ke [20] %]\n[atur efek [hantu ▼] ke [0]]\n[ulangi [16] kali]\n  [ubah ukuran sebesar [5]]\n  [ubah efek [warna ▼] sebesar [12]]\n  [tunggu [0.05] detik]\n[akhir ulangi]\n[putar suara [Tada ▼]]\n[tunggu [2] detik]\n[kirim pesan [tampilkan-karakter ▼]]\n\n// SPRITE KARAKTER\n[ketika menerima [tampilkan-karakter ▼]]\n[tampilkan]\n[pergi ke x: [0] y: [-200]]\n[meluncur ke x: [0] y: [-20] dalam [0.8] detik]\n[ulangi [10] kali]\n  [ubah ukuran sebesar [3]]\n  [tunggu [0.03] detik]\n[akhir ulangi]\n[katakan [Selamat datang di dunia kreatifku! ✨] selama [3] detik]",
+        "explanation": "Proyek ini menggunakan rantai broadcast untuk mengkoordinasikan animasi berurutan: bendera → presents → nama → karakter. Setiap sprite menunggu giliran melalui broadcast, sehingga timing terjaga dengan rapi. Efek fade-in menggunakan loop yang mengubah efek hantu secara bertahap."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Di Scratch, nilai efek Hantu berapa yang membuat sprite TIDAK TERLIHAT sama sekali?",
+        "options": [
+          "Efek Hantu = 0",
+          "Efek Hantu = 50",
+          "Efek Hantu = 100",
+          "Efek Hantu = -100"
+        ],
+        "correctAnswer": "Efek Hantu = 100",
+        "explanation": "Efek Hantu (Ghost) di Scratch bekerja seperti transparansi. Nilai 0 = terlihat penuh (normal). Nilai 100 = tidak terlihat sama sekali (transparan total). Untuk fade-in, kita mulai dari 100 dan kurangi ke 0.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa cara terbaik untuk membuat beberapa sprite muncul BERURUTAN (satu per satu) di Scratch?",
+        "options": [
+          "Gunakan 'tunggu' yang sangat panjang di setiap sprite",
+          "Pakai broadcast — sprite pertama selesai lalu kirim broadcast ke sprite berikutnya",
+          "Semua sprite diprogram di satu sprite saja",
+          "Klik masing-masing sprite secara manual satu per satu"
+        ],
+        "correctAnswer": "Pakai broadcast — sprite pertama selesai lalu kirim broadcast ke sprite berikutnya",
+        "explanation": "Broadcast adalah cara paling rapi untuk membuat animasi berurutan. Sprite A selesai → kirim broadcast 'tampilkan-B' → Sprite B mulai animasinya → kirim broadcast 'tampilkan-C' → dst. Lebih mudah diatur timing-nya daripada pakai 'tunggu' yang ditebak-tebak.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa perbedaan antara 'ulangi [20] kali' dan 'ulangi terus'?",
+        "options": [
+          "Tidak ada perbedaan",
+          "'ulangi 20 kali' berhenti setelah 20 putaran; 'ulangi terus' tidak pernah berhenti",
+          "'ulangi terus' lebih cepat dari 'ulangi 20 kali'",
+          "'ulangi 20 kali' hanya untuk angka 20 — tidak bisa diubah"
+        ],
+        "correctAnswer": "'ulangi 20 kali' berhenti setelah 20 putaran; 'ulangi terus' tidak pernah berhenti",
+        "explanation": "Blok 'ulangi [N] kali' menjalankan isi loop sebanyak N kali lalu berhenti dan lanjut ke blok berikutnya. Blok 'ulangi terus' menjalankan isi loop selamanya sampai program dihentikan. Untuk animasi yang perlu berhenti di titik tertentu (seperti fade-in), kita pakai 'ulangi N kali'.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Kenapa timing (jeda) penting dalam membuat animasi yang terlihat 'profesional'?",
+        "options": [
+          "Timing tidak penting — animasi cepat selalu lebih baik",
+          "Timing yang tepat memberi kesan dramatis dan membuat penonton bisa menikmati setiap momen",
+          "Timing hanya dibutuhkan untuk game, bukan animasi",
+          "Timing hanya penting untuk suara, bukan visual"
+        ],
+        "correctAnswer": "Timing yang tepat memberi kesan dramatis dan membuat penonton bisa menikmati setiap momen",
+        "explanation": "Timing adalah jiwa dari animasi. Jeda yang tepat membangun antisipasi, memberi penonton waktu untuk menyerap informasi, dan menciptakan ritme yang enak ditonton. Film dan game profesional menghabiskan banyak waktu untuk menyempurnakan timing animasi mereka.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Apa yang sudah kamu pelajari di Level 1 Scratch? (Pilih jawaban yang PALING lengkap)",
+        "options": [
+          "Hanya cara menggerakkan sprite",
+          "Gerak sprite, animasi kostum, suara, backdrop, broadcast, clone, dan interaksi mouse/klik",
+          "Hanya cara membuat suara dan musik",
+          "Hanya cara mengganti backdrop"
+        ],
+        "correctAnswer": "Gerak sprite, animasi kostum, suara, backdrop, broadcast, clone, dan interaksi mouse/klik",
+        "explanation": "Di Level 1, kamu sudah mempelajari banyak hal: menggerakkan sprite (lesson 1), kartu ucapan dengan suara dan ukuran (lesson 2), broadcast dan cerita interaktif (lesson 3), suara paralel (lesson 4), mengikuti mouse (lesson 5), clone (lesson 6), dan menggabungkan semua ini dalam animasi intro (lesson 7). Itu adalah fondasi yang solid untuk Level 2!",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Level 1 Selesai! Kamu Luar Biasa!",
+    "message": "Selamat! Kamu telah menyelesaikan seluruh Level 1 Scratch dan berhasil membuat animasi intro personalmu. Kamu sudah menguasai 7 proyek nyata: kucing berjalan, kartu ucapan, buku cerita, orkestra, kupu-kupu, hujan bintang, dan animasi intro. Level 2 akan lebih seru — kita mulai bikin GAME sungguhan!",
+    "achievementName": "Bintang Animasi Level 1",
+    "achievementIcon": "🌟"
+  }
+}

@@ -1,0 +1,239 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-02",
+    "title": "Kartu Ucapan Digital",
+    "description": "Buat kartu ucapan ulang tahun digital yang bisa beranimasi — lengkap dengan teks ucapan, musik, dan karakter yang bergerak!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 2,
+    "estimatedTime": 25,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Buat Kartu Ulang Tahun yang Tidak Akan Terlupakan!",
+    "description": "Bayangkan kamu bisa bikin kartu ulang tahun yang bergerak dan berbunyi — bukan cuma gambar diam! Di lesson ini, kita bikin kartu ucapan digital di Scratch: ada karakter yang melompat sambil berkata 'Selamat Ulang Tahun!', ada musik meriah, dan background yang cerah. Kamu bisa bagikan link proyeknya ke teman yang ulang tahun!",
+    "analogy": "Kartu ucapan biasa cuma bisa dibaca. Kartu Scratch-mu bisa bergerak, berbunyi, dan bahkan bereaksi saat diklik! Seperti kartu pos biasa yang tiba-tiba hidup jadi film pendek."
+  },
+  "objectives": [
+    "Menggunakan blok 'katakan' untuk menampilkan teks ucapan di layar",
+    "Menggunakan blok 'putar suara' untuk menambahkan musik",
+    "Mengubah tampilan dengan blok 'ganti latar belakang'",
+    "Membuat efek melompat dengan blok 'ubah ukuran'",
+    "Merakit semua blok menjadi kartu ucapan yang interaktif"
+  ],
+  "review": {
+    "learned": [
+      "Blok 'katakan [teks] selama [X] detik' menampilkan gelembung ucapan di atas sprite.",
+      "Blok 'putar suara [nama] hingga selesai' memainkan suara sampai tuntas sebelum lanjut ke blok berikutnya.",
+      "Blok 'ganti latar belakang ke [nama]' mengubah backdrop Stage secara instan.",
+      "Blok 'ubah ukuran sebesar [X]' memperbesar atau memperkecil sprite.",
+      "Blok 'atur ukuran ke [X]%' mengatur ukuran sprite ke persentase tertentu.",
+      "Blok 'ketika sprite ini diklik' menjalankan instruksi saat sprite diklik pemain."
+    ],
+    "keyConcepts": [
+      "Blok Tampilan: katakan, ganti latar belakang",
+      "Blok Suara: putar suara, hentikan semua suara",
+      "Blok Kejadian: ketika sprite ini diklik",
+      "Blok Tampilan: ubah ukuran, atur ukuran",
+      "Interaktivitas dengan klik sprite"
+    ],
+    "takeaways": [
+      "Scratch punya banyak suara bawaan yang bisa langsung dipakai — tidak perlu rekam suara sendiri.",
+      "Backdrop library Scratch punya banyak latar belakang siap pakai termasuk yang bertema pesta.",
+      "Dengan menggabungkan blok gerak, suara, dan tampilan, kamu bisa membuat pengalaman interaktif yang menarik."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya kartu ucapan digital yang:\n• Menampilkan latar belakang pesta yang meriah saat bendera hijau diklik\n• Karakter muncul dengan animasi 'melompat' (membesar lalu kembali normal)\n• Gelembung ucapan 'Selamat Ulang Tahun!' muncul di atas karakter\n• Musik ulang tahun berbunyi otomatis\n• Saat karakter diklik, ia 'melompat' lagi dan mengucapkan selamat sekali lagi\n\nProyek ini mengajarkan cara membuat program yang bereaksi terhadap dua kejadian berbeda: bendera hijau (auto-start) dan klik sprite (interaksi pemain).",
+      "tips": [
+        "Pilih backdrop bertema pesta dari library — cari 'party' atau 'birthday'.",
+        "Pilih sprite yang menyenangkan seperti bintang, balon, atau karakter lucu dari library."
+      ]
+    },
+    {
+      "id": "node-02-say-block",
+      "type": "lesson",
+      "title": "Blok Katakan — Buat Sprite Bicara!",
+      "xp": 5,
+      "explanation": "Ada dua versi blok 'katakan':\n\n1. 'katakan [Halo!] selama [2] detik'\n→ Gelembung ucapan muncul selama 2 detik, lalu hilang otomatis. Blok berikutnya baru jalan setelah 2 detik.\n\n2. 'katakan [Halo!]'\n→ Gelembung ucapan muncul dan TIDAK hilang sampai diganti blok lain. Berguna untuk teks yang ingin tetap terlihat.\n\nUntuk kartu ucapan kita, kita pakai versi pertama supaya teks muncul lalu hilang dengan rapi.",
+      "analogy": "Blok 'katakan' seperti gelembung bicara di komik — teks muncul di atas kepala karakter. Bedanya, kamu bisa atur berapa lama gelembungnya tampil!",
+      "tips": [
+        "Kamu bisa menulis teks apa saja di dalam blok 'katakan' — nama teman, kata-kata lucu, atau puisi pendek!",
+        "Blok 'bisikkan' mirip dengan 'katakan' tapi teksnya muncul dalam format berbeda."
+      ]
+    },
+    {
+      "id": "node-03-backdrop-sound",
+      "type": "code",
+      "title": "Latar Belakang dan Suara Pesta",
+      "xp": 5,
+      "explanation": "Pertama, kita atur backdrop dan mainkan musik saat program dimulai. Blok 'ganti latar belakang ke' langsung mengubah background Stage. Blok 'putar suara hingga selesai' memainkan suara pilihan.\n\nUntuk menambah suara di Scratch: klik tab 'Suara' di pojok kiri atas → klik ikon speaker di pojok kiri bawah → cari dan tambah suara yang kamu mau.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[ganti latar belakang ke [Party ▼]]\n[putar suara [Birthday ▼] hingga selesai]"
+      }
+    },
+    {
+      "id": "node-04-jump-effect",
+      "type": "code",
+      "title": "Efek Melompat dengan Ubah Ukuran",
+      "xp": 5,
+      "explanation": "Kita buat efek 'lompat' dengan memperbesar sprite lalu mengembalikannya ke ukuran normal. Blok 'ubah ukuran sebesar 30' menambah ukuran sebesar 30%, lalu 'tunggu 0.2 detik' memberi jeda, lalu 'atur ukuran ke 100%' mengembalikan ke normal.\n\nEfek sederhana ini membuat karakter seperti melompat kegirangan!",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[ganti latar belakang ke [Party ▼]]\n[atur ukuran ke [100] %]\n[ubah ukuran sebesar [30]]\n[tunggu [0.2] detik]\n[atur ukuran ke [100] %]\n[putar suara [Birthday ▼] hingga selesai]"
+      }
+    },
+    {
+      "id": "node-05-say-greeting",
+      "type": "code",
+      "title": "Ucapan Selamat Muncul!",
+      "xp": 5,
+      "explanation": "Setelah animasi lompat, kita tambahkan ucapan selamat. Blok 'katakan' diletakkan setelah animasi lompat selesai. Kita juga tambahkan kejadian kedua: saat sprite diklik, ia lompat dan ucapkan selamat lagi — membuat kartu ini interaktif!\n\nDua blok 'ketika' bisa dipakai sekaligus — program menjalankan keduanya secara terpisah.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[ganti latar belakang ke [Party ▼]]\n[atur ukuran ke [100] %]\n[ubah ukuran sebesar [30]]\n[tunggu [0.2] detik]\n[atur ukuran ke [100] %]\n[katakan [Selamat Ulang Tahun! 🎂] selama [3] detik]\n[putar suara [Birthday ▼] hingga selesai]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Kartu Lengkap — Interaktif dengan Klik!",
+      "xp": 5,
+      "explanation": "Ini adalah proyek kartu ucapan lengkap! Ada dua bagian program:\n\n1. Bagian pertama (bendera hijau) — jalankan animasi otomatis saat kartu 'dibuka'\n2. Bagian kedua (klik sprite) — karakter merespons setiap kali pemain klik\n\nDua blok 'ketika' bekerja secara independen — keduanya bisa aktif bersamaan. Ini membuat proyekmu terasa hidup dan responsif!",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Bagian 1: Auto-start saat bendera diklik ---\n[ketika bendera hijau diklik]\n[ganti latar belakang ke [Party ▼]]\n[atur ukuran ke [100] %]\n[ubah ukuran sebesar [30]]\n[tunggu [0.2] detik]\n[atur ukuran ke [100] %]\n[katakan [Selamat Ulang Tahun! 🎂] selama [3] detik]\n[putar suara [Birthday ▼] hingga selesai]\n\n// --- Bagian 2: Reaksi saat sprite diklik ---\n[ketika sprite ini diklik]\n[ubah ukuran sebesar [20]]\n[tunggu [0.15] detik]\n[atur ukuran ke [100] %]\n[katakan [Semoga impianmu terwujud! ✨] selama [2] detik]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Personalisasi Kartumu!",
+      "xp": 5,
+      "explanation": "Kartumu sudah jadi! Sekarang personalisasi dengan ide-ide ini:\n\nGANTI UCAPAN\nUbah teks di blok 'katakan' dengan nama teman yang ulang tahun:\n'Selamat Ulang Tahun, Budi! Semoga sehat selalu! 🎉'\n\nTAMBAH SPRITE\nTambahkan sprite balon atau bintang dari library. Beri mereka animasi bergerak ke atas perlahan dengan blok 'ubah y sebesar 2' di dalam loop.\n\nGANTI SUARA\nCoba suara lain dari library seperti 'Cheer' atau 'Tada' agar lebih meriah.\n\nEFEK WARNA\nTambahkan blok 'ubah efek warna sebesar 10' sebelum efek lompat agar karakter berubah warna saat animasi berlangsung.\n\nBERIKAN KE TEMAN\nKlik 'Simpan' → 'Bagikan' → copy link → kirim ke teman yang ulang tahun!",
+      "tips": [
+        "Kamu bisa tambahkan beberapa sprite sekaligus di Stage agar kartunya lebih ramai.",
+        "Blok 'pergi ke x: [0] y: [0]' berguna untuk mengatur posisi awal sprite di tengah Stage."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Blok apa yang membuat sprite menampilkan gelembung teks ucapan di layar?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "putar suara hingga selesai",
+        "ganti latar belakang ke",
+        "katakan [teks] selama [X] detik",
+        "ubah ukuran sebesar"
+      ],
+      "correctOption": "katakan [teks] selama [X] detik"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Kartu Ucapan Personalmu!",
+      "xp": 15,
+      "instructions": "Buat kartu ucapan digital yang sudah dimodifikasi menjadi milikmu sendiri!\n\n1. Pilih sprite yang menarik dari library Scratch\n2. Pilih backdrop bertema pesta ('Party' atau 'Colorful City')\n3. Tambahkan blok 'ketika bendera hijau diklik' dengan:\n   • Ganti backdrop ke backdrop pesta\n   • Animasi lompat (ubah ukuran → tunggu → atur ukuran normal)\n   • Katakan ucapan selamat selama 3 detik\n   • Putar suara meriah\n4. Tambahkan blok 'ketika sprite ini diklik' dengan reaksi berbeda\n5. BONUS: Tambahkan sprite kedua (balon atau bintang) yang bergerak!\n\nJangan lupa simpan dan bagikan proyekmu!",
+      "starterCode": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[ganti latar belakang ke [Party ▼]]\n[atur ukuran ke [100] %]\n[ubah ukuran sebesar [30]]\n[tunggu [0.2] detik]\n[atur ukuran ke [100] %]\n[katakan [Selamat Ulang Tahun! 🎂] selama [3] detik]\n[putar suara [Birthday ▼] hingga selesai]\n\n[ketika sprite ini diklik]\n[ubah ukuran sebesar [20]]\n[tunggu [0.15] detik]\n[atur ukuran ke [100] %]\n[katakan [Semoga impianmu terwujud! ✨] selama [2] detik]"
+      },
+      "expectedResult": "Kartu ucapan interaktif dengan backdrop pesta, sprite yang melompat dan berucapan saat bendera diklik, serta bereaksi saat diklik pemain. Lihat contoh: https://scratch.mit.edu/projects/105/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "[ketika bendera hijau diklik]\n[ganti latar belakang ke [Party ▼]]\n[atur ukuran ke [100] %]\n[ubah ukuran sebesar [40]]\n[ubah efek [warna ▼] sebesar [20]]\n[tunggu [0.2] detik]\n[atur ukuran ke [100] %]\n[hapus efek grafis]\n[katakan [Selamat Ulang Tahun, Sahabatku! 🎂🎉] selama [3] detik]\n[putar suara [Birthday ▼] hingga selesai]\n[katakan [Semoga hari ini menjadi hari terbaikmu!] selama [3] detik]\n\n[ketika sprite ini diklik]\n[ubah ukuran sebesar [25]]\n[putar suara [Pop ▼]]\n[tunggu [0.15] detik]\n[atur ukuran ke [100] %]\n[katakan [Yay! Terima kasih sudah mengklik! 😊] selama [2] detik]",
+        "explanation": "Kita menambahkan efek warna saat animasi lompat (ubah efek warna) lalu menghapusnya setelah kembali normal. Ucapan juga diperpanjang menjadi dua 'katakan' berurutan. Saat diklik, sprite memainkan suara 'Pop' yang pendek dan menyenangkan. Dua blok 'ketika' bekerja secara independen sehingga keduanya aktif sekaligus."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa perbedaan antara 'katakan [teks] selama 2 detik' dan 'katakan [teks]' (tanpa detik)?",
+        "options": [
+          "Tidak ada perbedaan — keduanya sama saja",
+          "Yang pertama menampilkan teks lalu menghilang otomatis; yang kedua teks tetap ada sampai diganti",
+          "Yang pertama hanya bisa dipakai sekali; yang kedua bisa diulang",
+          "Yang pertama lebih cepat dari yang kedua"
+        ],
+        "correctAnswer": "Yang pertama menampilkan teks lalu menghilang otomatis; yang kedua teks tetap ada sampai diganti",
+        "explanation": "Blok 'katakan [teks] selama X detik' menampilkan gelembung ucapan selama X detik kemudian menghilang otomatis. Blok 'katakan [teks]' tanpa detik membuat gelembung muncul terus sampai ada blok 'katakan' lain yang menggantikannya atau program dihentikan.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Blok apa yang digunakan untuk mengubah latar belakang Stage di Scratch?",
+        "options": [
+          "ubah kostum ke",
+          "ganti latar belakang ke",
+          "atur warna latar ke",
+          "pilih backdrop"
+        ],
+        "correctAnswer": "ganti latar belakang ke",
+        "explanation": "Blok 'ganti latar belakang ke [nama backdrop]' digunakan untuk mengubah latar belakang Stage. Backdrop bisa dipilih dari library Scratch yang sudah menyediakan ratusan pilihan gambar latar.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Kalau kita punya dua blok 'ketika bendera hijau diklik' dalam satu proyek, apa yang terjadi?",
+        "options": [
+          "Program error dan tidak bisa dijalankan",
+          "Hanya blok 'ketika' pertama yang dijalankan",
+          "Kedua bagian dijalankan secara bersamaan saat bendera diklik",
+          "Blok kedua menimpa blok pertama"
+        ],
+        "correctAnswer": "Kedua bagian dijalankan secara bersamaan saat bendera diklik",
+        "explanation": "Scratch menjalankan SEMUA blok 'ketika bendera hijau diklik' secara bersamaan (paralel) saat bendera diklik. Ini memungkinkan beberapa sprite atau beberapa rangkaian instruksi berjalan di waktu yang sama.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Apa fungsi blok 'putar suara [nama] hingga selesai'?",
+        "options": [
+          "Memainkan suara sambil terus menjalankan blok berikutnya",
+          "Memainkan suara dan MENUNGGU sampai suara selesai sebelum lanjut ke blok berikutnya",
+          "Memutar semua suara dalam proyek sekaligus",
+          "Menghentikan semua suara yang sedang bermain"
+        ],
+        "correctAnswer": "Memainkan suara dan MENUNGGU sampai suara selesai sebelum lanjut ke blok berikutnya",
+        "explanation": "Blok 'putar suara hingga selesai' memainkan suara DAN menunggu sampai suara benar-benar selesai sebelum menjalankan blok berikutnya. Berbeda dengan 'putar suara' (tanpa 'hingga selesai') yang langsung lanjut ke blok berikutnya tanpa menunggu.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Blok apa yang digunakan agar sprite bereaksi saat diklik oleh pemain?",
+        "options": [
+          "ketika bendera hijau diklik",
+          "ketika tombol [spasi] ditekan",
+          "ketika sprite ini diklik",
+          "ketika latar belakang berganti ke"
+        ],
+        "correctAnswer": "ketika sprite ini diklik",
+        "explanation": "Blok 'ketika sprite ini diklik' adalah blok kejadian yang aktif saat pemain mengklik sprite tersebut dengan mouse. Blok ini membuat proyekmu interaktif — pemain bisa 'berinteraksi' langsung dengan karakter di Stage.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Kartu Ucapanmu Siap Dikirim!",
+    "message": "Luar biasa! Kamu baru saja membuat kartu ucapan digital yang bergerak dan berbunyi. Teman yang menerimanya pasti senang! Di lesson berikutnya, kita naik level — bikin buku cerita interaktif dengan 3 halaman yang bisa diklik!",
+    "achievementName": "Kreator Kartu Digital",
+    "achievementIcon": "🎉"
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-11",
+    "title": "Game Skor Koin",
+    "description": "Buat game kumpulkan koin dengan sistem skor — setiap koin yang disentuh menambah poin, dan skor tampil langsung di layar!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 11,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Tambahkan Skor ke Gamemu — Buat Pemain Ketagihan!",
+    "description": "Semua game seru punya skor! Di lesson ini, kita belajar cara menyimpan dan menampilkan skor menggunakan Variabel. Kita bikin game sederhana: karakter bergerak mengumpulkan koin yang muncul di posisi acak, setiap koin yang disentuh skor bertambah, dan angka skor tampil langsung di layar. Variabel adalah salah satu konsep paling penting dalam coding!",
+    "analogy": "Variabel di Scratch seperti papan skor di gym — angkanya bisa berubah kapan saja, dan semua orang bisa lihat nilainya di layar. Kamu yang menentukan kapan angkanya naik, kapan turun, dan kapan di-reset ke nol!"
+  },
+  "objectives": [
+    "Membuat variabel baru dengan nama 'Skor'",
+    "Menggunakan blok 'atur Skor ke 0' untuk mereset variabel",
+    "Menggunakan blok 'ubah Skor sebesar 1' untuk menambah nilai",
+    "Menggunakan blok 'tampilkan variabel' untuk menampilkan skor di layar",
+    "Memindahkan koin ke posisi acak setelah disentuh untuk membuat game terus berlanjut"
+  ],
+  "review": {
+    "learned": [
+      "Variabel adalah 'kotak' penyimpan nilai yang bisa berubah selama program berjalan.",
+      "Blok 'atur [Skor] ke [0]' selalu mereset variabel ke nilai awal.",
+      "Blok 'ubah [Skor] sebesar [1]' menambahkan 1 ke nilai variabel saat ini.",
+      "Variabel yang diberi tanda centang tampil sebagai monitor di pojok kiri atas Stage.",
+      "Setelah koin disentuh, memindahkannya ke posisi acak baru membuat game terus berlanjut."
+    ],
+    "keyConcepts": [
+      "Variabel: kotak penyimpan nilai",
+      "Atur variabel ke nilai awal",
+      "Ubah variabel: tambah/kurangi",
+      "Tampilkan variabel di Stage",
+      "Pola: sentuh → ubah skor → pindah"
+    ],
+    "takeaways": [
+      "Variabel adalah fondasi dari hampir semua game — skor, nyawa, level, kecepatan semuanya pakai variabel.",
+      "Selalu reset variabel di awal program ('ketika bendera hijau diklik') agar game mulai dari kondisi bersih.",
+      "Nama variabel yang deskriptif (Skor, Nyawa, Waktu) membuat kode lebih mudah dipahami."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya game kumpulkan koin dengan:\n• Karakter yang digerakkan dengan tombol panah\n• Koin berkilau yang muncul di posisi acak\n• Setiap koin disentuh → skor +1 → koin pindah ke posisi baru\n• Skor tampil di pojok kiri atas layar\n• Setelah skor mencapai 10, muncul pesan 'Menang!'\n• Efek suara 'ting!' setiap kali koin dikumpulkan\n\nGame ini terasa sederhana tapi adiktif — terutama jika kamu tambahkan timer untuk balap kecepatan!",
+      "tips": [
+        "Cari sprite 'Star' atau 'Button5' di library sebagai koin.",
+        "Buat backdrop berwarna kontras agar koin mudah terlihat."
+      ]
+    },
+    {
+      "id": "node-02-variable-concept",
+      "type": "lesson",
+      "title": "Variabel — Kotak Penyimpan Ajaib",
+      "xp": 5,
+      "explanation": "Variabel adalah 'kotak' penyimpan yang bisa menyimpan satu nilai (angka atau teks) dan nilainya bisa berubah kapan saja selama program berjalan.\n\nCara membuat variabel di Scratch:\n1. Klik kategori 'Variabel' di panel kiri\n2. Klik 'Buat Variabel'\n3. Beri nama (contoh: 'Skor')\n4. Pilih 'Untuk semua sprite'\n5. Klik OK\n\nSetelah dibuat, variabel muncul di panel sebagai blok berwarna oranye. Centang kotak di sampingnya untuk menampilkan nilainya di Stage.\n\nBlok-blok variabel:\n• 'atur [Skor] ke [0]' — set nilai tepat ke angka tertentu\n• 'ubah [Skor] sebesar [1]' — tambahkan (atau kurangi) nilai\n• Oval [Skor] — gunakan nilai variabel saat ini",
+      "analogy": "Variabel seperti papan tulis dengan nama di pojok — 'SKOR'. Kamu bisa menghapus dan menulis ulang angkanya kapan saja. Semua yang melihat papan itu bisa tahu nilai skor saat ini. Dan kamu yang pegang spidolnya!",
+      "tips": [
+        "Nama variabel sebaiknya deskriptif: 'Skor', 'Nyawa', 'Level' — bukan 'x' atau 'a1b2'.",
+        "Pilih 'Untuk semua sprite' kecuali kamu butuh variabel yang berbeda untuk setiap sprite."
+      ]
+    },
+    {
+      "id": "node-03-setup-variable",
+      "type": "code",
+      "title": "Setup Variabel Skor",
+      "xp": 5,
+      "explanation": "Buat variabel 'Skor' terlebih dahulu, lalu setup karakter. Kita reset Skor ke 0 setiap kali game dimulai agar tidak ada skor sisa dari game sebelumnya.\n\nPergerakan karakter menggunakan pola yang sama dengan game labirin — loop + cek 4 tombol arah.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite KARAKTER ---\n[ketika bendera hijau diklik]\n[atur [Skor ▼] ke [0]]\n[pergi ke x: [0] y: [0]]\n[atur ukuran ke [50] %]\n[ulangi terus]\n  jika <tombol [panah kanan ▼] ditekan?> maka\n    [ubah x sebesar [5]]\n  [akhir jika]\n  jika <tombol [panah kiri ▼] ditekan?> maka\n    [ubah x sebesar [-5]]\n  [akhir jika]\n  jika <tombol [panah atas ▼] ditekan?> maka\n    [ubah y sebesar [5]]\n  [akhir jika]\n  jika <tombol [panah bawah ▼] ditekan?> maka\n    [ubah y sebesar [-5]]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-04-coin-logic",
+      "type": "code",
+      "title": "Koin yang Berpindah Saat Disentuh",
+      "xp": 5,
+      "explanation": "Sprite KOIN punya dua tugas:\n1. Terus mengecek apakah karakter menyentuhnya\n2. Saat tersentuh: tambah skor, pindah ke posisi acak baru, mainkan suara\n\nDengan memindahkan koin ke posisi acak baru (bukan menghapusnya), game terus berjalan tanpa henti.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite KOIN ---\n[ketika bendera hijau diklik]\n[pergi ke x: (pilih acak dari [-200] sampai [200]) y: (pilih acak dari [-150] sampai [150])]\n[tampilkan]\n[ulangi terus]\n  jika <menyentuh [Karakter ▼]?> maka\n    [ubah [Skor ▼] sebesar [1]]\n    [putar suara [Collect ▼]]\n    // Pindah ke posisi acak baru\n    [pergi ke x: (pilih acak dari [-200] sampai [200]) y: (pilih acak dari [-150] sampai [150])]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-05-win-condition",
+      "type": "code",
+      "title": "Kondisi Menang — Kumpulkan 10 Koin!",
+      "xp": 5,
+      "explanation": "Tambahkan kondisi menang: saat Skor mencapai 10, tampilkan pesan kemenangan dan hentikan game.\n\nKita tambahkan pengecekan ini di dalam loop koin — setiap kali skor bertambah, cek apakah sudah mencapai target.",
+      "code": {
+        "language": "scratch",
+        "content": "// Di dalam loop koin, setelah ubah skor:\njika <menyentuh [Karakter ▼]?> maka\n  [ubah [Skor ▼] sebesar [1]]\n  [putar suara [Collect ▼]]\n  [pergi ke x: (pilih acak dari [-200] sampai [200]) y: (pilih acak dari [-150] sampai [150])]\n  // Cek kondisi menang\n  jika <(Skor) = [10]> maka\n    [putar suara [Tada ▼] hingga selesai]\n    [katakan [🏆 Menang! Kamu kumpulkan 10 koin!] selama [3] detik]\n    [hentikan [semua ▼]]\n  [akhir jika]\n[akhir jika]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Game Lengkap dengan Timer!",
+      "xp": 5,
+      "explanation": "Versi final game ini menambahkan timer countdown — pemain harus mengumpulkan 10 koin dalam 30 detik!\n\nBuat variabel 'Waktu' yang bertambah setiap detik. Saat Waktu habis sebelum 10 koin, game over!",
+      "code": {
+        "language": "scratch",
+        "content": "// === KARAKTER (kontrol + monitor timer) ===\n[ketika bendera hijau diklik]\n[atur [Skor ▼] ke [0]]\n[atur [Waktu ▼] ke [30]]\n[pergi ke x: [0] y: [0]]\n// Timer countdown di blok terpisah:\n[ketika bendera hijau diklik]\n[ulangi [30] kali]\n  [tunggu [1] detik]\n  [ubah [Waktu ▼] sebesar [-1]]\n[akhir ulangi]\n[katakan [⏰ Waktu Habis! Skor: (Skor)] selama [3] detik]\n[hentikan [semua ▼]]\n\n// === KOIN ===\n[ketika bendera hijau diklik]\n[pergi ke x: (pilih acak dari [-200] sampai [200]) y: (pilih acak dari [-150] sampai [150])]\n[ulangi terus]\n  jika <menyentuh [Karakter ▼]?> maka\n    [ubah [Skor ▼] sebesar [1]]\n    [putar suara [Collect ▼]]\n    [pergi ke x: (pilih acak dari [-200] sampai [200]) y: (pilih acak dari [-150] sampai [150])]\n    jika <(Skor) = [10]> maka\n      [putar suara [Tada ▼] hingga selesai]\n      [katakan [🏆 Menang! 10 Koin dalam (30 - (Waktu)) detik!] selama [3] detik]\n      [hentikan [semua ▼]]\n    [akhir jika]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Upgrade Sistemnya!",
+      "xp": 5,
+      "explanation": "Game koin dasarmu sudah jalan! Berikut upgrade yang keren:\n\nBEBERAPA JENIS KOIN\nKoin emas = +1, koin perak = +2, koin berlian = +5. Buat 3 sprite koin berbeda warna!\n\nHIGH SCORE\nBuat variabel 'High Score'. Setiap akhir game, cek: jika Skor > High Score, update High Score. Tantang teman untuk mengalahkan rekormu!\n\nKOIN BERGERAK\nBuat koin bergerak sedikit setiap frame dengan 'ubah x sebesar (pilih acak dari -2 sampai 2)' agar lebih sulit ditangkap.\n\nMULTIPLIER\nSaat mengumpulkan 3 koin berturut-turut dalam 2 detik, aktifkan 'mode combo' di mana setiap koin bernilai 2 selama 5 detik!",
+      "tips": [
+        "Variabel bisa ditampilkan dalam berbagai format di Stage — kamu bisa drag monitor variabel ke posisi yang kamu mau.",
+        "High Score bisa disimpan permanen menggunakan variabel 'Cloud' (awan) jika kamu punya akun Scratch."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Apa perbedaan antara 'atur [Skor] ke [0]' dan 'ubah [Skor] sebesar [1]'?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Tidak ada perbedaan — keduanya mengubah Skor ke 0 atau 1",
+        "'atur ke 0' LANGSUNG mengisi nilai jadi 0; 'ubah sebesar 1' MENAMBAHKAN 1 ke nilai yang sudah ada",
+        "'atur ke' hanya bisa dipakai sekali; 'ubah sebesar' bisa dipakai berkali-kali",
+        "'ubah sebesar' lebih cepat dari 'atur ke'"
+      ],
+      "correctOption": "'atur ke 0' LANGSUNG mengisi nilai jadi 0; 'ubah sebesar 1' MENAMBAHKAN 1 ke nilai yang sudah ada"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Game 3 Level Koin!",
+      "xp": 15,
+      "instructions": "Buat game koin dengan 3 level kesulitan yang meningkat!\n\nLevel 1: Kumpulkan 5 koin, koin diam, waktu 30 detik\nLevel 2: Kumpulkan 8 koin, koin bergerak sedikit, waktu 25 detik\nLevel 3: Kumpulkan 12 koin, koin bergerak cepat, waktu 20 detik\n\nSaat menyelesaikan setiap level:\n• Tampilkan 'Level X Selesai!'\n• Ganti backdrop ke yang lebih gelap/dramatis\n• Reset posisi karakter ke tengah\n• Mulai level berikutnya otomatis\n\nBuat variabel 'Level' untuk melacak level saat ini.",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// Setup variabel: Skor, Level, Target, Waktu\n[ketika bendera hijau diklik]\n[atur [Level ▼] ke [1]]\n[atur [Skor ▼] ke [0]]\n[atur [Target ▼] ke [5]]  // mulai dengan target 5 koin\n[atur [Waktu ▼] ke [30]]\n[kirim pesan [mulai-level ▼]]\n\n[ketika menerima [mulai-level ▼]]\n// Setup sesuai level saat ini\njika <(Level) = [1]> maka\n  [atur [Target ▼] ke [5]]\n  [atur [Waktu ▼] ke [30]]\n  [ganti latar belakang ke [backdrop-1 ▼]]\n[akhir jika]\njika <(Level) = [2]> maka\n  [atur [Target ▼] ke [8]]\n  [atur [Waktu ▼] ke [25]]\n  [ganti latar belakang ke [backdrop-2 ▼]]\n[akhir jika]\n// dst..."
+      },
+      "expectedResult": "Game 3 level dengan kesulitan meningkat, setiap level punya target koin dan waktu berbeda, transisi antar level yang mulus. Lihat contoh: https://scratch.mit.edu/projects/114/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "[ketika bendera hijau diklik]\n[atur [Level ▼] ke [1]]\n[atur [Skor ▼] ke [0]]\n[kirim pesan [setup-level ▼]]\n\n[ketika menerima [setup-level ▼]]\njika <(Level) = [1]> maka\n  [atur [Target ▼] ke [5]]\n  [atur [Waktu ▼] ke [30]]\n  [ganti latar belakang ke [Blue Sky ▼]]\nselainnya jika <(Level) = [2]> maka\n  [atur [Target ▼] ke [8]]\n  [atur [Waktu ▼] ke [25]]\n  [ganti latar belakang ke [Sunset ▼]]\nselainnya\n  [atur [Target ▼] ke [12]]\n  [atur [Waktu ▼] ke [20]]\n  [ganti latar belakang ke [Space ▼]]\n[akhir jika]\n[atur [Skor ▼] ke [0]]\n[pergi ke x: [0] y: [0]]\n\n// Koin: cek skor vs target level\njika <(Skor) = (Target)> maka\n  jika <(Level) < [3]> maka\n    [ubah [Level ▼] sebesar [1]]\n    [katakan (gabungkan [Level ] dan (gabungkan (Level) [ Selesai! 🎉])) selama [2] detik]\n    [kirim pesan [setup-level ▼]]\n  selainnya\n    [katakan [🏆 SEMUA LEVEL SELESAI! Kamu Juara!] selama [4] detik]\n    [hentikan [semua ▼]]\n  [akhir jika]\n[akhir jika]",
+        "explanation": "Variabel 'Level' dan 'Target' mengontrol kondisi setiap level. Broadcast 'setup-level' dipanggil di awal game dan setelah setiap level selesai untuk mengatur ulang target, waktu, dan backdrop. Koin mengecek skor versus target level (bukan nilai tetap 10)."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa itu variabel dalam pemrograman?",
+        "options": [
+          "Blok khusus yang hanya bisa digunakan untuk menyimpan angka",
+          "Tempat penyimpanan bernama yang bisa menyimpan dan mengubah nilai selama program berjalan",
+          "Jenis sprite khusus di Scratch",
+          "Cara untuk menyimpan gambar permanen"
+        ],
+        "correctAnswer": "Tempat penyimpanan bernama yang bisa menyimpan dan mengubah nilai selama program berjalan",
+        "explanation": "Variabel adalah 'kotak' penyimpanan dengan nama yang bisa menyimpan satu nilai (angka atau teks) yang bisa berubah kapan saja selama program berjalan. Variabel memungkinkan program 'mengingat' informasi seperti skor, nyawa, atau level.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Jika nilai variabel Skor saat ini adalah 7, lalu dijalankan blok 'ubah Skor sebesar 1', berapa nilai Skor sekarang?",
+        "options": [
+          "1",
+          "7",
+          "8",
+          "17"
+        ],
+        "correctAnswer": "8",
+        "explanation": "Blok 'ubah [Skor] sebesar [1]' menambahkan nilai 1 ke nilai Skor yang sudah ada. Jadi 7 + 1 = 8. Berbeda dengan 'atur Skor ke 1' yang akan mengubah Skor menjadi tepat 1 terlepas dari nilai sebelumnya.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Mengapa penting untuk 'atur Skor ke 0' saat bendera hijau diklik?",
+        "options": [
+          "Karena variabel Skor tidak bisa menyimpan nilai lain",
+          "Agar game selalu mulai dari skor 0, bukan dari skor game sebelumnya yang masih tersimpan",
+          "Karena blok 'ubah Skor sebesar 1' tidak bisa bekerja jika Skor belum di-set ke 0",
+          "Karena Scratch otomatis menghapus variabel saat game dihentikan"
+        ],
+        "correctAnswer": "Agar game selalu mulai dari skor 0, bukan dari skor game sebelumnya yang masih tersimpan",
+        "explanation": "Variabel di Scratch menyimpan nilainya bahkan setelah program dihentikan dan dimulai lagi. Jika kita tidak mereset ke 0 di awal, game akan melanjutkan skor dari sesi sebelumnya. Selalu reset variabel yang perlu dimulai dari kondisi awal di setiap 'ketika bendera hijau diklik'.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Bagaimana cara menampilkan nilai variabel di layar Stage?",
+        "options": [
+          "Gunakan blok 'katakan (Skor)' dalam loop",
+          "Centang kotak di samping nama variabel di panel Variabel",
+          "Tambahkan blok 'tampilkan variabel Skor' di dalam loop",
+          "Nilai variabel selalu tampil otomatis"
+        ],
+        "correctAnswer": "Centang kotak di samping nama variabel di panel Variabel",
+        "explanation": "Di panel Variabel, setiap variabel yang dibuat memiliki kotak centang kecil di sebelah kirinya. Centang kotak tersebut untuk menampilkan 'monitor' variabel di Stage — kotak kecil yang menunjukkan nama dan nilai variabel secara real-time.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Mengapa setelah koin disentuh karakter, kita pindahkan koin ke posisi acak baru (bukan menghapusnya)?",
+        "options": [
+          "Karena sprite tidak bisa dihapus di Scratch",
+          "Agar game terus berlanjut — selalu ada koin baru untuk dikumpulkan tanpa perlu membuat klon baru",
+          "Karena posisi acak membuat game lebih indah",
+          "Karena koin yang dihapus akan muncul lagi sendiri"
+        ],
+        "correctAnswer": "Agar game terus berlanjut — selalu ada koin baru untuk dikumpulkan tanpa perlu membuat klon baru",
+        "explanation": "Dengan memindahkan koin ke posisi baru alih-alih menghapusnya, kita menghindari kebutuhan untuk membuat klon baru setiap kali koin diambil. Satu sprite koin cukup untuk game yang terus berlanjut — ia hanya 'teleport' ke lokasi acak baru setiap kali disentuh.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Kolektor Koin Sejati!",
+    "message": "Hebat! Kamu sudah menguasai variabel — konsep terpenting dalam coding! Variabel adalah fondasi dari hampir semua fitur game: skor, nyawa, level, kecepatan. Di lesson berikutnya, coding bertemu matematika — kita bikin kalkulator ajaib!",
+    "achievementName": "Kolektor Koin",
+    "achievementIcon": "🪙"
+  }
+}

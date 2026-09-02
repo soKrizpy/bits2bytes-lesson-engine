@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-14",
+    "title": "Dodge the Meteor",
+    "description": "Buat game dodge meteor yang seru — kendalikan pesawat, hindari meteor yang jatuh, punya 3 nyawa, dan lihat Game Over screen!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 14,
+    "estimatedTime": 35,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Mini Project Level 2 — Game Dodge yang Sesungguhnya!",
+    "description": "Di mini project Level 2 ini, kita gabungkan SEMUA yang sudah dipelajari: kontrol keyboard, variabel skor dan nyawa, deteksi tabrakan antar sprite, klon untuk meteor, dan broadcast untuk game over. Hasilnya adalah game Dodge the Meteor — pesawat yang kamu kendalikan, meteor yang harus dihindari, 3 nyawa, dan layar Game Over. Game pertamamu yang benar-benar lengkap!",
+    "analogy": "Kamu sudah belajar semua bahan masakannya di Level 2. Sekarang saatnya masak hidangan utama — game yang punya semua komponen game sungguhan: kontrol, tantangan, skor, nyawa, dan kondisi menang/kalah!"
+  },
+  "objectives": [
+    "Menggabungkan kontrol keyboard, variabel, clone, dan broadcast dalam satu game",
+    "Mengimplementasikan sistem nyawa yang berkurang saat kena meteor",
+    "Menggunakan broadcast 'game-over' untuk memicu layar Game Over",
+    "Membuat meteor semakin cepat seiring waktu untuk meningkatkan kesulitan",
+    "Mendesain game loop yang lengkap: start → bermain → game over → main lagi"
+  ],
+  "review": {
+    "learned": [
+      "Game lengkap terdiri dari: setup awal, game loop, kondisi menang/kalah, dan reset.",
+      "Variabel Nyawa dan Skor harus direset ke nilai awal setiap kali game dimulai ulang.",
+      "Broadcast 'game-over' mengkoordinasikan semua sprite untuk beralih ke layar Game Over.",
+      "Sprite pesawat dan meteor adalah objek independen yang berinteraksi melalui collision detection.",
+      "Timer yang meningkatkan kecepatan secara bertahap membuat game semakin menantang."
+    ],
+    "keyConcepts": [
+      "Game loop lengkap: start → main → end",
+      "Sistem nyawa dengan Game Over",
+      "Broadcast untuk transisi state game",
+      "Klon meteor dengan kecepatan bertambah",
+      "Capstone Level 2: semua skill digabung"
+    ],
+    "takeaways": [
+      "Game yang baik punya 'game loop' yang jelas: mulai → tantangan → akhir → main lagi.",
+      "Memisahkan 'state' game (main, game-over, menang) dengan broadcast membuat kode lebih terorganisir.",
+      "Semua skill Level 2 saling melengkapi — game ini tidak mungkin dibuat tanpa semuanya."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya game Dodge the Meteor yang lengkap:\n• Pesawat di bawah layar, digerakkan kiri-kanan dengan panah\n• Meteor jatuh dari atas dengan posisi dan kecepatan acak\n• Terkena meteor → nyawa -1, efek kilat merah\n• 3 nyawa dimulai — kalau habis → Game Over screen!\n• Skor bertambah setiap detik yang bertahan hidup\n• Semakin lama, meteor semakin banyak dan semakin cepat\n• Tombol 'Main Lagi' di Game Over screen\n\nIni adalah game arcade lengkap — siap untuk ditantangkan ke teman!",
+      "tips": [
+        "Cari sprite 'Rocketship' atau 'Spaceship' untuk pesawat, dan 'rocks' untuk meteor.",
+        "Backdrop 'Stars' atau 'Space' sangat cocok untuk game ini."
+      ]
+    },
+    {
+      "id": "node-02-game-architecture",
+      "type": "lesson",
+      "title": "Arsitektur Game — State Machine",
+      "xp": 5,
+      "explanation": "Game ini punya tiga 'state' (kondisi):\n\n1. STATE BERMAIN — pesawat bisa dikontrol, meteor jatuh, skor bertambah\n2. STATE GAME OVER — semua meteor berhenti, layar game over tampil\n3. STATE RESET — semua variabel di-reset, kembali ke state bermain\n\nKita pakai broadcast untuk berpindah antar state:\n• Broadcast 'mulai-game' → semua sprite masuk state bermain\n• Broadcast 'game-over' → semua sprite masuk state game over\n• Broadcast 'main-lagi' → reset dan kembali ke state bermain\n\nDesain seperti ini membuat kode lebih terorganisir dan mudah dikembangkan.",
+      "analogy": "State machine seperti lampu lalu lintas — ada kondisi Hijau (jalan), Kuning (siap berhenti), dan Merah (berhenti). Setiap 'lampu' (state) menentukan apa yang boleh dan tidak boleh dilakukan. Broadcast adalah 'remote control' yang mengubah lampu.",
+      "tips": [
+        "Variabel global 'GameBerjalan' (1 atau 0) berguna untuk mengecek apakah game sedang aktif.",
+        "Semua sprite harus merespons broadcast 'game-over' dengan berhenti bergerak."
+      ]
+    },
+    {
+      "id": "node-03-spaceship",
+      "type": "code",
+      "title": "Pesawat — Kontrol dan Nyawa",
+      "xp": 5,
+      "explanation": "Sprite pesawat punya dua tanggung jawab: bergerak dengan keyboard dan mendeteksi tabrakan dengan meteor.\n\nSaat terkena meteor, pesawat memberi efek visual (kilat merah) lalu nyawa berkurang. Saat nyawa = 0, kirim broadcast 'game-over'.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite PESAWAT ---\n[ketika bendera hijau diklik]\n[kirim pesan [mulai-game ▼]]\n\n[ketika menerima [mulai-game ▼]]\n[atur [Nyawa ▼] ke [3]]\n[atur [Skor ▼] ke [0]]\n[pergi ke x: [0] y: [-140]]\n[tampilkan]\n[ulangi terus]\n  // Kontrol kiri-kanan\n  jika <tombol [panah kanan ▼] ditekan?> maka\n    [ubah x sebesar [8]]\n  [akhir jika]\n  jika <tombol [panah kiri ▼] ditekan?> maka\n    [ubah x sebesar [-8]]\n  [akhir jika]\n  // Batas layar\n  jika <(posisi x) > [220]> maka [atur x ke [220]] [akhir jika]\n  jika <(posisi x) < [-220]> maka [atur x ke [-220]] [akhir jika]\n  // Deteksi meteor\n  jika <menyentuh [Meteor ▼]?> maka\n    [ubah [Nyawa ▼] sebesar [-1]]\n    [ubah efek [warna ▼] sebesar [100]]\n    [tunggu [0.3] detik]\n    [hapus efek grafis]\n    [putar suara [Oops ▼]]\n    jika <(Nyawa) < [1]> maka\n      [kirim pesan [game-over ▼]]\n      [hentikan [skrip ini ▼]]\n    [akhir jika]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-04-meteors",
+      "type": "code",
+      "title": "Meteor — Clone yang Terus Berdatangan",
+      "xp": 5,
+      "explanation": "Sprite Meteor asli disembunyikan dan terus membuat klon. Variabel 'Kecepatan' bertambah setiap beberapa detik agar game semakin sulit.\n\nSetiap klon berhenti bergerak saat menerima broadcast 'game-over'.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite METEOR (asli) ---\n[ketika menerima [mulai-game ▼]]\n[sembunyikan]\n[atur [Kecepatan ▼] ke [3]]\n[ulangi terus]\n  [buat klon dari [diriku sendiri ▼]]\n  [tunggu (pilih acak dari [0.5] sampai [1.5]) detik]\n  // Naikkan kecepatan setiap 10 skor\n  jika <(Skor) > [(Kecepatan) * [5]]> maka\n    [ubah [Kecepatan ▼] sebesar [0.5]]\n  [akhir jika]\n[akhir ulangi]\n\n// Hentikan saat game over\n[ketika menerima [game-over ▼]]\n[hentikan [skrip lainnya di sprite ini ▼]]\n\n// --- Klon METEOR ---\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (pilih acak dari [-220] sampai [220]) y: [185]]\n[atur ukuran ke (pilih acak dari [40] sampai [100]) %]\n[atur efek [warna ▼] ke (pilih acak dari [0] sampai [100])]\n[ulangi terus]\n  [ubah y sebesar (0 - (Kecepatan))]\n  jika <(posisi y) < [-190]> maka\n    [ubah [Skor ▼] sebesar [1]]\n    [hapus klon ini]\n  [akhir jika]\n[akhir ulangi]\n\n[ketika menerima [game-over ▼]]\n[hapus klon ini]"
+      }
+    },
+    {
+      "id": "node-05-game-over-screen",
+      "type": "code",
+      "title": "Layar Game Over dan Main Lagi!",
+      "xp": 5,
+      "explanation": "Buat sprite khusus 'Game Over Screen' yang tersembunyi selama game berlangsung, lalu muncul saat broadcast 'game-over' diterima.\n\nLayar Game Over menampilkan skor akhir dan tombol 'Main Lagi'.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite GAME OVER SCREEN ---\n[ketika menerima [mulai-game ▼]]\n[sembunyikan]\n\n[ketika menerima [game-over ▼]]\n[tampilkan]\n[pergi ke x: [0] y: [0]]\n[katakan (gabungkan [💀 GAME OVER! Skor: ] dan (Skor)) selama [0]]\n[putar suara [Oops ▼] hingga selesai]\n\n// --- Sprite TOMBOL MAIN LAGI ---\n[ketika menerima [mulai-game ▼]]\n[sembunyikan]\n\n[ketika menerima [game-over ▼]]\n[tampilkan]\n[pergi ke x: [0] y: [-80]]\n\n[ketika sprite ini diklik]\n[sembunyikan]\n[kirim pesan [mulai-game ▼]]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Skor Timer — Bertahan = Poin!",
+      "xp": 5,
+      "explanation": "Tambahkan sistem skor berbasis waktu — skor naik setiap detik selama pesawat bertahan hidup. Ini mendorong pemain untuk bertahan selama mungkin!\n\nSprite 'Timer Manager' adalah sprite tak terlihat yang hanya bertugas menaikkan skor setiap detik.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite TIMER MANAGER (sprite kecil, disembunyikan di tepi) ---\n[ketika menerima [mulai-game ▼]]\n[ulangi terus]\n  [tunggu [1] detik]\n  [ubah [Skor ▼] sebesar [1]]\n[akhir ulangi]\n\n[ketika menerima [game-over ▼]]\n[hentikan [skrip lainnya di sprite ini ▼]]\n\n// --- TAMPILAN NYAWA (sprite bintang/hati) ---\n// Buat 3 sprite hati yang masing-masing menyembunyikan diri\n// saat nyawa berkurang:\n// Hati 1: sembunyikan saat Nyawa < 1\n// Hati 2: sembunyikan saat Nyawa < 2\n// Hati 3: sembunyikan saat Nyawa < 3"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Upgrade Game Dodgemu!",
+      "xp": 5,
+      "explanation": "Game Dodge the Meteor-mu sudah lengkap! Berikut upgrade yang bisa membuat game lebih seru:\n\nBONUS POWER-UP\nBuat sprite 'shield' yang jatuh dari atas. Kalau ditangkap pesawat, aktifkan 'pelindung' yang membuat pesawat kebal selama 5 detik.\n\nLEVEL SYSTEM\nSetiap 20 poin = naik level. Setiap level, tambah 1 meteor ekstra di layar sekaligus.\n\nHIGH SCORE\nSimpan skor terbaik di variabel 'Rekor'. Saat game over, tampilkan apakah pemain memecahkan rekor.\n\nEFEK LEDAKAN\nSaat meteor keluar layar bawah (tidak tertangkap), buat klon partikel kecil yang menyebar sebagai efek ledakan.",
+      "tips": [
+        "Untuk game yang adil, pastikan ada celah yang cukup antara meteor-meteor agar pemain selalu punya jalan keluar.",
+        "Tambahkan efek layar 'shake' saat nyawa berkurang: ubah posisi pesawat bolak-balik sebesar ±5 beberapa kali cepat."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Dalam desain game, apa yang dimaksud dengan 'game loop'?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Blok 'ulangi terus' yang dipakai dalam game",
+        "Siklus lengkap: game dimulai → pemain bermain → game berakhir → bisa dimulai lagi",
+        "Nama untuk efek suara yang diulang dalam game",
+        "Loop yang membuat musuh terus-menerus muncul"
+      ],
+      "correctOption": "Siklus lengkap: game dimulai → pemain bermain → game berakhir → bisa dimulai lagi"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Tambahkan Power-Up dan High Score!",
+      "xp": 15,
+      "instructions": "Upgrade game Dodge the Meteor dengan dua fitur keren!\n\nFITUR 1 — POWER-UP SHIELD:\n• Buat sprite 'perisai' yang jatuh dari atas setiap 10 detik\n• Kalau pesawat menyentuhnya → aktifkan variabel 'Shield' = 1 selama 5 detik\n• Saat Shield aktif → pesawat berkedip (efek hantu bergantian) dan kebal dari meteor\n• Setelah 5 detik → Shield = 0, pesawat kembali normal\n\nFITUR 2 — HIGH SCORE:\n• Buat variabel 'HighScore'\n• Saat game over: jika Skor > HighScore, update HighScore\n• Tampilkan di layar game over: 'Skor: X | Rekor: Y'\n• Jika rekor baru: tambahkan pesan khusus '🏆 REKOR BARU!'",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// Power-Up Shield\n[ketika menerima [mulai-game ▼]]\n[atur [Shield ▼] ke [0]]\n// Sprite shield jatuh setiap 10 detik\n[ulangi terus]\n  [tunggu [10] detik]\n  [buat klon dari [diriku sendiri ▼]]\n[akhir ulangi]\n\n// Klon shield jatuh\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (pilih acak dari [-200] sampai [200]) y: [180]]\n[ulangi terus]\n  [ubah y sebesar [-3]]\n  jika <menyentuh [Pesawat ▼]?> maka\n    [atur [Shield ▼] ke [1]]\n    [hapus klon ini]\n  [akhir jika]\n  jika <(posisi y) < [-185]> maka\n    [hapus klon ini]\n  [akhir jika]\n[akhir ulangi]\n\n// Di pesawat: jika Shield aktif, pesawat kebal\njika <(Shield) = [1]> maka\n  // Berkedip dan kebal\n[akhir jika]"
+      },
+      "expectedResult": "Game Dodge the Meteor dengan power-up shield, sistem high score, dan efek visual yang lebih kaya. Lihat contoh: https://scratch.mit.edu/projects/117/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// POWER-UP SHIELD — sprite shield\n[ketika menerima [mulai-game ▼]]\n[sembunyikan]\n[ulangi terus]\n  [tunggu [10] detik]\n  [buat klon dari [diriku sendiri ▼]]\n[akhir ulangi]\n\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (pilih acak dari [-200] sampai [200]) y: [180]]\n[ulangi terus]\n  [ubah y sebesar [-3]]\n  jika <menyentuh [Pesawat ▼]?> maka\n    [atur [Shield ▼] ke [1]]\n    [putar suara [Chime ▼]]\n    [hapus klon ini]\n  [akhir jika]\n  jika <(posisi y) < [-185]> maka [hapus klon ini] [akhir jika]\n[akhir ulangi]\n\n// DI PESAWAT: tambahan pengecekan shield\n// Ubah deteksi meteor menjadi:\njika <menyentuh [Meteor ▼]?> maka\n  jika <(Shield) = [0]> maka  // hanya kena kalau shield tidak aktif\n    [ubah [Nyawa ▼] sebesar [-1]]\n    // ... efek dan cek game over ...\n  selainnya\n    // Efek kebal\n    [ubah efek [kecerahan ▼] sebesar [50]]\n    [tunggu [0.1] detik]\n    [hapus efek grafis]\n  [akhir jika]\n[akhir jika]\n\n// Timer shield aktif: 5 detik\n[ketika variabel [Shield ▼] berubah]\njika <(Shield) = [1]> maka\n  [tunggu [5] detik]\n  [atur [Shield ▼] ke [0]]\n[akhir jika]\n\n// HIGH SCORE di layar Game Over:\n[ketika menerima [game-over ▼]]\njika <(Skor) > (HighScore)> maka\n  [atur [HighScore ▼] ke (Skor)]\n  [katakan (gabungkan [🏆 REKOR BARU! ] dan (HighScore)) selama [3] detik]\nselainnya\n  [katakan (gabungkan [Skor: ] dan (gabungkan (Skor) (gabungkan [ | Rekor: ] (HighScore)))) selama [3] detik]\n[akhir jika]",
+        "explanation": "Shield menggunakan variabel boolean (0/1) untuk melacak status aktif/tidak aktif. Pesawat mengecek variabel Shield sebelum mengurangi nyawa. Timer shield menggunakan blok 'ketika variabel berubah' untuk memulai countdown 5 detik saat Shield diaktifkan. High Score selalu dibandingkan di akhir game."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Dalam game Dodge the Meteor, mengapa kita menggunakan broadcast 'game-over' daripada langsung menghentikan semua sprite?",
+        "options": [
+          "Karena 'hentikan semua' tidak ada di Scratch",
+          "Broadcast 'game-over' memungkinkan setiap sprite melakukan aksi cleanup-nya sendiri sebelum berhenti",
+          "Broadcast lebih cepat dari 'hentikan semua'",
+          "Karena 'hentikan semua' juga menghentikan musik latar"
+        ],
+        "correctAnswer": "Broadcast 'game-over' memungkinkan setiap sprite melakukan aksi cleanup-nya sendiri sebelum berhenti",
+        "explanation": "Broadcast 'game-over' memberi setiap sprite kesempatan untuk melakukan aksi terakhirnya — meteor menghapus klonnya, layar game over muncul, timer berhenti, dll. Jika kita pakai 'hentikan semua', semuanya langsung berhenti tanpa sempat melakukan cleanup.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa tujuan dari variabel 'Kecepatan' yang nilainya bertambah secara bertahap di game ini?",
+        "options": [
+          "Untuk menghemat memori komputer",
+          "Untuk membuat game semakin sulit secara progresif — pemain harus terus beradaptasi",
+          "Karena Scratch tidak bisa membuat klon dengan kecepatan berbeda",
+          "Untuk mengurangi jumlah meteor di layar"
+        ],
+        "correctAnswer": "Untuk membuat game semakin sulit secara progresif — pemain harus terus beradaptasi",
+        "explanation": "Tingkat kesulitan yang meningkat secara progresif adalah prinsip desain game yang sangat penting. Pemain yang baru bermain butuh waktu untuk belajar mekanik, lalu tantangan meningkat agar tidak bosan. Variabel Kecepatan yang bertambah menciptakan kurva kesulitan yang terasa natural.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Mengapa sprite 'Layar Game Over' disembunyikan saat broadcast 'mulai-game' dan baru muncul saat 'game-over'?",
+        "options": [
+          "Karena sprite tidak bisa terlihat selama game berjalan",
+          "Agar layar game over tidak mengganggu gameplay — hanya tampil saat memang dibutuhkan",
+          "Karena sprite yang tersembunyi lebih hemat memori",
+          "Karena sprite tersembunyi tidak bisa disentuh oleh sprite lain"
+        ],
+        "correctAnswer": "Agar layar game over tidak mengganggu gameplay — hanya tampil saat memang dibutuhkan",
+        "explanation": "Menyembunyikan UI (user interface) yang tidak relevan membuat tampilan game lebih bersih dan fokus. Layar Game Over yang muncul di tengah gameplay akan sangat mengganggu. Dengan menyembunyikannya selama game berlangsung dan menampilkannya hanya saat diperlukan, pengalaman bermain menjadi lebih baik.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Skill apa saja dari Level 2 yang digabungkan dalam game Dodge the Meteor?",
+        "options": [
+          "Hanya kontrol keyboard dan clone",
+          "Kontrol keyboard, variabel (skor dan nyawa), clone untuk meteor, collision detection, dan broadcast untuk game over",
+          "Hanya variabel dan broadcast",
+          "Hanya clone dan collision detection"
+        ],
+        "correctAnswer": "Kontrol keyboard, variabel (skor dan nyawa), clone untuk meteor, collision detection, dan broadcast untuk game over",
+        "explanation": "Game Dodge the Meteor adalah capstone Level 2 yang menggabungkan SEMUA skill: keyboard (lesson 8), variabel skor/nyawa (lesson 11), clone meteor (lesson 10), collision detection (lesson 8 & 10), dan broadcast untuk state management (lesson 13). Inilah mengapa game ini terasa 'lengkap'!",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Apa yang membuat game Dodge the Meteor lebih menantang seiring waktu?",
+        "options": [
+          "Warna meteor berubah lebih gelap",
+          "Pesawat semakin kecil",
+          "Meteor jatuh semakin cepat dan semakin sering karena variabel Kecepatan bertambah",
+          "Layar semakin mengecil"
+        ],
+        "correctAnswer": "Meteor jatuh semakin cepat dan semakin sering karena variabel Kecepatan bertambah",
+        "explanation": "Variabel Kecepatan digunakan oleh klon meteor untuk menentukan berapa piksel turun per frame. Saat Kecepatan bertambah, semua meteor baru yang dibuat akan jatuh lebih cepat. Dikombinasikan dengan jeda antar clone yang lebih pendek, game menjadi semakin intense.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Level 2 Selesai — Kamu Game Developer!",
+    "message": "Luar biasa! Kamu telah menyelesaikan Level 2 dan berhasil membuat game arcade yang lengkap — dengan kontrol, nyawa, skor, dan layar game over. Kamu sekarang sudah setara dengan game developer pemula! Level 3 menanti: kita akan buat cerita bercabang, animasi profesional, platformer, dan bahkan boss battle!",
+    "achievementName": "Pilot Pemberani",
+    "achievementIcon": "🚀"
+  }
+}

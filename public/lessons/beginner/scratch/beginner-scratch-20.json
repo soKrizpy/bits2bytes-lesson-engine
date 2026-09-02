@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-20",
+    "title": "Pilih Petualanganmu",
+    "description": "Buat cerita interaktif dengan pilihan yang mengubah alur — setiap keputusan pemain menentukan ending yang berbeda!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 20,
+    "estimatedTime": 35,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Buat Cerita yang Berubah Sesuai Pilihan Pemain!",
+    "description": "Kamu pernah baca buku 'Pilih Petualanganmu'? Di setiap halaman ada pilihan: 'Kalau kamu pilih pergi ke gua, buka halaman 42. Kalau pilih pulang ke desa, buka halaman 67.' Sekarang kita bikin versi digitalnya di Scratch! Ada 2 pilihan di setiap persimpangan, dan masing-masing membawa ke ending yang berbeda. Setiap pemain punya pengalaman cerita yang unik!",
+    "analogy": "Cerita pilihan ini seperti pohon yang bercabang. Dari batang yang sama, ada cabang-cabang yang menuju ke daun yang berbeda-beda. Kamu yang bikin pohonnya, pemain yang memilih jalurnya. Setiap pemain bisa punya 'daun' yang berbeda di akhir cerita mereka!"
+  },
+  "objectives": [
+    "Merancang alur cerita bercabang dengan setidaknya 2 persimpangan pilihan",
+    "Menggunakan 'tanyakan dan tunggu' dengan 'jika-selainnya' untuk memproses pilihan",
+    "Menggunakan variabel untuk melacak path cerita yang dipilih pemain",
+    "Mengimplementasikan minimal 3 ending berbeda berdasarkan kombinasi pilihan",
+    "Menambahkan efek visual yang berbeda untuk setiap ending"
+  ],
+  "review": {
+    "learned": [
+      "Cerita bercabang menggunakan variabel untuk melacak pilihan-pilihan yang sudah dibuat pemain.",
+      "Setiap 'simpang' cerita adalah blok 'tanyakan dan tunggu' + 'jika-selainnya'.",
+      "Variabel path (jalur cerita) memungkinkan ending yang bervariasi berdasarkan kombinasi pilihan.",
+      "Broadcast bisa dipakai untuk melompat ke bagian cerita yang sesuai dengan pilihan.",
+      "Replay value tinggi ketika ada banyak kombinasi ending yang mungkin."
+    ],
+    "keyConcepts": [
+      "Cerita bercabang: alur non-linear",
+      "Variabel pelacak pilihan",
+      "Kondisi bertingkat: jika-selainnya nested",
+      "Broadcast untuk navigasi cerita",
+      "Multiple endings berdasarkan kombinasi"
+    ],
+    "takeaways": [
+      "Cerita interaktif yang baik membuat SEMUA pilihan terasa bermakna dan berbeda.",
+      "Variabel pelacak memungkinkan game 'mengingat' pilihan sebelumnya untuk mempengaruhi akhir cerita.",
+      "Semakin banyak persimpangan, semakin banyak kemungkinan ending — tapi juga semakin kompleks untuk dibuat."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya cerita interaktif 'Petualang Muda' dengan:\n• Persimpangan 1: Masuk gua ATAU ikuti peta\n• Persimpangan 2: Ambil semua harta ATAU tinggalkan sebagian\n• 4 kemungkinan ending berdasarkan kombinasi pilihan:\n  - Gua + Rakus = Terperangkap dalam gua\n  - Gua + Bijak = Menemukan teman baru di dalam gua\n  - Peta + Rakus = Kehilangan peta, tersesat\n  - Peta + Bijak = Menemukan kerajaan tersembunyi\n• Setiap ending punya backdrop, dialog, dan efek berbeda\n• Tawaran 'Main lagi' setelah setiap ending\n\nIni seperti game RPG mini dengan replay value tinggi!",
+      "tips": [
+        "Tulis 'pohon pilihan'-mu dulu di kertas sebelum coding.",
+        "Beri nama pilihan yang jelas: 'P1A'=Pilihan1 Opsi A, 'P1B'=Pilihan1 Opsi B."
+      ]
+    },
+    {
+      "id": "node-02-branching-design",
+      "type": "lesson",
+      "title": "Desain Pohon Pilihan",
+      "xp": 5,
+      "explanation": "Sebelum coding, kita rancang struktur pohon pilihan:\n\nPERSIMPANGAN 1:\n• Pilihan A: Masuk gua gelap\n• Pilihan B: Ikuti peta tua\n\nPERSIMPANGAN 2 (sama untuk semua jalur, tapi konteksnya berbeda):\n• Pilihan C: Ambil SEMUA harta yang ditemukan (rakus)\n• Pilihan D: Ambil secukupnya, tinggalkan sebagian (bijak)\n\nENDING berdasarkan kombinasi:\n• A+C = Ending 1 (terperangkap, mengambil terlalu rakus)\n• A+D = Ending 2 (menemukan teman di gua)\n• B+C = Ending 3 (tersesat, peta hilang karena sibuk mengambil harta)\n• B+D = Ending 4 (menemukan kerajaan tersembunyi dan disambut sebagai pahlawan)\n\nVariabel 'Jalur' menyimpan kombinasi pilihan: 'AC', 'AD', 'BC', atau 'BD'.",
+      "analogy": "Pohon pilihan seperti resep masakan dengan variasi: bahan pertama dipilih (A atau B), lalu bahan kedua dipilih (C atau D). Kombinasi bahan menghasilkan 'hidangan' (ending) yang berbeda. Kamu sebagai chef tahu semua ending-nya — pemain yang penasaran ingin coba semua kombinasi!",
+      "tips": [
+        "Limit di 2 persimpangan untuk proyek pertama — lebih dari itu jadi sangat kompleks untuk dipelajari.",
+        "Buat SEMUA ending terasa bermakna dan menarik — jangan ada ending yang terasa 'dihukum' tanpa alasan."
+      ]
+    },
+    {
+      "id": "node-03-first-choice",
+      "type": "code",
+      "title": "Persimpangan Pertama",
+      "xp": 5,
+      "explanation": "Setup cerita dan persimpangan pertama. Variabel 'Jalur' akan diisi dengan huruf pilihan yang dibuat pemain.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[atur [Jalur ▼] ke []]\n[ganti latar belakang ke [Forest ▼]]\n[katakan [Kamu seorang petualang muda di tepi hutan...] selama [3] detik]\n[katakan [Di depanmu ada dua jalan.] selama [2] detik]\n[tanyakan [Kamu melihat gua gelap di kiri dan peta tua di kanan.\\nPilih: ketik A (masuk gua) atau B (ikuti peta)] dan tunggu]\njika <(jawaban) = [A]> maka\n  [atur [Jalur ▼] ke [A]]\n  [ganti latar belakang ke [Cave ▼]]\n  [katakan [Kamu masuk ke dalam gua. Di dalam, kamu menemukan tumpukan koin emas!] selama [3] detik]\nselainnya\n  [atur [Jalur ▼] ke [B]]\n  [ganti latar belakang ke [Desert ▼]]\n  [katakan [Kamu mengikuti peta tua. Ia menuntunmu ke padang pasir yang luas.] selama [3] detik]\n  [katakan [Jauh di kejauhan, kamu melihat kilau di antara bukit pasir...] selama [2] detik]\n[akhir jika]"
+      }
+    },
+    {
+      "id": "node-04-second-choice",
+      "type": "code",
+      "title": "Persimpangan Kedua — Pilihan Moral",
+      "xp": 5,
+      "explanation": "Persimpangan kedua adalah tentang moral — apakah petualang mengambil harta dengan serakah atau bijaksana? Jawaban ini dikombinasikan dengan Jalur awal untuk menentukan ending.\n\nVariabel Jalur diperbarui: 'A' + 'C' = 'AC', dll.",
+      "code": {
+        "language": "scratch",
+        "content": "// Persimpangan kedua — konteks berbeda tapi pilihan sama\njika <(Jalur) = [A]> maka\n  [katakan [Di depanmu bertumpuk koin emas yang berkilau...] selama [2] detik]\nselainnya\n  [katakan [Di balik bukit, kamu menemukan harta yang tersimpan!] selama [2] detik]\n[akhir jika]\n\n[tanyakan [Apa yang kamu lakukan?\\nC = Ambil semua harta!\\nD = Ambil secukupnya, tinggalkan sebagian] dan tunggu]\n\njika <(jawaban) = [C]> maka\n  [atur [Jalur ▼] ke (gabungkan (Jalur) [C])]\nselainnya\n  [atur [Jalur ▼] ke (gabungkan (Jalur) [D])]\n[akhir jika]\n\n// Sekarang Jalur berisi 'AC', 'AD', 'BC', atau 'BD'\n[kirim pesan [tampilkan-ending ▼]]"
+      }
+    },
+    {
+      "id": "node-05-endings",
+      "type": "code",
+      "title": "Empat Ending Berbeda!",
+      "xp": 5,
+      "explanation": "Berdasarkan nilai variabel Jalur, tampilkan ending yang sesuai. Setiap ending punya backdrop, dialog, dan efek berbeda untuk membuat pengalaman yang unik.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika menerima [tampilkan-ending ▼]]\njika <(Jalur) = [AC]> maka\n  // Ending 1: Gua + Rakus = Terperangkap\n  [ganti latar belakang ke [Cave ▼]]\n  [putar suara [Oops ▼] hingga selesai]\n  [katakan [Terlalu berat untuk dibawa! Kamu terjebak di dalam gua...] selama [3] detik]\n  [katakan [💀 ENDING 1: Keserakahan memenjarakanmu.] selama [4] detik]\nselainnya jika <(Jalur) = [AD]> maka\n  // Ending 2: Gua + Bijak = Berteman\n  [ganti latar belakang ke [Castle 3 ▼]]\n  [putar suara [Chime ▼] hingga selesai]\n  [katakan [Tiba-tiba seekor naga kecil keluar dari balik batu!] selama [3] detik]\n  [katakan [✨ ENDING 2: Kebaikanmu mendapat teman tak terduga!] selama [4] detik]\nselainnya jika <(Jalur) = [BC]> maka\n  // Ending 3: Peta + Rakus = Tersesat\n  [ganti latar belakang ke [Desert ▼]]\n  [putar suara [Uh oh ▼] hingga selesai]\n  [katakan [Peta terjatuh saat kamu sibuk mengambil harta... Kamu tersesat.] selama [3] detik]\n  [katakan [😰 ENDING 3: Kegugupan adalah musuh terbesar.] selama [4] detik]\nselainnya\n  // Ending 4: Peta + Bijak = Kerajaan Tersembunyi\n  [ganti latar belakang ke [Castle 1 ▼]]\n  [putar suara [Tada ▼] hingga selesai]\n  [katakan [Peta membawamu ke KERAJAAN TERSEMBUNYI yang menunggumu!] selama [3] detik]\n  [katakan [🏆 ENDING 4 (TERBAIK): Kebijaksanaan membuka pintu ke petualangan besar!] selama [4] detik]\n[akhir jika]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Main Lagi — Replay Value!",
+      "xp": 5,
+      "explanation": "Setelah setiap ending, tawari pemain untuk main lagi. Ini adalah kunci replay value — pemain penasaran untuk mencoba kombinasi pilihan lain!\n\nTambahkan juga counter yang melacak berapa ending yang sudah ditemukan.",
+      "code": {
+        "language": "scratch",
+        "content": "// Setelah semua ending ditampilkan, tambahkan:\n[tanyakan [Main lagi untuk temukan ending lain? (ya/tidak)] dan tunggu]\njika <(jawaban) = [ya]> maka\n  [ubah [EndingDitemukan ▼] sebesar [1]]\n  [katakan (gabungkan [Kamu sudah menemukan ] dan (gabungkan (EndingDitemukan) [ dari 4 ending!])) selama [2] detik]\n  // Restart cerita\n  [kirim pesan [mulai-cerita ▼]]\nselainnya\n  [katakan (gabungkan [Terima kasih bermain! Ending ditemukan: ] dan (EndingDitemukan)) selama [3] detik]\n[akhir jika]\n\n// Tombol 'Lihat Semua Ending' (bonus)\n// Setelah 4 ending ditemukan:\njika <(EndingDitemukan) = [4]> maka\n  [katakan [🎉 SELAMAT! Kamu menemukan SEMUA ending! Kamu Master Petualang!] selama [4] detik]\n[akhir jika]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Buat Cerita yang Kaya!",
+      "xp": 5,
+      "explanation": "Cerita pilihanmu sudah siap! Berikut cara membuatnya lebih kaya:\n\nTAMBAH PERSIMPANGAN\nTambahkan persimpangan ketiga untuk 8 kemungkinan ending! Tapi ingat — lebih banyak cabang = lebih lama dibuat dan diuji.\n\nPILIHAN TERSEMBUNYI\nSembunyikan pilihan ketiga yang hanya bisa ditemukan jika pemain mengetik sesuatu yang tidak biasa. 'C = Pilihan tersembunyi' yang tidak disebutkan di teks tapi menghasilkan ending spesial!\n\nKARAKTER PENDAMPING\nBuat sprite karakter yang mengikuti pemain. Karakternya berkomentar tentang pilihan yang dibuat. Ini membuat cerita lebih personal.\n\nKONSEKUENSI TERSIMPAN\nBuat pilihan di babak 1 mempengaruhi apa yang tersedia di babak 2. Misalnya, kalau pilih A, ada item ekstra di babak 2 yang tidak ada kalau pilih B.",
+      "tips": [
+        "Nomori setiap ending saat ditampilkan agar pemain tahu ada berapa ending yang bisa ditemukan.",
+        "Buat 'ending terbaik' yang hanya bisa didapat dengan kombinasi pilihan yang paling bijaksana — ini mendorong pemain berikir tentang nilai-nilai."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Jika ada 2 persimpangan dengan 2 pilihan masing-masing, berapa total kemungkinan ending yang bisa dibuat?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "2 ending",
+        "3 ending",
+        "4 ending",
+        "6 ending"
+      ],
+      "correctOption": "4 ending"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Cerita Detektif dengan 3 Persimpangan!",
+      "xp": 15,
+      "instructions": "Buat cerita detektif interaktif dengan 3 persimpangan dan 8 kemungkinan ending!\n\nLATARBELAKANG: Seorang detektif menyelidiki kasus misterius.\n\nPERSIMPANGAN 1: Pergi ke TKP dulu ATAU tanya saksi dulu\nPERSIMPANGAN 2: Ikuti jejak yang terlihat ATAU ikuti firasat\nPERSIMPANGAN 3: Tangkap tersangka dengan bukti yang ada ATAU tunggu bukti lebih kuat\n\nEnding tergantung kombinasi 3 huruf (A/B dari setiap persimpangan):\n• Setidaknya 3 ending harus unik dan berbeda-beda\n• 1 ending 'sempurna' (detektif menang dengan cara terbaik)\n• 1 ending 'gagal' (tersangka lolos)\n• Sisanya ending 'netral' (berhasil tapi ada konsekuensi)\n\nBonus: Tambahkan sprite karakter detektif yang bereaksi sesuai pilihan!",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// Setup dengan 3 variabel pilihan\n[ketika bendera hijau diklik]\n[atur [Pilihan1 ▼] ke []]\n[atur [Pilihan2 ▼] ke []]\n[atur [Pilihan3 ▼] ke []]\n\n// Persimpangan 1\n[tanyakan [Kasus baru datang! Pilih:\nA = Langsung ke TKP\nB = Tanya saksi dulu] dan tunggu]\n[atur [Pilihan1 ▼] ke (jawaban)]\n\n// Konteks berbeda berdasarkan P1\njika <(Pilihan1) = [A]> maka\n  [katakan [Di TKP kamu menemukan... jejak sepatu di tanah basah.] selama [2.5] detik]\nselainnya\n  [katakan [Saksi bilang melihat orang berbaju merah berlari dari arah gedung.] selama [2.5] detik]\n[akhir jika]\n\n// Persimpangan 2\n[tanyakan [Kamu punya petunjuk baru. Pilih:\nA = Ikuti jejak yang terlihat\nB = Percaya firasatmu] dan tunggu]\n[atur [Pilihan2 ▼] ke (jawaban)]\n\n// (Lanjutkan untuk Persimpangan 3 dan Ending...)"
+      },
+      "expectedResult": "Cerita detektif dengan 3 persimpangan, 8 kemungkinan ending berbeda (minimal 3 yang benar-benar unik), dan replay value yang tinggi. Lihat contoh: https://scratch.mit.edu/projects/123/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// Sistem ending berbasis 3-huruf string\n// Contoh untuk beberapa ending:\n\n[ketika menerima [tampilkan-ending ▼]]\n[atur [Kode ▼] ke (gabungkan (Pilihan1) (gabungkan (Pilihan2) (Pilihan3)))]\n\njika <(Kode) = [AAA]> maka\n  [ganti latar belakang ke [Castle 1 ▼]]\n  [putar suara [Tada ▼] hingga selesai]\n  [katakan [🏆 ENDING SEMPURNA! Detektif mengungkap kasus dengan bukti kuat!] selama [4] detik]\n\nselainnya jika <(Kode) = [BBB]> maka\n  [ganti latar belakang ke [Neon City ▼]]\n  [katakan [✨ Firasat yang kuat! Kamu menangkap tersangka tapi... dia mengajukan banding.] selama [4] detik]\n\nselainnya jika <(Kode) = [AAB]> maka\n  [ganti latar belakang ke [Blue Sky ▼]]\n  [katakan [📋 Hampir sempurna — menangkap orang yang tepat tapi bukti belum kuat.] selama [4] detik]\n\nselainnya jika <<(Kode) = [ABA]> atau <(Kode) = [ABB]>> maka\n  [ganti latar belakang ke [Desert ▼]]\n  [katakan [🔍 Kamu di jalur yang benar tapi beberapa langkah terlewat.] selama [4] detik]\n\nselainnya\n  [ganti latar belakang ke [Black ▼]]\n  [katakan [💀 Tersangka lolos! Kamu harus belajar lebih banyak strategi.] selama [4] detik]\n[akhir jika]\n\n[tanyakan [Coba lagi untuk temukan ending lain? (ya/tidak)] dan tunggu]\njika <(jawaban) = [ya]> maka\n  [kirim pesan [mulai ▼]]\n[akhir jika]",
+        "explanation": "Ketiga pilihan disimpan di variabel terpisah, lalu digabungkan menjadi kode 3 huruf (AAA, AAB, dll). Setiap kode unik mengidentifikasi ending tertentu. Ini lebih rapi dari nested if-else 3 tingkat dan mudah diperluas untuk lebih banyak pilihan."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Dalam cerita pilihan, apa yang dimaksud dengan 'replay value'?",
+        "options": [
+          "Panjang cerita dalam hitungan kata",
+          "Keinginan pemain untuk memainkan ulang karena ada kemungkinan pengalaman berbeda",
+          "Kemampuan untuk menyimpan progress cerita",
+          "Jumlah karakter dalam cerita"
+        ],
+        "correctAnswer": "Keinginan pemain untuk memainkan ulang karena ada kemungkinan pengalaman berbeda",
+        "explanation": "Replay value adalah nilai dari seberapa menariknya sebuah game atau cerita untuk dimainkan/dibaca ulang. Cerita dengan banyak ending berbeda punya replay value tinggi karena pemain ingin menemukan semua kemungkinan ending dengan mencoba pilihan yang berbeda.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Mengapa kita menyimpan pilihan pemain ke variabel 'Jalur'?",
+        "options": [
+          "Karena Scratch membutuhkan variabel untuk setiap pilihan",
+          "Agar bisa digunakan nanti untuk menentukan ending yang sesuai berdasarkan kombinasi semua pilihan",
+          "Untuk menampilkan pilihan di layar",
+          "Karena 'jawaban' langsung hilang setelah pertanyaan berikutnya"
+        ],
+        "correctAnswer": "Agar bisa digunakan nanti untuk menentukan ending yang sesuai berdasarkan kombinasi semua pilihan",
+        "explanation": "Variabel 'jawaban' hanya menyimpan jawaban terakhir. Variabel 'Jalur' mengakumulasikan semua pilihan yang sudah dibuat — misalnya 'AC' berarti pilih A di persimpangan 1 dan C di persimpangan 2. Ini memungkinkan kita menentukan ending berdasarkan KOMBINASI semua pilihan, bukan hanya pilihan terakhir.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Jika ada 3 persimpangan dengan masing-masing 2 pilihan, berapa total kemungkinan ending?",
+        "options": [
+          "3 ending",
+          "6 ending",
+          "8 ending",
+          "12 ending"
+        ],
+        "correctAnswer": "8 ending",
+        "explanation": "Jumlah ending = 2 pangkat jumlah persimpangan. Untuk 3 persimpangan: 2³ = 2 × 2 × 2 = 8 ending. Setiap persimpangan mengalikan jumlah jalur yang mungkin: 1 persimpangan = 2, dua persimpangan = 4, tiga persimpangan = 8.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Apa yang membuat pilihan dalam cerita interaktif terasa bermakna?",
+        "options": [
+          "Ketika semua pilihan menghasilkan ending yang sama",
+          "Ketika setiap pilihan menghasilkan konsekuensi yang benar-benar berbeda dan dipengaruhi oleh tema cerita",
+          "Ketika ada lebih dari 10 pilihan di setiap persimpangan",
+          "Ketika pilihan ditampilkan dengan warna yang menarik"
+        ],
+        "correctAnswer": "Ketika setiap pilihan menghasilkan konsekuensi yang benar-benar berbeda dan dipengaruhi oleh tema cerita",
+        "explanation": "Pilihan terasa bermakna ketika hasilnya benar-benar berbeda dan secara logis terhubung dengan apa yang dipilih. Jika pilih 'serakah' berujung pada akhir yang buruk, pemain belajar pelajaran yang relevan. Pilihan yang semua hasilnya sama, atau hasilnya acak tanpa koneksi logis, terasa hampa.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Mengapa blok 'gabungkan (Jalur) [C]' dipakai untuk mengupdate variabel Jalur?",
+        "options": [
+          "Karena kita tidak bisa menimpa variabel langsung",
+          "Untuk menambahkan huruf pilihan baru ke akhir string Jalur yang sudah ada — mengakumulasikan semua pilihan",
+          "Karena Scratch membutuhkan format string untuk variabel",
+          "Untuk membuat variabel Jalur menjadi angka"
+        ],
+        "correctAnswer": "Untuk menambahkan huruf pilihan baru ke akhir string Jalur yang sudah ada — mengakumulasikan semua pilihan",
+        "explanation": "Blok 'gabungkan (Jalur) [C]' menambahkan huruf 'C' ke akhir nilai Jalur yang sudah ada. Jika Jalur sebelumnya berisi 'A', hasilnya menjadi 'AC'. Ini mengakumulasikan semua pilihan menjadi satu string yang merepresentasikan 'path' lengkap yang ditempuh pemain.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Penulis Cerita Interaktif Berbakat!",
+    "message": "Kamu baru saja membuat game dengan multiple endings yang benar-benar bisa dimainkan ulang! Kamu sekarang tahu cara membuat cerita yang bereaksi terhadap keputusan pemain — skill ini dipakai di game RPG, visual novel, dan game edukasi terbaik di dunia. SATU lesson lagi: Final Showcase Project — ciptakan masterpiece-mu sendiri!",
+    "achievementName": "Penulis Cerita Interaktif",
+    "achievementIcon": "📚"
+  }
+}

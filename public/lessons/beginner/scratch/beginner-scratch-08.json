@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-08",
+    "title": "Labirin Sederhana",
+    "description": "Buat game labirin pertamamu — kendalikan karakter dengan tombol arah, jangan sampai menyentuh dinding, dan temukan jalan keluar!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 8,
+    "estimatedTime": 35,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Selamat Datang di Level 2 — Saatnya Bikin Game!",
+    "description": "Level 2 dimulai dengan tantangan yang lebih seru: kita bikin game sungguhan! Kamu akan mengontrol karakter dengan tombol arah di keyboard, menghindari dinding labirin, dan mencari jalan keluar. Kalau menyentuh dinding merah, karakter kembali ke posisi awal. Ini adalah game pertamamu yang benar-benar bisa dimainkan orang lain!",
+    "analogy": "Game labirin ini seperti maze di buku teka-teki, tapi kamu yang jadi karakter di dalamnya! Dan sekarang kamu bukan cuma yang main — kamu yang bikin labirinnya juga. Pemain lain akan menguji labirin buatanmu!"
+  },
+  "objectives": [
+    "Menggunakan blok 'ketika tombol [arah] ditekan' untuk kontrol keyboard",
+    "Mengubah posisi X dan Y sprite untuk gerakan empat arah",
+    "Menggunakan blok 'jika menyentuh warna [merah] maka' untuk deteksi dinding",
+    "Mereset posisi sprite ke titik awal saat menabrak dinding",
+    "Mendesain backdrop labirin dengan warna khusus untuk dinding"
+  ],
+  "review": {
+    "learned": [
+      "Blok 'ketika tombol [panah kanan] ditekan' bereaksi setiap kali tombol keyboard ditekan.",
+      "Mengubah X ke kanan (+) dan kiri (-), Y ke atas (+) dan bawah (-).",
+      "Blok 'jika menyentuh warna [X] maka' mendeteksi saat sprite menyentuh piksel berwarna tertentu.",
+      "Blok 'pergi ke x: [X] y: [Y]' mereset posisi sprite ke koordinat tertentu.",
+      "Backdrop berlatar warna solid bisa digunakan sebagai 'dinding' yang terdeteksi oleh sensor warna."
+    ],
+    "keyConcepts": [
+      "Kontrol keyboard: ketika tombol ditekan",
+      "Koordinat XY: ubah x dan ubah y",
+      "Sensor warna: jika menyentuh warna",
+      "Reset posisi: pergi ke x y",
+      "Desain level: backdrop sebagai peta"
+    ],
+    "takeaways": [
+      "Dinding labirin paling mudah dibuat di backdrop menggunakan warna solid yang mudah dideteksi (merah terang).",
+      "Kontrol keyboard sebaiknya diletakkan di dalam 'ulangi terus' agar responsif setiap saat.",
+      "Deteksi tabrakan (collision detection) adalah mekanik dasar yang ada di hampir semua game."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya game labirin yang:\n• Karakter kecil bisa digerakkan dengan tombol panah (↑↓←→)\n• Ada labirin dengan dinding merah yang harus dihindari\n• Kalau menyentuh dinding merah, karakter kembali ke START\n• Ada titik FINISH berwarna hijau — sentuh untuk menang!\n• Pesan 'Selamat!' muncul saat mencapai finish\n\nIni adalah game yang benar-benar bisa dimainkan — coba tantang teman untuk menyelesaikan labirin buatanmu!",
+      "tips": [
+        "Gambar labirinmu dulu di kertas sebelum membuat backdrop di Scratch.",
+        "Gunakan warna merah terang (#FF0000) untuk dinding agar mudah dideteksi sensor warna."
+      ]
+    },
+    {
+      "id": "node-02-keyboard-concept",
+      "type": "lesson",
+      "title": "Kontrol Keyboard di Scratch",
+      "xp": 5,
+      "explanation": "Ada dua cara mendeteksi tombol keyboard di Scratch:\n\nCara 1: Blok Kejadian\n'ketika tombol [panah kanan] ditekan'\n→ Setiap kali tombol ditekan, blok di bawahnya dijalankan sekali.\n→ Gerakan terasa 'melompat-lompat' karena satu tekan = satu gerakan kecil.\n\nCara 2: Sensor di dalam Loop\n'jika <tombol [panah kanan] ditekan?> maka'\ndi dalam 'ulangi terus'\n→ Setiap frame program cek apakah tombol sedang ditekan.\n→ Gerakan lebih mulus karena selama tombol ditekan, karakter terus bergerak.\n\nUntuk game labirin, kita pakai Cara 2 agar gerakan lebih halus dan responsif.",
+      "analogy": "Cara 1 seperti mengetuk pintu — setiap ketukan = satu respons. Cara 2 seperti menahan bel pintu — selama ditekan, bel terus berbunyi. Untuk game, kita ingin karakter terus bergerak selama tombol ditekan!",
+      "tips": [
+        "Blok sensor '<tombol [X] ditekan?>' ada di kategori 'Sensor' berwarna biru muda.",
+        "Untuk movement yang lebih halus, gunakan nilai kecil seperti 3-5 piksel per frame."
+      ]
+    },
+    {
+      "id": "node-03-movement",
+      "type": "code",
+      "title": "Gerakan 4 Arah dengan Keyboard",
+      "xp": 5,
+      "explanation": "Kita buat loop utama yang terus mengecek apakah tombol panah sedang ditekan. Setiap tombol mengubah koordinat X atau Y sprite.\n\nIngat koordinat Scratch:\n• Kanan = X bertambah (+)\n• Kiri = X berkurang (-)\n• Atas = Y bertambah (+)\n• Bawah = Y berkurang (-)",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[pergi ke x: [-180] y: [0]]  // posisi START\n[ulangi terus]\n  jika <tombol [panah kanan ▼] ditekan?> maka\n    [ubah x sebesar [3]]\n  [akhir jika]\n  jika <tombol [panah kiri ▼] ditekan?> maka\n    [ubah x sebesar [-3]]\n  [akhir jika]\n  jika <tombol [panah atas ▼] ditekan?> maka\n    [ubah y sebesar [3]]\n  [akhir jika]\n  jika <tombol [panah bawah ▼] ditekan?> maka\n    [ubah y sebesar [-3]]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-04-wall-detection",
+      "type": "code",
+      "title": "Deteksi Dinding — Jika Menyentuh Merah",
+      "xp": 5,
+      "explanation": "Sekarang tambahkan deteksi dinding. Kita cek apakah sprite menyentuh warna merah (warna dinding di backdrop). Kalau iya, kembalikan ke posisi START.\n\nBlok 'menyentuh warna [warna]?' ada di kategori Sensor. Klik kotak warna lalu klik dinding merah di backdrop untuk mengambil warna yang tepat.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[pergi ke x: [-180] y: [0]]\n[ulangi terus]\n  jika <tombol [panah kanan ▼] ditekan?> maka\n    [ubah x sebesar [3]]\n  [akhir jika]\n  jika <tombol [panah kiri ▼] ditekan?> maka\n    [ubah x sebesar [-3]]\n  [akhir jika]\n  jika <tombol [panah atas ▼] ditekan?> maka\n    [ubah y sebesar [3]]\n  [akhir jika]\n  jika <tombol [panah bawah ▼] ditekan?> maka\n    [ubah y sebesar [-3]]\n  [akhir jika]\n  // Deteksi dinding\n  jika <menyentuh warna [#FF0000]?> maka\n    [putar suara [Oops ▼]]\n    [pergi ke x: [-180] y: [0]]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-05-finish",
+      "type": "code",
+      "title": "Garis Finish — Sentuh Hijau untuk Menang!",
+      "xp": 5,
+      "explanation": "Tambahkan kondisi menang: saat karakter menyentuh warna hijau (garis finish), tampilkan pesan selamat dan hentikan game.\n\nKita tambahkan blok 'jika menyentuh warna hijau' tepat di bawah pengecekan dinding merah.",
+      "code": {
+        "language": "scratch",
+        "content": "  // Deteksi dinding merah\n  jika <menyentuh warna [#FF0000]?> maka\n    [putar suara [Oops ▼]]\n    [pergi ke x: [-180] y: [0]]\n  [akhir jika]\n  // Deteksi finish hijau\n  jika <menyentuh warna [#00FF00]?> maka\n    [putar suara [Tada ▼]]\n    [katakan [🎉 Selamat! Kamu berhasil keluar dari labirin!] selama [3] detik]\n    [hentikan [semua ▼]]\n  [akhir jika]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Game Labirin Lengkap!",
+      "xp": 5,
+      "explanation": "Ini adalah kode lengkap game labirin. Pastikan kamu sudah:\n1. Menggambar backdrop labirin dengan dinding MERAH (#FF0000) dan finish HIJAU (#00FF00)\n2. Membuat sprite karakter kecil (ukuran 20-30%) agar muat di lorong labirin\n3. Posisi START ada di koordinat yang sesuai dengan pintu masuk labirinmu\n\nCoba mainkan sendiri dulu untuk memastikan labirin bisa diselesaikan sebelum membagikan ke teman!",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[atur ukuran ke [25] %]  // sprite kecil agar muat di lorong\n[pergi ke x: [-180] y: [0]]  // posisi START\n[ulangi terus]\n  // Kontrol keyboard\n  jika <tombol [panah kanan ▼] ditekan?> maka\n    [ubah x sebesar [3]]\n  [akhir jika]\n  jika <tombol [panah kiri ▼] ditekan?> maka\n    [ubah x sebesar [-3]]\n  [akhir jika]\n  jika <tombol [panah atas ▼] ditekan?> maka\n    [ubah y sebesar [3]]\n  [akhir jika]\n  jika <tombol [panah bawah ▼] ditekan?> maka\n    [ubah y sebesar [-3]]\n  [akhir jika]\n  // Dinding merah = balik ke START\n  jika <menyentuh warna [#FF0000]?> maka\n    [putar suara [Oops ▼]]\n    [pergi ke x: [-180] y: [0]]\n  [akhir jika]\n  // Finish hijau = MENANG!\n  jika <menyentuh warna [#00FF00]?> maka\n    [putar suara [Tada ▼]]\n    [katakan [🎉 Selamat! Kamu berhasil!] selama [3] detik]\n    [hentikan [semua ▼]]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Buat Labirin yang Lebih Seru!",
+      "xp": 5,
+      "explanation": "Labirin dasarmu sudah jalan! Berikut cara membuatnya lebih menarik:\n\nTAMBAH HITUNGAN WAKTU\nBuat variabel 'Waktu' yang bertambah terus. Siapa yang selesai paling cepat?\n\nTAMBAH NYAWA\nBuat variabel 'Nyawa' mulai dari 3. Setiap kali menabrak dinding, nyawa berkurang 1. Game over kalau nyawa = 0.\n\nBEBERAPA LEVEL\nBuat backdrop labirin yang berbeda untuk Level 1, 2, 3. Saat finish Level 1, ganti backdrop ke Level 2!\n\nEFEK VISUAL\nSaat menabrak dinding, tambahkan efek kilat: 'ubah efek kecerahan sebesar 50' → 'tunggu 0.1 detik' → 'hapus efek grafis'.",
+      "tips": [
+        "Buat lorong labirin cukup lebar (minimal 30 piksel) agar sprite bisa lewat dengan nyaman.",
+        "Coba ganti kecepatan gerak dari 3 menjadi 5 untuk labirin yang lebih menantang."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Blok apa yang paling cocok untuk membuat karakter bergerak TERUS MENERUS selama tombol panah ditekan?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "ketika tombol [panah kanan] ditekan → ubah x sebesar 3",
+        "ulangi terus → jika tombol [panah kanan] ditekan? → ubah x sebesar 3",
+        "ketika bendera hijau diklik → ubah x sebesar 3",
+        "ulangi 10 kali → ubah x sebesar 3"
+      ],
+      "correctOption": "ulangi terus → jika tombol [panah kanan] ditekan? → ubah x sebesar 3"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Labirin Multi-Level!",
+      "xp": 15,
+      "instructions": "Buat labirin dengan 2 level yang berbeda!\n\n1. Gambar backdrop 'Level 1' dengan labirin sederhana (warna dinding merah, finish hijau)\n2. Gambar backdrop 'Level 2' dengan labirin lebih susah\n3. Koding:\n   • Saat bendera diklik, mulai di Level 1\n   • Saat menyentuh finish Level 1, ganti backdrop ke Level 2 + reset posisi\n   • Saat menyentuh finish Level 2, tampilkan 'Selamat! Semua Level Selesai!'\n4. BONUS: Tambahkan variabel 'Waktu' yang naik setiap detik — tampilkan waktu terbaik!",
+      "starterCode": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[atur ukuran ke [25] %]\n[ganti latar belakang ke [Level 1 ▼]]\n[pergi ke x: [-180] y: [0]]\n[ulangi terus]\n  // kontrol keyboard (4 arah)\n  jika <menyentuh warna [#FF0000]?> maka\n    [pergi ke x: [-180] y: [0]]\n  [akhir jika]\n  jika <menyentuh warna [#00FF00]?> maka\n    // Di sini: cek sedang di level berapa?\n    // Kalau Level 1 → ganti ke Level 2\n    // Kalau Level 2 → tampilkan menang!\n  [akhir jika]\n[akhir ulangi]"
+      },
+      "expectedResult": "Game labirin 2 level yang bisa diselesaikan dengan kontrol keyboard, deteksi dinding, dan transisi antar level. Lihat contoh: https://scratch.mit.edu/projects/111/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "[ketika bendera hijau diklik]\n[atur [level ▼] ke [1]]\n[atur ukuran ke [25] %]\n[ganti latar belakang ke [Level 1 ▼]]\n[pergi ke x: [-180] y: [0]]\n[ulangi terus]\n  jika <tombol [panah kanan ▼] ditekan?> maka\n    [ubah x sebesar [3]]\n  [akhir jika]\n  jika <tombol [panah kiri ▼] ditekan?> maka\n    [ubah x sebesar [-3]]\n  [akhir jika]\n  jika <tombol [panah atas ▼] ditekan?> maka\n    [ubah y sebesar [3]]\n  [akhir jika]\n  jika <tombol [panah bawah ▼] ditekan?> maka\n    [ubah y sebesar [-3]]\n  [akhir jika]\n  jika <menyentuh warna [#FF0000]?> maka\n    [putar suara [Oops ▼]]\n    [pergi ke x: [-180] y: [0]]\n  [akhir jika]\n  jika <menyentuh warna [#00FF00]?> maka\n    jika <(level) = [1]> maka\n      [putar suara [Chime ▼]]\n      [atur [level ▼] ke [2]]\n      [ganti latar belakang ke [Level 2 ▼]]\n      [pergi ke x: [-180] y: [0]]\n    selainnya\n      [putar suara [Tada ▼]]\n      [katakan [🏆 Luar Biasa! Semua level selesai!] selama [3] detik]\n      [hentikan [semua ▼]]\n    [akhir jika]\n  [akhir jika]\n[akhir ulangi]",
+        "explanation": "Kita pakai variabel 'level' untuk melacak pemain sedang di level berapa. Saat menyentuh finish (hijau), program cek nilai variabel: kalau level=1 ganti backdrop dan reset posisi, kalau level=2 tampilkan pesan menang dan hentikan game."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa yang dilakukan blok 'ubah x sebesar 5' di Scratch?",
+        "options": [
+          "Mengatur posisi X sprite ke tepat 5",
+          "Memindahkan sprite 5 piksel ke KANAN",
+          "Memindahkan sprite 5 piksel ke ATAS",
+          "Memutar sprite sebesar 5 derajat"
+        ],
+        "correctAnswer": "Memindahkan sprite 5 piksel ke KANAN",
+        "explanation": "Blok 'ubah x sebesar [N]' MENAMBAHKAN nilai N ke koordinat X saat ini. X positif = kanan, X negatif = kiri. Jadi 'ubah x sebesar 5' = gerak 5 piksel ke kanan, dan 'ubah x sebesar -5' = gerak 5 piksel ke kiri.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Mengapa kontrol keyboard lebih baik diletakkan di dalam 'ulangi terus'?",
+        "options": [
+          "Karena blok keyboard tidak bisa digunakan di luar loop",
+          "Agar karakter terus bergerak selama tombol ditekan, bukan cuma bergerak sekali per tekanan",
+          "Karena 'ulangi terus' lebih cepat dari blok kejadian",
+          "Untuk menghemat blok yang digunakan"
+        ],
+        "correctAnswer": "Agar karakter terus bergerak selama tombol ditekan, bukan cuma bergerak sekali per tekanan",
+        "explanation": "Dengan sensor '<tombol X ditekan?>' di dalam 'ulangi terus', program mengecek status tombol setiap frame. Selama tombol ditekan terus, karakter bergerak terus. Blok kejadian 'ketika tombol X ditekan' hanya bereaksi sekali per tekanan, membuat gerakan terasa patah-patah.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Di Scratch, bagaimana cara mendeteksi saat sprite menyentuh warna tertentu?",
+        "options": [
+          "Blok 'jika menyentuh sprite [nama]'",
+          "Blok 'jika menyentuh warna [warna]?'",
+          "Blok 'cek warna pada posisi [x] [y]'",
+          "Blok 'deteksi warna sprite'"
+        ],
+        "correctAnswer": "Blok 'jika menyentuh warna [warna]?'",
+        "explanation": "Blok sensor 'menyentuh warna [warna]?' mengembalikan nilai benar/salah tergantung apakah sprite saat ini menyentuh piksel dengan warna tersebut di Stage. Untuk mengambil warna yang tepat, klik kotak warna di blok lalu klik langsung pada warna yang ingin dideteksi di Stage.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Tombol keyboard apa yang menggerakkan sprite ke ATAS dalam game labirin kita?",
+        "options": [
+          "Panah Kanan — ubah x sebesar +3",
+          "Panah Kiri — ubah x sebesar -3",
+          "Panah Atas — ubah y sebesar +3",
+          "Panah Bawah — ubah y sebesar -3"
+        ],
+        "correctAnswer": "Panah Atas — ubah y sebesar +3",
+        "explanation": "Di Scratch, koordinat Y positif berarti ke atas. Jadi untuk menggerakkan sprite ke atas, kita tambahkan nilai positif ke Y. Panah atas = ubah y sebesar +3 (naik). Panah bawah = ubah y sebesar -3 (turun).",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Apa yang dimaksud dengan 'collision detection' dalam game?",
+        "options": [
+          "Cara menggambar karakter yang bisa bertabrakan",
+          "Sistem yang mendeteksi saat dua objek saling menyentuh atau bertabrakan",
+          "Cara mengatur kecepatan karakter",
+          "Sistem untuk menghitung skor pemain"
+        ],
+        "correctAnswer": "Sistem yang mendeteksi saat dua objek saling menyentuh atau bertabrakan",
+        "explanation": "Collision detection (deteksi tabrakan) adalah sistem yang mendeteksi saat dua objek di game saling menyentuh. Di game labirin kita, collision detection dipakai untuk mendeteksi saat karakter menyentuh dinding (merah) atau finish (hijau). Ini adalah mekanik fundamental yang ada di hampir semua game.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Game Designer Pemula!",
+    "message": "Selamat! Game labirin pertamamu sudah jadi dan bisa dimainkan! Kamu baru saja belajar kontrol keyboard dan collision detection — dua mekanik yang ada di hampir semua game. Di lesson berikutnya, kita bikin game kuis tebak gambar yang bisa kamu gunakan untuk mengetes teman-temanmu!",
+    "achievementName": "Arsitek Labirin",
+    "achievementIcon": "🏃"
+  }
+}

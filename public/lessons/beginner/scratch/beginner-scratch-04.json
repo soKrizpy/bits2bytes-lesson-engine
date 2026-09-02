@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-04",
+    "title": "Orkestra Mini",
+    "description": "Buat orkestra mini dengan 4 sprite instrumen — klik setiap instrumen untuk memainkan suaranya dan ciptakan musikmu sendiri!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 4,
+    "estimatedTime": 25,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Jadilah Konduktor Orkestra Digital!",
+    "description": "Di lesson ini, kita bikin orkestra mini! Ada 4 sprite instrumen — drum, gitar, piano, dan terompet. Setiap kali kamu klik salah satu instrumen, suaranya langsung berbunyi dan sprite-nya memberikan animasi visual. Kamu bisa klik-klik instrumen dengan ritme sesukamu dan menciptakan musik unikmu sendiri. Siapa bilang coding tidak bisa bikin musik?",
+    "analogy": "Setiap sprite instrumen seperti tombol di keyboard piano mainan — kamu tekan, dia berbunyi. Bedanya, di Scratch kamu sendiri yang menentukan instrumen apa yang ada dan suara apa yang keluar dari setiap instrumen!"
+  },
+  "objectives": [
+    "Menggunakan blok 'ketika sprite ini diklik' untuk respons klik pada setiap instrumen",
+    "Menggunakan blok 'putar suara' untuk mengeluarkan bunyi instrumen",
+    "Menambahkan umpan balik visual saat instrumen dimainkan dengan efek ukuran",
+    "Mengatur volume suara dengan blok 'atur volume ke'",
+    "Merakit 4 instrumen yang bekerja secara independen"
+  ],
+  "review": {
+    "learned": [
+      "Beberapa sprite bisa bekerja secara independen dan paralel di Scratch.",
+      "Blok 'putar suara [nama]' langsung lanjut ke blok berikutnya tanpa menunggu suara selesai.",
+      "Blok 'ubah ukuran sebesar' dan 'atur ukuran ke' bisa dipakai untuk efek visual 'beat'.",
+      "Setiap sprite punya koleksi suaranya sendiri yang bisa ditambah dari library.",
+      "Blok 'atur volume ke [X] %' mengatur seberapa keras suara yang keluar."
+    ],
+    "keyConcepts": [
+      "Multiple sprites independen",
+      "Blok Suara: putar suara, atur volume",
+      "Umpan balik visual dengan efek ukuran",
+      "Interaktivitas multi-sprite",
+      "Paralel execution di Scratch"
+    ],
+    "takeaways": [
+      "Setiap sprite punya 'area blok' sendiri — coding satu sprite tidak mempengaruhi sprite lain kecuali lewat broadcast.",
+      "Library suara Scratch punya ratusan pilihan termasuk instrumen musik sungguhan.",
+      "Efek visual saat suara dimainkan membuat pengalaman lebih menyenangkan dan responsif."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya orkestra mini dengan 4 instrumen interaktif:\n• 🥁 Drum — klik, langsung berbunyi 'BUM!'\n• 🎸 Gitar — klik, langsung berbunyi senar dipetik\n• 🎹 Piano — klik, langsung berbunyi nada piano\n• 🎺 Terompet — klik, langsung berbunyi melengking\n\nSetiap instrumen punya animasi 'berdetak' saat dimainkan — membesar sebentar lalu kembali normal, seolah-olah instrumen itu bergetar saat berbunyi.\n\nKamu bebas klik instrumen mana saja, kapan saja, dengan ritme sesukamu!",
+      "tips": [
+        "Cari sprite instrumen di library Scratch — ada banyak pilihan di kategori 'Music'.",
+        "Susun 4 sprite instrumen di Stage secara rapi agar mudah diklik."
+      ]
+    },
+    {
+      "id": "node-02-sound-library",
+      "type": "lesson",
+      "title": "Library Suara Scratch",
+      "xp": 5,
+      "explanation": "Scratch punya ratusan suara bawaan yang bisa kamu gunakan gratis!\n\nCara menambahkan suara ke sprite:\n1. Klik sprite yang mau diberi suara\n2. Klik tab 'Suara' di bagian atas kiri\n3. Klik ikon 🔊 di pojok kiri bawah (Pilih Suara)\n4. Cari suara yang kamu mau (contoh: ketik 'drum' atau 'guitar')\n5. Klik suara untuk preview\n6. Klik tanda + untuk menambahkannya\n\nSuara akan tersimpan di koleksi sprite tersebut dan bisa dipanggil dari blok 'putar suara'.",
+      "analogy": "Library suara Scratch seperti toko musik digital — kamu tinggal pilih instrumen yang kamu mau, tidak perlu beli atau rekam sendiri. Semua gratis dan langsung bisa dipakai!",
+      "tips": [
+        "Coba suara 'drum bass', 'guitar strum', 'piano C5', dan 'trumpet1' untuk orkestra mini.",
+        "Kamu bisa preview suara sebelum menambahkannya — klik tombol play di library."
+      ]
+    },
+    {
+      "id": "node-03-drum-sprite",
+      "type": "code",
+      "title": "Sprite Drum — Blok Pertama",
+      "xp": 5,
+      "explanation": "Kita mulai dengan sprite drum. Blok ini ada di SPRITE DRUM.\n\nSaat pemain klik sprite drum:\n1. Suara drum langsung berbunyi\n2. Sprite membesar sedikit (efek 'beat')\n3. Setelah jeda kecil, kembali ke ukuran normal\n\nBlok 'putar suara [nama]' (TANPA 'hingga selesai') dipakai di sini agar kita bisa langsung lanjut ke efek visual tanpa menunggu suara selesai.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Di sprite DRUM ---\n[ketika bendera hijau diklik]\n[atur ukuran ke [100] %]\n\n[ketika sprite ini diklik]\n[putar suara [drum bass ▼]]\n[ubah ukuran sebesar [20]]\n[tunggu [0.1] detik]\n[atur ukuran ke [100] %]"
+      }
+    },
+    {
+      "id": "node-04-guitar-piano",
+      "type": "code",
+      "title": "Sprite Gitar dan Piano",
+      "xp": 5,
+      "explanation": "Pola yang sama diterapkan ke sprite Gitar dan Piano. Setiap sprite punya kode sendiri yang independen — coding di sprite gitar tidak akan mempengaruhi drum atau piano.\n\nPerhatikan bahwa nama suara berbeda sesuai instrumen masing-masing. Kamu harus pastikan suara yang dipanggil sudah ditambahkan ke koleksi sprite tersebut.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Di sprite GITAR ---\n[ketika bendera hijau diklik]\n[atur ukuran ke [100] %]\n\n[ketika sprite ini diklik]\n[putar suara [guitar strum ▼]]\n[ubah ukuran sebesar [15]]\n[tunggu [0.1] detik]\n[atur ukuran ke [100] %]\n\n// --- Di sprite PIANO ---\n[ketika bendera hijau diklik]\n[atur ukuran ke [100] %]\n\n[ketika sprite ini diklik]\n[putar suara [piano C5 ▼]]\n[ubah ukuran sebesar [15]]\n[tunggu [0.1] detik]\n[atur ukuran ke [100] %]"
+      }
+    },
+    {
+      "id": "node-05-trumpet",
+      "type": "code",
+      "title": "Sprite Terompet + Efek Warna",
+      "xp": 5,
+      "explanation": "Sprite terompet punya efek tambahan: saat dimainkan, warnanya berubah sebentar sebelum kembali normal. Efek ini membuat terompet terlihat 'bersinar' saat berbunyi!\n\nBlok 'ubah efek [warna] sebesar [25]' menambahkan pergeseran warna, dan 'hapus efek grafis' mengembalikan ke warna asli.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Di sprite TEROMPET ---\n[ketika bendera hijau diklik]\n[atur ukuran ke [100] %]\n[hapus efek grafis]\n\n[ketika sprite ini diklik]\n[putar suara [trumpet1 ▼]]\n[ubah ukuran sebesar [20]]\n[ubah efek [warna ▼] sebesar [25]]\n[tunggu [0.2] detik]\n[atur ukuran ke [100] %]\n[hapus efek grafis]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Orkestra Lengkap — Semua Instrumen!",
+      "xp": 5,
+      "explanation": "Ini ringkasan lengkap semua 4 instrumen. Setiap sprite punya kodenya sendiri yang bekerja secara INDEPENDEN dan PARALEL — kamu bisa klik drum, piano, dan gitar hampir bersamaan, dan semuanya akan bereaksi!\n\nIni menunjukkan kekuatan Scratch: banyak 'program kecil' berjalan secara bersamaan tanpa saling mengganggu.",
+      "code": {
+        "language": "scratch",
+        "content": "// === DRUM ===\n[ketika sprite ini diklik]\n[putar suara [drum bass ▼]]\n[ubah ukuran sebesar [20]]\n[tunggu [0.1] detik]\n[atur ukuran ke [100] %]\n\n// === GITAR ===\n[ketika sprite ini diklik]\n[putar suara [guitar strum ▼]]\n[ubah ukuran sebesar [15]]\n[tunggu [0.1] detik]\n[atur ukuran ke [100] %]\n\n// === PIANO ===\n[ketika sprite ini diklik]\n[putar suara [piano C5 ▼]]\n[ubah ukuran sebesar [15]]\n[tunggu [0.1] detik]\n[atur ukuran ke [100] %]\n\n// === TEROMPET ===\n[ketika sprite ini diklik]\n[putar suara [trumpet1 ▼]]\n[ubah ukuran sebesar [20]]\n[ubah efek [warna ▼] sebesar [25]]\n[tunggu [0.2] detik]\n[atur ukuran ke [100] %]\n[hapus efek grafis]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Bikin Band Sendiri!",
+      "xp": 5,
+      "explanation": "Orkestra minimu sudah jadi! Berikut cara membuatnya lebih seru:\n\nTAMBAH INSTRUMEN LEBIH\nScratch punya banyak suara: bass, saxophone, marimba, vibraphone, dll. Tambah sprite dan suara sesuai selera!\n\nLOOP OTOMATIS\nIngin drum yang berdetak otomatis? Tambahkan blok kedua di sprite drum:\n[ketika bendera hijau diklik]\n[ulangi terus]\n  [putar suara drum bass]\n  [tunggu 0.5 detik]\n[akhir ulangi]\n\nEFEK BERBEDA\nCoba efek berbeda: 'ubah efek hantu sebesar -20' (pudar), 'ubah efek ikan sebesar 20' (melar), dll.\n\nTAMBAH LABEL\nBuat sprite teks dengan nama instrumen agar pemain tahu instrumen apa yang ada.",
+      "tips": [
+        "Kamu bisa merekam suaramu sendiri di tab 'Suara' → ikon mikrofon. Bikin instrumen suara mulut!",
+        "Coba tambah backdrop bertema konser atau stage musik dari library."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Apa perbedaan antara 'putar suara [nama]' dan 'putar suara [nama] hingga selesai'?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Tidak ada perbedaan — hasilnya sama saja",
+        "'putar suara' lebih keras dari 'hingga selesai'",
+        "'putar suara' langsung lanjut; 'hingga selesai' menunggu sampai suara habis baru lanjut",
+        "'hingga selesai' hanya untuk suara pendek"
+      ],
+      "correctOption": "'putar suara' langsung lanjut; 'hingga selesai' menunggu sampai suara habis baru lanjut"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Band Musik 5 Instrumen!",
+      "xp": 15,
+      "instructions": "Buat orkestra mini dengan LIMA instrumen berbeda!\n\n1. Pilih 5 sprite instrumen atau benda (boleh kreatif: panci = drum, botol = piano, dll)\n2. Tambahkan suara yang sesuai ke setiap sprite\n3. Setiap sprite harus punya:\n   • Blok 'ketika sprite ini diklik'\n   • Blok 'putar suara [nama]'\n   • Efek visual saat dimainkan (ubah ukuran + tunggu + kembalikan)\n4. BONUS: Satu instrumen punya 'mode loop' — saat diklik sekali, ia berbunyi terus sampai diklik lagi!\n\nHint untuk BONUS: Gunakan variabel untuk menyimpan status 'sedang loop atau tidak'.",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// Template untuk setiap sprite instrumen:\n[ketika bendera hijau diklik]\n[atur ukuran ke [100] %]\n\n[ketika sprite ini diklik]\n[putar suara [nama-suara ▼]]\n[ubah ukuran sebesar [20]]\n[tunggu [0.15] detik]\n[atur ukuran ke [100] %]"
+      },
+      "expectedResult": "Lima instrumen interaktif yang berbunyi saat diklik, masing-masing dengan efek visual berbeda. Lihat contoh: https://scratch.mit.edu/projects/107/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// INSTRUMEN 1: DRUM\n[ketika sprite ini diklik]\n[putar suara [drum bass ▼]]\n[ubah ukuran sebesar [25]]\n[tunggu [0.1] detik]\n[atur ukuran ke [100] %]\n\n// INSTRUMEN 2: GITAR\n[ketika sprite ini diklik]\n[putar suara [guitar strum ▼]]\n[ubah efek [warna ▼] sebesar [15]]\n[ubah ukuran sebesar [15]]\n[tunggu [0.15] detik]\n[atur ukuran ke [100] %]\n[hapus efek grafis]\n\n// INSTRUMEN 3: PIANO\n[ketika sprite ini diklik]\n[putar suara [piano C5 ▼]]\n[ubah ukuran sebesar [15]]\n[ubah efek [kecerahan ▼] sebesar [30]]\n[tunggu [0.2] detik]\n[atur ukuran ke [100] %]\n[hapus efek grafis]\n\n// INSTRUMEN 4: TEROMPET\n[ketika sprite ini diklik]\n[putar suara [trumpet1 ▼]]\n[ubah ukuran sebesar [20]]\n[ubah efek [warna ▼] sebesar [50]]\n[tunggu [0.2] detik]\n[atur ukuran ke [100] %]\n[hapus efek grafis]\n\n// INSTRUMEN 5: MARAKAS (BONUS LOOP)\n[ketika bendera hijau diklik]\n[atur [sedang-loop ▼] ke [0]]\n\n[ketika sprite ini diklik]\njika [sedang-loop = 0] maka\n  [atur [sedang-loop ▼] ke [1]]\n  [ulangi terus]\n    [putar suara [Maracas ▼]]\n    [tunggu [0.3] detik]\n    jika [sedang-loop = 0] maka\n      [hentikan [skrip ini ▼]]\n    [akhir jika]\n  [akhir ulangi]\nselainnya\n  [atur [sedang-loop ▼] ke [0]]",
+        "explanation": "Setiap instrumen punya blok independen dengan efek visual berbeda-beda untuk variasi. Instrumen 5 (marakas bonus) menggunakan variabel 'sedang-loop' sebagai toggle on/off — saat diklik pertama kali mulai loop otomatis, diklik lagi menghentikannya."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Di Scratch, bagaimana cara menambahkan suara ke sebuah sprite?",
+        "options": [
+          "Klik kanan sprite → pilih 'Tambah Suara'",
+          "Klik sprite → klik tab 'Suara' → klik ikon speaker untuk buka library suara",
+          "Drag file MP3 dari komputer ke area Scratch",
+          "Ketik nama suara langsung di blok 'putar suara'"
+        ],
+        "correctAnswer": "Klik sprite → klik tab 'Suara' → klik ikon speaker untuk buka library suara",
+        "explanation": "Untuk menambahkan suara ke sprite: klik sprite tersebut untuk memilihnya, lalu klik tab 'Suara' di pojok kiri atas area blok, kemudian klik ikon speaker di pojok kiri bawah untuk membuka library suara Scratch.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Kalau kamu punya 4 sprite yang masing-masing punya blok 'ketika sprite ini diklik', apakah mereka bisa diklik hampir bersamaan?",
+        "options": [
+          "Tidak — Scratch hanya bisa menjalankan satu sprite dalam satu waktu",
+          "Ya — setiap sprite berjalan independen dan paralel satu sama lain",
+          "Hanya 2 sprite yang bisa aktif bersamaan",
+          "Tergantung kecepatan komputer"
+        ],
+        "correctAnswer": "Ya — setiap sprite berjalan independen dan paralel satu sama lain",
+        "explanation": "Scratch menggunakan model concurrent execution — beberapa sprite bisa berjalan secara bersamaan tanpa saling mengganggu. Setiap sprite punya 'jalur eksekusi' sendiri, sehingga mengklik drum dan piano hampir bersamaan akan menjalankan keduanya secara paralel.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Mengapa kita pakai 'ubah ukuran sebesar 20' lalu 'atur ukuran ke 100' (bukan 'ubah ukuran sebesar -20')?",
+        "options": [
+          "Karena 'ubah ukuran sebesar -20' tidak ada di Scratch",
+          "Karena 'atur ukuran ke 100' lebih cepat",
+          "'atur ukuran ke 100' memastikan sprite selalu kembali ke 100% — lebih aman jika diklik berkali-kali cepat",
+          "Tidak ada alasan khusus — keduanya sama"
+        ],
+        "correctAnswer": "'atur ukuran ke 100' memastikan sprite selalu kembali ke 100% — lebih aman jika diklik berkali-kali cepat",
+        "explanation": "Jika kita pakai 'ubah ukuran sebesar -20', dan pemain mengklik sprite dua kali cepat sebelum ukuran kembali normal, sprite bisa jadi sangat besar (100 + 20 + 20 = 140%) atau ukuran tidak terduga. 'Atur ukuran ke 100' selalu mengembalikan ke tepat 100% terlepas dari berapa kali diklik.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Blok apa yang membuat efek sprite 'bersinar' atau berubah warna sementara?",
+        "options": [
+          "ubah warna sprite ke",
+          "ubah efek [warna] sebesar",
+          "atur warna ke [merah]",
+          "ganti kostum ke [berwarna]"
+        ],
+        "correctAnswer": "ubah efek [warna] sebesar",
+        "explanation": "Blok 'ubah efek [warna] sebesar [X]' menambahkan pergeseran warna pada sprite. Nilai 0-360 memutar warna melalui spektrum pelangi. Blok 'hapus efek grafis' mengembalikan sprite ke tampilan aslinya.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Apa yang dimaksud dengan 'paralel execution' di Scratch?",
+        "options": [
+          "Semua sprite berjalan satu per satu secara bergantian",
+          "Hanya sprite pertama yang aktif saja yang berjalan",
+          "Beberapa sprite atau skrip bisa berjalan pada saat yang sama secara bersamaan",
+          "Program Scratch dijalankan dua kali untuk keamanan"
+        ],
+        "correctAnswer": "Beberapa sprite atau skrip bisa berjalan pada saat yang sama secara bersamaan",
+        "explanation": "Paralel execution berarti beberapa hal terjadi secara bersamaan. Di Scratch, setiap sprite punya skrip independen yang bisa berjalan bersamaan. Itulah kenapa kamu bisa klik drum, piano, dan gitar hampir bersamaan — Scratch menjalankan ketiga respons itu secara paralel.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Musisi Digital Berbakat!",
+    "message": "Kamu baru saja membuat orkestra digital pertamamu! Kamu sekarang paham bahwa banyak sprite bisa berjalan secara paralel — ini konsep penting dalam pemrograman. Di lesson berikutnya, kita bikin kupu-kupu yang mengikuti mouse-mu ke mana saja!",
+    "achievementName": "Musisi Digital",
+    "achievementIcon": "🎵"
+  }
+}

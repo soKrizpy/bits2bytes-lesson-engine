@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-12",
+    "title": "Kalkulator Ajaib",
+    "description": "Buat kalkulator interaktif di Scratch — masukkan dua angka, pilih operasi matematika, dan lihat hasilnya muncul ajaib!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 12,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Buat Kalkulator Sendiri — Coding Bertemu Matematika!",
+    "description": "Di lesson ini, coding bertemu matematika! Kita bikin kalkulator interaktif: Scratch akan tanya 'Angka pertama?', kamu ketik, lalu tanya 'Angka kedua?', kemudian tampilkan hasilnya. Kamu juga bisa pilih mau penjumlahan, pengurangan, perkalian, atau pembagian. Seperti punya asisten matematika pribadi yang kamu program sendiri!",
+    "analogy": "Kalkulator HP-mu punya tombol-tombol yang sudah diprogram oleh orang lain. Sekarang kamu yang bikin programnya — kamu yang tentukan cara kerjanya, cara tampilannya, dan bahkan bisa tambahkan fungsi yang tidak ada di kalkulator biasa!"
+  },
+  "objectives": [
+    "Menggunakan blok 'tanyakan dan tunggu' untuk menerima angka dari pemain",
+    "Menyimpan angka input ke variabel untuk diproses",
+    "Menggunakan blok operator (+, -, *, /) untuk perhitungan matematika",
+    "Menggunakan blok 'gabungkan' untuk membuat pesan hasil yang informatif",
+    "Membuat menu pilihan operasi dengan 'jika-selainnya' bertingkat"
+  ],
+  "review": {
+    "learned": [
+      "Variabel 'jawaban' menyimpan teks/angka yang baru diketik pemain.",
+      "Blok operator (+, -, *, /) ada di kategori Operator berwarna hijau.",
+      "Blok 'gabungkan [A] dan [B]' menyambung dua nilai menjadi satu teks.",
+      "Variabel yang disimpan dari 'jawaban' bisa dipakai dalam perhitungan matematika.",
+      "Scratch bisa melakukan perhitungan matematika dasar dan menampilkan hasilnya."
+    ],
+    "keyConcepts": [
+      "Input angka dari pemain",
+      "Operator matematika: +, -, *, /",
+      "Menyimpan input ke variabel",
+      "Gabungkan untuk membuat pesan hasil",
+      "Menu pilihan dengan jika-selainnya"
+    ],
+    "takeaways": [
+      "Blok 'jawaban' secara otomatis menyimpan angka yang diketik — tidak perlu konversi tipe data di Scratch.",
+      "Operator matematika di Scratch bisa digunakan di mana saja nilai angka dibutuhkan.",
+      "Menggabungkan teks dan nilai variabel dengan 'gabungkan' membuat pesan hasil lebih informatif."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya kalkulator yang:\n• Meminta angka pertama dari pemain\n• Meminta angka kedua dari pemain\n• Menampilkan menu pilihan: +, -, ×, ÷\n• Menghitung dan menampilkan hasilnya\n• Menawarkan untuk hitung ulang\n\nKontoh penggunaan:\nScratch: 'Masukkan angka pertama:' → pemain ketik 15\nScratch: 'Masukkan angka kedua:' → pemain ketik 4\nScratch: 'Pilih operasi: ketik +, -, *, atau /' → pemain ketik *\nScratch: '15 × 4 = 60'\n\nSeperti punya asisten matematika yang bisa menghitung apa saja!",
+      "tips": [
+        "Buat sprite karakter 'asisten kalkulator' yang lucu — bisa robot, karakter pintar, atau hewan cerdas.",
+        "Pakai backdrop bertema sekolah atau laboratorium sains."
+      ]
+    },
+    {
+      "id": "node-02-operators",
+      "type": "lesson",
+      "title": "Operator Matematika di Scratch",
+      "xp": 5,
+      "explanation": "Kategori 'Operator' (warna hijau) berisi blok-blok untuk perhitungan matematika:\n\n• [A] + [B] — penjumlahan\n• [A] - [B] — pengurangan\n• [A] * [B] — perkalian\n• [A] / [B] — pembagian\n\nBlok-blok ini menghasilkan nilai angka yang bisa digunakan di mana saja angka dibutuhkan. Misalnya: 'katakan (3 + 4)' akan menampilkan '7'.\n\nKamu juga bisa memasukkan variabel ke dalam operator:\n'katakan ([Angka1] + [Angka2])' akan menampilkan jumlah dua variabel tersebut.\n\nOperator matematika bisa digunakan untuk mengubah nilai variabel, di dalam kondisi 'jika', atau di dalam 'katakan' langsung.",
+      "analogy": "Blok operator di Scratch seperti tombol-tombol di kalkulator — +, -, ×, ÷. Bedanya, di Scratch kamu bisa memasukkan variabel ke dalam 'tombol' ini, bukan hanya angka tetap!",
+      "tips": [
+        "Untuk pembagian, hasilnya bisa berupa desimal — 7 / 2 = 3.5 di Scratch.",
+        "Kamu bisa menumpuk operator: (A + B) * C = blok perkalian yang berisi blok penjumlahan di dalamnya."
+      ]
+    },
+    {
+      "id": "node-03-get-numbers",
+      "type": "code",
+      "title": "Minta Dua Angka dari Pemain",
+      "xp": 5,
+      "explanation": "Kita minta dua angka dari pemain dan simpan ke dua variabel: 'Angka1' dan 'Angka2'. Buat kedua variabel ini terlebih dahulu di panel Variabel.\n\nSetelah setiap 'tanyakan dan tunggu', nilai 'jawaban' langsung kita salin ke variabel yang sesuai menggunakan 'atur [Angka1] ke (jawaban)'.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n// Minta angka pertama\n[tanyakan [🔢 Masukkan angka pertama:] dan tunggu]\n[atur [Angka1 ▼] ke (jawaban)]\n// Minta angka kedua\n[tanyakan [🔢 Masukkan angka kedua:] dan tunggu]\n[atur [Angka2 ▼] ke (jawaban)]"
+      }
+    },
+    {
+      "id": "node-04-choose-operation",
+      "type": "code",
+      "title": "Menu Pilihan Operasi",
+      "xp": 5,
+      "explanation": "Setelah dapat dua angka, kita minta pemain memilih operasi. Gunakan 'jika-selainnya' bertingkat untuk menangani setiap pilihan.\n\nVariable 'Hasil' menyimpan hasil perhitungan, lalu ditampilkan di akhir.",
+      "code": {
+        "language": "scratch",
+        "content": "// Lanjutan setelah dapat Angka1 dan Angka2\n[tanyakan [➕➖✖️➗ Ketik +, -, *, atau / :] dan tunggu]\n[atur [Operasi ▼] ke (jawaban)]\n\njika <(Operasi) = [+]> maka\n  [atur [Hasil ▼] ke ((Angka1) + (Angka2))]\nselainnya\n  jika <(Operasi) = [-]> maka\n    [atur [Hasil ▼] ke ((Angka1) - (Angka2))]\n  selainnya\n    jika <(Operasi) = [*]> maka\n      [atur [Hasil ▼] ke ((Angka1) * (Angka2))]\n    selainnya\n      jika <(Operasi) = [/]> maka\n        [atur [Hasil ▼] ke ((Angka1) / (Angka2))]\n      selainnya\n        [katakan [❓ Operasi tidak dikenal! Coba lagi.] selama [2] detik]\n      [akhir jika]\n    [akhir jika]\n  [akhir jika]\n[akhir jika]"
+      }
+    },
+    {
+      "id": "node-05-show-result",
+      "type": "code",
+      "title": "Tampilkan Hasil dengan Gaya!",
+      "xp": 5,
+      "explanation": "Setelah menghitung, tampilkan hasilnya dalam format yang informatif menggunakan blok 'gabungkan'.\n\nKita buat kalimat hasil seperti: '15 × 4 = 60' dengan menyambungkan variabel dan teks menggunakan beberapa blok 'gabungkan' yang ditumpuk.",
+      "code": {
+        "language": "scratch",
+        "content": "// Tampilkan hasil (setelah blok perhitungan)\n[katakan (gabungkan (Angka1) (gabungkan [ ] (gabungkan (Operasi) (gabungkan [ = ] (Hasil))))) selama [4] detik]\n// Contoh output: '15 * 4 = 60'\n\n// Tawaran hitung ulang\n[tanyakan [🔄 Mau hitung lagi? (ya/tidak)] dan tunggu]\njika <(jawaban) = [ya]> maka\n  [kirim pesan [mulai-kalkulator ▼]]\n[akhir jika]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Kalkulator Lengkap dengan Loop!",
+      "xp": 5,
+      "explanation": "Versi final kalkulator menggunakan broadcast untuk loop — saat pemain mau hitung lagi, program kembali ke awal. Ini adalah kalkulator yang bisa dipakai berulang kali!\n\nSatu perbaikan: kita tambahkan cek agar tidak bisa dibagi dengan 0 (error matematika!).",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[kirim pesan [mulai-kalkulator ▼]]\n\n[ketika menerima [mulai-kalkulator ▼]]\n[tanyakan [🔢 Angka pertama:] dan tunggu]\n[atur [Angka1 ▼] ke (jawaban)]\n[tanyakan [🔢 Angka kedua:] dan tunggu]\n[atur [Angka2 ▼] ke (jawaban)]\n[tanyakan [Operasi? (+, -, *, /)] dan tunggu]\n[atur [Operasi ▼] ke (jawaban)]\n\njika <<(Operasi) = [/]> dan <(Angka2) = [0]>> maka\n  [katakan [⚠️ Tidak bisa dibagi 0!] selama [2] detik]\nselainnya\n  jika <(Operasi) = [+]> maka\n    [atur [Hasil ▼] ke ((Angka1) + (Angka2))]\n  selainnya jika <(Operasi) = [-]> maka\n    [atur [Hasil ▼] ke ((Angka1) - (Angka2))]\n  selainnya jika <(Operasi) = [*]> maka\n    [atur [Hasil ▼] ke ((Angka1) * (Angka2))]\n  selainnya\n    [atur [Hasil ▼] ke ((Angka1) / (Angka2))]\n  [akhir jika]\n  [katakan (gabungkan (Angka1) (gabungkan [ ] (gabungkan (Operasi) (gabungkan [ = ] (Hasil))))) selama [3] detik]\n[akhir jika]\n[tanyakan [Hitung lagi? (ya/tidak)] dan tunggu]\njika <(jawaban) = [ya]> maka\n  [kirim pesan [mulai-kalkulator ▼]]\n[akhir jika]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Kalkulator Super!",
+      "xp": 5,
+      "explanation": "Kalkulator dasarmu sudah jalan! Berikut fitur yang bisa ditambahkan:\n\nTAMBAH FUNGSI LAIN\n• Pangkat: gunakan operator 'angka1 ^ angka2'\n• Akar: gunakan operator 'sqrt (angka)'\n• Sisa bagi: gunakan operator 'angka1 mod angka2'\n\nSEJARAH PERHITUNGAN\nBuat variabel 'Riwayat' yang menyimpan semua perhitungan sebelumnya dengan 'gabungkan'.\n\nMODE KONVERSI SUHU\nTambahkan mode khusus: masukkan suhu Celsius, tampilkan dalam Fahrenheit (rumus: °F = °C × 9/5 + 32).\n\nKALKULATOR NILAI RAPOR\nBuat kalkulator khusus: masukkan 5 nilai ulangan, hitung rata-rata, tampilkan grade (A/B/C/D).",
+      "tips": [
+        "Blok 'dibulatkan [X]' bisa dipakai untuk membulatkan hasil desimal ke angka bulat terdekat.",
+        "Coba tambahkan efek suara berbeda untuk setiap jenis operasi — lebih hidup!"
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Di Scratch, blok operator perkalian adalah...",
+      "interactionType": "multiple-choice",
+      "options": [
+        "[A] × [B]",
+        "[A] * [B]",
+        "[A] kali [B]",
+        "[A] x [B]"
+      ],
+      "correctOption": "[A] * [B]"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Kalkulator Konversi Satuan!",
+      "xp": 15,
+      "instructions": "Buat kalkulator yang bisa melakukan konversi satuan!\n\nPilihan konversi:\n1. Suhu: Celsius → Fahrenheit (°F = °C × 9/5 + 32)\n2. Jarak: Kilometer → Meter (× 1000)\n3. Berat: Kilogram → Gram (× 1000)\n4. Waktu: Jam → Menit (× 60)\n\nAlur program:\n1. Tanya 'Pilih konversi: 1=Suhu, 2=Jarak, 3=Berat, 4=Waktu'\n2. Tanya 'Masukkan nilai:'\n3. Hitung dan tampilkan hasil dengan satuan yang benar\n4. Contoh: '100 Celsius = 212 Fahrenheit'\n5. Tawaran konversi lagi\n\nBonus: Buat konversi berlaku 2 arah (Celsius↔Fahrenheit)!",
+      "starterCode": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[tanyakan [Pilih konversi:\\n1 = Suhu (°C→°F)\\n2 = Jarak (km→m)\\n3 = Berat (kg→g)\\n4 = Waktu (jam→menit)] dan tunggu]\n[atur [PilihKonversi ▼] ke (jawaban)]\n[tanyakan [Masukkan nilai:] dan tunggu]\n[atur [Nilai ▼] ke (jawaban)]\n\njika <(PilihKonversi) = [1]> maka\n  // Suhu: °F = °C × 9/5 + 32\n  [atur [Hasil ▼] ke (((Nilai) * (9/5)) + [32])]\n  [katakan (gabungkan (Nilai) (gabungkan [ °C = ] (gabungkan (Hasil) [ °F]))) selama [4] detik]\n[akhir jika]\n// Tambahkan konversi 2, 3, 4..."
+      },
+      "expectedResult": "Kalkulator konversi satuan yang bisa mengkonversi 4 jenis satuan berbeda dengan hasil yang ditampilkan dengan satuan yang tepat. Lihat contoh: https://scratch.mit.edu/projects/115/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "[ketika bendera hijau diklik]\n[kirim pesan [mulai-konversi ▼]]\n\n[ketika menerima [mulai-konversi ▼]]\n[tanyakan [Pilih: 1=Suhu 2=Jarak 3=Berat 4=Waktu] dan tunggu]\n[atur [Pilih ▼] ke (jawaban)]\n[tanyakan [Masukkan nilai:] dan tunggu]\n[atur [Nilai ▼] ke (jawaban)]\n\njika <(Pilih) = [1]> maka\n  [atur [Hasil ▼] ke (((Nilai) * (9)) / (5) + [32])]\n  [katakan (gabungkan (Nilai) (gabungkan [°C = ] (gabungkan (Hasil) [°F]))) selama [4] detik]\nselainnya jika <(Pilih) = [2]> maka\n  [atur [Hasil ▼] ke ((Nilai) * [1000])]\n  [katakan (gabungkan (Nilai) (gabungkan [ km = ] (gabungkan (Hasil) [ m]))) selama [4] detik]\nselainnya jika <(Pilih) = [3]> maka\n  [atur [Hasil ▼] ke ((Nilai) * [1000])]\n  [katakan (gabungkan (Nilai) (gabungkan [ kg = ] (gabungkan (Hasil) [ g]))) selama [4] detik]\nselainnya\n  [atur [Hasil ▼] ke ((Nilai) * [60])]\n  [katakan (gabungkan (Nilai) (gabungkan [ jam = ] (gabungkan (Hasil) [ menit]))) selama [4] detik]\n[akhir jika]\n\n[tanyakan [Konversi lagi? (ya/tidak)] dan tunggu]\njika <(jawaban) = [ya]> maka\n  [kirim pesan [mulai-konversi ▼]]\n[akhir jika]",
+        "explanation": "Setiap konversi punya rumus matematika yang berbeda yang diimplementasikan dengan blok operator. Tipe konversi dipilih melalui menu 'jika-selainnya' bertingkat. Broadcast dipakai untuk membuat kalkulator bisa diulang tanpa henti."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Di Scratch, blok operator mana yang digunakan untuk perkalian?",
+        "options": [
+          "[A] × [B]",
+          "[A] kali [B]",
+          "[A] * [B]",
+          "[A] x [B]"
+        ],
+        "correctAnswer": "[A] * [B]",
+        "explanation": "Di Scratch (dan di hampir semua bahasa pemrograman), simbol perkalian adalah tanda bintang (*), bukan tanda × atau x. Jadi 3 dikali 4 ditulis sebagai blok [3] * [4].",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Jika pemain mengetik '25' sebagai jawaban, nilai apa yang tersimpan di variabel 'jawaban'?",
+        "options": [
+          "Teks '25' yang tidak bisa dihitung",
+          "Angka 25 yang bisa langsung dipakai dalam perhitungan",
+          "Karakter '2' dan '5' secara terpisah",
+          "Tidak tersimpan — harus disalin manual dulu"
+        ],
+        "correctAnswer": "Angka 25 yang bisa langsung dipakai dalam perhitungan",
+        "explanation": "Scratch secara otomatis mengkonversi teks yang diketik ke angka jika digunakan dalam konteks matematika. Jadi '25' yang diketik pemain bisa langsung dipakai dalam perhitungan seperti (jawaban) + 10 = 35.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa yang terjadi jika kita mencoba membagi angka dengan 0 di Scratch?",
+        "options": [
+          "Program crash dan berhenti",
+          "Scratch menampilkan error merah",
+          "Hasilnya adalah 'Infinity' (tak terhingga) atau 0",
+          "Scratch meminta input ulang otomatis"
+        ],
+        "correctAnswer": "Hasilnya adalah 'Infinity' (tak terhingga) atau 0",
+        "explanation": "Di Scratch, membagi dengan 0 tidak menyebabkan crash — hasilnya adalah 'Infinity' (tak terhingga) untuk bilangan positif atau 0 untuk kasus lain. Tapi untuk kalkulator yang baik, sebaiknya kita cek terlebih dahulu apakah angka kedua = 0 dan tampilkan pesan error yang ramah.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Bagaimana cara membuat pesan seperti '5 + 3 = 8' di Scratch?",
+        "options": [
+          "Cukup katakan '5 + 3 = 8' langsung sebagai teks tetap",
+          "Pakai blok gabungkan bertingkat: gabungkan(Angka1, gabungkan(' + ', gabungkan(Angka2, gabungkan(' = ', Hasil))))",
+          "Tidak mungkin — Scratch tidak bisa menampilkan teks dan angka bersamaan",
+          "Buat 4 sprite teks berbeda untuk setiap bagian"
+        ],
+        "correctAnswer": "Pakai blok gabungkan bertingkat: gabungkan(Angka1, gabungkan(' + ', gabungkan(Angka2, gabungkan(' = ', Hasil))))",
+        "explanation": "Blok 'gabungkan [A] dan [B]' hanya bisa menggabungkan dua nilai. Untuk menggabungkan lebih dari dua nilai, kita tumpuk beberapa blok gabungkan di dalam blok gabungkan lainnya. Hasilnya adalah teks gabungan dari semua nilai tersebut.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Mengapa kita simpan jawaban ke variabel (Angka1, Angka2) sebelum melakukan perhitungan?",
+        "options": [
+          "Karena variabel 'jawaban' tidak bisa digunakan langsung dalam blok operator",
+          "Agar nilainya tersimpan dan bisa diakses berkali-kali — variabel 'jawaban' akan ditimpa oleh pertanyaan berikutnya",
+          "Karena Scratch membutuhkan dua copy dari setiap nilai",
+          "Agar bisa ditampilkan di dua tempat sekaligus"
+        ],
+        "correctAnswer": "Agar nilainya tersimpan dan bisa diakses berkali-kali — variabel 'jawaban' akan ditimpa oleh pertanyaan berikutnya",
+        "explanation": "Variabel 'jawaban' hanya menyimpan jawaban TERAKHIR dari blok 'tanyakan'. Setelah kita tanya angka kedua, nilai angka pertama di 'jawaban' hilang tertimpa. Dengan menyalin ke variabel terpisah (Angka1, Angka2), kita bisa menggunakan keduanya nanti.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Insinyur Kalkulator!",
+    "message": "Kamu baru saja memprogram kalkulator dari nol! Kamu sekarang tahu cara menggunakan operator matematika dan menggabungkan teks dengan nilai variabel. Di lesson berikutnya, kita buat sesuatu yang lebih canggih: dua sprite yang bisa saling berkomunikasi dan berkirim pesan!",
+    "achievementName": "Insinyur Kalkulator",
+    "achievementIcon": "🔢"
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-18",
+    "title": "Magic Paintbrush",
+    "description": "Buat aplikasi menggambar ajaib — gambar bebas di stage dengan mouse, pilih warna kuas, atur ukurannya, dan hapus kanvas kapan saja!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 18,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Jadilah Seniman Digital dengan Magic Paintbrush!",
+    "description": "Di lesson ini, kita bikin aplikasi menggambar sendiri! Kamu bisa menggambar bebas di layar Scratch hanya dengan menggerakkan mouse sambil menahan tombol. Bisa pilih warna, atur ukuran kuas, dan hapus semua gambar dengan tombol Clear. Ini menggunakan fitur 'Pen' di Scratch — fitur yang jarang dipakai tapi sangat powerful untuk membuat aplikasi kreatif!",
+    "analogy": "Fitur Pen di Scratch seperti spidol yang menempel di bawah kaki sprite. Ke mana sprite bergerak dengan 'pen down' aktif, spidol ikut menggambar jejak di Stage. Kamu kontrol warna dan ukuran spidolnya — bisa bikin gambar apa saja!"
+  },
+  "objectives": [
+    "Menggunakan blok 'pena turun' dan 'pena naik' untuk mulai/berhenti menggambar",
+    "Menggunakan blok 'atur warna pena ke' untuk memilih warna gambar",
+    "Menggunakan blok 'atur ukuran pena ke' untuk mengubah ketebalan kuas",
+    "Membuat fitur 'hapus' dengan blok 'hapus semua'",
+    "Menggabungkan semua fitur menjadi aplikasi menggambar yang lengkap"
+  ],
+  "review": {
+    "learned": [
+      "Blok Pen di Scratch meninggalkan jejak gambar di Stage saat sprite bergerak.",
+      "Blok 'pena turun' mengaktifkan menggambar; 'pena naik' menghentikannya.",
+      "Blok 'atur warna pena ke [X]' mengubah warna gambar.",
+      "Blok 'atur ukuran pena ke [X]' mengubah ketebalan garis.",
+      "Blok 'hapus semua' (clear) menghapus semua gambar pena di Stage."
+    ],
+    "keyConcepts": [
+      "Blok Pen: pena turun, pena naik",
+      "Warna pena: atur warna pena ke",
+      "Ukuran pena: atur ukuran pena ke",
+      "Hapus kanvas: hapus semua",
+      "Tombol pilih warna sebagai sprite"
+    ],
+    "takeaways": [
+      "Blok Pen ada di kategori 'Ekstensi' — kamu perlu mengaktifkannya dulu dari menu ekstensi.",
+      "Sprite pembawa pena tidak harus terlihat — bisa dibuat sangat kecil atau transparan.",
+      "Kombinasi 'go to mouse pointer' + 'pen down' + mouse button check = kuas menggambar."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya aplikasi Magic Paintbrush yang bisa:\n• Menggambar bebas dengan menggerakkan mouse sambil menahan klik kiri\n• Pilih warna dari palet (merah, oranye, kuning, hijau, biru, ungu, hitam, putih)\n• Ukuran kuas S, M, L (tipis, sedang, tebal)\n• Tombol HAPUS untuk membersihkan kanvas\n• Efek khusus: mode rainbow yang terus ganti warna saat menggambar!\n\nIni bukan cuma game — ini adalah aplikasi kreatif yang berguna sungguhan!",
+      "tips": [
+        "Aktifkan ekstensi Pen terlebih dahulu: klik ikon puzzle di pojok kiri bawah → pilih 'Pen'.",
+        "Buat sprite kuas yang kecil (titik bulat) agar tidak menutupi gambar yang sedang dibuat."
+      ]
+    },
+    {
+      "id": "node-02-pen-extension",
+      "type": "lesson",
+      "title": "Ekstensi Pen — Aktifkan Dulu!",
+      "xp": 5,
+      "explanation": "Blok Pen tidak langsung terlihat di Scratch — perlu diaktifkan dulu:\n\n1. Klik ikon 🧩 (Tambah Ekstensi) di pojok kiri bawah\n2. Pilih 'Pen' dari daftar ekstensi\n3. Sekarang ada kategori baru 'Pen' berwarna hijau di panel blok\n\nBlok-blok Pen yang akan kita pakai:\n• 'pena turun' — mulai menggambar (jejak aktif)\n• 'pena naik' — berhenti menggambar\n• 'hapus semua' — hapus semua jejak pena di Stage\n• 'atur warna pena ke [nilai]' — ubah warna (0-100)\n• 'atur ukuran pena ke [nilai]' — ubah ketebalan (piksel)\n• 'ubah warna pena sebesar [nilai]' — geser warna sedikit",
+      "analogy": "Mengaktifkan ekstensi Pen seperti mengambil kotak cat dari lemari — kotak itu selalu ada di Scratch, tapi perlu kamu buka dulu sebelum bisa digunakan. Setelah dibuka, semua 'kuas' tersedia!",
+      "tips": [
+        "Ekstensi yang diaktifkan tersimpan di proyek — tidak perlu mengaktifkan ulang setiap buka proyek.",
+        "Warna Pen menggunakan sistem 0-100 (bukan 0-255 seperti RGB biasa)."
+      ]
+    },
+    {
+      "id": "node-03-basic-drawing",
+      "type": "code",
+      "title": "Menggambar Dasar — Ikuti Mouse",
+      "xp": 5,
+      "explanation": "Sprite kuas mengikuti mouse setiap saat. Pena turun hanya saat tombol mouse ditekan. Saat tombol dilepas, pena naik (berhenti menggambar).\n\nBlok '<tombol mouse ditekan?>' ada di kategori Sensor — mengembalikan true saat tombol kiri mouse sedang ditekan.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[hapus semua]\n[pena naik]\n[atur warna pena ke [0]]  // merah sebagai default\n[atur ukuran pena ke [3]]\n[ulangi terus]\n  [pergi ke x: (posisi x mouse) y: (posisi y mouse)]\n  jika <tombol mouse ditekan?> maka\n    [pena turun]\n  selainnya\n    [pena naik]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-04-color-buttons",
+      "type": "code",
+      "title": "Tombol Pilih Warna",
+      "xp": 5,
+      "explanation": "Buat sprite tombol warna — misalnya 8 kotak kecil berwarna berbeda di tepi layar. Setiap tombol mengatur variabel 'WarnaSaat' yang dibaca oleh sprite kuas.\n\nGunakan variabel 'WarnaSaat' untuk menyimpan warna yang dipilih. Sprite kuas membaca variabel ini dan menerapkannya ke pena.",
+      "code": {
+        "language": "scratch",
+        "content": "// Buat variabel 'WarnaSaat' dan 'UkuranSaat'\n\n// --- Sprite TOMBOL MERAH ---\n[ketika sprite ini diklik]\n[atur [WarnaSaat ▼] ke [0]]  // 0 = merah di sistem warna Pen\n\n// --- Sprite TOMBOL BIRU ---\n[ketika sprite ini diklik]\n[atur [WarnaSaat ▼] ke [60]]  // 60 = biru\n\n// --- Sprite TOMBOL HIJAU ---\n[ketika sprite ini diklik]\n[atur [WarnaSaat ▼] ke [40]]  // 40 = hijau\n\n// --- Di sprite KUAS: terapkan warna ---\n[ketika bendera hijau diklik]\n// Tambahkan di dalam loop:\n[atur warna pena ke (WarnaSaat)]"
+      }
+    },
+    {
+      "id": "node-05-size-clear",
+      "type": "code",
+      "title": "Ukuran Kuas dan Tombol Hapus",
+      "xp": 5,
+      "explanation": "Tambahkan 3 tombol ukuran kuas (S/M/L) dan tombol HAPUS yang membersihkan kanvas.\n\nTombol ukuran mengubah variabel 'UkuranSaat', dan sprite kuas menerapkannya ke 'atur ukuran pena ke'.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Tombol Ukuran S ---\n[ketika sprite ini diklik]\n[atur [UkuranSaat ▼] ke [2]]\n\n// --- Tombol Ukuran M ---\n[ketika sprite ini diklik]\n[atur [UkuranSaat ▼] ke [8]]\n\n// --- Tombol Ukuran L ---\n[ketika sprite ini diklik]\n[atur [UkuranSaat ▼] ke [20]]\n\n// --- Tombol HAPUS ---\n[ketika sprite ini diklik]\n[hapus semua]\n\n// --- Sprite KUAS (update): ---\n[ketika bendera hijau diklik]\n[atur [WarnaSaat ▼] ke [0]]\n[atur [UkuranSaat ▼] ke [8]]\n[hapus semua]\n[pena naik]\n[ulangi terus]\n  [pergi ke x: (posisi x mouse) y: (posisi y mouse)]\n  [atur warna pena ke (WarnaSaat)]\n  [atur ukuran pena ke (UkuranSaat)]\n  jika <tombol mouse ditekan?> maka\n    [pena turun]\n  selainnya\n    [pena naik]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Mode Rainbow — Efek Spesial!",
+      "xp": 5,
+      "explanation": "Tambahkan mode rainbow yang terus mengubah warna pena saat menggambar — efek yang sangat menyenangkan!\n\nBuat variabel 'ModeRainbow' (0 atau 1). Saat mode rainbow aktif, warna pena terus bergeser sedikit setiap frame.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Tombol RAINBOW ---\n[ketika sprite ini diklik]\njika <(ModeRainbow) = [0]> maka\n  [atur [ModeRainbow ▼] ke [1]]\n  [katakan [🌈 Mode ON] selama [1] detik]\nselainnya\n  [atur [ModeRainbow ▼] ke [0]]\n  [katakan [Mode OFF] selama [1] detik]\n[akhir jika]\n\n// --- Sprite KUAS (versi final dengan rainbow) ---\n[ketika bendera hijau diklik]\n[atur [WarnaSaat ▼] ke [0]]\n[atur [UkuranSaat ▼] ke [8]]\n[atur [ModeRainbow ▼] ke [0]]\n[hapus semua]\n[pena naik]\n[ulangi terus]\n  [pergi ke x: (posisi x mouse) y: (posisi y mouse)]\n  // Mode rainbow: terus geser warna\n  jika <(ModeRainbow) = [1]> maka\n    [ubah [WarnaSaat ▼] sebesar [2]]\n    jika <(WarnaSaat) > [100]> maka\n      [atur [WarnaSaat ▼] ke [0]]\n    [akhir jika]\n  [akhir jika]\n  [atur warna pena ke (WarnaSaat)]\n  [atur ukuran pena ke (UkuranSaat)]\n  jika <tombol mouse ditekan?> maka\n    [pena turun]\n  selainnya\n    [pena naik]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Buat Aplikasi Seni Lebih Canggih!",
+      "xp": 5,
+      "explanation": "Magic Paintbrush-mu sudah keren! Berikut fitur tambahan yang menarik:\n\nSIMPAN KARYA\nKlik kanan Stage → 'Simpan gambar sebagai...' untuk mengunduh gambar sebagai PNG.\n\nSTAMP TOOL\nBuat mode 'stamp': saat klik, buat klon sprite karakter kecil di posisi mouse — seperti menstempel gambar!\n\nBRUSH SHAPE\nAlih-alih titik bulat, gunakan sprite berbentuk bintang atau hati sebagai kuas. Blok 'pergi ke mouse' tetap sama.\n\nONDO EFFECT\nBuat kuas yang menggambar lingkaran dari posisi terakhir ke posisi saat ini — seperti efek spray cat.\n\nSIMETRI MIRROR\nBuat 2 sprite kuas: satu di posisi mouse, satu di posisi mirror (x negatif). Gambar di satu sisi, otomatis cermin di sisi lain!",
+      "tips": [
+        "Warna Pen di Scratch: 0=merah, 25=kuning, 40=hijau, 60=biru, 75=ungu. Coba nilai-nilai ini untuk palet yang akurat.",
+        "Kamu bisa ekspor gambar hasil dengan klik kanan Stage → 'Simpan gambar' untuk dibagikan!"
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Di Scratch, blok Pen ada di mana dan bagaimana cara mengaktifkannya?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Blok Pen sudah ada di kategori 'Tampilan' — langsung bisa dipakai",
+        "Klik ikon puzzle/ekstensi di pojok kiri bawah → pilih 'Pen' → kategori Pen muncul",
+        "Blok Pen hanya tersedia di Scratch versi berbayar",
+        "Ketik '/pen' di area kode untuk mengaktifkannya"
+      ],
+      "correctOption": "Klik ikon puzzle/ekstensi di pojok kiri bawah → pilih 'Pen' → kategori Pen muncul"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Aplikasi Seni dengan Stamp dan Simetri!",
+      "xp": 15,
+      "instructions": "Buat aplikasi seni yang lebih canggih dengan dua fitur spesial:\n\nFITUR 1 — STAMP TOOL:\n• Tombol 'Stamp' mengubah mode menjadi stamping\n• Saat mode stamp aktif dan klik mouse, buat klon sprite bintang/hati di posisi mouse\n• Setiap klon punya warna acak dan ukuran sedikit berbeda\n\nFITUR 2 — BRUSH TYPE:\n• Tombol 'Tipis' — garis tipis (ukuran 2)\n• Tombol 'Sedang' — garis sedang (ukuran 8)\n• Tombol 'Tebal' — garis tebal (ukuran 20)\n• Tombol 'Glitter' — ukuran kecil tapi warna terus berubah super cepat\n\nBonus: Tombol 'Undo' yang menghapus garis terakhir (hint: simpan gambar di step dan restore)",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// STAMP TOOL\n// Variabel: ModeSaat (0=kuas, 1=stamp)\n\n[ketika bendera hijau diklik]\n[atur [ModeSaat ▼] ke [0]]\n\n// Sprite kuas — cek mode saat klik:\n[ulangi terus]\n  [pergi ke x: (posisi x mouse) y: (posisi y mouse)]\n  jika <tombol mouse ditekan?> maka\n    jika <(ModeSaat) = [0]> maka\n      [pena turun]\n    selainnya\n      // Mode stamp: buat klon bintang\n      [kirim pesan [buat-stamp ▼]]\n      [tunggu [0.2] detik]  // jeda agar tidak spam\n    [akhir jika]\n  selainnya\n    [pena naik]\n  [akhir jika]\n[akhir ulangi]\n\n// Sprite bintang (untuk stamp)\n[ketika menerima [buat-stamp ▼]]\n[buat klon dari [diriku sendiri ▼]]\n\n[ketika aku mulai sebagai klon]\n[pergi ke x: (posisi x mouse) y: (posisi y mouse)]\n[atur ukuran ke (pilih acak dari [20] sampai [60]) %]\n[atur efek [warna ▼] ke (pilih acak dari [0] sampai [200])]\n[tampilkan]"
+      },
+      "expectedResult": "Aplikasi seni dengan kuas, stamp bintang, mode rainbow/glitter, dan palet warna yang lengkap. Lihat contoh: https://scratch.mit.edu/projects/121/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// SPRITE KUAS — versi lengkap\n[ketika bendera hijau diklik]\n[atur [WarnaSaat ▼] ke [0]]\n[atur [UkuranSaat ▼] ke [8]]\n[atur [ModeSaat ▼] ke [0]]\n[hapus semua]\n[pena naik]\n\n[ulangi terus]\n  [pergi ke x: (posisi x mouse) y: (posisi y mouse)]\n  // Mode glitter: ganti warna super cepat\n  jika <(UkuranSaat) = [1]> maka  // kode 1 = glitter\n    [ubah [WarnaSaat ▼] sebesar [5]]\n    [atur ukuran pena ke [4]]\n  [akhir jika]\n  [atur warna pena ke (WarnaSaat)]\n  jika <tombol mouse ditekan?> maka\n    jika <(ModeSaat) = [0]> maka\n      [pena turun]\n    selainnya\n      // Mode stamp\n      [kirim pesan [buat-stamp ▼]]\n      [tunggu [0.15] detik]\n    [akhir jika]\n  selainnya\n    [pena naik]\n  [akhir jika]\n[akhir ulangi]\n\n// TOMBOL GLITTER\n[ketika sprite ini diklik]\n[atur [UkuranSaat ▼] ke [1]]  // kode khusus glitter\n[atur [ModeRainbow ▼] ke [1]]\n[katakan [✨ Glitter!] selama [1] detik]\n\n// STAMP — sprite bintang\n[ketika menerima [buat-stamp ▼]]\n[buat klon dari [diriku sendiri ▼]]\n\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (posisi x mouse) y: (posisi y mouse)]\n[atur ukuran ke (pilih acak dari [15] sampai [50]) %]\n[atur efek [warna ▼] ke (pilih acak dari [0] sampai [200])]\n[atur efek [hantu ▼] ke (pilih acak dari [0] sampai [30])]",
+        "explanation": "Mode stamp menggunakan variabel ModeSaat untuk membedakan aksi klik. Saat mode=1, klik membuat broadcast 'buat-stamp' yang memicu pembuatan klon bintang di posisi mouse. Klon bintang mendapat warna dan ukuran acak. Jeda 0.15 detik mencegah terlalu banyak klon dibuat saat mouse ditekan terus."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Di Scratch, untuk menggunakan blok Pen, apa yang harus dilakukan pertama kali?",
+        "options": [
+          "Blok Pen sudah otomatis tersedia — tidak perlu aktivasi",
+          "Aktifkan ekstensi Pen dari menu ekstensi (ikon puzzle di pojok kiri bawah)",
+          "Download plugin Pen dari website Scratch",
+          "Buat variabel bernama 'Pen' terlebih dahulu"
+        ],
+        "correctAnswer": "Aktifkan ekstensi Pen dari menu ekstensi (ikon puzzle di pojok kiri bawah)",
+        "explanation": "Blok Pen adalah ekstensi (fitur tambahan) Scratch yang perlu diaktifkan secara manual. Klik ikon puzzle di pojok kiri bawah area blok → pilih 'Pen' → kategori Pen berwarna hijau akan muncul di panel blok.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa perbedaan antara 'pena turun' dan 'pena naik'?",
+        "options": [
+          "Tidak ada perbedaan — keduanya sama",
+          "'Pena turun' = mulai meninggalkan jejak saat bergerak; 'pena naik' = berhenti meninggalkan jejak",
+          "'Pena turun' = sprite bergerak ke bawah; 'pena naik' = sprite bergerak ke atas",
+          "'Pena turun' hanya bekerja saat tombol mouse ditekan"
+        ],
+        "correctAnswer": "'Pena turun' = mulai meninggalkan jejak saat bergerak; 'pena naik' = berhenti meninggalkan jejak",
+        "explanation": "Blok 'pena turun' mengaktifkan mode menggambar — sprite akan meninggalkan jejak warna di Stage saat bergerak. Blok 'pena naik' menonaktifkan mode menggambar — sprite bisa bergerak tanpa meninggalkan jejak.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Bagaimana cara mendeteksi apakah tombol kiri mouse sedang ditekan di Scratch?",
+        "options": [
+          "ketika tombol [kiri] ditekan",
+          "Sensor: tombol mouse ditekan?",
+          "ketika klik mouse",
+          "Variabel klik mouse"
+        ],
+        "correctAnswer": "Sensor: tombol mouse ditekan?",
+        "explanation": "Blok boolean '<tombol mouse ditekan?>' ada di kategori Sensor. Ia mengembalikan 'benar' (true) selama tombol kiri mouse ditekan, dan 'salah' (false) saat dilepas. Ini berbeda dari 'ketika sprite ini diklik' yang hanya bereaksi sekali per klik.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Mengapa kita menggunakan variabel 'WarnaSaat' alih-alih langsung menulis angka warna di blok pena?",
+        "options": [
+          "Karena blok pena tidak bisa menerima angka langsung",
+          "Agar nilai warna bisa diubah dari tombol warna mana saja dan langsung diterapkan ke pena",
+          "Karena variabel lebih akurat dari angka",
+          "Tidak ada alasan — keduanya sama efektifnya"
+        ],
+        "correctAnswer": "Agar nilai warna bisa diubah dari tombol warna mana saja dan langsung diterapkan ke pena",
+        "explanation": "Variabel 'WarnaSaat' berfungsi sebagai 'pengaturan warna aktif'. Setiap tombol warna mengubah variabel ini. Sprite kuas membaca variabel ini di setiap frame dan menerapkannya ke pena. Ini memungkinkan banyak tombol warna mengontrol satu pena secara terpusat.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Blok apa yang digunakan untuk menghapus SEMUA gambar pena di Stage sekaligus?",
+        "options": [
+          "hapus klon ini",
+          "hapus semua (blok Pen)",
+          "atur latar belakang ke [kosong]",
+          "restart program"
+        ],
+        "correctAnswer": "hapus semua (blok Pen)",
+        "explanation": "Blok 'hapus semua' dari kategori Pen menghapus semua jejak gambar pena di Stage secara instan. Ini berbeda dari 'hapus klon ini' yang menghapus klon sprite, dan 'ganti latar belakang' yang hanya mengubah backdrop.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Seniman Digital Sejati!",
+    "message": "Kamu baru saja membuat aplikasi menggambar sendiri! Blok Pen adalah salah satu fitur paling serbaguna di Scratch — bisa dipakai untuk membuat efek partikel, grafik matematika, dan bahkan game yang meninggalkan jejak. Di lesson berikutnya, kita buat sesuatu yang epik: Boss Battle Game dengan health bar!",
+    "achievementName": "Seniman Pen",
+    "achievementIcon": "🎨"
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-10",
+    "title": "Tangkap Apel Jatuh",
+    "description": "Buat game tangkap apel — gerakkan keranjang ke kiri dan kanan untuk menangkap apel yang jatuh dari pohon!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 10,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Game Tangkap Apel — Uji Refleksmu!",
+    "description": "Game klasik yang seru: apel jatuh dari atas layar, kamu gerakkan keranjang ke kiri dan kanan untuk menangkapnya. Setiap apel yang tertangkap dapat poin, setiap apel yang jatuh ke tanah mengurangi nyawa. Semakin lama, semakin cepat apelnya jatuh! Di lesson ini kamu belajar cara membuat objek yang jatuh dan cara mendeteksi ketika dua sprite saling menyentuh.",
+    "analogy": "Pernah main game 'tangkap bola' di taman? Di sini kamu bikin versi digitalnya — dan kamu yang atur seberapa susah gamenya. Mau apel jatuh pelan atau super cepat? Terserah kamu!"
+  },
+  "objectives": [
+    "Menggunakan tombol kiri-kanan untuk menggerakkan keranjang horizontal",
+    "Menggunakan variabel kecepatan untuk mengatur kecepatan jatuh apel",
+    "Menggunakan blok 'jika menyentuh [sprite]' untuk deteksi tangkapan",
+    "Menggunakan clone untuk membuat apel yang terus-menerus berjatuhan",
+    "Mengimplementasikan sistem nyawa yang berkurang jika apel tidak tertangkap"
+  ],
+  "review": {
+    "learned": [
+      "Blok 'jika menyentuh [sprite X]?' mendeteksi kontak antara dua sprite berbeda.",
+      "Kecepatan jatuh bisa diatur dengan variabel — semakin besar nilainya, semakin cepat.",
+      "Keranjang digerakkan horizontal dengan mengubah X saja (Y tetap di bawah).",
+      "Clone dari sprite apel membuat banyak apel bisa jatuh bersamaan.",
+      "Kombinasi 'jika y < -180' dan 'hapus klon' membersihkan klon yang keluar layar."
+    ],
+    "keyConcepts": [
+      "Deteksi antar sprite: menyentuh sprite",
+      "Gerakan horizontal: ubah x",
+      "Kecepatan dengan variabel",
+      "Clone untuk objek berulang",
+      "Sistem nyawa dengan variabel"
+    ],
+    "takeaways": [
+      "Sprite-to-sprite collision detection pakai blok 'menyentuh [nama-sprite]' berbeda dari deteksi warna.",
+      "Memisahkan keranjang dan apel sebagai sprite berbeda membuat coding lebih mudah dikelola.",
+      "Variabel kecepatan yang bertambah dari waktu ke waktu adalah cara klasik membuat game semakin sulit."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya game tangkap apel dengan:\n• Keranjang di bawah yang bisa digerakkan kiri-kanan dengan tombol panah\n• Apel yang terus-menerus jatuh dari posisi acak di atas\n• Setiap apel tertangkap = +1 Skor\n• Setiap apel jatuh ke tanah = -1 Nyawa\n• Mulai dengan 3 nyawa — game over kalau nyawa habis!\n• Semakin lama skor naik, semakin cepat apel jatuh\n\nGame ini mengajarkan mekanik 'catcher' yang dipakai di banyak game arcade klasik!",
+      "tips": [
+        "Cari sprite 'Apple' dan 'Basket' di library Scratch.",
+        "Susun keranjang di bawah Stage (Y = -140) dan apel akan jatuh dari atas (Y = 180)."
+      ]
+    },
+    {
+      "id": "node-02-sprite-collision",
+      "type": "lesson",
+      "title": "Deteksi Sentuhan Antar Sprite",
+      "xp": 5,
+      "explanation": "Di lesson labirin, kita deteksi sentuhan dengan WARNA. Sekarang kita deteksi sentuhan antara dua SPRITE.\n\nBlok 'menyentuh [nama-sprite]?' ada di kategori Sensor. Blok ini mengecek apakah sprite yang mengandung blok ini sedang bersentuhan (overlap) dengan sprite lain yang disebutkan.\n\nKita letakkan blok ini di sprite APEL:\n'jika menyentuh [Keranjang]?' → artinya: 'apakah apel ini menyentuh keranjang?'\n\nJika ya → apel tertangkap! Tambah skor, hapus klon apel.\nJika tidak dan apel keluar bawah → nyawa berkurang, hapus klon apel.",
+      "analogy": "Bayangkan kamu memberi setiap apel 'radar mini' yang terus memantau: 'apakah keranjang ada di dekat saya?' Begitu radar berbunyi (menyentuh keranjang), apel tahu dia tertangkap dan bisa menambah skor!",
+      "tips": [
+        "Pastikan nama sprite keranjang persis sama dengan yang dimasukkan ke blok 'menyentuh [X]'.",
+        "Ukuran sprite yang terlalu kecil membuat collision sulit — buat keranjang cukup lebar (lebar 100-150 piksel)."
+      ]
+    },
+    {
+      "id": "node-03-basket-movement",
+      "type": "code",
+      "title": "Keranjang Bergerak Kiri-Kanan",
+      "xp": 5,
+      "explanation": "Kita mulai dengan sprite KERANJANG. Keranjang hanya bergerak secara horizontal (kiri-kanan) — posisi Y-nya tetap di bawah layar.\n\nKita juga batasi gerakan agar keranjang tidak keluar dari tepi layar.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite KERANJANG ---\n[ketika bendera hijau diklik]\n[atur ukuran ke [80] %]\n[pergi ke x: [0] y: [-140]]\n[ulangi terus]\n  jika <tombol [panah kanan ▼] ditekan?> maka\n    [ubah x sebesar [10]]\n  [akhir jika]\n  jika <tombol [panah kiri ▼] ditekan?> maka\n    [ubah x sebesar [-10]]\n  [akhir jika]\n  // Batasi agar tidak keluar layar\n  jika <(posisi x) > [210]> maka\n    [atur x ke [210]]\n  [akhir jika]\n  jika <(posisi x) < [-210]> maka\n    [atur x ke [-210]]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-04-apple-spawn",
+      "type": "code",
+      "title": "Apel Jatuh dari Atas",
+      "xp": 5,
+      "explanation": "Sprite APEL asli disembunyikan dan terus membuat klon baru. Setiap klon muncul di posisi X acak di atas layar, lalu jatuh ke bawah.\n\nKita pakai variabel 'Kecepatan' untuk mengatur seberapa cepat apel jatuh — ini yang akan bertambah seiring waktu.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite APEL: cetak klon ---\n[ketika bendera hijau diklik]\n[sembunyikan]\n[atur [Skor ▼] ke [0]]\n[atur [Nyawa ▼] ke [3]]\n[atur [Kecepatan ▼] ke [4]]\n[ulangi terus]\n  [buat klon dari [diriku sendiri ▼]]\n  [tunggu [1.5] detik]\n[akhir ulangi]\n\n// --- Klon APEL: jatuh ---\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (pilih acak dari [-200] sampai [200]) y: [180]]\n[ulangi terus]\n  [ubah y sebesar (0 - (Kecepatan))]\n  // Cek: tertangkap keranjang?\n  jika <menyentuh [Keranjang ▼]?> maka\n    [ubah [Skor ▼] sebesar [1]]\n    [putar suara [pop ▼]]\n    [hapus klon ini]\n  [akhir jika]\n  // Cek: jatuh ke tanah?\n  jika <(posisi y) < [-180]> maka\n    [ubah [Nyawa ▼] sebesar [-1]]\n    [hapus klon ini]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-05-game-over",
+      "type": "code",
+      "title": "Game Over saat Nyawa Habis",
+      "xp": 5,
+      "explanation": "Kita perlu mengecek kondisi game over. Karena variabel Nyawa bisa berubah kapan saja (dari banyak klon apel yang jatuh bersamaan), kita perlu satu 'pengawas' yang terus memantau nilai Nyawa.\n\nKita tambahkan loop pengawas di sprite KERANJANG yang mengecek Nyawa setiap saat.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Di sprite KERANJANG, tambahkan blok baru ---\n[ketika bendera hijau diklik]\n[ulangi terus]\n  jika <(Nyawa) < [1]> maka\n    [hentikan [skrip lainnya di sprite ini ▼]]\n    [putar suara [Oops ▼] hingga selesai]\n    [katakan (gabungkan [💀 Game Over! Skor: ] dan (Skor)) selama [4] detik]\n    [hentikan [semua ▼]]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Tingkat Kesulitan Naik Otomatis!",
+      "xp": 5,
+      "explanation": "Tambahkan mekanik 'semakin lama semakin cepat' — setiap 10 poin, kecepatan apel jatuh bertambah. Ini membuat game semakin menantang seiring waktu!\n\nBlok pengontrol ini juga ada di sprite KERANJANG (atau sprite manager terpisah) yang terus memantau skor.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Di sprite KERANJANG: monitor kecepatan ---\n[ketika bendera hijau diklik]\n[ulangi terus]\n  // Naikkan kecepatan setiap 10 poin\n  jika <(Skor) > [(Kecepatan) * [2]]> maka\n    [ubah [Kecepatan ▼] sebesar [0.5]]\n  [akhir jika]\n  // Tampilkan indikator nyawa\n  jika <(Nyawa) = [3]> maka\n    [katakan [❤️❤️❤️] selama [0.5] detik]\n  [akhir jika]\n  jika <(Nyawa) = [2]> maka\n    [katakan [❤️❤️🖤] selama [0.5] detik]\n  [akhir jika]\n  jika <(Nyawa) = [1]> maka\n    [katakan [❤️🖤🖤] selama [0.5] detik]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Upgrade Gamemu!",
+      "xp": 5,
+      "explanation": "Game tangkap apelmu sudah jalan! Berikut upgrade yang bisa ditambahkan:\n\nAPEL BONUS\nBuat sprite apel emas yang kadang-kadang muncul dan bernilai 5 poin. Bedakan dari apel biasa dengan warna berbeda.\n\nAPEL BOM\nBuat sprite 'bom' yang juga jatuh — kalau tertangkap, nyawa berkurang 1! Pemain harus menghindarinya.\n\nKECEPATAN KERANJANG VARIABEL\nBuat keranjang lebih lebar saat skor masih rendah, lalu perlahan lebih sempit saat skor naik. Tantangan makin berat!\n\nEFEK PARTIKEL SAAT TANGKAP\nSaat apel tertangkap, buat beberapa klon kecil yang melesat keluar seperti percikan air dari apel yang jatuh ke keranjang.",
+      "tips": [
+        "Sesuaikan nilai awal Kecepatan (4) dan kenaikannya (0.5) untuk mengatur tingkat kesulitan yang pas.",
+        "Buat sprite 'Nyawa Display' terpisah yang menampilkan simbol hati secara visual — lebih menarik dari teks!"
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Blok apa yang digunakan untuk mendeteksi apakah sprite apel menyentuh sprite keranjang?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "menyentuh warna [coklat]?",
+        "menyentuh [Keranjang]?",
+        "jika posisi x = posisi x keranjang",
+        "jika jarak ke [Keranjang] < 10"
+      ],
+      "correctOption": "menyentuh [Keranjang]?"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Tambahkan Bom dan Apel Bonus!",
+      "xp": 15,
+      "instructions": "Upgrade game tangkap apelmu dengan item spesial!\n\n1. Buat sprite 'Bom' (berbeda dari apel) yang juga jatuh dari atas:\n   • Jika tertangkap keranjang → nyawa berkurang 1, efek merah kilat\n   • Jika jatuh ke tanah → tidak ada efek\n2. Buat 'Apel Emas' (apel berwarna kuning/emas) yang kadang muncul:\n   • Jika tertangkap → +5 poin\n   • Muncul lebih jarang dari apel biasa\n3. Tampilkan skor dan nyawa di layar dengan cara yang menarik\n4. BONUS: Tambahkan music latar yang mengencang seiring kecepatan bertambah",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// Sprite BOM — mirip apel tapi lebih jarang muncul\n// Sprite induk:\n[ketika bendera hijau diklik]\n[sembunyikan]\n[ulangi terus]\n  [buat klon dari [diriku sendiri ▼]]\n  [tunggu [3] detik]  // lebih jarang dari apel\n[akhir ulangi]\n\n// Klon bom:\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (pilih acak dari [-200] sampai [200]) y: [180]]\n[ulangi terus]\n  [ubah y sebesar [-5]]\n  jika <menyentuh [Keranjang ▼]?> maka\n    [ubah [Nyawa ▼] sebesar [-1]]\n    // Efek merah kilat di keranjang\n    [hapus klon ini]\n  [akhir jika]\n  jika <(posisi y) < [-180]> maka\n    [hapus klon ini]\n  [akhir jika]\n[akhir ulangi]"
+      },
+      "expectedResult": "Game tangkap apel dengan apel biasa, bom yang harus dihindari, apel bonus bernilai tinggi, dan sistem nyawa. Lihat contoh: https://scratch.mit.edu/projects/113/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// BOM — jatuh lebih lambat, muncul setiap 4 detik\n[ketika bendera hijau diklik]\n[sembunyikan]\n[ulangi terus]\n  [buat klon dari [diriku sendiri ▼]]\n  [tunggu [4] detik]\n[akhir ulangi]\n\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (pilih acak dari [-200] sampai [200]) y: [180]]\n[ulangi terus]\n  [ubah y sebesar [-3]]\n  jika <menyentuh [Keranjang ▼]?> maka\n    [ubah [Nyawa ▼] sebesar [-1]]\n    [putar suara [Oops ▼]]\n    [kirim pesan [flash-merah ▼]]\n    [hapus klon ini]\n  [akhir jika]\n  jika <(posisi y) < [-180]> maka\n    [hapus klon ini]\n  [akhir jika]\n[akhir ulangi]\n\n// APEL EMAS — muncul setiap 6 detik, bernilai 5 poin\n[ketika bendera hijau diklik]\n[sembunyikan]\n[ulangi terus]\n  [buat klon dari [diriku sendiri ▼]]\n  [tunggu [6] detik]\n[akhir ulangi]\n\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[atur efek [warna ▼] ke [30]]\n[pergi ke x: (pilih acak dari [-200] sampai [200]) y: [180]]\n[ulangi terus]\n  [ubah y sebesar [-4]]\n  jika <menyentuh [Keranjang ▼]?> maka\n    [ubah [Skor ▼] sebesar [5]]\n    [putar suara [Tada ▼]]\n    [hapus klon ini]\n  [akhir jika]\n  jika <(posisi y) < [-180]> maka\n    [hapus klon ini]\n  [akhir jika]\n[akhir ulangi]",
+        "explanation": "Setiap jenis item (apel, bom, apel emas) adalah sprite terpisah dengan sprite induk yang membuat klon dengan interval berbeda. Bom muncul setiap 4 detik, apel emas setiap 6 detik, apel biasa setiap 1.5 detik. Setiap jenis punya konsekuensi berbeda saat menyentuh keranjang."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa perbedaan antara 'menyentuh warna [X]' dan 'menyentuh [nama-sprite]'?",
+        "options": [
+          "Tidak ada perbedaan — keduanya sama",
+          "'menyentuh warna' mendeteksi piksel warna di backdrop; 'menyentuh sprite' mendeteksi kontak dengan sprite lain",
+          "'menyentuh sprite' hanya bekerja untuk sprite yang bergerak",
+          "'menyentuh warna' lebih akurat dari 'menyentuh sprite'"
+        ],
+        "correctAnswer": "'menyentuh warna' mendeteksi piksel warna di backdrop; 'menyentuh sprite' mendeteksi kontak dengan sprite lain",
+        "explanation": "'Menyentuh warna [X]' mengecek apakah sprite menyentuh piksel dengan warna tertentu di Stage (biasanya di backdrop). 'Menyentuh [nama-sprite]' mengecek apakah sprite menyentuh sprite lain yang disebutkan. Keduanya dipakai untuk situasi yang berbeda.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Mengapa kita menggunakan variabel 'Kecepatan' alih-alih langsung menulis angka di blok 'ubah y sebesar'?",
+        "options": [
+          "Karena blok 'ubah y' tidak bisa menerima angka langsung",
+          "Agar kecepatan bisa diubah dari satu tempat dan semua klon otomatis ikut berubah",
+          "Karena variabel lebih cepat dari angka tetap",
+          "Karena angka tetap akan membuat program crash"
+        ],
+        "correctAnswer": "Agar kecepatan bisa diubah dari satu tempat dan semua klon otomatis ikut berubah",
+        "explanation": "Jika kita tulis angka tetap (misal -4) langsung di blok, maka untuk mengubah kecepatan kita harus mengubah angka di setiap klon. Dengan variabel 'Kecepatan', saat kita ubah nilai variabel dari satu tempat, semua klon yang membaca variabel tersebut langsung menggunakan nilai baru.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Dalam game tangkap apel, mengapa klon apel perlu dihapus saat menyentuh keranjang?",
+        "options": [
+          "Karena apel yang tidak dihapus akan merusak keranjang",
+          "Untuk menghindari apel menumpuk di keranjang dan memenuhi layar",
+          "Karena klon yang tidak dihapus akan terus berjalan dan memakan memori",
+          "Karena klon tidak bisa bergerak setelah menyentuh sprite lain"
+        ],
+        "correctAnswer": "Karena klon yang tidak dihapus akan terus berjalan dan memakan memori",
+        "explanation": "Klon yang tidak dihapus akan terus ada dan menjalankan kodenya meskipun sudah tidak relevan. Seiring waktu, ratusan klon tidak terhapus akan menumpuk, memakan memori, dan memperlambat program. 'Hapus klon ini' memastikan klon dibersihkan segera setelah selesai tugasnya.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Bagaimana cara membuat game semakin sulit secara otomatis seiring waktu di game tangkap apel?",
+        "options": [
+          "Ubah angka di kode secara manual setiap beberapa menit",
+          "Tambahkan variabel Kecepatan yang nilainya bertambah setiap X poin atau X detik",
+          "Hapus beberapa klon secara acak",
+          "Ganti backdrop ke yang lebih gelap"
+        ],
+        "correctAnswer": "Tambahkan variabel Kecepatan yang nilainya bertambah setiap X poin atau X detik",
+        "explanation": "Cara terbaik adalah menggunakan variabel Kecepatan yang nilainya meningkat secara bertahap berdasarkan skor atau waktu. Setiap klon apel membaca variabel ini untuk kecepatan jatuhnya, sehingga semua apel otomatis jatuh lebih cepat ketika Kecepatan bertambah.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Mengapa keranjang di game ini hanya bergerak horizontal (kiri-kanan) dan tidak vertikal (atas-bawah)?",
+        "options": [
+          "Karena Scratch tidak bisa menggerakkan sprite secara vertikal",
+          "Karena desain game mengharuskan pemain hanya bisa bergerak di satu sumbu untuk tantangan yang tepat",
+          "Karena Y pada keranjang selalu 0",
+          "Karena tombol atas-bawah tidak bisa dideteksi Scratch"
+        ],
+        "correctAnswer": "Karena desain game mengharuskan pemain hanya bisa bergerak di satu sumbu untuk tantangan yang tepat",
+        "explanation": "Ini adalah keputusan desain game yang disengaja. Membatasi pemain hanya bergerak kiri-kanan menciptakan tantangan yang tepat — pemain harus memprediksi di mana apel akan jatuh dan bergeser ke posisi yang benar. Jika pemain bisa bergerak bebas ke atas juga, game menjadi terlalu mudah.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Game Arcade Pertamamu Selesai!",
+    "message": "Keren! Kamu berhasil membuat game arcade klasik yang benar-benar bisa dimainkan. Kamu sekarang tahu cara membuat objek jatuh, mendeteksi tangkapan, dan mengatur sistem nyawa. Di lesson berikutnya, kita tambahkan sistem SKOR yang lebih canggih ke game dengan variabel!",
+    "achievementName": "Penangkap Ulung",
+    "achievementIcon": "🍎"
+  }
+}

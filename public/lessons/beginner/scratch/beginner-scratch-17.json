@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-17",
+    "title": "Platformer Mini",
+    "description": "Buat game platformer mini — karakter bisa lari ke kiri-kanan dengan tombol arah dan melompat melewati platform, seperti Mario versi Scratch!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 17,
+    "estimatedTime": 40,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Buat Game Platformer Seperti Mario — Di Scratch!",
+    "description": "Platformer adalah genre game paling ikonik sepanjang masa — Mario, Sonic, Kirby, semuanya platformer! Di lesson ini, kita bikin versi mini-nya di Scratch: karakter bisa berlari ke kiri-kanan, melompat, dan ada gravitasi yang menarik karakter ke bawah. Ini salah satu mekanik paling menantang tapi juga paling memuaskan untuk dibuat — dan kamu akan bisa melakukannya!",
+    "analogy": "Gravitasi di dunia nyata selalu menarik kamu ke bawah dengan kecepatan yang terus bertambah (akselerasi). Di Scratch, kita simulasikan ini dengan variabel 'Kecepatan Y' yang terus dikurangi setiap frame. Saat lompat, kita beri Kecepatan Y positif besar — lalu gravitasi terus mengecilkannya sampai karakter jatuh kembali!"
+  },
+  "objectives": [
+    "Memahami konsep gravitasi sebagai variabel kecepatan Y yang berubah",
+    "Mengimplementasikan mekanik lompat yang hanya bisa dilakukan dari lantai",
+    "Menggunakan deteksi warna untuk mendeteksi platform/lantai",
+    "Membuat gerakan kiri-kanan dengan animasi kostum berjalan",
+    "Menggabungkan semua mekanik menjadi platformer yang bisa dimainkan"
+  ],
+  "review": {
+    "learned": [
+      "Gravitasi di Scratch disimulasikan dengan variabel KV (kecepatan vertikal) yang berkurang setiap frame.",
+      "Lompatan dilakukan dengan mengatur KV ke nilai positif besar (misalnya 12) saat di lantai.",
+      "Blok 'menyentuh warna [hijau]?' mendeteksi apakah karakter di atas platform/lantai.",
+      "Karakter hanya bisa lompat saat di lantai — mencegah lompat di udara (double jump).",
+      "Gerakan horizontal dan vertikal dikelola secara terpisah tapi dalam loop yang sama."
+    ],
+    "keyConcepts": [
+      "Simulasi gravitasi dengan variabel KV",
+      "Mekanik lompat: set velocity Y",
+      "Platform detection: menyentuh warna",
+      "Cegah double jump: cek di lantai dulu",
+      "Horizontal + vertikal movement"
+    ],
+    "takeaways": [
+      "Gravitasi adalah pengurangan konstan pada kecepatan vertikal — ini prinsip fisika nyata!",
+      "Variabel kecepatan (velocity) adalah cara paling alami untuk mengimplementasikan gerakan fisika.",
+      "Deteksi lantai dengan warna adalah metode paling mudah untuk platformer di Scratch."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya game platformer mini:\n• Karakter bisa lari ke kiri dan kanan dengan tombol panah\n• Tekan SPASI untuk lompat — karakter melengkung naik lalu jatuh kembali\n• Ada gravitasi — karakter selalu jatuh jika tidak di platform\n• Ada platform yang bisa dipijak (warna hijau di backdrop)\n• Jatuh dari platform? Karakter reset ke posisi awal\n• Animasi berlari (ganti kostum saat bergerak)\n\nSetelah ini, kamu bisa tambahkan koin, musuh, dan level — ini adalah fondasi game platformer sungguhan!",
+      "tips": [
+        "Gambar backdrop platform dengan platform berwarna hijau solid — lebih mudah dideteksi sensor warna.",
+        "Mulai dengan platform yang lebar agar lebih mudah diuji sebelum membuat platform yang susah."
+      ]
+    },
+    {
+      "id": "node-02-gravity-concept",
+      "type": "lesson",
+      "title": "Simulasi Gravitasi — Fisika dalam Coding",
+      "xp": 5,
+      "explanation": "Gravitasi di dunia nyata mempercepat benda jatuh — makin lama jatuh, makin cepat. Di Scratch, kita simulasikan ini dengan variabel 'KV' (Kecepatan Vertikal):\n\nSetiap frame:\n• KV = KV - 1 (gravitasi mengecilkan kecepatan vertikal)\n• Y = Y + KV (posisi bergerak sesuai kecepatan)\n\nSaat lompat:\n• KV = 12 (dorong ke atas kencang!)\n• Lalu setiap frame, KV berkurang 1\n• KV = 12, 11, 10, 9... 1, 0, -1, -2... -10 (jatuh kembali)\n\nSaat di lantai:\n• KV tidak boleh kurang dari 0 (tidak bisa menembus lantai)\n• Deteksi lantai: 'jika menyentuh warna hijau, stop jatuh'",
+      "analogy": "Bayangkan melempar bola ke atas. Awalnya bola naik cepat, lalu melambat, lalu berhenti di puncak, lalu mulai jatuh semakin cepat. Variabel KV yang terus berkurang 1 setiap frame persis seperti itu — dari 12 turun ke 0 (puncak) terus ke -12 (jatuh cepat)!",
+      "tips": [
+        "Nilai gravitasi (-1 per frame) bisa diubah: -0.5 = gravitasi lebih ringan (lompat lebih tinggi), -2 = gravitasi lebih berat (lompat lebih pendek).",
+        "Nilai lompat (12) bisa diubah: 8 = lompat rendah, 15 = lompat sangat tinggi."
+      ]
+    },
+    {
+      "id": "node-03-gravity-code",
+      "type": "code",
+      "title": "Implementasi Gravitasi",
+      "xp": 5,
+      "explanation": "Pertama, kita buat variabel 'KV' (Kecepatan Vertikal). Variabel ini diupdate setiap frame di dalam loop utama.\n\nDeteksi lantai menggunakan warna platform hijau di backdrop. Saat menyentuh platform, KV tidak boleh negatif (tidak bisa menembus platform).",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[atur [KV ▼] ke [0]]\n[pergi ke x: [-150] y: [50]]\n[ulangi terus]\n  // Gravitasi: kurangi KV setiap frame\n  [ubah [KV ▼] sebesar [-1]]\n  // Terapkan KV ke posisi Y\n  [ubah y sebesar (KV)]\n  // Deteksi lantai (warna hijau di backdrop)\n  jika <menyentuh warna [#00AA00]?> maka\n    // Dorong ke atas sampai tidak menyentuh platform\n    [ubah y sebesar [2]]\n    // Hentikan kecepatan ke bawah\n    jika <(KV) < [0]> maka\n      [atur [KV ▼] ke [0]]\n    [akhir jika]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-04-jump-walk",
+      "type": "code",
+      "title": "Lompat dan Berlari",
+      "xp": 5,
+      "explanation": "Tambahkan kontrol horizontal dan lompatan. Lompat hanya bisa dilakukan saat di lantai (KV = 0 atau mendeteksi platform) agar tidak bisa lompat di udara.\n\nAnimasi berjalan dengan mengganti kostum hanya saat karakter bergerak.",
+      "code": {
+        "language": "scratch",
+        "content": "// Tambahkan di dalam loop utama, sebelum gravitasi:\n\n// Gerakan horizontal\njika <tombol [panah kanan ▼] ditekan?> maka\n  [ubah x sebesar [4]]\n  [atur gaya rotasi ke [kiri-kanan ▼]]\n  [hadap arah [90 ▼]]\n  [kostum berikutnya]\n[akhir jika]\njika <tombol [panah kiri ▼] ditekan?> maka\n  [ubah x sebesar [-4]]\n  [atur gaya rotasi ke [kiri-kanan ▼]]\n  [hadap arah [-90 ▼]]\n  [kostum berikutnya]\n[akhir jika]\n\n// Lompat — hanya dari lantai!\njika <<tombol [spasi ▼] ditekan?> dan <(KV) = [0]>> maka\n  [atur [KV ▼] ke [12]]\n  [putar suara [pop ▼]]\n[akhir jika]"
+      }
+    },
+    {
+      "id": "node-05-platforms",
+      "type": "code",
+      "title": "Platform dan Reset Jatuh",
+      "xp": 5,
+      "explanation": "Tambahkan pengecekan apakah karakter jatuh terlalu jauh (keluar dari bawah layar). Jika iya, reset ke posisi awal.\n\nJuga tambahkan batas horizontal agar karakter tidak keluar dari tepi layar.",
+      "code": {
+        "language": "scratch",
+        "content": "// Tambahkan di akhir loop, setelah gravitasi:\n\n// Jatuh keluar layar → reset\njika <(posisi y) < [-185]> maka\n  [putar suara [Oops ▼]]\n  [pergi ke x: [-150] y: [50]]\n  [atur [KV ▼] ke [0]]\n[akhir jika]\n\n// Batas kiri-kanan\njika <(posisi x) > [230]> maka\n  [atur x ke [230]]\n[akhir jika]\njika <(posisi x) < [-230]> maka\n  [atur x ke [-230]]\n[akhir jika]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Platformer Lengkap — Semua Mekanik!",
+      "xp": 5,
+      "explanation": "Ini adalah kode platformer lengkap yang mengombinasikan semua mekanik. Pastikan backdrop sudah memiliki platform berwarna hijau (#00AA00) yang bisa dipijak.\n\nBackdrop dibuat di tab 'Latar Belakang' → Paint → gambar kotak-kotak hijau sebagai platform dan lantai.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[atur [KV ▼] ke [0]]\n[pergi ke x: [-150] y: [50]]\n[atur ukuran ke [50] %]\n\n[ulangi terus]\n  // === KONTROL HORIZONTAL ===\n  jika <tombol [panah kanan ▼] ditekan?> maka\n    [ubah x sebesar [4]]\n    [hadap arah [90 ▼]]\n    [kostum berikutnya]\n  [akhir jika]\n  jika <tombol [panah kiri ▼] ditekan?> maka\n    [ubah x sebesar [-4]]\n    [hadap arah [-90 ▼]]\n    [kostum berikutnya]\n  [akhir jika]\n\n  // === LOMPAT ===\n  jika <<tombol [spasi ▼] ditekan?> dan <(KV) = [0]>> maka\n    [atur [KV ▼] ke [12]]\n    [putar suara [pop ▼]]\n  [akhir jika]\n\n  // === GRAVITASI ===\n  [ubah [KV ▼] sebesar [-1]]\n  [ubah y sebesar (KV)]\n\n  // === DETEKSI PLATFORM ===\n  jika <menyentuh warna [#00AA00]?> maka\n    [ubah y sebesar [2]]\n    jika <(KV) < [0]> maka\n      [atur [KV ▼] ke [0]]\n    [akhir jika]\n  [akhir jika]\n\n  // === JATUH DAN RESET ===\n  jika <(posisi y) < [-185]> maka\n    [pergi ke x: [-150] y: [50]]\n    [atur [KV ▼] ke [0]]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Dari Mini ke Full Game!",
+      "xp": 5,
+      "explanation": "Platformer dasarmu sudah jalan! Berikut cara mengembangkannya:\n\nKOIN\nBuat sprite koin yang bisa dikumpulkan (menyentuh = +skor + pindah ke posisi acak baru). Pola sama dengan game skor koin di lesson 11.\n\nMUSUH\nBuat sprite musuh yang berjalan bolak-balik. Kalau karakter menyentuh dari atas = musuh mati (+10 skor). Kalau dari samping = karakter mati (nyawa -1).\n\nBEBERAPA LEVEL\nBuat beberapa backdrop platform yang berbeda. Setelah mengumpulkan semua koin di level, ganti backdrop ke level berikutnya.\n\nDOUBLE JUMP\nIzinkan satu lompatan ekstra di udara dengan variabel 'JumpsLeft'. Reset ke 2 saat di lantai, kurangi 1 setiap lompat.",
+      "tips": [
+        "Untuk platform yang lebih variasi, gunakan warna berbeda (hijau tua, hijau muda) untuk platform jenis berbeda.",
+        "Tambahkan efek debu kecil (klon bintang kecil) saat karakter mendarat dari lompatan tinggi."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Mengapa lompatan di platformer kita hanya bisa dilakukan saat KV = 0 (di lantai)?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Karena KV = 0 adalah syarat teknis Scratch",
+        "Untuk mencegah 'double jump' — lompat lagi di udara sebelum mendarat",
+        "Karena di udara gravitasi tidak bekerja",
+        "Karena tombol spasi hanya bisa dideteksi saat di lantai"
+      ],
+      "correctOption": "Untuk mencegah 'double jump' — lompat lagi di udara sebelum mendarat"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Platformer dengan Koin dan Musuh!",
+      "xp": 15,
+      "instructions": "Upgrade platformer-mu menjadi game yang lebih lengkap!\n\n1. KOIN: Tambahkan 3 sprite koin di posisi berbeda di platform\n   • Saat disentuh karakter → skor +1, koin hilang\n   • Setelah semua koin diambil → muncul pesan 'Level Clear!'\n\n2. MUSUH: Tambahkan sprite musuh yang jalan bolak-balik\n   • Menyentuh musuh dari ATAS → musuh hilang, lompat kecil\n   • Menyentuh musuh dari SAMPING → nyawa -1, reset posisi\n\n3. NYAWA: Mulai dengan 3 nyawa, game over kalau habis\n\nBonus: Tambahkan level kedua saat semua koin diambil!",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// MUSUH — jalan bolak-balik\n[ketika bendera hijau diklik]\n[pergi ke x: [50] y: [-50]]\n[atur gaya rotasi ke [kiri-kanan ▼]]\n[ulangi terus]\n  [gerak 2 langkah]\n  [jika di tepi, pantul]\n  [kostum berikutnya]\n  [tunggu [0.1] detik]\n[akhir ulangi]\n\n// Di karakter — cek sentuhan musuh:\n// Kalau karakter di atas musuh (KV negatif, menyentuh musuh dari atas)\njika <<menyentuh [Musuh ▼]?> dan <(KV) < [-2]>> maka\n  // Karakter loncat dari kepala musuh\n  [atur [KV ▼] ke [8]]\n  [kirim pesan [musuh-mati ▼]]\n[akhir jika]\n// Kalau dari samping:\njika <<menyentuh [Musuh ▼]?> dan <TIDAK <(KV) < [-2]>>> maka\n  [ubah [Nyawa ▼] sebesar [-1]]\n  [pergi ke x: [-150] y: [50]]\n[akhir jika]"
+      },
+      "expectedResult": "Platformer dengan koin yang bisa dikumpulkan, musuh yang bisa diinjak, sistem nyawa, dan kondisi menang. Lihat contoh: https://scratch.mit.edu/projects/120/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// KARAKTER — ditambahkan deteksi koin dan musuh\n// (kode gravitasi dan gerak sudah ada dari lesson)\n\n// Deteksi koin\njika <menyentuh [Koin ▼]?> maka\n  [ubah [Skor ▼] sebesar [1]]\n  [putar suara [Collect ▼]]\n  [kirim pesan [koin-diambil ▼]]\n[akhir jika]\n\n// Deteksi musuh dari atas (lompat di kepala)\njika <<menyentuh [Musuh ▼]?> dan <(KV) < [-1]>> maka\n  [atur [KV ▼] ke [10]]\n  [putar suara [pop ▼]]\n  [kirim pesan [musuh-mati ▼]]\n[akhir jika]\n// Deteksi musuh dari samping (kena badan)\njika <<menyentuh [Musuh ▼]?> dan <TIDAK <(KV) < [-1]>>> maka\n  [ubah [Nyawa ▼] sebesar [-1]]\n  [putar suara [Oops ▼]]\n  [pergi ke x: [-150] y: [50]]\n  [atur [KV ▼] ke [0]]\n  jika <(Nyawa) < [1]> maka\n    [kirim pesan [game-over ▼]]\n  [akhir jika]\n[akhir jika]\n\n// KOIN — ada 3 sprite, masing-masing merespons koin-diambil secara bergantian\n// Bisa juga pakai satu sprite koin yang berpindah posisi\n[ketika menerima [koin-diambil ▼]]\n[sembunyikan]\n// Cek total koin\njika <(Skor) = [3]> maka\n  [kirim pesan [level-clear ▼]]\n[akhir jika]",
+        "explanation": "Perbedaan 'injak musuh' vs 'kena badan musuh' ditentukan dari nilai KV: KV < -1 berarti karakter sedang jatuh ke bawah (dari atas), sehingga bisa dideteksi sebagai injakan. Nilai lain berarti karakter di lantai atau sedang naik, sehingga itu adalah sentuhan dari samping yang menyebabkan nyawa berkurang."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Dalam simulasi platformer, apa yang dimaksud dengan 'kecepatan vertikal' (KV)?",
+        "options": [
+          "Kecepatan karakter bergerak ke kiri dan kanan",
+          "Angka yang menunjukkan seberapa cepat dan ke arah mana karakter bergerak secara vertikal",
+          "Tinggi maksimum karakter bisa melompat",
+          "Kekuatan gravitasi yang bekerja pada karakter"
+        ],
+        "correctAnswer": "Angka yang menunjukkan seberapa cepat dan ke arah mana karakter bergerak secara vertikal",
+        "explanation": "KV (Kecepatan Vertikal) adalah variabel yang menyimpan seberapa cepat dan ke arah mana karakter bergerak secara vertikal. Nilai positif = bergerak ke atas, nilai negatif = bergerak ke bawah. Gravitasi terus mengurangi nilai KV setiap frame.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Mengapa kita menggunakan 'ubah KV sebesar -1' setiap frame alih-alih langsung memindahkan karakter ke bawah?",
+        "options": [
+          "Karena 'ubah y sebesar -1' tidak ada di Scratch",
+          "Variabel kecepatan menciptakan akselerasi — jatuh semakin cepat seiring waktu, seperti gravitasi nyata",
+          "Karena metode langsung terlalu cepat",
+          "Tidak ada alasan teknis — keduanya sama"
+        ],
+        "correctAnswer": "Variabel kecepatan menciptakan akselerasi — jatuh semakin cepat seiring waktu, seperti gravitasi nyata",
+        "explanation": "Gravitasi nyata bukan kecepatan tetap — ia mengakselerasi benda jatuh. Dengan mengurangi KV setiap frame, karakter jatuh semakin cepat seiring waktu (KV: 0, -1, -2, -3...), persis seperti gravitasi nyata. 'Ubah y sebesar -1' tiap frame hanya memberikan kecepatan tetap, bukan akselerasi.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Saat KV = 12 (baru saja melompat), dan gravitasi mengurangi 1 per frame, berapa frame sampai karakter mencapai puncak lompatan?",
+        "options": [
+          "6 frame",
+          "12 frame",
+          "24 frame",
+          "Tergantung ketinggian platform"
+        ],
+        "correctAnswer": "12 frame",
+        "explanation": "Karakter mencapai puncak saat KV = 0 (tidak ada gerakan vertikal). Mulai dari KV = 12, setiap frame KV berkurang 1: 12, 11, 10... 1, 0. Dari 12 ke 0 membutuhkan 12 langkah = 12 frame. Setelah itu KV jadi negatif dan karakter mulai jatuh.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Mengapa kita perlu 'ubah y sebesar 2' saat karakter menyentuh platform?",
+        "options": [
+          "Untuk membuat karakter melompat sedikit",
+          "Untuk mendorong karakter keluar dari dalam platform agar tidak 'tertanam'",
+          "Untuk menambah kecepatan karakter",
+          "Tidak diperlukan — deteksi warna sudah cukup"
+        ],
+        "correctAnswer": "Untuk mendorong karakter keluar dari dalam platform agar tidak 'tertanam'",
+        "explanation": "Saat karakter jatuh, posisi Y berpindah beberapa piksel per frame. Kadang karakter 'masuk' sedikit ke dalam platform sebelum terdeteksi. Blok 'ubah y sebesar 2' mendorong karakter sedikit ke atas agar berdiri tepat di atas platform, bukan setengah tertanam di dalamnya.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Apa mekanik game yang PALING PENTING dalam platformer yang membedakannya dari game lain?",
+        "options": [
+          "Sistem skor yang tinggi",
+          "Kemampuan berlari, melompat, dan berinteraksi dengan platform dan lingkungan",
+          "Grafis yang bagus",
+          "Banyaknya musuh yang ada"
+        ],
+        "correctAnswer": "Kemampuan berlari, melompat, dan berinteraksi dengan platform dan lingkungan",
+        "explanation": "Defining mechanic dari platformer adalah navigasi vertikal melalui lompatan. Kemampuan untuk berlari, melompat melewati rintangan, mendarat di platform, dan menjelajahi level secara vertikal adalah inti dari genre platformer. Semua elemen lain (musuh, koin, power-up) adalah tambahan.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Desainer Platformer Handal!",
+    "message": "Luar biasa! Kamu baru saja mengimplementasikan simulasi gravitasi dan mekanik lompat — ini adalah pencapaian besar! Fisika yang kamu pakai adalah prinsip yang sama dengan yang dipakai game developer profesional. Di lesson berikutnya, kita beralih ke sesuatu yang lebih kreatif: Magic Paintbrush, aplikasi menggambar di Scratch!",
+    "achievementName": "Desainer Platformer",
+    "achievementIcon": "🎮"
+  }
+}

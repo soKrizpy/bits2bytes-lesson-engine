@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-06",
+    "title": "Hujan Bintang",
+    "description": "Buat efek hujan bintang yang terus berjatuhan dari langit — pelajari cara membuat banyak objek sekaligus dengan fitur clone!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 6,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Bikin Hujan Bintang yang Spektakuler!",
+    "description": "Lesson ini kita bikin efek visual yang keren: bintang-bintang berjatuhan terus dari atas layar, dengan warna dan ukuran berbeda-beda. Rahasianya ada di fitur 'Clone' — kamu cukup buat SATU bintang, lalu Scratch akan otomatis membuat ratusan salinannya yang masing-masing bergerak sendiri! Hasilnya? Efek hujan bintang yang memukau!",
+    "analogy": "Clone di Scratch seperti mesin fotokopi ajaib. Kamu taruh satu bintang di dalam mesin, tekan tombol, dan tiba-tiba ada ratusan bintang keluar — semuanya hidup dan bergerak sendiri-sendiri. Kamu hanya perlu programming SATU bintang, sisanya Scratch yang urus!"
+  },
+  "objectives": [
+    "Memahami konsep Clone di Scratch",
+    "Menggunakan blok 'buat klon dari [diriku sendiri]' untuk membuat salinan sprite",
+    "Menggunakan blok 'ketika aku mulai sebagai klon' untuk mengatur perilaku klon",
+    "Membuat klon jatuh dari atas layar ke bawah",
+    "Menghapus klon yang sudah keluar dari layar dengan 'hapus klon ini'"
+  ],
+  "review": {
+    "learned": [
+      "Clone adalah salinan dari sprite asli yang punya perilaku independen.",
+      "Blok 'buat klon dari [diriku sendiri]' membuat satu salinan baru dari sprite.",
+      "Blok 'ketika aku mulai sebagai klon' menjalankan instruksi khusus untuk klon — bukan sprite asli.",
+      "Blok 'hapus klon ini' menghapus klon tersebut dari Stage untuk menghemat memori.",
+      "Klon bisa punya posisi, ukuran, warna, dan gerakan yang berbeda dari sprite aslinya."
+    ],
+    "keyConcepts": [
+      "Konsep Clone: salin sprite",
+      "Blok: buat klon dari diriku sendiri",
+      "Blok: ketika aku mulai sebagai klon",
+      "Blok: hapus klon ini",
+      "Koordinat Y: nilai positif atas, negatif bawah"
+    ],
+    "takeaways": [
+      "Clone sangat berguna untuk membuat banyak objek serupa sekaligus — peluru, musuh, partikel, dll.",
+      "Penting untuk menghapus klon yang sudah tidak terlihat agar program tidak melambat.",
+      "Sprite asli biasanya disembunyikan — hanya klonnya yang terlihat di Stage."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya proyek hujan bintang yang:\n• Bintang-bintang terus muncul dari posisi acak di bagian atas layar\n• Setiap bintang jatuh ke bawah dengan kecepatan sedikit berbeda\n• Setiap bintang punya warna berbeda (acak)\n• Setiap bintang punya ukuran berbeda (acak)\n• Saat bintang sampai di bawah layar, ia hilang dan diganti bintang baru\n\nRahasianya: kamu hanya perlu membuat kode untuk SATU bintang. Fitur Clone Scratch yang akan membuat semua bintang lainnya!",
+      "tips": [
+        "Pilih sprite berbentuk bintang dari library — cari 'Star' atau 'Wand'.",
+        "Backdrop hitam atau gelap akan membuat bintang terlihat lebih indah."
+      ]
+    },
+    {
+      "id": "node-02-clone-concept",
+      "type": "lesson",
+      "title": "Apa Itu Clone?",
+      "xp": 5,
+      "explanation": "Clone adalah salinan sempurna dari sprite yang bisa hidup dan bergerak secara independen.\n\nBayangkan kamu punya satu tentara LEGO. Dengan clone, kamu bisa membuat 100 tentara LEGO yang identik, dan setiap tentara bisa bergerak ke arah berbeda, punya warna berbeda, dan berperilaku berbeda.\n\nAda 3 blok kunci untuk clone:\n\n1. 'buat klon dari [diriku sendiri]'\n→ Membuat SATU salinan baru dari sprite ini\n\n2. 'ketika aku mulai sebagai klon'\n→ Dijalankan HANYA oleh klon (bukan sprite asli) saat klon baru dibuat\n\n3. 'hapus klon ini'\n→ Menghapus klon ini dari Stage (tidak menghapus sprite asli!)\n\nPola umum: sprite asli disembunyikan dan terus membuat klon. Setiap klon muncul di posisi berbeda dan bergerak sendiri.",
+      "analogy": "Sprite asli seperti cetakan kue — ia tidak ikut masuk oven. Yang masuk oven adalah kue-kue (klon) hasil cetakannya. Setiap kue bisa punya taburan berbeda dan dipanggang dengan waktu berbeda!",
+      "tips": [
+        "Kamu bisa membuat klon dari sprite lain juga: 'buat klon dari [nama-sprite]'.",
+        "Scratch mendukung sampai 300 klon aktif sekaligus di satu proyek."
+      ]
+    },
+    {
+      "id": "node-03-spawn-clones",
+      "type": "code",
+      "title": "Mencetak Bintang — Spawn Klon",
+      "xp": 5,
+      "explanation": "Sprite asli bintang akan disembunyikan dan tugasnya hanya membuat klon terus-menerus. Blok 'pilih acak' dari kategori Operator menghasilkan angka random.\n\nBlok ini ada di SPRITE BINTANG. Sprite aslinya tidak terlihat — hanya klon-klonnya yang tampil di Stage.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite asli: mencetak klon terus-menerus ---\n[ketika bendera hijau diklik]\n[sembunyikan]\n[ulangi terus]\n  [buat klon dari [diriku sendiri ▼]]\n  [tunggu [0.1] detik]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-04-clone-behavior",
+      "type": "code",
+      "title": "Perilaku Klon — Jatuh dari Atas",
+      "xp": 5,
+      "explanation": "Setiap klon yang baru dibuat akan:\n1. Muncul di posisi X acak di bagian atas layar (Y = 180)\n2. Tampil dengan ukuran dan warna yang berbeda-beda\n3. Jatuh ke bawah perlahan\n\nBlok 'pilih acak dari -240 sampai 240' menghasilkan posisi X random. Y = 180 adalah bagian atas Stage.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Klon: muncul di atas dengan posisi acak ---\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (pilih acak dari [-240] sampai [240]) y: [180]]\n[atur ukuran ke (pilih acak dari [20] sampai [80]) %]\n[atur efek [warna ▼] ke (pilih acak dari [0] sampai [200])]"
+      }
+    },
+    {
+      "id": "node-05-falling",
+      "type": "code",
+      "title": "Klon Jatuh dan Hilang",
+      "xp": 5,
+      "explanation": "Sekarang tambahkan gerakan jatuh ke klon. Klon akan terus turun (Y berkurang) sampai keluar dari layar (Y < -180), lalu dihapus.\n\nPenting: 'hapus klon ini' hanya menghapus klon tersebut, tidak mempengaruhi sprite asli atau klon lainnya.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Klon: jatuh ke bawah ---\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (pilih acak dari [-240] sampai [240]) y: [180]]\n[atur ukuran ke (pilih acak dari [20] sampai [80]) %]\n[atur efek [warna ▼] ke (pilih acak dari [0] sampai [200])]\n[ulangi terus]\n  [ubah y sebesar (pilih acak dari [-8] sampai [-4])]\n  jika <(posisi y) < [-180]> maka\n    [hapus klon ini]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Hujan Bintang Lengkap!",
+      "xp": 5,
+      "explanation": "Ini adalah proyek hujan bintang lengkap! Ada dua bagian:\n\nSPRITE ASLI (disembunyikan):\n→ Terus membuat klon baru setiap 0.1 detik\n\nSETIAP KLON:\n→ Muncul di posisi acak di atas dengan warna dan ukuran acak\n→ Jatuh ke bawah dengan kecepatan sedikit berbeda\n→ Menghapus dirinya sendiri saat keluar layar\n\nHasilnya: hujan bintang yang terus-menerus tanpa akhir dengan variasi visual yang indah!",
+      "code": {
+        "language": "scratch",
+        "content": "// === SPRITE ASLI ===\n[ketika bendera hijau diklik]\n[sembunyikan]\n[ulangi terus]\n  [buat klon dari [diriku sendiri ▼]]\n  [tunggu [0.1] detik]\n[akhir ulangi]\n\n// === SETIAP KLON ===\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (pilih acak dari [-240] sampai [240]) y: [180]]\n[atur ukuran ke (pilih acak dari [15] sampai [70]) %]\n[atur efek [warna ▼] ke (pilih acak dari [0] sampai [200])]\n[ulangi terus]\n  [ubah y sebesar (pilih acak dari [-8] sampai [-3])]\n  jika <(posisi y) < [-185]> maka\n    [hapus klon ini]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Efek Partikel Lainnya!",
+      "xp": 5,
+      "explanation": "Clone bisa dipakai untuk membuat banyak efek partikel yang keren:\n\nHUJAN SALJU\nGanti bintang dengan sprite kepingan salju. Ubah gerakan X sedikit di setiap frame agar mengambang ke kiri-kanan seperti salju sungguhan:\n'ubah x sebesar (pilih acak dari -1 sampai 1)'\n\nKONFETI PESTA\nBuat beberapa sprite berbeda bentuk (persegi, lingkaran, segitiga). Masing-masing membuat klonnya sendiri. Hasilnya seperti hujan konfeti!\n\nGELEMBUNG NAIK\nUbah arah: klon muncul dari bawah (Y = -180) dan naik ke atas. Efek gelembung udara di dalam air.\n\nLEDAKAN BINTANG\nSaat bintang utama diklik, buat 20 klon sekaligus yang melesat ke arah berbeda. Efek ledakan!",
+      "tips": [
+        "Semakin sedikit waktu tunggu antara pembuatan klon (0.05 vs 0.1 detik), semakin padat hujan bintangnya.",
+        "Jika program terasa lambat, kurangi jumlah klon dengan memperbesar waktu tunggu."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Blok 'ketika aku mulai sebagai klon' dijalankan oleh...",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Sprite asli saat program dimulai",
+        "Semua sprite di Stage",
+        "Setiap klon baru yang baru saja dibuat",
+        "Sprite asli ketika menerima broadcast"
+      ],
+      "correctOption": "Setiap klon baru yang baru saja dibuat"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Badai Meteor!",
+      "xp": 15,
+      "instructions": "Ubah hujan bintang menjadi badai meteor yang lebih dramatis!\n\n1. Ganti sprite bintang dengan sprite berbentuk bola atau lingkaran\n2. Buat meteor jatuh dari sudut (tidak hanya lurus ke bawah):\n   • Tambahkan 'ubah x sebesar [angka negatif kecil]' di dalam loop klon\n   • Ini membuat meteor jatuh ke kiri sedikit — seperti meteor asli!\n3. Tambahkan efek ekor: setelah membuat klon utama, buat beberapa klon lebih kecil di posisi yang sama sebagai 'ekor'\n4. Backdrop harus hitam atau luar angkasa\n5. BONUS: Saat meteor menyentuh tepi bawah, mainkan suara 'boom' sebelum dihapus",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// SPRITE ASLI\n[ketika bendera hijau diklik]\n[sembunyikan]\n[ulangi terus]\n  [buat klon dari [diriku sendiri ▼]]\n  [tunggu [0.15] detik]\n[akhir ulangi]\n\n// KLON\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (pilih acak dari [-240] sampai [240]) y: [180]]\n[atur ukuran ke (pilih acak dari [20] sampai [60]) %]\n[atur efek [warna ▼] ke (pilih acak dari [0] sampai [50])]  // merah-oranye\n[ulangi terus]\n  [ubah y sebesar (pilih acak dari [-10] sampai [-5])]\n  [ubah x sebesar [-2]]  // jatuh serong ke kiri\n  jika <(posisi y) < [-185]> maka\n    // tambahkan suara boom di sini (BONUS)\n    [hapus klon ini]\n  [akhir jika]\n[akhir ulangi]"
+      },
+      "expectedResult": "Badai meteor jatuh serong dari kanan atas ke kiri bawah dengan warna merah-oranye dan efek dramatis. Lihat contoh: https://scratch.mit.edu/projects/109/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// SPRITE ASLI\n[ketika bendera hijau diklik]\n[sembunyikan]\n[ganti latar belakang ke [Stars ▼]]\n[ulangi terus]\n  [buat klon dari [diriku sendiri ▼]]\n  [tunggu [0.12] detik]\n[akhir ulangi]\n\n// KLON METEOR\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (pilih acak dari [-200] sampai [240]) y: [180]]\n[atur ukuran ke (pilih acak dari [15] sampai [50]) %]\n[atur efek [warna ▼] ke (pilih acak dari [0] sampai [40])]\n[ulangi terus]\n  [ubah y sebesar (pilih acak dari [-12] sampai [-6])]\n  [ubah x sebesar (pilih acak dari [-4] sampai [-1])]\n  jika <(posisi y) < [-185]> maka\n    [putar suara [pop ▼]]\n    [hapus klon ini]\n  [akhir jika]\n[akhir ulangi]",
+        "explanation": "Meteor jatuh serong karena setiap frame kita kurangi posisi X (gerak ke kiri) dan Y (gerak ke bawah). Nilai acak pada kecepatan membuat setiap meteor bergerak sedikit berbeda, menciptakan efek yang lebih alami."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa itu Clone di Scratch?",
+        "options": [
+          "Cara menyalin seluruh proyek Scratch",
+          "Salinan dari sprite yang bisa hidup dan bergerak secara independen",
+          "Cara menduplikasi blok kode",
+          "Nama untuk sprite cadangan yang tidak aktif"
+        ],
+        "correctAnswer": "Salinan dari sprite yang bisa hidup dan bergerak secara independen",
+        "explanation": "Clone adalah salinan dari sprite yang memiliki kehidupan independen — ia bisa punya posisi, ukuran, warna, dan perilaku yang berbeda dari sprite aslinya. Clone dibuat dengan blok 'buat klon dari [diriku sendiri]'.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Mengapa kita perlu menghapus klon yang sudah keluar dari layar?",
+        "options": [
+          "Karena klon yang keluar layar akan merusak program",
+          "Untuk menghemat memori — klon yang tidak terlihat tapi masih ada akan memperlambat program",
+          "Karena Scratch tidak mendukung lebih dari 10 klon",
+          "Karena klon yang tidak dihapus akan kembali dari atas layar"
+        ],
+        "correctAnswer": "Untuk menghemat memori — klon yang tidak terlihat tapi masih ada akan memperlambat program",
+        "explanation": "Klon yang keluar layar tidak terlihat tapi masih ada di memori dan masih menjalankan kodenya. Jika tidak dihapus, lama-lama akan ada ratusan/ribuan klon tidak terlihat yang memakan memori dan memperlambat program secara signifikan.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa nilai Y untuk bagian ATAS layar di Scratch?",
+        "options": [
+          "Y = 0",
+          "Y = -180",
+          "Y = 180",
+          "Y = 360"
+        ],
+        "correctAnswer": "Y = 180",
+        "explanation": "Di Scratch, koordinat Y positif berarti ke atas. Bagian paling atas Stage adalah Y = 180, bagian paling bawah adalah Y = -180. Bagian tengah adalah Y = 0. X berkisar dari -240 (kiri) sampai 240 (kanan).",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Blok 'ketika aku mulai sebagai klon' dijalankan oleh...",
+        "options": [
+          "Sprite asli setiap kali membuat klon baru",
+          "Setiap klon yang baru dibuat — sprite asli TIDAK menjalankan blok ini",
+          "Semua sprite di Stage secara bersamaan",
+          "Hanya klon pertama yang dibuat"
+        ],
+        "correctAnswer": "Setiap klon yang baru dibuat — sprite asli TIDAK menjalankan blok ini",
+        "explanation": "Blok 'ketika aku mulai sebagai klon' hanya dijalankan oleh klon — bukan sprite aslinya. Ini yang membuat kita bisa memberi instruksi berbeda untuk klon vs sprite asli dalam proyek yang sama.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Blok 'pilih acak dari [-240] sampai [240]' menghasilkan...",
+        "options": [
+          "Selalu angka -240",
+          "Selalu angka 240",
+          "Angka tetap yang sama setiap kali dipanggil",
+          "Angka acak antara -240 dan 240 setiap kali dipanggil"
+        ],
+        "correctAnswer": "Angka acak antara -240 dan 240 setiap kali dipanggil",
+        "explanation": "Blok 'pilih acak dari [X] sampai [Y]' menghasilkan angka acak (random) antara X dan Y setiap kali blok tersebut dijalankan. Ini sangat berguna untuk membuat variasi — posisi bintang berbeda setiap kali klon baru dibuat.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Seniman Partikel Telah Lahir!",
+    "message": "Luar biasa! Kamu sudah menguasai Clone — salah satu fitur paling powerful di Scratch. Clone akan dipakai terus di lesson-lesson selanjutnya untuk membuat peluru, musuh, dan efek partikel lainnya. Lesson terakhir Level 1 menanti: bikin animasi intro dengan namamu sendiri!",
+    "achievementName": "Seniman Efek Visual",
+    "achievementIcon": "⭐"
+  }
+}

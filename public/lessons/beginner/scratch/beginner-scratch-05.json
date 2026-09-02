@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-05",
+    "title": "Kupu-Kupu Terbang",
+    "description": "Buat kupu-kupu ajaib yang mengikuti mouse-mu ke mana saja, dan berubah warna saat diklik — seperti punya hewan peliharaan digital!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 5,
+    "estimatedTime": 25,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Pelihara Kupu-Kupu Digitalmu!",
+    "description": "Di lesson ini, kita bikin kupu-kupu yang mengikuti gerakan mouse-mu ke mana saja di layar. Saat kamu klik, ia berubah warna jadi pelangi! Ini adalah lesson pertama di mana proyekmu bereaksi terhadap gerakan dan klik mouse secara langsung — terasa seperti punya hewan peliharaan virtual yang selalu mengikutimu.",
+    "analogy": "Kupu-kupu di Scratch ini seperti balon helium yang diikat ke tanganmu — ke mana tanganmu bergerak, balon ikut bergerak. Bedanya, balon ini bisa ganti warna kalau kamu tepuk!"
+  },
+  "objectives": [
+    "Menggunakan blok 'pergi ke [penunjuk mouse]' untuk mengikuti mouse",
+    "Menggunakan blok 'meluncur ke [penunjuk mouse]' untuk gerakan halus",
+    "Menggunakan blok 'ketika sprite ini diklik' untuk respons klik",
+    "Membuat efek perubahan warna dengan blok 'ubah efek warna'",
+    "Menggabungkan gerakan dan interaksi dalam satu proyek"
+  ],
+  "review": {
+    "learned": [
+      "Blok 'pergi ke [penunjuk mouse]' memindahkan sprite langsung ke posisi mouse setiap frame.",
+      "Blok 'meluncur ke [penunjuk mouse] dalam [X] detik' membuat gerakan lebih halus dan natural.",
+      "Angka detik yang kecil (0.05–0.1) membuat gerakan terlihat smooth tapi tetap mengikuti mouse.",
+      "Blok 'ubah efek warna sebesar 25' memutar warna sprite melalui spektrum warna.",
+      "Kombinasi 'pergi ke mouse' di dalam 'ulangi terus' membuat sprite selalu mengikuti mouse."
+    ],
+    "keyConcepts": [
+      "Koordinat mouse: penunjuk mouse",
+      "Blok Gerak: pergi ke, meluncur ke",
+      "Efek visual: ubah efek warna",
+      "Interaksi mouse dalam loop",
+      "Smooth movement dengan glide"
+    ],
+    "takeaways": [
+      "Menggunakan 'meluncur ke' dengan waktu kecil (0.05 detik) lebih halus dari 'pergi ke' yang langsung teleport.",
+      "Efek warna di Scratch memutar warna secara siklik — setelah melewati semua warna, kembali ke awal.",
+      "Kombinasi loop + pergi ke mouse adalah pola dasar untuk membuat sprite 'mengikuti' sesuatu."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya kupu-kupu digital yang:\n• Selalu mengikuti pergerakan mouse-mu di Stage\n• Bergerak dengan halus — tidak langsung 'teleport' tapi meluncur perlahan\n• Mengepakkan sayapnya saat bergerak (dengan ganti kostum)\n• Berubah warna pelangi saat diklik\n• Berbunyi kecil saat diklik\n\nProyek ini mengajarkan cara membaca posisi mouse dan menggunakannya untuk menggerakkan sprite secara real-time — konsep yang dipakai di game, aplikasi menggambar, dan banyak lagi!",
+      "tips": [
+        "Scratch punya sprite kupu-kupu bawaan — cari 'Butterfly' di library sprite.",
+        "Kupu-kupu biasanya punya 2 kostum (sayap terbuka dan tertutup) yang bisa dipakai untuk animasi mengepak."
+      ]
+    },
+    {
+      "id": "node-02-mouse-concept",
+      "type": "lesson",
+      "title": "Mengikuti Mouse — Blok 'Pergi ke Penunjuk Mouse'",
+      "xp": 5,
+      "explanation": "Scratch bisa 'membaca' posisi mouse di Stage kapan saja. Ada dua cara membuat sprite mengikuti mouse:\n\n1. 'pergi ke [penunjuk mouse ▼]'\n→ Sprite langsung teleport ke posisi mouse. Cepat tapi terlihat kasar.\n\n2. 'meluncur ke x: (mouse x) y: (mouse y) dalam 0.05 detik'\n→ Sprite meluncur ke arah mouse dengan halus. Hasilnya lebih natural.\n\nKita akan pakai metode kedua agar gerakan kupu-kupu terlihat lebih alami dan lembut.",
+      "analogy": "Metode 1 (pergi ke) seperti teleportasi — langsung lompat ke mana saja. Metode 2 (meluncur) seperti kupu-kupu asli — bergerak mengepak perlahan ke arah tujuan. Lebih indah dilihatnya!",
+      "tips": [
+        "Angka detik di 'meluncur ke' menentukan kelambatan. 0.05 = sangat responsif, 0.5 = lambat seperti layang-layang."
+      ]
+    },
+    {
+      "id": "node-03-follow-mouse",
+      "type": "code",
+      "title": "Kupu-Kupu Mengikuti Mouse",
+      "xp": 5,
+      "explanation": "Kita tempatkan blok 'meluncur ke penunjuk mouse' di dalam 'ulangi terus' agar kupu-kupu terus-menerus bergerak menuju posisi mouse.\n\nBlok 'mouse x' dan 'mouse y' adalah nilai koordinat posisi mouse saat ini — keduanya ada di kategori 'Sensor' berwarna biru muda.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[ulangi terus]\n  [meluncur ke x: (posisi x mouse) y: (posisi y mouse) dalam [0.05] detik]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-04-wing-animation",
+      "type": "code",
+      "title": "Animasi Sayap Mengepak",
+      "xp": 5,
+      "explanation": "Tambahkan animasi sayap dengan mengganti kostum di dalam loop yang sama. Sekarang kupu-kupu mengepakkan sayap SAMBIL mengikuti mouse!\n\nKita juga tambahkan blok di awal untuk mengatur posisi awal dan memastikan ukuran normal.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[atur ukuran ke [80] %]\n[hapus efek grafis]\n[ulangi terus]\n  [meluncur ke x: (posisi x mouse) y: (posisi y mouse) dalam [0.05] detik]\n  [kostum berikutnya]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-05-click-color",
+      "type": "code",
+      "title": "Klik untuk Ganti Warna!",
+      "xp": 5,
+      "explanation": "Sekarang tambahkan interaksi klik: saat kupu-kupu diklik, warnanya berubah! Kita juga tambahkan suara kecil saat diklik agar terasa lebih hidup.\n\nBlok ini TERPISAH dari blok di atas — ini adalah blok 'ketika sprite ini diklik' yang berjalan independen.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika sprite ini diklik]\n[ubah efek [warna ▼] sebesar [25]]\n[putar suara [pop ▼]]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Kupu-Kupu Lengkap!",
+      "xp": 5,
+      "explanation": "Ini adalah proyek lengkap kupu-kupu terbang dengan dua blok program yang berjalan paralel:\n\nBLOK 1 (bendera hijau) — Loop utama yang terus berjalan:\n• Kupu-kupu selalu mengejar posisi mouse\n• Sayap terus mengepak\n\nBLOK 2 (klik sprite) — Reaksi saat diklik:\n• Warna berubah setiap klik\n• Suara berbunyi\n\nDua blok program berjalan bersamaan — itulah keajaiban Scratch!",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Blok 1: Loop utama ---\n[ketika bendera hijau diklik]\n[atur ukuran ke [80] %]\n[hapus efek grafis]\n[ulangi terus]\n  [meluncur ke x: (posisi x mouse) y: (posisi y mouse) dalam [0.05] detik]\n  [kostum berikutnya]\n[akhir ulangi]\n\n// --- Blok 2: Reaksi klik ---\n[ketika sprite ini diklik]\n[ubah efek [warna ▼] sebesar [25]]\n[putar suara [pop ▼]]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Eksplorasi Lebih Jauh!",
+      "xp": 5,
+      "explanation": "Kupu-kupumu sudah terbang! Berikut modifikasi yang bisa dicoba:\n\nUBAH KELAMBATAN GERAKAN\nCoba ubah 0.05 jadi 0.3 — kupu-kupu bergerak lebih lambat seperti kupu-kupu nyata yang terbang santai.\n\nTAMBAH JEJAK\nTambahkan blok 'pena turun' sebelum loop agar kupu-kupu meninggalkan jejak berwarna saat terbang! Tambahkan juga 'atur warna pena ke [warna efek]' agar jejaknya berwarna-warni.\n\nTAMBAH BANYAK KUPU-KUPU\nDuplikasi sprite kupu-kupu (klik kanan → duplikasi). Ubah sedikit kecepatan masing-masing agar gerakannya tidak identik.\n\nEFEK HANTU\nTambahkan 'ubah efek hantu sebesar 5' di dalam loop agar kupu-kupu terlihat sedikit transparan — efek yang cantik!",
+      "tips": [
+        "Blok 'mouse x' dan 'mouse y' juga bisa digunakan untuk menghitung jarak antara sprite dan mouse.",
+        "Kamu bisa pakai nilai koordinat mouse untuk hal lain — misalnya mengubah ukuran sprite berdasarkan posisi mouse."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Apa yang terjadi jika kita menaruh blok 'meluncur ke penunjuk mouse' di dalam 'ulangi terus'?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Sprite hanya bergerak satu kali ke posisi mouse saat ini",
+        "Sprite terus-menerus mengikuti mouse ke mana saja selama program berjalan",
+        "Sprite bergerak ke mouse lalu berhenti di sana selamanya",
+        "Program akan error karena terlalu banyak instruksi"
+      ],
+      "correctOption": "Sprite terus-menerus mengikuti mouse ke mana saja selama program berjalan"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Kebun Kupu-Kupu!",
+      "xp": 15,
+      "instructions": "Buat kebun kupu-kupu dengan 3 kupu-kupu yang mengikuti mouse, masing-masing dengan warna dan kecepatan berbeda!\n\n1. Buat sprite Butterfly (bisa duplikasi 3x dari satu sprite)\n2. Masing-masing kupu-kupu punya kecepatan berbeda:\n   • Kupu-kupu 1: meluncur dalam 0.03 detik (cepat)\n   • Kupu-kupu 2: meluncur dalam 0.1 detik (sedang)\n   • Kupu-kupu 3: meluncur dalam 0.2 detik (lambat)\n3. Setiap kupu-kupu punya warna efek awal berbeda (atur di awal program)\n4. Saat diklik, setiap kupu-kupu berubah warna\n5. BONUS: Tambahkan backdrop taman bunga dan suara alam",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// Template untuk setiap kupu-kupu (ubah angka kecepatan)\n[ketika bendera hijau diklik]\n[atur ukuran ke [70] %]\n[atur efek [warna ▼] ke [0]]  // ubah angka berbeda untuk tiap kupu-kupu\n[ulangi terus]\n  [meluncur ke x: (posisi x mouse) y: (posisi y mouse) dalam [0.05] detik]  // ubah angka ini\n  [kostum berikutnya]\n[akhir ulangi]\n\n[ketika sprite ini diklik]\n[ubah efek [warna ▼] sebesar [25]]"
+      },
+      "expectedResult": "Tiga kupu-kupu dengan warna berbeda mengikuti mouse dengan kecepatan berbeda, masing-masing bereaksi saat diklik. Lihat contoh: https://scratch.mit.edu/projects/108/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// KUPU-KUPU 1 (cepat, warna biru)\n[ketika bendera hijau diklik]\n[atur ukuran ke [80] %]\n[atur efek [warna ▼] ke [130]]\n[ulangi terus]\n  [meluncur ke x: (posisi x mouse) y: (posisi y mouse) dalam [0.03] detik]\n  [kostum berikutnya]\n[akhir ulangi]\n[ketika sprite ini diklik]\n[ubah efek [warna ▼] sebesar [30]]\n[putar suara [pop ▼]]\n\n// KUPU-KUPU 2 (sedang, warna merah)\n[ketika bendera hijau diklik]\n[atur ukuran ke [70] %]\n[atur efek [warna ▼] ke [0]]\n[ulangi terus]\n  [meluncur ke x: (posisi x mouse) y: (posisi y mouse) dalam [0.1] detik]\n  [kostum berikutnya]\n[akhir ulangi]\n[ketika sprite ini diklik]\n[ubah efek [warna ▼] sebesar [30]]\n\n// KUPU-KUPU 3 (lambat, warna hijau)\n[ketika bendera hijau diklik]\n[atur ukuran ke [60] %]\n[atur efek [warna ▼] ke [80]]\n[ulangi terus]\n  [meluncur ke x: (posisi x mouse) y: (posisi y mouse) dalam [0.2] detik]\n  [kostum berikutnya]\n[akhir ulangi]\n[ketika sprite ini diklik]\n[ubah efek [warna ▼] sebesar [30]]",
+        "explanation": "Setiap kupu-kupu diduplikasi dari sprite yang sama tapi dengan nilai kecepatan dan warna efek awal berbeda. Kupu-kupu yang lebih kecil bergerak lebih lambat — ini menciptakan ilusi kedalaman yang menarik."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Blok mana yang membuat sprite mengikuti mouse dengan gerakan halus?",
+        "options": [
+          "pergi ke [penunjuk mouse]",
+          "meluncur ke x: (mouse x) y: (mouse y) dalam 0.05 detik",
+          "arahkan ke [penunjuk mouse]",
+          "ikuti [penunjuk mouse] terus"
+        ],
+        "correctAnswer": "meluncur ke x: (mouse x) y: (mouse y) dalam 0.05 detik",
+        "explanation": "Blok 'meluncur ke' dengan waktu kecil (0.05 detik) membuat gerakan terlihat halus karena sprite 'meluncur' ke posisi baru alih-alih langsung teleport. Blok 'pergi ke' langsung memindahkan sprite ke posisi target tanpa animasi.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Di mana kita menemukan blok 'posisi x mouse' dan 'posisi y mouse' di Scratch?",
+        "options": [
+          "Kategori 'Gerak' berwarna biru tua",
+          "Kategori 'Sensor' berwarna biru muda",
+          "Kategori 'Operator' berwarna hijau",
+          "Kategori 'Tampilan' berwarna ungu"
+        ],
+        "correctAnswer": "Kategori 'Sensor' berwarna biru muda",
+        "explanation": "Blok-blok untuk membaca kondisi lingkungan seperti posisi mouse, tombol yang ditekan, dan jarak ke sprite lain ada di kategori 'Sensor' yang berwarna biru muda/teal di Scratch.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Jika nilai efek warna sprite adalah 100, lalu kita tambahkan 'ubah efek warna sebesar 25' sebanyak 3 kali, berapa nilai efeknya?",
+        "options": [
+          "175",
+          "125",
+          "175, tapi karena siklik mungkin terlihat berbeda",
+          "Tidak bisa lebih dari 100"
+        ],
+        "correctAnswer": "175, tapi karena siklik mungkin terlihat berbeda",
+        "explanation": "Nilai efek warna di Scratch berjalan secara siklik dari 0 sampai 200 (atau 360, tergantung versi). Jadi 100 + 25 + 25 + 25 = 175. Tapi karena siklus warna, 175 mungkin terlihat sebagai warna yang sama dengan 175 - 200 = -25 atau warna yang berbeda dari 100.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Mengapa kita meletakkan blok 'meluncur ke mouse' di dalam 'ulangi terus' bukan di luar loop?",
+        "options": [
+          "Karena 'meluncur ke mouse' harus selalu di dalam loop",
+          "Agar sprite hanya bergerak satu kali ke posisi awal mouse",
+          "Agar sprite terus-menerus memperbarui posisinya mengikuti mouse yang bergerak",
+          "Karena di luar loop blok itu tidak akan bekerja"
+        ],
+        "correctAnswer": "Agar sprite terus-menerus memperbarui posisinya mengikuti mouse yang bergerak",
+        "explanation": "Jika kita letakkan 'meluncur ke mouse' di luar loop, sprite hanya akan bergerak SATU KALI ke posisi mouse saat program dimulai, lalu berhenti. Di dalam loop, sprite memperbarui tujuannya setiap milidetik mengikuti mouse yang terus bergerak.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Apa yang terjadi jika dua blok 'ketika bendera hijau diklik' ada di sprite yang sama?",
+        "options": [
+          "Program error — tidak boleh ada dua blok 'ketika' yang sama",
+          "Hanya blok pertama yang dijalankan",
+          "Keduanya dijalankan secara bersamaan (paralel) saat bendera diklik",
+          "Blok kedua menimpa blok pertama"
+        ],
+        "correctAnswer": "Keduanya dijalankan secara bersamaan (paralel) saat bendera diklik",
+        "explanation": "Scratch memperbolehkan beberapa blok 'ketika bendera hijau diklik' di sprite yang sama — semuanya dijalankan secara paralel. Ini berguna untuk memisahkan animasi dan logika program menjadi bagian-bagian yang lebih mudah dipahami.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Kupu-Kupumu Hidup!",
+    "message": "Selamat! Kamu baru saja membuat hewan peliharaan digital pertamamu yang mengikuti mouse. Kamu sudah mengerti cara membaca posisi mouse dan menggunakannya untuk menggerakkan sprite. Di lesson berikutnya, kita buat efek hujan bintang yang spektakuler menggunakan fitur Clone!",
+    "achievementName": "Penjinак Kupu-Kupu",
+    "achievementIcon": "🦋"
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-03",
+    "title": "Buku Cerita 3 Halaman",
+    "description": "Buat buku cerita interaktif dengan 3 halaman — klik tombol untuk berpindah halaman, ubah latar belakang, dan tampilkan dialog karakter!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 3,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Jadi Penulis Cerita Digital!",
+    "description": "Kali ini kamu akan jadi penulis sekaligus animator! Kita bikin buku cerita interaktif: ada 3 scene berbeda dengan backdrop berbeda, tombol 'Halaman Berikutnya' yang bisa diklik, dan karakter yang berbicara di setiap halaman. Ini seperti membuat buku komik yang bisa bergerak dan berinteraksi — dan pembacanya yang menentukan kapan halaman berganti!",
+    "analogy": "Buku cerita biasa hanya punya halaman yang kamu balik satu per satu. Di Scratch, kamu yang menentukan kapan halaman berganti — dan karakternya bisa bicara langsung kepadamu! Pembaca bukan cuma baca, tapi juga ikut berpartisipasi dalam cerita."
+  },
+  "objectives": [
+    "Menggunakan beberapa backdrop untuk membuat scene yang berbeda",
+    "Menggunakan blok 'broadcast' untuk mengirim sinyal antar bagian program",
+    "Menggunakan blok 'when I receive' untuk merespons sinyal broadcast",
+    "Membuat tombol interaktif yang bisa diklik pemain",
+    "Merangkai dialog karakter menggunakan blok 'katakan' dengan timing"
+  ],
+  "review": {
+    "learned": [
+      "Backdrop bisa diganti dengan blok 'ganti latar belakang ke' untuk berpindah scene.",
+      "Blok 'kirim pesan [nama]' (broadcast) mengirim sinyal ke seluruh program.",
+      "Blok 'ketika menerima [nama]' merespons sinyal broadcast dan menjalankan instruksi.",
+      "Tombol di Scratch adalah sprite biasa yang punya blok 'ketika sprite ini diklik'.",
+      "Beberapa sprite bisa bereaksi terhadap satu broadcast yang sama."
+    ],
+    "keyConcepts": [
+      "Backdrop switching untuk scene berbeda",
+      "Broadcast dan receive untuk komunikasi program",
+      "Tombol interaktif sebagai sprite",
+      "Timing dialog dengan blok 'katakan' dan 'tunggu'",
+      "Alur cerita linier dengan trigger klik"
+    ],
+    "takeaways": [
+      "Broadcast adalah cara terbaik untuk mengkoordinasikan banyak sprite sekaligus.",
+      "Satu broadcast bisa diterima oleh banyak sprite yang berbeda — semua akan bereaksi serentak.",
+      "Tombol di Scratch dibuat dari sprite biasa — kamu bebas pilih bentuk dan warnanya dari library."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya buku cerita interaktif dengan:\n• Halaman 1: Latar hutan, karakter berkata 'Ada petualangan menungguku...'\n• Tombol 'Lanjut ▶' yang bisa diklik untuk pindah halaman\n• Halaman 2: Latar gua gelap, karakter berkata 'Di sini ada harta karun!'\n• Halaman 3: Latar pantai, karakter berkata 'Aku menemukan kebahagiaan di sini!'\n\nIni adalah proyek pertama yang mengajarkan cara mengoordinasikan banyak bagian program menggunakan sistem 'broadcast dan receive' — fitur super penting di Scratch!",
+      "tips": [
+        "Siapkan 3 backdrop berbeda dulu sebelum mulai coding — misalnya: Woods, Cave, dan Beach.",
+        "Buat sprite terpisah untuk tombol 'Lanjut' agar mudah diatur."
+      ]
+    },
+    {
+      "id": "node-02-broadcast",
+      "type": "lesson",
+      "title": "Broadcast — Sistem Sinyal Scratch",
+      "xp": 5,
+      "explanation": "Broadcast adalah cara mengirim 'sinyal' ke seluruh program Scratch. Bayangkan seperti pengeras suara di sekolah — saat guru mengumumkan sesuatu, semua orang mendengar.\n\nAda dua blok yang bekerja berpasangan:\n\n1. 'kirim pesan [nama-pesan]' (broadcast)\n→ Mengirim sinyal dengan nama tertentu ke seluruh program\n\n2. 'ketika menerima [nama-pesan]' (when I receive)\n→ Sprite yang punya blok ini akan 'terbangun' dan menjalankan instruksinya saat menerima sinyal itu\n\nKita akan kirim broadcast 'halaman2' saat tombol diklik, lalu sprite karakter dan Stage merespons dengan menampilkan scene halaman 2.",
+      "analogy": "Broadcast seperti walkie-talkie — satu orang bicara ('kirim pesan'), semua yang punya walkie-talkie yang sama mendengar ('ketika menerima'). Kamu bisa punya banyak 'saluran' broadcast berbeda untuk situasi berbeda!",
+      "tips": [
+        "Beri nama broadcast yang jelas dan deskriptif: 'halaman2', 'halaman3', 'selesai'.",
+        "Kamu bisa punya sebanyak mungkin broadcast berbeda dalam satu proyek."
+      ]
+    },
+    {
+      "id": "node-03-setup",
+      "type": "code",
+      "title": "Setup Halaman 1 — Awal Cerita",
+      "xp": 5,
+      "explanation": "Kita mulai dengan setup halaman pertama. Saat bendera hijau diklik, Stage langsung ganti ke backdrop halaman 1, karakter muncul dan berkata dialog pembuka.\n\nBlok ini ada di SPRITE KARAKTER (bukan tombol). Pastikan kamu klik sprite karakter dulu sebelum menambahkan blok ini.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Di sprite KARAKTER ---\n[ketika bendera hijau diklik]\n[tampilkan]\n[pergi ke x: [-100] y: [-50]]\n[ganti latar belakang ke [Woods ▼]]\n[tunggu [0.5] detik]\n[katakan [Ada petualangan menungguku di luar sana...] selama [3] detik]\n[katakan [Klik tombol Lanjut untuk membuka halaman berikutnya!] selama [2] detik]"
+      }
+    },
+    {
+      "id": "node-04-button",
+      "type": "code",
+      "title": "Tombol Lanjut — Klik untuk Pindah Halaman",
+      "xp": 5,
+      "explanation": "Sekarang kita buat tombol 'Lanjut'. Pilih sprite berbentuk panah atau buat teks 'Lanjut ▶'. Blok ini ada di SPRITE TOMBOL.\n\nSaat tombol diklik, ia kirim broadcast 'halaman2'. Semua sprite yang punya blok 'ketika menerima halaman2' akan langsung bereaksi.\n\nKita juga sembunyikan tombol saat halaman terakhir tiba — agar pemain tahu cerita sudah selesai.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Di sprite TOMBOL ---\n[ketika bendera hijau diklik]\n[tampilkan]\n[pergi ke x: [180] y: [-130]]\n\n[ketika sprite ini diklik]\n[kirim pesan [halaman2 ▼] dan tunggu]"
+      }
+    },
+    {
+      "id": "node-05-page2",
+      "type": "code",
+      "title": "Halaman 2 — Scene Gua",
+      "xp": 5,
+      "explanation": "Sekarang kita tambahkan reaksi terhadap broadcast 'halaman2' di SPRITE KARAKTER. Saat menerima 'halaman2', karakter ganti backdrop ke gua dan tampilkan dialog baru.\n\nPerhatikan: blok 'ketika menerima' bisa ditumpuk sebanyak mungkin pada satu sprite — masing-masing merespons broadcast yang berbeda.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Di sprite KARAKTER, tambahkan blok baru ---\n[ketika menerima [halaman2 ▼]]\n[ganti latar belakang ke [Cave ▼]]\n[tunggu [0.3] detik]\n[katakan [Wow! Di dalam gua ini sangat gelap...] selama [2] detik]\n[katakan [Tapi tunggu — aku melihat sesuatu bersinar!] selama [2] detik]\n[kirim pesan [siap-halaman3 ▼]]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Halaman 3 — Akhir Cerita yang Bahagia",
+      "xp": 5,
+      "explanation": "Halaman terakhir menggunakan broadcast 'halaman3'. Setelah dialog selesai, kita sembunyikan tombol karena cerita sudah tamat.\n\nIni adalah versi lengkap buku cerita 3 halaman! Setiap klik tombol memicu broadcast berbeda, dan setiap broadcast mengubah scene dan dialog.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Di sprite KARAKTER, tambahkan blok lagi ---\n[ketika menerima [halaman3 ▼]]\n[ganti latar belakang ke [Beach Malibu ▼]]\n[tunggu [0.3] detik]\n[katakan [Akhirnya! Pantai yang indah menungguku!] selama [2] detik]\n[katakan [Petualangan ini tidak akan pernah kulupakan. Tamat! 🌟] selama [3] detik]\n\n// --- Di sprite TOMBOL, tambahkan blok untuk halaman 3 ---\n[ketika menerima [siap-halaman3 ▼]]\n// Ubah tombol agar kirim halaman3 (buat blok baru di tombol)\n// Atau sembunyikan tombol di halaman 3:\n[ketika menerima [halaman3 ▼]]\n[sembunyikan]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Kembangkan Ceritamu!",
+      "xp": 5,
+      "explanation": "Ceritamu sudah jadi! Berikut cara membuatnya lebih keren:\n\nTAMBAH KARAKTER KEDUA\nBuat sprite karakter kedua (misal: musuh atau teman). Di halaman tertentu, sembunyikan salah satu dan tampilkan yang lain dengan 'tampilkan' dan 'sembunyikan'.\n\nANIMASI MASUK\nTambahkan efek masuk dengan blok 'ubah efek hantu sebesar -10' dalam loop agar karakter 'muncul' perlahan saat halaman berganti.\n\nMUSIK LATAR\nTambahkan sprite khusus untuk musik. Saat menerima 'halaman2', putar musik berbeda. Tiap scene punya suasananya sendiri!\n\nTEKS DI LAYAR\nBuat sprite teks tambahan (label judul halaman) yang tampil/sembunyikan sesuai broadcast.",
+      "tips": [
+        "Kamu bisa punya hingga 50 backdrop berbeda dalam satu proyek Scratch.",
+        "Nama broadcast bisa apa saja — gunakan nama yang mudah kamu ingat seperti 'halaman1', 'scene-gua', 'ending'."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Dalam sistem broadcast Scratch, apa yang dilakukan blok 'ketika menerima [nama-pesan]'?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Mengirim sinyal ke semua sprite di program",
+        "Menjalankan instruksi di bawahnya saat program menerima broadcast dengan nama itu",
+        "Menyembunyikan sprite yang tidak aktif",
+        "Mengganti backdrop secara otomatis"
+      ],
+      "correctOption": "Menjalankan instruksi di bawahnya saat program menerima broadcast dengan nama itu"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Cerita Petualanganmu Sendiri!",
+      "xp": 15,
+      "instructions": "Buat buku cerita 3 halaman dengan tema ceritamu sendiri!\n\n1. Pilih tema cerita: petualangan, persahabatan, misteri, atau komedi\n2. Pilih atau tambahkan 3 backdrop berbeda sesuai scene cerita\n3. Pilih sprite karakter utama dari library\n4. Buat sprite tombol 'Lanjut ▶'\n5. Coding:\n   • Halaman 1: setup saat bendera diklik, dialog, tombol aktif\n   • Broadcast 'halaman2' saat tombol diklik\n   • Halaman 2: respons broadcast, ganti backdrop, dialog baru\n   • Broadcast 'halaman3'\n   • Halaman 3: respons broadcast, ganti backdrop, dialog penutup, sembunyikan tombol\n6. BONUS: Tambahkan suara berbeda di setiap halaman!\n\nCeritakan sesuatu yang benar-benar ingin kamu ceritakan!",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// SPRITE KARAKTER\n[ketika bendera hijau diklik]\n[tampilkan]\n[ganti latar belakang ke [backdrop-1 ▼]]\n[katakan [Dialog halaman 1...] selama [3] detik]\n\n[ketika menerima [halaman2 ▼]]\n[ganti latar belakang ke [backdrop-2 ▼]]\n[katakan [Dialog halaman 2...] selama [3] detik]\n\n[ketika menerima [halaman3 ▼]]\n[ganti latar belakang ke [backdrop-3 ▼]]\n[katakan [Dialog halaman 3 — Tamat!] selama [3] detik]\n\n// SPRITE TOMBOL\n[ketika bendera hijau diklik]\n[tampilkan]\n\n[ketika sprite ini diklik]\n[kirim pesan [halaman2 ▼] dan tunggu]"
+      },
+      "expectedResult": "Buku cerita 3 halaman dengan backdrop berbeda di setiap halaman, dialog karakter, dan tombol navigasi yang berfungsi. Lihat contoh: https://scratch.mit.edu/projects/106/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// SPRITE KARAKTER\n[ketika bendera hijau diklik]\n[tampilkan]\n[pergi ke x: [-100] y: [-50]]\n[ganti latar belakang ke [Woods ▼]]\n[tunggu [0.5] detik]\n[katakan [Petualanganku dimulai dari hutan ini...] selama [3] detik]\n[katakan [Klik Lanjut untuk baca halaman berikutnya!] selama [2] detik]\n\n[ketika menerima [halaman2 ▼]]\n[ganti latar belakang ke [Cave ▼]]\n[tunggu [0.3] detik]\n[katakan [Di dalam gua ini tersimpan rahasia besar!] selama [3] detik]\n\n[ketika menerima [halaman3 ▼]]\n[ganti latar belakang ke [Beach Malibu ▼]]\n[tunggu [0.3] detik]\n[katakan [Akhirnya aku menemukan harta karun sejati...] selama [2] detik]\n[katakan [...yaitu persahabatan! Tamat 🌟] selama [3] detik]\n\n// SPRITE TOMBOL\n[ketika bendera hijau diklik]\n[tampilkan]\n[pergi ke x: [180] y: [-140]]\n[halaman saat ini = 1]\n\n[ketika sprite ini diklik]\n[kirim pesan [halaman2 ▼] dan tunggu]\n[kirim pesan [halaman3 ▼] dan tunggu]\n[sembunyikan]\n\n[ketika menerima [halaman3 ▼]]\n[sembunyikan]",
+        "explanation": "Program ini menggunakan sistem broadcast untuk mengoordinasikan pergantian halaman. Sprite karakter merespons setiap broadcast dengan mengganti backdrop dan menampilkan dialog baru. Sprite tombol mengirim broadcast saat diklik, dan menyembunyikan dirinya saat halaman terakhir tercapai."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa itu broadcast di Scratch?",
+        "options": [
+          "Cara menggambar latar belakang baru",
+          "Sinyal yang dikirim ke seluruh program dan bisa diterima oleh sprite manapun",
+          "Blok untuk memainkan suara keras",
+          "Cara untuk menduplikasi sprite"
+        ],
+        "correctAnswer": "Sinyal yang dikirim ke seluruh program dan bisa diterima oleh sprite manapun",
+        "explanation": "Broadcast adalah sistem pengiriman sinyal di Scratch. Satu sprite 'kirim pesan', dan semua sprite yang punya blok 'ketika menerima [pesan itu]' akan langsung bereaksi. Ini cara paling efektif untuk mengkoordinasikan banyak sprite.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Di Scratch, bagaimana cara membuat tombol yang bisa diklik?",
+        "options": [
+          "Harus menggunakan elemen khusus bernama 'Button' dari library",
+          "Sprite biasa yang diberi blok 'ketika sprite ini diklik'",
+          "Harus menambahkan kode HTML di luar Scratch",
+          "Hanya bisa dibuat dengan blok 'buat tombol baru'"
+        ],
+        "correctAnswer": "Sprite biasa yang diberi blok 'ketika sprite ini diklik'",
+        "explanation": "Di Scratch, tombol dibuat dari sprite biasa! Kamu pilih atau gambar sprite berbentuk tombol, lalu tambahkan blok 'ketika sprite ini diklik'. Saat pemain klik sprite itu, instruksi di bawah blok tersebut akan dijalankan.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa perbedaan antara 'kirim pesan' dan 'kirim pesan dan tunggu'?",
+        "options": [
+          "Tidak ada perbedaan — keduanya sama",
+          "'kirim pesan' langsung lanjut ke blok berikutnya; 'kirim dan tunggu' menunggu semua penerima selesai bereaksi",
+          "'kirim pesan' hanya bisa diterima 1 sprite; 'kirim dan tunggu' bisa diterima semua sprite",
+          "'kirim dan tunggu' lebih cepat dari 'kirim pesan'"
+        ],
+        "correctAnswer": "'kirim pesan' langsung lanjut ke blok berikutnya; 'kirim dan tunggu' menunggu semua penerima selesai bereaksi",
+        "explanation": "Blok 'kirim pesan' mengirim sinyal lalu langsung menjalankan blok berikutnya tanpa menunggu. Blok 'kirim pesan dan tunggu' mengirim sinyal dan MENUNGGU sampai semua sprite yang menerima pesan tersebut selesai menjalankan seluruh instruksinya.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Berapa banyak sprite yang bisa merespons satu broadcast yang sama?",
+        "options": [
+          "Hanya 1 sprite",
+          "Maksimal 3 sprite",
+          "Maksimal 10 sprite",
+          "Sebanyak mungkin sprite — tidak ada batas"
+        ],
+        "correctAnswer": "Sebanyak mungkin sprite — tidak ada batas",
+        "explanation": "Tidak ada batasan jumlah sprite yang bisa merespons satu broadcast. Semua sprite yang punya blok 'ketika menerima [nama-pesan]' dengan nama yang sama akan bereaksi serentak saat broadcast itu dikirim.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Mengapa buku cerita Scratch lebih interaktif dari buku biasa?",
+        "options": [
+          "Karena buku Scratch bisa dicetak lebih mudah",
+          "Karena pembaca bisa berpartisipasi dengan klik dan mempengaruhi jalannya cerita",
+          "Karena buku Scratch pasti punya gambar yang lebih bagus",
+          "Karena buku Scratch tidak butuh kertas"
+        ],
+        "correctAnswer": "Karena pembaca bisa berpartisipasi dengan klik dan mempengaruhi jalannya cerita",
+        "explanation": "Buku cerita Scratch adalah 'interaktif' karena pembaca bukan hanya membaca pasif — mereka bisa klik tombol, memilih jalur cerita, dan bahkan mengontrol karakter. Hal ini tidak mungkin dilakukan dengan buku biasa.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Pengarang Berbakat Telah Lahir!",
+    "message": "Kamu baru saja membuat buku cerita digital pertamamu! Broadcast dan receive adalah salah satu fitur terpenting di Scratch — dan kamu sudah menguasainya. Cerita berikutnya bisa lebih panjang, lebih seru, dan lebih kreatif. Di lesson selanjutnya, kita bikin musik sendiri — Orkestra Mini!",
+    "achievementName": "Penulis Cerita Digital",
+    "achievementIcon": "📖"
+  }
+}

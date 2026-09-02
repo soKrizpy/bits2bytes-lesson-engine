@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-19",
+    "title": "Boss Battle Game",
+    "description": "Buat game boss battle epik — tembak musuh besar yang punya health bar, setiap tembakan mengurangi nyawa musuh, menang kalau health bar habis!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 19,
+    "estimatedTime": 40,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Bikin Game Boss Battle yang Epik!",
+    "description": "Semua game RPG dan action punya boss battle — momen paling menegangkan di mana kamu lawan musuh terkuat! Di lesson ini, kita bikin game boss battle: ada pahlawan yang bisa menembak, ada boss besar dengan health bar yang menunjukkan sisa nyawanya. Setiap tembakan mengurangi health bar. Kalau health bar boss mencapai nol — kamu menang dengan layar kemenangan yang dramatis!",
+    "analogy": "Health bar boss itu seperti gentong air yang bocor — setiap kali kamu berhasil menembak, air berkurang sedikit. Tugas kamu: kosongkan gentongnya sebelum boss mengalahkanmu! Kamu bisa lihat progress 'kerusakan' yang kamu buat setiap tembakan — sangat memuaskan!"
+  },
+  "objectives": [
+    "Mengimplementasikan mekanik menembak dengan clone untuk peluru",
+    "Membuat health bar visual menggunakan variabel dan sprite",
+    "Menggunakan collision detection peluru-boss untuk deteksi hit",
+    "Membuat boss bergerak dengan pola yang bisa diprediksi tapi tetap menantang",
+    "Merakit game boss battle lengkap dengan kondisi menang dan kalah"
+  ],
+  "review": {
+    "learned": [
+      "Peluru dibuat dengan clone — sprite peluru asli disembunyikan, clone-nya yang bergerak.",
+      "Health bar visual bisa dibuat dengan sprite yang ukurannya berubah sesuai variabel health.",
+      "Collision detection peluru-boss menggunakan 'menyentuh [boss]?' di sprite peluru.",
+      "Boss yang bergerak bolak-balik secara horizontal menciptakan tantangan yang perlu diperhitungkan.",
+      "Sistem win/lose menggunakan broadcast untuk mengaktifkan layar yang sesuai."
+    ],
+    "keyConcepts": [
+      "Mekanik menembak: clone peluru",
+      "Health bar: variabel + sprite visual",
+      "Peluru-boss collision",
+      "Boss movement pattern",
+      "Win/lose state dengan broadcast"
+    ],
+    "takeaways": [
+      "Health bar visual adalah cara paling intuitif untuk menunjukkan 'sisa nyawa' — lebih baik dari angka saja.",
+      "Spawn delay untuk peluru mencegah pemain menembak terlalu cepat (anti-spam).",
+      "Boss yang juga menyerang balik menciptakan tekanan ganda dan gameplay yang lebih menarik."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya game Boss Battle:\n• Pahlawan di bawah layar, gerak kiri-kanan dengan tombol panah\n• Tekan SPASI untuk menembak — peluru melesat ke atas\n• Boss besar di atas layar, bergerak bolak-balik\n• Setiap peluru mengenai boss: health bar merah berkurang\n• Boss kadang melempar bom ke bawah — hindari!\n• Health boss habis = WIN SCREEN yang epik\n• Pahlawan terkena bom 3 kali = GAME OVER\n\nIni adalah game paling kompleks yang pernah kamu buat — tapi kamu sudah siap!",
+      "tips": [
+        "Cari sprite 'Robot' atau 'Dinosaur2' untuk boss, dan 'Rocketship' untuk pahlawan.",
+        "Health bar dibuat dari sprite persegi panjang merah yang ukurannya diatur dengan variabel."
+      ]
+    },
+    {
+      "id": "node-02-shooting-mechanic",
+      "type": "lesson",
+      "title": "Mekanik Menembak — Clone Peluru",
+      "xp": 5,
+      "explanation": "Sistem tembakan di Scratch menggunakan clone:\n\n1. Ada sprite 'Peluru' yang tersembunyi\n2. Saat spasi ditekan, sprite peluru ASLI membuat clone\n3. Clone muncul di posisi pahlawan dan bergerak ke atas\n4. Clone mengecek apakah menyentuh boss setiap frame\n5. Jika mengenai boss: hapus clone, kurangi health boss\n6. Jika keluar layar atas: hapus clone (bersih-bersih)\n\nSpawn delay mencegah pemain menembak ratusan peluru per detik — memberi jeda 0.3 detik antar tembakan.",
+      "analogy": "Sistem tembakan seperti pabrik peluru: setiap kali tombol ditekan, pabrik memproduksi SATU peluru baru yang langsung dikirim. Peluru itu bergerak sendiri sampai mengenai target atau keluar layar, lalu 'hilang'. Pabrik tidak membuat peluru baru sampai yang sebelumnya sudah terkirim.",
+      "tips": [
+        "Spawn delay bisa dikontrol dengan variabel 'BisaTembak' yang menjadi 0 setelah tembak, lalu kembali ke 1 setelah 0.3 detik.",
+        "Posisi spawn peluru harus sama dengan posisi pahlawan — gunakan 'pergi ke x: (posisi x pahlawan)'."
+      ]
+    },
+    {
+      "id": "node-03-bullet",
+      "type": "code",
+      "title": "Peluru dan Tembakan",
+      "xp": 5,
+      "explanation": "Setup sprite peluru dan mekanik tembakan. Sprite pahlawan mengecek tombol spasi dan membuat clone peluru. Clone peluru bergerak ke atas dan cek tabrakan dengan boss.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite PAHLAWAN ---\n[ketika bendera hijau diklik]\n[atur [BisaTembak ▼] ke [1]]\n[pergi ke x: [0] y: [-150]]\n[ulangi terus]\n  // Gerak kiri-kanan\n  jika <tombol [panah kanan ▼] ditekan?> maka [ubah x sebesar [6]] [akhir jika]\n  jika <tombol [panah kiri ▼] ditekan?> maka [ubah x sebesar [-6]] [akhir jika]\n  // Tembak dengan spasi\n  jika <<tombol [spasi ▼] ditekan?> dan <(BisaTembak) = [1]>> maka\n    [atur [BisaTembak ▼] ke [0]]\n    [kirim pesan [tembak ▼]]\n    [tunggu [0.3] detik]\n    [atur [BisaTembak ▼] ke [1]]\n  [akhir jika]\n[akhir ulangi]\n\n// --- Sprite PELURU (asli: tersembunyi) ---\n[ketika bendera hijau diklik]\n[sembunyikan]\n\n[ketika menerima [tembak ▼]]\n[buat klon dari [diriku sendiri ▼]]\n\n// --- Klon PELURU ---\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (posisi x [Pahlawan ▼]) y: (-140)]\n[ulangi terus]\n  [ubah y sebesar [15]]\n  jika <menyentuh [Boss ▼]?> maka\n    [ubah [HealthBoss ▼] sebesar [-10]]\n    [putar suara [pop ▼]]\n    [hapus klon ini]\n  [akhir jika]\n  jika <(posisi y) > [185]> maka\n    [hapus klon ini]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-04-health-bar",
+      "type": "code",
+      "title": "Health Bar — Tampilkan Sisa Nyawa Boss",
+      "xp": 5,
+      "explanation": "Health bar visual dibuat dari sprite persegi panjang merah. Ukuran horizontalnya (skala X) berubah sesuai variabel HealthBoss.\n\nVariabel HealthBoss mulai dari 100 (penuh) dan dikurangi setiap kena peluru. Sprite health bar selalu menyesuaikan ukurannya.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite HEALTH BAR (persegi merah) ---\n[ketika bendera hijau diklik]\n[atur [HealthBoss ▼] ke [100]]\n[pergi ke x: [0] y: [155]]\n[tampilkan]\n\n[ulangi terus]\n  // Ukuran bar proporsional dengan health (100% → 1% seiring health berkurang)\n  [atur ukuran ke (HealthBoss) %]\n  // Warna berubah: hijau → kuning → merah seiring health berkurang\n  jika <(HealthBoss) > [60]> maka\n    [atur efek [warna ▼] ke [60]]  // hijau\n  selainnya jika <(HealthBoss) > [30]> maka\n    [atur efek [warna ▼] ke [30]]  // kuning\n  selainnya\n    [atur efek [warna ▼] ke [0]]   // merah\n  [akhir jika]\n  // Cek kondisi menang\n  jika <(HealthBoss) < [1]> maka\n    [kirim pesan [boss-mati ▼]]\n    [hentikan [skrip ini ▼]]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-05-boss-movement",
+      "type": "code",
+      "title": "Boss — Bergerak dan Menyerang!",
+      "xp": 5,
+      "explanation": "Boss bergerak bolak-balik secara horizontal dan sesekali menembakkan bom ke bawah.\n\nBom dibuat dengan clone yang jatuh ke bawah. Pahlawan yang terkena bom kehilangan nyawa.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite BOSS ---\n[ketika bendera hijau diklik]\n[pergi ke x: [0] y: [100]]\n[atur gaya rotasi ke [kiri-kanan ▼]]\n[tampilkan]\n[ulangi terus]\n  [gerak 3 langkah]\n  [jika di tepi, pantul]\n  // Animasi boss\n  [kostum berikutnya]\n  [tunggu [0.1] detik]\n[akhir ulangi]\n\n// Boss berhenti saat mati\n[ketika menerima [boss-mati ▼]]\n[sembunyikan]\n[hentikan [skrip lainnya di sprite ini ▼]]\n\n// --- Sprite BOM (serangan boss) ---\n[ketika bendera hijau diklik]\n[sembunyikan]\n[ulangi terus]\n  [tunggu (pilih acak dari [2] sampai [5]) detik]\n  [buat klon dari [diriku sendiri ▼]]\n[akhir ulangi]\n\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (posisi x [Boss ▼]) y: [80]]\n[ulangi terus]\n  [ubah y sebesar [-5]]\n  jika <menyentuh [Pahlawan ▼]?> maka\n    [ubah [NyawaPahlawan ▼] sebesar [-1]]\n    [hapus klon ini]\n  [akhir jika]\n  jika <(posisi y) < [-185]> maka\n    [hapus klon ini]\n  [akhir jika]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Layar Menang & Game Over Epik!",
+      "xp": 5,
+      "explanation": "Game selesai dengan dua kemungkinan: menang (health boss = 0) atau kalah (nyawa pahlawan = 0). Masing-masing punya layar berbeda dengan efek yang sesuai suasana.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- LAYAR WIN (saat 'boss-mati') ---\n[ketika menerima [boss-mati ▼]]\n[ganti latar belakang ke [Stars ▼]]\n[tampilkan]\n[pergi ke x: [0] y: [20]]\n[putar suara [Tada ▼] hingga selesai]\n[katakan [🏆 BOSS DEFEATED!] selama [0]]\n// Efek kemenangan: clone bintang\n[ulangi [20] kali]\n  [buat klon dari [diriku sendiri ▼]]\n  [tunggu [0.1] detik]\n[akhir ulangi]\n[hentikan [semua ▼]]\n\n// --- Monitor Nyawa Pahlawan ---\n// Di sprite pahlawan atau manager terpisah:\n[ketika bendera hijau diklik]\n[atur [NyawaPahlawan ▼] ke [3]]\n[ulangi terus]\n  jika <(NyawaPahlawan) < [1]> maka\n    [kirim pesan [pahlawan-mati ▼]]\n    [hentikan [skrip ini ▼]]\n  [akhir jika]\n[akhir ulangi]\n\n// --- LAYAR GAME OVER (saat 'pahlawan-mati') ---\n[ketika menerima [pahlawan-mati ▼]]\n[ganti latar belakang ke [Black ▼]]\n[tampilkan]\n[pergi ke x: [0] y: [0]]\n[putar suara [Oops ▼] hingga selesai]\n[katakan [💀 GAME OVER...] selama [0]]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Upgrade Boss Battle-mu!",
+      "xp": 5,
+      "explanation": "Boss Battle-mu sudah epik! Berikut upgrade yang bisa membuat game lebih menantang:\n\nFASE BOSS\nSaat health turun ke 50%, boss masuk fase 2 — lebih cepat, bom lebih sering, pola serangan berbeda. Gunakan broadcast 'fase-2' yang dikirim saat health = 50.\n\nSERANGAN BOSS YANG LEBIH BERAGAM\n• Laser horizontal yang menyapu seluruh layar (harus lompat/sembunyi)\n• Homing missile yang mengikuti posisi pahlawan\n• Bom area yang meledak di radius besar\n\nPOWER-UP\nItem yang jatuh dari boss yang dikalahkan: shield, tembakan cepat, atau peluru besar.\n\nPREFIGHT CUTSCENE\nSebelum battle, tampilkan cutscene singkat boss masuk dengan efek dramatis menggunakan broadcast.",
+      "tips": [
+        "Buat musik latar yang berbeda untuk fase 1 dan fase 2 boss — intensitas meningkat saat boss di fase 2.",
+        "Efek 'screen flash' saat bom meledak: ubah backdrop ke putih selama 0.1 detik lalu kembali."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Mengapa kita menggunakan variabel 'BisaTembak' dengan jeda 0.3 detik untuk sistem tembakan?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Karena Scratch tidak bisa mendeteksi tombol spasi lebih cepat dari itu",
+        "Untuk mencegah pemain menembak terlalu banyak peluru sekaligus yang bisa memperlambat program",
+        "Karena peluru butuh 0.3 detik untuk mencapai boss",
+        "Untuk menghemat memori klon"
+      ],
+      "correctOption": "Untuk mencegah pemain menembak terlalu banyak peluru sekaligus yang bisa memperlambat program"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Boss Battle Fase 2!",
+      "xp": 15,
+      "instructions": "Tambahkan fase kedua yang lebih ganas ke boss battle-mu!\n\nFASE 1 (Health 100-51):\n• Boss bergerak pelan (3 langkah)\n• Bom jatuh setiap 3-5 detik\n• Boss berwarna normal\n\nFASE 2 (Health 50-0) — dipicu saat health ≤ 50:\n• Backdrop berubah jadi lebih gelap/dramatis\n• Boss bergerak lebih cepat (6 langkah)\n• Bom jatuh lebih sering (1-3 detik)\n• Boss berubah warna (efek merah/oranye — tanda marah!)\n• Musik berubah jadi lebih intens\n• Boss berkata 'KAMU AKAN MENYESAL!' sebelum fase 2\n\nBonus: Boss punya serangan laser horizontal di fase 2 yang harus ditimpa/dihindari!",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// Tambahkan variabel 'Fase' (mulai dari 1)\n// Di health bar monitor:\njika <<(HealthBoss) < [51]> dan <(Fase) = [1]>> maka\n  [atur [Fase ▼] ke [2]]\n  [kirim pesan [boss-fase2 ▼]]\n[akhir jika]\n\n// Boss merespons fase 2:\n[ketika menerima [boss-fase2 ▼]]\n// Boss bicara dengan dramatis:\n[hentikan [skrip lainnya di sprite ini ▼]]\n[katakan [ARGHHH! Kamu akan menyesal! 😡] selama [2] detik]\n[ubah efek [warna ▼] sebesar [60]]  // merah marah\n// Mulai gerak lebih cepat:\n[ulangi terus]\n  [gerak 6 langkah]  // lebih cepat dari fase 1!\n  [jika di tepi, pantul]\n[akhir ulangi]"
+      },
+      "expectedResult": "Boss battle dengan dua fase, boss makin agresif di fase 2, backdrop berubah, dan musik yang berbeda. Lihat contoh: https://scratch.mit.edu/projects/122/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// BOSS — dengan fase sistem\n[ketika bendera hijau diklik]\n[atur [Fase ▼] ke [1]]\n[pergi ke x: [0] y: [100]]\n[tampilkan]\n[ulangi terus]\n  jika <(Fase) = [1]> maka\n    [gerak 3 langkah]\n  selainnya\n    [gerak 6 langkah]\n  [akhir jika]\n  [jika di tepi, pantul]\n  [kostum berikutnya]\n  [tunggu [0.1] detik]\n[akhir ulangi]\n\n// HEALTH BAR — deteksi fase 2\n[ulangi terus]\n  [atur ukuran ke (HealthBoss) %]\n  // Ubah warna sesuai health\n  jika <(HealthBoss) > [60]> maka [atur efek [warna ▼] ke [60]] [akhir jika]\n  jika <<(HealthBoss) < [60]> dan <(HealthBoss) > [30]>> maka [atur efek [warna ▼] ke [30]] [akhir jika]\n  jika <(HealthBoss) < [30]> maka [atur efek [warna ▼] ke [0]] [akhir jika]\n  // Trigger fase 2\n  jika <<(HealthBoss) < [51]> dan <(Fase) = [1]>> maka\n    [atur [Fase ▼] ke [2]]\n    [kirim pesan [boss-fase2 ▼]]\n  [akhir jika]\n  // Win condition\n  jika <(HealthBoss) < [1]> maka\n    [kirim pesan [boss-mati ▼]]\n    [hentikan [skrip ini ▼]]\n  [akhir jika]\n[akhir ulangi]\n\n// FASE 2 TRANSITION\n[ketika menerima [boss-fase2 ▼]]\n[ganti latar belakang ke [Neon Tunnel ▼]]\n[putar suara [Cave Music ▼]]\n// Boss dialog dramatis\n[katakan [ARGHHH! TIDAK MUNGKIN!] selama [2] detik]\n[ubah efek [warna ▼] sebesar [50]]\n// BOM lebih sering di fase 2 — sprite bom:\n[atur [IntervalBom ▼] ke [1.5]]  // sebelumnya 3-5 detik",
+        "explanation": "Fase 2 dipicu dari health bar monitor ketika health turun di bawah 51 dan fase masih 1. Broadcast 'boss-fase2' memicu: perubahan backdrop, musik baru, dialog boss, efek warna merah, dan percepatan gerakan. Variabel 'Fase' memastikan transisi hanya terjadi SATU KALI."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Mengapa sistem tembakan menggunakan clone untuk peluru alih-alih memindahkan sprite peluru langsung?",
+        "options": [
+          "Karena sprite tidak bisa bergerak ke atas",
+          "Clone memungkinkan banyak peluru ada di layar sekaligus — setiap tembakan membuat peluru baru yang independen",
+          "Karena clone lebih cepat dari sprite biasa",
+          "Karena sprite peluru hanya bisa dipakai sekali"
+        ],
+        "correctAnswer": "Clone memungkinkan banyak peluru ada di layar sekaligus — setiap tembakan membuat peluru baru yang independen",
+        "explanation": "Jika kita hanya punya satu sprite peluru dan memindahkannya, hanya bisa ada satu peluru di layar dalam satu waktu. Dengan clone, setiap tembakan membuat peluru baru yang independen — bisa ada 5 peluru sekaligus di udara jika ditembak cepat.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa fungsi health bar dalam game?",
+        "options": [
+          "Dekorasi visual saja tanpa fungsi gameplay",
+          "Memberikan informasi visual kepada pemain tentang seberapa banyak nyawa musuh yang tersisa",
+          "Mengontrol kecepatan gerakan boss",
+          "Menentukan berapa banyak skor yang akan didapat pemain"
+        ],
+        "correctAnswer": "Memberikan informasi visual kepada pemain tentang seberapa banyak nyawa musuh yang tersisa",
+        "explanation": "Health bar adalah elemen UI (User Interface) yang memberikan feedback visual kepada pemain. Pemain bisa langsung melihat seberapa dekat boss akan dikalahkan. Ini jauh lebih intuitif dari hanya menampilkan angka — pemain bisa merasakan 'kemajuan' secara visual.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Bagaimana kita mendeteksi bahwa peluru mengenai boss?",
+        "options": [
+          "Dengan mengecek apakah koordinat X dan Y peluru sama dengan boss",
+          "Dengan blok 'menyentuh [Boss]?' di dalam loop klon peluru",
+          "Dengan blok 'jika boss terkena tembak'",
+          "Dengan variabel posisi yang dibandingkan"
+        ],
+        "correctAnswer": "Dengan blok 'menyentuh [Boss]?' di dalam loop klon peluru",
+        "explanation": "Setiap klon peluru punya loop yang terus mengecek 'menyentuh [Boss]?'. Saat nilai ini menjadi benar (peluru overlap dengan sprite boss), klon langsung mengurangi health boss dan menghapus dirinya sendiri.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Apa yang dimaksud dengan 'fase boss' dalam game design?",
+        "options": [
+          "Jumlah total level dalam game",
+          "Perubahan pola dan tingkat kesulitan boss berdasarkan sisa health-nya",
+          "Waktu yang dibutuhkan untuk mengalahkan boss",
+          "Jenis serangan yang boss miliki"
+        ],
+        "correctAnswer": "Perubahan pola dan tingkat kesulitan boss berdasarkan sisa health-nya",
+        "explanation": "Fase boss adalah teknik game design di mana boss 'berevolusi' saat kalah semakin banyak. Saat health berkurang, boss menjadi lebih agresif, lebih cepat, atau punya serangan baru. Ini menciptakan kurva kesulitan yang menarik dan membuat boss terasa 'marah' — membuat kemenangan akhirnya lebih memuaskan.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Mengapa variabel 'BisaTembak' perlu di-set ke 0 setelah tembak, lalu kembali ke 1 setelah 0.3 detik?",
+        "options": [
+          "Untuk mencegah tembakan ganda dalam waktu sangat singkat yang bisa membanjiri layar dengan peluru",
+          "Karena peluru butuh 0.3 detik untuk dibuat oleh Scratch",
+          "Untuk memberi jeda agar pemain bisa bernapas",
+          "Karena variabel tidak bisa langsung kembali ke 1"
+        ],
+        "correctAnswer": "Untuk mencegah tembakan ganda dalam waktu sangat singkat yang bisa membanjiri layar dengan peluru",
+        "explanation": "Tanpa cooldown (jeda tembak), pemain bisa membanjiri layar dengan ratusan peluru hanya dengan menahan tombol spasi. Ini tidak seimbang secara gameplay (terlalu mudah) dan bisa memperlambat program. Variabel 'BisaTembak' sebagai cooldown membuat game lebih seimbang dan fun.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Pembunuh Boss Sejati!",
+    "message": "Kamu baru saja membuat game boss battle yang lengkap dengan health bar, sistem tembakan, dan serangan balik! Ini adalah salah satu proyek paling kompleks yang bisa dibuat di Scratch, dan kamu berhasil! Lesson berikutnya adalah yang terakhir sebelum Final Project — kita bikin cerita dengan pilihan ending yang mengubah segalanya!",
+    "achievementName": "Pembunuh Boss",
+    "achievementIcon": "⚔️"
+  }
+}

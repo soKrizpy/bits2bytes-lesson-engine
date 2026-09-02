@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-09",
+    "title": "Kuis Tebak Gambar",
+    "description": "Buat game kuis tebak gambar — tampilkan gambar, pemain jawab, dan Scratch langsung kasih tahu apakah jawabannya benar atau salah!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 9,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Bikin Game Kuis Sendiri — Jadilah Guru Digitalmu!",
+    "description": "Bayangkan kamu bikin soal kuis untuk teman-temanmu, tapi versi digital! Di lesson ini kita bikin game kuis tebak gambar: Scratch menampilkan gambar hewan atau benda, pemain mengetik jawabannya, dan Scratch langsung bilang 'Benar!' atau 'Salah, coba lagi!'. Kamu bahkan bisa bikin soal-soal sendiri untuk mengetes teman!",
+    "analogy": "Kamu pernah main game tebak gambar di HP? Di sana ada yang membuat gambar dan soalnya — sekarang kamu yang menjadi pembuat game-nya, bukan cuma pemainnya!"
+  },
+  "objectives": [
+    "Menggunakan blok 'tanyakan dan tunggu' untuk menerima input dari pemain",
+    "Menggunakan variabel 'jawaban' untuk membaca apa yang diketik pemain",
+    "Menggunakan blok 'jika... maka... selainnya' untuk cek jawaban benar/salah",
+    "Mengganti kostum sprite untuk menampilkan gambar soal yang berbeda",
+    "Membuat loop soal untuk menampilkan beberapa soal berurutan"
+  ],
+  "review": {
+    "learned": [
+      "Blok 'tanyakan [pertanyaan] dan tunggu' menampilkan input field dan menyimpan jawaban di variabel 'jawaban'.",
+      "Variabel 'jawaban' otomatis berisi teks yang baru diketik pemain setelah blok 'tanyakan'.",
+      "Blok 'jika <A> maka ... selainnya ...' menjalankan instruksi berbeda tergantung benar/salah.",
+      "Operator '= [teks]' membandingkan isi variabel jawaban dengan teks yang kita tentukan.",
+      "Mengganti kostum sprite bisa dipakai untuk menampilkan gambar soal yang berbeda."
+    ],
+    "keyConcepts": [
+      "Input pemain: tanyakan dan tunggu",
+      "Variabel 'jawaban' (answer)",
+      "Kondisi: jika-maka-selainnya",
+      "Operator perbandingan: sama dengan",
+      "Kostum sebagai gambar soal"
+    ],
+    "takeaways": [
+      "Blok 'tanyakan dan tunggu' adalah satu-satunya cara mendapatkan teks input dari pemain di Scratch.",
+      "Perbandingan teks di Scratch tidak case-sensitive — 'Kucing' dan 'kucing' dianggap sama.",
+      "Game kuis bisa dibuat lebih canggih dengan variabel skor yang bertambah setiap jawaban benar."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya game kuis tebak gambar dengan:\n• 3 soal gambar berbeda (hewan atau benda pilihanmu)\n• Input teks di bawah layar untuk pemain mengetik jawaban\n• Respons 'Benar! +10 poin!' jika jawaban tepat\n• Respons 'Salah... Jawabannya adalah [X]' jika salah\n• Skor yang bertambah untuk setiap jawaban benar\n• Pesan akhir yang menampilkan total skor\n\nGame ini bisa kamu kustomisasi dengan topik apapun — hewan, ibu kota, nama buah, tokoh animasi!",
+      "tips": [
+        "Buat sprite karakter 'pembawa kuis' yang cantik — misalnya robot, guru lucu, atau hewan.",
+        "Setiap 'gambar soal' bisa menjadi kostum berbeda dari sprite yang sama."
+      ]
+    },
+    {
+      "id": "node-02-ask-answer",
+      "type": "lesson",
+      "title": "Blok Tanyakan — Terima Input Pemain",
+      "xp": 5,
+      "explanation": "Blok 'tanyakan [pertanyaan] dan tunggu' melakukan dua hal sekaligus:\n1. Menampilkan teks pertanyaan sebagai gelembung di atas sprite\n2. Membuka kotak input di bawah Stage agar pemain bisa mengetik\n3. Menunggu sampai pemain menekan Enter\n4. Menyimpan teks yang diketik ke variabel otomatis bernama 'jawaban'\n\nSetelah blok ini selesai, variabel 'jawaban' berisi tepat apa yang diketik pemain. Kita tinggal bandingkan dengan jawaban yang benar!\n\nVariabel 'jawaban' ada di kategori Sensor — kamu bisa drag ke workspace untuk melihat nilainya.",
+      "analogy": "Blok 'tanyakan' seperti guru yang mengajukan soal ke kelas dan menunggu murid mengangkat tangan menjawab. Guru tidak akan lanjut ke soal berikutnya sampai ada yang menjawab. Begitu juga Scratch — program berhenti sampai pemain Enter!",
+      "tips": [
+        "Blok 'jawaban' (answer) ada di kategori Sensor, di bawah blok 'tanyakan dan tunggu'.",
+        "Di Scratch, perbandingan teks tidak membedakan huruf besar/kecil — sangat membantu untuk jawaban teks!"
+      ]
+    },
+    {
+      "id": "node-03-check-answer",
+      "type": "code",
+      "title": "Cek Jawaban Benar atau Salah",
+      "xp": 5,
+      "explanation": "Setelah pemain menjawab, kita bandingkan variabel 'jawaban' dengan jawaban yang benar menggunakan blok 'jika... maka... selainnya'.\n\nOperator '=' di kategori Operator berwarna hijau dipakai untuk membandingkan dua nilai. Jika sama, jalankan instruksi 'benar', jika tidak jalankan instruksi 'salah'.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[tanyakan [Apa nama hewan yang suka makan wortel? 🥕] dan tunggu]\njika <(jawaban) = [kelinci]> maka\n  [katakan [✅ Benar! Kamu pintar!] selama [2] detik]\nselainnya\n  [katakan [❌ Salah... Jawabannya adalah: Kelinci] selama [2] detik]\n[akhir jika]"
+      }
+    },
+    {
+      "id": "node-04-score",
+      "type": "code",
+      "title": "Tambahkan Sistem Skor",
+      "xp": 5,
+      "explanation": "Kita tambahkan variabel 'Skor' yang bertambah 10 setiap jawaban benar. Buat variabel baru: klik 'Buat Variabel' di kategori Variabel → beri nama 'Skor'.\n\nVariabel 'Skor' otomatis tampil di pojok kiri atas Stage. Kita reset ke 0 di awal dan tambahkan 10 setiap jawaban benar.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[atur [Skor ▼] ke [0]]\n[tanyakan [Apa nama hewan yang suka makan wortel? 🥕] dan tunggu]\njika <(jawaban) = [kelinci]> maka\n  [katakan [✅ Benar! +10 poin!] selama [2] detik]\n  [ubah [Skor ▼] sebesar [10]]\nselainnya\n  [katakan [❌ Salah! Jawabannya: Kelinci] selama [2] detik]\n[akhir jika]"
+      }
+    },
+    {
+      "id": "node-05-multiple-questions",
+      "type": "code",
+      "title": "Beberapa Soal Berurutan",
+      "xp": 5,
+      "explanation": "Sekarang tambahkan soal kedua dan ketiga. Cukup copy-paste pola yang sama dengan pertanyaan dan jawaban berbeda. Setiap soal punya blok 'tanyakan' dan 'jika benar' sendiri.\n\nDi akhir semua soal, tampilkan total skor pemain.",
+      "code": {
+        "language": "scratch",
+        "content": "[ketika bendera hijau diklik]\n[atur [Skor ▼] ke [0]]\n\n// --- Soal 1 ---\n[ganti kostum ke [gambar-kelinci ▼]]\n[tanyakan [Hewan apakah ini? 🐾] dan tunggu]\njika <(jawaban) = [kelinci]> maka\n  [katakan [✅ Benar! +10] selama [1.5] detik]\n  [ubah [Skor ▼] sebesar [10]]\nselainnya\n  [katakan [❌ Jawabannya: Kelinci] selama [1.5] detik]\n[akhir jika]\n\n// --- Soal 2 ---\n[ganti kostum ke [gambar-gajah ▼]]\n[tanyakan [Hewan apakah ini? 🐾] dan tunggu]\njika <(jawaban) = [gajah]> maka\n  [katakan [✅ Benar! +10] selama [1.5] detik]\n  [ubah [Skor ▼] sebesar [10]]\nselainnya\n  [katakan [❌ Jawabannya: Gajah] selama [1.5] detik]\n[akhir jika]\n\n// --- Soal 3 ---\n[ganti kostum ke [gambar-harimau ▼]]\n[tanyakan [Hewan apakah ini? 🐾] dan tunggu]\njika <(jawaban) = [harimau]> maka\n  [katakan [✅ Benar! +10] selama [1.5] detik]\n  [ubah [Skor ▼] sebesar [10]]\nselainnya\n  [katakan [❌ Jawabannya: Harimau] selama [1.5] detik]\n[akhir jika]\n\n// --- Hasil akhir ---\n[katakan (gabungkan [🏆 Skor akhirmu: ] dan (Skor)) selama [4] detik]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Kuis Lengkap dengan Penilaian!",
+      "xp": 5,
+      "explanation": "Versi final kuis ini menambahkan penilaian di akhir: tergantung skor, sprite memberikan komentar berbeda.\n\nSkor 30 = 'Sempurna! Juara kuis!'\nSkor 20 = 'Bagus! Hampir sempurna!'\nSkor kurang dari 20 = 'Terus berlatih ya!'\n\nIni menggunakan 'jika... maka... selainnya' bertingkat untuk mengecek berbagai kemungkinan skor.",
+      "code": {
+        "language": "scratch",
+        "content": "// ... (semua soal seperti di atas) ...\n\n// --- Penilaian akhir ---\njika <(Skor) = [30]> maka\n  [putar suara [Tada ▼]]\n  [katakan [🏆 SEMPURNA! Skor: 30/30 — Kamu Juara Kuis!] selama [4] detik]\nselainnya\n  jika <(Skor) = [20]> maka\n    [putar suara [Chime ▼]]\n    [katakan [👏 Bagus! Skor: 20/30 — Hampir Sempurna!] selama [4] detik]\n  selainnya\n    [katakan [💪 Skor: ] selama [1] detik]\n    [katakan [Terus berlatih ya! Kamu pasti bisa lebih baik!] selama [3] detik]\n  [akhir jika]\n[akhir jika]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Buat Kuis Temamu Sendiri!",
+      "xp": 5,
+      "explanation": "Kuis dasarmu sudah jalan! Berikut cara membuatnya lebih keren:\n\nUBAH TEMA\nAlih-alih hewan, buat kuis tentang:\n• Ibu kota negara ('Apa ibu kota Indonesia?')\n• Lagu daerah ('Lagu 'Ampar-Ampar Pisang' dari daerah mana?')\n• Tokoh animasi favorit\n\nACAK URUTAN SOAL\nBuat daftar soal di variabel dan acak urutannya menggunakan 'pilih acak'. Setiap main urutannya beda!\n\nBATAS WAKTU\nTambahkan variabel 'Waktu' yang berkurang. Kalau waktu habis sebelum jawab, langsung ke soal berikutnya.\n\nMULTI-PEMAIN (giliran)\nTambahkan 2 sprite karakter. Soal ganjil untuk pemain 1, soal genap untuk pemain 2. Siapa yang skor tertinggi?",
+      "tips": [
+        "Untuk gambar soal, kamu bisa tambahkan kostum dari file gambar yang kamu upload ke Scratch.",
+        "Perbandingan teks di Scratch tidak membedakan kapital — 'KELINCI' dan 'kelinci' dianggap sama."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Di mana teks yang diketik pemain disimpan setelah blok 'tanyakan dan tunggu' selesai?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Di variabel bernama 'Input'",
+        "Di variabel bernama 'Teks'",
+        "Di variabel otomatis bernama 'jawaban' (answer)",
+        "Di memori sementara yang tidak bisa diakses"
+      ],
+      "correctOption": "Di variabel otomatis bernama 'jawaban' (answer)"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Kuis 5 Soal dengan Petunjuk!",
+      "xp": 15,
+      "instructions": "Buat kuis 5 soal dengan fitur petunjuk!\n\n1. Buat kuis dengan 5 soal bertema apapun (hewan, buah, negara, dll)\n2. Setiap soal punya 2 kesempatan menjawab:\n   • Jawaban pertama benar = +10 poin\n   • Jawaban pertama salah → muncul petunjuk → bisa coba lagi\n   • Jawaban kedua benar = +5 poin\n   • Jawaban kedua salah = 0 poin, tampilkan jawaban benar\n3. Total skor maksimal 50 poin\n4. BONUS: Tambahkan gambar atau kostum berbeda untuk setiap soal!",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// Template satu soal dengan petunjuk:\n[atur [percobaan ▼] ke [1]]\n[tanyakan [Soal: ...?] dan tunggu]\njika <(jawaban) = [jawaban-benar]> maka\n  [katakan [✅ Benar! +10 poin!] selama [2] detik]\n  [ubah [Skor ▼] sebesar [10]]\nselainnya\n  [katakan [💡 Petunjuk: ...] selama [2] detik]\n  [tanyakan [Coba lagi!] dan tunggu]\n  jika <(jawaban) = [jawaban-benar]> maka\n    [katakan [✅ Benar! +5 poin!] selama [2] detik]\n    [ubah [Skor ▼] sebesar [5]]\n  selainnya\n    [katakan [❌ Jawabannya: jawaban-benar] selama [2] detik]\n  [akhir jika]\n[akhir jika]"
+      },
+      "expectedResult": "Kuis 5 soal dengan sistem petunjuk, dua kesempatan per soal, dan skor maksimal 50. Lihat contoh: https://scratch.mit.edu/projects/112/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "[ketika bendera hijau diklik]\n[atur [Skor ▼] ke [0]]\n\n// Soal 1\n[tanyakan [🐘 Hewan terbesar di darat adalah?] dan tunggu]\njika <(jawaban) = [gajah]> maka\n  [katakan [✅ Benar! +10 poin!] selama [2] detik]\n  [ubah [Skor ▼] sebesar [10]]\nselainnya\n  [katakan [💡 Petunjuk: hewan ini punya belalai panjang] selama [2] detik]\n  [tanyakan [Coba lagi!] dan tunggu]\n  jika <(jawaban) = [gajah]> maka\n    [katakan [✅ Benar! +5 poin!] selama [2] detik]\n    [ubah [Skor ▼] sebesar [5]]\n  selainnya\n    [katakan [❌ Jawabannya: Gajah] selama [2] detik]\n  [akhir jika]\n[akhir jika]\n\n// (Soal 2-5 mengikuti pola yang sama)\n\n// Hasil akhir\n[katakan (gabungkan [🏆 Skor Akhir: ] dan (gabungkan (Skor) [/50])) selama [4] detik]",
+        "explanation": "Pola 'dua kesempatan' dibuat dengan blok jika-selainnya bersarang. Percobaan pertama langsung dicek, kalau salah tampilkan petunjuk lalu tanyakan lagi. Nilai poin berbeda (10 vs 5) memberi insentif untuk menjawab benar di percobaan pertama."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa yang dilakukan blok 'tanyakan [teks] dan tunggu'?",
+        "options": [
+          "Menampilkan teks di layar dan langsung lanjut ke blok berikutnya",
+          "Menampilkan pertanyaan, membuka input field, menunggu pemain menekan Enter, lalu menyimpan jawaban",
+          "Membuat sprite berbicara selama beberapa detik",
+          "Membuka halaman web baru dengan pertanyaan"
+        ],
+        "correctAnswer": "Menampilkan pertanyaan, membuka input field, menunggu pemain menekan Enter, lalu menyimpan jawaban",
+        "explanation": "Blok 'tanyakan dan tunggu' menampilkan pertanyaan sebagai gelembung bicara, membuka kotak input di bawah Stage, lalu MENUNGGU (program berhenti sementara) sampai pemain mengetik sesuatu dan menekan Enter. Jawaban pemain disimpan otomatis ke variabel 'jawaban'.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Setelah pemain mengetik 'KUCING' (huruf kapital), apakah blok 'jika jawaban = kucing' akan bernilai BENAR?",
+        "options": [
+          "Tidak — Scratch membedakan huruf besar dan kecil",
+          "Ya — Scratch tidak membedakan huruf besar/kecil dalam perbandingan teks",
+          "Tergantung pengaturan bahasa Scratch",
+          "Hanya untuk kata bahasa Inggris"
+        ],
+        "correctAnswer": "Ya — Scratch tidak membedakan huruf besar/kecil dalam perbandingan teks",
+        "explanation": "Perbandingan teks di Scratch bersifat case-insensitive — 'KUCING', 'Kucing', dan 'kucing' semuanya dianggap sama. Ini sangat membantu untuk game kuis karena pemain tidak perlu khawatir soal kapital.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa perbedaan antara 'jika... maka' dan 'jika... maka... selainnya'?",
+        "options": [
+          "Tidak ada perbedaan",
+          "'jika... maka' hanya menjalankan satu aksi; 'selainnya' menjalankan aksi berbeda jika kondisi salah",
+          "'jika... maka' lebih cepat dieksekusi",
+          "'selainnya' hanya bisa digunakan sekali dalam seluruh program"
+        ],
+        "correctAnswer": "'jika... maka' hanya menjalankan satu aksi; 'selainnya' menjalankan aksi berbeda jika kondisi salah",
+        "explanation": "'Jika... maka' hanya menjalankan isi blok JIKA kondisi benar — kalau kondisi salah, tidak ada yang terjadi. 'Jika... maka... selainnya' menjalankan isi pertama jika benar, dan isi kedua (selainnya) jika salah. Untuk kuis, kita butuh 'selainnya' agar bisa memberi respons saat jawaban salah.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Di Scratch, blok 'gabungkan [A] dan [B]' digunakan untuk...",
+        "options": [
+          "Menjumlahkan dua angka",
+          "Menggabungkan dua teks menjadi satu teks",
+          "Membandingkan dua nilai",
+          "Menggabungkan dua sprite menjadi satu"
+        ],
+        "correctAnswer": "Menggabungkan dua teks menjadi satu teks",
+        "explanation": "Blok 'gabungkan [A] dan [B]' (join) menggabungkan dua teks menjadi satu. Misalnya, 'gabungkan [Skor: ] dan (Skor)' menghasilkan teks seperti 'Skor: 30'. Ini berguna untuk menampilkan pesan yang menyertakan nilai variabel.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Mengapa game kuis digital di Scratch lebih fleksibel dari kuis di kertas?",
+        "options": [
+          "Karena kuis digital selalu lebih sulit",
+          "Karena kuis digital bisa langsung memberi umpan balik benar/salah, menghitung skor otomatis, dan bisa dimainkan berulang kali",
+          "Karena kuis digital tidak butuh pertanyaan",
+          "Karena kuis digital hanya bisa dimainkan satu orang"
+        ],
+        "correctAnswer": "Karena kuis digital bisa langsung memberi umpan balik benar/salah, menghitung skor otomatis, dan bisa dimainkan berulang kali",
+        "explanation": "Kuis digital punya keunggulan: respons instan (langsung tahu benar/salah), skor otomatis, bisa dimainkan berulang kali tanpa kertas baru, bisa dibagikan ke siapa saja via link, dan bisa menampilkan gambar/suara yang tidak mungkin ada di kertas.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Pembuat Kuis Berbakat!",
+    "message": "Kamu baru saja membuat game kuis interaktif! Sekarang kamu tahu cara menerima input dari pemain dan membuat keputusan berdasarkan jawaban mereka. Di lesson berikutnya, kita bikin game aksi: tangkap apel yang jatuh dari pohon!",
+    "achievementName": "Pembuat Kuis Digital",
+    "achievementIcon": "🧠"
+  }
+}

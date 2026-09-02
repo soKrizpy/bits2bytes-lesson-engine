@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-15",
+    "title": "Petualangan 3 Babak",
+    "description": "Buat cerita petualangan interaktif dengan 3 karakter dan 3 babak — setiap karakter punya dialog sendiri dan cerita berkembang saat kamu klik!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 15,
+    "estimatedTime": 35,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Selamat Datang di Level 3 — Kamu Seperti Game Developer Sungguhan!",
+    "description": "Level 3 adalah level di mana proyekmu terasa benar-benar profesional! Kita mulai dengan membuat cerita petualangan dengan 3 babak penuh: ada pahlawan, sahabat, dan mentor yang masing-masing punya kepribadian, dialog, dan animasi sendiri. Setiap babak punya backdrop berbeda dan musik yang berbeda. Ini seperti membuat episode pertama serial animasimu sendiri!",
+    "analogy": "Film animasi favoritmu punya banyak karakter yang bergantian bicara, bergerak ekspresif, dan cerita yang berkembang dari scene ke scene. Sekarang kamu yang jadi sutradaranya — kamu yang atur kamera (backdrop), dialog (blok katakan), dan gerakan setiap karakter di setiap babak!"
+  },
+  "objectives": [
+    "Mendesain cerita tiga babak dengan struktur awal-tengah-akhir",
+    "Mengkoordinasikan minimal 3 sprite karakter dengan dialog bergantian",
+    "Menggunakan backdrop berbeda untuk setiap babak cerita",
+    "Menerapkan efek masuk dan keluar karakter secara sinematik",
+    "Memanfaatkan broadcast berantai untuk narasi yang mengalir"
+  ],
+  "review": {
+    "learned": [
+      "Struktur 3 babak: setup (perkenalan) → konflik (masalah) → resolusi (penyelesaian).",
+      "Setiap karakter bisa punya 'kepribadian' melalui pilihan kata, kecepatan dialog, dan animasi gerak.",
+      "Backdrop yang berubah di setiap babak menciptakan perubahan suasana yang dramatis.",
+      "Sprite bisa muncul dari tepi layar (x=-300) dan meluncur ke posisi tengah untuk efek masuk sinematik.",
+      "Broadcast berantai dengan 'kirim dan tunggu' menjaga dialog tetap berurutan tanpa tumpang tindih."
+    ],
+    "keyConcepts": [
+      "Struktur 3 babak dalam bercerita",
+      "Koordinasi multi-karakter dengan broadcast",
+      "Scene transition: backdrop + musik",
+      "Efek masuk/keluar karakter sinematik",
+      "Dialog bergantian dengan timing"
+    ],
+    "takeaways": [
+      "Cerita yang baik punya struktur: perkenalan masalah, puncak konflik, dan penyelesaian yang memuaskan.",
+      "Karakter yang berbeda harus terasa berbeda — kecepatan bicara, cara gerak, dan kata-kata yang dipakai.",
+      "Detail visual kecil (masuk dari tepi, perubahan backdrop) membuat cerita terasa jauh lebih sinematik."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya animasi cerita petualangan 3 babak:\n\nBABAK 1 — Pertemuan:\n• Backdrop: Hutan siang hari\n• Pahlawan muncul dari kiri: 'Aku harus menyelamatkan desa!'\n• Sahabat muncul dari kanan: 'Aku ikut! Bersama lebih kuat!'\n\nBABAK 2 — Konflik:\n• Backdrop: Gua gelap\n• Mentor muncul: 'Hati-hati, di dalam ada jebakan!'\n• Dialog tegang antar karakter\n\nBABAK 3 — Kemenangan:\n• Backdrop: Istana terang\n• Semua karakter berkumpul, dialog kemenangan\n• Musik meriah, efek bintang dari klon\n\nPemain klik tombol untuk melanjutkan tiap dialog!",
+      "tips": [
+        "Tulis skrip ceritamu dulu di kertas sebelum mulai coding — lebih mudah diatur.",
+        "Pilih 3 sprite karakter yang kontras tampilannya agar mudah dibedakan pemain."
+      ]
+    },
+    {
+      "id": "node-02-story-structure",
+      "type": "lesson",
+      "title": "Struktur 3 Babak — Cara Cerita yang Bagus",
+      "xp": 5,
+      "explanation": "Hampir semua cerita yang bagus — film, game, buku — mengikuti struktur 3 babak:\n\nBABAK 1 — SETUP (Perkenalan)\nPerkenalkan karakter dan dunia. Apa tujuan pahlawan? Siapa sahabatnya? Di mana cerita berlangsung?\nPanjang: sekitar 30% cerita\n\nBABAK 2 — KONFRONTASI (Masalah)\nMasalah besar muncul. Pahlawan menghadapi rintangan. Keadaan memburuk sebelum membaik.\nPanjang: sekitar 50% cerita (bagian terpanjang)\n\nBABAK 3 — RESOLUSI (Penyelesaian)\nPahlawan mengatasi masalah. Ada momen klimaks, lalu kemenangan atau pembelajaran.\nPanjang: sekitar 20% cerita\n\nStruktur ini bikin penonton tetap tertarik dari awal sampai akhir!",
+      "analogy": "Struktur 3 babak seperti roller coaster: Babak 1 adalah naik pelan-pelan (antisipasi), Babak 2 adalah bagian cepat dan menegangkan (konflik), Babak 3 adalah landing yang memuaskan (resolusi). Tanpa satu bagian pun, pengalaman jadi tidak lengkap!",
+      "tips": [
+        "Konflik yang baik harus terasa mustahil di tengah — buat penonton/pemain khawatir sebentar.",
+        "Resolusi yang baik harus dimenangkan oleh kemampuan/kebijaksanaan karakter, bukan keberuntungan murni."
+      ]
+    },
+    {
+      "id": "node-03-character-entrance",
+      "type": "code",
+      "title": "Efek Masuk Sinematik — Karakter Muncul dari Tepi",
+      "xp": 5,
+      "explanation": "Alih-alih karakter langsung muncul di tengah layar, buat mereka masuk dari tepi dengan 'meluncur'. Ini jauh lebih sinematik!\n\nKarakter Pahlawan masuk dari kiri, Sahabat dari kanan. Masing-masing disembunyikan dulu, lalu saat giliran babak mereka, masuk dengan efek meluncur.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite PAHLAWAN ---\n[ketika bendera hijau diklik]\n[sembunyikan]\n[pergi ke x: [-280] y: [-60]]\n[hapus efek grafis]\n\n[ketika menerima [babak-1 ▼]]\n[ganti latar belakang ke [Woods ▼]]\n[putar suara [Forest ▼]]\n[tampilkan]\n// Meluncur masuk dari kiri\n[meluncur ke x: [-100] y: [-60] dalam [0.8] detik]\n[katakan [Aku harus menyelamatkan desa dari ancaman itu!] selama [2.5] detik]\n[kirim pesan [sahabat-masuk ▼] dan tunggu]\n[katakan [Terima kasih, Sahabat! Bersama kita pasti bisa!] selama [2] detik]\n[kirim pesan [akhir-babak-1 ▼]]"
+      }
+    },
+    {
+      "id": "node-04-act2",
+      "type": "code",
+      "title": "Babak 2 — Konflik di Gua Gelap",
+      "xp": 5,
+      "explanation": "Babak 2 dimulai dengan transisi backdrop. Mentor muncul sebagai karakter baru di babak ini.\n\nPenting: Pahlawan dan Sahabat masih ada di Stage tapi bergerak ke posisi berbeda untuk babak 2. Gunakan 'meluncur ke' untuk transisi posisi yang halus.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Transisi ke Babak 2 (dari broadcast 'akhir-babak-1') ---\n// Di sprite PAHLAWAN:\n[ketika menerima [akhir-babak-1 ▼]]\n[ganti latar belakang ke [Cave ▼]]\n[putar suara [Cave Music ▼]]\n[meluncur ke x: [-120] y: [-60] dalam [0.5] detik]\n[katakan [Di sini sangat gelap... aku takut.] selama [2] detik]\n[kirim pesan [mentor-masuk ▼] dan tunggu]\n[katakan [Baik! Aku akan menjadi cahayanya!] selama [2] detik]\n[kirim pesan [akhir-babak-2 ▼]]\n\n// --- Sprite MENTOR ---\n[ketika bendera hijau diklik]\n[sembunyikan]\n\n[ketika menerima [mentor-masuk ▼]]\n[pergi ke x: [280] y: [30]]\n[tampilkan]\n[meluncur ke x: [100] y: [30] dalam [0.6] detik]\n[katakan [Berhenti! Jangan maju dulu, ada jebakan di sana! ⚠️] selama [3] detik]\n[katakan [Gunakan senter ini untuk menerangi jalan.] selama [2] detik]"
+      }
+    },
+    {
+      "id": "node-05-act3",
+      "type": "code",
+      "title": "Babak 3 — Kemenangan yang Meriah!",
+      "xp": 5,
+      "explanation": "Babak 3 adalah klimaks — semua karakter berkumpul, backdrop berubah jadi cerah, musik meriah, dan klon bintang berterbangan sebagai efek kemenangan!\n\nIni menggunakan semua skill: broadcast, clone, backdrop, suara, dan animasi.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Babak 3: Kemenangan! ---\n// Di sprite PAHLAWAN:\n[ketika menerima [akhir-babak-2 ▼]]\n[ganti latar belakang ke [Castle 1 ▼]]\n[putar suara [Tada ▼]]\n// Semua karakter berkumpul di tengah\n[meluncur ke x: [-80] y: [-60] dalam [0.5] detik]\n[kirim pesan [karakter-kumpul ▼]]\n[tunggu [1] detik]\n[katakan [Kita berhasil! Desa aman! 🏆] selama [3] detik]\n[kirim pesan [efek-kemenangan ▼]]\n[tunggu [1] detik]\n[katakan [Petualangan ini mengajarkan bahwa persahabatan adalah kekuatan terbesar!] selama [4] detik]\n[kirim pesan [the-end ▼]]\n\n// --- Sprite BINTANG (efek kemenangan via clone) ---\n[ketika menerima [efek-kemenangan ▼]]\n[ulangi [15] kali]\n  [buat klon dari [diriku sendiri ▼]]\n  [tunggu [0.1] detik]\n[akhir ulangi]\n\n[ketika aku mulai sebagai klon]\n[tampilkan]\n[pergi ke x: (pilih acak dari [-220] sampai [220]) y: (pilih acak dari [-160] sampai [160])]\n[atur efek [warna ▼] ke (pilih acak dari [0] sampai [200])]\n[ubah ukuran sebesar (pilih acak dari [20] sampai [60])]\n[tunggu [1.5] detik]\n[hapus klon ini]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Proyek Lengkap — Semua Babak Tersambung",
+      "xp": 5,
+      "explanation": "Ini adalah struktur broadcast lengkap untuk proyek 3 babak:\n\nbabak-1 → sahabat-masuk → akhir-babak-1\n→ mentor-masuk → akhir-babak-2\n→ karakter-kumpul → efek-kemenangan → the-end\n\nSetiap broadcast adalah 'titik penyerahan' dari satu sprite ke sprite berikutnya.\n\nTombol 'Mulai Cerita' mengirim broadcast pertama saat diklik — pemain yang memulai petualangan!",
+      "code": {
+        "language": "scratch",
+        "content": "// ALUR BROADCAST LENGKAP:\n// [Bendera hijau] → setup semua sprite ke posisi awal\n// [Klik tombol Mulai] → kirim 'babak-1'\n// babak-1 → backdrop hutan, Pahlawan masuk, dialog\n//   → 'sahabat-masuk' → Sahabat masuk, dialog\n//   → 'akhir-babak-1' → backdrop gua, Pahlawan lanjut\n//     → 'mentor-masuk' → Mentor masuk, dialog\n//     → 'akhir-babak-2' → backdrop istana, semua kumpul\n//       → 'karakter-kumpul' → Sahabat & Mentor ke posisi\n//       → 'efek-kemenangan' → klon bintang berterbangan\n//       → 'the-end' → Narator tampil, THE END\n\n// SPRITE TOMBOL MULAI\n[ketika bendera hijau diklik]\n[tampilkan]\n[pergi ke x: [0] y: [-150]]\n\n[ketika sprite ini diklik]\n[sembunyikan]\n[kirim pesan [babak-1 ▼]]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Buat Ceritamu Lebih Mendalam!",
+      "xp": 5,
+      "explanation": "Cerita 3 babakmu sudah siap! Berikut cara menambah kedalaman:\n\nPILIHAN DIALOG\nDi suatu titik, buat pemain memilih respons karakter: 'Pilih: [1] Pergi ke gua atau [2] Minta bantuan desa'. Setiap pilihan bawa ke alur berbeda!\n\nEKSPRESI KARAKTER\nBuat beberapa kostum per karakter (ekspresi senang, sedih, terkejut, marah). Ganti kostum sesuai emosi dialog.\n\nEFEK SUARA AMBIENCE\nLoop suara latar di setiap backdrop: suara hutan, suara gua yang bergema, suara pesta kemenangan.\n\nCREDITS AKHIR\nSetelah 'the-end', tampilkan credits: 'Dibuat oleh [namamu] dengan Scratch ❤️'",
+      "tips": [
+        "Simpan semua nama broadcast di catatan — proyek 3 babak bisa punya 10+ broadcast berbeda.",
+        "Coba buat versi mobile-friendly: ganti kontrol keyboard dengan klik sprite untuk semua navigasi."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Dalam struktur 3 babak cerita, babak mana yang biasanya TERPANJANG?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Babak 1 (Setup/Perkenalan)",
+        "Babak 2 (Konfrontasi/Konflik)",
+        "Babak 3 (Resolusi/Penyelesaian)",
+        "Semua babak sama panjangnya"
+      ],
+      "correctOption": "Babak 2 (Konfrontasi/Konflik)"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Cerita dengan Pilihan Ending!",
+      "xp": 15,
+      "instructions": "Buat cerita petualangan 3 babak dengan DUA kemungkinan ending berdasarkan pilihan pemain!\n\n1. Babak 1 & 2 sama untuk semua pemain\n2. Di akhir Babak 2, tampilkan pilihan:\n   'Pilih strategi: ketik [1] = serbu langsung atau [2] = cari jalan rahasia'\n3. Pilihan 1 → Ending A: Pahlawan menang dengan dramatis tapi terluka\n4. Pilihan 2 → Ending B: Pahlawan menang dengan cerdik tanpa korban\n5. Masing-masing ending punya dialog dan backdrop berbeda\n6. Setelah ending, tampilkan nilai moral yang berbeda",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// Di akhir Babak 2, sebelum resolusi:\n[tanyakan [Pilih strategi:\\n1 = Serbu langsung\\n2 = Cari jalan rahasia] dan tunggu]\njika <(jawaban) = [1]> maka\n  [kirim pesan [ending-A ▼]]\nselainnya\n  [kirim pesan [ending-B ▼]]\n[akhir jika]\n\n// Sprite Pahlawan merespons ending-A:\n[ketika menerima [ending-A ▼]]\n[ganti latar belakang ke [Castle 1 ▼]]\n[katakan [Kita berhasil... tapi aku terluka. Kadang keberanian ada harganya.] selama [4] detik]\n\n// Sprite Pahlawan merespons ending-B:\n[ketika menerima [ending-B ▼]]\n[ganti latar belakang ke [Garden ▼]]\n[katakan [Kita berhasil tanpa pertumpahan darah! Kebijaksanaan mengalahkan kekerasan!] selama [4] detik]"
+      },
+      "expectedResult": "Cerita 3 babak dengan dua ending berbeda berdasarkan pilihan pemain, masing-masing dengan dialog dan backdrop unik. Lihat contoh: https://scratch.mit.edu/projects/118/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// PAHLAWAN — koordinator utama\n[ketika bendera hijau diklik]\n[sembunyikan]\n\n[ketika menerima [mulai ▼]]\n[ganti latar belakang ke [Woods ▼]]\n[tampilkan]\n[pergi ke x: [-280] y: [-60]]\n[meluncur ke x: [-100] y: [-60] dalam [0.8] detik]\n[katakan [Kita harus menyelamatkan desa!] selama [2.5] detik]\n[kirim pesan [sahabat-masuk ▼] dan tunggu]\n[katakan [Mari kita pergi ke istana musuh!] selama [2] detik]\n[kirim pesan [babak-2 ▼]]\n\n[ketika menerima [babak-2 ▼]]\n[ganti latar belakang ke [Cave ▼]]\n[meluncur ke x: [-100] y: [-60] dalam [0.4] detik]\n[katakan [Kita hampai sampai! Tapi pintunya dijaga ketat.] selama [3] detik]\n[tanyakan [Pilih: 1=Serbu langsung  2=Cari jalan rahasia] dan tunggu]\njika <(jawaban) = [1]> maka\n  [kirim pesan [ending-A ▼]]\nselainnya\n  [kirim pesan [ending-B ▼]]\n[akhir jika]\n\n[ketika menerima [ending-A ▼]]\n[ganti latar belakang ke [Castle 1 ▼]]\n[meluncur ke x: [-80] y: [-60] dalam [0.5] detik]\n[katakan [SERBU! Kita menang... tapi aku terluka.] selama [3] detik]\n[katakan [Kadang keberanian ada harganya. Tapi desa selamat! 🏆] selama [3] detik]\n[kirim pesan [the-end ▼]]\n\n[ketika menerima [ending-B ▼]]\n[ganti latar belakang ke [Garden ▼]]\n[meluncur ke x: [-80] y: [-60] dalam [0.5] detik]\n[katakan [Jalan rahasia berhasil! Tidak ada yang terluka!] selama [3] detik]\n[katakan [Kebijaksanaan mengalahkan kekerasan! Desa aman! 🌟] selama [3] detik]\n[kirim pesan [the-end ▼]]",
+        "explanation": "Di akhir Babak 2, blok 'tanyakan dan tunggu' meminta pilihan pemain. Berdasarkan jawaban, broadcast berbeda dikirim (ending-A atau ending-B). Setiap ending punya backdrop, dialog, dan pesan moral yang berbeda, memberi pengalaman replay yang berbeda untuk setiap pemain."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Dalam struktur 3 babak, apa yang terjadi di Babak 2?",
+        "options": [
+          "Perkenalan karakter dan latar cerita",
+          "Konfrontasi — karakter menghadapi masalah dan rintangan terbesar",
+          "Penyelesaian masalah dan akhir cerita",
+          "Perubahan latar belakang cerita"
+        ],
+        "correctAnswer": "Konfrontasi — karakter menghadapi masalah dan rintangan terbesar",
+        "explanation": "Babak 2 adalah inti cerita — di sini konflik utama berkembang, karakter menghadapi tantangan terbesar, dan situasi memburuk sebelum membaik. Babak 2 biasanya paling panjang karena menampung sebagian besar drama dan perkembangan cerita.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Mengapa kita menggunakan 'meluncur ke' saat karakter masuk ke Stage, bukan 'pergi ke'?",
+        "options": [
+          "Karena 'pergi ke' tidak bisa digunakan di dalam 'ketika menerima'",
+          "Efek meluncur dari tepi layar terlihat lebih sinematik dan natural dibanding teleport tiba-tiba",
+          "Karena 'meluncur ke' lebih cepat dari 'pergi ke'",
+          "Tidak ada perbedaan visual antara keduanya"
+        ],
+        "correctAnswer": "Efek meluncur dari tepi layar terlihat lebih sinematik dan natural dibanding teleport tiba-tiba",
+        "explanation": "'Pergi ke' memindahkan sprite secara instan — seperti teleportasi yang terasa tidak natural. 'Meluncur ke' menganimasi perpindahan secara halus, menciptakan efek 'masuk panggung' yang lebih sinematik dan menyenangkan ditonton.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa keuntungan memberikan PILIHAN kepada pemain di tengah cerita?",
+        "options": [
+          "Tidak ada keuntungan — cerita lebih baik linear",
+          "Membuat cerita lebih interaktif dan memberi pemain rasa kontrol dan kepemilikan atas cerita",
+          "Hanya untuk memperpanjang durasi cerita",
+          "Pilihan hanya cocok untuk game, bukan cerita"
+        ],
+        "correctAnswer": "Membuat cerita lebih interaktif dan memberi pemain rasa kontrol dan kepemilikan atas cerita",
+        "explanation": "Pilihan membuat pemain terlibat secara aktif alih-alih pasif menonton. Mereka merasa memiliki cerita karena keputusan mereka yang menentukan hasilnya. Ini juga mendorong replay — pemain ingin melihat apa yang terjadi jika mereka pilih opsi lain.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Bagaimana cara membuat satu karakter 'merespon' sesuai posisi babak cerita yang berbeda?",
+        "options": [
+          "Buat sprite baru untuk setiap babak",
+          "Gunakan beberapa blok 'ketika menerima' dengan nama broadcast berbeda per babak",
+          "Gunakan variabel angka babak dan cek di satu blok panjang",
+          "Hapus sprite lama dan buat baru di setiap babak"
+        ],
+        "correctAnswer": "Gunakan beberapa blok 'ketika menerima' dengan nama broadcast berbeda per babak",
+        "explanation": "Setiap sprite bisa punya banyak blok 'ketika menerima' dengan nama broadcast berbeda. Broadcast 'babak-1', 'babak-2', 'babak-3' masing-masing memicu kode berbeda di sprite yang sama. Ini cara yang rapi untuk membuat satu sprite berperilaku berbeda di setiap babak.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Mengapa cerita yang baik membutuhkan resolusi (penyelesaian) yang jelas?",
+        "options": [
+          "Karena resolusi membuat cerita lebih panjang",
+          "Karena penonton/pemain butuh rasa 'tuntas' — tanpa resolusi cerita terasa menggantung dan tidak memuaskan",
+          "Karena Scratch tidak bisa membuat cerita tanpa akhir",
+          "Resolusi tidak penting — yang penting adalah konfliknya"
+        ],
+        "correctAnswer": "Karena penonton/pemain butuh rasa 'tuntas' — tanpa resolusi cerita terasa menggantung dan tidak memuaskan",
+        "explanation": "Resolusi memberi penonton/pemain rasa kepuasan dan closure. Tanpa resolusi yang jelas, semua ketegangan yang dibangun di Babak 2 tidak terasa terbayar. Resolusi juga tempat di mana pesan moral atau tema cerita biasanya diungkapkan.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Sutradara Animasi Berbakat!",
+    "message": "Bravo! Kamu baru saja membuat cerita animasi 3 babak yang lengkap dengan banyak karakter, scene transitions, dan pilihan pemain. Ini adalah skill yang dipakai di game RPG dan visual novel profesional. Di lesson berikutnya, kita buat animasi yang bahkan lebih halus — Sprite Dance Battle!",
+    "achievementName": "Sutradara Animasi",
+    "achievementIcon": "🎬"
+  }
+}

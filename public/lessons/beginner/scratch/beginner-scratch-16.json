@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-16",
+    "title": "Sprite Dance Battle",
+    "description": "Buat animasi dance battle antara dua sprite — masing-masing menari bergantian dengan gerakan halus dari animasi frame by frame!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 16,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Bikin Dance Battle yang Keren dengan Frame Animation!",
+    "description": "Mau tahu rahasia animasi yang halus dan natural di Scratch? Jawabannya: BANYAK KOSTUM! Di lesson ini, kita bikin dance battle antara dua karakter — masing-masing punya beberapa kostum gerakan tari. Dengan mengganti kostum cepat-cepat di dalam loop, gerakannya jadi terlihat mulus seperti animasi sungguhan. Hasilnya? Dance battle yang bikin semua orang terkagum-kagum!",
+    "analogy": "Film kartun dibuat dari ribuan gambar yang berganti sangat cepat. Otak kita yang menyatukannya jadi gerakan yang terasa mulus — ini disebut 'persistence of vision'. Di Scratch, setiap kostum adalah satu 'frame' animasimu. Semakin banyak frame, semakin halus gerakannya!"
+  },
+  "objectives": [
+    "Memahami konsep animasi frame by frame menggunakan kostum",
+    "Menggunakan loop untuk mengganti kostum secara cepat dan berulang",
+    "Mengatur timing animasi dengan blok 'tunggu' antar kostum",
+    "Mengkoordinasikan dua sprite menari bergantian dengan broadcast",
+    "Menambahkan musik dan efek visual yang sinkron dengan animasi"
+  ],
+  "review": {
+    "learned": [
+      "Frame by frame animation menggunakan urutan gambar (kostum) yang berganti cepat.",
+      "Blok 'ganti kostum ke [nama]' berpindah ke kostum tertentu — lebih presisi dari 'kostum berikutnya'.",
+      "Timing antar frame (0.05–0.15 detik) sangat menentukan kecepatan dan kelancaran animasi.",
+      "Loop animasi yang berulang membuat dance cycle yang terus berputar.",
+      "Broadcast dipakai untuk menggilirkan 'spotlight' animasi dari satu sprite ke sprite lain."
+    ],
+    "keyConcepts": [
+      "Frame by frame animation",
+      "Kostum sebagai frame animasi",
+      "Timing: tunggu antar frame",
+      "Dance cycle dengan loop",
+      "Sinkronisasi animasi dan musik"
+    ],
+    "takeaways": [
+      "Semakin banyak frame (kostum) per cycle, semakin halus animasinya — tapi juga lebih lama dibuat.",
+      "Timing yang tepat (jeda antar frame) membuat perbedaan besar antara animasi kasar dan animasi halus.",
+      "Animasi karakter yang berbeda-beda (robot vs manusia vs hewan) membutuhkan 'feel' gerakan yang berbeda."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya animasi Dance Battle:\n• Penari A (kiri) melakukan dance routine selama 4 detik dengan animasi halus\n• Penari B (kanan) diam menonton sambil 'mengangguk'\n• Penari A selesai, lampu sorot berpindah ke Penari B\n• Penari B melakukan dance routine 4 detik yang berbeda\n• Musik yang berbeda untuk setiap penari\n• Di akhir, kedua penari menari bersama!\n• Penonton (klon bintang) bergemuruh di bawah\n\nAnimasi ini mengajarkan prinsip frame-by-frame yang dipakai animator profesional!",
+      "tips": [
+        "Sprite 'Hippo1', 'Ballerina', atau 'Dancer' di library punya banyak kostum tari bawaan!",
+        "Coba sprite 'Nano' atau 'Giga' yang punya kostum animasi berlimpah."
+      ]
+    },
+    {
+      "id": "node-02-frame-concept",
+      "type": "lesson",
+      "title": "Frame by Frame — Rahasia Animasi Mulus",
+      "xp": 5,
+      "explanation": "Animasi sesungguhnya adalah ilusi. Otak kita ditipu untuk 'melihat' gerakan dari gambar-gambar diam yang berganti cepat.\n\nFilm bioskop = 24 frame per detik\nVideo digital = 30-60 frame per detik\nScratch basic = 10-20 frame per detik\n\nUntuk dance animation yang baik di Scratch, kita butuh minimal 4-6 kostum per cycle. Urutan kostum menentukan gerakan: membungkuk → menegakkan badan → mengangkat tangan → menurunkan tangan → kembali ke awal = satu 'dance move'.\n\nRumus timing:\n• Animasi cepat: tunggu 0.05 detik per frame (20 fps)\n• Animasi normal: tunggu 0.1 detik per frame (10 fps)\n• Animasi lambat: tunggu 0.2 detik per frame (5 fps)",
+      "analogy": "Bayangkan buku flip animation — kamu gambar orang lari di pojok halaman, setiap halaman pose sedikit berbeda. Makin cepat kamu flipping halaman, makin mulus gerakannya. Di Scratch, loop + tunggu adalah 'jari' yang ngeflip halamannya!",
+      "tips": [
+        "Coba kostum yang sudah ada di library dulu sebelum menggambar sendiri.",
+        "Nomor kostum di Scratch mulai dari 1. Pakai 'ganti kostum ke costume1' untuk memulai dari pose pertama."
+      ]
+    },
+    {
+      "id": "node-03-dance-cycle",
+      "type": "code",
+      "title": "Dance Cycle — Loop Kostum",
+      "xp": 5,
+      "explanation": "Pola dasar dance cycle adalah loop yang mengganti kostum secara berurutan dan berulang. Gunakan 'ulangi terus' dengan 'kostum berikutnya' dan 'tunggu' untuk animasi yang terus berjalan.\n\nAlternatif lebih presisi: daftarkan setiap kostum spesifik satu per satu dalam satu loop cycle, lalu loop cycle itu berulang.",
+      "code": {
+        "language": "scratch",
+        "content": "// Metode 1: Sederhana (pakai kostum berikutnya)\n[ketika menerima [giliran-A ▼]]\n[tampilkan]\n[ulangi [20] kali]  // 20 frame = sekitar 2 detik\n  [kostum berikutnya]\n  [tunggu [0.1] detik]\n[akhir ulangi]\n[kirim pesan [giliran-B ▼]]\n\n// Metode 2: Lebih presisi (tentukan frame spesifik)\n[ketika menerima [giliran-A ▼]]\n[ulangi [3] kali]  // ulangi cycle 3 kali\n  [ganti kostum ke [dance1 ▼]]\n  [tunggu [0.1] detik]\n  [ganti kostum ke [dance2 ▼]]\n  [tunggu [0.1] detik]\n  [ganti kostum ke [dance3 ▼]]\n  [tunggu [0.15] detik]\n  [ganti kostum ke [dance4 ▼]]\n  [tunggu [0.1] detik]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-04-two-dancers",
+      "type": "code",
+      "title": "Dua Penari Bergantian",
+      "xp": 5,
+      "explanation": "Kita setup dua penari yang bergantian dengan broadcast. Saat Penari A menari, Penari B 'mengangguk' pelan (animasi lebih lambat). Lalu giliran berganti.\n\nEfek 'lampu sorot' bisa dibuat dengan mengubah kecerahan sprite yang sedang 'menonton'.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite PENARI A ---\n[ketika bendera hijau diklik]\n[pergi ke x: [-120] y: [-50]]\n[ganti kostum ke [dance-idle ▼]]\n\n[ketika menerima [giliran-A ▼]]\n// Lampu sorot ke A: cerahkan A, redup-kan B\n[atur efek [kecerahan ▼] ke [0]]\n[kirim pesan [redup-B ▼]]\n// Menari 3 cycle\n[ulangi [3] kali]\n  [ganti kostum ke [dance1 ▼]]\n  [tunggu [0.1] detik]\n  [ganti kostum ke [dance2 ▼]]\n  [tunggu [0.1] detik]\n  [ganti kostum ke [dance3 ▼]]\n  [tunggu [0.12] detik]\n  [ganti kostum ke [dance4 ▼]]\n  [tunggu [0.08] detik]\n[akhir ulangi]\n// Selesai giliran, kembali idle\n[ganti kostum ke [dance-idle ▼]]\n[kirim pesan [giliran-B ▼]]\n\n// --- Sprite PENARI B ---\n// (pola serupa, tapi kostum berbeda)\n[ketika menerima [giliran-B ▼]]\n[atur efek [kecerahan ▼] ke [0]]\n[kirim pesan [redup-A ▼]]\n[ulangi [3] kali]\n  [ganti kostum ke [dance-b1 ▼]]\n  [tunggu [0.08] detik]\n  [ganti kostum ke [dance-b2 ▼]]\n  [tunggu [0.12] detik]\n  // ... dst\n[akhir ulangi]\n[kirim pesan [dance-bersama ▼]]"
+      }
+    },
+    {
+      "id": "node-05-together",
+      "type": "code",
+      "title": "Menari Bersama — Finale!",
+      "xp": 5,
+      "explanation": "Bagian terakhir: kedua penari menari BERSAMA secara paralel. Ini dilakukan dengan mengirim broadcast ke keduanya sekaligus — karena dua sprite bisa berjalan paralel, mereka akan menari bersamaan!\n\nTambahkan efek konfeti dari klon dan musik meriah untuk finale yang berkesan.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Saat broadcast 'dance-bersama' diterima KEDUA penari: ---\n\n// Penari A menerima 'dance-bersama':\n[ketika menerima [dance-bersama ▼]]\n[atur efek [kecerahan ▼] ke [0]]  // keduanya terang\n[putar suara [Dance Music ▼]]\n[ulangi [5] kali]  // menari bersama 5 cycle\n  [kostum berikutnya]\n  [ubah efek [warna ▼] sebesar [5]]\n  [tunggu [0.08] detik]\n[akhir ulangi]\n[katakan [DANCE BATTLE SELESAI! 🕺💃] selama [2] detik]\n\n// Penari B menerima 'dance-bersama' (paralel):\n[ketika menerima [dance-bersama ▼]]\n[ulangi [5] kali]\n  [kostum berikutnya]\n  [ubah efek [warna ▼] sebesar [10]]\n  [tunggu [0.08] detik]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Dance Battle Lengkap dengan Penonton!",
+      "xp": 5,
+      "explanation": "Tambahkan sprite penonton di bawah layar yang bertepuk tangan dengan loop kostum sederhana. Gunakan klon untuk membuat banyak penonton!\n\nIni adalah proyek final yang menggabungkan: frame animation, broadcast, clone, dan sinkronisasi multi-sprite.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite PENONTON (clone) ---\n[ketika bendera hijau diklik]\n[sembunyikan]\n// Buat beberapa penonton di posisi berbeda\n[ulangi [5] kali]\n  [buat klon dari [diriku sendiri ▼]]\n[akhir ulangi]\n\n[ketika aku mulai sebagai klon]\n[pergi ke x: (pilih acak dari [-220] sampai [220]) y: [-170]]\n[atur ukuran ke (pilih acak dari [30] sampai [60]) %]\n[atur efek [warna ▼] ke (pilih acak dari [0] sampai [200])]\n[tampilkan]\n// Penonton bertepuk tangan terus (kostum tangan atas/bawah)\n[ulangi terus]\n  [ganti kostum ke [penonton1 ▼]]\n  [tunggu [0.15] detik]\n  [ganti kostum ke [penonton2 ▼]]\n  [tunggu [0.15] detik]\n[akhir ulangi]"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Animator Pro!",
+      "xp": 5,
+      "explanation": "Dance battle-mu sudah keren! Berikut teknik animasi lanjutan:\n\nSMEAR FRAME\nFrame transisi yang sedikit 'blur' atau 'memanjang' di antara dua pose membuat animasi terasa lebih dinamis. Gambar satu kostum 'smear' di Scratch Paint.\n\nANTICIPATION\nSebelum lompat, karakter membungkuk dulu (anticipation). Sebelum berputar, membungkuk ke arah berlawanan dulu. Ini membuat animasi terasa 'berat' dan natural.\n\nSQUASH & STRETCH\nSaat mendarat, ubah ukuran horizontal jadi lebih lebar dan lebih pendek (squash). Saat melompat, lebih tinggi dan lebih kurus (stretch).\n\nECHO EFFECT\nBuat klon dari sprite yang agak transparan dan tertinggal di posisi sebelumnya — menciptakan efek 'afterimage' pada gerakan cepat.",
+      "tips": [
+        "Tab 'Kostum' di Scratch adalah area menggambar lengkap — kamu bisa edit pose karakter langsung di sana.",
+        "Duplikasi kostum lalu edit sedikit lebih efisien daripada menggambar dari nol untuk setiap frame."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Apa yang menentukan KECEPATAN animasi frame by frame di Scratch?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Jumlah sprite yang ada di Stage",
+        "Nilai waktu di blok 'tunggu' antara setiap pergantian kostum",
+        "Ukuran sprite — sprite besar beranimasi lebih lambat",
+        "Jenis suara yang dimainkan"
+      ],
+      "correctOption": "Nilai waktu di blok 'tunggu' antara setiap pergantian kostum"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Koreografi 3 Gaya Tari!",
+      "xp": 15,
+      "instructions": "Buat dance battle dengan tiga gaya tari yang BERBEDA karakternya!\n\nPenari 1 — Gaya Robot:\n• Gerakan kaku, sudut-sudut tegas, jeda panjang antar frame (0.2 detik)\n• Suara metalik saat bergerak\n\nPenari 2 — Gaya Balerina:\n• Gerakan melengkung, halus, frame cepat (0.06 detik)\n• Musik klasik lembut\n\nPenari 3 — Gaya Hip-Hop:\n• Gerakan energetik, bouncy, cepat-lambat bergantian\n• Musik hip-hop atau beat kencang\n\nMasing-masing penari punya 'gaya' yang jelas berbeda! Di akhir, ketiganya freestyle bersama.",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// Template Penari Robot (gerakan kaku):\n[ketika menerima [giliran-robot ▼]]\n[putar suara [Electronic ▼]]\n[ulangi [4] kali]\n  [ganti kostum ke [robot1 ▼]]\n  [tunggu [0.2] detik]  // kaku dan lambat\n  [ganti kostum ke [robot2 ▼]]\n  [tunggu [0.2] detik]\n  [ganti kostum ke [robot3 ▼]]\n  [tunggu [0.25] detik]  // jeda lebih lama\n  [ganti kostum ke [robot4 ▼]]\n  [tunggu [0.15] detik]\n[akhir ulangi]\n[kirim pesan [giliran-balerina ▼]]\n\n// Template Penari Balerina (gerakan halus):\n[ketika menerima [giliran-balerina ▼]]\n[putar suara [Classical Music ▼]]\n[ulangi [6] kali]\n  [kostum berikutnya]\n  [tunggu [0.06] detik]  // sangat cepat dan halus\n[akhir ulangi]\n[kirim pesan [giliran-hiphop ▼]]"
+      },
+      "expectedResult": "Dance battle dengan 3 penari bergaya berbeda (robot kaku, balerina halus, hip-hop energetik), masing-masing dengan musik dan timing animasi yang sesuai karakternya. Lihat contoh: https://scratch.mit.edu/projects/119/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// PENARI ROBOT\n[ketika menerima [giliran-robot ▼]]\n[atur efek [kecerahan ▼] ke [0]]\n[putar suara [Electronic ▼]]\n[ulangi [4] kali]\n  [ganti kostum ke [costume1 ▼]]\n  [tunggu [0.2] detik]\n  [ganti kostum ke [costume2 ▼]]\n  [ubah efek [pikselasi ▼] sebesar [5]]  // efek digital\n  [tunggu [0.2] detik]\n  [ganti kostum ke [costume3 ▼]]\n  [hapus efek grafis]\n  [tunggu [0.25] detik]\n  [ganti kostum ke [costume4 ▼]]\n  [tunggu [0.15] detik]\n[akhir ulangi]\n[kirim pesan [giliran-balerina ▼]]\n\n// PENARI BALERINA\n[ketika menerima [giliran-balerina ▼]]\n[atur efek [kecerahan ▼] ke [0]]\n[putar suara [Classical Piano ▼]]\n[ulangi [8] kali]\n  [kostum berikutnya]\n  [ubah efek [warna ▼] sebesar [2]]\n  [tunggu [0.06] detik]\n[akhir ulangi]\n[kirim pesan [giliran-hiphop ▼]]\n\n// PENARI HIP-HOP  \n[ketika menerima [giliran-hiphop ▼]]\n[atur efek [kecerahan ▼] ke [0]]\n[putar suara [Hip Hop ▼]]\n[ulangi [3] kali]\n  [ganti kostum ke [costume1 ▼]]\n  [ubah ukuran sebesar [10]]\n  [tunggu [0.05] detik]\n  [ganti kostum ke [costume2 ▼]]\n  [atur ukuran ke [100] %]\n  [tunggu [0.15] detik]\n  [ganti kostum ke [costume3 ▼]]\n  [tunggu [0.05] detik]\n  [ganti kostum ke [costume4 ▼]]\n  [tunggu [0.2] detik]\n[akhir ulangi]\n[kirim pesan [freestyle ▼]]\n\n// Semua penari freestyle bersama:\n[ketika menerima [freestyle ▼]]\n[ulangi terus]\n  [kostum berikutnya]\n  [ubah efek [warna ▼] sebesar [8]]\n  [tunggu (pilih acak dari [0.05] sampai [0.15]) detik]\n[akhir ulangi]",
+        "explanation": "Setiap penari punya 'timing signature' yang berbeda — robot: 0.2 detik/frame (lambat-kaku), balerina: 0.06 detik/frame (sangat cepat-halus), hip-hop: campuran cepat-lambat dengan squash pada beat. Timing inilah yang menciptakan 'karakter' gerak yang berbeda meskipun costumnya bisa serupa."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Berapa frame per detik yang dihasilkan jika kita pakai 'tunggu 0.1 detik' antar kostum?",
+        "options": [
+          "5 frame per detik",
+          "10 frame per detik",
+          "20 frame per detik",
+          "100 frame per detik"
+        ],
+        "correctAnswer": "10 frame per detik",
+        "explanation": "Jika jeda antar frame adalah 0.1 detik, maka dalam 1 detik kita bisa menampilkan 1 ÷ 0.1 = 10 frame. Semakin kecil angka tunggu, semakin banyak frame per detik, semakin halus animasinya.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa perbedaan antara 'ganti kostum ke [nama]' dan 'kostum berikutnya'?",
+        "options": [
+          "Tidak ada perbedaan",
+          "'Ganti kostum ke' berpindah ke kostum SPESIFIK yang disebutkan; 'kostum berikutnya' berpindah ke kostum bernomor berikutnya",
+          "'Kostum berikutnya' lebih lambat dari 'ganti kostum ke'",
+          "'Ganti kostum ke' hanya untuk kostum nomor 1"
+        ],
+        "correctAnswer": "'Ganti kostum ke' berpindah ke kostum SPESIFIK yang disebutkan; 'kostum berikutnya' berpindah ke kostum bernomor berikutnya",
+        "explanation": "'Ganti kostum ke [dance2]' selalu pergi ke kostum bernama 'dance2' terlepas dari kostum saat ini. 'Kostum berikutnya' selalu pergi ke kostum dengan nomor urut +1 dari kostum saat ini (dan kembali ke 1 setelah kostum terakhir).",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Mengapa animasi robot dibuat dengan jeda lebih LAMA (0.2 detik) dibanding animasi balerina (0.06 detik)?",
+        "options": [
+          "Karena robot lebih besar ukurannya",
+          "Untuk menciptakan 'karakter' gerakan yang berbeda — robot bergerak kaku dan mekanis, balerina bergerak halus dan cepat",
+          "Karena kostum robot lebih berat",
+          "Tidak ada alasan khusus — hanya pilihan acak"
+        ],
+        "correctAnswer": "Untuk menciptakan 'karakter' gerakan yang berbeda — robot bergerak kaku dan mekanis, balerina bergerak halus dan cepat",
+        "explanation": "Timing adalah bahasa animator untuk mengekspresikan sifat karakter. Gerakan lambat dengan jeda panjang terasa mekanis dan kaku — cocok untuk robot. Gerakan cepat dengan jeda pendek terasa halus dan mengalir — cocok untuk balerina. Inilah 'animation timing' yang dipelajari animator profesional.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Apa yang dimaksud dengan 'dance cycle'?",
+        "options": [
+          "Satu kostum yang diulang terus menerus",
+          "Urutan beberapa frame/kostum yang, saat diulang terus, menciptakan ilusi gerakan yang berkelanjutan",
+          "Jumlah total kostum yang dimiliki sprite",
+          "Nama untuk loop 'ulangi terus' dalam konteks animasi"
+        ],
+        "correctAnswer": "Urutan beberapa frame/kostum yang, saat diulang terus, menciptakan ilusi gerakan yang berkelanjutan",
+        "explanation": "Dance cycle adalah kumpulan frame yang, ketika diputar berulang kali, menciptakan gerakan tari yang tampak terus berlanjut. Misalnya: pose1 → pose2 → pose3 → pose4 → pose1 → ... Saat diulang cepat, ini terlihat seperti karakter terus menari tanpa henti.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Bagaimana cara membuat DUA sprite menari bersamaan (paralel) di Scratch?",
+        "options": [
+          "Tidak mungkin — Scratch hanya bisa menganimasi satu sprite dalam satu waktu",
+          "Kirim broadcast yang sama ke keduanya — keduanya akan menjalankan kode mereka secara paralel",
+          "Buat satu sprite beranimasi, tunggu selesai, lalu animasikan sprite kedua",
+          "Gabungkan kedua sprite menjadi satu sprite besar"
+        ],
+        "correctAnswer": "Kirim broadcast yang sama ke keduanya — keduanya akan menjalankan kode mereka secara paralel",
+        "explanation": "Di Scratch, semua sprite yang menerima broadcast yang sama akan menjalankan kode mereka secara bersamaan (paralel). Ini memungkinkan banyak sprite beraksi secara simultan. Untuk dance bersama, kirim broadcast 'freestyle' dan semua penari yang punya blok 'ketika menerima freestyle' akan langsung menari serentak.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Koreografer Digital Berbakat!",
+    "message": "Animasimu sudah halus seperti karya animator profesional! Kamu sekarang mengerti prinsip frame animation yang menjadi dasar semua animasi di dunia — dari kartun TV sampai game AAA. Di lesson berikutnya, kita buat sesuatu yang banyak diminta anak-anak: game Platformer dengan lompatan dan gravitasi!",
+    "achievementName": "Koreografer Digital",
+    "achievementIcon": "💃"
+  }
+}

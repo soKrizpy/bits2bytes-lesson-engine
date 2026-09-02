@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-21",
+    "title": "Showcase Project — Ciptakan Masterpiece-mu!",
+    "description": "Final project bebas — gabungkan semua skill Scratch yang sudah kamu pelajari untuk membuat game atau cerita interaktifmu sendiri dari nol!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 21,
+    "estimatedTime": 45,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Final Project — Waktunya Tunjukkan Semua Kemampuanmu!",
+    "description": "Selamat! Kamu sudah menguasai semua dasar Scratch — dari blok gerak sederhana sampai game dengan skor, nyawa, cerita bercabang, animasi frame by frame, platformer, dan boss battle. Sekarang saatnya final project: buat satu karya besar yang mencerminkan kreativitasmu. Bisa game, bisa cerita interaktif, bisa animasi — terserah kamu! Panduan di lesson ini membantumu merencanakan dan membangun project dari nol.",
+    "analogy": "Selama 20 lesson sebelumnya, kamu belajar semua alat seorang tukang bangunan: cara memasang bata, memasang atap, membuat pintu, mengecat. Sekarang saatnya kamu bangun rumah impianmu sendiri — dari sketsa di kepala sampai bangunan nyata yang bisa ditempati orang lain!"
+  },
+  "objectives": [
+    "Merencanakan proyek dengan memilih genre dan fitur utama",
+    "Mengidentifikasi skill Scratch mana yang diperlukan untuk fitur yang diinginkan",
+    "Membangun proyek secara bertahap: satu fitur selesai, lalu tambahkan berikutnya",
+    "Menguji dan memperbaiki proyek sampai bisa dimainkan/dinikmati orang lain",
+    "Membagikan proyek final ke komunitas Scratch"
+  ],
+  "review": {
+    "learned": [
+      "Level 1: Blok dasar, animasi kostum, suara, backdrop, broadcast, dan clone.",
+      "Level 2: Kontrol keyboard, variabel, deteksi tabrakan, dan state management game.",
+      "Level 3: Cerita bercabang, animasi frame by frame, gravitasi/platformer, Pen, boss battle, dan multiple endings.",
+      "Semua skill ini bisa digabungkan dalam satu proyek besar yang kohesif.",
+      "Proses pembuatan game: planning → core mechanic → fitur tambahan → polish → share."
+    ],
+    "keyConcepts": [
+      "Game design process: plan → build → test → polish",
+      "Memilih genre yang sesuai skill yang sudah dimiliki",
+      "Membangun fitur secara iteratif",
+      "Debugging: mencari dan memperbaiki bug",
+      "Sharing dan menerima feedback"
+    ],
+    "takeaways": [
+      "Proyek yang kamu selesaikan, meskipun sederhana, jauh lebih berharga dari ide besar yang tidak pernah dimulai.",
+      "Mulai dengan core mechanic yang bekerja, lalu tambahkan fitur satu per satu.",
+      "Bagikan proyekmu! Reaksi dan feedback dari orang lain adalah reward terbaik."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini Final Project-mu!",
+      "xp": 5,
+      "explanation": "Final project ini adalah MILIKMU sepenuhnya. Tidak ada template yang harus diikuti — kamu yang putuskan apa yang dibuat.\n\nDi lesson ini, kita akan:\n1. Memilih genre dan ide project\n2. Merencanakan fitur-fitur yang akan dibuat\n3. Mengidentifikasi skill yang perlu digunakan\n4. Membangun step by step\n5. Polish dan bagikan!\n\nBeberapa ide project berdasarkan skill yang sudah dipelajari:\n🎮 GAME: Platformer dengan koin dan musuh + boss battle\n📖 CERITA: Visual novel dengan 3+ ending berbeda\n🎨 APP: Aplikasi seni interaktif dengan efek spesial\n🎵 MUSIK: Alat musik interaktif dengan 8+ instrumen\n🌟 ANIMASI: Animasi pendek 2-3 menit dengan cerita original\n\nApapun pilihanmu — buat yang membuatmu excited!",
+      "tips": [
+        "Pilih ide yang bisa diselesaikan dalam 1-2 jam. Idea besar bisa dipecah jadi versi kecil dulu.",
+        "Jangan takut mulai — proyek bisa berkembang seiring kamu membuatnya!"
+      ]
+    },
+    {
+      "id": "node-02-planning",
+      "type": "lesson",
+      "title": "Planning — Rencanakan Sebelum Coding!",
+      "xp": 5,
+      "explanation": "Game developer profesional tidak langsung coding — mereka merencanakan dulu! Ikuti langkah ini:\n\nSTEP 1 — PILIH GENRE\nGame aksi? Cerita? Teka-teki? Alat musik? Animasi?\n\nSTEP 2 — TENTUKAN CORE MECHANIC\n1 kalimat yang menjelaskan inti gamenya:\n'Pemain menghindari rintangan sambil mengumpulkan koin'\n'Pemain membuat pilihan yang mempengaruhi akhir cerita'\n\nSTEP 3 — DAFTARKAN FITUR\nBuat daftar: fitur WAJIB (harus ada) dan fitur BONUS (kalau sempat)\n\nSTEP 4 — IDENTIFIKASI SKILL\nSetiap fitur → skill Scratch apa yang diperlukan?\nGerak karakter → keyboard control (lesson 8)\nSkor → variabel (lesson 11)\nMusuh → clone + collision (lesson 10)\n\nSTEP 5 — BUAT TIMELINE\nUrutan membangun fitur dari paling dasar ke paling kompleks",
+      "analogy": "Perencanaan seperti peta sebelum perjalanan. Kamu bisa saja jalan tanpa peta — tapi dengan peta, kamu tahu ke mana harus pergi kalau tersesat. Planning proyek sama fungsinya!",
+      "tips": [
+        "Tulis rencanamu di kertas dulu — lebih mudah diubah dari kode yang sudah dibuat.",
+        "Mulai dengan versi 'minimum viable' yang bisa dimainkan, lalu tambahkan fitur."
+      ]
+    },
+    {
+      "id": "node-03-build",
+      "type": "code",
+      "title": "Template Starter — Pilih Genremu",
+      "xp": 5,
+      "explanation": "Berdasarkan genre yang kamu pilih, berikut template starter yang bisa menjadi fondasi projectmu.\n\nPilih template yang sesuai — kamu akan mengembangkannya menjadi proyek unikmu sendiri.",
+      "code": {
+        "language": "scratch",
+        "content": "// ====== TEMPLATE GAME AKSI ======\n// Cocok untuk: platformer, dodge game, tangkap-tangkapan\n// Skill: keyboard, variabel, clone, collision\n[ketika bendera hijau diklik]\n[atur [Skor ▼] ke [0]]\n[atur [Nyawa ▼] ke [3]]\n[pergi ke x: [0] y: [-100]]\n// Tambahkan: kontrol karakter, spawn musuh/koin, deteksi tabrakan\n\n// ====== TEMPLATE CERITA INTERAKTIF ======\n// Cocok untuk: visual novel, pilih petualangan, game edukasi\n// Skill: broadcast, backdrop, tanyakan, variabel jalur\n[ketika bendera hijau diklik]\n[atur [Jalur ▼] ke []]\n[ganti latar belakang ke [backdrop-pembuka ▼]]\n// Tambahkan: narasi, persimpangan pilihan, ending berbeda\n\n// ====== TEMPLATE ANIMASI ======\n// Cocok untuk: animasi cerita, music video, cutscene\n// Skill: broadcast chain, frame animation, timing\n[ketika bendera hijau diklik]\n[kirim pesan [scene-1 ▼]]\n// Tambahkan: scene berurutan via broadcast, animasi karakter\n\n// ====== TEMPLATE APP KREATIF ======\n// Cocok untuk: alat menggambar, alat musik, kalkulator kreatif\n// Skill: Pen, suara, variabel, tombol interaktif\n[ketika bendera hijau diklik]\n// Tambahkan: UI tombol, logika interaksi, feedback visual"
+      }
+    },
+    {
+      "id": "node-04-debug",
+      "type": "code",
+      "title": "Debug — Cari dan Perbaiki Bug!",
+      "xp": 5,
+      "explanation": "Semua programmer mengalami bug (kesalahan). Berikut panduan debugging di Scratch:\n\nBUG UMUM DAN SOLUSINYA:\n\n1. Sprite tidak bergerak\n→ Cek: apakah sprite yang benar sedang dipilih saat menambah blok?\n→ Cek: apakah ada blok 'hentikan semua' yang mungkin aktif?\n\n2. Klon tidak muncul\n→ Cek: apakah sprite asli disembunyikan SEBELUM membuat klon?\n→ Cek: apakah klon punya blok 'tampilkan' di 'ketika aku mulai sebagai klon'?\n\n3. Variabel tidak bertambah\n→ Cek: apakah menggunakan 'ubah sebesar' (bukan 'atur ke')?\n→ Klik centang di variabel untuk tampilkan nilainya di Stage dan pantau.\n\n4. Broadcast tidak direspons\n→ Cek: nama broadcast di pengirim PERSIS sama dengan nama di penerima?\n→ Huruf besar/kecil berbeda = tidak sama!",
+      "code": {
+        "language": "scratch",
+        "content": "// Tips debugging Scratch:\n\n// 1. Gunakan 'katakan' sementara untuk debug:\n[katakan (gabungkan [Nilai: ] dan (variabel)) selama [1] detik]\n// Tampilkan nilai variabel untuk cek apakah benar\n\n// 2. Tambahkan 'tunggu' untuk memperlambat eksekusi:\n[tunggu [0.5] detik]  // tambahkan di dalam loop untuk memperlambat\n// Ini membantu melihat apa yang terjadi step by step\n\n// 3. Test satu fitur sebelum ke fitur berikutnya:\n// Pastikan gerakan karakter bekerja sebelum tambahkan musuh\n// Pastikan musuh muncul sebelum tambahkan collision\n\n// 4. Pisahkan program menjadi bagian kecil:\n// Uji setiap blok 'ketika' secara terpisah"
+      }
+    },
+    {
+      "id": "node-05-polish",
+      "type": "code",
+      "title": "Polish — Buat Proyekmu Bersinar!",
+      "xp": 5,
+      "explanation": "Setelah core mechanic bekerja, polish (perhalus) proyekmu dengan detail-detail kecil yang membuat perbedaan besar:\n\nSOUND DESIGN\nTambahkan suara untuk setiap aksi: melompat, mengambil koin, mati, menang. Suara yang tepat membuat game terasa 'bernyawa'.\n\nVISUAL FEEDBACK\nSetiap aksi penting harus punya respons visual: efek kilat saat kena musuh, animasi saat mengambil koin, efek ledakan saat musuh mati.\n\nUI YANG INFORMATIF\nSkor, nyawa, dan informasi penting harus mudah dibaca. Posisikan di pojok yang tidak menghalangi gameplay.\n\nINSTRUKSI YANG JELAS\nBuat layar 'How to Play' sederhana yang muncul sebelum game dimulai.\n\nGAME FEEL\n'Game feel' adalah perasaan menyenangkan saat berinteraksi dengan game. Kurangi kontrol yang 'berat' atau 'terlambat'. Gerakan harus responsif!",
+      "code": {
+        "language": "scratch",
+        "content": "// Checklist polish sebelum bagikan:\n\n// 1. Semua suara sudah ditambahkan:\n//    [ ] Suara mulai game / musik latar\n//    [ ] Suara aksi utama (lompat, tembak, ambil koin)\n//    [ ] Suara win dan game over\n\n// 2. Visual feedback:\n//    [ ] Efek saat karakter kena musuh\n//    [ ] Animasi saat mengambil item\n//    [ ] Layar transisi antar state game\n\n// 3. Info untuk pemain:\n//    [ ] Instruksi cara main\n//    [ ] Skor/nyawa terlihat jelas\n//    [ ] Tombol restart setelah game over\n\n// 4. Test dengan orang lain:\n//    [ ] Minta teman/keluarga coba\n//    [ ] Amati di mana mereka bingung\n//    [ ] Perbaiki berdasarkan observasi"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Bagikan ke Dunia!",
+      "xp": 5,
+      "explanation": "Proyekmu sudah siap! Sekarang bagikan ke dunia Scratch!\n\nCARA MEMBAGIKAN:\n1. Klik tombol 'Bagikan' (Share) di pojok kanan atas\n2. Isi judul yang menarik dan deskripsi singkat\n3. Tambahkan instruksi cara bermain\n4. Copy link dan bagikan ke teman, keluarga, atau media sosial!\n\nAPA YANG BISA DILAKUKAN SETELAH SHARE:\n• Lihat statistik: berapa banyak yang melihat/coba proyekmu\n• Baca komentar dari komunitas Scratch\n• Follow kreator lain yang projeknya kamu suka\n• Remix proyek orang lain sebagai latihan lebih lanjut\n\nKOMUNITAS SCRATCH:\nScratch punya jutaan kreator di seluruh dunia. Proyek favoritmu bisa menginspirasi anak-anak lain di berbagai negara!",
+      "code": {
+        "language": "scratch",
+        "content": "// Langkah terakhir sebelum share:\n\n// 1. Pastikan proyek punya judul yang menarik\n// 2. Isi deskripsi: apa proyeknya + cara main\n// 3. Tambahkan instruksi di tab 'Instructions'\n// 4. Test sekali lagi dari awal ke akhir\n// 5. Klik BAGIKAN!\n\n// Template deskripsi proyek:\n// ---\n// [NAMA GAME/CERITA] adalah [genre] di mana [deskripsi singkat].\n// Dibuat dengan Scratch oleh [namamu].\n//\n// CARA MAIN:\n// - [instruksi 1]\n// - [instruksi 2]\n//\n// Cocok untuk: [usia target]\n// Dibuat dengan: Scratch 3.0\n// ---"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Langkah Selanjutnya — Terus Berkembang!",
+      "xp": 5,
+      "explanation": "Selamat telah menyelesaikan seluruh Level Beginner Scratch! Ini baru permulaan — berikut langkah selanjutnya untuk terus berkembang:\n\nEKSPLORASI LEBIH DI SCRATCH\n• Coba ekstensi lain: LEGO Mindstorms, micro:bit, text-to-speech\n• Pelajari blok 'Awan' untuk high score global\n• Mulai project kolaborasi dengan sesama Scratcher\n\nBELAJAR BAHASA PEMROGRAMAN NYATA\nSkill yang sudah kamu miliki dari Scratch langsung berguna di:\n• Python — untuk coding teks, AI, dan data\n• JavaScript — untuk membuat website interaktif\n• Unity/Godot — untuk game 3D dan mobile\n\nBERIKUT YANG BISA DIPELAJARI DI BITS2BYTES\n• HTML & CSS — Buat website\n• JavaScript — Buat web interaktif\n• Scratch Intermediate — Game yang lebih kompleks\n\nKAMU SUDAH JADI PROGRAMMER SUNGGUHAN!",
+      "tips": [
+        "Setiap proyek yang kamu buat mengajarkan sesuatu yang tidak bisa dipelajari dari teori.",
+        "Bergabunglah dengan komunitas Scratch Indonesia — ada ribuan kreator muda berbakat di sana!"
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Kesiapanmu!",
+      "xp": 10,
+      "instructions": "Apa langkah PERTAMA yang sebaiknya dilakukan sebelum mulai coding proyek besar?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Langsung mulai coding — lakukan saja dulu",
+        "Beli alat coding yang lebih canggih",
+        "Rencanakan: pilih genre, tentukan core mechanic, daftarkan fitur wajib dan bonus",
+        "Cari tutorial di YouTube selama beberapa jam"
+      ],
+      "correctOption": "Rencanakan: pilih genre, tentukan core mechanic, daftarkan fitur wajib dan bonus"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Final Challenge: Showcase Project-mu!",
+      "xp": 15,
+      "instructions": "Inilah saatnya! Buat Final Project yang mencerminkan semua yang sudah kamu pelajari.\n\nPILIH SATU GENRE DAN BUAT VERSIMU SENDIRI:\n\n🎮 GAME AKSI (gunakan skill Level 1+2+3):\n• Minimal: karakter bisa digerakkan, ada musuh/rintangan, sistem skor dan nyawa\n• Wajib gunakan: variabel, clone, collision detection\n\n📖 CERITA INTERAKTIF (gunakan skill Level 1+2+3):\n• Minimal: 3 scene berbeda, 2 persimpangan pilihan, 4 ending berbeda\n• Wajib gunakan: broadcast, backdrop switching, tanyakan-jawab\n\n🎨 APP KREATIF (gunakan skill Level 1+2+3):\n• Minimal: fitur interaktif utama + 3 variasi/mode\n• Wajib gunakan: Pen extension, tombol interaktif, variabel\n\nSYARAT MINIMAL:\n✅ Ada instruksi cara main yang jelas\n✅ Ada suara yang sesuai\n✅ Bisa dimainkan sampai selesai tanpa error\n✅ Punya kondisi 'selesai' atau 'game over'\n✅ Sudah dibagikan ke Scratch\n\nBuat sesuatu yang membuatmu BANGGA!",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// MULAI DARI SINI — Pilih genremu dan kembangkan!\n\n// Langkah yang disarankan:\n// 1. Tentukan ide dalam 1 kalimat\n// 2. Buat core mechanic bekerja dulu\n// 3. Tambahkan fitur satu per satu\n// 4. Test setelah setiap penambahan fitur\n// 5. Polish dengan suara dan efek visual\n// 6. Bagikan!\n\n// Ingat semua yang sudah dipelajari:\n// Level 1: animasi, suara, broadcast, clone\n// Level 2: keyboard, variabel, collision, game loop\n// Level 3: cerita bercabang, frame animation, gravitasi, Pen, boss battle\n\n// Kamu sudah punya semua alat yang diperlukan!\n// Sekarang gunakan kreativitasmu!\n\n[ketika bendera hijau diklik]\n// Tulis proyekmu di sini..."
+      },
+      "expectedResult": "Final project original yang menggabungkan berbagai skill Scratch, bisa dimainkan/dinikmati orang lain, dan sudah dibagikan ke komunitas Scratch. Lihat inspirasi: https://scratch.mit.edu/projects/124/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// Tidak ada satu solusi yang 'benar' untuk final project!\n// Setiap proyek yang kamu buat adalah solusi unikmu.\n\n// YANG MEMBUAT FINAL PROJECT BERHASIL:\n\n// 1. CORE MECHANIC yang solid:\n//    - Gameplay/interaksi utama bekerja tanpa bug\n//    - Responsif dan menyenangkan digunakan\n\n// 2. PROGRESSION yang jelas:\n//    - Pemain tahu tujuannya\n//    - Ada cara untuk 'menang' atau 'selesai'\n//    - Tantangan meningkat atau cerita berkembang\n\n// 3. POLISH yang memadai:\n//    - Suara yang sesuai\n//    - Visual feedback yang jelas\n//    - Instruksi yang mudah dipahami\n\n// 4. ORIGINALITAS:\n//    - Tema cerita/gamemu sendiri\n//    - Bukan hanya copy dari template\n//    - Ada sesuatu yang membuatnya unik\n\n// Contoh proyek yang memenuhi syarat:\n// - Platformer bertema 'Petualangan di Hutan Ajaib'\n// - Cerita interaktif 'Misteri Pulau Tersembunyi'\n// - Aplikasi 'Kartu Ucapan Animasi Kustom'\n// - Game 'Dodge Asteroid dengan Power-Up'\n\n// BAGIKAN proyekmu dan tunjukkan ke dunia!",
+        "explanation": "Final project tidak punya satu solusi benar. Yang terpenting adalah membuat proyek yang berfungsi, orisinil, dan mencerminkan kreativitas kamu. Setiap pilihan teknis yang kamu buat adalah hasil pembelajaran dari 20 lesson sebelumnya."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Quiz Final — Rangkuman Perjalananmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Kamu ingin membuat game di mana karakter berlari menghindari rintangan. Skill Scratch mana yang PALING penting?",
+        "options": [
+          "Blok Pen untuk menggambar lintasan",
+          "Kontrol keyboard + variabel nyawa/skor + clone untuk rintangan + collision detection",
+          "Hanya broadcast untuk memulai game",
+          "Frame animation untuk animasi karakter berlari saja"
+        ],
+        "correctAnswer": "Kontrol keyboard + variabel nyawa/skor + clone untuk rintangan + collision detection",
+        "explanation": "Game dodge/runner membutuhkan: kontrol keyboard untuk menggerakkan karakter (lesson 8), variabel untuk melacak skor/nyawa (lesson 11), clone untuk membuat rintangan yang terus muncul (lesson 6/10), dan collision detection untuk mendeteksi saat karakter terkena rintangan (lesson 8/10). Semua skill ini saling melengkapi.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa perbedaan antara 'fitur wajib' dan 'fitur bonus' dalam planning proyek?",
+        "options": [
+          "Tidak ada perbedaan — semuanya harus dibuat",
+          "Fitur wajib = harus ada agar game bisa dimainkan; fitur bonus = tambahan yang menyenangkan jika sempat",
+          "Fitur bonus selalu lebih penting dari fitur wajib",
+          "Fitur wajib hanya untuk game profesional"
+        ],
+        "correctAnswer": "Fitur wajib = harus ada agar game bisa dimainkan; fitur bonus = tambahan yang menyenangkan jika sempat",
+        "explanation": "Dalam planning, memisahkan fitur wajib dari bonus membantu memprioritaskan. Fitur wajib (MVP - minimum viable product) adalah yang membuat game bisa dimainkan dari awal sampai akhir. Fitur bonus ditambahkan setelah fitur wajib selesai dan bekerja dengan baik.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Apa itu 'game feel' dan mengapa penting?",
+        "options": [
+          "Grafis yang indah dalam game",
+          "Perasaan menyenangkan dan responsif saat berinteraksi dengan game — kontrol yang terasa pas",
+          "Jumlah level dalam game",
+          "Cerita game yang menyentuh hati"
+        ],
+        "correctAnswer": "Perasaan menyenangkan dan responsif saat berinteraksi dengan game — kontrol yang terasa pas",
+        "explanation": "Game feel adalah kualitas interaksi antara pemain dan game. Game dengan game feel yang baik terasa responsif, kontrol terasa natural, dan setiap aksi memberikan feedback yang memuaskan. Ini adalah perbedaan antara game yang terasa 'hidup' dan game yang terasa 'kaku' meskipun mekaniknya sama.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Mengapa penting membagikan (share) proyek Scratch ke komunitas?",
+        "options": [
+          "Karena Scratch mengharuskan semua proyek dibagikan",
+          "Untuk mendapat feedback, menginspirasi orang lain, dan merayakan pencapaianmu bersama komunitas",
+          "Hanya untuk mendapat lebih banyak followers",
+          "Agar proyek bisa digunakan secara komersial"
+        ],
+        "correctAnswer": "Untuk mendapat feedback, menginspirasi orang lain, dan merayakan pencapaianmu bersama komunitas",
+        "explanation": "Membagikan proyek memberi banyak manfaat: kamu mendapat feedback konstruktif untuk berkembang, proyekmu bisa menginspirasi dan membantu Scratcher lain belajar, dan kamu merayakan pencapaianmu dengan komunitas yang supportif. Komunitas Scratch adalah salah satu komunitas kreator termuda dan tersemangat di dunia.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Setelah menyelesaikan Beginner Scratch Level 1, 2, dan 3, skill apa yang sudah kamu miliki?",
+        "options": [
+          "Hanya cara menggerakkan sprite",
+          "Blok dasar saja, belum bisa membuat game nyata",
+          "Animasi, interaktivitas, game loop, cerita bercabang, fisika sederhana, Pen, dan koordinasi multi-sprite",
+          "Hanya skill untuk membuat cerita, belum bisa membuat game"
+        ],
+        "correctAnswer": "Animasi, interaktivitas, game loop, cerita bercabang, fisika sederhana, Pen, dan koordinasi multi-sprite",
+        "explanation": "Setelah menyelesaikan 21 lesson Beginner Scratch, kamu sudah menguasai: animasi frame by frame, interaksi keyboard dan mouse, game loop dengan skor/nyawa, broadcast untuk koordinasi multi-sprite, cerita bercabang dengan multiple endings, simulasi fisika sederhana (gravitasi), aplikasi menggambar dengan Pen, clone untuk spawn objects, dan banyak lagi. Ini adalah skill set game developer pemula yang solid!",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "SELAMAT! Kamu adalah Master Scratch Beginner! 🏆",
+    "message": "LUAR BIASA! Kamu telah menyelesaikan seluruh 21 lesson Beginner Scratch dan berhasil membuat Final Project-mu sendiri! Dari kucing yang berjalan sederhana di Lesson 1, hingga game kompleks dengan boss battle, cerita bercabang, dan animasi profesional di Lesson 21 — perjalananmu sebagai kreator digital baru saja dimulai. Dunia coding menunggumu! ✨",
+    "achievementName": "Master Scratch Level 1",
+    "achievementIcon": "🏆"
+  }
+}

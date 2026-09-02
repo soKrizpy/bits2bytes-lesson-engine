@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-scratch-13",
+    "title": "Robot Pengantar Pesan",
+    "description": "Buat dua sprite yang saling berkomunikasi — Robot A menerima pesan darimu, lalu mengirim sinyal ke Robot B untuk bereaksi!",
+    "level": "beginner",
+    "category": "Scratch",
+    "topicNumber": 13,
+    "estimatedTime": 30,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Buat Robot yang Bisa Saling Kirim Pesan!",
+    "description": "Kali ini kita buat sesuatu yang terasa canggih: dua robot yang bisa berkomunikasi satu sama lain! Kamu klik Robot A, dia kirim pesan ke Robot B, lalu Robot B bergerak dan membalas. Mereka bahkan bisa 'balas-balasan'! Fitur Broadcast adalah cara sprite-sprite berkomunikasi di Scratch — dan setelah lesson ini, kamu akan bisa koordinasikan sprite sebanyak apapun!",
+    "analogy": "Broadcast di Scratch seperti pengeras suara di sekolah. Guru di kantor bicara lewat mikrofon (broadcast), dan semua kelas yang punya speaker mendengar dan bereaksi (when I receive). Kamu bisa punya banyak 'saluran' broadcast yang berbeda untuk situasi berbeda — sama seperti stasiun radio yang berbeda!"
+  },
+  "objectives": [
+    "Menggunakan broadcast 'kirim pesan' untuk mengirim sinyal antar sprite",
+    "Menggunakan 'ketika menerima' pada beberapa sprite berbeda",
+    "Membuat dialog percakapan antar sprite dengan timing yang tepat",
+    "Menggunakan broadcast berantai untuk membuat percakapan multi-giliran",
+    "Membuat proyek dengan setidaknya 3 sprite yang saling berinteraksi"
+  ],
+  "review": {
+    "learned": [
+      "Broadcast mengirim sinyal bernama ke seluruh program — semua sprite bisa mendengarnya.",
+      "Beberapa sprite berbeda bisa merespons broadcast yang sama secara bersamaan.",
+      "Broadcast berantai memungkinkan percakapan multi-giliran: A→B→A→B.",
+      "Blok 'kirim pesan dan tunggu' berguna untuk memastikan respons selesai sebelum lanjut.",
+      "Koordinasi multi-sprite lewat broadcast adalah cara paling rapi di Scratch."
+    ],
+    "keyConcepts": [
+      "Broadcast: kirim pesan",
+      "Ketika menerima: respons sinyal",
+      "Broadcast berantai: dialog giliran",
+      "Koordinasi multi-sprite",
+      "Timing percakapan dengan broadcast"
+    ],
+    "takeaways": [
+      "Broadcast adalah fondasi dari semua proyek Scratch yang kompleks dengan banyak sprite.",
+      "Nama broadcast yang deskriptif sangat penting: 'robot-A-bicara', 'robot-B-balas', bukan 'a1', 'b2'.",
+      "Broadcast bisa digunakan untuk lebih dari sekedar percakapan: transisi scene, mulai/hentikan musik, trigger efek."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan punya animasi percakapan robot dengan:\n• Robot A (biru) di kiri layar\n• Robot B (merah) di kanan layar\n• Pemain klik Robot A → Robot A bilang 'Halo, Robot B!'\n• Robot A kirim broadcast ke Robot B\n• Robot B menerima, bergerak sedikit, lalu membalas 'Halo, Robot A! Ada apa?'\n• Dialog berlanjut beberapa giliran\n• Akhirnya Robot B kirim broadcast 'misi selesai' ke semua sprite\n\nIni adalah pola 'dialog system' yang dipakai di semua game RPG dan visual novel!",
+      "tips": [
+        "Buat atau pilih dua sprite robot/karakter berbeda dari library.",
+        "Posisikan Robot A di x=-150 dan Robot B di x=150 agar terlihat berhadapan."
+      ]
+    },
+    {
+      "id": "node-02-broadcast-chain",
+      "type": "lesson",
+      "title": "Broadcast Berantai — Dialog Multi-Giliran",
+      "xp": 5,
+      "explanation": "Kunci membuat percakapan di Scratch adalah broadcast berantai:\n\n1. Robot A bicara → kirim broadcast 'giliran-B'\n2. Robot B menerima 'giliran-B' → Robot B bicara → kirim broadcast 'giliran-A'\n3. Robot A menerima 'giliran-A' → Robot A bicara lagi → kirim broadcast 'giliran-B' lagi\n... dan seterusnya!\n\nSetiap 'giliran' adalah satu broadcast yang 'melempar bola' ke sprite berikutnya.\n\nPenting: gunakan 'kirim pesan [X] dan tunggu' agar sprite pengirim benar-benar menunggu semua penerima selesai bereaksi sebelum lanjut. Ini mencegah dialog tumpang tindih.",
+      "analogy": "Bayangkan bermain lempar tangkap. Kamu lempar bola ke temanmu (broadcast), dia tangkap dan lempar balik (respons + broadcast baru). Satu bola di udara pada satu waktu — begitu juga dialog yang rapi. Tidak ada yang bicara bersamaan!",
+      "tips": [
+        "Buat nama broadcast yang jelas seperti 'dialog-1', 'dialog-2', 'dialog-3' agar mudah dilacak.",
+        "Jumlah broadcast = jumlah giliran bicara dalam percakapan."
+      ]
+    },
+    {
+      "id": "node-03-robot-a-start",
+      "type": "code",
+      "title": "Robot A — Mulai Percakapan",
+      "xp": 5,
+      "explanation": "Kita setup Robot A. Saat diklik, ia memulai percakapan dengan Robot B melalui broadcast.\n\nPerhatikan: saat menerima broadcast balik, Robot A juga bergerak sedikit (animasi 'mengangguk') sebelum bicara.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite ROBOT A ---\n[ketika bendera hijau diklik]\n[pergi ke x: [-150] y: [-30]]\n[tampilkan]\n\n[ketika sprite ini diklik]\n[katakan [Halo, Robot B! Aku punya kabar penting! 📦] selama [2.5] detik]\n[kirim pesan [dialog-B1 ▼] dan tunggu]\n[katakan [Sungguh? Senang sekali mendengarnya! 😊] selama [2] detik]\n[kirim pesan [dialog-B2 ▼] dan tunggu]\n[katakan [Terima kasih sudah mengantar! Sampai jumpa! 👋] selama [2] detik]\n[kirim pesan [selesai ▼]]"
+      }
+    },
+    {
+      "id": "node-04-robot-b",
+      "type": "code",
+      "title": "Robot B — Menerima dan Membalas",
+      "xp": 5,
+      "explanation": "Robot B diam di awal. Ia 'hidup' hanya saat menerima broadcast dari Robot A. Setiap kali menerima, ia bergerak sedikit ke depan (efek mendekat/perhatian) sebelum bicara.\n\nPerhatikan bahwa Robot B merespons dua broadcast berbeda (dialog-B1 dan dialog-B2) dengan reaksi yang berbeda.",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite ROBOT B ---\n[ketika bendera hijau diklik]\n[pergi ke x: [150] y: [-30]]\n[tampilkan]\n\n// Respons pertama\n[ketika menerima [dialog-B1 ▼]]\n[meluncur ke x: [100] y: [-30] dalam [0.3] detik]  // maju sedikit\n[katakan [Oh! Kabar apa? Cerita dong! 👂] selama [2.5] detik]\n[meluncur ke x: [150] y: [-30] dalam [0.3] detik]  // mundur\n\n// Respons kedua\n[ketika menerima [dialog-B2 ▼]]\n[meluncur ke x: [100] y: [-30] dalam [0.3] detik]\n[katakan [Paket sudah diantarkan dengan selamat! ✅] selama [2] detik]\n[meluncur ke x: [150] y: [-30] dalam [0.3] detik]"
+      }
+    },
+    {
+      "id": "node-05-narrator",
+      "type": "code",
+      "title": "Sprite Narator — Ikut Berpartisipasi!",
+      "xp": 5,
+      "explanation": "Tambahkan sprite ketiga sebagai 'narator' yang muncul di bagian atas layar untuk memberikan konteks cerita. Sprite narator merespons broadcast 'selesai' untuk menutup cerita.\n\nIni menunjukkan kekuatan broadcast: satu sinyal bisa memicu banyak sprite sekaligus!",
+      "code": {
+        "language": "scratch",
+        "content": "// --- Sprite NARATOR (teks atau karakter kecil di atas) ---\n[ketika bendera hijau diklik]\n[pergi ke x: [0] y: [150]]\n[katakan [Klik Robot Biru untuk memulai percakapan! 👆] selama [0]]\n// (gunakan 'katakan' tanpa detik agar teks tetap tampil)\n\n[ketika menerima [selesai ▼]]\n[katakan [✅ Misi Selesai! Robot A dan B berhasil berkomunikasi!] selama [0]]\n[putar suara [Tada ▼]]"
+      }
+    },
+    {
+      "id": "node-06-complete",
+      "type": "code",
+      "title": "Proyek Lengkap — Tiga Sprite Berinteraksi!",
+      "xp": 5,
+      "explanation": "Ini adalah ringkasan alur broadcast lengkap proyek ini:\n\n1. [Bendera diklik] → Semua sprite ke posisi awal\n2. [Klik Robot A] → Robot A bicara → kirim 'dialog-B1'\n3. [Robot B terima 'dialog-B1'] → Robot B maju, bicara → (Robot A tunggu)\n4. Robot A menerima sinyal selesai → bicara lagi → kirim 'dialog-B2'\n5. [Robot B terima 'dialog-B2'] → Robot B bicara lagi\n6. Robot A memberi penutup → kirim 'selesai'\n7. [Narator terima 'selesai'] → tampilkan pesan penutup\n\nSemua terkoordinasi rapi hanya dengan sistem broadcast!",
+      "code": {
+        "language": "scratch",
+        "content": "// RINGKASAN ALUR BROADCAST:\n// Bendera hijau → semua sprite ke posisi\n// Klik Robot A:\n//   Robot A → 'dialog-B1' → Robot B bereaksi\n//   Robot A → 'dialog-B2' → Robot B bereaksi\n//   Robot A → 'selesai' → Narator bereaksi\n\n// Tidak ada kode baru di sini — semua sudah di node sebelumnya.\n// Pastikan urutan broadcast benar:\n// dialog-B1 → dialog-B2 → selesai\n\n// Tips: gunakan broadcast 'dan tunggu' di Robot A\n// agar dialog tidak tumpang tindih"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Buat Drama Sendiri!",
+      "xp": 5,
+      "explanation": "Proyek percakapan robotmu sudah hidup! Berikut cara mengembangkannya:\n\nTAMBAH LEBIH BANYAK KARAKTER\nTambahkan Robot C, D, E — masing-masing merespons broadcast berbeda. Satu percakapan grup!\n\nBUAT CERITA BERCABANG\nSetelah Robot A bicara, tanya pemain: 'Apa yang harus Robot B balas? (1/2)'. Berdasarkan jawaban, kirim broadcast berbeda untuk alur cerita yang berbeda.\n\nANIMASI EKSPRESI\nGanti kostum robot saat berbicara (ekspresi senang, sedih, terkejut) dengan 'ganti kostum ke' sebelum setiap 'katakan'.\n\nEFEK GELEMBUNG TEKS\nTambahkan sprite gelembung teks terpisah yang muncul dan berpindah ke pembicara yang sedang aktif.",
+      "tips": [
+        "Simpan nama broadcast di catatan — proyek kompleks bisa punya 10+ broadcast berbeda.",
+        "Kamu bisa pakai broadcast untuk hal selain dialog: mulai musik, ubah backdrop, aktifkan efek partikel, dll."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Apa keunggulan menggunakan 'kirim pesan dan tunggu' dibanding 'kirim pesan' (tanpa tunggu)?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Tidak ada keunggulan — keduanya sama",
+        "'kirim dan tunggu' memastikan semua penerima selesai bereaksi sebelum program lanjut, sehingga dialog tidak tumpang tindih",
+        "'kirim dan tunggu' lebih cepat karena langsung selesai",
+        "'kirim dan tunggu' hanya bisa dikirim ke satu sprite"
+      ],
+      "correctOption": "'kirim dan tunggu' memastikan semua penerima selesai bereaksi sebelum program lanjut, sehingga dialog tidak tumpang tindih"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Drama Animasi 4 Karakter!",
+      "xp": 15,
+      "instructions": "Buat animasi drama dengan EMPAT karakter yang saling berinteraksi!\n\nCerita bebas — bisa komedi, drama, petualangan, atau misteri. Syarat minimum:\n1. 4 sprite karakter berbeda (bisa dari library)\n2. Minimal 8 giliran dialog total\n3. Setiap karakter bergerak sedikit saat berbicara (efek animasi)\n4. Backdrop berubah setidaknya satu kali di tengah cerita\n5. Musik latar sesuai suasana cerita\n6. Pesan akhir dari narator atau karakter\n\nGunakan broadcast untuk mengatur semua koordinasi antar karakter.\nBonus: Buat pemain bisa 'memilih alur cerita' di suatu titik!",
+      "starterCode": {
+        "language": "scratch",
+        "content": "// Daftar broadcast yang direncanakan:\n// dialog-1, dialog-2, dialog-3, dialog-4\n// dialog-5, dialog-6, dialog-7, dialog-8\n// scene-2 (ganti backdrop), selesai\n\n// Karakter A (klik untuk mulai)\n[ketika sprite ini diklik]\n[katakan [Dialog 1...] selama [2] detik]\n[kirim pesan [dialog-2 ▼] dan tunggu]\n[katakan [Dialog 3...] selama [2] detik]\n[kirim pesan [dialog-4 ▼] dan tunggu]\n// dst...\n\n// Karakter B\n[ketika menerima [dialog-2 ▼]]\n[katakan [Dialog 2...] selama [2] detik]\n\n// Karakter C\n[ketika menerima [dialog-4 ▼]]\n[katakan [Dialog 4...] selama [2] detik]\n[kirim pesan [dialog-5 ▼]]"
+      },
+      "expectedResult": "Animasi drama dengan 4 karakter yang berdialog bergantian, backdrop berubah, dan alur cerita yang lengkap dengan penutup. Lihat contoh: https://scratch.mit.edu/projects/116/embed",
+      "solution": {
+        "language": "scratch",
+        "code": "// KARAKTER A (Protagonis) — klik untuk mulai\n[ketika sprite ini diklik]\n[katakan [Teman-teman, kita harus menyelamatkan desa! 🗡️] selama [2.5] detik]\n[kirim pesan [dialog-B1 ▼] dan tunggu]\n[katakan [Benar, Karakter B! Karakter C, kamu bagaimana?] selama [2] detik]\n[kirim pesan [dialog-C1 ▼] dan tunggu]\n[katakan [Baiklah! Kita berangkat bersama! ⚔️] selama [2] detik]\n[kirim pesan [scene-2 ▼] dan tunggu]\n[katakan [Kita berhasil! Desa aman! 🏆] selama [2.5] detik]\n[kirim pesan [selesai ▼]]\n\n// KARAKTER B\n[ketika menerima [dialog-B1 ▼]]\n[meluncur ke x: [50] y: [-30] dalam [0.3] detik]\n[katakan [Aku siap! Kapan berangkat? 💪] selama [2] detik]\n[meluncur ke x: [100] y: [-30] dalam [0.3] detik]\n\n// KARAKTER C\n[ketika menerima [dialog-C1 ▼]]\n[katakan [Saya juga! Hutan sudah aman untuk dilalui! 🌲] selama [2.5] detik]\n\n// KARAKTER D (Narator)\n[ketika menerima [scene-2 ▼]]\n[ganti latar belakang ke [Castle 1 ▼]]\n[katakan [Di istana musuh...] selama [1.5] detik]\n\n[ketika menerima [selesai ▼]]\n[katakan [THE END — Desa Selamat! 🌟] selama [3] detik]\n[putar suara [Tada ▼]]",
+        "explanation": "Empat karakter terkoordinasi melalui rantai broadcast. Karakter A sebagai protagonis mengontrol alur dengan mengirim broadcast ke B, C, dan D secara berurutan. Backdrop berubah saat broadcast 'scene-2'. Karakter D (narator) merespons scene-2 dan selesai."
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Berapa banyak sprite yang bisa merespons satu broadcast yang sama?",
+        "options": [
+          "Hanya 1 sprite",
+          "Maksimal 2 sprite",
+          "Maksimal 10 sprite",
+          "Tidak terbatas — semua sprite yang punya blok 'ketika menerima' yang sesuai"
+        ],
+        "correctAnswer": "Tidak terbatas — semua sprite yang punya blok 'ketika menerima' yang sesuai",
+        "explanation": "Broadcast tidak punya batasan penerima. Semua sprite (dan backdrop) yang memiliki blok 'ketika menerima [nama-broadcast]' dengan nama yang sama akan bereaksi secara serentak saat broadcast itu dikirim.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apa yang dimaksud dengan 'broadcast berantai'?",
+        "options": [
+          "Mengirim banyak broadcast sekaligus dari satu sprite",
+          "Sprite A kirim broadcast → Sprite B terima dan kirim broadcast baru → Sprite A terima dan kirim lagi",
+          "Broadcast yang diulang dalam loop terus-menerus",
+          "Broadcast yang hanya bisa diterima satu kali"
+        ],
+        "correctAnswer": "Sprite A kirim broadcast → Sprite B terima dan kirim broadcast baru → Sprite A terima dan kirim lagi",
+        "explanation": "Broadcast berantai adalah pola di mana setiap sprite yang menerima broadcast langsung mengirim broadcast baru untuk mengaktifkan sprite berikutnya. Ini menciptakan urutan aksi yang bergiliran — seperti estafet di olahraga lari.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Sprite narator merespons broadcast 'selesai'. Kapan broadcast 'selesai' dikirim?",
+        "options": [
+          "Otomatis setelah 10 detik",
+          "Saat bendera hijau diklik",
+          "Setelah dialog terakhir selesai — dikirim oleh sprite yang berbicara terakhir",
+          "Saat pemain mengklik Stage"
+        ],
+        "correctAnswer": "Setelah dialog terakhir selesai — dikirim oleh sprite yang berbicara terakhir",
+        "explanation": "Broadcast 'selesai' adalah sinyal akhir yang dikirim oleh sprite terakhir yang berbicara dalam percakapan. Narator merespons sinyal ini untuk menampilkan penutup. Ini adalah pola 'finish signal' yang umum dalam animasi Scratch.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Apa kegunaan memindahkan sprite sedikit (animasi maju-mundur) saat sedang 'berbicara'?",
+        "options": [
+          "Untuk menghemat memori",
+          "Untuk memberikan umpan balik visual bahwa sprite tersebut sedang aktif berbicara",
+          "Karena sprite harus bergerak agar suara keluar",
+          "Untuk menghindari sprite tertimpa sprite lain"
+        ],
+        "correctAnswer": "Untuk memberikan umpan balik visual bahwa sprite tersebut sedang aktif berbicara",
+        "explanation": "Gerakan kecil (maju saat bicara, mundur setelah selesai) adalah teknik animasi untuk menunjukkan kepada penonton siapa yang sedang berbicara. Ini membuat percakapan terasa lebih hidup dan membantu penonton mengikuti alur dialog.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Selain untuk dialog antar karakter, broadcast juga bisa digunakan untuk...",
+        "options": [
+          "Hanya untuk dialog — broadcast tidak cocok untuk hal lain",
+          "Mengganti backdrop, memulai/menghentikan musik, mengaktifkan efek partikel, transisi scene",
+          "Hanya untuk mengubah ukuran sprite",
+          "Menghapus sprite dari Stage"
+        ],
+        "correctAnswer": "Mengganti backdrop, memulai/menghentikan musik, mengaktifkan efek partikel, transisi scene",
+        "explanation": "Broadcast adalah sistem messaging serbaguna di Scratch. Selain dialog, broadcast sangat berguna untuk: memicu transisi scene (ganti backdrop), memulai atau menghentikan musik latar, mengaktifkan efek partikel, memulai timer, dan koordinasi apapun yang melibatkan beberapa sprite.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Master Komunikasi Antar Sprite!",
+    "message": "Luar biasa! Kamu sekarang bisa membuat sprite-sprite yang berbicara satu sama lain dengan sistem broadcast. Ini adalah skill yang dipakai di game RPG, visual novel, dan semua animasi interaktif. Lesson terakhir Level 2 menanti: Dodge the Meteor — game lengkap dengan semua fitur Level 2!",
+    "achievementName": "Master Komunikasi",
+    "achievementIcon": "📡"
+  }
+}
