@@ -9,11 +9,17 @@
 //
 // This component does NOT know what subject is being taught.
 // It reads everything from the lesson JSON via useEngineState.
+//
+// Persistence strategy:
+//   - studentId in URL params → HybridAdapter (Supabase primary + localStorage fallback)
+//   - no studentId → LocalStorageAdapter (anonymous / standalone mode)
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useEngineState } from '@/hooks/useEngineState';
 import { LocalStorageAdapter } from '@/persistence/localStorageAdapter';
+import { SupabaseAdapter } from '@/persistence/supabaseAdapter';
+import { HybridAdapter } from '@/persistence/hybridAdapter';
 import { LearningPath } from '@/components/LearningPath/LearningPath';
 import { NodeRenderer } from '@/components/NodeRenderer/NodeRenderer';
 import { NodeStageHeader } from '@/components/NodeRenderer/NodeStageHeader';
@@ -31,8 +37,8 @@ interface LessonEngineProps {
   topicId: string;
 }
 
-// Single adapter instance per engine mount — avoids re-creating on every render
-const adapter = new LocalStorageAdapter();
+// Module-level fallback adapter (anonymous / no studentId)
+const localAdapter = new LocalStorageAdapter();
 
 export function LessonEngine({ topicId }: LessonEngineProps) {
   const router = useRouter();
@@ -46,6 +52,37 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
   const [viewMode, setViewMode] = useState<'achievement' | 'review'>('achievement');
   const [selectedReviewNodeIndex, setSelectedReviewNodeIndex] = useState(0);
   const [selectedLearningNodeIndex, setSelectedLearningNodeIndex] = useState<number | null>(null);
+
+  // Build a stable adapter based on whether a studentId is available.
+  // We hold refs so that the adapter instances are not recreated on every render.
+  const supabaseAdapterRef = useRef<SupabaseAdapter | null>(null);
+  const hybridAdapterRef = useRef<HybridAdapter | null>(null);
+
+  const adapter = useMemo(() => {
+    const { studentId, lmsOrigin } = urlParams;
+    if (studentId) {
+      // Reuse existing instance if studentId hasn't changed
+      if (supabaseAdapterRef.current === null) {
+        const apiBase = lmsOrigin ?? '';
+        supabaseAdapterRef.current = new SupabaseAdapter({ apiBase, studentId });
+        hybridAdapterRef.current = new HybridAdapter(supabaseAdapterRef.current, localAdapter);
+      }
+      return hybridAdapterRef.current!;
+    }
+    // Anonymous mode — reset Supabase adapter refs
+    supabaseAdapterRef.current = null;
+    hybridAdapterRef.current = null;
+    return localAdapter;
+  // urlParams.studentId is the relevant dependency
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [urlParams.studentId, urlParams.lmsOrigin]);
+
+  // Prefetch persisted state from Supabase before engine loads
+  useEffect(() => {
+    if (!(adapter instanceof HybridAdapter)) return;
+    void adapter.prefetch(topicId);
+  }, [adapter, topicId]);
+
   const {
     lesson,
     studentState,
