@@ -208,7 +208,6 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
         lesson={lesson}
         studentState={studentState}
         onReview={() => { setViewMode('review'); }}
-        onReturn={() => { router.push('/'); }}
       />
     );
   }
