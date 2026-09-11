@@ -16,7 +16,7 @@ interface AchievementScreenProps {
   lesson: Lesson;
   studentState: StudentState;
   onReview: () => void;
-  onReturn: () => void;
+
 
 }
 
@@ -24,7 +24,6 @@ export function AchievementScreen({
   lesson,
   studentState,
   onReview,
-  onReturn,
 }: AchievementScreenProps) {
   const [visible, setVisible] = useState(false);
   const t = useEngineTranslations();
@@ -140,16 +139,8 @@ export function AchievementScreen({
           </ul>
         </section>
 
-        {/* Actions: next adventure first, review second */}
+        {/* Actions */}
         <div className="space-y-3">
-          <Button
-            onClick={onReturn}
-            size="lg"
-            className="w-full"
-            aria-label={t('achievement.returnToAdventure')}
-          >
-            {t('achievement.returnToAdventure')}
-          </Button>
           <Button
             onClick={onReview}
             variant="secondary"
