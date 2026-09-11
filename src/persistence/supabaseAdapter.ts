@@ -45,21 +45,27 @@ export class SupabaseAdapter implements IPersistenceAdapter {
    * the synchronous `loadState()` is called by the engine.
    */
   async prefetch(topicId: string): Promise<void> {
-    // Already cached — skip network call
     if (this.cache.has(topicId)) return;
 
     try {
-      const url = `${this.apiBase}/api/engine/progress?topicId=${encodeURIComponent(topicId)}`;
-      const res = await fetch(url, { credentials: 'include' });
+      const url = `${this.apiBase}/api/engine/progress?topicId=${encodeURIComponent(topicId)}&studentId=${encodeURIComponent(this.studentId)}`;
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 3000); // 3s hard timeout
+
+      const res = await fetch(url, {
+        credentials: 'include',
+        signal: controller.signal,
+      });
+      clearTimeout(timeout);
+
       if (!res.ok) {
-        // Non-2xx response: cache null so loadState() falls back to localStorage
         this.cache.set(topicId, null);
         return;
       }
       const data = await res.json() as { state: StudentState | null };
       this.cache.set(topicId, data.state);
     } catch {
-      // Network failure: cache null for graceful fallback
+      // AbortError (timeout) or network failure — cache null for graceful fallback
       this.cache.set(topicId, null);
     }
   }
