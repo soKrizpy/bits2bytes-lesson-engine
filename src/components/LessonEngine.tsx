@@ -190,7 +190,6 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
       <TopicIntro
         lesson={lesson}
         onStart={() => setHasSeenIntro(true)}
-        onBack={() => router.push('/')}
       />
     );
   }
