@@ -14,11 +14,10 @@ import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 interface TopicIntroProps {
   lesson: Lesson;
   onStart: () => void;
-  onBack: () => void;
 }
 
 
-export function TopicIntro({ lesson, onStart, onBack }: TopicIntroProps) {
+export function TopicIntro({ lesson, onStart }: TopicIntroProps) {
   const [visible, setVisible] = useState(false);
   const t = useEngineTranslations();
 
@@ -161,14 +160,6 @@ export function TopicIntro({ lesson, onStart, onBack }: TopicIntroProps) {
             aria-label={`${t('intro.startLearning')}: ${metadata.title}`}
           >
             {t('intro.startLearning')}
-          </Button>
-          <Button
-            variant="ghost"
-            size="lg"
-            className="w-full"
-            onClick={onBack}
-          >
-            {t('intro.maybeLater')}
           </Button>
         </div>
       </div>
