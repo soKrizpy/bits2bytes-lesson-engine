@@ -26,7 +26,6 @@ import { TopicIntro } from '@/components/TopicIntro/TopicIntro';
 import { TopicReview } from '@/components/TopicReview/TopicReview';
 import { TopProgressBar } from '@/components/ui/TopProgressBar';
 import { ErrorScreen } from '@/components/ui/ErrorScreen';
-import { TOPIC_REGISTRY } from '@/engine/topicRegistry';
 import { useUrlParams } from '@/hooks/useUrlParams';
 import { useLmsPostMessage } from '@/hooks/useLmsPostMessage';
 import { useEngineTranslations } from '@/hooks/useEngineTranslations';
@@ -110,11 +109,6 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     () => (lesson !== null ? lesson.quiz.questions : []),
     [lesson]
   );
-
-  const currentTopicPosition = TOPIC_REGISTRY.findIndex((entry) => entry.topicId === topicId);
-  const nextTopicEntry = currentTopicPosition >= 0
-    ? TOPIC_REGISTRY[currentTopicPosition + 1]
-    : undefined;
 
   useEffect(() => {
     if (studentState.topicCompleted) return;
@@ -215,12 +209,6 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
         studentState={studentState}
         onReview={() => { setViewMode('review'); }}
         onReturn={() => { router.push('/'); }}
-        {...(nextTopicEntry !== undefined
-          ? {
-              nextTopic: { topicId: nextTopicEntry.topicId, title: nextTopicEntry.topicId },
-              onNextTopic: () => { router.push(`/lesson/${nextTopicEntry.topicId}`); },
-            }
-          : {})}
       />
     );
   }
