@@ -65,53 +65,76 @@ export function TopicOverview({ topics }: TopicOverviewProps) {
     };
   }, [topics]);
 
+  const sections = [
+    {
+      id: 'scratch',
+      title: 'Scratch',
+      description: 'Belajar membuat game dan animasi dengan blok visual.',
+      cards: cards.filter(({ entry }) => entry.category === 'scratch'),
+    },
+    {
+      id: 'web-development',
+      title: 'HTML, CSS & JavaScript',
+      description: 'Bangun fondasi untuk membuat website interaktif.',
+      cards: cards.filter(({ entry }) => entry.category !== 'scratch'),
+    },
+  ];
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-      {cards.map(({ entry, lesson, state }) => {
-        const status = getStatus(state);
-        const copy = STATUS_COPY[status];
+    <div className="flex flex-col gap-5">
+      {sections.map((section) => (
+        <details key={section.id} open className="group rounded-2xl border border-white/10 bg-card/40">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 marker:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-inset sm:p-6">
+            <span>
+              <span className="block text-lg font-semibold text-text-base sm:text-xl">{section.title}</span>
+              <span className="mt-1 block text-sm text-text-muted">{section.description}</span>
+            </span>
+            <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 text-text-muted transition-transform group-open:rotate-180">
+              ↓
+            </span>
+          </summary>
 
-        return (
-          <Link
-            key={entry.topicId}
-            href={`/lesson/${entry.topicId}`}
-            className="group flex min-h-64 flex-col bg-card/90 border border-white/10 rounded-2xl p-5 sm:p-6 space-y-4 shadow-sm shadow-black/10 hover:-translate-y-0.5 hover:border-primary/45 hover:shadow-lg hover:shadow-primary/10 transition-all duration-200 motion-reduce:transform-none motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-            aria-label={`${copy.action}: ${lesson?.metadata.title ?? entry.topicId}`}
-          >
-            <div className="flex items-center justify-between gap-2 flex-wrap">
-              <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-xs font-semibold bg-primary/10 text-primary border border-primary/20 px-2.5 py-1 rounded-full uppercase tracking-wide">
-                  {lesson?.metadata.category ?? entry.category}
-                </span>
-                <span className="text-xs font-semibold border px-2.5 py-1 rounded-full capitalize bg-white/5 text-text-muted border-white/10">
-                  {lesson?.metadata.level ?? entry.level}
-                </span>
-              </div>
-                <span className={['text-xs font-semibold', status === 'completed' ? 'text-success' : status === 'in-progress' ? 'text-primary' : 'text-text-muted'].join(' ')}>
-                {copy.label}
-              </span>
-            </div>
+          <div className="grid grid-cols-1 gap-5 border-t border-white/10 p-4 sm:grid-cols-2 sm:gap-6 sm:p-6 lg:grid-cols-3">
+            {section.cards.map(({ entry, lesson, state }) => {
+              const status = getStatus(state);
+              const copy = STATUS_COPY[status];
 
-            <div>
-              <h2 className="text-text-base font-semibold text-lg leading-snug">
-                {lesson?.metadata.title ?? entry.topicId}
-              </h2>
-              <p className="text-text-muted text-sm mt-2 line-clamp-3">
-                {lesson?.metadata.description ?? 'Open this topic to start learning.'}
-              </p>
-            </div>
+              return (
+                <Link
+                  key={entry.topicId}
+                  href={`/lesson/${entry.topicId}`}
+                  className="group flex min-h-64 flex-col space-y-4 rounded-2xl border border-white/10 bg-card/90 p-5 shadow-sm shadow-black/10 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/45 hover:shadow-lg hover:shadow-primary/10 motion-reduce:transform-none motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:p-6"
+                  aria-label={`${copy.action}: ${lesson?.metadata.title ?? entry.topicId}`}
+                >
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
+                        {lesson?.metadata.category ?? entry.category}
+                      </span>
+                      <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-semibold capitalize text-text-muted">
+                        {lesson?.metadata.level ?? entry.level}
+                      </span>
+                    </div>
+                    <span className={['text-xs font-semibold', status === 'completed' ? 'text-success' : status === 'in-progress' ? 'text-primary' : 'text-text-muted'].join(' ')}>
+                      {copy.label}
+                    </span>
+                  </div>
 
-            <div className="flex items-center justify-between gap-3 text-sm mt-auto pt-2">
-              <span className="text-text-muted">
-                {lesson?.metadata.estimatedTime !== undefined ? `${lesson.metadata.estimatedTime} min` : 'Self-paced'}
-              </span>
-              <span className="text-primary font-semibold group-hover:translate-x-1 transition-transform duration-200 motion-reduce:transform-none motion-reduce:transition-none">
-                {copy.action} <span aria-hidden="true">→</span>
-              </span>
-            </div>
-          </Link>
-        );
-      })}
+                  <div>
+                    <h2 className="text-lg font-semibold leading-snug text-text-base">{lesson?.metadata.title ?? entry.topicId}</h2>
+                    <p className="mt-2 line-clamp-3 text-sm text-text-muted">{lesson?.metadata.description ?? 'Open this topic to start learning.'}</p>
+                  </div>
+
+                  <div className="mt-auto flex items-center justify-between gap-3 pt-2 text-sm">
+                    <span className="text-text-muted">{lesson?.metadata.estimatedTime !== undefined ? `${lesson.metadata.estimatedTime} min` : 'Self-paced'}</span>
+                    <span className="font-semibold text-primary transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transform-none">{copy.action} <span aria-hidden="true">→</span></span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </details>
+      ))}
     </div>
   );
 }
