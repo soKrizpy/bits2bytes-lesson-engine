@@ -17,8 +17,7 @@ interface AchievementScreenProps {
   studentState: StudentState;
   onReview: () => void;
   onReturn: () => void;
-  nextTopic?: { topicId: string; title: string };
-  onNextTopic?: () => void;
+
 }
 
 export function AchievementScreen({
@@ -26,8 +25,6 @@ export function AchievementScreen({
   studentState,
   onReview,
   onReturn,
-  nextTopic,
-  onNextTopic,
 }: AchievementScreenProps) {
   const [visible, setVisible] = useState(false);
   const t = useEngineTranslations();
@@ -52,7 +49,6 @@ export function AchievementScreen({
   const totalNodes = lesson.learningPath.length;
   const achievementIcon = lesson.completion.achievementIcon ?? '🏆';
   const learned = lesson.review?.learned ?? lesson.objectives;
-  const hasNextTopic = nextTopic !== undefined && onNextTopic !== undefined;
 
   return (
     <div
@@ -146,25 +142,14 @@ export function AchievementScreen({
 
         {/* Actions: next adventure first, review second */}
         <div className="space-y-3">
-          {hasNextTopic ? (
-            <Button
-              onClick={onNextTopic}
-              size="lg"
-              className="w-full"
-              aria-label={`${t('achievement.continueNext')}: ${nextTopic.title}`}
-            >
-              {t('achievement.continueNext')}
-            </Button>
-          ) : (
-            <Button
-              onClick={onReturn}
-              size="lg"
-              className="w-full"
-              aria-label={t('achievement.returnToAdventure')}
-            >
-              {t('achievement.returnToAdventure')}
-            </Button>
-          )}
+          <Button
+            onClick={onReturn}
+            size="lg"
+            className="w-full"
+            aria-label={t('achievement.returnToAdventure')}
+          >
+            {t('achievement.returnToAdventure')}
+          </Button>
           <Button
             onClick={onReview}
             variant="secondary"
@@ -174,17 +159,6 @@ export function AchievementScreen({
           >
             {t('achievement.reviewTopic')}
           </Button>
-          {hasNextTopic && (
-            <Button
-              onClick={onReturn}
-              variant="ghost"
-              size="md"
-              className="w-full"
-              aria-label={t('achievement.returnToAdventure')}
-            >
-              {t('achievement.returnToAdventure')}
-            </Button>
-          )}
         </div>
       </div>
     </div>
