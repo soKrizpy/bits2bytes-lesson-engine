@@ -5,22 +5,29 @@
 // Shows: title, explanation (or placeholder), optional analogy, expectedResult, tips.
 // Topic-agnostic — works for any lesson content.
 
+import { useEffect } from 'react';
 import { useEngineTranslations } from '@/hooks/useEngineTranslations';
-import { Button } from '@/components/ui/Button';
 import type { LessonNode } from '@/types/lesson';
 
 interface LessonNodeViewProps {
   node: LessonNode;
   onAdvance: () => void;
+  onCanAdvanceChange?: (canAdvance: boolean) => void;
   mode?: 'learning' | 'review';
 }
 
-export function LessonNodeView({ node, onAdvance, mode = 'learning' }: LessonNodeViewProps) {
+export function LessonNodeView({ node, onAdvance: _onAdvance, onCanAdvanceChange, mode: _mode = 'learning' }: LessonNodeViewProps) {
   const t = useEngineTranslations();
+
+  useEffect(() => {
+    onCanAdvanceChange?.(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="space-y-6">
       {/* Title */}
-      <h2 className="text-2xl sm:text-3xl font-bold text-text-base tracking-tight">{node.title}</h2>
+      <h2 className="text-3xl sm:text-4xl font-bold text-text-base tracking-tight">{node.title}</h2>
 
       {/* Explanation */}
       <div className="lesson-panel">
@@ -68,14 +75,6 @@ export function LessonNodeView({ node, onAdvance, mode = 'learning' }: LessonNod
               </li>
             ))}
           </ul>
-        </div>
-      )}
-
-      {mode === 'learning' && (
-        <div className="pt-2">
-          <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
-            {t('node.continue')}
-          </Button>
         </div>
       )}
     </div>

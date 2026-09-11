@@ -7,18 +7,16 @@
 // Advance button is enabled only after the interaction is complete.
 
 import { useState } from 'react';
-import { useEngineTranslations } from '@/hooks/useEngineTranslations';
-import { Button } from '@/components/ui/Button';
 import type { PracticeNode } from '@/types/lesson';
 
 interface PracticeNodeViewProps {
   node: PracticeNode;
   onAdvance: () => void;
+  onCanAdvanceChange?: (canAdvance: boolean) => void;
   mode?: 'learning' | 'review';
 }
 
-export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: PracticeNodeViewProps) {
-  const t = useEngineTranslations();
+export function PracticeNodeView({ node, onAdvance: _onAdvance, onCanAdvanceChange, mode = 'learning' }: PracticeNodeViewProps) {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [showFeedback, setShowFeedback] = useState(false);
@@ -26,19 +24,18 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
   const isMultipleChoice = node.interactionType === 'multiple-choice';
   const isStepCompletion = node.interactionType === 'step-completion';
 
-  const isMultipleChoiceComplete =
+  const _isMultipleChoiceComplete =
     isMultipleChoice && selectedOption !== null;
-  const isStepCompletionComplete =
+  const _isStepCompletionComplete =
     isStepCompletion &&
     node.steps !== undefined &&
     completedSteps.size === node.steps.length &&
     node.steps.length > 0;
 
-  const isComplete = isMultipleChoiceComplete || isStepCompletionComplete;
-
   function handleOptionSelect(option: string) {
     setSelectedOption(option);
     setShowFeedback(true);
+    onCanAdvanceChange?.(true);
   }
 
   function handleStepToggle(index: number) {
@@ -49,6 +46,8 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
       } else {
         next.add(index);
       }
+      const willBeComplete = node.steps !== undefined && next.size === node.steps.length && node.steps.length > 0;
+      if (willBeComplete) onCanAdvanceChange?.(true);
       return next;
     });
   }
@@ -115,6 +114,10 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
             const isSelected = selectedOption === option;
             const isRight = isSelected && option === node.correctOption;
             const isWrong = isSelected && option !== node.correctOption;
+            const isCorrectUnselected =
+              option === node.correctOption &&
+              selectedOption !== null &&
+              selectedOption !== node.correctOption;
             return (
               <button
                 key={option}
@@ -123,12 +126,14 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
                 onClick={() => handleOptionSelect(option)}
                 disabled={selectedOption !== null}
                 className={[
-                  'w-full text-left px-5 py-4 rounded-xl border text-sm font-medium transition-all duration-300',
+                  'w-full text-left px-5 py-4 rounded-xl border text-base font-medium transition-all duration-300 min-h-[3.5rem]',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background',
                   isRight
                     ? 'border-success bg-success/10 text-success'
                     : isWrong
                     ? 'border-error bg-error/10 text-error'
+                    : isCorrectUnselected
+                    ? 'border-success/50 bg-success/10 text-success'
                     : isSelected
                     ? 'border-primary bg-primary/10 text-text-base'
                     : 'border-white/10 bg-card text-text-base hover:border-primary/40 hover:bg-primary/5',
@@ -145,13 +150,15 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
                         ? 'border-success bg-success text-white'
                         : isWrong
                         ? 'border-error bg-error text-white'
+                        : isCorrectUnselected
+                        ? 'border-success bg-success text-white'
                         : isSelected
                         ? 'border-primary bg-primary'
                         : 'border-white/30',
                     ].join(' ')}
                     aria-hidden="true"
                   >
-                    {isRight ? '✓' : isWrong ? '✗' : ''}
+                    {isRight || isCorrectUnselected ? '✓' : isWrong ? '✗' : ''}
                   </span>
                   {option}
                 </span>
@@ -171,7 +178,7 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
                 key={index}
                 onClick={() => handleStepToggle(index)}
                 className={[
-                  'w-full text-left px-5 py-4 rounded-xl border text-sm font-medium transition-all duration-300',
+                  'w-full text-left px-5 py-4 rounded-xl border text-base font-medium transition-all duration-300 min-h-[3.5rem]',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background',
                   done
                     ? 'border-success/30 bg-success/10 text-text-muted line-through'
@@ -199,31 +206,17 @@ export function PracticeNodeView({ node, onAdvance, mode = 'learning' }: Practic
 
       {/* Feedback */}
       {showFeedback && isMultipleChoice && selectedOption !== null && (
-        <div
-          className={[
-            'rounded-xl px-5 py-4 text-sm font-medium transition-all duration-300',
-            isCorrect
-              ? 'bg-success/10 border border-success/20 text-success'
-              : 'bg-warning/10 border border-warning/20 text-warning',
-          ].join(' ')}
-        >
-          {isCorrect
-            ? t('node.correct')
-            : t('node.incorrect')}
+        <div className={['rounded-xl px-5 py-4 space-y-1 text-sm', isCorrect ? 'bg-success/10 border border-success/20' : 'bg-error/10 border border-error/20'].join(' ')}>
+          <p className={['font-semibold', isCorrect ? 'text-success' : 'text-error'].join(' ')}>
+            {isCorrect ? '✓ Benar!' : '✗ Belum tepat'}
+          </p>
+          {node.correctOption !== undefined && !isCorrect && (
+            <p className="text-text-muted text-xs">
+              Jawaban yang benar: <span className="font-semibold text-success">{node.correctOption}</span>
+            </p>
+          )}
         </div>
       )}
-
-      {/* Advance */}
-      <div className="pt-2">
-        <Button
-          onClick={onAdvance}
-          size="lg"
-          disabled={!isComplete}
-          className="w-full sm:w-auto"
-        >
-            {isComplete ? t('node.continue') : t('node.completeToContinue')}
-        </Button>
-      </div>
     </div>
   );
 }

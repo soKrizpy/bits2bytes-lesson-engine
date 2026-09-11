@@ -14,19 +14,17 @@
 //   - studentId in URL params → HybridAdapter (Supabase primary + localStorage fallback)
 //   - no studentId → LocalStorageAdapter (anonymous / standalone mode)
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useEngineState } from '@/hooks/useEngineState';
 import { LocalStorageAdapter } from '@/persistence/localStorageAdapter';
 import { SupabaseAdapter } from '@/persistence/supabaseAdapter';
 import { HybridAdapter } from '@/persistence/hybridAdapter';
-import { LearningPath } from '@/components/LearningPath/LearningPath';
 import { NodeRenderer } from '@/components/NodeRenderer/NodeRenderer';
-import { NodeStageHeader } from '@/components/NodeRenderer/NodeStageHeader';
 import { AchievementScreen } from '@/components/AchievementScreen/AchievementScreen';
 import { TopicIntro } from '@/components/TopicIntro/TopicIntro';
 import { TopicReview } from '@/components/TopicReview/TopicReview';
-import { XPBadge } from '@/components/ui/XPBadge';
+import { TopProgressBar } from '@/components/ui/TopProgressBar';
 import { ErrorScreen } from '@/components/ui/ErrorScreen';
 import { TOPIC_REGISTRY } from '@/engine/topicRegistry';
 import { useUrlParams } from '@/hooks/useUrlParams';
@@ -52,6 +50,11 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
   const [viewMode, setViewMode] = useState<'achievement' | 'review'>('achievement');
   const [selectedReviewNodeIndex, setSelectedReviewNodeIndex] = useState(0);
   const [selectedLearningNodeIndex, setSelectedLearningNodeIndex] = useState<number | null>(null);
+
+  // ── Mimo-style UI state ────────────────────────────────────────────────────
+  const [cardKey, setCardKey] = useState(0);
+  const [canAdvance, setCanAdvance] = useState(true);
+  const [xpPopValue, setXpPopValue] = useState<number | null>(null);
 
   // Build a stable adapter based on whether a studentId is available.
   // We hold refs so that the adapter instances are not recreated on every render.
@@ -140,6 +143,27 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [studentState.xpEarned]);
 
+  // ── Current node (safe to derive before early returns; lesson may be null) ─
+  const selectedLearningNode = (lesson !== null && selectedLearningNodeIndex !== null)
+    ? lesson.learningPath[selectedLearningNodeIndex]
+    : undefined;
+  const currentNode = lesson !== null
+    ? (selectedLearningNode ?? lesson.learningPath[studentState.currentNodeIndex])
+    : undefined;
+  const currentNodeIndex = selectedLearningNodeIndex ?? studentState.currentNodeIndex;
+  const isCompletedSelection = currentNode !== undefined &&
+    currentNodeIndex !== studentState.currentNodeIndex &&
+    studentState.completedNodes.includes(currentNode.id);
+
+  // ── Mimo-style advance handler ─────────────────────────────────────────────
+  const handleAdvance = useCallback(() => {
+    const xp = currentNode?.xp ?? 0;
+    if (xp > 0) setXpPopValue(xp);
+    advanceNode();
+    setCardKey((k) => k + 1);
+    setCanAdvance(true);
+  }, [currentNode, advanceNode]);
+
   // ── Load error: hard block ─────────────────────────────────────────────────
   if (loadError !== null) {
     return <ErrorScreen title={t('lesson.couldNotLoad')} message={loadError} />;
@@ -202,49 +226,12 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     );
   }
 
-  // ── Current node ───────────────────────────────────────────────────────────
-  const selectedLearningNode = selectedLearningNodeIndex !== null
-    ? lesson.learningPath[selectedLearningNodeIndex]
-    : undefined;
-  const currentNode = selectedLearningNode ?? lesson.learningPath[studentState.currentNodeIndex];
-  const currentNodeIndex = selectedLearningNodeIndex ?? studentState.currentNodeIndex;
-  const isCompletedSelection = currentNode !== undefined &&
-    currentNodeIndex !== studentState.currentNodeIndex &&
-    studentState.completedNodes.includes(currentNode.id);
+  // ── Main lesson layout (Mimo/Duolingo style) ───────────────────────────────
+  const totalNodes = lesson.learningPath.length;
+  const isLastNode = currentNodeIndex === totalNodes - 1;
 
-  // ── Main lesson layout ─────────────────────────────────────────────────────
   return (
     <div className="min-h-screen bg-background flex flex-col">
-
-      {/* ── Top header ──────────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-40 bg-background/90 backdrop-blur border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-              <span className="text-primary font-bold text-lg tracking-tight drop-shadow-sm">
-              BITS2BYTES
-            </span>
-            <span className="text-text-muted text-sm hidden sm:block">
-              {lesson.metadata.title}
-            </span>
-          </div>
-
-          {/* Inline XP badge for mobile (fixed-position badge hidden on small screens) */}
-          <div className="sm:hidden">
-            <div className="flex items-center gap-1.5 bg-card border border-xpGold/40 rounded-full px-3 py-1.5">
-              <span className="text-xpGold text-sm font-bold" aria-hidden="true">⭐</span>
-              <span className="text-xpGold text-sm font-bold tabular-nums">
-                {studentState.xpEarned} XP
-              </span>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* ── Fixed XP badge — desktop only ──────────────────────────────────── */}
-      <div className="hidden sm:block">
-        <XPBadge xpEarned={studentState.xpEarned} />
-      </div>
-
       {/* ── Non-blocking save error banner ─────────────────────────────────── */}
       {saveError !== null && (
         <div
@@ -256,71 +243,55 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
         </div>
       )}
 
-      {currentNodeIndex === 0 && !isCompletedSelection && (
-        <section className="max-w-7xl mx-auto w-full px-4 sm:px-6 pt-6" aria-labelledby="topic-brief-heading">
-          <div className="rounded-2xl border border-primary/20 bg-primary/10 p-5 sm:p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{t('lesson.topicBrief')}</p>
-            <h1 id="topic-brief-heading" className="mt-2 text-xl font-bold text-text-base">{lesson.metadata.title}</h1>
-            <p className="mt-2 text-sm leading-relaxed text-text-muted">{lesson.metadata.description}</p>
-          </div>
-        </section>
-      )}
+      {/* ── Top progress bar (replaces old sticky header) ──────────── */}
+      <TopProgressBar
+        currentStep={currentNodeIndex + 1}
+        totalSteps={totalNodes}
+        topicTitle={lesson.metadata.title}
+        xpPopValue={xpPopValue}
+        onXpPopDone={() => setXpPopValue(null)}
+      />
 
-      {/* ── Main content area ───────────────────────────────────────────────── */}
-      <div className="flex-1 max-w-7xl mx-auto w-full flex flex-col lg:flex-row">
-
-        {/* ── Learning path sidebar ────────────────────────────────────────── */}
-        <aside className="lg:w-72 lg:shrink-0 lg:border-r lg:border-white/10 lg:overflow-y-auto lg:h-[calc(100vh-3.5rem)] lg:sticky lg:top-14">
-          {/* Mobile: compact strip above content */}
-          <div className="lg:hidden border-b border-white/10">
-            <div className="px-4 py-3">
-              <LearningPath
-                nodes={lesson.learningPath}
-                studentState={studentState}
-                selectedNodeIndex={selectedLearningNodeIndex ?? studentState.currentNodeIndex}
-                onSelectNode={setSelectedLearningNodeIndex}
-              />
-            </div>
-          </div>
-          {/* Desktop: full vertical sidebar */}
-          <div className="hidden lg:block h-full">
-            <LearningPath
-              nodes={lesson.learningPath}
+      {/* ── Scrollable node content area ───────────────────────────── */}
+      <main className="flex-1 overflow-y-auto pb-28">
+        <div
+          key={cardKey}
+          className="slide-in-from-right max-w-lg mx-auto w-full px-4 sm:px-6 py-8"
+        >
+          {currentNode !== undefined ? (
+            <NodeRenderer
+              node={currentNode}
               studentState={studentState}
-              selectedNodeIndex={selectedLearningNodeIndex ?? studentState.currentNodeIndex}
-              onSelectNode={setSelectedLearningNodeIndex}
+              quizQuestions={quizQuestions}
+              onAdvance={handleAdvance}
+              onSubmitQuizAttempt={isCompletedSelection ? () => {} : submitQuizAttempt}
+              onCanAdvanceChange={(v) => setCanAdvance(v)}
+              mode={isCompletedSelection ? 'review' : 'learning'}
             />
-          </div>
-        </aside>
+          ) : (
+            <div className="text-center space-y-4 py-20">
+              <p className="text-text-muted text-sm">{t('lesson.completing')}</p>
+            </div>
+          )}
+        </div>
+      </main>
 
-        {/* ── Node content area ────────────────────────────────────────────── */}
-        <main className="flex-1 overflow-y-auto mobile-checkpoint-safe-area">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-            {currentNode !== undefined ? (
-              <div className="space-y-6">
-                <NodeStageHeader
-                  node={currentNode}
-                  nodeIndex={currentNodeIndex}
-                  totalNodes={lesson.learningPath.length}
-                  isRevisit={isCompletedSelection}
-                />
-                <NodeRenderer
-                  node={currentNode}
-                  studentState={studentState}
-                  quizQuestions={quizQuestions}
-                  onAdvance={isCompletedSelection ? () => {} : advanceNode}
-                  onSubmitQuizAttempt={isCompletedSelection ? () => {} : submitQuizAttempt}
-                  mode={isCompletedSelection ? 'review' : 'learning'}
-                />
-              </div>
-            ) : (
-              // All nodes traversed but topicCompleted flag not yet flushed — transient state
-              <div className="text-center space-y-4 py-20">
-                <p className="text-text-muted text-sm">{t('lesson.completing')}</p>
-              </div>
-            )}
-          </div>
-        </main>
+      {/* ── Sticky bottom CTA bar ───────────────────────────────────── */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--bg-page)]/95 backdrop-blur border-t border-white/10 sticky-cta-safe-area px-4 py-3 flex justify-center">
+        <button
+          onClick={handleAdvance}
+          disabled={!canAdvance || isCompletedSelection}
+          className={[
+            'w-full max-w-lg py-4 rounded-2xl font-bold text-base transition-all duration-200',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+            canAdvance && !isCompletedSelection
+              ? 'bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30 active:scale-[0.98]'
+              : 'bg-white/10 text-text-muted cursor-not-allowed',
+          ].join(' ')}
+          aria-label={isLastNode ? t('lesson.finish') : t('lesson.continue')}
+        >
+          {isLastNode ? (t('lesson.finish') ?? 'Selesai') : (t('lesson.continue') ?? 'Lanjut →')}
+        </button>
       </div>
     </div>
   );

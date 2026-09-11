@@ -5,18 +5,25 @@
 // Shows: title, instructions, optional starterCode block, optional expectedResult.
 // Absent optional fields produce no visible error.
 
+import { useEffect } from 'react';
 import { useEngineTranslations } from '@/hooks/useEngineTranslations';
-import { Button } from '@/components/ui/Button';
 import type { ChallengeNode } from '@/types/lesson';
 
 interface ChallengeNodeViewProps {
   node: ChallengeNode;
   onAdvance: () => void;
+  onCanAdvanceChange?: (canAdvance: boolean) => void;
   mode?: 'learning' | 'review';
 }
 
-export function ChallengeNodeView({ node, onAdvance, mode = 'learning' }: ChallengeNodeViewProps) {
+export function ChallengeNodeView({ node, onAdvance: _onAdvance, onCanAdvanceChange, mode: _mode = 'learning' }: ChallengeNodeViewProps) {
   const t = useEngineTranslations();
+
+  useEffect(() => {
+    onCanAdvanceChange?.(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="space-y-6">
       {/* Title */}
@@ -56,14 +63,6 @@ export function ChallengeNodeView({ node, onAdvance, mode = 'learning' }: Challe
             <span className="text-success text-sm font-semibold uppercase tracking-wide">{t('node.expectedResult')}</span>
           </div>
           <p className="text-text-base text-sm leading-relaxed">{node.expectedResult}</p>
-        </div>
-      )}
-
-      {mode === 'learning' && (
-        <div className="pt-2">
-          <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
-            {t('node.challengeComplete')}
-          </Button>
         </div>
       )}
     </div>

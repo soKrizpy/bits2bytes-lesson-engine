@@ -1,16 +1,19 @@
 'use client';
 
 // src/components/QuizEngine/QuizEngine.tsx
-// Full quiz experience — state machine: idle → active → reviewing → (idle | complete)
+// Full quiz experience — state machine: idle → active → summary → reviewing → (idle | complete)
 //
 // CRITICAL BUSINESS RULES:
 // - Max 2 attempts. 3rd attempt HARD BLOCKED.
 // - bestQuizScore = MAX(all attempts) — enforced in useEngineState hook.
 // - Quiz node marked complete after first submission.
 // - After submission, student may proceed to next node via onAdvance.
+//
+// ACTIVE PHASE: one question at a time.
+// - Each question is answered and submitted individually before advancing.
+// - onCanAdvanceChange is signalled false on enter, true on summary.
 
-import { useState } from 'react';
-import { QuizQuestionCard } from './QuizQuestion';
+import { useEffect, useState } from 'react';
 import { QuizReview } from './QuizReview';
 import { Button } from '@/components/ui/Button';
 import type { QuizQuestion } from '@/types/lesson';
@@ -19,13 +22,14 @@ import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 
 const MAX_ATTEMPTS = 2;
 
-type QuizPhase = 'idle' | 'active' | 'reviewing';
+type QuizPhase = 'idle' | 'active' | 'summary' | 'reviewing';
 
 interface QuizEngineProps {
   questions: QuizQuestion[];
   studentState: StudentState;
   onSubmitAttempt: (answers: Record<string, string>) => void;
   onAdvance: () => void;
+  onCanAdvanceChange?: (canAdvance: boolean) => void;
 }
 
 export function QuizEngine({
@@ -33,11 +37,17 @@ export function QuizEngine({
   studentState,
   onSubmitAttempt,
   onAdvance,
+  onCanAdvanceChange,
 }: QuizEngineProps) {
   const t = useEngineTranslations();
   const [phase, setPhase] = useState<QuizPhase>('idle');
-  const [currentAnswers, setCurrentAnswers] = useState<Record<string, string>>({});
   const [reviewAnswers, setReviewAnswers] = useState<Record<string, string>>({});
+
+  // Per-question state for active phase
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [perQuestionAnswer, setPerQuestionAnswer] = useState<string | null>(null);
+  const [perQuestionSubmitted, setPerQuestionSubmitted] = useState(false);
+  const [allAnswers, setAllAnswers] = useState<Record<string, string>>({});
 
   const attemptsUsed = studentState.quizAttempts.length;
   const canAttempt = attemptsUsed < MAX_ATTEMPTS;
@@ -45,32 +55,66 @@ export function QuizEngine({
     studentState.quizAttempts.length > 0
       ? studentState.quizAttempts[studentState.quizAttempts.length - 1] ?? null
       : null;
-  const allAnswered = questions.every((q) => currentAnswers[q.id] !== undefined);
 
   const maxScore = questions.reduce((sum, q) => sum + q.points, 0);
 
+  // Signal external StickyCtaBar about advance availability
+  useEffect(() => {
+    if (phase === 'active') {
+      onCanAdvanceChange?.(false);
+    } else if (phase === 'summary') {
+      onCanAdvanceChange?.(true);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
+
   function handleStartQuiz() {
-    // Hard guard — should never be reachable if UI is correct, but belt-and-suspenders
     if (!canAttempt) return;
-    setCurrentAnswers({});
+    setQuestionIndex(0);
+    setPerQuestionAnswer(null);
+    setPerQuestionSubmitted(false);
+    setAllAnswers({});
     setPhase('active');
   }
 
-  function handleSelectAnswer(questionId: string, answer: string) {
-    setCurrentAnswers((prev) => ({ ...prev, [questionId]: answer }));
+  function handleSelectAnswer(answer: string) {
+    if (perQuestionSubmitted) return;
+    setPerQuestionAnswer(answer);
   }
 
-  function handleSubmit() {
-    if (!allAnswered) return;
-    // Freeze answers for review display, then submit to hook
-    setReviewAnswers(currentAnswers);
-    onSubmitAttempt(currentAnswers);
-    setPhase('reviewing');
+  function handleSubmitAnswer() {
+    if (perQuestionAnswer === null || perQuestionSubmitted) return;
+    setPerQuestionSubmitted(true);
+  }
+
+  function handleNextQuestion() {
+    if (!perQuestionSubmitted || perQuestionAnswer === null) return;
+
+    const question = questions[questionIndex];
+    if (question === undefined) return;
+
+    const newAllAnswers = { ...allAnswers, [question.id]: perQuestionAnswer };
+    setAllAnswers(newAllAnswers);
+
+    const isLast = questionIndex === questions.length - 1;
+
+    if (!isLast) {
+      setQuestionIndex(questionIndex + 1);
+      setPerQuestionAnswer(null);
+      setPerQuestionSubmitted(false);
+    } else {
+      // All questions answered — submit and go to summary
+      setReviewAnswers(newAllAnswers);
+      onSubmitAttempt(newAllAnswers);
+      setPhase('summary');
+    }
   }
 
   function handleRetry() {
-    // Only reachable if attemptsUsed < MAX_ATTEMPTS
-    setCurrentAnswers({});
+    setQuestionIndex(0);
+    setPerQuestionAnswer(null);
+    setPerQuestionSubmitted(false);
+    setAllAnswers({});
     setPhase('idle');
   }
 
@@ -159,11 +203,14 @@ export function QuizEngine({
 
   // ── Active phase ───────────────────────────────────────────────────────────
   if (phase === 'active') {
-    const answeredCount = Object.keys(currentAnswers).length;
+    const question = questions[questionIndex];
+    if (question === undefined) return null;
+
+    const isLast = questionIndex === questions.length - 1;
 
     return (
-      <div className="space-y-8">
-        {/* Header with attempt info */}
+      <div className="space-y-6">
+        {/* Header with attempt badge */}
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-bold text-text-base">{t('quiz.title')}</h2>
           <span className="text-xs font-semibold bg-primary/15 text-primary border border-primary/20 px-3 py-1 rounded-full">
@@ -171,61 +218,162 @@ export function QuizEngine({
           </span>
         </div>
 
-        {/* Progress through questions */}
+        {/* Progress bar */}
         <div className="flex items-center gap-1">
-          {questions.map((q) => (
+          {questions.map((q, i) => (
             <div
               key={q.id}
               className={[
                 'h-1.5 flex-1 rounded-full transition-all duration-300',
-                currentAnswers[q.id] !== undefined ? 'bg-primary' : 'bg-white/10',
+                i < questionIndex
+                  ? 'bg-primary'
+                  : i === questionIndex
+                  ? 'bg-primary/50'
+                  : 'bg-white/10',
               ].join(' ')}
               aria-hidden="true"
             />
           ))}
         </div>
-        <p className="text-xs text-text-muted -mt-6">
-          {t('quiz.answered', { answered: answeredCount, total: questions.length })}
+        <p className="text-xs text-text-muted -mt-4">
+          {t('quiz.answered', { answered: questionIndex, total: questions.length })}
         </p>
 
-        {/* All 5 questions on one screen */}
-        <div className="space-y-8">
-          {questions.map((question, idx) => (
-            <div key={question.id} className="bg-card border border-white/10 rounded-xl p-6">
-              <QuizQuestionCard
-                question={question}
-                questionNumber={idx + 1}
-                totalQuestions={questions.length}
-                selectedAnswer={
-                  currentAnswers[question.id] !== undefined
-                    ? (currentAnswers[question.id] as string)
-                    : null
+        {/* Question card */}
+        <div className="bg-card border border-white/10 rounded-xl p-6 space-y-5">
+          {/* Question text */}
+          <p className="text-lg font-bold text-text-base leading-snug">
+            {questionIndex + 1}. {question.question}
+          </p>
+
+          {/* Answer options */}
+          <div className="space-y-3">
+            {question.options.map((option) => {
+              const isSelected = perQuestionAnswer === option;
+              const isCorrect = option === question.correctAnswer;
+
+              let optionClass =
+                'w-full min-h-[3.5rem] px-4 py-3 rounded-xl border text-sm font-medium text-left transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary';
+
+              if (!perQuestionSubmitted) {
+                // Pre-submission styling
+                optionClass += isSelected
+                  ? ' border-primary bg-primary/10 text-primary'
+                  : ' border-white/10 bg-white/5 text-text-base hover:border-white/30 hover:bg-white/10';
+              } else {
+                // Post-submission styling
+                if (isCorrect) {
+                  optionClass += ' border-success bg-success/10 text-success';
+                } else if (isSelected && !isCorrect) {
+                  optionClass += ' border-error bg-error/10 text-error';
+                } else {
+                  optionClass += ' border-white/10 bg-white/5 text-text-muted opacity-50';
                 }
-                onSelect={(answer) => handleSelectAnswer(question.id, answer)}
-                disabled={false}
-              />
+              }
+
+              return (
+                <button
+                  key={option}
+                  className={optionClass}
+                  onClick={() => handleSelectAnswer(option)}
+                  disabled={perQuestionSubmitted}
+                >
+                  {option}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Explanation callout (shown after submission) */}
+          {perQuestionSubmitted && (
+            <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-text-muted leading-relaxed">
+              <span className="font-semibold text-text-base block mb-1">
+                {perQuestionAnswer === question.correctAnswer ? '🎉 Correct!' : '🤔 Not quite.'}
+              </span>
+              {question.explanation}
             </div>
-          ))}
+          )}
         </div>
 
-        {/* Submit */}
-        <div className="flex items-center gap-4 flex-wrap">
-          <Button onClick={handleSubmit} size="lg" disabled={!allAnswered}>
-            {allAnswered
-              ? t('quiz.submitAnswers')
-              : t('quiz.questionsRemaining', { n: questions.length - answeredCount })}
+        {/* Submit / Next button */}
+        {!perQuestionSubmitted ? (
+          <Button
+            onClick={handleSubmitAnswer}
+            size="lg"
+            className="w-full"
+            disabled={perQuestionAnswer === null}
+          >
+            {t('quiz.submitAnswers')}
           </Button>
-          {!allAnswered && (
-            <span className="text-xs text-text-muted">
-              {t('quiz.questionsRemaining', { n: questions.length - answeredCount })}
-            </span>
+        ) : (
+          <Button
+            onClick={handleNextQuestion}
+            size="lg"
+            className="w-full"
+          >
+            {isLast ? t('quiz.continue') : t('quiz.next')}
+          </Button>
+        )}
+      </div>
+    );
+  }
+
+  // ── Summary phase ──────────────────────────────────────────────────────────
+  if (phase === 'summary') {
+    // attemptsUsed reflects post-submission count from studentState
+    const updatedAttemptsUsed = studentState.quizAttempts.length;
+    const latestAttempt =
+      studentState.quizAttempts.length > 0
+        ? studentState.quizAttempts[studentState.quizAttempts.length - 1] ?? null
+        : null;
+    const latestScore = latestAttempt !== null ? latestAttempt.score : 0;
+
+    const correctCount = questions.filter(
+      (q) => reviewAnswers[q.id] === q.correctAnswer
+    ).length;
+
+    const canRetry = updatedAttemptsUsed < MAX_ATTEMPTS;
+
+    return (
+      <div className="space-y-6">
+        {/* Header */}
+        <div className="space-y-1">
+          <h2 className="text-2xl font-bold text-text-base">{t('quiz.title')}</h2>
+        </div>
+
+        {/* Summary card */}
+        <div className="bg-card border border-white/10 rounded-xl p-6 space-y-4 text-center">
+          <p className="text-4xl font-bold text-xpGold tabular-nums">
+            {t('quiz.summaryScore', { score: latestScore, max: maxScore })}
+          </p>
+          <p className="text-text-muted text-sm">
+            {t('quiz.summaryCorrect', { correct: correctCount, total: questions.length })}
+          </p>
+        </div>
+
+        {/* Attempt exhausted warning */}
+        {!canRetry && (
+          <div className="bg-card border border-white/10 rounded-xl p-4 text-sm text-text-muted">
+            {t('quiz.allAttemptsUsed', { max: MAX_ATTEMPTS, score: studentState.bestQuizScore })}
+          </div>
+        )}
+
+        {/* Actions */}
+        <div className="flex items-center gap-3 flex-wrap">
+          <Button onClick={onAdvance} size="lg" className="w-full">
+            {t('quiz.next')}
+          </Button>
+          {canRetry && (
+            <Button onClick={handleRetry} variant="secondary" size="md" className="w-full">
+              {t('quiz.tryAgain', { n: updatedAttemptsUsed + 1, max: MAX_ATTEMPTS })}
+            </Button>
           )}
         </div>
       </div>
     );
   }
 
-  // ── Review phase ───────────────────────────────────────────────────────────
+  // ── Reviewing phase ────────────────────────────────────────────────────────
   // At this point phase === 'reviewing'.
   // attemptsUsed reflects the count AFTER the hook has recorded the submission.
   const updatedAttemptsUsed = studentState.quizAttempts.length;

@@ -54,7 +54,10 @@
     "yourAnswer": "Jawabanmu:",
     "yourScore": "Skormu",
     "continue": "Lanjut →",
-    "tryAgain": "Coba Lagi (Percobaan {n} dari {max})"
+    "tryAgain": "Coba Lagi (Percobaan {n} dari {max})",
+    "next": "Lanjut →",
+    "summaryScore": "{score} / {max} pts",
+    "summaryCorrect": "{correct} / {total} benar"
   },
   "achievement": {
     "subheading": "Kerja bagus!",

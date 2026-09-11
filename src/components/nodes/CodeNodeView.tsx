@@ -6,18 +6,36 @@
 // Language label matches code.language exactly — no normalisation.
 // Topic-agnostic: works for html, css, javascript, python, lua, etc.
 
-import { useEngineTranslations } from '@/hooks/useEngineTranslations';
-import { Button } from '@/components/ui/Button';
+import { useEffect, useState } from 'react';
 import type { CodeNode } from '@/types/lesson';
+
+type CopyState = 'idle' | 'copied' | 'error';
 
 interface CodeNodeViewProps {
   node: CodeNode;
   onAdvance: () => void;
+  onCanAdvanceChange?: (canAdvance: boolean) => void;
   mode?: 'learning' | 'review';
 }
 
-export function CodeNodeView({ node, onAdvance, mode = 'learning' }: CodeNodeViewProps) {
-  const t = useEngineTranslations();
+export function CodeNodeView({ node, onAdvance: _onAdvance, onCanAdvanceChange, mode: _mode = 'learning' }: CodeNodeViewProps) {
+  const [copyState, setCopyState] = useState<CopyState>('idle');
+
+  useEffect(() => {
+    onCanAdvanceChange?.(true);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  async function handleCopy() {
+    try {
+      await navigator.clipboard.writeText(node.code.content);
+      setCopyState('copied');
+    } catch {
+      setCopyState('error');
+    }
+    setTimeout(() => setCopyState('idle'), 2000);
+  }
+
   return (
     <div className="space-y-6">
       {/* Title */}
@@ -30,12 +48,18 @@ export function CodeNodeView({ node, onAdvance, mode = 'learning' }: CodeNodeVie
 
       {/* Code block */}
       <div className="code-shell">
-        {/* Language label */}
+        {/* Language label + Copy button */}
         <div className="flex items-center justify-between bg-white/5 px-4 py-2 border-b border-white/10">
           <span className="text-xs font-mono font-semibold text-primary uppercase tracking-wider">
             {node.code.language}
           </span>
-          <span className="text-xs text-text-muted">{t('node.codeExample')}</span>
+          <button
+            onClick={handleCopy}
+            className="text-xs font-semibold text-text-muted hover:text-text-base transition-colors px-2 py-0.5 rounded border border-white/10 hover:border-white/30"
+            aria-label="Copy code"
+          >
+            {{ idle: 'Copy', copied: 'Copied!', error: 'Error' }[copyState]}
+          </button>
         </div>
         {/* Code content — preserves whitespace and indentation */}
         <pre>
@@ -44,14 +68,6 @@ export function CodeNodeView({ node, onAdvance, mode = 'learning' }: CodeNodeVie
           </code>
         </pre>
       </div>
-
-      {mode === 'learning' && (
-        <div className="pt-2">
-          <Button onClick={onAdvance} size="lg" className="w-full sm:w-auto">
-            {t('node.continue')}
-          </Button>
-        </div>
-      )}
     </div>
   );
 }

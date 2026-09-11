@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Academy - Gamified Learning Path</title>
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS & html2canvas CDN (Untuk Export Gambar PNG) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f1117',
+                            card: '#181c24',
+                            border: '#2a303c',
+                            accent: '#a3e635',
+                            cyan: '#38bdf8',
+                            orange: '#f97316',
+                            purple: '#c084fc',
+                            red: '#ef4444'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        code: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f1117;
+            color: #f1f5f9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            min-height: 100vh;
+        }
+
+        .pop {
+            animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0.92); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f1117; }
+        ::-webkit-scrollbar-thumb { background: #2a303c; border-radius: 4px; }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen relative selection:bg-brand-accent selection:text-black">
+
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+
+    <!-- Top Header -->
+    <header class="border-b border-brand-border bg-brand-card/90 backdrop-blur sticky top-0 z-40">
+        <div class="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-brand-accent/20 border border-brand-accent/40 flex items-center justify-center text-brand-accent font-bold">
+                    <i class="fa-brands fa-python text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-white text-base leading-none">Python <span class="text-brand-accent">Academy</span></h1>
+                    <p class="text-[11px] text-slate-400 mt-0.5">Petualangan Coding Interaktif</p>
+                </div>
+            </div>
+
+            <!-- Global Stats Bar -->
+            <div id="global-stats-bar" class="hidden flex items-center gap-3">
+                <div class="flex items-center gap-1.5 bg-brand-orange/10 border border-brand-orange/30 px-3 py-1 rounded-full">
+                    <i class="fa-solid fa-fire text-brand-orange text-xs animate-pulse"></i>
+                    <span id="global-streak" class="font-extrabold text-brand-orange text-xs">0</span>
+                </div>
+                <div class="flex items-center gap-1.5 bg-brand-accent/10 border border-brand-accent/30 px-3 py-1 rounded-full">
+                    <i class="fa-solid fa-bolt text-brand-accent text-xs"></i>
+                    <span id="global-xp" class="font-extrabold text-brand-accent text-xs">0</span>
+                    <span class="text-[10px] text-brand-accent/80 font-bold">XP</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow p-4 flex items-center justify-center">
+        <div class="w-full max-w-xl">
+
+            <!-- ================= VIEW 1: COVER / COVER WELCOME ================= -->
+            <div id="view-cover" class="bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8 text-center pop shadow-2xl">
+                <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-tr from-brand-accent/20 to-brand-cyan/20 border border-brand-accent/40 flex items-center justify-center text-4xl text-brand-accent">
+                    <i class="fa-brands fa-python"></i>
+                </div>
+
+                <span class="inline-block bg-brand-accent/10 border border-brand-accent/30 text-brand-accent text-[11px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider mb-3">
+                    Gamified Learning Path
+                </span>
+
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2 leading-tight">
+                    Belajar Python Ala <span class="text-brand-accent">Duolingo & Mimo</span>
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-400 max-w-sm mx-auto mb-6">
+                    Buka Node materi, selesaikan latihan interaktif, pertahankan Streak, dan taklukkan Quiz Arena!
+                </p>
+
+                <!-- Input Nama Pemain -->
+                <div class="max-w-xs mx-auto mb-6 text-left">
+                    <label for="player-name" class="block text-xs font-semibold text-slate-400 mb-2">Nama Pemain / Panggilan:</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-user absolute left-3.5 top-3.5 text-slate-500 text-xs"></i>
+                        <input type="text" id="player-name" placeholder="Contoh: Budi Coder" 
+                            class="w-full bg-brand-dark border border-brand-border focus:border-brand-accent rounded-xl py-2.5 pl-10 pr-4 text-xs sm:text-sm text-white placeholder-slate-600 focus:outline-none transition">
+                    </div>
+                </div>
+
+                <button id="start-journey-btn" class="w-full py-3.5 bg-brand-accent hover:bg-lime-400 text-black font-extrabold rounded-xl transition flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-solid fa-play"></i> Mulai Petualangan
+                </button>
+            </div>
+
+            <!-- ================= VIEW 2: MAP / PATH TREE ================= -->
+            <div id="view-map" class="hidden pop">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center gap-2 bg-brand-card border border-brand-border px-4 py-1.5 rounded-full mb-3">
+                        <i class="fa-solid fa-user-gear text-brand-cyan text-xs"></i>
+                        <span id="player-display-name" class="text-xs font-bold text-white">Pemain</span>
+                    </div>
+                    <h2 class="text-xl font-extrabold text-white">Peta Pembelajaran Python</h2>
+                    <p class="text-xs text-slate-400">Selesaikan Node Materi untuk Membuka Arena Quiz!</p>
+                </div>
+
+                <!-- Path Nodes List -->
+                <div class="relative flex flex-col items-center gap-8 py-4" id="nodes-path-container">
+                    <!-- Dynamic Nodes via JS -->
+                </div>
+            </div>
+
+            <!-- ================= VIEW 3: LESSON NODE CONTENT ================= -->
+            <div id="view-lesson" class="hidden bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8 pop">
+                <div class="flex items-center justify-between mb-6 border-b border-brand-border pb-4">
+                    <button id="lesson-back-btn" class="text-slate-400 hover:text-white text-xs font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-left"></i> Kembali ke Map
+                    </button>
+                    <span id="lesson-node-tag" class="text-[11px] font-bold px-2.5 py-0.5 rounded-md bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan">
+                        Node Materi
+                    </span>
+                </div>
+
+                <div class="mb-6">
+                    <h3 id="lesson-title" class="text-xl font-bold text-white mb-3"></h3>
+                    <div id="lesson-content" class="text-slate-300 text-xs sm:text-sm leading-relaxed space-y-3 mb-4"></div>
+                    
+                    <div id="lesson-code-box" class="hidden bg-brand-dark border border-brand-border rounded-xl p-4 font-code text-xs text-brand-accent overflow-x-auto relative mb-4">
+                        <span class="absolute top-2 right-3 text-[9px] font-sans text-slate-500 uppercase tracking-wider">Contoh Kode</span>
+                        <pre><code id="lesson-code"></code></pre>
+                    </div>
+                </div>
+
+                <!-- Quick Check Challenge -->
+                <div class="bg-brand-dark/60 border border-brand-border/80 rounded-xl p-4 sm:p-5 mb-6">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-lightbulb text-yellow-400 text-xs"></i>
+                        <h4 class="font-bold text-xs text-white uppercase tracking-wider">Uji Pemahaman Cepat</h4>
+                    </div>
+                    <p id="check-question" class="text-xs sm:text-sm font-semibold text-slate-200 mb-3"></p>
+                    <div id="check-options" class="space-y-2"></div>
+                </div>
+
+                <button id="lesson-finish-btn" disabled class="w-full py-3 bg-slate-800 text-slate-500 font-extrabold rounded-xl transition cursor-not-allowed flex items-center justify-center gap-2">
+                    <span>Selesaikan Node Ini</span> <i class="fa-solid fa-check"></i>
+                </button>
+            </div>
+
+            <!-- ================= VIEW 4: QUIZ ARENA ================= -->
+            <div id="view-quiz" class="hidden bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8 pop">
+                <div class="mb-6">
+                    <div class="flex items-center justify-between text-xs font-semibold mb-2">
+                        <span id="quiz-progress-text" class="text-brand-purple">Quiz Master &bull; Soal 1/5</span>
+                        <span class="text-brand-accent"><i class="fa-solid fa-trophy"></i> Test Akhir Modul</span>
+                    </div>
+                    <div class="w-full h-2.5 bg-brand-dark rounded-full overflow-hidden border border-brand-border">
+                        <div id="quiz-progress-bar" class="h-full bg-gradient-to-r from-brand-purple to-brand-accent transition-all duration-300 w-0"></div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 id="quiz-question-text" class="text-sm sm:text-base font-bold text-white mb-3"></h3>
+                    <div id="quiz-code-box" class="hidden bg-brand-dark border border-brand-border rounded-xl p-3.5 font-code text-xs text-brand-accent mb-4">
+                        <pre><code id="quiz-code"></code></pre>
+                    </div>
+                    <div id="quiz-options-container" class="space-y-2.5"></div>
+                </div>
+
+                <div id="quiz-feedback" class="hidden border rounded-xl p-3.5 mb-4 text-xs font-semibold"></div>
+
+                <button id="quiz-next-btn" class="hidden w-full py-3 bg-brand-accent hover:bg-lime-400 text-black font-extrabold rounded-xl transition">
+                    Lanjut Soal Berikutnya <i class="fa-solid fa-arrow-right ml-1"></i>
+                </button>
+            </div>
+
+            <!-- ================= VIEW 5: ACHIEVEMENT & CERTIFICATE RESULT (EXPORTABLE TO PNG) ================= -->
+            <div id="view-congrats" class="hidden pop">
+                
+                <!-- CERTIFICATE CARD TO CAPTURE AS PNG -->
+                <div id="export-card" class="bg-brand-card border-2 border-brand-accent/50 rounded-2xl p-6 sm:p-8 text-center shadow-2xl relative overflow-hidden mb-4">
+                    <div class="absolute -top-12 -right-12 w-32 h-32 bg-brand-accent/10 rounded-full blur-2xl"></div>
+                    
+                    <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-brand-accent/20 border-2 border-brand-accent flex items-center justify-center text-2xl text-brand-accent">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+
+                    <p class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest mb-1">Pencapaian Pembelajaran</p>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-white mb-1">Sertifikat Kelulusan</h2>
+                    <p id="result-player-name" class="text-sm font-bold text-brand-accent mb-4">Budi Coder</p>
+
+                    <!-- Stats Breakdown -->
+                    <div class="grid grid-cols-3 gap-2.5 bg-brand-dark border border-brand-border p-3 rounded-xl mb-4 text-left">
+                        <div>
+                            <p class="text-[9px] text-slate-400 uppercase">Total XP</p>
+                            <p id="final-total-xp" class="text-base font-extrabold text-brand-accent">+0 XP</p>
+                        </div>
+                        <div>
+                            <p class="text-[9px] text-slate-400 uppercase">Max Streak</p>
+                            <p id="final-streak" class="text-base font-extrabold text-brand-orange">0 🔥</p>
+                        </div>
+                        <div>
+                            <p class="text-[9px] text-slate-400 uppercase">Status</p>
+                            <p class="text-base font-extrabold text-brand-cyan">LULUS 🎓</p>
+                        </div>
+                    </div>
+
+                    <!-- Achievement Badges -->
+                    <div class="text-left mb-2">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">Achievement Badges:</p>
+                        <div id="badges-container" class="flex flex-wrap gap-1.5">
+                            <!-- Badges dynamic -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button id="download-png-btn" class="flex-1 py-3 bg-brand-accent hover:bg-lime-400 text-black font-extrabold rounded-xl transition flex items-center justify-center gap-2 shadow-lg">
+                        <i class="fa-solid fa-download"></i> Unduh Hasil (PNG)
+                    </button>
+                    <button id="restart-all-btn" class="flex-1 py-3 bg-brand-dark hover:bg-slate-800 border border-brand-border text-white font-bold rounded-xl transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-rotate-right"></i> Main Lagi
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // -------------------------------------------------------------
+        // DATA STRUCTURE: NODES (MATERI MIMO STYLE + QUIZ ARENA)
+        // -------------------------------------------------------------
+        const learningNodes = [
+            {
+                id: 1,
+                title: "Cetak Teks (print)",
+                subtitle: "Sintaks Dasar",
+                type: "lesson",
+                unlocked: true,
+                completed: false,
+                content: "Di Python, fungsi <code class='text-brand-accent bg-brand-dark px-1.5 py-0.5 rounded'>print()</code> digunakan untuk menampilkan teks ke layar. Teks harus diapit oleh tanda petik.",
+                code: 'print("Halo, Selamat Datang di Python!")',
+                checkQuestion: "Manakah sintaks yang benar untuk mencetak teks 'Belajar'?",
+                checkOptions: [
+                    "print('Belajar')",
+                    "echo('Belajar')",
+                    "Console.Write('Belajar')"
+                ],
+                checkCorrect: 0
+            },
+            {
+                id: 2,
+                title: "Variabel & Data",
+                subtitle: "Menyimpan Nilai",
+                type: "lesson",
+                unlocked: false,
+                completed: false,
+                content: "Variabel adalah wadah penyimpan data. Kamu tidak perlu menentukan tipe data secara eksplisit saat membuat variabel.",
+                code: 'nama = "Budi"\numur = 20\nprint(nama)',
+                checkQuestion: "Bagaimana cara membuat variabel 'skor' bernilai 100?",
+                checkOptions: [
+                    "var skor = 100",
+                    "skor = 100",
+                    "int skor = 100"
+                ],
+                checkCorrect: 1
+            },
+            {
+                id: 3,
+                title: "Tipe Data Angka",
+                subtitle: "Integer & Float",
+                type: "lesson",
+                unlocked: false,
+                completed: false,
+                content: "Python mendukung <b>Integer</b> (bilangan bulat seperti <code class='text-brand-cyan'>5</code>) dan <b>Float</b> (bilangan desimal seperti <code class='text-brand-cyan'>3.14</code>).",
+                code: 'x = 10    # Integer\ny = 2.5   # Float\nprint(x * y)',
+                checkQuestion: "Tipe data dari angka 4.5 di Python adalah...",
+                checkOptions: [
+                    "Integer",
+                    "String",
+                    "Float"
+                ],
+                checkCorrect: 2
+            },
+            {
+                id: 4,
+                title: "QUIZ ARENA",
+                subtitle: "Ujian Kelulusan",
+                type: "quiz",
+                unlocked: false,
+                completed: false,
+                questions: [
+                    {
+                        q: "Apa luaran dari perintah print(3 + 2 * 2)?",
+                        code: "print(3 + 2 * 2)",
+                        opts: ["10", "7", "12"],
+                        correct: 1,
+                        exp: "Python mendahulukan perkalian (2 * 2 = 4), baru penjumlahan (3 + 4 = 7)."
+                    },
+                    {
+                        q: "Simbol komentar 1 baris di Python adalah...",
+                        code: null,
+                        opts: ["//", "#", "/*"],
+                        correct: 1,
+                        exp: "Simbol pagar (#) digunakan untuk komentar."
+                    },
+                    {
+                        q: "Manakah nama variabel yang VALID di Python?",
+                        code: null,
+                        opts: ["10_nilai", "nilai_user", "nilai-user"],
+                        correct: 1,
+                        exp: "Variabel tak boleh diawali angka atau menggunakan tanda minus (-)."
+                    }
+                ]
+            }
+        ];
+
+        // Game Global States
+        let playerName = "Pemain";
+        let globalXP = 0;
+        let globalStreak = 0;
+        let maxStreak = 0;
+        let activeNodeId = null;
+        let currentQuizIndex = 0;
+
+        // Audio Engine
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain); gain.connect(audioCtx.destination);
+
+            if (type === 'correct') {
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.08);
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
+                osc.start(); osc.stop(audioCtx.currentTime + 0.25);
+            } else if (type === 'wrong') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(160, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
+                osc.start(); osc.stop(audioCtx.currentTime + 0.25);
+            }
+        }
+
+        // Start Journey from Cover
+        document.getElementById('start-journey-btn').addEventListener('click', () => {
+            const inputVal = document.getElementById('player-name').value.trim();
+            if (inputVal !== "") {
+                playerName = inputVal;
+            }
+            document.getElementById('player-display-name').textContent = playerName;
+            document.getElementById('view-cover').classList.add('hidden');
+            document.getElementById('view-map').classList.remove('hidden');
+            document.getElementById('global-stats-bar').classList.remove('hidden');
+            renderMap();
+        });
+
+        // Render Map Nodes
+        function renderMap() {
+            const container = document.getElementById('nodes-path-container');
+            container.innerHTML = '';
+
+            learningNodes.forEach((node) => {
+                const isQuiz = node.type === 'quiz';
+                const nodeBtn = document.createElement('button');
+                
+                let btnStyle = "w-16 h-16 rounded-2xl flex items-center justify-center text-xl font-bold transition transform active:scale-95 shadow-lg relative z-10 ";
+                let iconClass = isQuiz ? "fa-solid fa-trophy" : (node.completed ? "fa-solid fa-check" : "fa-solid fa-book-open");
+
+                if (node.completed) {
+                    btnStyle += "bg-brand-accent text-black border-2 border-lime-300";
+                } else if (node.unlocked) {
+                    btnStyle += isQuiz 
+                        ? "bg-brand-purple text-white border-2 border-purple-300 animate-bounce" 
+                        : "bg-brand-cyan text-black border-2 border-sky-300";
+                } else {
+                    btnStyle += "bg-brand-card text-slate-600 border border-brand-border cursor-not-allowed";
+                    iconClass = "fa-solid fa-lock";
+                }
+
+                nodeBtn.className = btnStyle;
+                nodeBtn.innerHTML = `<i class="${iconClass}"></i>`;
+
+                if (node.unlocked) {
+                    nodeBtn.addEventListener('click', () => openNode(node.id));
+                }
+
+                const wrapper = document.createElement('div');
+                wrapper.className = "flex flex-col items-center gap-1.5";
+                wrapper.appendChild(nodeBtn);
+
+                const label = document.createElement('div');
+                label.className = "text-center";
+                label.innerHTML = `
+                    <p class="text-xs font-bold ${node.unlocked ? 'text-white' : 'text-slate-500'}">${node.title}</p>
+                    <p class="text-[10px] text-slate-500">${node.subtitle}</p>
+                `;
+                wrapper.appendChild(label);
+
+                container.appendChild(wrapper);
+            });
+
+            document.getElementById('global-xp').textContent = globalXP;
+            document.getElementById('global-streak').textContent = globalStreak;
+        }
+
+        function openNode(nodeId) {
+            activeNodeId = nodeId;
+            const node = learningNodes.find(n => n.id === nodeId);
+            document.getElementById('view-map').classList.add('hidden');
+
+            if (node.type === 'lesson') {
+                openLessonView(node);
+            } else {
+                openQuizView(node);
+            }
+        }
+
+        // Lesson View
+        function openLessonView(node) {
+            const view = document.getElementById('view-lesson');
+            view.classList.remove('hidden');
+
+            document.getElementById('lesson-title').textContent = node.title;
+            document.getElementById('lesson-content').innerHTML = node.content;
+
+            const codeBox = document.getElementById('lesson-code-box');
+            if (node.code) {
+                codeBox.classList.remove('hidden');
+                document.getElementById('lesson-code').textContent = node.code;
+            } else {
+                codeBox.classList.add('hidden');
+            }
+
+            document.getElementById('check-question').textContent = node.checkQuestion;
+            const optsContainer = document.getElementById('check-options');
+            optsContainer.innerHTML = '';
+
+            const finishBtn = document.getElementById('lesson-finish-btn');
+            finishBtn.disabled = true;
+            finishBtn.className = "w-full py-3 bg-slate-800 text-slate-500 font-extrabold rounded-xl transition cursor-not-allowed flex items-center justify-center gap-2";
+
+            node.checkOptions.forEach((optText, i) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3 rounded-xl bg-brand-dark border border-brand-border text-xs text-slate-300 hover:border-brand-cyan transition flex items-center justify-between";
+                btn.innerHTML = `<span>${optText}</span><i class="fa-regular fa-circle text-slate-600"></i>`;
+                
+                btn.addEventListener('click', () => {
+                    Array.from(optsContainer.children).forEach(b => b.classList.add('pointer-events-none', 'opacity-60'));
+                    btn.classList.remove('opacity-60');
+
+                    if (i === node.checkCorrect) {
+                        playSound('correct');
+                        btn.className = "w-full text-left p-3 rounded-xl bg-lime-950/40 border border-brand-accent text-xs text-white flex items-center justify-between font-bold";
+                        btn.querySelector('i').className = "fa-solid fa-circle-check text-brand-accent";
+                    } else {
+                        playSound('wrong');
+                        btn.className = "w-full text-left p-3 rounded-xl bg-red-950/40 border border-brand-red text-xs text-white flex items-center justify-between font-bold";
+                        btn.querySelector('i').className = "fa-solid fa-circle-xmark text-brand-red";
+
+                        const correctBtn = optsContainer.children[node.checkCorrect];
+                        correctBtn.classList.remove('opacity-60');
+                        correctBtn.className = "w-full text-left p-3 rounded-xl bg-lime-950/20 border border-brand-accent/50 text-xs text-slate-200 flex items-center justify-between";
+                    }
+
+                    finishBtn.disabled = false;
+                    finishBtn.className = "w-full py-3 bg-brand-accent hover:bg-lime-400 text-black font-extrabold rounded-xl transition flex items-center justify-center gap-2";
+                });
+                optsContainer.appendChild(btn);
+            });
+        }
+
+        document.getElementById('lesson-finish-btn').addEventListener('click', () => {
+            const node = learningNodes.find(n => n.id === activeNodeId);
+            if (!node.completed) {
+                node.completed = true;
+                globalXP += 50;
+                globalStreak += 1;
+                if (globalStreak > maxStreak) maxStreak = globalStreak;
+
+                const nextNode = learningNodes.find(n => n.id === activeNodeId + 1);
+                if (nextNode) nextNode.unlocked = true;
+            }
+
+            document.getElementById('view-lesson').classList.add('hidden');
+            document.getElementById('view-map').classList.remove('hidden');
+            renderMap();
+        });
+
+        document.getElementById('lesson-back-btn').addEventListener('click', () => {
+            document.getElementById('view-lesson').classList.add('hidden');
+            document.getElementById('view-map').classList.remove('hidden');
+        });
+
+        // Quiz View
+        function openQuizView(node) {
+            document.getElementById('view-quiz').classList.remove('hidden');
+            currentQuizIndex = 0;
+            loadQuizQuestion(node);
+        }
+
+        function loadQuizQuestion(node) {
+            const q = node.questions[currentQuizIndex];
+            document.getElementById('quiz-progress-text').textContent = `Quiz Master • Soal ${currentQuizIndex + 1}/${node.questions.length}`;
+            document.getElementById('quiz-progress-bar').style.width = `${((currentQuizIndex) / node.questions.length) * 100}%`;
+
+            document.getElementById('quiz-question-text').textContent = q.q;
+            const codeBox = document.getElementById('quiz-code-box');
+            if (q.code) {
+                codeBox.classList.remove('hidden');
+                document.getElementById('quiz-code').textContent = q.code;
+            } else {
+                codeBox.classList.add('hidden');
+            }
+
+            const feedback = document.getElementById('quiz-feedback');
+            const nextBtn = document.getElementById('quiz-next-btn');
+            feedback.classList.add('hidden');
+            nextBtn.classList.add('hidden');
+
+            const container = document.getElementById('quiz-options-container');
+            container.innerHTML = '';
+
+            q.opts.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-3.5 rounded-xl bg-brand-dark border border-brand-border text-xs text-slate-200 hover:border-brand-purple transition";
+                btn.textContent = opt;
+
+                btn.addEventListener('click', () => {
+                    Array.from(container.children).forEach(b => b.classList.add('pointer-events-none', 'opacity-60'));
+                    btn.classList.remove('opacity-60');
+
+                    if (idx === q.correct) {
+                        playSound('correct');
+                        globalXP += 100;
+                        globalStreak += 1;
+                        if (globalStreak > maxStreak) maxStreak = globalStreak;
+
+                        btn.className = "w-full text-left p-3.5 rounded-xl bg-purple-950/40 border border-brand-purple text-xs text-white font-bold";
+                        feedback.className = "border rounded-xl p-3.5 mb-4 text-xs font-semibold bg-purple-950/30 border-brand-purple/40 text-brand-purple";
+                        feedback.textContent = `Benar! ${q.exp}`;
+                    } else {
+                        playSound('wrong');
+                        globalStreak = 0; // Reset streak on wrong answer
+                        btn.className = "w-full text-left p-3.5 rounded-xl bg-red-950/40 border border-brand-red text-xs text-white font-bold";
+                        feedback.className = "border rounded-xl p-3.5 mb-4 text-xs font-semibold bg-red-950/30 border-brand-red/40 text-brand-red";
+                        feedback.textContent = `Salah. ${q.exp}`;
+                    }
+
+                    document.getElementById('global-xp').textContent = globalXP;
+                    document.getElementById('global-streak').textContent = globalStreak;
+
+                    feedback.classList.remove('hidden');
+                    nextBtn.classList.remove('hidden');
+                });
+                container.appendChild(btn);
+            });
+        }
+
+        document.getElementById('quiz-next-btn').addEventListener('click', () => {
+            const node = learningNodes.find(n => n.id === activeNodeId);
+            currentQuizIndex++;
+
+            if (currentQuizIndex < node.questions.length) {
+                loadQuizQuestion(node);
+            } else {
+                node.completed = true;
+                showCongratsScreen();
+            }
+        });
+
+        // Show Final Congrats & Certificate
+        function showCongratsScreen() {
+            triggerConfetti();
+            document.getElementById('view-quiz').classList.add('hidden');
+            document.getElementById('view-congrats').classList.remove('hidden');
+
+            document.getElementById('result-player-name').textContent = playerName;
+            document.getElementById('final-total-xp').textContent = `+${globalXP} XP`;
+            document.getElementById('final-streak').textContent = `${maxStreak} 🔥`;
+
+            // Populate Badges
+            const container = document.getElementById('badges-container');
+            container.innerHTML = '';
+            
+            const badges = [
+                { name: 'Python Beginner', icon: 'fa-certificate', color: 'text-brand-cyan bg-brand-cyan/10 border-brand-cyan/30' },
+                { name: 'Streak Master', icon: 'fa-fire', color: 'text-brand-orange bg-brand-orange/10 border-brand-orange/30' },
+                { name: 'Quiz Conqueror', icon: 'fa-crown', color: 'text-brand-accent bg-brand-accent/10 border-brand-accent/30' }
+            ];
+
+            badges.forEach(b => {
+                const el = document.createElement('span');
+                el.className = `inline-flex items-center gap-1 px-2.5 py-1 rounded-md border text-[10px] font-bold ${b.color}`;
+                el.innerHTML = `<i class="fa-solid ${b.icon}"></i> ${b.name}`;
+                container.appendChild(el);
+            });
+        }
+
+        // EXPORT TO PNG FEATURE (html2canvas)
+        document.getElementById('download-png-btn').addEventListener('click', () => {
+            const card = document.getElementById('export-card');
+            
+            html2canvas(card, {
+                backgroundColor: '#181c24',
+                scale: 2 // High resolution output
+            }).then(canvas => {
+                const image = canvas.toDataURL("image/png");
+                const link = document.createElement('a');
+                link.download = `Sertifikat_Python_${playerName.replace(/\s+/g, '_')}.png`;
+                link.href = image;
+                link.click();
+            });
+        });
+
+        // Restart All
+        document.getElementById('restart-all-btn').addEventListener('click', () => {
+            learningNodes.forEach((n, i) => {
+                n.completed = false;
+                n.unlocked = (i === 0);
+            });
+            globalXP = 0;
+            globalStreak = 0;
+            maxStreak = 0;
+            document.getElementById('view-congrats').classList.add('hidden');
+            document.getElementById('view-cover').classList.remove('hidden');
+            document.getElementById('global-stats-bar').classList.add('hidden');
+        });
+
+        // Confetti Engine
+        function triggerConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const particles = [];
+            const colors = ['#a3e635', '#38bdf8', '#f97316', '#c084fc', '#facc15'];
+
+            for (let i = 0; i < 80; i++) {
+                particles.push({
+                    x: canvas.width / 2,
+                    y: canvas.height / 2,
+                    vx: (Math.random() - 0.5) * 12,
+                    vy: (Math.random() - 0.7) * 12,
+                    size: Math.random() * 6 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    life: 100
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let alive = false;
+                particles.forEach(p => {
+                    if (p.life > 0) {
+                        alive = true;
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.vy += 0.2;
+                        p.life--;
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(p.x, p.y, p.size, p.size);
+                    }
+                });
+                if (alive) requestAnimationFrame(animate);
+            }
+            animate();
+        }
+    </script>
+</body>
+</html>
+```eof
+
+### Peningkatan Utama dalam Versi Ini:
+1. **Halaman Cover Depan**:
+   - Form input nama pengguna yang tersimpan secara otomatis dan ditampilkan di *header*, *map*, serta Sertifikat Akhir.
+2. **Global Gamification Stats**:
+   - **Total XP** & **Streak Counter** 🔥 berada di *top header* yang selalu terbarui secara *real-time*.
+3. **Mimo Style Path Tree**:
+   - Jalur belajar berupa *Node-Node* yang terkunci. Harus menyelesaikan *Quick Check* pada Node Materi terlebih dahulu untuk membuka *Quiz Arena*.
+4. **Achievement Badges & Sertifikat Akhir**:
+   - *Result screen* dalam bentuk kartu sertifikat kelulusan yang memuat Nama Pemain, Total XP, Max Streak, serta Lencana Prestasi.
+5. **Fitur Export Gambar (PNG)**:
+   - Ditenagai perpustakaan `html2canvas`. Pengguna tinggal menekan tombol **"Unduh Hasil (PNG)"** untuk mengunduh sertifikat pencapaian mereka dalam bentuk berkas gambar PNG beresolusi tinggi.

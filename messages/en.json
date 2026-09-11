@@ -54,7 +54,10 @@
     "yourAnswer": "Your answer:",
     "yourScore": "Your score",
     "continue": "Continue →",
-    "tryAgain": "Try Again (Attempt {n} of {max})"
+    "tryAgain": "Try Again (Attempt {n} of {max})",
+    "next": "Next →",
+    "summaryScore": "{score} / {max} pts",
+    "summaryCorrect": "{correct} / {total} correct"
   },
   "achievement": {
     "subheading": "Great job!",

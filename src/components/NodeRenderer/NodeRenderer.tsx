@@ -29,28 +29,50 @@ export interface NodeRendererProps {
   quizQuestions: QuizQuestion[];
   onAdvance: () => void;
   onSubmitQuizAttempt: (answers: Record<string, string>) => void;
+  onCanAdvanceChange?: (canAdvance: boolean) => void;
   mode?: 'learning' | 'review';
 }
 
-// Renderer type for simple nodes that only need node + onAdvance
+// Renderer type for simple nodes that only need node + onAdvance + onCanAdvanceChange
 type SimpleRendererFn = (props: {
   node: LearningNode;
   onAdvance: () => void;
+  onCanAdvanceChange?: (canAdvance: boolean) => void;
   mode: 'learning' | 'review';
 }) => React.ReactElement;
 
 const SIMPLE_RENDERERS: Record<string, SimpleRendererFn> = {
-  lesson: ({ node, onAdvance, mode }) => (
-    <LessonNodeView node={node as LessonNode} onAdvance={onAdvance} mode={mode} />
+  lesson: ({ node, onAdvance, onCanAdvanceChange, mode }) => (
+    <LessonNodeView
+      node={node as LessonNode}
+      onAdvance={onAdvance}
+      mode={mode}
+      {...(onCanAdvanceChange !== undefined ? { onCanAdvanceChange } : {})}
+    />
   ),
-  code: ({ node, onAdvance, mode }) => (
-    <CodeNodeView node={node as CodeNode} onAdvance={onAdvance} mode={mode} />
+  code: ({ node, onAdvance, onCanAdvanceChange, mode }) => (
+    <CodeNodeView
+      node={node as CodeNode}
+      onAdvance={onAdvance}
+      mode={mode}
+      {...(onCanAdvanceChange !== undefined ? { onCanAdvanceChange } : {})}
+    />
   ),
-  practice: ({ node, onAdvance, mode }) => (
-    <PracticeNodeView node={node as PracticeNode} onAdvance={onAdvance} mode={mode} />
+  practice: ({ node, onAdvance, onCanAdvanceChange, mode }) => (
+    <PracticeNodeView
+      node={node as PracticeNode}
+      onAdvance={onAdvance}
+      mode={mode}
+      {...(onCanAdvanceChange !== undefined ? { onCanAdvanceChange } : {})}
+    />
   ),
-  challenge: ({ node, onAdvance, mode }) => (
-    <ChallengeNodeView node={node as ChallengeNode} onAdvance={onAdvance} mode={mode} />
+  challenge: ({ node, onAdvance, onCanAdvanceChange, mode }) => (
+    <ChallengeNodeView
+      node={node as ChallengeNode}
+      onAdvance={onAdvance}
+      mode={mode}
+      {...(onCanAdvanceChange !== undefined ? { onCanAdvanceChange } : {})}
+    />
   ),
 };
 
@@ -60,6 +82,7 @@ export function NodeRenderer({
   quizQuestions,
   onAdvance,
   onSubmitQuizAttempt,
+  onCanAdvanceChange,
   mode = 'learning',
 }: NodeRendererProps) {
   // Quiz node: needs studentState and onSubmitQuizAttempt in addition to the basics
@@ -74,6 +97,7 @@ export function NodeRenderer({
         studentState={studentState}
         onSubmitAttempt={onSubmitQuizAttempt}
         onAdvance={onAdvance}
+        {...(onCanAdvanceChange !== undefined ? { onCanAdvanceChange } : {})}
       />
     );
   }
@@ -81,7 +105,12 @@ export function NodeRenderer({
   // Simple nodes: look up in registry
   const renderer = SIMPLE_RENDERERS[node.type];
   if (renderer !== undefined) {
-    return renderer({ node, onAdvance, mode });
+    return renderer({
+      node,
+      onAdvance,
+      mode,
+      ...(onCanAdvanceChange !== undefined ? { onCanAdvanceChange } : {}),
+    });
   }
 
   // Unknown node type: fallback
