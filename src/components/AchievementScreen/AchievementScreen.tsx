@@ -16,6 +16,9 @@ interface AchievementScreenProps {
   lesson: Lesson;
   studentState: StudentState;
   onReview: () => void;
+  onReturn?: () => void;
+  nextTopic?: { topicId: string; title: string };
+  onNextTopic?: () => void;
 
 
 }

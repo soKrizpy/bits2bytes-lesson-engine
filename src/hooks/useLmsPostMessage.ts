@@ -33,27 +33,55 @@ export function useLmsPostMessage(
 
   const send = useCallback(
     (type: LmsEventType, payload: Record<string, unknown>) => {
-      const target = resolveTarget();
-      if (target === null) return;
       const origin = originRef.current ?? window.location.origin;
       const event: LmsEvent = {
         source: 'bits2bytes-lesson-engine',
         type, topicId, studentId, payload,
         sentAt: new Date().toISOString(),
       };
+
+      // Lessons normally open in a separate browser tab. In that case there is
+      // no parent/opener page listening for postMessage, but the /learning
+      // proxy makes this tab same-origin with the LMS and its auth cookies.
+      if (
+        origin === window.location.origin &&
+        (type === 'LESSON_COMPLETE' || type === 'QUIZ_SUBMITTED')
+      ) {
+        void fetch(`${origin}/api/student/engine-sync`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type, topicId, studentId, payload }),
+        }).catch(() => {
+          // postMessage below remains available for embedded lessons.
+        });
+      }
+
+      const target = resolveTarget();
+      if (target === null) return;
       try { target.postMessage(event, origin); } catch { /* swallow */ }
     },
     [topicId, studentId, resolveTarget],
   );
 
   const sendLessonComplete = useCallback(
-    (xpEarned: number, bestQuizScore: number) =>
-      send('LESSON_COMPLETE', { xpEarned, bestQuizScore }),
+    (xpEarned: number, bestQuizScore: number, achievementName?: string, achievementIcon?: string) =>
+      send('LESSON_COMPLETE', {
+        xpEarned,
+        bestQuizScore,
+        achievementName,
+        achievementIcon,
+      }),
     [send],
   );
   const sendQuizSubmitted = useCallback(
-    (score: number, attemptNumber: number, bestScore: number) =>
-      send('QUIZ_SUBMITTED', { score, attemptNumber, bestScore }),
+    (score: number, attemptNumber: number, bestScore: number, totalQuestions: number) =>
+      send('QUIZ_SUBMITTED', {
+        score,
+        attemptNumber,
+        bestScore,
+        totalQuestions,
+      }),
     [send],
   );
   const sendXpUpdate = useCallback(

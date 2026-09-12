@@ -118,7 +118,12 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
   // ── postMessage: topic completed ─────────────────────────────────────────
   useEffect(() => {
     if (!studentState.topicCompleted) return;
-    sendLessonComplete(studentState.xpEarned, studentState.bestQuizScore);
+    sendLessonComplete(
+      studentState.xpEarned,
+      studentState.bestQuizScore,
+      lesson?.completion.achievementName,
+      lesson?.completion.achievementIcon,
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [studentState.topicCompleted]);
 
@@ -126,7 +131,12 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
   useEffect(() => {
     const last = studentState.quizAttempts[studentState.quizAttempts.length - 1];
     if (last === undefined) return;
-    sendQuizSubmitted(last.score, last.attemptNumber, studentState.bestQuizScore);
+    sendQuizSubmitted(
+      last.score,
+      last.attemptNumber,
+      studentState.bestQuizScore,
+      quizQuestions.length,
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [studentState.quizAttempts.length]);
 
