@@ -208,7 +208,13 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
           selectedNodeIndex={selectedReviewNodeIndex}
           onSelectNode={setSelectedReviewNodeIndex}
           onBackToAchievement={() => { setViewMode('achievement'); }}
-          onReturn={() => { router.push('/'); }}
+          onReturn={() => {
+            const dashboardPath = '/student/dashboard';
+            const dashboardUrl = urlParams.lmsOrigin
+              ? `${urlParams.lmsOrigin.replace(/\/$/, '')}${dashboardPath}`
+              : dashboardPath;
+            window.location.assign(dashboardUrl);
+          }}
         />
       );
     }
