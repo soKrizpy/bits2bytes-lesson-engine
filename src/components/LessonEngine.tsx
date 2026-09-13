@@ -15,6 +15,7 @@
 //   - no studentId → LocalStorageAdapter (anonymous / standalone mode)
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import { useEngineState } from '@/hooks/useEngineState';
 import { LocalStorageAdapter } from '@/persistence/localStorageAdapter';
 import { SupabaseAdapter } from '@/persistence/supabaseAdapter';
@@ -159,14 +160,28 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
 
   // ── Mimo-style advance handler ─────────────────────────────────────────────
   const handleAdvance = useCallback(() => {
+    if (selectedLearningNodeIndex !== null && selectedLearningNodeIndex < studentState.currentNodeIndex) {
+      setSelectedLearningNodeIndex(selectedLearningNodeIndex + 1);
+      setCardKey((k) => k + 1);
+      setCanAdvance(true);
+      return;
+    }
+
     const xp = currentNode?.xp ?? 0;
     if (xp > 0) setXpPopValue(xp);
     advanceNode();
     setCardKey((k) => k + 1);
     setCanAdvance(true);
-  }, [currentNode, advanceNode]);
+  }, [currentNode, advanceNode, selectedLearningNodeIndex, studentState.currentNodeIndex]);
 
-  // ── Load error: hard block ─────────────────────────────────────────────────
+  const handlePrevious = useCallback(() => {
+    if (currentNodeIndex === 0) return;
+    setSelectedLearningNodeIndex(currentNodeIndex - 1);
+    setCardKey((k) => k + 1);
+    setCanAdvance(true);
+  }, [currentNodeIndex]);
+
+  // ── Load error: hard block ──────────��──────────────────────────────────────
   if (loadError !== null) {
     return <ErrorScreen title={t('lesson.couldNotLoad')} message={loadError} />;
   }
@@ -277,21 +292,42 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
       </main>
 
       {/* ── Sticky bottom CTA bar ───────────────────────────────────── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--bg-page)]/95 backdrop-blur border-t border-white/10 sticky-cta-safe-area px-4 py-3 flex justify-center">
-        <button
-          onClick={handleAdvance}
-          disabled={!canAdvance || isCompletedSelection}
-          className={[
-            'w-full max-w-lg py-4 rounded-2xl font-bold text-base transition-all duration-200',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-            canAdvance && !isCompletedSelection
-              ? 'bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/30 active:scale-[0.98]'
-              : 'bg-white/10 text-text-muted cursor-not-allowed',
-          ].join(' ')}
-          aria-label={isLastNode ? t('lesson.finish') : t('lesson.continue')}
-        >
-          {isLastNode ? (t('lesson.finish') ?? 'Selesai') : (t('lesson.continue') ?? 'Lanjut →')}
-        </button>
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--bg-page)]/95 backdrop-blur border-t border-white/10 sticky-cta-safe-area px-4 py-3">
+        <div className="mx-auto flex w-full max-w-2xl items-center justify-between gap-6">
+          {currentNodeIndex > 0 ? (
+            <button
+              type="button"
+              onClick={handlePrevious}
+              className="inline-flex min-h-10 w-32 shrink-0 items-center justify-center gap-2 rounded-xl border border-white/15 bg-card px-3 py-2 text-sm font-bold text-text-base transition-all duration-200 hover:border-white/25 hover:bg-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] sm:w-36"
+              aria-label="Kembali ke halaman sebelumnya"
+            >
+              <ArrowLeft aria-hidden="true" data-icon="inline-start" />
+              Kembali
+            </button>
+          ) : (
+            <span aria-hidden="true" className="w-32 shrink-0 sm:w-36" />
+          )}
+          {isLastNode ? (
+            <span aria-hidden="true" className="w-32 shrink-0 sm:w-36" />
+          ) : (
+            <button
+              type="button"
+              onClick={handleAdvance}
+              disabled={isCompletedSelection || (currentNode?.type === 'quiz' && !canAdvance)}
+              className={[
+                'inline-flex min-h-10 w-32 shrink-0 items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm font-bold transition-all duration-200 sm:w-36',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+                canAdvance && !isCompletedSelection
+                  ? 'bg-primary text-white shadow-lg shadow-primary/30 hover:bg-primary/90 active:scale-[0.98]'
+                  : 'bg-white/10 text-text-muted cursor-not-allowed',
+              ].join(' ')}
+              aria-label="Selanjutnya"
+            >
+              Selanjutnya
+              <ArrowRight aria-hidden="true" data-icon="inline-end" />
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
