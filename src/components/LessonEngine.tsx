@@ -15,7 +15,6 @@
 //   - no studentId → LocalStorageAdapter (anonymous / standalone mode)
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { useEngineState } from '@/hooks/useEngineState';
 import { LocalStorageAdapter } from '@/persistence/localStorageAdapter';
 import { SupabaseAdapter } from '@/persistence/supabaseAdapter';
@@ -38,7 +37,6 @@ interface LessonEngineProps {
 const localAdapter = new LocalStorageAdapter();
 
 export function LessonEngine({ topicId }: LessonEngineProps) {
-  const router = useRouter();
   const t = useEngineTranslations();
   const urlParams = useUrlParams();
   const { sendLessonComplete, sendQuizSubmitted, sendXpUpdate } = useLmsPostMessage(

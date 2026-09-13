@@ -2,34 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Dark theme (default) */
+/* Dark theme (default) — cozy bedtime galaxy purple for kids */
 :root,
 [data-theme="dark"] {
-  --bg-page:         #0f172a;
-  --bg-card:         #1e293b;
-  --bg-surface:      #172338;
-  --bg-elevated:     #24324a;
-  --color-border:    #334155;
+  --bg-page:         #120e24;
+  --bg-card:         #1d163a;
+  --bg-surface:      #181232;
+  --bg-elevated:     #281e4e;
+  --color-border:    #3b2c68;
   --text-base:       #f8fafc;
-  --text-muted:      #94a3b8;
-  --color-primary:   #6366f1;
-  --color-secondary: #38bdf8;
+  --text-muted:      #cbd5e1;
+  --color-primary:   #a855f7;
+  --color-secondary: #c084fc;
   --color-success:   #10b981;
   --color-warning:   #f59e0b;
   --color-error:     #f43f5e;
   --color-xpgold:    #fbbf24;
 }
 
-/* Light theme */
+/* Light theme — friendly, cheerful sky blue for kids */
 [data-theme="light"] {
-  --bg-page:         #f8fafc;
+  --bg-page:         #f0f7ff;
   --bg-card:         #ffffff;
-  --bg-surface:      #f1f5f9;
-  --bg-elevated:     #e2e8f0;
-  --color-border:    #cbd5e1;
+  --bg-surface:      #e4effe;
+  --bg-elevated:     #d9e8fc;
+  --color-border:    #bfdbfe;
   --text-base:       #0f172a;
-  --text-muted:      #475569;
-  --color-primary:   #4f46e5;
+  --text-muted:      #64748b;
+  --color-primary:   #2563eb;
   --color-secondary: #0284c7;
   --color-success:   #059669;
   --color-warning:   #d97706;
@@ -39,7 +39,7 @@
 
 html,
 body {
-  background-color: #0f172a;
+  background-color: #120e24;
   color: #f8fafc;
   min-height: 100vh;
   overflow-x: hidden;
@@ -47,13 +47,18 @@ body {
 
 [data-theme="light"] html,
 [data-theme="light"] body {
-  background-color: #f8fafc;
+  background-color: #f0f7ff;
   color: #0f172a;
 }
 
 ::selection {
-  background: rgb(99 102 241 / 0.35);
+  background: rgba(168, 85, 247, 0.35);
   color: #fff;
+}
+
+[data-theme="light"] ::selection {
+  background: rgba(37, 99, 235, 0.25);
+  color: #0f172a;
 }
 
 button,

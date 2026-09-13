@@ -27,6 +27,8 @@ export function AchievementScreen({
   lesson,
   studentState,
   onReview,
+  onReturn,
+  onNextTopic,
 }: AchievementScreenProps) {
   const [visible, setVisible] = useState(false);
   const t = useEngineTranslations();
@@ -144,6 +146,25 @@ export function AchievementScreen({
 
         {/* Actions */}
         <div className="space-y-3">
+          {onNextTopic ? (
+            <Button
+              onClick={onNextTopic}
+              size="lg"
+              className="w-full"
+              aria-label={t('achievement.continueNext')}
+            >
+              {t('achievement.continueNext')}
+            </Button>
+          ) : onReturn ? (
+            <Button
+              onClick={onReturn}
+              size="lg"
+              className="w-full"
+              aria-label={t('achievement.returnToAdventure')}
+            >
+              {t('achievement.returnToAdventure')}
+            </Button>
+          ) : null}
           <Button
             onClick={onReview}
             variant="secondary"
