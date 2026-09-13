@@ -181,7 +181,7 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     setCanAdvance(true);
   }, [currentNodeIndex]);
 
-  // ── Load error: hard block ──────────���──────────────────────────────────────
+  // ── Load error: hard block ──────────����──────────────────────────────────────
   if (loadError !== null) {
     return <ErrorScreen title={t('lesson.couldNotLoad')} message={loadError} />;
   }
@@ -294,7 +294,7 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
       {/* ── Sticky bottom CTA bar ───────────────────────────────────── */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--bg-page)]/95 backdrop-blur border-t border-white/10 sticky-cta-safe-area px-4 py-3">
         <div className="mx-auto flex w-full max-w-2xl items-center justify-between gap-6">
-          {currentNodeIndex > 0 ? (
+          {currentNode?.type !== 'quiz' && currentNodeIndex > 0 ? (
             <button
               type="button"
               onClick={handlePrevious}
