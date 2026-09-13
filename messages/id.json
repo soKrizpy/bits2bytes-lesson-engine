@@ -70,7 +70,9 @@
     "whatYouLearned": "Yang Kamu Pelajari",
     "continueNext": "Lanjut ke Petualangan Berikutnya →",
     "returnToAdventure": "Kembali ke Petualangan",
-    "reviewTopic": "Tinjau Topik"
+    "reviewTopic": "Tinjau Topik",
+    "attempts": "Percobaan kuis: {used} / {max}",
+    "retryQuiz": "Ulangi Kuis (Percobaan 2 dari 2)"
   },
   "intro": {
     "topic": "Topik {n}",

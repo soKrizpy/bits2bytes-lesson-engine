@@ -19,7 +19,7 @@ interface AchievementScreenProps {
   onReturn?: () => void;
   nextTopic?: { topicId: string; title: string };
   onNextTopic?: () => void;
-
+  onRetryQuiz?: () => void;
 
 }
 
@@ -29,6 +29,7 @@ export function AchievementScreen({
   onReview,
   onReturn,
   onNextTopic,
+  onRetryQuiz,
 }: AchievementScreenProps) {
   const [visible, setVisible] = useState(false);
   const t = useEngineTranslations();
@@ -146,6 +147,17 @@ export function AchievementScreen({
 
         {/* Actions */}
         <div className="space-y-3">
+          {onRetryQuiz && studentState.quizAttempts.length < 2 ? (
+            <Button
+              onClick={onRetryQuiz}
+              variant="secondary"
+              size="lg"
+              className="w-full"
+              aria-label={t('achievement.retryQuiz')}
+            >
+              {t('achievement.retryQuiz')}
+            </Button>
+          ) : null}
           {onNextTopic ? (
             <Button
               onClick={onNextTopic}
@@ -165,9 +177,12 @@ export function AchievementScreen({
               {t('achievement.returnToAdventure')}
             </Button>
           ) : null}
+          <p className="text-sm text-text-muted" aria-live="polite">
+            {t('achievement.attempts', { used: studentState.quizAttempts.length, max: 2 })}
+          </p>
           <Button
             onClick={onReview}
-            variant="secondary"
+            variant="ghost"
             size="lg"
             className="w-full"
             aria-label={t('achievement.reviewTopic')}

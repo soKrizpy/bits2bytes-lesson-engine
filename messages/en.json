@@ -70,7 +70,9 @@
     "whatYouLearned": "What you learned",
     "continueNext": "Continue to Next Adventure →",
     "returnToAdventure": "Return to Adventure",
-    "reviewTopic": "Review Topic"
+    "reviewTopic": "Review Topic",
+    "attempts": "Quiz attempts: {used} / {max}",
+    "retryQuiz": "Re-attempt Quiz (Attempt 2 of 2)"
   },
   "intro": {
     "topic": "Topic {n}",

@@ -46,6 +46,7 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     urlParams.lmsOrigin,
   );
   const [viewMode, setViewMode] = useState<'achievement' | 'review'>('achievement');
+  const [isRetakingQuiz, setIsRetakingQuiz] = useState(false);
   const [selectedReviewNodeIndex, setSelectedReviewNodeIndex] = useState(0);
   const [selectedLearningNodeIndex, setSelectedLearningNodeIndex] = useState<number | null>(null);
 
@@ -160,6 +161,14 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
 
   // ── Mimo-style advance handler ─────────────────────────────────────────────
   const handleAdvance = useCallback(() => {
+    if (isRetakingQuiz && currentNode?.type === 'quiz') {
+      setIsRetakingQuiz(false);
+      setSelectedLearningNodeIndex(null);
+      setCanAdvance(true);
+      setCardKey((key) => key + 1);
+      return;
+    }
+
     if (selectedLearningNodeIndex !== null && selectedLearningNodeIndex < studentState.currentNodeIndex) {
       setSelectedLearningNodeIndex(selectedLearningNodeIndex + 1);
       setCardKey((k) => k + 1);
@@ -172,7 +181,7 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     advanceNode();
     setCardKey((k) => k + 1);
     setCanAdvance(true);
-  }, [currentNode, advanceNode, selectedLearningNodeIndex, studentState.currentNodeIndex]);
+  }, [currentNode, advanceNode, isRetakingQuiz, selectedLearningNodeIndex, studentState.currentNodeIndex]);
 
   const handlePrevious = useCallback(() => {
     if (currentNodeIndex === 0) return;
@@ -212,7 +221,7 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
   }
 
   // ── Topic completed: Achievement screen replaces full layout ───────────────
-  if (studentState.topicCompleted) {
+  if (studentState.topicCompleted && !isRetakingQuiz) {
     if (viewMode === 'review') {
       return (
         <TopicReview
@@ -237,6 +246,14 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
         lesson={lesson}
         studentState={studentState}
         onReview={() => { setViewMode('review'); }}
+        onRetryQuiz={() => {
+          const quizIndex = lesson.learningPath.findIndex((node) => node.type === 'quiz');
+          if (quizIndex < 0 || studentState.quizAttempts.length >= 2) return;
+          setSelectedLearningNodeIndex(quizIndex);
+          setIsRetakingQuiz(true);
+          setCanAdvance(false);
+          setCardKey((key) => key + 1);
+        }}
       />
     );
   }
