@@ -15,10 +15,19 @@ export type ValidationResult =
   | { valid: true; lesson: Lesson }
   | { valid: false; errors: string[] };
 
-// Compile schema once on module load and cache the validator function.
-// AJV compilation is expensive; caching is important for performance.
-const ajv = new Ajv({ allErrors: true, strict: false });
-const validateFn = ajv.compile(lessonSchema);
+// Compile the schema on first use and cache the validator function.
+// Keeping AJV initialization out of module evaluation avoids fragile eager
+// vendor-chunk resolution during Next.js development rebuilds.
+let validateFn: ReturnType<Ajv['compile']> | undefined;
+
+function getValidator() {
+  if (validateFn === undefined) {
+    const ajv = new Ajv({ allErrors: true, strict: false });
+    validateFn = ajv.compile(lessonSchema);
+  }
+
+  return validateFn;
+}
 
 /**
  * Validates a raw JSON object against the BITS2BYTES Lesson Schema.
@@ -64,10 +73,11 @@ export function validateLesson(data: unknown): ValidationResult {
   }
 
   // Step 2: Full AJV validation (allErrors: true collects everything)
-  const isValid = validateFn(data);
+  const validator = getValidator();
+  const isValid = validator(data);
 
-  if (!isValid && validateFn.errors) {
-    const errors = validateFn.errors.map((err) => {
+  if (!isValid && validator.errors) {
+    const errors = validator.errors.map((err) => {
       const instancePath = err.instancePath ?? '';
       const field =
         instancePath !== ''
