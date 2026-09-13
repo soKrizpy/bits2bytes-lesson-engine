@@ -293,21 +293,23 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
 
       {/* ── Sticky bottom CTA bar ───────────────────────────────────── */}
       <div className="fixed bottom-0 left-0 right-0 z-50 bg-[var(--bg-page)]/95 backdrop-blur border-t border-white/10 sticky-cta-safe-area px-4 py-3">
-        <div className="mx-auto flex w-full max-w-lg gap-3">
+        <div className="mx-auto flex w-full max-w-2xl items-center justify-between gap-6">
           <button
+            type="button"
             onClick={handlePrevious}
             disabled={currentNodeIndex === 0}
-            className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-2xl border border-white/15 bg-card px-4 py-3 font-bold text-text-base transition-all duration-200 hover:border-white/25 hover:bg-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40"
+            className="inline-flex min-h-10 w-36 shrink-0 items-center justify-center gap-2 rounded-xl border border-white/15 bg-card px-3 py-2 text-sm font-bold text-text-base transition-all duration-200 hover:border-white/25 hover:bg-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40 sm:w-40"
             aria-label="Kembali ke halaman sebelumnya"
           >
             <ArrowLeft aria-hidden="true" data-icon="inline-start" />
             Kembali
           </button>
           <button
+            type="button"
             onClick={handleAdvance}
             disabled={!canAdvance || isCompletedSelection}
             className={[
-              'inline-flex min-h-12 flex-[1.35] items-center justify-center gap-2 rounded-2xl px-4 py-3 font-bold text-base transition-all duration-200',
+              'inline-flex min-h-10 w-36 shrink-0 items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm font-bold transition-all duration-200 sm:w-40',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background',
               canAdvance && !isCompletedSelection
                 ? 'bg-primary text-white shadow-lg shadow-primary/30 hover:bg-primary/90 active:scale-[0.98]'
