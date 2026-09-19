@@ -1,0 +1,226 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-tinkercad-02",
+    "title": "Mengenal Bentuk Dasar",
+    "description": "Pelajari bentuk-bentuk dasar di Tinkercad: kotak, bola, dan silinder. Kamu akan belajar cara meletakkan, memilih, dan menghapus bentuk di kanvas 3D.",
+    "level": "beginner",
+    "category": "Tinkercad",
+    "topicNumber": 2,
+    "estimatedTime": 20,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Kenalan dengan Bentuk-Bentuk Seru! 📦🔵🧱",
+    "description": "Di Tinkercad, semua benda 3D yang keren — dari rumah, robot, sampai mainan — dibuat dari bentuk-bentuk dasar yang disusun bersama. Di pelajaran ini, kita akan kenalan dengan 3 bentuk dasar paling penting: Kotak (Box), Bola (Sphere), dan Silinder (Cylinder). Yuk kita kenali mereka satu per satu!",
+    "analogy": "Bentuk dasar di Tinkercad itu seperti LEGO — kotak itu seperti balok LEGO biasa, silinder seperti ban mobil LEGO, dan bola seperti kepala boneka LEGO. Dengan menyusunnya, kamu bisa bikin apa saja!"
+  },
+  "objectives": [
+    "Mengenal tiga bentuk dasar: Kotak (Box), Bola (Sphere), Silinder (Cylinder)",
+    "Bisa meletakkan setiap bentuk ke kanvas",
+    "Bisa memilih (klik) satu bentuk di kanvas",
+    "Bisa menghapus bentuk yang tidak diinginkan dengan tombol Delete"
+  ],
+  "review": {
+    "learned": [
+      "Box (Kotak) adalah bentuk persegi panjang / kubus — bentuk paling sering dipakai.",
+      "Sphere (Bola) adalah bentuk bulat sempurna ke segala arah.",
+      "Cylinder (Silinder) adalah bentuk tabung — seperti kaleng atau pipa.",
+      "Klik bentuk di kanvas untuk memilihnya — akan muncul garis biru di sekelilingnya.",
+      "Tekan tombol Delete di keyboard untuk menghapus bentuk yang sedang dipilih."
+    ],
+    "keyConcepts": [
+      "Box (Kotak)",
+      "Sphere (Bola)",
+      "Cylinder (Silinder)",
+      "Memilih bentuk (klik)",
+      "Menghapus bentuk (Delete)"
+    ],
+    "takeaways": [
+      "Tiga bentuk dasar ini adalah fondasi dari hampir semua desain 3D.",
+      "Selalu klik bentuk dulu sebelum melakukan aksi apapun (hapus, ubah ukuran, dll).",
+      "Kalau salah hapus, tekan Ctrl+Z untuk Undo!"
+    ]
+  },
+  "learningPath": [
+    {
+      "type": "lesson",
+      "title": "Bentuk #1: Kotak (Box) 📦",
+      "explanation": "**Kotak (Box)** adalah bentuk paling dasar dan paling sering dipakai di Tinkercad!\n\nBentuk ini seperti balok atau kubus. Kamu bisa memakai Box untuk membuat:\n- 🏠 Dinding rumah\n- 📱 Badan handphone\n- 🎁 Kotak kado\n- 🪑 Meja dan kursi\n\n**Cara menambahkan Box:**\n1. Lihat ke **Shapes Panel** di sebelah kanan\n2. Temukan **'Box'** (biasanya yang pertama!)\n3. Klik dan **seret (drag)** ke kanvas\n4. Lepaskan — Box sudah ada di kanvas! 📦",
+      "id": "tc02-lesson-01"
+    },
+    {
+      "type": "practice",
+      "title": "Box dipakai untuk membuat apa?",
+      "instructions": "Box (Kotak) di Tinkercad bisa digunakan untuk membuat banyak hal. Manakah contoh yang BENAR?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Dinding rumah, meja, atau kotak kado",
+        "Hanya bisa untuk membuat bola",
+        "Tidak bisa dipakai untuk membuat apapun",
+        "Hanya bisa untuk warna merah saja"
+      ],
+      "correctOption": "Dinding rumah, meja, atau kotak kado",
+      "feedback": {
+        "correct": "Betul! Box sangat serbaguna — bisa jadi dinding, meja, kotak, dan masih banyak lagi! 🎉",
+        "incorrect": "Coba lagi! Box (Kotak) sangat serbaguna dan bisa dipakai untuk membuat dinding, meja, kotak kado, dan banyak hal lain."
+      },
+      "id": "tc02-practice-02"
+    },
+    {
+      "type": "lesson",
+      "title": "Bentuk #2: Bola (Sphere) ⚽",
+      "explanation": "**Bola (Sphere)** adalah bentuk bulat sempurna!\n\nBola di Tinkercad bulat ke segala arah, seperti bola sepak atau planet. Kamu bisa memakai Sphere untuk:\n- ⚽ Bola olahraga\n- 🌍 Planet atau bulan\n- 👦 Kepala karakter\n- 🍇 Buah-buahan\n\n**Cara menambahkan Sphere:**\n1. Di Shapes Panel, cari **'Sphere'**\n2. Klik dan **seret (drag)** ke kanvas\n3. Sphere akan muncul — perhatikan betapa bulatnya! ⚽\n\n*Tips: Sphere sangat bagus untuk membuat kepala karakter atau bola.*",
+      "id": "tc02-lesson-03"
+    },
+    {
+      "type": "practice",
+      "title": "Bentuk mana yang bulat sempurna?",
+      "instructions": "Bentuk mana di Tinkercad yang berbentuk bulat sempurna ke segala arah?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Sphere (Bola)",
+        "Box (Kotak)",
+        "Cylinder (Silinder)",
+        "Semua bentuk sama saja"
+      ],
+      "correctOption": "Sphere (Bola)",
+      "feedback": {
+        "correct": "Tepat! Sphere adalah bentuk bulat sempurna, cocok untuk membuat kepala karakter atau planet! 🌍",
+        "incorrect": "Coba lagi! Sphere (Bola) adalah bentuk yang bulat sempurna ke segala arah."
+      },
+      "id": "tc02-practice-04"
+    },
+    {
+      "type": "lesson",
+      "title": "Bentuk #3: Silinder (Cylinder) 🥫",
+      "explanation": "**Silinder (Cylinder)** bentuknya seperti tabung atau kaleng!\n\nSilinder di Tinkercad punya lingkaran di atas dan bawah, dan sisi lurus di tengah. Kamu bisa memakai Cylinder untuk:\n- 🥫 Kaleng minuman\n- 🚗 Ban mobil\n- 🏛️ Tiang bangunan\n- 🖊️ Pensil atau pena\n\n**Cara menambahkan Cylinder:**\n1. Di Shapes Panel, cari **'Cylinder'**\n2. Klik dan **seret (drag)** ke kanvas\n3. Cylinder akan muncul tegak lurus! 🥫",
+      "id": "tc02-lesson-05"
+    },
+    {
+      "type": "practice",
+      "title": "Silinder cocok untuk membuat...",
+      "instructions": "Cylinder (Silinder) di Tinkercad paling cocok untuk membuat bentuk seperti...",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Kaleng, ban, atau tiang",
+        "Bola sepak",
+        "Dinding persegi panjang",
+        "Bintang berujung lima"
+      ],
+      "correctOption": "Kaleng, ban, atau tiang",
+      "feedback": {
+        "correct": "Benar! Cylinder cocok untuk kaleng, ban, tiang, pensil, dan benda tabung lainnya! 🥫",
+        "incorrect": "Coba lagi! Cylinder (Silinder) cocok untuk membuat benda berbentuk tabung seperti kaleng, ban, atau tiang."
+      },
+      "id": "tc02-practice-06"
+    },
+    {
+      "type": "lesson",
+      "title": "Memilih dan Menghapus Bentuk 🗑️",
+      "explanation": "Setelah meletakkan bentuk, kamu perlu tahu cara **memilih** dan **menghapus** bentuk!\n\n**Cara memilih bentuk:**\n- 🖱️ **Klik** bentuk yang ada di kanvas\n- Bentuk yang terpilih akan dikelilingi **garis biru**\n- Kamu hanya bisa memilih **satu bentuk** sekaligus (klik biasa)\n\n**Cara menghapus bentuk:**\n1. Klik bentuk yang ingin dihapus (pastikan ada garis biru)\n2. Tekan tombol **Delete** di keyboard\n3. Bentuk menghilang! 💨\n\n**Kalau tidak sengaja terhapus:**\n- Tekan **Ctrl + Z** untuk Undo (membatalkan)\n- Tekan **Ctrl + Y** untuk Redo (mengulangi lagi)",
+      "id": "tc02-lesson-07"
+    },
+    {
+      "type": "practice",
+      "title": "Langkah-langkah menambahkan bentuk",
+      "instructions": "Ayo praktikkan! Centang setiap langkah setelah kamu lakukan di Tinkercad.",
+      "interactionType": "step-completion",
+      "steps": [
+        "Buka Tinkercad dan buat Design baru",
+        "Drag Box (Kotak) dari Shapes Panel ke kanvas",
+        "Drag Sphere (Bola) ke kanvas — letakkan di sebelah kotak",
+        "Drag Cylinder (Silinder) ke kanvas — letakkan di sebelah bola",
+        "Klik salah satu bentuk — pastikan garis biru muncul",
+        "Tekan Delete untuk menghapus bentuk yang dipilih",
+        "Tekan Ctrl+Z untuk Undo — bentuk kembali lagi!"
+      ],
+      "id": "tc02-practice-08"
+    },
+    {
+      "type": "quiz",
+      "title": "Kuis Tinkercad #2 — Bentuk Dasar",
+      "id": "tc02-quiz"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "type": "multiple-choice",
+        "question": "Bentuk dasar mana yang paling sering dipakai dan bentuknya seperti balok atau kubus?",
+        "options": [
+          "Box (Kotak)",
+          "Sphere (Bola)",
+          "Cylinder (Silinder)",
+          "Cone (Kerucut)"
+        ],
+        "correctAnswer": "Box (Kotak)",
+        "explanation": "Box (Kotak) adalah bentuk paling dasar dan paling sering dipakai di Tinkercad — bentuknya seperti balok atau kubus.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "type": "multiple-choice",
+        "question": "Bentuk apakah yang cocok untuk membuat kepala karakter atau planet?",
+        "options": [
+          "Sphere (Bola)",
+          "Box (Kotak)",
+          "Cylinder (Silinder)",
+          "Pyramid (Piramida)"
+        ],
+        "correctAnswer": "Sphere (Bola)",
+        "explanation": "Sphere (Bola) adalah bentuk bulat sempurna — cocok untuk kepala karakter, planet, bola olahraga, dan buah-buahan.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "type": "multiple-choice",
+        "question": "Bagaimana cara menambahkan bentuk ke kanvas Tinkercad?",
+        "options": [
+          "Klik dan seret (drag) dari Shapes Panel ke kanvas",
+          "Ketik nama bentuk di kolom pencarian",
+          "Tekan dua kali di area kanvas",
+          "Tekan tombol + di keyboard"
+        ],
+        "correctAnswer": "Klik dan seret (drag) dari Shapes Panel ke kanvas",
+        "explanation": "Cara menambahkan bentuk: klik bentuk di Shapes Panel, tahan mouse, lalu seret (drag) ke kanvas dan lepaskan.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "type": "multiple-choice",
+        "question": "Apa yang tanda bentuk sudah terpilih di kanvas?",
+        "options": [
+          "Muncul garis biru di sekeliling bentuk",
+          "Bentuk bergerak sendiri",
+          "Bentuk berubah warna menjadi merah",
+          "Muncul angka di atas bentuk"
+        ],
+        "correctAnswer": "Muncul garis biru di sekeliling bentuk",
+        "explanation": "Ketika bentuk terpilih, akan muncul garis/outline biru di sekelilingnya beserta handle untuk mengubah ukuran.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "type": "multiple-choice",
+        "question": "Tombol apa yang digunakan untuk menghapus bentuk yang sedang dipilih?",
+        "options": [
+          "Delete",
+          "Backspace",
+          "Escape",
+          "Spacebar"
+        ],
+        "correctAnswer": "Delete",
+        "explanation": "Tombol Delete menghapus bentuk yang sedang dipilih. Kalau tidak sengaja menghapus, tekan Ctrl+Z untuk Undo!",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Keren! Kamu Mengenal Tiga Bentuk Dasar! 🎊",
+    "message": "Sekarang kamu sudah kenal Box, Sphere, dan Cylinder — tiga bentuk dasar yang jadi fondasi hampir semua desain 3D di Tinkercad. Di topik berikutnya, kita akan belajar cara mengubah ukuran bentuk supaya bisa dibuat lebih besar, lebih kecil, lebih tipis, atau lebih tinggi sesuai keinginanmu!",
+    "achievementName": "Kenalan Bentuk 3D",
+    "achievementIcon": "📦"
+  }
+}
