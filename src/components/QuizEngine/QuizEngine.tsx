@@ -7,11 +7,12 @@
 // - Max 2 attempts. 3rd attempt HARD BLOCKED.
 // - bestQuizScore = MAX(all attempts) — enforced in useEngineState hook.
 // - Quiz node marked complete after first submission.
-// - After submission, student may proceed to next node via onAdvance.
+// - After submission, students can retry (up to two attempts) or continue.
 //
 // ACTIVE PHASE: one question at a time.
 // - Each question is answered and submitted individually before advancing.
-// - onCanAdvanceChange is signalled false on enter, true on summary.
+// - The quiz owns its own Continue button, so the lesson-level sticky CTA is
+//   disabled throughout and cannot accidentally skip an available retry.
 
 import { useEffect, useState } from 'react';
 import { QuizReview } from './QuizReview';
@@ -60,12 +61,8 @@ export function QuizEngine({
 
   // Signal external StickyCtaBar about advance availability
   useEffect(() => {
-    if (phase === 'active') {
-      onCanAdvanceChange?.(false);
-    } else if (phase === 'summary') {
-      onCanAdvanceChange?.(true);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    onCanAdvanceChange?.(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
   function handleStartQuiz() {
@@ -115,7 +112,9 @@ export function QuizEngine({
     setPerQuestionAnswer(null);
     setPerQuestionSubmitted(false);
     setAllAnswers({});
-    setPhase('idle');
+    // Start the next permitted attempt immediately. Returning to idle made a
+    // student tap "retry" twice and left the global Continue CTA enabled.
+    setPhase('active');
   }
 
   // ── Idle phase ─────────────────────────────────────────────────────────────
