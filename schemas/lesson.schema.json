@@ -256,8 +256,6 @@
             "required": [
               "id",
               "question",
-              "options",
-              "correctAnswer",
               "explanation",
               "points"
             ],
@@ -267,6 +265,10 @@
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 100
+              },
+              "type": {
+                "type": "string",
+                "enum": ["multiple-choice", "image-choice"]
               },
               "question": {
                 "type": "string",
@@ -287,6 +289,21 @@
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 200
+              },
+              "imageOptions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["id", "imageUrl"],
+                  "properties": {
+                    "id": { "type": "string" },
+                    "imageUrl": { "type": "string" },
+                    "label": { "type": "string" }
+                  }
+                }
+              },
+              "correctAnswerId": {
+                "type": "string"
               },
               "explanation": {
                 "type": "string",

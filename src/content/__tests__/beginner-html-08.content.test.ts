@@ -120,13 +120,13 @@ describe('Lesson metadata and structure', () => {
 
   it('each quiz question has exactly 4 options', () => {
     for (const q of lesson.quiz.questions) {
-      expect(q.options).toHaveLength(4);
+      expect((q as any).options).toHaveLength(4);
     }
   });
 
   it('each quiz question correctAnswer exactly matches one of its options', () => {
     for (const q of lesson.quiz.questions) {
-      expect(q.options).toContain(q.correctAnswer);
+      expect((q as any).options).toContain((q as any).correctAnswer);
     }
   });
 

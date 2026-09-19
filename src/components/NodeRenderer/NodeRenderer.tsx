@@ -153,7 +153,7 @@ function QuizReviewOnly({
             </p>
             <p className="text-success text-sm">
               {t('quiz.correctAnswer')}{' '}
-              <span className="font-semibold">{question.correctAnswer}</span>
+              <span className="font-semibold">{(question as any).correctAnswer}</span>
             </p>
             <p className="text-text-muted text-sm leading-relaxed">
               {question.explanation}

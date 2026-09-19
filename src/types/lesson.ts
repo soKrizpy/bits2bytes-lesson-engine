@@ -50,6 +50,8 @@ export interface LessonNode extends BaseNode {
   type: 'lesson';
   /** Main explanatory content for this step. */
   explanation: string;
+  /** Optional image URL to display with the lesson text. */
+  imageUrl?: string;
   /** Optional analogy to aid understanding. */
   analogy?: string;
   /** Optional description of what the student should see/understand after this node. */
@@ -79,13 +81,23 @@ export interface PracticeNode extends BaseNode {
   /** Instructions for the student. */
   instructions: string;
   /** The type of interactive element to render. */
-  interactionType: 'multiple-choice' | 'step-completion';
+  interactionType: 'multiple-choice' | 'step-completion' | 'image-choice';
+  
+  // -- For 'multiple-choice' --
   /** Options for multiple-choice interaction. */
   options?: string[];
   /** The correct option for multiple-choice (must match one of `options` exactly). */
   correctOption?: string;
+  
+  // -- For 'step-completion' --
   /** Steps for step-completion interaction. */
   steps?: string[];
+
+  // -- For 'image-choice' --
+  /** Options containing images. */
+  imageOptions?: { id: string; imageUrl: string; label?: string }[];
+  /** The ID of the correct image option. */
+  correctOptionId?: string;
 }
 
 export interface ChallengeNode extends BaseNode {
@@ -121,20 +133,34 @@ export type LearningNode =
   | ChallengeNode
   | QuizNode;
 
-export interface QuizQuestion {
+export interface BaseQuizQuestion {
   /** Unique identifier for this question. 1–100 characters. */
   id: string;
   /** The question text. 1–500 characters. */
   question: string;
-  /** Exactly 4 answer options. Each 1–200 characters. */
-  options: [string, string, string, string];
-  /** Must exactly match one of the 4 options. */
-  correctAnswer: string;
   /** Explanation shown to students after an incorrect answer. 1–500 characters. */
   explanation: string;
   /** Points awarded for a correct answer. Integer 0–100. */
   points: number;
 }
+
+export interface MultipleChoiceQuestion extends BaseQuizQuestion {
+  type?: 'multiple-choice';
+  /** Exactly 4 answer options. Each 1–200 characters. */
+  options: [string, string, string, string];
+  /** Must exactly match one of the 4 options. */
+  correctAnswer: string;
+}
+
+export interface ImageChoiceQuestion extends BaseQuizQuestion {
+  type: 'image-choice';
+  /** Options containing images. */
+  imageOptions: { id: string; imageUrl: string; label?: string }[];
+  /** The ID of the correct image option. */
+  correctAnswerId: string;
+}
+
+export type QuizQuestion = MultipleChoiceQuestion | ImageChoiceQuestion;
 
 export interface LessonCompletion {
   /** Completion screen title, e.g. "Great Job!" */

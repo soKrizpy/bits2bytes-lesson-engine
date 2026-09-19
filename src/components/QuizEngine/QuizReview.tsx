@@ -49,7 +49,7 @@ export function QuizReview({ questions, answers, score, maxScore }: QuizReviewPr
       <div className="space-y-4">
         {questions.map((question, idx) => {
           const given = answers[question.id] !== undefined ? answers[question.id] : null;
-          const isCorrect = given === question.correctAnswer;
+          const isCorrect = given === (question as any).correctAnswer;
 
           return (
             <div
@@ -88,7 +88,7 @@ export function QuizReview({ questions, answers, score, maxScore }: QuizReviewPr
                   )}
                   <p className="text-success">
                     {t('quiz.correctAnswer')}{' '}
-                    <span className="font-semibold">{question.correctAnswer}</span>
+                    <span className="font-semibold">{(question as any).correctAnswer}</span>
                   </p>
                 </div>
               )}

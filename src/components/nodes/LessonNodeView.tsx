@@ -36,6 +36,18 @@ export function LessonNodeView({ node, onAdvance: _onAdvance, onCanAdvanceChange
             <span className="text-text-muted italic">{t('node.noExplanation')}</span>
           )}
         </p>
+        
+        {/* Optional Image */}
+        {node.imageUrl !== undefined && node.imageUrl !== '' && (
+          <div className="mt-6 flex justify-center w-full max-w-full relative rounded-xl overflow-hidden border border-white/10 bg-card p-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img 
+              src={node.imageUrl} 
+              alt={node.title || 'Lesson illustration'} 
+              className="max-h-[300px] object-contain rounded-lg"
+            />
+          </div>
+        )}
       </div>
 
       {/* Analogy */}

@@ -77,7 +77,7 @@ function submitQuizAttempt(
   const attemptNumber = (state.quizAttempts.length + 1) as 1 | 2;
   const score = lessonArg.quiz.questions.reduce((total, question) => {
     const given = answers[question.id];
-    return given === question.correctAnswer ? total + question.points : total;
+    return given === (question as any).correctAnswer ? total + question.points : total;
   }, 0);
 
   const bestQuizScore = Math.max(state.bestQuizScore, score);
@@ -122,13 +122,13 @@ describe('Real lesson loading — schema validation', () => {
 
   it('every quiz question has exactly 4 options', () => {
     for (const q of lesson.quiz.questions) {
-      expect(q.options).toHaveLength(4);
+      expect((q as any).options).toHaveLength(4);
     }
   });
 
   it('every correctAnswer exactly matches one of the 4 options', () => {
     for (const q of lesson.quiz.questions) {
-      expect(q.options).toContain(q.correctAnswer);
+      expect((q as any).options).toContain((q as any).correctAnswer);
     }
   });
 

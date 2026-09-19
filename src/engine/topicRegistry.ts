@@ -61,6 +61,21 @@ export const TOPIC_REGISTRY: TopicRegistryEntry[] = [
   { topicId: 'beginner-scratch-19', level: 'beginner', category: 'scratch' },
   { topicId: 'beginner-scratch-20', level: 'beginner', category: 'scratch' },
   { topicId: 'beginner-scratch-21', level: 'beginner', category: 'scratch' },
+  // ── Beginner Tinkercad Level 1 — MUDAH (topics 01–04) ────────────────────
+  { topicId: 'beginner-tinkercad-01', level: 'beginner', category: 'tinkercad' },
+  { topicId: 'beginner-tinkercad-02', level: 'beginner', category: 'tinkercad' },
+  { topicId: 'beginner-tinkercad-03', level: 'beginner', category: 'tinkercad' },
+  { topicId: 'beginner-tinkercad-04', level: 'beginner', category: 'tinkercad' },
+  // ── Beginner Tinkercad Level 2 — SEDANG (topics 05–08) ───────────────────
+  { topicId: 'beginner-tinkercad-05', level: 'beginner', category: 'tinkercad' },
+  { topicId: 'beginner-tinkercad-06', level: 'beginner', category: 'tinkercad' },
+  { topicId: 'beginner-tinkercad-07', level: 'beginner', category: 'tinkercad' },
+  { topicId: 'beginner-tinkercad-08', level: 'beginner', category: 'tinkercad' },
+  // ── Beginner Tinkercad Level 3 — LANCAR (topics 09–12) ───────────────────
+  { topicId: 'beginner-tinkercad-09', level: 'beginner', category: 'tinkercad' },
+  { topicId: 'beginner-tinkercad-10', level: 'beginner', category: 'tinkercad' },
+  { topicId: 'beginner-tinkercad-11', level: 'beginner', category: 'tinkercad' },
+  { topicId: 'beginner-tinkercad-12', level: 'beginner', category: 'tinkercad' },
 ];
 
 /**

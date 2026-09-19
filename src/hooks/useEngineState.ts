@@ -50,7 +50,8 @@ function scoreQuizAttempt(
 ): number {
   return questions.reduce((total, question) => {
     const given = answers[question.id];
-    return given === question.correctAnswer ? total + question.points : total;
+    const correct = question.type === 'image-choice' ? (question as import('@/types/lesson').ImageChoiceQuestion).correctAnswerId : (question as import('@/types/lesson').MultipleChoiceQuestion).correctAnswer;
+    return given === correct ? total + question.points : total;
   }, 0);
 }
 

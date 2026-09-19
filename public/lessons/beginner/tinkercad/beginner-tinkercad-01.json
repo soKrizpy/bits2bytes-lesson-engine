@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "id": "beginner-tinkercad-01",
+    "title": "Welcome to Tinkercad",
+    "description": "Kenalan dengan Tinkercad — aplikasi desain 3D gratis dari Autodesk yang berjalan langsung di browser. Buat karya 3D pertamamu hanya dengan menyusun bentuk dasar!",
+    "level": "beginner",
+    "category": "Tinkercad",
+    "topicNumber": 1,
+    "estimatedTime": 20,
+    "xp": 100
+  },
+  "introduction": {
+    "title": "Rancang Dunia 3D-mu Sendiri — Tanpa Perlu Install!",
+    "description": "Bayangkan bisa membuat mainan, gantungan kunci, atau rumah mini dalam bentuk 3D — hanya dengan drag dan klik di browser! Tinkercad adalah pintu masuk paling ramah untuk dunia desain 3D. Kamu tidak perlu tahu coding, tidak perlu software mahal, dan tidak perlu komputer canggih. Cukup buka tinkercad.com, login gratis, dan mulai membangun!",
+    "analogy": "Tinkercad itu seperti LEGO digital. Kamu punya banyak balok bentuk — kubus, bola, silinder — yang bisa kamu susun, warnai, putar, dan gabungkan menjadi apa pun yang kamu mau. Bedanya, LEGO-nya tidak terbatas dan tidak pernah habis."
+  },
+  "objectives": [
+    "Memahami apa itu Tinkercad dan mengapa ia alat desain 3D paling ramah pemula",
+    "Mengenal tiga area utama workspace Tinkercad",
+    "Mengenal shapes dasar: Cube, Sphere, dan Cylinder",
+    "Mampu menavigasi viewport 3D (memutar, zoom, dan menggeser tampilan)",
+    "Memindahkan shape dari Shapes Panel ke viewport dan meletakkannya di grid"
+  ],
+  "review": {
+    "learned": [
+      "Tinkercad adalah aplikasi desain 3D gratis dari Autodesk yang berjalan di browser — tidak perlu instalasi.",
+      "Workspace Tinkercad terbagi menjadi tiga area: Toolbar (kiri), Viewport (tengah), dan Shapes Panel (kanan).",
+      "Shapes dasar yang paling sering dipakai: Cube (kubus), Sphere (bola), dan Cylinder (silinder).",
+      "Drag-and-drop adalah cara utama memindahkan shape dari panel ke viewport.",
+      "Viewport bisa dinavigasi: klik-drag kiri untuk memutar pandangan, scroll untuk zoom, klik-drag kanan untuk menggeser.",
+      "Grid di viewport berfungsi sebagai panduan ukuran — satu kotak grid = 1 mm.",
+      "Tombol Create New Design membuka workspace kosong untuk mulai proyek baru."
+    ],
+    "keyConcepts": [
+      "Tinkercad — alat desain 3D berbasis browser dari Autodesk",
+      "Workspace — area kerja dengan Toolbar, Viewport, dan Shapes Panel",
+      "Shapes — bentuk dasar 3D yang menjadi bahan bangunan utama",
+      "Viewport — kanvas 3D tempat kamu menyusun shape",
+      "Grid — panduan ukuran di lantai viewport (1 kotak = 1 mm)"
+    ],
+    "takeaways": [
+      "Tinkercad sepenuhnya gratis dan berbasis web — bisa diakses dari laptop sekolah, Chromebook, atau tablet.",
+      "Semua benda 3D yang kompleks pada akhirnya dibangun dari shape dasar yang disusun dan digabung.",
+      "Menghapus shape cukup dengan klik lalu tekan Delete — jangan takut bereksperimen!",
+      "Desain di Tinkercad bisa dicetak 3D, jadi karya digitalmu bisa menjadi benda nyata."
+    ]
+  },
+  "learningPath": [
+    {
+      "id": "node-01-preview",
+      "type": "lesson",
+      "title": "Ini yang Akan Kamu Buat!",
+      "xp": 5,
+      "explanation": "Di akhir lesson ini, kamu akan bisa:\n• Membuka workspace Tinkercad sendiri dari browser\n• Mengenali tiga area utama: Toolbar, Viewport, dan Shapes Panel\n• Mengambil shape dari Shapes Panel dan meletakkannya di viewport\n• Memutar pandangan 3D untuk melihat objek dari segala sisi\n• Menghapus dan menyusun shape dasar di atas grid\n\nKarya pertamamu memang masih sederhana — hanya satu kubus di tengah workspace. Tapi dari situlah semua desain 3D hebat dimulai. Di topik-topik berikutnya, kamu akan belajar memutar, menggandakan, menggabungkan, dan membuat lubang — sampai bisa membangun rumah atau robot!",
+      "tips": [
+        "Buka tinkercad.com di tab baru sekarang supaya bisa langsung praktik sambil belajar.",
+        "Login pakai akun gratis — tidak perlu kartu kredit atau data pembayaran apa pun."
+      ]
+    },
+    {
+      "id": "node-02-what-is",
+      "type": "lesson",
+      "title": "Apa Itu Tinkercad?",
+      "xp": 5,
+      "explanation": "Tinkercad adalah aplikasi desain 3D gratis yang dibuat oleh Autodesk — perusahaan di balik software profesional seperti AutoCAD dan Fusion 360. Tinkercad sengaja dirancang untuk pemula: anak-anak, pelajar, guru, dan siapa pun yang baru mau coba dunia 3D.\n\nYang membuat Tinkercad istimewa:\n\n• 100% berbasis browser — tidak perlu instal apa pun\n• Gratis sepenuhnya — bukan trial, bukan versi terbatas\n• Antarmuka drag-and-drop — seperti menyusun LEGO\n• Hasil desain bisa langsung dicetak 3D atau diimpor ke Minecraft\n• Punya komunitas besar dengan jutaan desain publik untuk dipelajari\n\nDi Tinkercad, kamu membangun objek dengan menyusun bentuk-bentuk dasar (shapes) seperti kubus, bola, dan silinder — lalu memutar, memperbesar, mewarnai, dan menggabungkannya menjadi karya unikmu sendiri.",
+      "analogy": "Kalau AutoCAD itu seperti dapur restoran profesional — lengkap tapi rumit — maka Tinkercad itu seperti dapur rumahan: sederhana, ramah, tapi tetap bisa menghasilkan makanan lezat. Kamu tidak perlu jadi chef untuk mulai memasak.",
+      "tips": [
+        "Banyak guru di seluruh dunia pakai Tinkercad untuk mengajar matematika, sains, dan seni — bukan hanya desain.",
+        "Coba jelajahi galeri publik Tinkercad untuk inspirasi sebelum mulai mendesain sendiri."
+      ]
+    },
+    {
+      "id": "node-03-workspace-tour",
+      "type": "code",
+      "title": "Lihat: Tiga Area Utama Workspace",
+      "xp": 5,
+      "explanation": "Setelah login dan klik 'Create New Design', kamu akan melihat workspace Tinkercad. Ada tiga area utama yang perlu kamu kenali:\n\n1. TOOLBAR (sisi kiri) — berisi tombol-tombol utama: Undo, Redo, Copy, Duplicate, Delete, dan berbagai alat bantu seperti Align dan Group.\n\n2. VIEWPORT (tengah) — kanvas 3D tempat kamu menyusun shape. Ini area terbesar dan paling penting. Di lantainya ada grid sebagai panduan ukuran.\n\n3. SHAPES PANEL (sisi kanan) — berisi koleksi bentuk dasar yang bisa kamu drag ke viewport. Ada dropdown untuk berpindah kategori: Basic Shapes, Text, Numbers, dan lain-lain.\n\nHafalkan posisi tiga area ini — semua pekerjaanmu nanti akan berputar di sini.",
+      "code": {
+        "language": "text",
+        "content": "+----------+-----------------------------+-------------------+\n|          |                             |                   |\n| TOOLBAR  |        VIEWPORT             |   SHAPES PANEL    |\n|          |                             |                   |\n| Undo     |    Kanvas 3D dengan         |   [ Cube   ]      |\n| Redo     |    grid sebagai panduan     |   [ Sphere ]      |\n| Copy     |                             |   [ Cylinder ]    |\n| Delete   |    Tempat kamu menyusun      |   [ Cone   ]      |\n| Align    |    dan mengatur shape       |   [ Torus  ]      |\n| Group    |                             |   [ ...more ]     |\n|          |                             |                   |\n+----------+-----------------------------+-------------------+\n\n           ↑                             ↑                  ↑\n      Alat bantu              Area kerja utama      Sumber shapes"
+      }
+    },
+    {
+      "id": "node-04-shapes-intro",
+      "type": "code",
+      "title": "Lihat: Tiga Shapes Paling Penting",
+      "xp": 5,
+      "explanation": "Di Shapes Panel, ada puluhan bentuk yang bisa kamu pilih. Tapi untuk pemula, ada tiga yang paling sering dipakai dan wajib kamu kenali dulu:\n\n1. CUBE (Kubus) — bentuk kotak dengan 6 sisi sama. Paling serbaguna: bisa jadi dinding, badan robot, kotak pensil, dan apa pun.\n\n2. SPHERE (Bola) — bentuk bulat sempurna. Cocok untuk kepala karakter, bola, mata, atau planet.\n\n3. CYLINDER (Silinder) — bentuk tabung dengan alas dan tutup bulat. Cocok untuk roda, tiang, gelas, atau badan roket.\n\nKetiganya bisa dikombinasikan: misalnya Cylinder + Sphere = jam weker, Cube + Cylinder = mobil mainan.",
+      "code": {
+        "language": "text",
+        "content": "SHAPE DASAR YANG WAJIB DIKENAL:\n\n  ┌─────────┐         ╭───────╮        ┌─────────┐\n  │         │        ╱         ╲        │         │\n  │  CUBE   │       │  SPHERE   │       │CYLINDER │\n  │         │        ╲         ╱        │         │\n  └─────────┘         ╰───────╯         └─────────┘\n\n  Kubus (6 sisi)     Bola sempurna       Tabung\n\nKombinasi contoh:\n  Cube + Cube        → tembok, meja, gedung\n  Sphere + Cylinder  → jam weker, pohon\n  Cube + Cylinder    → mobil mainan, robot"
+      }
+    },
+    {
+      "id": "node-05-navigation",
+      "type": "code",
+      "title": "Lihat: Cara Memutar Pandangan 3D",
+      "xp": 5,
+      "explanation": "Viewport Tinkercad adalah ruang 3D, jadi kamu perlu tiga gerakan dasar untuk melihat objekmu dari segala arah:\n\n• ORBIT (memutar pandangan)\n  Klik-drag kiri mouse di area kosong viewport. Pandangan akan berputar mengelilingi titik pusat.\n\n• PAN (menggeser pandangan)\n  Klik-drag kanan mouse, ATAU tahan Shift + klik-drag kiri. Kamu memindahkan kamera ke kiri/kanan/atas/bawah.\n\n• ZOOM (memperbesar/memperkecil)\n  Scroll roda mouse. Scroll ke atas untuk memperbesar, ke bawah untuk memperkecil.\n\nCoba ketiganya bergantian sebelum mulai mendesain — menguasai navigasi adalah kunci supaya tidak frustrasi saat menyusun shape nanti.",
+      "code": {
+        "language": "text",
+        "content": "NAVIGASI VIEWPORT:\n\n  Aksi         │  Cara                        │  Efek\n  ─────────────┼──────────────────────────────┼───────────────────────\n  ORBIT        │  Klik-drag KIRI (di kosong)  │  Kamera memutar\n  PAN          │  Klik-drag KANAN             │  Kamera geser\n  ZOOM IN/OUT  │  Scroll roda mouse           │  Perbesar/kecil\n  ZOOM FIT     │  Klik ikon 'View' → 'Fit'    │  Semua shape masuk layar\n\n  Kotak bantu di pojok kanan atas viewport juga punya tombol:\n    🏠 Home    → kembali ke pandangan default\n    🔍 Fit     → auto-zoom agar semua terlihat\n    🧊 ViewCube → klik sisi untuk melihat dari depan/atas/samping"
+      }
+    },
+    {
+      "id": "node-06-first-object",
+      "type": "code",
+      "title": "Coba: Taruh Kubus Pertamamu!",
+      "xp": 5,
+      "explanation": "Sekarang saatnya bertindak! Ikuti langkah ini persis:\n\n1. Buka tinkercad.com dan login\n2. Klik tombol biru 'Create New Design'\n3. Setelah workspace terbuka, arahkan kursor ke Shapes Panel (kanan)\n4. Geser (drag) shape 'Cube' ke tengah viewport\n5. Lepas (drop) di tengah grid\n\nSelamat — kamu baru saja membuat objek 3D pertamamu!\n\nSekarang coba yang ini untuk membiasakan diri:\n\n• Klik Cube yang baru kamu buat — akan muncul kotak putih di sekelilingnya (artinya terpilih)\n• Tekan Delete di keyboard — Cube akan hilang\n• Drag Cube lain ke viewport untuk menggantinya\n• Klik-drag kiri di area kosong viewport — pandangan akan berputar mengelilingi cube",
+      "code": {
+        "language": "text",
+        "content": "LANGKAH DEMI LANGKAH:\n\n  [1] Buka tinkercad.com → login gratis\n         ↓\n  [2] Klik 'Create New Design' → workspace terbuka\n         ↓\n  [3] Cari shape 'Cube' di Shapes Panel kanan\n         ↓\n  [4] DRAG Cube → DROP di tengah viewport\n         ↓\n  [5] Klik Cube → muncul selection box putih\n         ↓\n  [6] Tekan Delete → Cube terhapus\n         ↓\n  [7] Drag Cube baru → biarkan di viewport\n\n  Hasil akhir: satu Cube di tengah grid ✅"
+      }
+    },
+    {
+      "id": "node-07-tips",
+      "type": "lesson",
+      "title": "Tips & Variasi — Kenalan Lebih Lanjut!",
+      "xp": 5,
+      "explanation": "Sekarang kamu sudah bisa membuka workspace dan meletakkan shape. Sebelum lanjut ke topik berikutnya, coba eksplorasi bebas dengan ide-ide ini:\n\nEKSPERIMEN DENGAN SHAPES LAIN\nSelain Cube, coba drag Sphere dan Cylinder ke viewport. Perhatikan perbedaan bentuknya dari berbagai sudut dengan memutar pandangan.\n\nBERMAIN DENGAN WARNA\nKlik shape → akan muncul panel warna di pojok kanan atas → klik warna apa saja. Coba ganti warna Cube-mu jadi merah, biru, hijau!\n\nLIHAT DARI SEGALA SISI\nGunakan ViewCube di pojok kanan atas viewport. Klik 'Front', 'Top', 'Right' untuk melihat objek dari sudut standar.\n\nGUNAKAN GRID\nPerhatikan grid di lantai. Satu kotak = 1 mm. Coba letakkan beberapa Cube bersebelahan — apakah mereka menempel rapi mengikuti grid?\n\nSIMPAN KARYAMU\nKlik 'Save' di pojok kanan atas, beri nama proyek (misal: 'Latihan Pertamaku'), dan simpan. Kamu bisa membukanya lagi kapan saja dari dashboard.",
+      "tips": [
+        "Ada shape 'Hole' (lubang) berwarna abu-abu transparan di panel — kita akan pelajari di topik lanjutan.",
+        "Jangan takut salah! Undo (Ctrl+Z) selalu bisa mengembalikan langkah sebelumnya."
+      ]
+    },
+    {
+      "id": "node-08-practice",
+      "type": "practice",
+      "title": "Cek Pemahamanmu!",
+      "xp": 10,
+      "instructions": "Di manakah panel 'Shapes' (tempat memilih bentuk) berada di workspace Tinkercad?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Sisi kiri workspace",
+        "Sisi kanan workspace",
+        "Di bagian atas workspace",
+        "Di bagian bawah workspace"
+      ],
+      "correctOption": "Sisi kanan workspace"
+    },
+    {
+      "id": "node-09-challenge",
+      "type": "challenge",
+      "title": "Tantangan: Desain 3D Pertamamu!",
+      "xp": 15,
+      "instructions": "Buktikan kamu sudah menguasai dasar Tinkercad dengan menyelesaikan tantangan ini!\n\n1. Buka tinkercad.com dan login (atau buat akun gratis jika belum punya)\n2. Klik 'Create New Design' untuk membuka workspace baru\n3. Drag satu Cube dari Shapes Panel ke tengah viewport\n4. Klik Cube tersebut, lalu ubah warnanya menjadi warna favoritmu\n5. Putar pandangan 3D menggunakan klik-drag kiri untuk melihat Cube dari segala sisi\n6. Drag satu Sphere ke viewport, letakkan di sebelah Cube\n7. Klik Sphere tersebut, atur ukurannya supaya lebih kecil dari Cube (drag titik sudut putih)\n8. Drag satu Cylinder, letakkan di sebelah keduanya\n9. Simpan proyekmu dengan nama 'Latihan Pertamaku'\n\nBONUS: Tambahkan shape keempat pilihanmu (Cone, Torus, atau Heart) dan susun keempatnya jadi formasi menarik.\n\nSetelah selesai, klik 'Share' dan copy link proyekmu — kamu bisa mengirimnya ke teman atau guru!",
+      "starterCode": {
+        "language": "text",
+        "content": "CHECKLIST DESAIN PERTAMAKU:\n\n  [ ] Buka tinkercad.com dan login\n  [ ] Create New Design\n  [ ] Drag Cube ke viewport\n  [ ] Ubah warna Cube\n  [ ] Putar pandangan 3D (klik-drag kiri)\n  [ ] Drag Sphere → perkecil ukurannya\n  [ ] Drag Cylinder\n  [ ] Susun ketiganya membentuk formasi\n  [ ] Save dengan nama 'Latihan Pertamaku'\n\n  BONUS:\n  [ ] Tambahkan shape ke-4 (Cone / Torus / Heart)\n  [ ] Screenshot hasil dan simpan\n  [ ] Klik Share → copy link proyek"
+      },
+      "expectedResult": "Workspace berisi minimal tiga shape dasar (Cube, Sphere, Cylinder) yang tersusun rapi di atas grid, sudah diwarnai, dan sudah disimpan sebagai proyek bernama 'Latihan Pertamaku'. Lihat contoh di galeri publik Tinkercad: https://www.tinkercad.com/things",
+      "solution": {
+        "language": "text",
+        "code": "CONTOH FORMASI SEDERHANA:\n\n  Tampilan atas viewport:\n\n        ┌──────────┐\n        │  SPHERE  │  ← kecil, warna merah\n        └──────────┘\n              ↑\n         ┌─────────┐\n         │  CUBE   │      ← besar, warna biru\n         └─────────┘\n              ↑\n        ┌───────────┐\n        │ CYLINDER  │    ← sedang, warna kuning\n        └───────────┘\n\n  Semua shape menempel di grid, tersusun vertikal\n  seperti menara. Setiap shape diwarnai berbeda\n  supaya mudah dibedakan.",
+        "explanation": "Formasi sederhana ini melatih tiga keterampilan inti: (1) drag-and-drop shape ke viewport, (2) mengubah warna lewat panel warna di kanan atas setelah shape dipilih, dan (3) menyusun shape secara vertikal dengan memperhatikan grid. Kalau kamu berhasil menyelesaikan ini, kamu sudah siap untuk topik 2 — di mana kita akan belajar MEMUTAR dan MEMPERBESAR shape dengan presisi!"
+      }
+    },
+    {
+      "id": "node-10-quiz",
+      "type": "quiz",
+      "title": "Uji Pengetahuanmu!"
+    }
+  ],
+  "quiz": {
+    "questions": [
+      {
+        "id": "q01",
+        "question": "Apa itu Tinkercad?",
+        "options": [
+          "Aplikasi edit foto profesional dari Adobe",
+          "Aplikasi desain 3D gratis dari Autodesk yang berjalan di browser",
+          "Bahasa pemrograman untuk membuat game",
+          "Software CAD berbayar untuk arsitek profesional"
+        ],
+        "correctAnswer": "Aplikasi desain 3D gratis dari Autodesk yang berjalan di browser",
+        "explanation": "Tinkercad adalah aplikasi desain 3D gratis yang dikembangkan oleh Autodesk — perusahaan di balik software profesional seperti AutoCAD dan Fusion 360. Tinkercad dirancang khusus untuk pemula dan berjalan sepenuhnya di browser tanpa perlu instalasi.",
+        "points": 20
+      },
+      {
+        "id": "q02",
+        "question": "Apakah Tinkercad perlu diinstal di komputer terlebih dahulu?",
+        "options": [
+          "Ya, wajib instal versi desktop",
+          "Ya, tapi hanya versi Pro yang perlu instal",
+          "Tidak, Tinkercad berjalan langsung di browser",
+          "Tergantung sistem operasi yang dipakai"
+        ],
+        "correctAnswer": "Tidak, Tinkercad berjalan langsung di browser",
+        "explanation": "Tinkercad sepenuhnya berbasis web — cukup buka tinkercad.com di browser (Chrome, Firefox, Edge, atau Safari), login dengan akun gratis, dan langsung mulai mendesain. Tidak ada instalasi apa pun yang diperlukan, bahkan untuk versi lengkapnya.",
+        "points": 20
+      },
+      {
+        "id": "q03",
+        "question": "Di manakah letak Shapes Panel di workspace Tinkercad?",
+        "options": [
+          "Sisi kiri workspace",
+          "Sisi kanan workspace",
+          "Bagian atas workspace",
+          "Bagian bawah workspace"
+        ],
+        "correctAnswer": "Sisi kanan workspace",
+        "explanation": "Shapes Panel yang berisi koleksi bentuk dasar (Cube, Sphere, Cylinder, dan puluhan lainnya) berada di sisi KANAN workspace. Sisi kiri berisi Toolbar dengan tombol-tombol seperti Undo, Redo, Align, dan Group.",
+        "points": 20
+      },
+      {
+        "id": "q04",
+        "question": "Bagaimana cara memutar pandangan (orbit) viewport untuk melihat objek dari sisi berbeda?",
+        "options": [
+          "Scroll roda mouse",
+          "Klik-drag kanan mouse",
+          "Klik-drag kiri mouse di area kosong viewport",
+          "Tekan tombol panah di keyboard"
+        ],
+        "correctAnswer": "Klik-drag kiri mouse di area kosong viewport",
+        "explanation": "Untuk memutar pandangan 3D (orbit), klik-drag KIRI mouse di area kosong viewport. Untuk menggeser pandangan (pan), klik-drag KANAN. Untuk memperbesar/memperkecil (zoom), scroll roda mouse. Ketiga gerakan ini adalah navigasi dasar yang wajib dikuasai.",
+        "points": 20
+      },
+      {
+        "id": "q05",
+        "question": "Berapa ukuran satu kotak grid di lantai viewport Tinkercad?",
+        "options": [
+          "1 cm",
+          "1 mm",
+          "1 inch",
+          "1 meter"
+        ],
+        "correctAnswer": "1 mm",
+        "explanation": "Satu kotak grid di lantai viewport Tinkercad mewakili 1 milimeter (1 mm). Grid ini berfungsi sebagai panduan ukuran saat kamu menyusun shape — memudahkan penempatan yang presisi dan rapi. Ukuran ini penting terutama saat kamu nanti ingin mencetak desainmu dengan 3D printer.",
+        "points": 20
+      }
+    ]
+  },
+  "completion": {
+    "title": "Selamat Datang di Dunia 3D!",
+    "message": "Kamu baru saja melewati gerbang pertama dunia desain 3D. Sekarang kamu tahu apa itu Tinkercad, di mana panel-panel pentingnya, dan bagaimana meletakkan shape pertamamu. Di topik berikutnya, kita akan belajar mengubah ukuran, memutar, dan menyusun shape dengan presisi — supaya kamu bisa mulai membangun benda yang benar-benar kamu bayangkan!",
+    "achievementName": "Penjelajah Tinkercad",
+    "achievementIcon": "🌎"
+  }
+}

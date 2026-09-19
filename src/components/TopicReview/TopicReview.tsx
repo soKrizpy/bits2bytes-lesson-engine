@@ -299,7 +299,7 @@ function TopicSummary({
               <p className="text-sm leading-relaxed text-text-base">{question.question}</p>
               <div className="space-y-1">
                 <p className="text-xs font-semibold uppercase tracking-wide text-success">{t('review.correctAnswer')}</p>
-                <p className="text-sm leading-relaxed text-text-base">{question.correctAnswer}</p>
+                <p className="text-sm leading-relaxed text-text-base">{(question as any).correctAnswer}</p>
               </div>
               <div className="space-y-1">
                 <p className="text-xs font-semibold uppercase tracking-wide text-primary">{t('review.explanation')}</p>

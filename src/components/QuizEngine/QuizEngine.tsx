@@ -17,7 +17,7 @@
 import { useEffect, useState } from 'react';
 import { QuizReview } from './QuizReview';
 import { Button } from '@/components/ui/Button';
-import type { QuizQuestion } from '@/types/lesson';
+import type { QuizQuestion, MultipleChoiceQuestion, ImageChoiceQuestion } from '@/types/lesson';
 import type { StudentState } from '@/types/state';
 import { useEngineTranslations } from '@/hooks/useEngineTranslations';
 
@@ -247,9 +247,9 @@ export function QuizEngine({
 
           {/* Answer options */}
           <div className="space-y-3">
-            {question.options.map((option) => {
+            {(question as any).options.map((option: string) => {
               const isSelected = perQuestionAnswer === option;
-              const isCorrect = option === question.correctAnswer;
+              const isCorrect = option === (question as any).correctAnswer;
 
               let optionClass =
                 'w-full min-h-[3.5rem] px-4 py-3 rounded-xl border text-sm font-medium text-left transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary';
@@ -287,7 +287,7 @@ export function QuizEngine({
           {perQuestionSubmitted && (
             <div className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-text-muted leading-relaxed">
               <span className="font-semibold text-text-base block mb-1">
-                {perQuestionAnswer === question.correctAnswer ? '🎉 Correct!' : '🤔 Not quite.'}
+                {perQuestionAnswer === (question.type === 'image-choice' ? (question as ImageChoiceQuestion).correctAnswerId : (question as MultipleChoiceQuestion).correctAnswer) ? '🎉 Correct!' : '🤔 Not quite.'}
               </span>
               {question.explanation}
             </div>
@@ -328,7 +328,7 @@ export function QuizEngine({
     const latestScore = latestAttempt !== null ? latestAttempt.score : 0;
 
     const correctCount = questions.filter(
-      (q) => reviewAnswers[q.id] === q.correctAnswer
+      (q) => { const correct = q.type === 'image-choice' ? q.correctAnswerId : q.correctAnswer; return reviewAnswers[q.id] === correct; }
     ).length;
 
     const canRetry = updatedAttemptsUsed < MAX_ATTEMPTS;
