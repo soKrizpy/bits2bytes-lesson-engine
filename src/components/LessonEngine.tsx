@@ -261,6 +261,11 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
   // ── Main lesson layout (Mimo/Duolingo style) ───────────────────────────────
   const totalNodes = lesson.learningPath.length;
   const isLastNode = currentNodeIndex === totalNodes - 1;
+  // A completed node is shown in review mode after going back, so it is always
+  // safe to move forward again even though it does not need its own completion
+  // interaction. Keep the CTA's visual state in sync with that behavior.
+  const canContinue = canAdvance || isCompletedSelection;
+  const isNextDisabled = currentNode?.type === 'quiz' && !canContinue;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -315,7 +320,7 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
             <button
               type="button"
               onClick={handlePrevious}
-              className="inline-flex min-h-10 w-32 shrink-0 items-center justify-center gap-2 rounded-xl border border-white/15 bg-card px-3 py-2 text-sm font-bold text-text-base transition-all duration-200 hover:border-white/25 hover:bg-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] sm:w-36"
+              className="inline-flex min-h-10 w-32 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-xl border border-white/15 bg-card px-3 py-2 text-sm font-bold text-text-base transition-all duration-200 hover:border-white/25 hover:bg-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] sm:w-36"
               aria-label="Kembali ke halaman sebelumnya"
             >
               <ArrowLeft aria-hidden="true" data-icon="inline-start" />
@@ -330,12 +335,12 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
             <button
               type="button"
               onClick={handleAdvance}
-              disabled={currentNode?.type === 'quiz' && !canAdvance && !isCompletedSelection}
+              disabled={isNextDisabled}
               className={[
                 'inline-flex min-h-10 w-32 shrink-0 items-center justify-center gap-2 rounded-xl px-3 py-2 text-sm font-bold transition-all duration-200 sm:w-36',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-                canAdvance && !isCompletedSelection
-                  ? 'bg-primary text-white shadow-lg shadow-primary/30 hover:bg-primary/90 active:scale-[0.98]'
+                canContinue
+                  ? 'cursor-pointer bg-primary text-white shadow-lg shadow-primary/30 hover:bg-primary/90 active:scale-[0.98]'
                   : 'bg-white/10 text-text-muted cursor-not-allowed',
               ].join(' ')}
               aria-label="Selanjutnya"
