@@ -158,6 +158,10 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
   const isCompletedSelection = currentNode !== undefined &&
     currentNodeIndex !== studentState.currentNodeIndex &&
     studentState.completedNodes.includes(currentNode.id);
+  // A completed quiz is normally read-only when revisited. The achievement
+  // screen can explicitly launch the still-available second attempt, which
+  // must render the interactive quiz rather than its previous results.
+  const nodeMode = isCompletedSelection && !isRetakingQuiz ? 'review' : 'learning';
 
   // ── Mimo-style advance handler ─────────────────────────────────────────────
   const handleAdvance = useCallback(() => {
@@ -303,7 +307,7 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
               onAdvance={handleAdvance}
               onSubmitQuizAttempt={isCompletedSelection ? () => {} : submitQuizAttempt}
               onCanAdvanceChange={(v) => setCanAdvance(v)}
-              mode={isCompletedSelection ? 'review' : 'learning'}
+              mode={nodeMode}
             />
           ) : (
             <div className="text-center space-y-4 py-20">
