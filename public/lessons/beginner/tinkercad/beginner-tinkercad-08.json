@@ -1,35 +1,37 @@
 {
   "schemaVersion": "1.0",
   "metadata": {
-    "id": "beginner-tinkercad-01",
-    "title": "Mengenal 3D dan Tinkercad",
-    "description": "Pengenalan dunia 3D dan antarmuka Tinkercad.",
-    "level": "beginner",
+    "id": "beginner-tinkercad-08",
+    "title": "Meratakan (Align)",
+    "description": "Menyejajarkan beberapa benda agar rapi.",
+    "level": "intermediate",
     "category": "tinkercad",
-    "topicNumber": 1,
+    "topicNumber": 8,
     "estimatedTime": 5,
     "xp": 100,
-    "engineStyle": "story"
+    "engineStyle": "boardgame"
   },
   "introduction": {
-    "title": "Selamat Datang di Topik 1!",
-    "description": "Pengenalan dunia 3D dan antarmuka Tinkercad.",
+    "title": "Selamat Datang di Topik 8!",
+    "description": "Menyejajarkan beberapa benda agar rapi.",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": []
+    "prerequisites": [
+      "beginner-tinkercad-07"
+    ]
   },
   "objectives": [
-    "Memahami konsep Mengenal 3D dan Tinkercad",
+    "Memahami konsep Meratakan (Align)",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
     "learned": [
-      "Cara menggunakan Mengenal 3D dan Tinkercad"
+      "Cara menggunakan Meratakan (Align)"
     ],
     "keyConcepts": [
-      "Konsep Mengenal 3D dan Tinkercad di 3D"
+      "Konsep Meratakan (Align) di 3D"
     ],
     "takeaways": [
-      "Sekarang kamu bisa menggunakan Mengenal 3D dan Tinkercad!"
+      "Sekarang kamu bisa menggunakan Meratakan (Align)!"
     ]
   },
   "learningPath": [
@@ -38,7 +40,7 @@
       "type": "lesson",
       "title": "Penjelasan Dasar",
       "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Mengenal 3D dan Tinkercad**."
+      "content": "Di bagian ini kita akan belajar tentang **Meratakan (Align)**."
     },
     {
       "id": "step-2",
@@ -53,15 +55,15 @@
       {
         "id": "q1",
         "type": "multiple-choice",
-        "question": "Apa fungsi dari fitur Mengenal 3D dan Tinkercad?",
+        "question": "Apa fungsi dari fitur Meratakan (Align)?",
         "options": [
           "Membuat kopi",
-          "Pengenalan dunia 3D dan antarmuka Tinkercad.",
+          "Menyejajarkan beberapa benda agar rapi.",
           "Menghapus akun",
           "Mendengarkan musik"
         ],
-        "correctAnswer": "Pengenalan dunia 3D dan antarmuka Tinkercad.",
-        "explanation": "Benar! Fitur ini berguna untuk Pengenalan dunia 3D dan antarmuka Tinkercad..",
+        "correctAnswer": "Menyejajarkan beberapa benda agar rapi.",
+        "explanation": "Benar! Fitur ini berguna untuk Menyejajarkan beberapa benda agar rapi..",
         "points": 50
       },
       {
@@ -96,8 +98,8 @@
   },
   "completion": {
     "title": "Hore! Berhasil!",
-    "message": "Kamu telah menyelesaikan topik Mengenal 3D dan Tinkercad!",
-    "achievementName": "Master Mengenal 3D dan Tinkercad",
+    "message": "Kamu telah menyelesaikan topik Meratakan (Align)!",
+    "achievementName": "Master Meratakan (Align)",
     "achievementIcon": "trophy"
   }
 }

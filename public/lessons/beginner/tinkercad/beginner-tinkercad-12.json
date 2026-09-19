@@ -1,35 +1,37 @@
 {
   "schemaVersion": "1.0",
   "metadata": {
-    "id": "beginner-tinkercad-01",
-    "title": "Mengenal 3D dan Tinkercad",
-    "description": "Pengenalan dunia 3D dan antarmuka Tinkercad.",
-    "level": "beginner",
+    "id": "beginner-tinkercad-12",
+    "title": "Project: Rumah Sederhana",
+    "description": "Membangun rumah 3D impianmu!",
+    "level": "advanced",
     "category": "tinkercad",
-    "topicNumber": 1,
+    "topicNumber": 12,
     "estimatedTime": 5,
     "xp": 100,
-    "engineStyle": "story"
+    "engineStyle": "arcade"
   },
   "introduction": {
-    "title": "Selamat Datang di Topik 1!",
-    "description": "Pengenalan dunia 3D dan antarmuka Tinkercad.",
+    "title": "Selamat Datang di Topik 12!",
+    "description": "Membangun rumah 3D impianmu!",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": []
+    "prerequisites": [
+      "beginner-tinkercad-011"
+    ]
   },
   "objectives": [
-    "Memahami konsep Mengenal 3D dan Tinkercad",
+    "Memahami konsep Project: Rumah Sederhana",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
     "learned": [
-      "Cara menggunakan Mengenal 3D dan Tinkercad"
+      "Cara menggunakan Project: Rumah Sederhana"
     ],
     "keyConcepts": [
-      "Konsep Mengenal 3D dan Tinkercad di 3D"
+      "Konsep Project: Rumah Sederhana di 3D"
     ],
     "takeaways": [
-      "Sekarang kamu bisa menggunakan Mengenal 3D dan Tinkercad!"
+      "Sekarang kamu bisa menggunakan Project: Rumah Sederhana!"
     ]
   },
   "learningPath": [
@@ -38,7 +40,7 @@
       "type": "lesson",
       "title": "Penjelasan Dasar",
       "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Mengenal 3D dan Tinkercad**."
+      "content": "Di bagian ini kita akan belajar tentang **Project: Rumah Sederhana**."
     },
     {
       "id": "step-2",
@@ -53,15 +55,15 @@
       {
         "id": "q1",
         "type": "multiple-choice",
-        "question": "Apa fungsi dari fitur Mengenal 3D dan Tinkercad?",
+        "question": "Apa fungsi dari fitur Project: Rumah Sederhana?",
         "options": [
           "Membuat kopi",
-          "Pengenalan dunia 3D dan antarmuka Tinkercad.",
+          "Membangun rumah 3D impianmu!",
           "Menghapus akun",
           "Mendengarkan musik"
         ],
-        "correctAnswer": "Pengenalan dunia 3D dan antarmuka Tinkercad.",
-        "explanation": "Benar! Fitur ini berguna untuk Pengenalan dunia 3D dan antarmuka Tinkercad..",
+        "correctAnswer": "Membangun rumah 3D impianmu!",
+        "explanation": "Benar! Fitur ini berguna untuk Membangun rumah 3D impianmu!.",
         "points": 50
       },
       {
@@ -96,8 +98,8 @@
   },
   "completion": {
     "title": "Hore! Berhasil!",
-    "message": "Kamu telah menyelesaikan topik Mengenal 3D dan Tinkercad!",
-    "achievementName": "Master Mengenal 3D dan Tinkercad",
+    "message": "Kamu telah menyelesaikan topik Project: Rumah Sederhana!",
+    "achievementName": "Master Project: Rumah Sederhana",
     "achievementIcon": "trophy"
   }
 }

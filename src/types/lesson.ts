@@ -22,6 +22,8 @@ export interface LessonMetadata {
   estimatedTime: number;
   /** Total XP available for completing this topic. Integer 0–10000. */
   xp: number;
+  /** UI engine template to use for this lesson. */
+  engineStyle?: 'mimo' | 'boardgame' | 'flashcard' | 'story' | 'arcade' | 'slide' | 'quest';
 }
 
 export interface LessonIntroduction {

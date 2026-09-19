@@ -2,207 +2,104 @@
   "schemaVersion": "1.0",
   "metadata": {
     "id": "beginner-tinkercad-04",
-    "title": "Mewarnai Bentukmu",
-    "description": "Buat desainmu jadi hidup dengan warna! Pelajari cara mengubah warna bentuk di Tinkercad dan membuat desain yang lebih menarik.",
+    "title": "Menggeser dan Memutar",
+    "description": "Memindahkan dan memutar bentuk di ruang 3D.",
     "level": "beginner",
-    "category": "Tinkercad",
+    "category": "tinkercad",
     "topicNumber": 4,
-    "estimatedTime": 20,
-    "xp": 100
+    "estimatedTime": 5,
+    "xp": 100,
+    "engineStyle": "boardgame"
   },
   "introduction": {
-    "title": "Waktunya Berkreasi dengan Warna! 🎨",
-    "description": "Bayangkan kalau semua desain 3D kamu hanya berwarna abu-abu — membosankan bukan? Di pelajaran ini, kamu akan belajar cara memberi warna pada bentuk-bentukmu. Dengan warna, desainmu akan terlihat jauh lebih hidup, keren, dan mudah dipahami!",
-    "analogy": "Memberi warna di Tinkercad itu seperti mengecat model plastik — kamu pilih cat yang kamu mau, lalu kamu sapukan ke bagian yang ingin kamu warnai. Bedanya, di Tinkercad tidak perlu tunggu cat kering!"
+    "title": "Selamat Datang di Topik 4!",
+    "description": "Memindahkan dan memutar bentuk di ruang 3D.",
+    "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
+    "prerequisites": [
+      "beginner-tinkercad-03"
+    ]
   },
   "objectives": [
-    "Menemukan dan membuka panel warna (Color Picker) di Tinkercad",
-    "Mengubah warna sebuah bentuk dengan memilih warna dari palet",
-    "Menggunakan mode 'Multicolor' untuk warna yang lebih banyak",
-    "Memberi warna berbeda pada beberapa bentuk sekaligus"
+    "Memahami konsep Menggeser dan Memutar",
+    "Mempraktikkan di Tinkercad"
   ],
   "review": {
     "learned": [
-      "Panel warna muncul di sebelah kanan atas saat sebuah bentuk terpilih.",
-      "Klik kotak warna di panel untuk membuka Color Picker.",
-      "Color Picker berisi palet warna — klik warna yang kamu inginkan.",
-      "Mode 'Solid' untuk warna polos. Mode lain tersedia di Tinkercad.",
-      "Setiap bentuk bisa punya warna yang berbeda-beda."
+      "Cara menggunakan Menggeser dan Memutar"
     ],
     "keyConcepts": [
-      "Panel Warna",
-      "Color Picker (pemilih warna)",
-      "Palet warna",
-      "Warna per bentuk"
+      "Konsep Menggeser dan Memutar di 3D"
     ],
     "takeaways": [
-      "Pilih bentuk dulu, BARU pilih warna — urutan ini penting!",
-      "Warna membantu membedakan bagian-bagian desain.",
-      "Bereksperimen dengan warna adalah cara terbaik untuk belajar!"
+      "Sekarang kamu bisa menggunakan Menggeser dan Memutar!"
     ]
   },
   "learningPath": [
     {
+      "id": "step-1",
       "type": "lesson",
-      "title": "Di mana Panel Warna? 🎨",
-      "explanation": "Untuk mewarnai bentuk di Tinkercad, ikuti langkah ini:\n\n**Langkah 1:** Klik bentuk yang ingin kamu warnai (garis biru muncul = terpilih)\n\n**Langkah 2:** Lihat ke sebelah **kanan atas** layar — kamu akan melihat:\n- Kotak berwarna (menampilkan warna saat ini)\n- Teks 'Solid' di sebelahnya\n\n**Langkah 3:** Klik kotak warna itu — akan muncul **Color Picker** (pemilih warna)\n\n**Langkah 4:** Klik warna yang kamu inginkan dari palet!\n\n**Langkah 5:** Klik di luar Color Picker untuk menutupnya — bentukmu sudah berwarna! 🎉\n\n*Ingat: pilih bentuk DULU, baru pilih warna!*",
-      "id": "tc04-lesson-01"
+      "title": "Penjelasan Dasar",
+      "xp": 10,
+      "content": "Di bagian ini kita akan belajar tentang **Menggeser dan Memutar**."
     },
     {
+      "id": "step-2",
       "type": "practice",
-      "title": "Urutan yang benar untuk mewarnai!",
-      "instructions": "Apa urutan langkah yang BENAR untuk mengubah warna bentuk di Tinkercad?",
-      "interactionType": "multiple-choice",
-      "options": [
-        "Klik bentuk dulu → lalu klik kotak warna → pilih warna",
-        "Pilih warna dulu → baru klik bentuk yang ingin diwarnai",
-        "Klik kanan bentuk → pilih 'Change Color'",
-        "Tekan tombol C di keyboard untuk membuka warna"
-      ],
-      "correctOption": "Klik bentuk dulu → lalu klik kotak warna → pilih warna",
-      "feedback": {
-        "correct": "Benar! Urutan yang tepat: pilih bentuk dulu, baru buka panel warna dan pilih warna. 🎨",
-        "incorrect": "Coba lagi! Urutan yang benar: klik bentuk dulu (untuk memilihnya), lalu klik kotak warna di kanan atas, lalu pilih warnanya."
-      },
-      "id": "tc04-practice-02"
-    },
-    {
-      "type": "lesson",
-      "title": "Mengenal Color Picker 🌈",
-      "explanation": "Saat kamu klik kotak warna, muncullah **Color Picker** — tempat memilih warna!\n\nDi Color Picker ada:\n\n🎨 **Palet warna** — kotak-kotak warna yang bisa langsung diklik\n- Baris atas: warna-warna cerah (merah, oranye, kuning, hijau, biru, ungu)\n- Baris bawah: warna gelap dan netral (hitam, abu-abu, putih, coklat)\n\n🔲 **Kotak besar di atas** — untuk pilih gradasi warna (lebih tua atau lebih muda)\n\n**Cara pilih warna:**\n- Klik langsung kotak warna di palet → langsung jadi!\n- Atau klik di kotak besar → drag untuk pilih nuansa warna\n\n*Tips: Untuk warna standar, pakai palet kotak-kotak saja — lebih mudah dan cepat!*",
-      "id": "tc04-lesson-03"
-    },
-    {
-      "type": "practice",
-      "title": "Color Picker berisi apa?",
-      "instructions": "Di dalam Color Picker Tinkercad, ada apa saja?",
-      "interactionType": "multiple-choice",
-      "options": [
-        "Palet warna kotak-kotak dan kotak besar untuk gradasi",
-        "Hanya satu warna saja",
-        "Tempat mengetik kode warna saja",
-        "Pilihan bentuk baru"
-      ],
-      "correctOption": "Palet warna kotak-kotak dan kotak besar untuk gradasi",
-      "feedback": {
-        "correct": "Tepat! Color Picker berisi palet warna kotak-kotak dan kotak gradasi besar di atasnya. 🌈",
-        "incorrect": "Coba lagi! Color Picker berisi palet warna kotak-kotak untuk pilihan cepat, dan kotak gradasi besar untuk pilihan warna yang lebih detail."
-      },
-      "id": "tc04-practice-04"
-    },
-    {
-      "type": "lesson",
-      "title": "Warnai Setiap Bentuk Berbeda! 🖌️",
-      "explanation": "Setiap bentuk bisa punya **warna yang berbeda-beda** — ini yang membuat desainmu terlihat keren!\n\n**Contoh: Membuat Boneka Salju**\n- ⬜ **Bola besar** (badan) → warna **putih**\n- ⬜ **Bola kecil** (kepala) → warna **putih**\n- 🟠 **Kerucut kecil** (hidung) → warna **oranye**\n- ⚫ **Bola sangat kecil** (mata & kancing) → warna **hitam**\n\nDengan warna berbeda, kamu bisa langsung tahu bagian mana itu!\n\n**Cara mewarnai beberapa bentuk:**\n1. Klik bentuk pertama → pilih warna\n2. Klik bentuk kedua → pilih warna berbeda\n3. Ulangi untuk semua bentuk\n4. Setiap klik memilih bentuk yang berbeda!",
-      "id": "tc04-lesson-05"
-    },
-    {
-      "type": "practice",
-      "title": "Praktik Mewarnai!",
-      "instructions": "Ayo coba warnai bentuk-bentukmu! Centang setiap langkah setelah berhasil.",
-      "interactionType": "step-completion",
-      "steps": [
-        "Letakkan tiga bentuk di kanvas: Box, Sphere, dan Cylinder",
-        "Klik Box untuk memilihnya",
-        "Klik kotak warna di kanan atas — Color Picker terbuka",
-        "Pilih warna merah dari palet — Box berubah merah!",
-        "Klik Sphere untuk memilihnya",
-        "Pilih warna biru — Sphere berubah biru!",
-        "Klik Cylinder dan pilih warna kuning",
-        "Sekarang kamu punya tiga bentuk dengan tiga warna berbeda! 🎨"
-      ],
-      "id": "tc04-practice-06"
-    },
-    {
-      "type": "lesson",
-      "title": "Tips Warna yang Menarik! 💡",
-      "explanation": "Supaya desainmu terlihat makin keren, berikut beberapa tips warna:\n\n**🎨 Warna Primer** (warna dasar yang cerah):\n- Merah, Biru, Kuning — warna yang paling mencolok\n\n**🌿 Warna Alam** (terlihat natural):\n- Hijau untuk pohon/tanaman\n- Coklat untuk tanah/kayu\n- Biru muda untuk air/langit\n\n**🌟 Warna Kontras** (membuat desain mudah dibaca):\n- Gunakan warna gelap dan terang bersama (misal: merah + putih)\n- Hindari warna yang terlalu mirip (misal: hijau tua + hijau muda)\n\n**⚠️ Tips penting:**\n- Gunakan warna untuk menandai **fungsi** bagian (misal: merah = bahaya, hijau = aman)\n- Jangan terlalu banyak warna — 3-4 warna sudah cukup untuk desain yang rapi!",
-      "id": "tc04-lesson-07"
-    },
-    {
-      "type": "quiz",
-      "title": "Kuis Tinkercad #4 — Mewarnai",
-      "id": "tc04-quiz"
+      "title": "Latihan",
+      "xp": 20,
+      "content": "Coba praktikkan sekarang juga di Tinkercad."
     }
   ],
   "quiz": {
     "questions": [
       {
-        "id": "q01",
+        "id": "q1",
         "type": "multiple-choice",
-        "question": "Apa langkah pertama yang harus dilakukan sebelum mengubah warna bentuk?",
+        "question": "Apa fungsi dari fitur Menggeser dan Memutar?",
         "options": [
-          "Klik bentuk untuk memilihnya terlebih dahulu",
-          "Langsung buka Color Picker",
-          "Tekan tombol C di keyboard",
-          "Simpan desain dulu"
+          "Membuat kopi",
+          "Memindahkan dan memutar bentuk di ruang 3D.",
+          "Menghapus akun",
+          "Mendengarkan musik"
         ],
-        "correctAnswer": "Klik bentuk untuk memilihnya terlebih dahulu",
-        "explanation": "Langkah pertama: klik bentuk dulu untuk memilihnya (garis biru muncul). Baru setelah itu buka Color Picker.",
-        "points": 20
+        "correctAnswer": "Memindahkan dan memutar bentuk di ruang 3D.",
+        "explanation": "Benar! Fitur ini berguna untuk Memindahkan dan memutar bentuk di ruang 3D..",
+        "points": 50
       },
       {
-        "id": "q02",
+        "id": "q2",
         "type": "multiple-choice",
-        "question": "Di mana letak kotak warna (tombol untuk membuka Color Picker) saat bentuk dipilih?",
+        "question": "Apakah Tinkercad asyik untuk anak-anak?",
         "options": [
-          "Sebelah kanan atas layar",
-          "Sebelah kiri bawah layar",
-          "Di tengah layar",
-          "Di dalam Shapes Panel"
+          "Tentu Saja!",
+          "Sangat Asyik!",
+          "Pastinya!",
+          "Biasa aja"
         ],
-        "correctAnswer": "Sebelah kanan atas layar",
-        "explanation": "Kotak warna (tombol Color Picker) muncul di sebelah kanan atas layar saat sebuah bentuk dipilih.",
-        "points": 20
+        "correctAnswer": "Tentu Saja!",
+        "explanation": "Tinkercad sangat menyenangkan!",
+        "points": 50
       },
       {
-        "id": "q03",
+        "id": "q3",
         "type": "multiple-choice",
-        "question": "Bisakah dua bentuk yang berbeda punya warna yang berbeda di Tinkercad?",
+        "question": "Untuk apa kita belajar 3D?",
         "options": [
-          "Ya, setiap bentuk bisa punya warnanya sendiri",
-          "Tidak, semua bentuk harus satu warna",
-          "Hanya bisa 2 warna berbeda saja",
-          "Hanya bisa jika bentuknya sama"
+          "Untuk mencetak di 3D printer",
+          "Untuk makan",
+          "Untuk tidur",
+          "Tidak tau"
         ],
-        "correctAnswer": "Ya, setiap bentuk bisa punya warnanya sendiri",
-        "explanation": "Ya! Setiap bentuk bisa punya warna yang berbeda-beda. Caranya: klik satu bentuk → pilih warna, lalu klik bentuk lain → pilih warna lain.",
-        "points": 20
-      },
-      {
-        "id": "q04",
-        "type": "multiple-choice",
-        "question": "Berapa banyak warna yang disarankan agar desain terlihat rapi?",
-        "options": [
-          "3-4 warna sudah cukup",
-          "Semakin banyak semakin bagus",
-          "Hanya 1 warna saja",
-          "Minimal 10 warna berbeda"
-        ],
-        "correctAnswer": "3-4 warna sudah cukup",
-        "explanation": "Untuk desain yang rapi dan mudah dibaca, 3-4 warna sudah cukup. Terlalu banyak warna bisa membuat desain terlihat berantakan.",
-        "points": 20
-      },
-      {
-        "id": "q05",
-        "type": "multiple-choice",
-        "question": "Warna apa yang cocok untuk menggambarkan bagian pohon atau tanaman?",
-        "options": [
-          "Hijau",
-          "Merah",
-          "Putih",
-          "Hitam"
-        ],
-        "correctAnswer": "Hijau",
-        "explanation": "Hijau adalah warna yang identik dengan pohon, tanaman, dan alam. Menggunakan warna yang sesuai fungsi membuat desain lebih mudah dipahami.",
-        "points": 20
+        "correctAnswer": "Untuk mencetak di 3D printer",
+        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "points": 50
       }
     ]
   },
   "completion": {
-    "title": "Desainmu Makin Colorful! 🎨🎉",
-    "message": "Luar biasa! Sekarang kamu sudah bisa memberi warna pada bentuk-bentukmu. Kamu sudah menguasai semua dasar Level 1: mengenal Tinkercad, bentuk dasar, mengubah ukuran, dan mewarnai. Di Level 2 (SEDANG), kamu akan belajar cara memindahkan bentuk dengan presisi, menggabungkan bentuk, dan mulai membuat benda yang lebih kompleks!",
-    "achievementName": "Seniman Warna 3D",
-    "achievementIcon": "🎨"
+    "title": "Hore! Berhasil!",
+    "message": "Kamu telah menyelesaikan topik Menggeser dan Memutar!",
+    "achievementName": "Master Menggeser dan Memutar",
+    "achievementIcon": "trophy"
   }
 }

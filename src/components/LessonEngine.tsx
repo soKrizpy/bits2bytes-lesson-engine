@@ -17,6 +17,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import { useEngineState } from '@/hooks/useEngineState';
+import { useEngineNavigation } from '@/hooks/useEngineNavigation';
 import { LocalStorageAdapter } from '@/persistence/localStorageAdapter';
 import { SupabaseAdapter } from '@/persistence/supabaseAdapter';
 import { HybridAdapter } from '@/persistence/hybridAdapter';
@@ -29,6 +30,12 @@ import { ErrorScreen } from '@/components/ui/ErrorScreen';
 import { useUrlParams } from '@/hooks/useUrlParams';
 import { useLmsPostMessage } from '@/hooks/useLmsPostMessage';
 import { useEngineTranslations } from '@/hooks/useEngineTranslations';
+import { BoardgameEngine } from './engines/BoardgameEngine';
+import { FlashcardEngine } from './engines/FlashcardEngine';
+import { StoryEngine } from './engines/StoryEngine';
+import { ArcadeEngine } from './engines/ArcadeEngine';
+import { QuestEngine } from './engines/QuestEngine';
+import { SlideEngine } from './engines/SlideEngine';
 
 interface LessonEngineProps {
   topicId: string;
@@ -46,14 +53,8 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     urlParams.lmsOrigin,
   );
   const [viewMode, setViewMode] = useState<'achievement' | 'review'>('achievement');
-  const [isRetakingQuiz, setIsRetakingQuiz] = useState(false);
   const [selectedReviewNodeIndex, setSelectedReviewNodeIndex] = useState(0);
-  const [selectedLearningNodeIndex, setSelectedLearningNodeIndex] = useState<number | null>(null);
 
-  // ── Mimo-style UI state ────────────────────────────────────────────────────
-  const [cardKey, setCardKey] = useState(0);
-  const [canAdvance, setCanAdvance] = useState(true);
-  const [xpPopValue, setXpPopValue] = useState<number | null>(null);
 
   // Build a stable adapter based on whether a studentId is available.
   // We hold refs so that the adapter instances are not recreated on every render.
@@ -94,6 +95,20 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     submitQuizAttempt,
   } = useEngineState(topicId, adapter);
 
+  const nav = useEngineNavigation({ lesson, studentState, advanceNode });
+  const {
+    isRetakingQuiz, setIsRetakingQuiz,
+    selectedLearningNodeIndex, setSelectedLearningNodeIndex,
+    cardKey, setCardKey,
+    canAdvance, setCanAdvance,
+    xpPopValue, setXpPopValue,
+    currentNode, currentNodeIndex,
+    isCompletedSelection, nodeMode,
+    totalNodes, isLastNode,
+    canContinue, isNextDisabled,
+    handleAdvance, handlePrevious
+  } = nav;
+
   // Tracks whether the intro has been dismissed this session
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
 
@@ -110,10 +125,6 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     [lesson]
   );
 
-  useEffect(() => {
-    if (studentState.topicCompleted) return;
-    setSelectedLearningNodeIndex(studentState.currentNodeIndex);
-  }, [studentState.currentNodeIndex, studentState.topicCompleted]);
 
   // ── postMessage: topic completed ─────────────────────────────────────────
   useEffect(() => {
@@ -147,52 +158,6 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [studentState.xpEarned]);
 
-  // ── Current node (safe to derive before early returns; lesson may be null) ─
-  const selectedLearningNode = (lesson !== null && selectedLearningNodeIndex !== null)
-    ? lesson.learningPath[selectedLearningNodeIndex]
-    : undefined;
-  const currentNode = lesson !== null
-    ? (selectedLearningNode ?? lesson.learningPath[studentState.currentNodeIndex])
-    : undefined;
-  const currentNodeIndex = selectedLearningNodeIndex ?? studentState.currentNodeIndex;
-  const isCompletedSelection = currentNode !== undefined &&
-    currentNodeIndex !== studentState.currentNodeIndex &&
-    studentState.completedNodes.includes(currentNode.id);
-  // A completed quiz is normally read-only when revisited. The achievement
-  // screen can explicitly launch the still-available second attempt, which
-  // must render the interactive quiz rather than its previous results.
-  const nodeMode = isCompletedSelection && !isRetakingQuiz ? 'review' : 'learning';
-
-  // ── Mimo-style advance handler ─────────────────────────────────────────────
-  const handleAdvance = useCallback(() => {
-    if (isRetakingQuiz && currentNode?.type === 'quiz') {
-      setIsRetakingQuiz(false);
-      setSelectedLearningNodeIndex(null);
-      setCanAdvance(true);
-      setCardKey((key) => key + 1);
-      return;
-    }
-
-    if (selectedLearningNodeIndex !== null && selectedLearningNodeIndex < studentState.currentNodeIndex) {
-      setSelectedLearningNodeIndex(selectedLearningNodeIndex + 1);
-      setCardKey((k) => k + 1);
-      setCanAdvance(true);
-      return;
-    }
-
-    const xp = currentNode?.xp ?? 0;
-    if (xp > 0) setXpPopValue(xp);
-    advanceNode();
-    setCardKey((k) => k + 1);
-    setCanAdvance(true);
-  }, [currentNode, advanceNode, isRetakingQuiz, selectedLearningNodeIndex, studentState.currentNodeIndex]);
-
-  const handlePrevious = useCallback(() => {
-    if (currentNodeIndex === 0) return;
-    setSelectedLearningNodeIndex(currentNodeIndex - 1);
-    setCardKey((k) => k + 1);
-    setCanAdvance(true);
-  }, [currentNodeIndex]);
 
   // ── Load error: hard block ──────────����──────────────────────────────────────
   if (loadError !== null) {
@@ -262,14 +227,33 @@ export function LessonEngine({ topicId }: LessonEngineProps) {
     );
   }
 
+  // ── Engine Routing ────────────────────────────────────────────────────────
+  const engineStyle = lesson.metadata.engineStyle || 'mimo';
+  const engineProps = {
+    ...nav,
+    lesson,
+    studentState,
+    quizQuestions,
+    advanceNode: handleAdvance,
+    submitQuizAttempt: isCompletedSelection ? () => {} : submitQuizAttempt,
+    saveError,
+    onReturnToDashboard: () => {
+      const dashboardPath = '/student/dashboard';
+      const dashboardUrl = urlParams.lmsOrigin
+        ? `${urlParams.lmsOrigin.replace(/\/$/, '')}${dashboardPath}`
+        : dashboardPath;
+      window.location.assign(dashboardUrl);
+    }
+  };
+
+  if (engineStyle === 'boardgame') return <BoardgameEngine {...engineProps} />;
+  if (engineStyle === 'flashcard') return <FlashcardEngine {...engineProps} />;
+  if (engineStyle === 'story') return <StoryEngine {...engineProps} />;
+  if (engineStyle === 'arcade') return <ArcadeEngine {...engineProps} />;
+  if (engineStyle === 'quest') return <QuestEngine {...engineProps} />;
+  if (engineStyle === 'slide') return <SlideEngine {...engineProps} />;
+
   // ── Main lesson layout (Mimo/Duolingo style) ───────────────────────────────
-  const totalNodes = lesson.learningPath.length;
-  const isLastNode = currentNodeIndex === totalNodes - 1;
-  // A completed node is shown in review mode after going back, so it is always
-  // safe to move forward again even though it does not need its own completion
-  // interaction. Keep the CTA's visual state in sync with that behavior.
-  const canContinue = canAdvance || isCompletedSelection;
-  const isNextDisabled = currentNode?.type === 'quiz' && !canContinue;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">

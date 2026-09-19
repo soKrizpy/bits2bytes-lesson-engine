@@ -73,10 +73,16 @@ export function TopicOverview({ topics }: TopicOverviewProps) {
       cards: cards.filter(({ entry }) => entry.category === 'scratch'),
     },
     {
+      id: 'tinkercad',
+      title: 'Tinkercad',
+      description: 'Pengenalan dunia 3D dan sirkuit elektronik.',
+      cards: cards.filter(({ entry }) => entry.category === 'tinkercad'),
+    },
+    {
       id: 'web-development',
       title: 'HTML, CSS & JavaScript',
       description: 'Bangun fondasi untuk membuat website interaktif.',
-      cards: cards.filter(({ entry }) => entry.category !== 'scratch'),
+      cards: cards.filter(({ entry }) => entry.category !== 'scratch' && entry.category !== 'tinkercad'),
     },
   ];
 

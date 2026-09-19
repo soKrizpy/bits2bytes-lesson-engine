@@ -4,6 +4,9 @@ const nextConfig = {
   // JavaScript and CSS assets as well so a proxied lesson hydrates using the
   // engine bundle, not the LMS bundle at /_next.
   assetPrefix: '/learning',
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

@@ -1,35 +1,37 @@
 {
   "schemaVersion": "1.0",
   "metadata": {
-    "id": "beginner-tinkercad-01",
-    "title": "Mengenal 3D dan Tinkercad",
-    "description": "Pengenalan dunia 3D dan antarmuka Tinkercad.",
-    "level": "beginner",
+    "id": "beginner-tinkercad-06",
+    "title": "Mengelompokkan Bentuk (Group)",
+    "description": "Menyatukan dua benda menjadi satu.",
+    "level": "intermediate",
     "category": "tinkercad",
-    "topicNumber": 1,
+    "topicNumber": 6,
     "estimatedTime": 5,
     "xp": 100,
-    "engineStyle": "story"
+    "engineStyle": "arcade"
   },
   "introduction": {
-    "title": "Selamat Datang di Topik 1!",
-    "description": "Pengenalan dunia 3D dan antarmuka Tinkercad.",
+    "title": "Selamat Datang di Topik 6!",
+    "description": "Menyatukan dua benda menjadi satu.",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": []
+    "prerequisites": [
+      "beginner-tinkercad-05"
+    ]
   },
   "objectives": [
-    "Memahami konsep Mengenal 3D dan Tinkercad",
+    "Memahami konsep Mengelompokkan Bentuk (Group)",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
     "learned": [
-      "Cara menggunakan Mengenal 3D dan Tinkercad"
+      "Cara menggunakan Mengelompokkan Bentuk (Group)"
     ],
     "keyConcepts": [
-      "Konsep Mengenal 3D dan Tinkercad di 3D"
+      "Konsep Mengelompokkan Bentuk (Group) di 3D"
     ],
     "takeaways": [
-      "Sekarang kamu bisa menggunakan Mengenal 3D dan Tinkercad!"
+      "Sekarang kamu bisa menggunakan Mengelompokkan Bentuk (Group)!"
     ]
   },
   "learningPath": [
@@ -38,7 +40,7 @@
       "type": "lesson",
       "title": "Penjelasan Dasar",
       "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Mengenal 3D dan Tinkercad**."
+      "content": "Di bagian ini kita akan belajar tentang **Mengelompokkan Bentuk (Group)**."
     },
     {
       "id": "step-2",
@@ -53,15 +55,15 @@
       {
         "id": "q1",
         "type": "multiple-choice",
-        "question": "Apa fungsi dari fitur Mengenal 3D dan Tinkercad?",
+        "question": "Apa fungsi dari fitur Mengelompokkan Bentuk (Group)?",
         "options": [
           "Membuat kopi",
-          "Pengenalan dunia 3D dan antarmuka Tinkercad.",
+          "Menyatukan dua benda menjadi satu.",
           "Menghapus akun",
           "Mendengarkan musik"
         ],
-        "correctAnswer": "Pengenalan dunia 3D dan antarmuka Tinkercad.",
-        "explanation": "Benar! Fitur ini berguna untuk Pengenalan dunia 3D dan antarmuka Tinkercad..",
+        "correctAnswer": "Menyatukan dua benda menjadi satu.",
+        "explanation": "Benar! Fitur ini berguna untuk Menyatukan dua benda menjadi satu..",
         "points": 50
       },
       {
@@ -96,8 +98,8 @@
   },
   "completion": {
     "title": "Hore! Berhasil!",
-    "message": "Kamu telah menyelesaikan topik Mengenal 3D dan Tinkercad!",
-    "achievementName": "Master Mengenal 3D dan Tinkercad",
+    "message": "Kamu telah menyelesaikan topik Mengelompokkan Bentuk (Group)!",
+    "achievementName": "Master Mengelompokkan Bentuk (Group)",
     "achievementIcon": "trophy"
   }
 }

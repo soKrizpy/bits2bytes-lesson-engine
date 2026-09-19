@@ -2,220 +2,104 @@
   "schemaVersion": "1.0",
   "metadata": {
     "id": "beginner-tinkercad-03",
-    "title": "Mengubah Ukuran Bentuk",
-    "description": "Pelajari cara membuat bentuk lebih besar, lebih kecil, lebih tinggi, atau lebih tipis dengan mengubah ukuran (resize) di Tinkercad.",
+    "title": "Menambahkan Bentuk Dasar",
+    "description": "Mengenal dan memasukkan bentuk dasar ke dalam workplane.",
     "level": "beginner",
-    "category": "Tinkercad",
+    "category": "tinkercad",
     "topicNumber": 3,
-    "estimatedTime": 20,
-    "xp": 100
+    "estimatedTime": 5,
+    "xp": 100,
+    "engineStyle": "flashcard"
   },
   "introduction": {
-    "title": "Bikin Bentukmu Sesuai Keinginan! 📏",
-    "description": "Box yang kamu letakkan tadi mungkin terlalu besar atau terlalu kecil. Di pelajaran ini, kamu akan belajar cara mengubah ukuran bentuk — membuatnya lebih besar, lebih kecil, lebih tinggi, atau lebih pipih. Ini salah satu skill paling penting di Tinkercad!",
-    "analogy": "Mengubah ukuran bentuk di Tinkercad itu seperti menarik ujung balon — tarik ke atas supaya panjang, tarik ke samping supaya lebar, atau tekan supaya pipih. Bedanya, di Tinkercad kamu bisa sangat presisi!"
+    "title": "Selamat Datang di Topik 3!",
+    "description": "Mengenal dan memasukkan bentuk dasar ke dalam workplane.",
+    "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
+    "prerequisites": [
+      "beginner-tinkercad-02"
+    ]
   },
   "objectives": [
-    "Memahami apa itu handle (titik-titik pengubah ukuran)",
-    "Mengubah ukuran bentuk dengan cara drag handle",
-    "Mengubah ukuran dengan mengetik angka yang tepat",
-    "Memahami perbedaan lebar (W), panjang (D/L), dan tinggi (H)"
+    "Memahami konsep Menambahkan Bentuk Dasar",
+    "Mempraktikkan di Tinkercad"
   ],
   "review": {
     "learned": [
-      "Handle adalah titik-titik kecil putih yang muncul saat bentuk terpilih — berfungsi untuk mengubah ukuran.",
-      "Drag handle di sudut → ubah lebar DAN panjang sekaligus.",
-      "Drag handle di sisi → ubah hanya lebar ATAU panjang saja.",
-      "Drag handle di atas → ubah tinggi bentuk.",
-      "Klik angka ukuran yang muncul → ketik angka baru untuk ukuran yang presisi."
+      "Cara menggunakan Menambahkan Bentuk Dasar"
     ],
     "keyConcepts": [
-      "Handle (titik pengubah ukuran)",
-      "W = Width (Lebar)",
-      "D/L = Depth/Length (Panjang)",
-      "H = Height (Tinggi)",
-      "Resize dengan drag & angka presisi"
+      "Konsep Menambahkan Bentuk Dasar di 3D"
     ],
     "takeaways": [
-      "Handle putih di sudut = ubah lebar + panjang bersamaan.",
-      "Handle di sisi = ubah satu dimensi saja.",
-      "Handle di atas = ubah tinggi.",
-      "Untuk ukuran presisi, klik angkanya dan ketik nilai yang kamu inginkan."
+      "Sekarang kamu bisa menggunakan Menambahkan Bentuk Dasar!"
     ]
   },
   "learningPath": [
     {
+      "id": "step-1",
       "type": "lesson",
-      "title": "Apa itu Handle? 🎯",
-      "explanation": "Saat kamu **klik** sebuah bentuk di kanvas, kamu akan melihat muncul titik-titik kecil berwarna **putih** di sekeliling bentuk.\n\nTitik-titik itu disebut **Handle** — dan fungsinya adalah untuk **mengubah ukuran** bentukmu!\n\nAda 3 jenis handle:\n- ⬛ **Handle di sudut** (4 sudut) → mengubah lebar dan panjang sekaligus\n- ⬛ **Handle di sisi** (4 sisi) → mengubah hanya lebar ATAU panjang\n- ⬛ **Handle di atas** (1 di atas) → mengubah tinggi\n\nCara pakainya: **klik dan seret (drag)** handle ke arah yang kamu inginkan!",
-      "id": "tc03-lesson-01"
+      "title": "Penjelasan Dasar",
+      "xp": 10,
+      "content": "Di bagian ini kita akan belajar tentang **Menambahkan Bentuk Dasar**."
     },
     {
+      "id": "step-2",
       "type": "practice",
-      "title": "Handle berfungsi untuk apa?",
-      "instructions": "Titik-titik putih kecil yang muncul saat bentuk terpilih disebut Handle. Apa fungsi Handle?",
-      "interactionType": "multiple-choice",
-      "options": [
-        "Mengubah ukuran bentuk",
-        "Mengubah warna bentuk",
-        "Menghapus bentuk",
-        "Memindahkan bentuk ke tempat lain"
-      ],
-      "correctOption": "Mengubah ukuran bentuk",
-      "feedback": {
-        "correct": "Betul! Handle (titik putih) digunakan untuk mengubah ukuran bentuk. 🎯",
-        "incorrect": "Coba lagi! Handle (titik-titik putih) berfungsi untuk mengubah ukuran bentuk."
-      },
-      "id": "tc03-practice-02"
-    },
-    {
-      "type": "lesson",
-      "title": "Handle Sudut vs Handle Sisi 📐",
-      "explanation": "Mari kenali perbedaan handle sudut dan handle sisi:\n\n**Handle di Sudut (4 titik di pojok):**\n- Posisi: di keempat sudut bentuk\n- Fungsi: mengubah **lebar DAN panjang** sekaligus\n- Cara: drag ke luar (perbesar) atau ke dalam (perkecil)\n\n**Handle di Sisi (4 titik di tengah sisi):**\n- Posisi: di tengah setiap sisi kiri, kanan, depan, belakang\n- Fungsi: mengubah **HANYA lebar** ATAU **HANYA panjang**\n- Cara: drag ke samping untuk mengubah satu dimensi saja\n\n**Handle di Atas (1 titik di puncak):**\n- Posisi: tepat di atas bentuk\n- Fungsi: mengubah **tinggi** bentuk\n- Cara: drag ke atas (tambah tinggi) atau ke bawah (kurangi tinggi)",
-      "id": "tc03-lesson-03"
-    },
-    {
-      "type": "practice",
-      "title": "Mana yang benar?",
-      "instructions": "Handle mana yang digunakan untuk mengubah TINGGI sebuah bentuk?",
-      "interactionType": "multiple-choice",
-      "options": [
-        "Handle di atas (titik di puncak bentuk)",
-        "Handle di sudut (titik di pojok)",
-        "Handle di sisi kiri atau kanan",
-        "Tidak ada handle untuk tinggi"
-      ],
-      "correctOption": "Handle di atas (titik di puncak bentuk)",
-      "feedback": {
-        "correct": "Tepat! Handle yang ada di atas/puncak bentuk berfungsi untuk mengubah tinggi. ⬆️",
-        "incorrect": "Coba lagi! Handle di atas (titik di puncak bentuk) digunakan untuk mengubah tinggi."
-      },
-      "id": "tc03-practice-04"
-    },
-    {
-      "type": "lesson",
-      "title": "Resize dengan Angka Presisi 🔢",
-      "explanation": "Selain drag handle, ada cara yang lebih **presisi** untuk mengubah ukuran!\n\nSaat kamu memilih bentuk, kamu akan melihat **angka ukuran** muncul di sekeliling bentuk:\n- **W** = Width (Lebar)\n- **D** = Depth (Panjang/Kedalaman)\n- **H** = Height (Tinggi)\n\n**Cara mengubah ukuran dengan angka:**\n1. Klik bentuk untuk memilihnya\n2. Klik **angka** yang muncul (misal: angka lebar)\n3. **Ketik angka baru** yang kamu inginkan\n4. Tekan **Enter**\n5. Bentukmu langsung berubah ukuran dengan presisi! ✅\n\n*Contoh: ketik 50 untuk membuat lebar 50mm*",
-      "id": "tc03-lesson-05"
-    },
-    {
-      "type": "practice",
-      "title": "W, D, H artinya apa?",
-      "instructions": "Di Tinkercad, angka 'H' yang muncul saat bentuk dipilih artinya...",
-      "interactionType": "multiple-choice",
-      "options": [
-        "H = Height (Tinggi)",
-        "H = Horizontal (Mendatar)",
-        "H = Hard (Keras)",
-        "H = Hanya (hanya satu)"
-      ],
-      "correctOption": "H = Height (Tinggi)",
-      "feedback": {
-        "correct": "Benar! H = Height artinya Tinggi. W = Width (Lebar), D = Depth (Panjang). 📏",
-        "incorrect": "Coba lagi! H = Height yang artinya Tinggi. W = Width (Lebar), D = Depth (Panjang)."
-      },
-      "id": "tc03-practice-06"
-    },
-    {
-      "type": "practice",
-      "title": "Praktik Resize!",
-      "instructions": "Yuk coba ubah ukuran bentuk di Tinkercad! Centang setiap langkah setelah berhasil.",
-      "interactionType": "step-completion",
-      "steps": [
-        "Letakkan sebuah Box (Kotak) di kanvas",
-        "Klik Box untuk memilihnya — pastikan handle putih muncul",
-        "Drag handle di sudut ke luar — perhatikan Box menjadi lebih besar",
-        "Drag handle di atas ke atas — perhatikan Box menjadi lebih tinggi",
-        "Klik angka 'W' yang muncul dan ketik '80', lalu tekan Enter",
-        "Klik angka 'H' yang muncul dan ketik '30', lalu tekan Enter",
-        "Lihat hasilnya — Box jadi lebar tapi pendek!"
-      ],
-      "id": "tc03-practice-07"
-    },
-    {
-      "type": "quiz",
-      "title": "Kuis Tinkercad #3 — Mengubah Ukuran",
-      "id": "tc03-quiz"
+      "title": "Latihan",
+      "xp": 20,
+      "content": "Coba praktikkan sekarang juga di Tinkercad."
     }
   ],
   "quiz": {
     "questions": [
       {
-        "id": "q01",
+        "id": "q1",
         "type": "multiple-choice",
-        "question": "Apa nama titik-titik kecil putih yang muncul di sekeliling bentuk saat dipilih?",
+        "question": "Apa fungsi dari fitur Menambahkan Bentuk Dasar?",
         "options": [
-          "Handle",
-          "Dot",
-          "Pointer",
-          "Selector"
+          "Membuat kopi",
+          "Mengenal dan memasukkan bentuk dasar ke dalam workplane.",
+          "Menghapus akun",
+          "Mendengarkan musik"
         ],
-        "correctAnswer": "Handle",
-        "explanation": "Titik-titik putih yang muncul saat bentuk terpilih disebut Handle — berfungsi untuk mengubah ukuran bentuk.",
-        "points": 20
+        "correctAnswer": "Mengenal dan memasukkan bentuk dasar ke dalam workplane.",
+        "explanation": "Benar! Fitur ini berguna untuk Mengenal dan memasukkan bentuk dasar ke dalam workplane..",
+        "points": 50
       },
       {
-        "id": "q02",
+        "id": "q2",
         "type": "multiple-choice",
-        "question": "Apa fungsi handle yang ada di sudut (pojok) bentuk?",
+        "question": "Apakah Tinkercad asyik untuk anak-anak?",
         "options": [
-          "Mengubah lebar dan panjang sekaligus",
-          "Hanya mengubah tinggi",
-          "Menghapus bentuk",
-          "Memindahkan bentuk"
+          "Tentu Saja!",
+          "Sangat Asyik!",
+          "Pastinya!",
+          "Biasa aja"
         ],
-        "correctAnswer": "Mengubah lebar dan panjang sekaligus",
-        "explanation": "Handle di sudut (pojok) mengubah lebar DAN panjang sekaligus saat di-drag.",
-        "points": 20
+        "correctAnswer": "Tentu Saja!",
+        "explanation": "Tinkercad sangat menyenangkan!",
+        "points": 50
       },
       {
-        "id": "q03",
+        "id": "q3",
         "type": "multiple-choice",
-        "question": "Apa arti 'H' pada angka ukuran yang muncul di Tinkercad?",
+        "question": "Untuk apa kita belajar 3D?",
         "options": [
-          "Height (Tinggi)",
-          "Horizontal",
-          "Heavy (Berat)",
-          "Half (Setengah)"
+          "Untuk mencetak di 3D printer",
+          "Untuk makan",
+          "Untuk tidur",
+          "Tidak tau"
         ],
-        "correctAnswer": "Height (Tinggi)",
-        "explanation": "H = Height (Tinggi). W = Width (Lebar), D = Depth (Panjang/Kedalaman).",
-        "points": 20
-      },
-      {
-        "id": "q04",
-        "type": "multiple-choice",
-        "question": "Bagaimana cara mengubah ukuran dengan angka yang presisi?",
-        "options": [
-          "Klik angka ukuran yang muncul, ketik angka baru, tekan Enter",
-          "Tekan tombol + atau - di keyboard",
-          "Klik kanan dan pilih 'Resize'",
-          "Drag bentuk ke pojok layar"
-        ],
-        "correctAnswer": "Klik angka ukuran yang muncul, ketik angka baru, tekan Enter",
-        "explanation": "Untuk ukuran presisi: klik angka W/D/H yang muncul, ketik angka yang diinginkan, lalu tekan Enter.",
-        "points": 20
-      },
-      {
-        "id": "q05",
-        "type": "multiple-choice",
-        "question": "Handle mana yang digunakan untuk mengubah HANYA panjang atau HANYA lebar (satu dimensi saja)?",
-        "options": [
-          "Handle di sisi (tengah sisi kiri/kanan/depan/belakang)",
-          "Handle di sudut",
-          "Handle di atas",
-          "Tidak ada handle seperti itu"
-        ],
-        "correctAnswer": "Handle di sisi (tengah sisi kiri/kanan/depan/belakang)",
-        "explanation": "Handle di sisi (tengah setiap sisi) mengubah hanya satu dimensi — lebar ATAU panjang saja.",
-        "points": 20
+        "correctAnswer": "Untuk mencetak di 3D printer",
+        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "points": 50
       }
     ]
   },
   "completion": {
-    "title": "Jago Resize! Bentukmu Makin Bisa Dikontrol! 📏🎉",
-    "message": "Hebat! Sekarang kamu bisa mengubah ukuran bentuk sesuai keinginanmu — lebih besar, lebih kecil, lebih tinggi, atau lebih tipis. Di topik berikutnya, kita akan belajar cara mewarnai bentuk-bentuk kamu dengan berbagai warna yang keren!",
-    "achievementName": "Master Resize",
-    "achievementIcon": "📏"
+    "title": "Hore! Berhasil!",
+    "message": "Kamu telah menyelesaikan topik Menambahkan Bentuk Dasar!",
+    "achievementName": "Master Menambahkan Bentuk Dasar",
+    "achievementIcon": "trophy"
   }
 }
