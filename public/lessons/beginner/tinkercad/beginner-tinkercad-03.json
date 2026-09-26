@@ -7,9 +7,9 @@
     "level": "beginner",
     "category": "tinkercad",
     "topicNumber": 3,
-    "estimatedTime": 5,
+    "estimatedTime": 30,
     "xp": 100,
-    "engineStyle": "flashcard"
+    "engineStyle": "mimo"
   },
   "introduction": {
     "title": "Selamat Datang di Topik 3!",
@@ -28,19 +28,77 @@
   },
   "learningPath": [
     {
-      "id": "step-1",
+      "id": "node-01-intro",
       "type": "lesson",
-      "title": "Penjelasan Dasar",
-      "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Menambahkan Bentuk Dasar**."
+      "title": "Bentuk Dasar sebagai Bahan",
+      "xp": 5,
+      "explanation": "Kubus, bola, silinder, dan bentuk dasar lain adalah bahan untuk membangun model. Pilih bentuk yang sesuai dengan bagian benda yang ingin dibuat.",
+      "tips": ["Mulai dari bentuk paling sederhana sebelum menambah detail."]
     },
     {
-      "id": "step-2",
+      "id": "node-02-shapes",
+      "type": "lesson",
+      "title": "Ambil Bentuk dari Panel",
+      "xp": 5,
+      "explanation": "Seret bentuk dari Shapes Panel ke workplane. Setelah muncul, pilih objek untuk melihat handle ukuran, rotasi, dan posisi.",
+      "expectedResult": "Kamu dapat menambahkan dan memilih beberapa bentuk dasar."
+    },
+    {
+      "id": "node-03-plan",
+      "type": "code",
+      "title": "Rencana Makhluk Bentuk",
+      "xp": 5,
+      "explanation": "Rencanakan makhluk sederhana menggunakan bentuk-bentuk dasar.",
+      "code": {
+        "language": "text",
+        "content": "SHAPE CREATURE\nBadan: bola\nMata: dua bola kecil\nKaki: dua atau empat balok\nDekorasi: satu bentuk pilihanmu"
+      }
+    },
+    {
+      "id": "node-04-practice",
       "type": "practice",
-      "title": "Latihan",
-      "xp": 20,
-      "content": "Coba praktikkan sekarang juga di Tinkercad."
-    }
+      "title": "Pilih Bentuk",
+      "xp": 10,
+      "instructions": "Bentuk mana yang cocok untuk membuat mata kecil pada makhluk 3D?",
+      "interactionType": "multiple-choice",
+      "options": ["Bola kecil", "Workplane", "ViewCube", "Panel teks"],
+      "correctOption": "Bola kecil"
+    },
+    {
+      "id": "node-05-guided",
+      "type": "lesson",
+      "title": "Susun Makhluk",
+      "xp": 10,
+      "explanation": "Tambahkan badan, mata, kaki, dan dekorasi. Atur jarak setiap bentuk agar tidak saling menembus sebelum melanjutkan ke tahap berikutnya.",
+      "tips": [
+        "Gunakan tampilan atas untuk menyamakan posisi mata.",
+        "Gunakan tampilan samping untuk mengecek kedalaman."
+      ]
+    },
+    {
+      "id": "node-06-test",
+      "type": "code",
+      "title": "Cek Komponen",
+      "xp": 10,
+      "explanation": "Pastikan semua komponen model memiliki fungsi yang jelas.",
+      "code": {
+        "language": "text",
+        "content": "MODEL CHECK\n[ ] Badan menjadi pusat model\n[ ] Mata memiliki jarak seimbang\n[ ] Kaki menyentuh atau dekat dengan alas\n[ ] Dekorasi tidak menutupi wajah"
+      }
+    },
+    {
+      "id": "node-07-challenge",
+      "type": "challenge",
+      "title": "Project: Makhluk Bentuk",
+      "xp": 15,
+      "instructions": "Buat karakter 3D dari minimal empat bentuk dasar. Beri nama karakter dan pastikan karakter dapat dikenali dari tampilan depan.",
+      "expectedResult": "Karakter memiliki badan, detail wajah, kaki, dan dekorasi yang tersusun jelas.",
+      "starterCode": {
+        "language": "text",
+        "content": "Nama karakter: [isi namamu]\nBadan: [bentuk]\nWajah: [detail]\nKaki: [detail]\nDekorasi: [detail]"
+      }
+    },
+    { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }
   ],
   "quiz": {
     "questions": [

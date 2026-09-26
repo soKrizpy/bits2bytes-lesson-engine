@@ -7,7 +7,7 @@
     "level": "intermediate",
     "category": "tinkercad",
     "topicNumber": 5,
-    "estimatedTime": 5,
+    "estimatedTime": 30,
     "xp": 100,
     "engineStyle": "mimo"
   },
@@ -28,19 +28,79 @@
   },
   "learningPath": [
     {
-      "id": "step-1",
+      "id": "node-01-intro",
       "type": "lesson",
-      "title": "Penjelasan Dasar",
-      "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Mengubah Ukuran (Scale)**."
+      "title": "Ukuran dalam 3D",
+      "xp": 5,
+      "explanation": "Scale mengubah panjang, lebar, atau tinggi objek. Ukuran yang konsisten membantu komponen proyek saling cocok.",
+      "tips": [
+        "Catat ukuran penting sebelum memperbesar atau mengecilkan bentuk."
+      ]
     },
     {
-      "id": "step-2",
+      "id": "node-02-controls",
+      "type": "lesson",
+      "title": "Gunakan Handle Ukuran",
+      "xp": 5,
+      "explanation": "Pilih objek lalu gunakan handle ukuran pada sisi atau sudutnya. Perhatikan perubahan satu dimensi dibanding perubahan proporsional.",
+      "expectedResult": "Kamu dapat mengubah panjang, lebar, dan tinggi secara sengaja."
+    },
+    {
+      "id": "node-03-plan",
+      "type": "code",
+      "title": "Rencana Organizer Meja",
+      "xp": 5,
+      "explanation": "Rencanakan organizer dengan ukuran yang saling berhubungan.",
+      "code": {
+        "language": "text",
+        "content": "DESK ORGANIZER\nAlas: lebar 60, panjang 40\nKotak pensil: tinggi 50\nSekat: tinggi lebih rendah dari kotak\nTarget: semua komponen muat di atas alas"
+      }
+    },
+    {
+      "id": "node-04-practice",
       "type": "practice",
-      "title": "Latihan",
-      "xp": 20,
-      "content": "Coba praktikkan sekarang juga di Tinkercad."
-    }
+      "title": "Pilih Perubahan",
+      "xp": 10,
+      "instructions": "Jika kotak pensil terlalu pendek, transformasi apa yang perlu diubah?",
+      "interactionType": "multiple-choice",
+      "options": ["Tinggi", "Warna kamera", "Nama objek", "Sudut ViewCube"],
+      "correctOption": "Tinggi"
+    },
+    {
+      "id": "node-05-guided",
+      "type": "lesson",
+      "title": "Samakan Skala Komponen",
+      "xp": 10,
+      "explanation": "Buat alas, kotak, dan sekat. Ubah dimensinya agar semua muat, tidak terlalu besar, dan tetap memiliki ruang untuk alat tulis.",
+      "tips": [
+        "Gunakan ukuran yang mudah dibandingkan.",
+        "Cek ruang kosong dari tampilan atas."
+      ]
+    },
+    {
+      "id": "node-06-test",
+      "type": "code",
+      "title": "Cek Ukuran",
+      "xp": 10,
+      "explanation": "Periksa hubungan ukuran komponen sebelum menyelesaikan organizer.",
+      "code": {
+        "language": "text",
+        "content": "SIZE CHECK\n[ ] Kotak berada di atas alas\n[ ] Sekat tidak lebih tinggi dari kotak utama\n[ ] Ada ruang kosong untuk benda kecil\n[ ] Tidak ada komponen keluar dari alas"
+      }
+    },
+    {
+      "id": "node-07-challenge",
+      "type": "challenge",
+      "title": "Project: Organizer Meja",
+      "xp": 15,
+      "instructions": "Buat organizer meja 3D dengan satu alas, satu tempat pensil, dan minimal dua sekat. Gunakan Scale untuk membuat semua bagian proporsional.",
+      "expectedResult": "Organizer memiliki komponen yang muat, proporsional, dan siap dipakai sebagai rancangan.",
+      "starterCode": {
+        "language": "text",
+        "content": "Alas: [tentukan panjang x lebar]\nTempat pensil: [tentukan tinggi]\nSekat 1: [atur ukuran]\nSekat 2: [atur ukuran]"
+      }
+    },
+    { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }
   ],
   "quiz": {
     "questions": [

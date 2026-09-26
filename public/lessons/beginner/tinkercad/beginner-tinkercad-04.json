@@ -7,9 +7,9 @@
     "level": "beginner",
     "category": "tinkercad",
     "topicNumber": 4,
-    "estimatedTime": 5,
+    "estimatedTime": 30,
     "xp": 100,
-    "engineStyle": "boardgame"
+    "engineStyle": "mimo"
   },
   "introduction": {
     "title": "Selamat Datang di Topik 4!",
@@ -28,19 +28,77 @@
   },
   "learningPath": [
     {
-      "id": "step-1",
+      "id": "node-01-intro",
       "type": "lesson",
-      "title": "Penjelasan Dasar",
-      "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Menggeser dan Memutar**."
+      "title": "Posisi dan Orientasi",
+      "xp": 5,
+      "explanation": "Move mengubah posisi objek, sedangkan rotate mengubah arah hadapnya. Keduanya penting saat menyusun komponen proyek 3D.",
+      "tips": ["Pilih objek sebelum memakai handle."]
     },
     {
-      "id": "step-2",
+      "id": "node-02-controls",
+      "type": "lesson",
+      "title": "Gunakan Handle",
+      "xp": 5,
+      "explanation": "Handle panah digunakan untuk memindahkan objek dan handle lengkung digunakan untuk memutarnya. Coba dari beberapa sudut agar perubahan terlihat jelas.",
+      "expectedResult": "Kamu dapat membedakan perpindahan dan rotasi objek."
+    },
+    {
+      "id": "node-03-plan",
+      "type": "code",
+      "title": "Rencana Mobil Mainan",
+      "xp": 5,
+      "explanation": "Gunakan rencana ini untuk mengatur komponen mobil sederhana.",
+      "code": {
+        "language": "text",
+        "content": "TOY CAR\nBadan: balok panjang\nRoda: empat silinder\nArah depan: tandai dengan lampu kecil\nUji: roda berada di sisi kiri dan kanan"
+      }
+    },
+    {
+      "id": "node-04-practice",
       "type": "practice",
-      "title": "Latihan",
-      "xp": 20,
-      "content": "Coba praktikkan sekarang juga di Tinkercad."
-    }
+      "title": "Pilih Transformasi",
+      "xp": 10,
+      "instructions": "Transformasi apa yang membuat bagian depan mobil menghadap ke arah lain?",
+      "interactionType": "multiple-choice",
+      "options": ["Rotate", "Move", "Duplicate", "Hole"],
+      "correctOption": "Rotate"
+    },
+    {
+      "id": "node-05-guided",
+      "type": "lesson",
+      "title": "Pasang Roda",
+      "xp": 10,
+      "explanation": "Buat satu roda, atur arahnya, lalu duplikasi untuk posisi lain. Gunakan Move untuk menempatkan roda dan Rotate agar sumbu roda menghadap benar.",
+      "tips": [
+        "Bandingkan jarak roda depan dan belakang.",
+        "Periksa mobil dari tampilan atas."
+      ]
+    },
+    {
+      "id": "node-06-test",
+      "type": "code",
+      "title": "Cek Transformasi",
+      "xp": 10,
+      "explanation": "Gunakan daftar ini untuk memeriksa hasil transformasi.",
+      "code": {
+        "language": "text",
+        "content": "TRANSFORM CHECK\n[ ] Badan berada di tengah\n[ ] Roda menghadap arah yang sama\n[ ] Jarak roda kiri dan kanan seimbang\n[ ] Lampu menandai bagian depan"
+      }
+    },
+    {
+      "id": "node-07-challenge",
+      "type": "challenge",
+      "title": "Project: Mobil Mainan",
+      "xp": 15,
+      "instructions": "Buat mobil mainan 3D dengan badan, empat roda, dan dua lampu. Gunakan Move dan Rotate untuk membuatnya tampak siap bergerak.",
+      "expectedResult": "Mobil memiliki orientasi yang jelas, roda terpasang simetris, dan lampu berada di bagian depan.",
+      "starterCode": {
+        "language": "text",
+        "content": "Badan: [balok]\nRoda: [buat satu, lalu duplikasi]\nLampu depan: [dua bentuk kecil]\nArah depan: [tentukan dan cek dengan kamera]"
+      }
+    },
+    { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }
   ],
   "quiz": {
     "questions": [

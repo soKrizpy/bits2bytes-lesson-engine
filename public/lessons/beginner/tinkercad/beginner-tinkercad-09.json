@@ -7,9 +7,9 @@
     "level": "advanced",
     "category": "tinkercad",
     "topicNumber": 9,
-    "estimatedTime": 5,
+    "estimatedTime": 30,
     "xp": 100,
-    "engineStyle": "story"
+    "engineStyle": "mimo"
   },
   "introduction": {
     "title": "Selamat Datang di Topik 9!",
@@ -28,19 +28,84 @@
   },
   "learningPath": [
     {
-      "id": "step-1",
+      "id": "node-01-intro",
       "type": "lesson",
-      "title": "Penjelasan Dasar",
-      "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Menggunakan Workplane**."
+      "title": "Workplane sebagai Bidang Acuan",
+      "xp": 5,
+      "explanation": "Workplane menentukan permukaan acuan untuk menempatkan bentuk. Dengan memindahkannya, kamu dapat membuat detail pada sisi atau tingkat yang berbeda.",
+      "tips": [
+        "Perhatikan arah panah dan posisi bidang sebelum menambahkan bentuk."
+      ]
     },
     {
-      "id": "step-2",
+      "id": "node-02-orientation",
+      "type": "lesson",
+      "title": "Pindahkan Workplane",
+      "xp": 5,
+      "explanation": "Klik sisi objek yang ingin dijadikan bidang acuan, lalu tambahkan bentuk baru. Bentuk tersebut akan mengikuti orientasi bidang yang dipilih.",
+      "expectedResult": "Kamu dapat menempatkan bentuk pada permukaan selain lantai utama."
+    },
+    {
+      "id": "node-03-plan",
+      "type": "code",
+      "title": "Rencana Kamar Bertingkat",
+      "xp": 5,
+      "explanation": "Rancang kamar kecil dengan detail pada dinding dan lantai atas.",
+      "code": {
+        "language": "text",
+        "content": "ROOM DETAIL\nLantai: buat balok dasar\nDinding: buat dan susun di atas lantai\nWorkplane baru: pilih sisi dinding\nDetail: tambahkan jendela pada bidang dinding"
+      }
+    },
+    {
+      "id": "node-04-practice",
       "type": "practice",
-      "title": "Latihan",
-      "xp": 20,
-      "content": "Coba praktikkan sekarang juga di Tinkercad."
-    }
+      "title": "Pilih Bidang Acuan",
+      "xp": 10,
+      "instructions": "Agar jendela menempel pada dinding, apa yang sebaiknya dilakukan?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Pindahkan Workplane ke sisi dinding",
+        "Hapus dinding",
+        "Putar kamera saja",
+        "Duplicate lantai"
+      ],
+      "correctOption": "Pindahkan Workplane ke sisi dinding"
+    },
+    {
+      "id": "node-05-guided",
+      "type": "lesson",
+      "title": "Tambahkan Detail pada Dinding",
+      "xp": 10,
+      "explanation": "Buat dinding, pilih permukaannya sebagai Workplane, lalu tambahkan bentuk jendela atau dekorasi. Kembalikan tampilan kamera untuk mengecek apakah detail menempel.",
+      "tips": [
+        "Pastikan Workplane berada pada sisi yang benar.",
+        "Gunakan Move kecil-kecil untuk merapikan detail."
+      ]
+    },
+    {
+      "id": "node-06-test",
+      "type": "code",
+      "title": "Cek Orientasi",
+      "xp": 10,
+      "explanation": "Gunakan checklist untuk memastikan detail mengikuti bidang yang tepat.",
+      "code": {
+        "language": "text",
+        "content": "WORKPLANE CHECK\n[ ] Detail menempel pada dinding\n[ ] Detail menghadap arah yang benar\n[ ] Lantai tetap rata\n[ ] Tidak ada bentuk yang melayang"
+      }
+    },
+    {
+      "id": "node-07-challenge",
+      "type": "challenge",
+      "title": "Project: Kamar Mini",
+      "xp": 15,
+      "instructions": "Buat kamar mini 3D dengan lantai, dua dinding, dan minimal satu jendela yang ditempatkan menggunakan Workplane pada sisi dinding.",
+      "expectedResult": "Kamar memiliki detail yang benar-benar mengikuti bidang dinding, bukan hanya diletakkan di lantai.",
+      "starterCode": {
+        "language": "text",
+        "content": "Lantai: [buat balok]\nDinding: [buat dua bidang]\nWorkplane: [pilih sisi dinding]\nJendela: [tambahkan detail pada bidang tersebut]"
+      }
+    },
+    { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }
   ],
   "quiz": {
     "questions": [

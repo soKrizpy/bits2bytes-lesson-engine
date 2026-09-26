@@ -7,9 +7,9 @@
     "level": "advanced",
     "category": "tinkercad",
     "topicNumber": 12,
-    "estimatedTime": 5,
+    "estimatedTime": 30,
     "xp": 100,
-    "engineStyle": "arcade"
+    "engineStyle": "mimo"
   },
   "introduction": {
     "title": "Selamat Datang di Topik 12!",
@@ -28,19 +28,82 @@
   },
   "learningPath": [
     {
-      "id": "step-1",
+      "id": "node-01-intro",
       "type": "lesson",
-      "title": "Penjelasan Dasar",
-      "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Project: Rumah Sederhana**."
+      "title": "Rancang Rumah dari Komponen",
+      "xp": 5,
+      "explanation": "Rumah 3D dapat dibuat dari badan, atap, pintu, jendela, dan detail. Tantangan level Hard adalah menjaga semua bagian proporsional dan tersusun rapi.",
+      "tips": ["Buat struktur utama sebelum menambahkan dekorasi."]
     },
     {
-      "id": "step-2",
+      "id": "node-02-plan",
+      "type": "lesson",
+      "title": "Buat Rencana Ukuran",
+      "xp": 5,
+      "explanation": "Tentukan ukuran badan rumah, tinggi atap, posisi pintu, dan pola jendela. Gunakan ukuran yang dapat dibandingkan agar rumah tidak terlihat timpang.",
+      "expectedResult": "Kamu memiliki rencana komponen dan urutan pembangunan rumah."
+    },
+    {
+      "id": "node-03-roof",
+      "type": "code",
+      "title": "Rencana Atap",
+      "xp": 5,
+      "explanation": "Gunakan rencana ini untuk membangun atap dari bentuk yang tersedia.",
+      "code": {
+        "language": "text",
+        "content": "HOUSE PROJECT\nBadan: balok utama\nAtap: bentuk atap atau dua balok miring\nPintu: balok tipis pada dinding depan\nJendela: bentuk berulang dengan Duplicate\nDetail: gunakan Workplane bila perlu"
+      }
+    },
+    {
+      "id": "node-04-practice",
       "type": "practice",
-      "title": "Latihan",
-      "xp": 20,
-      "content": "Coba praktikkan sekarang juga di Tinkercad."
-    }
+      "title": "Pilih Urutan Kerja",
+      "xp": 10,
+      "instructions": "Bagian mana yang sebaiknya dibuat lebih dulu?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Badan rumah",
+        "Dekorasi kecil",
+        "Tirai jendela",
+        "Lampu taman"
+      ],
+      "correctOption": "Badan rumah"
+    },
+    {
+      "id": "node-05-guided",
+      "type": "lesson",
+      "title": "Bangun Struktur Rumah",
+      "xp": 10,
+      "explanation": "Buat badan dan atap terlebih dahulu. Tambahkan pintu dan jendela setelah struktur stabil. Gunakan Align, Duplicate, Hole, dan Workplane sesuai kebutuhan.",
+      "tips": [
+        "Simetri membantu rumah terlihat rapi.",
+        "Cek dinding dan atap dari depan, atas, dan samping."
+      ]
+    },
+    {
+      "id": "node-06-test",
+      "type": "code",
+      "title": "Checklist Rumah",
+      "xp": 10,
+      "explanation": "Nilai rumahmu dengan checklist proyek.",
+      "code": {
+        "language": "text",
+        "content": "HOUSE CHECK\n[ ] Badan dan atap menyatu dengan rapi\n[ ] Pintu berada di dinding depan\n[ ] Jendela memiliki pola yang seimbang\n[ ] Tidak ada bentuk melayang\n[ ] Detail tidak merusak struktur utama"
+      }
+    },
+    {
+      "id": "node-07-challenge",
+      "type": "challenge",
+      "title": "Project: Rumah Sederhana",
+      "xp": 15,
+      "instructions": "Bangun rumah 3D lengkap dengan badan, atap, pintu, minimal dua jendela, dan satu detail lingkungan. Gunakan minimal tiga teknik dari topik sebelumnya dan rapikan hasilnya.",
+      "expectedResult": "Rumah memiliki struktur lengkap, detail berulang yang rapi, bukaan yang jelas, dan proporsi yang konsisten.",
+      "starterCode": {
+        "language": "text",
+        "content": "Badan: [balok utama]\nAtap: [rancang bentuk atap]\nPintu: [buat pada dinding depan]\nJendela: [buat satu lalu Duplicate]\nLingkungan: [tambahkan jalan, pohon, atau pagar]\nTeknik yang dipakai: [catat minimal tiga]"
+      }
+    },
+    { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }
   ],
   "quiz": {
     "questions": [

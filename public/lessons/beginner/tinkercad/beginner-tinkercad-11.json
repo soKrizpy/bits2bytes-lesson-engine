@@ -7,9 +7,9 @@
     "level": "advanced",
     "category": "tinkercad",
     "topicNumber": 11,
-    "estimatedTime": 5,
+    "estimatedTime": 30,
     "xp": 100,
-    "engineStyle": "quest"
+    "engineStyle": "mimo"
   },
   "introduction": {
     "title": "Selamat Datang di Topik 11!",
@@ -28,19 +28,82 @@
   },
   "learningPath": [
     {
-      "id": "step-1",
+      "id": "node-01-intro",
       "type": "lesson",
-      "title": "Penjelasan Dasar",
-      "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Project: Gelas Sederhana**."
+      "title": "Analisis Bentuk Gelas",
+      "xp": 5,
+      "explanation": "Gelas dapat dibangun dari silinder solid dan silinder Hole. Perhatikan ketebalan dinding, tinggi, dan kestabilan dasar.",
+      "tips": ["Rancang bagian luar terlebih dahulu, lalu buat ruang dalam."]
     },
     {
-      "id": "step-2",
+      "id": "node-02-process",
+      "type": "lesson",
+      "title": "Buat Ruang Dalam",
+      "xp": 5,
+      "explanation": "Tempatkan silinder Hole di dalam badan gelas, sisakan dasar dan dinding, lalu Group untuk membuat rongga. Gunakan tampilan atas untuk memeriksa hasilnya.",
+      "expectedResult": "Kamu dapat membuat wadah berongga tanpa menghilangkan dasar."
+    },
+    {
+      "id": "node-03-plan",
+      "type": "code",
+      "title": "Rencana Gelas",
+      "xp": 5,
+      "explanation": "Ikuti urutan kerja proyek gelas.",
+      "code": {
+        "language": "text",
+        "content": "GLASS PROJECT\n1. Silinder luar sebagai badan.\n2. Silinder Hole lebih kecil sebagai ruang dalam.\n3. Turunkan atau naikkan Hole agar dasar tetap ada.\n4. Group badan dan Hole.\n5. Tambahkan pegangan Torus."
+      }
+    },
+    {
+      "id": "node-04-practice",
       "type": "practice",
-      "title": "Latihan",
-      "xp": 20,
-      "content": "Coba praktikkan sekarang juga di Tinkercad."
-    }
+      "title": "Periksa Dinding",
+      "xp": 10,
+      "instructions": "Apa yang harus disisakan agar gelas tidak hanya berupa lubang kosong?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Dasar dan dinding solid",
+        "Hanya kamera",
+        "Workplane berwarna",
+        "Salinan ViewCube"
+      ],
+      "correctOption": "Dasar dan dinding solid"
+    },
+    {
+      "id": "node-05-guided",
+      "type": "lesson",
+      "title": "Rakit Gelas",
+      "xp": 10,
+      "explanation": "Buat badan silinder, buat silinder Hole yang lebih kecil, atur kedalamannya, lalu Group. Tambahkan pegangan berbentuk cincin dan rapikan posisinya.",
+      "tips": [
+        "Pastikan Hole tidak menembus seluruh dasar.",
+        "Gunakan Align untuk memusatkan Hole dengan badan."
+      ]
+    },
+    {
+      "id": "node-06-test",
+      "type": "code",
+      "title": "Cek Model Gelas",
+      "xp": 10,
+      "explanation": "Gunakan checklist sebelum menyelesaikan proyek.",
+      "code": {
+        "language": "text",
+        "content": "GLASS CHECK\n[ ] Gelas memiliki ruang dalam\n[ ] Dasar masih tertutup\n[ ] Dinding memiliki ketebalan\n[ ] Pegangan menempel pada badan"
+      }
+    },
+    {
+      "id": "node-07-challenge",
+      "type": "challenge",
+      "title": "Project: Gelas Sederhana",
+      "xp": 15,
+      "instructions": "Buat gelas 3D berongga dengan pegangan. Tambahkan satu detail desain seperti garis, logo, atau bentuk kecil tanpa menutup ruang minum.",
+      "expectedResult": "Gelas memiliki badan berongga, dasar, dinding, pegangan, dan satu detail dekoratif.",
+      "starterCode": {
+        "language": "text",
+        "content": "Badan: [silinder solid]\nRuang dalam: [silinder Hole]\nPegangan: [torus atau bentuk pilihan]\nDekorasi: [tambahkan setelah struktur selesai]"
+      }
+    },
+    { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }
   ],
   "quiz": {
     "questions": [

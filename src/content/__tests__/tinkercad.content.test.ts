@@ -27,7 +27,7 @@ describe('Tinkercad lesson content', () => {
     expect(lessonFiles).toEqual(registeredIds);
   });
 
-  it.each(lessonFiles)('%s has five valid four-choice questions', (file) => {
+  it.each(lessonFiles)('%s has a complete 30-minute Mimo lesson', (file) => {
     const lesson = JSON.parse(
       readFileSync(join(lessonDirectory, file), 'utf8')
     ) as unknown;
@@ -36,6 +36,23 @@ describe('Tinkercad lesson content', () => {
     expect(result.valid).toBe(true);
     if (!result.valid) return;
 
+    const topicNumber = result.lesson.metadata.topicNumber;
+    const expectedLevel =
+      topicNumber <= 4
+        ? 'beginner'
+        : topicNumber <= 8
+          ? 'intermediate'
+          : 'advanced';
+    expect(result.lesson.metadata.estimatedTime).toBe(30);
+    expect(result.lesson.metadata.engineStyle).toBe('mimo');
+    expect(result.lesson.metadata.level).toBe(expectedLevel);
+    expect(result.lesson.learningPath.length).toBeGreaterThanOrEqual(8);
+    expect(
+      result.lesson.learningPath.some((node) => node.type === 'practice')
+    ).toBe(true);
+    expect(
+      result.lesson.learningPath.some((node) => node.type === 'challenge')
+    ).toBe(true);
     expect(result.lesson.quiz.questions).toHaveLength(5);
     for (const question of result.lesson.quiz.questions) {
       expect(question.type).toBe('multiple-choice');

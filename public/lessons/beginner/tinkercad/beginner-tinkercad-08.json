@@ -7,9 +7,9 @@
     "level": "intermediate",
     "category": "tinkercad",
     "topicNumber": 8,
-    "estimatedTime": 5,
+    "estimatedTime": 30,
     "xp": 100,
-    "engineStyle": "boardgame"
+    "engineStyle": "mimo"
   },
   "introduction": {
     "title": "Selamat Datang di Topik 8!",
@@ -28,19 +28,82 @@
   },
   "learningPath": [
     {
-      "id": "step-1",
+      "id": "node-01-intro",
       "type": "lesson",
-      "title": "Penjelasan Dasar",
-      "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Meratakan (Align)**."
+      "title": "Mengapa Align Penting",
+      "xp": 5,
+      "explanation": "Align membantu menyejajarkan dua atau lebih bentuk pada sumbu tertentu. Ini membuat desain terlihat rapi dan terukur.",
+      "tips": ["Pilih beberapa bentuk sebelum memakai Align."]
     },
     {
-      "id": "step-2",
+      "id": "node-02-axes",
+      "type": "lesson",
+      "title": "Pahami Sumbu Align",
+      "xp": 5,
+      "explanation": "Titik Align dapat digunakan pada arah kiri-tengah-kanan, depan-tengah-belakang, atau bawah-tengah-atas. Pilih titik yang sesuai dengan tujuanmu.",
+      "expectedResult": "Kamu dapat membedakan penyelarasan horizontal dan vertikal."
+    },
+    {
+      "id": "node-03-plan",
+      "type": "code",
+      "title": "Rencana Lampu Lalu Lintas",
+      "xp": 5,
+      "explanation": "Gunakan Align agar lampu tersusun pada garis yang sama.",
+      "code": {
+        "language": "text",
+        "content": "TRAFFIC LIGHT\nTiang: balok tinggi\nLampu: tiga silinder atau bola\nTarget: lampu berada pada garis tengah yang sama\nAlat: Align lalu atur jarak dengan Move"
+      }
+    },
+    {
+      "id": "node-04-practice",
       "type": "practice",
-      "title": "Latihan",
-      "xp": 20,
-      "content": "Coba praktikkan sekarang juga di Tinkercad."
-    }
+      "title": "Siapkan Align",
+      "xp": 10,
+      "instructions": "Apa yang harus dilakukan sebelum memakai Align?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Pilih dua atau lebih bentuk",
+        "Hapus semua bentuk",
+        "Ubah bahasa aplikasi",
+        "Putar kamera saja"
+      ],
+      "correctOption": "Pilih dua atau lebih bentuk"
+    },
+    {
+      "id": "node-05-guided",
+      "type": "lesson",
+      "title": "Sejajarkan Lampu",
+      "xp": 10,
+      "explanation": "Buat tiga lampu, pilih semuanya, lalu gunakan Align untuk menyamakan garis tengah. Setelah itu gunakan Move untuk memberi jarak vertikal yang teratur.",
+      "tips": [
+        "Align merapikan posisi, tetapi tidak otomatis membuat jarak sama.",
+        "Gunakan kamera depan untuk mengecek susunan."
+      ]
+    },
+    {
+      "id": "node-06-test",
+      "type": "code",
+      "title": "Cek Kerapian",
+      "xp": 10,
+      "explanation": "Periksa apakah komponen sudah sejajar dan memiliki jarak yang enak dilihat.",
+      "code": {
+        "language": "text",
+        "content": "ALIGN CHECK\n[ ] Lampu berada pada garis tengah\n[ ] Jarak antar lampu konsisten\n[ ] Lampu tidak saling menembus\n[ ] Tiang berada di bawah rangkaian lampu"
+      }
+    },
+    {
+      "id": "node-07-challenge",
+      "type": "challenge",
+      "title": "Project: Lampu Lalu Lintas",
+      "xp": 15,
+      "instructions": "Buat lampu lalu lintas mini dengan tiga lampu yang sejajar pada tiang. Gunakan Align minimal sekali dan rapikan jaraknya.",
+      "expectedResult": "Tiga lampu tersusun lurus, berjarak, dan terpasang pada tiang.",
+      "starterCode": {
+        "language": "text",
+        "content": "Tiang: [buat balok]\nLampu 1: [bentuk]\nLampu 2: [duplikasi atau bentuk baru]\nLampu 3: [duplikasi atau bentuk baru]\nAlign: [pilih sumbu yang tepat]"
+      }
+    },
+    { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }
   ],
   "quiz": {
     "questions": [

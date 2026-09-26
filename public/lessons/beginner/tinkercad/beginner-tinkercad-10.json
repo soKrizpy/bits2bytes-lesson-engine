@@ -7,9 +7,9 @@
     "level": "advanced",
     "category": "tinkercad",
     "topicNumber": 10,
-    "estimatedTime": 5,
+    "estimatedTime": 30,
     "xp": 100,
-    "engineStyle": "flashcard"
+    "engineStyle": "mimo"
   },
   "introduction": {
     "title": "Selamat Datang di Topik 10!",
@@ -30,19 +30,77 @@
   },
   "learningPath": [
     {
-      "id": "step-1",
+      "id": "node-01-intro",
       "type": "lesson",
-      "title": "Penjelasan Dasar",
-      "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Menggandakan Bentuk (Duplicate)**."
+      "title": "Duplicate untuk Pola",
+      "xp": 5,
+      "explanation": "Duplicate membuat salinan objek dengan cepat. Ini berguna untuk desain yang memiliki komponen berulang dan harus memiliki ukuran sama.",
+      "tips": ["Buat satu komponen yang rapi sebelum menggandakannya."]
     },
     {
-      "id": "step-2",
+      "id": "node-02-workflow",
+      "type": "lesson",
+      "title": "Duplicate lalu Atur",
+      "xp": 5,
+      "explanation": "Pilih objek, Duplicate, lalu gunakan Move untuk menempatkan salinan. Ulangi proses sampai pola yang dibutuhkan terbentuk.",
+      "expectedResult": "Kamu dapat membuat beberapa komponen serupa tanpa membangun ulang."
+    },
+    {
+      "id": "node-03-plan",
+      "type": "code",
+      "title": "Rencana Jembatan",
+      "xp": 5,
+      "explanation": "Gunakan satu tiang dan satu balok sebagai komponen yang dapat diulang.",
+      "code": {
+        "language": "text",
+        "content": "BRIDGE\nTiang: satu balok vertikal\nSalinan tiang: Duplicate lalu Move\nDek: satu balok panjang\nTarget: tiang kiri dan kanan memiliki ukuran sama"
+      }
+    },
+    {
+      "id": "node-04-practice",
       "type": "practice",
-      "title": "Latihan",
-      "xp": 20,
-      "content": "Coba praktikkan sekarang juga di Tinkercad."
-    }
+      "title": "Pilih Alat",
+      "xp": 10,
+      "instructions": "Alat apa yang membuat salinan bentuk dengan cepat?",
+      "interactionType": "multiple-choice",
+      "options": ["Duplicate", "Workplane", "Hole", "ViewCube"],
+      "correctOption": "Duplicate"
+    },
+    {
+      "id": "node-05-guided",
+      "type": "lesson",
+      "title": "Buat Pola Berulang",
+      "xp": 10,
+      "explanation": "Buat satu tiang, duplikasi, lalu pindahkan ke sisi lain. Tambahkan dek dan periksa apakah kedua tiang memiliki ukuran serta posisi yang seimbang.",
+      "tips": [
+        "Jangan mengubah skala salinan jika ingin hasil seragam.",
+        "Gunakan Align setelah beberapa salinan dibuat."
+      ]
+    },
+    {
+      "id": "node-06-test",
+      "type": "code",
+      "title": "Cek Keseragaman",
+      "xp": 10,
+      "explanation": "Pastikan semua komponen berulang masih konsisten.",
+      "code": {
+        "language": "text",
+        "content": "REPEAT CHECK\n[ ] Tiang memiliki ukuran sama\n[ ] Tiang berdiri pada posisi yang seimbang\n[ ] Dek menempel pada kedua tiang\n[ ] Tidak ada salinan yang tertinggal"
+      }
+    },
+    {
+      "id": "node-07-challenge",
+      "type": "challenge",
+      "title": "Project: Jembatan Mini",
+      "xp": 15,
+      "instructions": "Buat jembatan mini dari minimal dua tiang hasil Duplicate dan satu dek. Tambahkan pagar berulang di sisi dek jika mampu.",
+      "expectedResult": "Jembatan memiliki pola komponen yang seragam dan struktur yang seimbang.",
+      "starterCode": {
+        "language": "text",
+        "content": "Tiang awal: [buat satu]\nTiang salinan: [Duplicate + Move]\nDek: [buat balok panjang]\nPagar: [buat satu lalu Duplicate beberapa kali]"
+      }
+    },
+    { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }
   ],
   "quiz": {
     "questions": [

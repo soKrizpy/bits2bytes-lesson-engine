@@ -7,9 +7,9 @@
     "level": "intermediate",
     "category": "tinkercad",
     "topicNumber": 6,
-    "estimatedTime": 5,
+    "estimatedTime": 30,
     "xp": 100,
-    "engineStyle": "arcade"
+    "engineStyle": "mimo"
   },
   "introduction": {
     "title": "Selamat Datang di Topik 6!",
@@ -30,19 +30,82 @@
   },
   "learningPath": [
     {
-      "id": "step-1",
+      "id": "node-01-intro",
       "type": "lesson",
-      "title": "Penjelasan Dasar",
-      "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Mengelompokkan Bentuk (Group)**."
+      "title": "Mengapa Mengelompokkan?",
+      "xp": 5,
+      "explanation": "Group membuat beberapa bentuk lebih mudah dipilih, dipindahkan, dan diatur sebagai satu kesatuan. Ini berguna untuk komponen yang sudah selesai.",
+      "tips": ["Pastikan hanya bentuk yang berkaitan yang dipilih."]
     },
     {
-      "id": "step-2",
+      "id": "node-02-select",
+      "type": "lesson",
+      "title": "Pilih Komponen",
+      "xp": 5,
+      "explanation": "Pilih dua atau lebih bentuk sebelum menjalankan Group. Periksa kembali seleksi agar bentuk yang tidak berkaitan tidak ikut masuk.",
+      "expectedResult": "Kamu dapat menyiapkan seleksi komponen untuk Group."
+    },
+    {
+      "id": "node-03-plan",
+      "type": "code",
+      "title": "Rencana Robot",
+      "xp": 5,
+      "explanation": "Rancang robot dari beberapa komponen yang nantinya akan dikelompokkan.",
+      "code": {
+        "language": "text",
+        "content": "ROBOT PARTS\nBadan: satu balok\nKepala: satu kubus\nLengan: dua balok\nMata: dua bola kecil\nGroup: badan dan detail yang perlu dipindah bersama"
+      }
+    },
+    {
+      "id": "node-04-practice",
       "type": "practice",
-      "title": "Latihan",
-      "xp": 20,
-      "content": "Coba praktikkan sekarang juga di Tinkercad."
-    }
+      "title": "Kapan Memakai Group?",
+      "xp": 10,
+      "instructions": "Apa yang perlu dilakukan sebelum memakai Group?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Pilih semua bentuk terkait",
+        "Hapus workplane",
+        "Putar kamera",
+        "Ekspor gambar"
+      ],
+      "correctOption": "Pilih semua bentuk terkait"
+    },
+    {
+      "id": "node-05-guided",
+      "type": "lesson",
+      "title": "Buat dan Uji Grup",
+      "xp": 10,
+      "explanation": "Bangun robot, pilih komponen badan dan detailnya, lalu Group. Pindahkan grup untuk memastikan semua komponen ikut bergerak bersama.",
+      "tips": [
+        "Gunakan Ungroup jika seleksi grup perlu diperbaiki.",
+        "Jangan mengelompokkan bagian yang harus bergerak terpisah."
+      ]
+    },
+    {
+      "id": "node-06-test",
+      "type": "code",
+      "title": "Cek Struktur Grup",
+      "xp": 10,
+      "explanation": "Periksa apakah Group membantu proyek tanpa menghilangkan kontrol komponen.",
+      "code": {
+        "language": "text",
+        "content": "GROUP CHECK\n[ ] Komponen penting bergerak bersama\n[ ] Mata tetap berada di kepala\n[ ] Lengan tidak ikut jika ingin diatur terpisah\n[ ] Ungroup dapat dilakukan saat perlu"
+      }
+    },
+    {
+      "id": "node-07-challenge",
+      "type": "challenge",
+      "title": "Project: Robot Modular",
+      "xp": 15,
+      "instructions": "Buat robot dengan minimal lima komponen. Group bagian badan dan kepala, tetapi biarkan lengan tetap mudah diatur secara terpisah.",
+      "expectedResult": "Robot memiliki grup yang masuk akal dan tetap mudah diedit.",
+      "starterCode": {
+        "language": "text",
+        "content": "Grup utama: [badan + kepala + detail]\nBagian terpisah: [lengan kiri + lengan kanan]\nUji: pindahkan grup utama tanpa kehilangan detail"
+      }
+    },
+    { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }
   ],
   "quiz": {
     "questions": [

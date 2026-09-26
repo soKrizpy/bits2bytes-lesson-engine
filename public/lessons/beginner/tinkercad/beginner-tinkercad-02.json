@@ -7,9 +7,9 @@
     "level": "beginner",
     "category": "tinkercad",
     "topicNumber": 2,
-    "estimatedTime": 5,
+    "estimatedTime": 30,
     "xp": 100,
-    "engineStyle": "slide"
+    "engineStyle": "mimo"
   },
   "introduction": {
     "title": "Selamat Datang di Topik 2!",
@@ -28,19 +28,82 @@
   },
   "learningPath": [
     {
-      "id": "step-1",
+      "id": "node-01-intro",
       "type": "lesson",
-      "title": "Penjelasan Dasar",
-      "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Kamera dan Tampilan 3D**."
+      "title": "Kamera Membantu Mengamati",
+      "xp": 5,
+      "explanation": "Kamera Tinkercad menentukan cara kita melihat model. Zoom, pan, dan rotate membantu memeriksa detail tanpa mengubah bentuk objek.",
+      "tips": ["Bedakan perubahan kamera dari perubahan objek."]
     },
     {
-      "id": "step-2",
+      "id": "node-02-viewcube",
+      "type": "lesson",
+      "title": "Gunakan ViewCube",
+      "xp": 5,
+      "explanation": "Klik sisi ViewCube untuk melihat model dari depan, atas, atau samping. Gunakan sudut pandang yang sama saat membandingkan posisi objek.",
+      "expectedResult": "Kamu dapat memilih tampilan depan, atas, dan samping."
+    },
+    {
+      "id": "node-03-plan",
+      "type": "code",
+      "title": "Rencana Kamera",
+      "xp": 5,
+      "explanation": "Ikuti alur pemeriksaan kamera ini saat membuat showcase bentuk.",
+      "code": {
+        "language": "text",
+        "content": "CAMERA ROUTINE\n1. Fit view agar semua objek terlihat.\n2. Periksa dari depan.\n3. Periksa dari atas.\n4. Periksa dari samping.\n5. Kembali ke tampilan yang nyaman."
+      }
+    },
+    {
+      "id": "node-04-practice",
       "type": "practice",
-      "title": "Latihan",
-      "xp": 20,
-      "content": "Coba praktikkan sekarang juga di Tinkercad."
-    }
+      "title": "Bedakan Kamera dan Objek",
+      "xp": 10,
+      "instructions": "Jika model tampak lebih besar di layar tetapi dimensinya tetap, tindakan apa yang terjadi?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Zoom kamera",
+        "Scale objek",
+        "Group objek",
+        "Duplicate objek"
+      ],
+      "correctOption": "Zoom kamera"
+    },
+    {
+      "id": "node-05-guided",
+      "type": "lesson",
+      "title": "Buat Showcase Sudut Pandang",
+      "xp": 10,
+      "explanation": "Susun tiga bentuk sederhana dengan jarak yang jelas. Ambil keputusan desain dari tampilan depan, lalu cek apakah susunannya tetap masuk akal dari atas dan samping.",
+      "tips": [
+        "Gunakan ViewCube untuk membandingkan tiga arah.",
+        "Jangan menilai posisi hanya dari satu sudut."
+      ]
+    },
+    {
+      "id": "node-06-test",
+      "type": "code",
+      "title": "Checklist Tampilan",
+      "xp": 10,
+      "explanation": "Gunakan checklist agar model mudah diperiksa.",
+      "code": {
+        "language": "text",
+        "content": "VIEW CHECK\n[ ] Semua objek terlihat\n[ ] Tidak ada objek tersembunyi\n[ ] Jarak antar objek jelas\n[ ] Tampilan samping tidak mengejutkan"
+      }
+    },
+    {
+      "id": "node-07-challenge",
+      "type": "challenge",
+      "title": "Project: Showcase 3D",
+      "xp": 15,
+      "instructions": "Buat showcase kecil dari tiga bentuk dasar. Susun seperti mini pameran, lalu periksa dan rapikan dari tampilan depan, atas, dan samping.",
+      "expectedResult": "Showcase terlihat rapi dari tiga sudut pandang utama.",
+      "starterCode": {
+        "language": "text",
+        "content": "Objek 1: [bentuk utama]\nObjek 2: [bentuk pendamping]\nObjek 3: [bentuk dekorasi]\nSudut cek: depan, atas, samping"
+      }
+    },
+    { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }
   ],
   "quiz": {
     "questions": [

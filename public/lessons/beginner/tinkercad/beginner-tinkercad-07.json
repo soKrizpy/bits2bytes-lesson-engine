@@ -7,9 +7,9 @@
     "level": "intermediate",
     "category": "tinkercad",
     "topicNumber": 7,
-    "estimatedTime": 5,
+    "estimatedTime": 30,
     "xp": 100,
-    "engineStyle": "quest"
+    "engineStyle": "mimo"
   },
   "introduction": {
     "title": "Selamat Datang di Topik 7!",
@@ -28,19 +28,82 @@
   },
   "learningPath": [
     {
-      "id": "step-1",
+      "id": "node-01-intro",
       "type": "lesson",
-      "title": "Penjelasan Dasar",
-      "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Membuat Lubang (Hole)**."
+      "title": "Solid dan Hole",
+      "xp": 5,
+      "explanation": "Bentuk solid menambah volume, sedangkan bentuk Hole digunakan sebagai pemotong. Keduanya perlu diposisikan dengan tepat sebelum di-Group.",
+      "tips": ["Pastikan Hole menembus bagian solid yang ingin dipotong."]
     },
     {
-      "id": "step-2",
+      "id": "node-02-process",
+      "type": "lesson",
+      "title": "Urutan Membuat Lubang",
+      "xp": 5,
+      "explanation": "Buat atau pilih solid, tambahkan bentuk Hole, tempatkan di area potongan, pilih keduanya, lalu gunakan Group. Hasilnya adalah bagian solid yang berlubang.",
+      "expectedResult": "Kamu memahami urutan solid, Hole, posisi, dan Group."
+    },
+    {
+      "id": "node-03-plan",
+      "type": "code",
+      "title": "Rencana Tempat Pensil",
+      "xp": 5,
+      "explanation": "Rancang tempat pensil dengan potongan bagian dalam.",
+      "code": {
+        "language": "text",
+        "content": "PENCIL HOLDER\nSolid luar: silinder tinggi\nHole dalam: silinder lebih kecil\nPosisi: Hole berada di tengah dan menembus dari atas\nAksi: pilih keduanya lalu Group"
+      }
+    },
+    {
+      "id": "node-04-practice",
       "type": "practice",
-      "title": "Latihan",
-      "xp": 20,
-      "content": "Coba praktikkan sekarang juga di Tinkercad."
-    }
+      "title": "Pilih Langkah Berikutnya",
+      "xp": 10,
+      "instructions": "Setelah menempatkan bentuk Hole di dalam solid, apa langkah berikutnya?",
+      "interactionType": "multiple-choice",
+      "options": [
+        "Pilih keduanya lalu Group",
+        "Hapus solid",
+        "Putar kamera saja",
+        "Duplicate Hole tanpa memilih solid"
+      ],
+      "correctOption": "Pilih keduanya lalu Group"
+    },
+    {
+      "id": "node-05-guided",
+      "type": "lesson",
+      "title": "Potong Bagian Dalam",
+      "xp": 10,
+      "explanation": "Buat silinder luar dan silinder Hole. Atur Hole agar menyisakan dinding yang cukup tebal, lalu Group. Periksa hasil dari tampilan atas.",
+      "tips": [
+        "Jika lubang tidak muncul, pastikan Hole benar-benar berpotongan dengan solid.",
+        "Jangan membuat dinding terlalu tipis."
+      ]
+    },
+    {
+      "id": "node-06-test",
+      "type": "code",
+      "title": "Cek Hasil Potongan",
+      "xp": 10,
+      "explanation": "Gunakan pemeriksaan berikut sebelum menganggap lubang berhasil.",
+      "code": {
+        "language": "text",
+        "content": "HOLE CHECK\n[ ] Bagian dalam terlihat dari atas\n[ ] Dinding luar masih tersisa\n[ ] Dasar tempat pensil tidak ikut terpotong\n[ ] Solid dan Hole sudah di-Group"
+      }
+    },
+    {
+      "id": "node-07-challenge",
+      "type": "challenge",
+      "title": "Project: Tempat Pensil Berlubang",
+      "xp": 15,
+      "instructions": "Buat tempat pensil dari bentuk solid dan Hole. Tambahkan satu dekorasi kecil tanpa mengganggu lubang utama.",
+      "expectedResult": "Model memiliki ruang dalam yang terbuka, dinding yang kuat, dan dekorasi yang rapi.",
+      "starterCode": {
+        "language": "text",
+        "content": "Solid luar: [pilih bentuk]\nHole: [buat pemotong]\nKetebalan dinding: [sisakan ruang]\nDekorasi: [tambahkan setelah lubang selesai]"
+      }
+    },
+    { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }
   ],
   "quiz": {
     "questions": [

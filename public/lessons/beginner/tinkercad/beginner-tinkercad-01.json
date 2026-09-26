@@ -7,9 +7,9 @@
     "level": "beginner",
     "category": "tinkercad",
     "topicNumber": 1,
-    "estimatedTime": 5,
+    "estimatedTime": 30,
     "xp": 100,
-    "engineStyle": "story"
+    "engineStyle": "mimo"
   },
   "introduction": {
     "title": "Selamat Datang di Topik 1!",
@@ -28,19 +28,79 @@
   },
   "learningPath": [
     {
-      "id": "step-1",
+      "id": "node-01-intro",
       "type": "lesson",
-      "title": "Penjelasan Dasar",
-      "xp": 10,
-      "content": "Di bagian ini kita akan belajar tentang **Mengenal 3D dan Tinkercad**."
+      "title": "Kenali Dunia 3D",
+      "xp": 5,
+      "explanation": "Model 3D memiliki panjang, lebar, dan tinggi. Tinkercad membantu kita menyusun bentuk sederhana menjadi benda yang dapat dilihat dari berbagai arah.",
+      "tips": [
+        "Amati benda di sekitarmu dan pikirkan bentuk dasar penyusunnya."
+      ]
     },
     {
-      "id": "step-2",
+      "id": "node-02-workspace",
+      "type": "lesson",
+      "title": "Jelajahi Workspace",
+      "xp": 5,
+      "explanation": "Kenali Shapes Panel, workplane, toolbar, dan kontrol kamera. Luangkan waktu untuk memilih beberapa bentuk dan melihat bagaimana objek muncul di workplane.",
+      "expectedResult": "Kamu dapat menemukan panel bentuk dan memutar tampilan workspace."
+    },
+    {
+      "id": "node-03-build",
+      "type": "code",
+      "title": "Rencana Nameplate",
+      "xp": 5,
+      "explanation": "Gunakan rencana sederhana ini sebelum membangun nameplate pertamamu.",
+      "code": {
+        "language": "text",
+        "content": "NAMEPLATE\n1. Buat balok sebagai alas.\n2. Tambahkan teks nama.\n3. Atur posisi teks di atas alas.\n4. Periksa desain dari depan dan samping."
+      }
+    },
+    {
+      "id": "node-04-practice",
       "type": "practice",
-      "title": "Latihan",
-      "xp": 20,
-      "content": "Coba praktikkan sekarang juga di Tinkercad."
-    }
+      "title": "Pilih Bentuk yang Tepat",
+      "xp": 10,
+      "instructions": "Bentuk dasar apa yang paling cocok untuk alas nameplate?",
+      "interactionType": "multiple-choice",
+      "options": ["Kotak atau balok", "Suara", "Garis waktu", "Foto"],
+      "correctOption": "Kotak atau balok"
+    },
+    {
+      "id": "node-05-guided",
+      "type": "lesson",
+      "title": "Susun Nameplate",
+      "xp": 10,
+      "explanation": "Buat balok tipis sebagai alas. Tambahkan teks nama, ubah ukurannya agar muat, lalu letakkan di tengah alas. Gunakan kamera depan dan samping untuk mengecek posisi.",
+      "tips": [
+        "Gunakan ukuran yang mudah dibaca.",
+        "Jangan menempatkan teks terlalu dekat dengan tepi alas."
+      ]
+    },
+    {
+      "id": "node-06-test",
+      "type": "code",
+      "title": "Cek dari Tiga Arah",
+      "xp": 10,
+      "explanation": "Gunakan daftar pemeriksaan ini untuk menilai modelmu.",
+      "code": {
+        "language": "text",
+        "content": "CHECKLIST\n[ ] Nama terlihat dari depan\n[ ] Teks berada di atas alas\n[ ] Tidak ada bentuk yang menembus alas\n[ ] Model tetap rapi dari samping"
+      }
+    },
+    {
+      "id": "node-07-challenge",
+      "type": "challenge",
+      "title": "Project: Nameplate 3D",
+      "xp": 15,
+      "instructions": "Buat nameplate 3D untuk meja belajarmu. Gunakan alas balok, teks namamu, dan satu bentuk dekorasi kecil. Atur semuanya agar stabil dan mudah dibaca dari depan.",
+      "expectedResult": "Nameplate memiliki alas, nama yang terbaca, dan satu dekorasi yang tersusun rapi.",
+      "starterCode": {
+        "language": "text",
+        "content": "Alas: [buat balok tipis]\nNama: [tambahkan teks namamu]\nDekorasi: [tambahkan satu bentuk kecil]"
+      }
+    },
+    { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }
   ],
   "quiz": {
     "questions": [
