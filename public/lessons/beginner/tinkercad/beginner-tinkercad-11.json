@@ -15,24 +15,16 @@
     "title": "Selamat Datang di Topik 11!",
     "description": "Membuat model gelas minum 3D sendiri!",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": [
-      "beginner-tinkercad-010"
-    ]
+    "prerequisites": ["beginner-tinkercad-010"]
   },
   "objectives": [
     "Memahami konsep Project: Gelas Sederhana",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
-    "learned": [
-      "Cara menggunakan Project: Gelas Sederhana"
-    ],
-    "keyConcepts": [
-      "Konsep Project: Gelas Sederhana di 3D"
-    ],
-    "takeaways": [
-      "Sekarang kamu bisa menggunakan Project: Gelas Sederhana!"
-    ]
+    "learned": ["Cara menggunakan Project: Gelas Sederhana"],
+    "keyConcepts": ["Konsep Project: Gelas Sederhana di 3D"],
+    "takeaways": ["Sekarang kamu bisa menggunakan Project: Gelas Sederhana!"]
   },
   "learningPath": [
     {
@@ -69,29 +61,47 @@
       {
         "id": "q2",
         "type": "multiple-choice",
-        "question": "Apakah Tinkercad asyik untuk anak-anak?",
-        "options": [
-          "Tentu Saja!",
-          "Sangat Asyik!",
-          "Pastinya!",
-          "Biasa aja"
-        ],
-        "correctAnswer": "Tentu Saja!",
-        "explanation": "Tinkercad sangat menyenangkan!",
+        "question": "Bentuk dasar apa yang cocok untuk membuat badan gelas?",
+        "options": ["Silinder", "Workplane", "ViewCube", "Bidang teks"],
+        "correctAnswer": "Silinder",
+        "explanation": "Silinder dapat menjadi badan gelas karena bentuknya memiliki sisi melingkar dan tinggi.",
         "points": 50
       },
       {
         "id": "q3",
         "type": "multiple-choice",
-        "question": "Untuk apa kita belajar 3D?",
+        "question": "Bagaimana cara membuat bagian dalam gelas menjadi berongga?",
         "options": [
-          "Untuk mencetak di 3D printer",
-          "Untuk makan",
-          "Untuk tidur",
-          "Tidak tau"
+          "Tempatkan silinder Hole di badan gelas lalu Group",
+          "Perbesar kamera sampai bagian dalam terlihat",
+          "Ganti Workplane menjadi warna lain",
+          "Duplicate badan gelas tanpa mengubahnya"
         ],
-        "correctAnswer": "Untuk mencetak di 3D printer",
-        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "correctAnswer": "Tempatkan silinder Hole di badan gelas lalu Group",
+        "explanation": "Silinder Hole memotong bagian dalam ketika dikelompokkan dengan badan gelas.",
+        "points": 50
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Bentuk apa yang dapat digunakan sebagai pegangan melingkar pada gelas?",
+        "options": ["Torus", "ViewCube", "Workplane", "Kotak teks"],
+        "correctAnswer": "Torus",
+        "explanation": "Torus adalah bentuk cincin yang dapat digunakan sebagai pegangan gelas.",
+        "points": 50
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "Apa langkah yang membantu menjaga badan dan pegangan gelas sebagai satu objek?",
+        "options": [
+          "Pilih komponen lalu gunakan Group",
+          "Putar kamera ke tampilan atas",
+          "Gunakan Zoom",
+          "Hapus silinder badan gelas"
+        ],
+        "correctAnswer": "Pilih komponen lalu gunakan Group",
+        "explanation": "Group mengelompokkan komponen gelas agar lebih mudah dipindahkan bersama.",
         "points": 50
       }
     ]

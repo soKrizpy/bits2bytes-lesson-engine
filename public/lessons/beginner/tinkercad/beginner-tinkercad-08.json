@@ -15,24 +15,16 @@
     "title": "Selamat Datang di Topik 8!",
     "description": "Menyejajarkan beberapa benda agar rapi.",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": [
-      "beginner-tinkercad-07"
-    ]
+    "prerequisites": ["beginner-tinkercad-07"]
   },
   "objectives": [
     "Memahami konsep Meratakan (Align)",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
-    "learned": [
-      "Cara menggunakan Meratakan (Align)"
-    ],
-    "keyConcepts": [
-      "Konsep Meratakan (Align) di 3D"
-    ],
-    "takeaways": [
-      "Sekarang kamu bisa menggunakan Meratakan (Align)!"
-    ]
+    "learned": ["Cara menggunakan Meratakan (Align)"],
+    "keyConcepts": ["Konsep Meratakan (Align) di 3D"],
+    "takeaways": ["Sekarang kamu bisa menggunakan Meratakan (Align)!"]
   },
   "learningPath": [
     {
@@ -69,29 +61,52 @@
       {
         "id": "q2",
         "type": "multiple-choice",
-        "question": "Apakah Tinkercad asyik untuk anak-anak?",
+        "question": "Apa fungsi utama Align?",
         "options": [
-          "Tentu Saja!",
-          "Sangat Asyik!",
-          "Pastinya!",
-          "Biasa aja"
+          "Menyejajarkan posisi dua atau lebih bentuk",
+          "Menggabungkan semua bentuk menjadi satu mesh",
+          "Mengubah warna workplane",
+          "Memutar kamera"
         ],
-        "correctAnswer": "Tentu Saja!",
-        "explanation": "Tinkercad sangat menyenangkan!",
+        "correctAnswer": "Menyejajarkan posisi dua atau lebih bentuk",
+        "explanation": "Align membantu menempatkan beberapa bentuk sejajar pada sumbu tertentu.",
         "points": 50
       },
       {
         "id": "q3",
         "type": "multiple-choice",
-        "question": "Untuk apa kita belajar 3D?",
+        "question": "Apa yang perlu dipilih sebelum menggunakan Align?",
         "options": [
-          "Untuk mencetak di 3D printer",
-          "Untuk makan",
-          "Untuk tidur",
-          "Tidak tau"
+          "Dua atau lebih bentuk",
+          "Hanya ViewCube",
+          "Satu warna dari palet",
+          "File gambar di komputer"
         ],
-        "correctAnswer": "Untuk mencetak di 3D printer",
-        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "correctAnswer": "Dua atau lebih bentuk",
+        "explanation": "Align memerlukan beberapa bentuk terpilih agar dapat menyejajarkannya.",
+        "points": 50
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Apa perbedaan Align dan Group?",
+        "options": [
+          "Align merapikan posisi; Group mengelompokkan bentuk",
+          "Align menyalin bentuk; Group mengubah kamera",
+          "Align menghapus objek; Group mengubah workplane",
+          "Keduanya hanya mengubah warna"
+        ],
+        "correctAnswer": "Align merapikan posisi; Group mengelompokkan bentuk",
+        "explanation": "Align mengatur posisi relatif, sedangkan Group membuat bentuk lebih mudah diatur bersama.",
+        "points": 50
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "Untuk menempatkan dua bentuk pada garis tengah yang sama, alat apa yang membantu?",
+        "options": ["Align", "Duplicate", "Hole", "Zoom"],
+        "correctAnswer": "Align",
+        "explanation": "Titik pilihan Align dapat digunakan untuk menyamakan posisi tengah atau tepi bentuk.",
         "points": 50
       }
     ]

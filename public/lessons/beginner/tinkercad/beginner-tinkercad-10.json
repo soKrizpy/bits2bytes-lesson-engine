@@ -15,21 +15,15 @@
     "title": "Selamat Datang di Topik 10!",
     "description": "Membuat banyak benda yang sama dengan cepat.",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": [
-      "beginner-tinkercad-09"
-    ]
+    "prerequisites": ["beginner-tinkercad-09"]
   },
   "objectives": [
     "Memahami konsep Menggandakan Bentuk (Duplicate)",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
-    "learned": [
-      "Cara menggunakan Menggandakan Bentuk (Duplicate)"
-    ],
-    "keyConcepts": [
-      "Konsep Menggandakan Bentuk (Duplicate) di 3D"
-    ],
+    "learned": ["Cara menggunakan Menggandakan Bentuk (Duplicate)"],
+    "keyConcepts": ["Konsep Menggandakan Bentuk (Duplicate) di 3D"],
     "takeaways": [
       "Sekarang kamu bisa menggunakan Menggandakan Bentuk (Duplicate)!"
     ]
@@ -69,29 +63,57 @@
       {
         "id": "q2",
         "type": "multiple-choice",
-        "question": "Apakah Tinkercad asyik untuk anak-anak?",
+        "question": "Apa yang dibuat oleh perintah Duplicate?",
         "options": [
-          "Tentu Saja!",
-          "Sangat Asyik!",
-          "Pastinya!",
-          "Biasa aja"
+          "Salinan dari bentuk yang dipilih",
+          "Workplane baru",
+          "Lubang pada kamera",
+          "File gambar datar"
         ],
-        "correctAnswer": "Tentu Saja!",
-        "explanation": "Tinkercad sangat menyenangkan!",
+        "correctAnswer": "Salinan dari bentuk yang dipilih",
+        "explanation": "Duplicate membuat salinan bentuk agar tidak perlu membangun ulang dari awal.",
         "points": 50
       },
       {
         "id": "q3",
         "type": "multiple-choice",
-        "question": "Untuk apa kita belajar 3D?",
+        "question": "Setelah bentuk diduplikasi, bagaimana hubungan salinan dengan aslinya?",
         "options": [
-          "Untuk mencetak di 3D printer",
-          "Untuk makan",
-          "Untuk tidur",
-          "Tidak tau"
+          "Keduanya dapat dipilih dan diatur sebagai objek terpisah",
+          "Salinan selalu menghapus bentuk asli",
+          "Keduanya menjadi satu gambar datar",
+          "Bentuk asli berubah menjadi kamera"
         ],
-        "correctAnswer": "Untuk mencetak di 3D printer",
-        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "correctAnswer": "Keduanya dapat dipilih dan diatur sebagai objek terpisah",
+        "explanation": "Salinan dan objek asli tetap menjadi bentuk terpisah di desain.",
+        "points": 50
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Kapan Duplicate paling membantu?",
+        "options": [
+          "Saat membuat beberapa komponen yang sama",
+          "Saat ingin mengubah bahasa aplikasi",
+          "Saat ingin memindahkan kamera saja",
+          "Saat ingin menghapus semua bentuk"
+        ],
+        "correctAnswer": "Saat membuat beberapa komponen yang sama",
+        "explanation": "Duplicate mempercepat pekerjaan ketika desain membutuhkan banyak bentuk serupa.",
+        "points": 50
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "Jika kamu memindahkan salinan, apa yang terjadi pada bentuk asli?",
+        "options": [
+          "Bentuk asli tetap di posisinya",
+          "Bentuk asli selalu ikut berpindah",
+          "Bentuk asli otomatis terhapus",
+          "Bentuk asli berubah menjadi Hole"
+        ],
+        "correctAnswer": "Bentuk asli tetap di posisinya",
+        "explanation": "Salinan dapat diatur secara terpisah dari bentuk aslinya.",
         "points": 50
       }
     ]

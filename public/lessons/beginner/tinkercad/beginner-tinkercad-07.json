@@ -15,24 +15,16 @@
     "title": "Selamat Datang di Topik 7!",
     "description": "Memotong benda dengan menggunakan bentuk lubang.",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": [
-      "beginner-tinkercad-06"
-    ]
+    "prerequisites": ["beginner-tinkercad-06"]
   },
   "objectives": [
     "Memahami konsep Membuat Lubang (Hole)",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
-    "learned": [
-      "Cara menggunakan Membuat Lubang (Hole)"
-    ],
-    "keyConcepts": [
-      "Konsep Membuat Lubang (Hole) di 3D"
-    ],
-    "takeaways": [
-      "Sekarang kamu bisa menggunakan Membuat Lubang (Hole)!"
-    ]
+    "learned": ["Cara menggunakan Membuat Lubang (Hole)"],
+    "keyConcepts": ["Konsep Membuat Lubang (Hole) di 3D"],
+    "takeaways": ["Sekarang kamu bisa menggunakan Membuat Lubang (Hole)!"]
   },
   "learningPath": [
     {
@@ -69,29 +61,52 @@
       {
         "id": "q2",
         "type": "multiple-choice",
-        "question": "Apakah Tinkercad asyik untuk anak-anak?",
+        "question": "Untuk apa bentuk Hole digunakan?",
         "options": [
-          "Tentu Saja!",
-          "Sangat Asyik!",
-          "Pastinya!",
-          "Biasa aja"
+          "Memotong bagian dari bentuk solid saat di-Group",
+          "Mengubah warna semua bentuk",
+          "Memperbesar kamera",
+          "Menyalin workplane"
         ],
-        "correctAnswer": "Tentu Saja!",
-        "explanation": "Tinkercad sangat menyenangkan!",
+        "correctAnswer": "Memotong bagian dari bentuk solid saat di-Group",
+        "explanation": "Bentuk Hole berfungsi sebagai pemotong ketika dikelompokkan dengan bentuk solid.",
         "points": 50
       },
       {
         "id": "q3",
         "type": "multiple-choice",
-        "question": "Untuk apa kita belajar 3D?",
+        "question": "Apa langkah penting agar Hole memotong bentuk solid?",
         "options": [
-          "Untuk mencetak di 3D printer",
-          "Untuk makan",
-          "Untuk tidur",
-          "Tidak tau"
+          "Pilih Hole dan solid lalu gunakan Group",
+          "Putar kamera dua kali",
+          "Ubah ukuran workplane",
+          "Ekspor Hole saja"
         ],
-        "correctAnswer": "Untuk mencetak di 3D printer",
-        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "correctAnswer": "Pilih Hole dan solid lalu gunakan Group",
+        "explanation": "Group menerapkan bentuk Hole sebagai potongan pada solid yang dipilih.",
+        "points": 50
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Apa yang terjadi jika bentuk Hole belum di-Group dengan solid?",
+        "options": [
+          "Belum ada bagian solid yang terpotong",
+          "Solid langsung berubah menjadi bola",
+          "Semua objek otomatis terhapus",
+          "Kamera berpindah ke tampilan atas"
+        ],
+        "correctAnswer": "Belum ada bagian solid yang terpotong",
+        "explanation": "Pemotongan diterapkan ketika bentuk Hole dan solid dikelompokkan.",
+        "points": 50
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "Bentuk apa yang sebaiknya dipilih sebagai Hole untuk membuat lubang bundar?",
+        "options": ["Silinder", "Teks", "Workplane", "ViewCube"],
+        "correctAnswer": "Silinder",
+        "explanation": "Silinder Hole dapat digunakan untuk membuat potongan berbentuk bundar.",
         "points": 50
       }
     ]

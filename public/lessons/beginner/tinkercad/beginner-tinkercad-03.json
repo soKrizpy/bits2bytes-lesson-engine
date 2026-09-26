@@ -15,24 +15,16 @@
     "title": "Selamat Datang di Topik 3!",
     "description": "Mengenal dan memasukkan bentuk dasar ke dalam workplane.",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": [
-      "beginner-tinkercad-02"
-    ]
+    "prerequisites": ["beginner-tinkercad-02"]
   },
   "objectives": [
     "Memahami konsep Menambahkan Bentuk Dasar",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
-    "learned": [
-      "Cara menggunakan Menambahkan Bentuk Dasar"
-    ],
-    "keyConcepts": [
-      "Konsep Menambahkan Bentuk Dasar di 3D"
-    ],
-    "takeaways": [
-      "Sekarang kamu bisa menggunakan Menambahkan Bentuk Dasar!"
-    ]
+    "learned": ["Cara menggunakan Menambahkan Bentuk Dasar"],
+    "keyConcepts": ["Konsep Menambahkan Bentuk Dasar di 3D"],
+    "takeaways": ["Sekarang kamu bisa menggunakan Menambahkan Bentuk Dasar!"]
   },
   "learningPath": [
     {
@@ -69,29 +61,52 @@
       {
         "id": "q2",
         "type": "multiple-choice",
-        "question": "Apakah Tinkercad asyik untuk anak-anak?",
+        "question": "Bagaimana cara menambahkan bentuk ke desain?",
         "options": [
-          "Tentu Saja!",
-          "Sangat Asyik!",
-          "Pastinya!",
-          "Biasa aja"
+          "Seret bentuk dari Shapes Panel ke workplane",
+          "Ketik namanya di panel warna",
+          "Putar ViewCube sampai bentuk muncul",
+          "Klik tombol ekspor"
         ],
-        "correctAnswer": "Tentu Saja!",
-        "explanation": "Tinkercad sangat menyenangkan!",
+        "correctAnswer": "Seret bentuk dari Shapes Panel ke workplane",
+        "explanation": "Bentuk dasar ditambahkan dengan menyeretnya dari Shapes Panel ke permukaan kerja.",
         "points": 50
       },
       {
         "id": "q3",
         "type": "multiple-choice",
-        "question": "Untuk apa kita belajar 3D?",
+        "question": "Manakah contoh bentuk dasar 3D di Tinkercad?",
+        "options": ["Bola", "Paragraf", "Rekaman suara", "Tabel angka"],
+        "correctAnswer": "Bola",
+        "explanation": "Bola adalah salah satu bentuk dasar yang dapat digunakan untuk membangun model 3D.",
+        "points": 50
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Di mana kamu memilih bentuk dasar yang ingin digunakan?",
         "options": [
-          "Untuk mencetak di 3D printer",
-          "Untuk makan",
-          "Untuk tidur",
-          "Tidak tau"
+          "Shapes Panel",
+          "Panel terjemahan",
+          "Daftar putar",
+          "Pengaturan suara"
         ],
-        "correctAnswer": "Untuk mencetak di 3D printer",
-        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "correctAnswer": "Shapes Panel",
+        "explanation": "Shapes Panel berisi bentuk-bentuk yang dapat diseret ke workplane.",
+        "points": 50
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "Apa cara yang baik untuk membangun model yang lebih rumit?",
+        "options": [
+          "Menyusun beberapa bentuk dasar",
+          "Mengubah kamera menjadi bentuk",
+          "Menghapus workplane",
+          "Mengganti semua bentuk dengan teks"
+        ],
+        "correctAnswer": "Menyusun beberapa bentuk dasar",
+        "explanation": "Model yang lebih rumit dapat dibuat dengan mengatur dan menggabungkan bentuk dasar.",
         "points": 50
       }
     ]

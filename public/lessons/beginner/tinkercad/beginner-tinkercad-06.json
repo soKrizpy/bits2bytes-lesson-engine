@@ -15,21 +15,15 @@
     "title": "Selamat Datang di Topik 6!",
     "description": "Menyatukan dua benda menjadi satu.",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": [
-      "beginner-tinkercad-05"
-    ]
+    "prerequisites": ["beginner-tinkercad-05"]
   },
   "objectives": [
     "Memahami konsep Mengelompokkan Bentuk (Group)",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
-    "learned": [
-      "Cara menggunakan Mengelompokkan Bentuk (Group)"
-    ],
-    "keyConcepts": [
-      "Konsep Mengelompokkan Bentuk (Group) di 3D"
-    ],
+    "learned": ["Cara menggunakan Mengelompokkan Bentuk (Group)"],
+    "keyConcepts": ["Konsep Mengelompokkan Bentuk (Group) di 3D"],
     "takeaways": [
       "Sekarang kamu bisa menggunakan Mengelompokkan Bentuk (Group)!"
     ]
@@ -69,29 +63,52 @@
       {
         "id": "q2",
         "type": "multiple-choice",
-        "question": "Apakah Tinkercad asyik untuk anak-anak?",
+        "question": "Apa yang sebaiknya dilakukan sebelum memakai Group pada beberapa bentuk?",
         "options": [
-          "Tentu Saja!",
-          "Sangat Asyik!",
-          "Pastinya!",
-          "Biasa aja"
+          "Pilih semua bentuk yang ingin digabungkan",
+          "Tutup browser",
+          "Hapus workplane",
+          "Putar ViewCube"
         ],
-        "correctAnswer": "Tentu Saja!",
-        "explanation": "Tinkercad sangat menyenangkan!",
+        "correctAnswer": "Pilih semua bentuk yang ingin digabungkan",
+        "explanation": "Group bekerja pada bentuk-bentuk yang dipilih bersama.",
         "points": 50
       },
       {
         "id": "q3",
         "type": "multiple-choice",
-        "question": "Untuk apa kita belajar 3D?",
+        "question": "Apa yang terjadi setelah beberapa bentuk di-Group?",
         "options": [
-          "Untuk mencetak di 3D printer",
-          "Untuk makan",
-          "Untuk tidur",
-          "Tidak tau"
+          "Bentuk-bentuk tersebut dapat dipilih dan dipindahkan sebagai satu grup",
+          "Semua bentuk berubah menjadi gambar 2D",
+          "Kamera terkunci",
+          "Workplane terhapus"
         ],
-        "correctAnswer": "Untuk mencetak di 3D printer",
-        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "correctAnswer": "Bentuk-bentuk tersebut dapat dipilih dan dipindahkan sebagai satu grup",
+        "explanation": "Group membuat beberapa bentuk lebih mudah diatur sebagai satu kesatuan.",
+        "points": 50
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Perintah apa yang memisahkan kembali bentuk yang sudah di-Group?",
+        "options": ["Ungroup", "Align", "Zoom", "Duplicate"],
+        "correctAnswer": "Ungroup",
+        "explanation": "Ungroup memisahkan kembali objek-objek yang sebelumnya dikelompokkan.",
+        "points": 50
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "Apakah Group sama dengan Align?",
+        "options": [
+          "Tidak. Group menyatukan pengaturan bentuk; Align merapikan posisinya",
+          "Ya, keduanya selalu menghapus bentuk",
+          "Tidak. Align mengubah warna kamera",
+          "Ya, keduanya membuat salinan baru"
+        ],
+        "correctAnswer": "Tidak. Group menyatukan pengaturan bentuk; Align merapikan posisinya",
+        "explanation": "Group mengelompokkan bentuk, sedangkan Align menyejajarkan posisi bentuk.",
         "points": 50
       }
     ]

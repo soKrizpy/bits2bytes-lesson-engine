@@ -22,15 +22,9 @@
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
-    "learned": [
-      "Cara menggunakan Mengenal 3D dan Tinkercad"
-    ],
-    "keyConcepts": [
-      "Konsep Mengenal 3D dan Tinkercad di 3D"
-    ],
-    "takeaways": [
-      "Sekarang kamu bisa menggunakan Mengenal 3D dan Tinkercad!"
-    ]
+    "learned": ["Cara menggunakan Mengenal 3D dan Tinkercad"],
+    "keyConcepts": ["Konsep Mengenal 3D dan Tinkercad di 3D"],
+    "takeaways": ["Sekarang kamu bisa menggunakan Mengenal 3D dan Tinkercad!"]
   },
   "learningPath": [
     {
@@ -67,29 +61,52 @@
       {
         "id": "q2",
         "type": "multiple-choice",
-        "question": "Apakah Tinkercad asyik untuk anak-anak?",
+        "question": "Objek 3D memiliki dimensi apa?",
         "options": [
-          "Tentu Saja!",
-          "Sangat Asyik!",
-          "Pastinya!",
-          "Biasa aja"
+          "Panjang, lebar, dan tinggi",
+          "Panjang dan lebar saja",
+          "Warna dan berat saja",
+          "Suara dan gerakan"
         ],
-        "correctAnswer": "Tentu Saja!",
-        "explanation": "Tinkercad sangat menyenangkan!",
+        "correctAnswer": "Panjang, lebar, dan tinggi",
+        "explanation": "Model 3D memiliki tiga dimensi: panjang, lebar, dan tinggi.",
         "points": 50
       },
       {
         "id": "q3",
         "type": "multiple-choice",
-        "question": "Untuk apa kita belajar 3D?",
+        "question": "Tinkercad paling mudah digunakan melalui apa?",
         "options": [
-          "Untuk mencetak di 3D printer",
-          "Untuk makan",
-          "Untuk tidur",
-          "Tidak tau"
+          "Browser web",
+          "Pemutar musik",
+          "Kalkulator meja",
+          "Printer biasa"
         ],
-        "correctAnswer": "Untuk mencetak di 3D printer",
-        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "correctAnswer": "Browser web",
+        "explanation": "Tinkercad berjalan di browser sehingga desain dapat dibuat secara online.",
+        "points": 50
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Area untuk meletakkan dan menyusun bentuk disebut apa?",
+        "options": ["Workplane", "Timeline", "Slide deck", "Audio track"],
+        "correctAnswer": "Workplane",
+        "explanation": "Workplane adalah permukaan kerja tempat bentuk diletakkan dan disusun.",
+        "points": 50
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "Apa yang dapat dilakukan dengan model 3D yang sudah selesai?",
+        "options": [
+          "Mengekspornya untuk dicetak dengan printer 3D",
+          "Mengubahnya menjadi suara",
+          "Memakainya untuk mengisi baterai",
+          "Menggunakannya sebagai halaman web"
+        ],
+        "correctAnswer": "Mengekspornya untuk dicetak dengan printer 3D",
+        "explanation": "Model yang selesai dapat diekspor dan digunakan untuk proses cetak 3D.",
         "points": 50
       }
     ]

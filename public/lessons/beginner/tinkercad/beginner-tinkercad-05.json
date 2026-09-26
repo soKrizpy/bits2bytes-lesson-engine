@@ -15,24 +15,16 @@
     "title": "Selamat Datang di Topik 5!",
     "description": "Membuat benda menjadi lebih besar atau kecil.",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": [
-      "beginner-tinkercad-04"
-    ]
+    "prerequisites": ["beginner-tinkercad-04"]
   },
   "objectives": [
     "Memahami konsep Mengubah Ukuran (Scale)",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
-    "learned": [
-      "Cara menggunakan Mengubah Ukuran (Scale)"
-    ],
-    "keyConcepts": [
-      "Konsep Mengubah Ukuran (Scale) di 3D"
-    ],
-    "takeaways": [
-      "Sekarang kamu bisa menggunakan Mengubah Ukuran (Scale)!"
-    ]
+    "learned": ["Cara menggunakan Mengubah Ukuran (Scale)"],
+    "keyConcepts": ["Konsep Mengubah Ukuran (Scale) di 3D"],
+    "takeaways": ["Sekarang kamu bisa menggunakan Mengubah Ukuran (Scale)!"]
   },
   "learningPath": [
     {
@@ -69,29 +61,52 @@
       {
         "id": "q2",
         "type": "multiple-choice",
-        "question": "Apakah Tinkercad asyik untuk anak-anak?",
+        "question": "Apa arti mengubah ukuran (scale) sebuah bentuk?",
         "options": [
-          "Tentu Saja!",
-          "Sangat Asyik!",
-          "Pastinya!",
-          "Biasa aja"
+          "Mengubah dimensi bentuk",
+          "Mengubah sudut pandang kamera",
+          "Mengganti nama workplane",
+          "Menghapus semua bentuk"
         ],
-        "correctAnswer": "Tentu Saja!",
-        "explanation": "Tinkercad sangat menyenangkan!",
+        "correctAnswer": "Mengubah dimensi bentuk",
+        "explanation": "Scale membuat objek menjadi lebih besar atau lebih kecil.",
         "points": 50
       },
       {
         "id": "q3",
         "type": "multiple-choice",
-        "question": "Untuk apa kita belajar 3D?",
+        "question": "Apa yang berubah ketika kamu menyeret handle ukuran?",
         "options": [
-          "Untuk mencetak di 3D printer",
-          "Untuk makan",
-          "Untuk tidur",
-          "Tidak tau"
+          "Ukuran objek pada dimensi yang dipilih",
+          "Nama akun",
+          "Warna kamera",
+          "Daftar topik"
         ],
-        "correctAnswer": "Untuk mencetak di 3D printer",
-        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "correctAnswer": "Ukuran objek pada dimensi yang dipilih",
+        "explanation": "Handle ukuran mengubah dimensi objek, bukan posisi kameranya.",
+        "points": 50
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Dimensi manakah yang menunjukkan ukuran objek dari bawah ke atas?",
+        "options": ["Tinggi", "Lebar", "Warna", "Sudut kamera"],
+        "correctAnswer": "Tinggi",
+        "explanation": "Tinggi mengukur jarak vertikal dari bagian bawah ke bagian atas objek.",
+        "points": 50
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "Apa perbedaan memindahkan objek dan mengubah ukurannya?",
+        "options": [
+          "Memindahkan mengubah posisi; scale mengubah dimensi",
+          "Keduanya hanya mengubah warna",
+          "Scale memutar kamera; pindah menghapus objek",
+          "Tidak ada perbedaan"
+        ],
+        "correctAnswer": "Memindahkan mengubah posisi; scale mengubah dimensi",
+        "explanation": "Move mengubah letak objek, sementara scale mengubah panjang, lebar, atau tingginya.",
         "points": 50
       }
     ]

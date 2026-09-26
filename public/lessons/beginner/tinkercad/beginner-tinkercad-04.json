@@ -15,24 +15,16 @@
     "title": "Selamat Datang di Topik 4!",
     "description": "Memindahkan dan memutar bentuk di ruang 3D.",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": [
-      "beginner-tinkercad-03"
-    ]
+    "prerequisites": ["beginner-tinkercad-03"]
   },
   "objectives": [
     "Memahami konsep Menggeser dan Memutar",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
-    "learned": [
-      "Cara menggunakan Menggeser dan Memutar"
-    ],
-    "keyConcepts": [
-      "Konsep Menggeser dan Memutar di 3D"
-    ],
-    "takeaways": [
-      "Sekarang kamu bisa menggunakan Menggeser dan Memutar!"
-    ]
+    "learned": ["Cara menggunakan Menggeser dan Memutar"],
+    "keyConcepts": ["Konsep Menggeser dan Memutar di 3D"],
+    "takeaways": ["Sekarang kamu bisa menggunakan Menggeser dan Memutar!"]
   },
   "learningPath": [
     {
@@ -69,29 +61,57 @@
       {
         "id": "q2",
         "type": "multiple-choice",
-        "question": "Apakah Tinkercad asyik untuk anak-anak?",
+        "question": "Kontrol apa yang digunakan untuk memutar objek terpilih?",
         "options": [
-          "Tentu Saja!",
-          "Sangat Asyik!",
-          "Pastinya!",
-          "Biasa aja"
+          "Handle rotasi berbentuk lengkung",
+          "Tombol zoom kamera",
+          "Panel Shapes",
+          "Tombol ekspor"
         ],
-        "correctAnswer": "Tentu Saja!",
-        "explanation": "Tinkercad sangat menyenangkan!",
+        "correctAnswer": "Handle rotasi berbentuk lengkung",
+        "explanation": "Handle rotasi digunakan untuk mengubah arah hadap objek yang dipilih.",
         "points": 50
       },
       {
         "id": "q3",
         "type": "multiple-choice",
-        "question": "Untuk apa kita belajar 3D?",
+        "question": "Apa yang dilakukan handle pindah pada objek?",
         "options": [
-          "Untuk mencetak di 3D printer",
-          "Untuk makan",
-          "Untuk tidur",
-          "Tidak tau"
+          "Mengubah posisi objek",
+          "Mengubah warna kamera",
+          "Menghapus objek",
+          "Mengubah objek menjadi gambar datar"
         ],
-        "correctAnswer": "Untuk mencetak di 3D printer",
-        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "correctAnswer": "Mengubah posisi objek",
+        "explanation": "Handle pindah menggeser objek pada workplane atau sepanjang sumbu.",
+        "points": 50
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Apa perbedaan memutar objek dan memutar kamera?",
+        "options": [
+          "Memutar objek mengubah orientasinya; memutar kamera hanya mengubah sudut pandang",
+          "Keduanya selalu mengubah ukuran objek",
+          "Memutar kamera mengelompokkan objek",
+          "Memutar objek hanya mengubah warna"
+        ],
+        "correctAnswer": "Memutar objek mengubah orientasinya; memutar kamera hanya mengubah sudut pandang",
+        "explanation": "Handle rotasi mengubah objek, sedangkan kontrol kamera hanya mengubah tampilan.",
+        "points": 50
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "Apa yang sebaiknya dilakukan untuk memindahkan objek ke sisi lain workplane?",
+        "options": [
+          "Pilih objek lalu gunakan handle pindah",
+          "Gunakan tombol ekspor",
+          "Ubah warna workplane",
+          "Putar ViewCube saja"
+        ],
+        "correctAnswer": "Pilih objek lalu gunakan handle pindah",
+        "explanation": "Objek perlu dipilih agar handle pindah dapat mengubah posisinya.",
         "points": 50
       }
     ]

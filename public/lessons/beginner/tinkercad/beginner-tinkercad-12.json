@@ -15,24 +15,16 @@
     "title": "Selamat Datang di Topik 12!",
     "description": "Membangun rumah 3D impianmu!",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": [
-      "beginner-tinkercad-011"
-    ]
+    "prerequisites": ["beginner-tinkercad-011"]
   },
   "objectives": [
     "Memahami konsep Project: Rumah Sederhana",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
-    "learned": [
-      "Cara menggunakan Project: Rumah Sederhana"
-    ],
-    "keyConcepts": [
-      "Konsep Project: Rumah Sederhana di 3D"
-    ],
-    "takeaways": [
-      "Sekarang kamu bisa menggunakan Project: Rumah Sederhana!"
-    ]
+    "learned": ["Cara menggunakan Project: Rumah Sederhana"],
+    "keyConcepts": ["Konsep Project: Rumah Sederhana di 3D"],
+    "takeaways": ["Sekarang kamu bisa menggunakan Project: Rumah Sederhana!"]
   },
   "learningPath": [
     {
@@ -69,29 +61,47 @@
       {
         "id": "q2",
         "type": "multiple-choice",
-        "question": "Apakah Tinkercad asyik untuk anak-anak?",
-        "options": [
-          "Tentu Saja!",
-          "Sangat Asyik!",
-          "Pastinya!",
-          "Biasa aja"
-        ],
-        "correctAnswer": "Tentu Saja!",
-        "explanation": "Tinkercad sangat menyenangkan!",
+        "question": "Bentuk dasar apa yang cocok untuk membuat badan rumah?",
+        "options": ["Kotak atau kubus", "ViewCube", "Workplane", "Torus"],
+        "correctAnswer": "Kotak atau kubus",
+        "explanation": "Bentuk kotak dapat menjadi badan utama rumah 3D.",
         "points": 50
       },
       {
         "id": "q3",
         "type": "multiple-choice",
-        "question": "Untuk apa kita belajar 3D?",
+        "question": "Bagaimana cara membuat bukaan jendela pada dinding rumah?",
         "options": [
-          "Untuk mencetak di 3D printer",
-          "Untuk makan",
-          "Untuk tidur",
-          "Tidak tau"
+          "Letakkan bentuk Hole di dinding lalu Group",
+          "Perbesar kamera sampai menembus dinding",
+          "Duplicate dinding tanpa mengubahnya",
+          "Pindahkan ViewCube ke jendela"
         ],
-        "correctAnswer": "Untuk mencetak di 3D printer",
-        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "correctAnswer": "Letakkan bentuk Hole di dinding lalu Group",
+        "explanation": "Hole memotong bagian dinding saat dikelompokkan dengan bentuk solid.",
+        "points": 50
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Perintah apa yang membantu membuat beberapa jendela dengan ukuran sama?",
+        "options": ["Duplicate", "Hole", "Zoom", "Workplane"],
+        "correctAnswer": "Duplicate",
+        "explanation": "Duplicate membuat salinan jendela sehingga ukurannya tetap sama.",
+        "points": 50
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "Apa yang sebaiknya dilakukan setelah badan, atap, pintu, dan jendela tersusun?",
+        "options": [
+          "Pilih komponen yang ingin dipindahkan bersama lalu Group",
+          "Hapus semua bentuk Hole",
+          "Ubah semua bentuk menjadi gambar 2D",
+          "Putar kamera sampai desain menghilang"
+        ],
+        "correctAnswer": "Pilih komponen yang ingin dipindahkan bersama lalu Group",
+        "explanation": "Group membantu mengatur komponen rumah sebagai satu kesatuan.",
         "points": 50
       }
     ]

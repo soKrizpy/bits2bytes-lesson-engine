@@ -15,24 +15,16 @@
     "title": "Selamat Datang di Topik 2!",
     "description": "Cara melihat dari berbagai sudut di dunia 3D.",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": [
-      "beginner-tinkercad-01"
-    ]
+    "prerequisites": ["beginner-tinkercad-01"]
   },
   "objectives": [
     "Memahami konsep Kamera dan Tampilan 3D",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
-    "learned": [
-      "Cara menggunakan Kamera dan Tampilan 3D"
-    ],
-    "keyConcepts": [
-      "Konsep Kamera dan Tampilan 3D di 3D"
-    ],
-    "takeaways": [
-      "Sekarang kamu bisa menggunakan Kamera dan Tampilan 3D!"
-    ]
+    "learned": ["Cara menggunakan Kamera dan Tampilan 3D"],
+    "keyConcepts": ["Konsep Kamera dan Tampilan 3D di 3D"],
+    "takeaways": ["Sekarang kamu bisa menggunakan Kamera dan Tampilan 3D!"]
   },
   "learningPath": [
     {
@@ -69,29 +61,57 @@
       {
         "id": "q2",
         "type": "multiple-choice",
-        "question": "Apakah Tinkercad asyik untuk anak-anak?",
+        "question": "Apa fungsi ViewCube di workspace Tinkercad?",
         "options": [
-          "Tentu Saja!",
-          "Sangat Asyik!",
-          "Pastinya!",
-          "Biasa aja"
+          "Memilih sudut pandang kamera yang sudah ditentukan",
+          "Mengubah warna semua bentuk",
+          "Menghapus desain",
+          "Mengukur berat model"
         ],
-        "correctAnswer": "Tentu Saja!",
-        "explanation": "Tinkercad sangat menyenangkan!",
+        "correctAnswer": "Memilih sudut pandang kamera yang sudah ditentukan",
+        "explanation": "ViewCube menyediakan arah pandang seperti atas, depan, dan samping.",
         "points": 50
       },
       {
         "id": "q3",
         "type": "multiple-choice",
-        "question": "Untuk apa kita belajar 3D?",
+        "question": "Apa yang berubah saat kamu memperbesar tampilan kamera?",
         "options": [
-          "Untuk mencetak di 3D printer",
-          "Untuk makan",
-          "Untuk tidur",
-          "Tidak tau"
+          "Model terlihat lebih besar di layar, tetapi ukurannya tidak berubah",
+          "Model otomatis bertambah tinggi",
+          "Semua bentuk berpindah ke workplane lain",
+          "Model berubah menjadi dua dimensi"
         ],
-        "correctAnswer": "Untuk mencetak di 3D printer",
-        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "correctAnswer": "Model terlihat lebih besar di layar, tetapi ukurannya tidak berubah",
+        "explanation": "Zoom hanya mengubah pembesaran tampilan kamera, bukan dimensi objek.",
+        "points": 50
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Bagaimana cara melihat sisi belakang sebuah model?",
+        "options": [
+          "Putar sudut pandang kamera",
+          "Ubah warna model",
+          "Kelompokkan semua bentuk",
+          "Ubah ukuran workplane"
+        ],
+        "correctAnswer": "Putar sudut pandang kamera",
+        "explanation": "Memutar kamera membantu memeriksa model dari sisi yang berbeda.",
+        "points": 50
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "Apakah memutar kamera mengubah bentuk objek?",
+        "options": [
+          "Tidak, hanya sudut pandangnya yang berubah",
+          "Ya, objek selalu menjadi lebih tinggi",
+          "Ya, objek langsung terduplikasi",
+          "Tidak, tetapi warna objek berubah"
+        ],
+        "correctAnswer": "Tidak, hanya sudut pandangnya yang berubah",
+        "explanation": "Kontrol kamera mengubah cara melihat model, bukan geometri modelnya.",
         "points": 50
       }
     ]

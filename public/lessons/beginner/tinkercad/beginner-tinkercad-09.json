@@ -15,24 +15,16 @@
     "title": "Selamat Datang di Topik 9!",
     "description": "Menambahkan bentuk di atas bentuk lain.",
     "analogy": "Bayangkan kamu sedang bermain balok susun (Lego), tapi kali ini di dalam komputer!",
-    "prerequisites": [
-      "beginner-tinkercad-08"
-    ]
+    "prerequisites": ["beginner-tinkercad-08"]
   },
   "objectives": [
     "Memahami konsep Menggunakan Workplane",
     "Mempraktikkan di Tinkercad"
   ],
   "review": {
-    "learned": [
-      "Cara menggunakan Menggunakan Workplane"
-    ],
-    "keyConcepts": [
-      "Konsep Menggunakan Workplane di 3D"
-    ],
-    "takeaways": [
-      "Sekarang kamu bisa menggunakan Menggunakan Workplane!"
-    ]
+    "learned": ["Cara menggunakan Menggunakan Workplane"],
+    "keyConcepts": ["Konsep Menggunakan Workplane di 3D"],
+    "takeaways": ["Sekarang kamu bisa menggunakan Menggunakan Workplane!"]
   },
   "learningPath": [
     {
@@ -69,29 +61,57 @@
       {
         "id": "q2",
         "type": "multiple-choice",
-        "question": "Apakah Tinkercad asyik untuk anak-anak?",
+        "question": "Apa kegunaan Workplane?",
         "options": [
-          "Tentu Saja!",
-          "Sangat Asyik!",
-          "Pastinya!",
-          "Biasa aja"
+          "Menjadi permukaan acuan untuk meletakkan dan menyusun bentuk",
+          "Mengubah bentuk menjadi gambar 2D",
+          "Menyimpan daftar pertanyaan",
+          "Menghapus bentuk yang dipilih"
         ],
-        "correctAnswer": "Tentu Saja!",
-        "explanation": "Tinkercad sangat menyenangkan!",
+        "correctAnswer": "Menjadi permukaan acuan untuk meletakkan dan menyusun bentuk",
+        "explanation": "Workplane adalah bidang acuan untuk menempatkan bentuk saat mendesain.",
         "points": 50
       },
       {
         "id": "q3",
         "type": "multiple-choice",
-        "question": "Untuk apa kita belajar 3D?",
+        "question": "Apa manfaat meletakkan Workplane pada sisi sebuah objek?",
         "options": [
-          "Untuk mencetak di 3D printer",
-          "Untuk makan",
-          "Untuk tidur",
-          "Tidak tau"
+          "Bentuk baru dapat diletakkan dengan mengacu pada sisi tersebut",
+          "Semua objek otomatis menjadi transparan",
+          "Kamera terkunci pada satu arah",
+          "Objek lama langsung terduplikasi"
         ],
-        "correctAnswer": "Untuk mencetak di 3D printer",
-        "explanation": "3D model bisa dicetak dengan 3D printer.",
+        "correctAnswer": "Bentuk baru dapat diletakkan dengan mengacu pada sisi tersebut",
+        "explanation": "Workplane dapat dipindahkan ke permukaan agar bentuk baru lebih mudah ditempatkan di sana.",
+        "points": 50
+      },
+      {
+        "id": "q4",
+        "type": "multiple-choice",
+        "question": "Jika Workplane dipindahkan ke sisi miring, apa yang berubah?",
+        "options": [
+          "Arah permukaan acuan untuk bentuk baru",
+          "Ukuran semua objek yang sudah ada",
+          "Warna semua bentuk",
+          "Jumlah objek di desain"
+        ],
+        "correctAnswer": "Arah permukaan acuan untuk bentuk baru",
+        "explanation": "Memindahkan Workplane mengubah orientasi bidang acuan, bukan ukuran objek yang sudah ada.",
+        "points": 50
+      },
+      {
+        "id": "q5",
+        "type": "multiple-choice",
+        "question": "Apa yang tidak berubah hanya karena Workplane dipindahkan?",
+        "options": [
+          "Geometri objek yang sudah dibuat",
+          "Arah bidang acuan",
+          "Tempat untuk menaruh bentuk baru",
+          "Orientasi Workplane"
+        ],
+        "correctAnswer": "Geometri objek yang sudah dibuat",
+        "explanation": "Workplane membantu penempatan, tetapi tidak otomatis mengubah geometri objek yang ada.",
         "points": 50
       }
     ]
