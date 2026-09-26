@@ -47,6 +47,10 @@ describe('Tinkercad lesson content', () => {
     expect(result.lesson.metadata.engineStyle).toBe('mimo');
     expect(result.lesson.metadata.level).toBe(expectedLevel);
     expect(result.lesson.learningPath.length).toBeGreaterThanOrEqual(8);
+    const firstLessonNode = result.lesson.learningPath.find(
+      (node) => node.type === 'lesson'
+    );
+    expect(firstLessonNode && 'imageUrl' in firstLessonNode).toBe(true);
     expect(
       result.lesson.learningPath.some((node) => node.type === 'practice')
     ).toBe(true);

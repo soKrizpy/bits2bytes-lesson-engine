@@ -32,6 +32,7 @@
       "type": "lesson",
       "title": "Kamera Membantu Mengamati",
       "xp": 5,
+      "imageUrl": "/lessons/beginner/tinkercad/visuals/tinkercad-02-camera.svg",
       "explanation": "Kamera Tinkercad menentukan cara kita melihat model. Zoom, pan, dan rotate membantu memeriksa detail tanpa mengubah bentuk objek.",
       "tips": ["Bedakan perubahan kamera dari perubahan objek."]
     },

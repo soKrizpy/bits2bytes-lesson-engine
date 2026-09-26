@@ -32,6 +32,7 @@
       "type": "lesson",
       "title": "Bentuk Dasar sebagai Bahan",
       "xp": 5,
+      "imageUrl": "/lessons/beginner/tinkercad/visuals/tinkercad-03-creature.svg",
       "explanation": "Kubus, bola, silinder, dan bentuk dasar lain adalah bahan untuk membangun model. Pilih bentuk yang sesuai dengan bagian benda yang ingin dibuat.",
       "tips": ["Mulai dari bentuk paling sederhana sebelum menambah detail."]
     },

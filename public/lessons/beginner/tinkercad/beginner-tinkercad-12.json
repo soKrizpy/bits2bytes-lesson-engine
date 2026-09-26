@@ -32,6 +32,7 @@
       "type": "lesson",
       "title": "Rancang Rumah dari Komponen",
       "xp": 5,
+      "imageUrl": "/lessons/beginner/tinkercad/visuals/tinkercad-12-house.svg",
       "explanation": "Rumah 3D dapat dibuat dari badan, atap, pintu, jendela, dan detail. Tantangan level Hard adalah menjaga semua bagian proporsional dan tersusun rapi.",
       "tips": ["Buat struktur utama sebelum menambahkan dekorasi."]
     },

@@ -34,6 +34,7 @@
       "type": "lesson",
       "title": "Duplicate untuk Pola",
       "xp": 5,
+      "imageUrl": "/lessons/beginner/tinkercad/visuals/tinkercad-10-bridge.svg",
       "explanation": "Duplicate membuat salinan objek dengan cepat. Ini berguna untuk desain yang memiliki komponen berulang dan harus memiliki ukuran sama.",
       "tips": ["Buat satu komponen yang rapi sebelum menggandakannya."]
     },

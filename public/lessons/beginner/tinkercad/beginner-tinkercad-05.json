@@ -32,6 +32,7 @@
       "type": "lesson",
       "title": "Ukuran dalam 3D",
       "xp": 5,
+      "imageUrl": "/lessons/beginner/tinkercad/visuals/tinkercad-05-organizer.svg",
       "explanation": "Scale mengubah panjang, lebar, atau tinggi objek. Ukuran yang konsisten membantu komponen proyek saling cocok.",
       "tips": [
         "Catat ukuran penting sebelum memperbesar atau mengecilkan bentuk."

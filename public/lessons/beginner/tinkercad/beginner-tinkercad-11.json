@@ -32,6 +32,7 @@
       "type": "lesson",
       "title": "Analisis Bentuk Gelas",
       "xp": 5,
+      "imageUrl": "/lessons/beginner/tinkercad/visuals/tinkercad-11-glass.svg",
       "explanation": "Gelas dapat dibangun dari silinder solid dan silinder Hole. Perhatikan ketebalan dinding, tinggi, dan kestabilan dasar.",
       "tips": ["Rancang bagian luar terlebih dahulu, lalu buat ruang dalam."]
     },

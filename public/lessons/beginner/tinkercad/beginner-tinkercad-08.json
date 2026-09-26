@@ -32,6 +32,7 @@
       "type": "lesson",
       "title": "Mengapa Align Penting",
       "xp": 5,
+      "imageUrl": "/lessons/beginner/tinkercad/visuals/tinkercad-08-traffic.svg",
       "explanation": "Align membantu menyejajarkan dua atau lebih bentuk pada sumbu tertentu. Ini membuat desain terlihat rapi dan terukur.",
       "tips": ["Pilih beberapa bentuk sebelum memakai Align."]
     },

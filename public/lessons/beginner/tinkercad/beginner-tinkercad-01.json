@@ -32,6 +32,7 @@
       "type": "lesson",
       "title": "Kenali Dunia 3D",
       "xp": 5,
+      "imageUrl": "/lessons/beginner/tinkercad/visuals/tinkercad-01-among-us.svg",
       "explanation": "Model 3D memiliki panjang, lebar, dan tinggi. Tinkercad membantu kita menyusun bentuk sederhana menjadi benda yang dapat dilihat dari berbagai arah.",
       "tips": [
         "Amati benda di sekitarmu dan pikirkan bentuk dasar penyusunnya."
@@ -48,20 +49,20 @@
     {
       "id": "node-03-build",
       "type": "code",
-      "title": "Rencana Nameplate",
+      "title": "Rencana Among Us Crewmate",
       "xp": 5,
-      "explanation": "Gunakan rencana sederhana ini sebelum membangun nameplate pertamamu.",
+      "explanation": "Gunakan bentuk dasar untuk merancang karakter crewmate bergaya Among Us. Kita akan membuat badan, kaca helm, kaki, dan ransel dari bentuk sederhana.",
       "code": {
         "language": "text",
-        "content": "NAMEPLATE\n1. Buat balok sebagai alas.\n2. Tambahkan teks nama.\n3. Atur posisi teks di atas alas.\n4. Periksa desain dari depan dan samping."
+        "content": "AMONG US CREWMATE\n1. Badan: balok atau kapsul merah.\n2. Helm: balok pendek dengan kaca biru.\n3. Kaki: dua balok kecil.\n4. Ransel: satu balok di belakang."
       }
     },
     {
       "id": "node-04-practice",
       "type": "practice",
-      "title": "Pilih Bentuk yang Tepat",
+      "title": "Pilih Bentuk Dasar",
       "xp": 10,
-      "instructions": "Bentuk dasar apa yang paling cocok untuk alas nameplate?",
+      "instructions": "Bentuk dasar apa yang bisa dipakai untuk membuat badan crewmate?",
       "interactionType": "multiple-choice",
       "options": ["Kotak atau balok", "Suara", "Garis waktu", "Foto"],
       "correctOption": "Kotak atau balok"
@@ -69,35 +70,35 @@
     {
       "id": "node-05-guided",
       "type": "lesson",
-      "title": "Susun Nameplate",
+      "title": "Susun Crewmate dari Bentuk",
       "xp": 10,
-      "explanation": "Buat balok tipis sebagai alas. Tambahkan teks nama, ubah ukurannya agar muat, lalu letakkan di tengah alas. Gunakan kamera depan dan samping untuk mengecek posisi.",
+      "explanation": "Buat badan dari balok atau bentuk membulat. Tambahkan kaca helm dari balok pendek, dua kaki, dan ransel kecil. Gunakan kamera depan dan samping untuk mengecek posisi setiap bagian.",
       "tips": [
-        "Gunakan ukuran yang mudah dibaca.",
-        "Jangan menempatkan teks terlalu dekat dengan tepi alas."
+        "Buat dua kaki dengan ukuran yang sama.",
+        "Letakkan kaca helm di bagian depan badan."
       ]
     },
     {
       "id": "node-06-test",
       "type": "code",
-      "title": "Cek dari Tiga Arah",
+      "title": "Cek Karakter dari Tiga Arah",
       "xp": 10,
       "explanation": "Gunakan daftar pemeriksaan ini untuk menilai modelmu.",
       "code": {
         "language": "text",
-        "content": "CHECKLIST\n[ ] Nama terlihat dari depan\n[ ] Teks berada di atas alas\n[ ] Tidak ada bentuk yang menembus alas\n[ ] Model tetap rapi dari samping"
+        "content": "CREWMATE CHECK\n[ ] Badan berdiri tegak\n[ ] Kaca helm terlihat dari depan\n[ ] Dua kaki menyentuh bagian bawah\n[ ] Ransel terlihat dari samping"
       }
     },
     {
       "id": "node-07-challenge",
       "type": "challenge",
-      "title": "Project: Nameplate 3D",
+      "title": "Project: Among Us Crewmate",
       "xp": 15,
-      "instructions": "Buat nameplate 3D untuk meja belajarmu. Gunakan alas balok, teks namamu, dan satu bentuk dekorasi kecil. Atur semuanya agar stabil dan mudah dibaca dari depan.",
-      "expectedResult": "Nameplate memiliki alas, nama yang terbaca, dan satu dekorasi yang tersusun rapi.",
+      "instructions": "Buat karakter crewmate 3D dari bentuk dasar. Gunakan satu badan, kaca helm, dua kaki, dan satu ransel. Pilih warna cerah untuk membuat karaktermu mudah dikenali.",
+      "expectedResult": "Crewmate memiliki badan, kaca helm, dua kaki, dan ransel yang tersusun rapi.",
       "starterCode": {
         "language": "text",
-        "content": "Alas: [buat balok tipis]\nNama: [tambahkan teks namamu]\nDekorasi: [tambahkan satu bentuk kecil]"
+        "content": "Badan: [buat balok atau bentuk membulat]\nKaca helm: [buat bentuk pendek berwarna biru]\nKaki: [buat dan duplikasi satu balok kecil]\nRansel: [buat satu balok di belakang]"
       }
     },
     { "id": "node-08-quiz", "type": "quiz", "title": "Uji Pengetahuanmu" }

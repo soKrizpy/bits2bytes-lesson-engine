@@ -32,6 +32,7 @@
       "type": "lesson",
       "title": "Solid dan Hole",
       "xp": 5,
+      "imageUrl": "/lessons/beginner/tinkercad/visuals/tinkercad-07-holder.svg",
       "explanation": "Bentuk solid menambah volume, sedangkan bentuk Hole digunakan sebagai pemotong. Keduanya perlu diposisikan dengan tepat sebelum di-Group.",
       "tips": ["Pastikan Hole menembus bagian solid yang ingin dipotong."]
     },

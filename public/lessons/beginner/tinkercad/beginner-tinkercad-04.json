@@ -32,6 +32,7 @@
       "type": "lesson",
       "title": "Posisi dan Orientasi",
       "xp": 5,
+      "imageUrl": "/lessons/beginner/tinkercad/visuals/tinkercad-04-car.svg",
       "explanation": "Move mengubah posisi objek, sedangkan rotate mengubah arah hadapnya. Keduanya penting saat menyusun komponen proyek 3D.",
       "tips": ["Pilih objek sebelum memakai handle."]
     },

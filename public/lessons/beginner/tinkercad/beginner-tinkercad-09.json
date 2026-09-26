@@ -32,6 +32,7 @@
       "type": "lesson",
       "title": "Workplane sebagai Bidang Acuan",
       "xp": 5,
+      "imageUrl": "/lessons/beginner/tinkercad/visuals/tinkercad-09-room.svg",
       "explanation": "Workplane menentukan permukaan acuan untuk menempatkan bentuk. Dengan memindahkannya, kamu dapat membuat detail pada sisi atau tingkat yang berbeda.",
       "tips": [
         "Perhatikan arah panah dan posisi bidang sebelum menambahkan bentuk."

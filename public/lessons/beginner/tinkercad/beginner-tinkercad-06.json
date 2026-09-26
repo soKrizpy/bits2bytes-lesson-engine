@@ -34,6 +34,7 @@
       "type": "lesson",
       "title": "Mengapa Mengelompokkan?",
       "xp": 5,
+      "imageUrl": "/lessons/beginner/tinkercad/visuals/tinkercad-06-robot.svg",
       "explanation": "Group membuat beberapa bentuk lebih mudah dipilih, dipindahkan, dan diatur sebagai satu kesatuan. Ini berguna untuk komponen yang sudah selesai.",
       "tips": ["Pastikan hanya bentuk yang berkaitan yang dipilih."]
     },
